@@ -1,11 +1,15 @@
 #!/bin/ruby
-require 'redgreen'
 require 'autotest/timestamp'
  
 module Autotest::GnomeNotify
   def self.notify title, msg, img
     system "notify-send '#{title}' '#{msg}' -i #{img} -t 3000"
   end
+
+Autotest.add_hook :initialize do |at|
+  %w{.git vendor rerun.txt db log system .redcar}.each {|exception| at.add_exception(exception)}
+end
+
  
   Autotest.add_hook :ran_command do |at|
     image_root = "~/.autotest_images"
