@@ -96,6 +96,7 @@ DEPENDENCIES
   annotate-models (= 1.0.4)
   haml (= 3.1.1)
   rails (= 3.0.7)
+  rake (= 0.8.7)
   rspec (= 2.5.0)
   rspec-rails (= 2.5.0)
   spork (= 0.8.4)
