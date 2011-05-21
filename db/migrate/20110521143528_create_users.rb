@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :postalcode
       t.string :city
       t.string :sex
-      t.number :licensenumber
+      t.integer :licensenumber
 
       t.timestamps
     end
