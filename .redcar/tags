@@ -1,4 +1,4 @@
-1305971940
+1305972061
 Application	/home/wouter/Rails Apps/kronos_website/config/application.rb	  class Application 
 ApplicationController	/home/wouter/Rails Apps/kronos_website/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/wouter/Rails Apps/kronos_website/app/helpers/application_helper.rb	module ApplicationHelper
