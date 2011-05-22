@@ -1,2 +1,8 @@
-%h1 Users#new
-%p Find me in app/views/users/new.html.erb
+%h1 Sign up
+
+= form_for(@user) do |f|
+  #field 
+    = f.label :name 
+    %br
+    = f.text_field :name
+    
