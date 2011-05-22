@@ -18,7 +18,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex
+  attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex, :licensenumber
   
   name_regex = /\A[A-Z][a-z]+\s([a-z]+\s([a-z]+\s)*)?[A-Z][a-z]*(-[A-Z][a-z]+)*\z/
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

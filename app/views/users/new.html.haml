@@ -1,6 +1,7 @@
 %h1 Sign up
 
 = form_for(@user) do |f|
+  = render 'shared/error_messages'
   #field 
     = f.label :naam 
     %br
@@ -44,7 +45,7 @@
   #field
     = f.label :licentienummer
     %br
-    = f.number_field :licensenumber
+    = f.text_field :licensenumber
     
   #actions
     =f.submit :toevoegen

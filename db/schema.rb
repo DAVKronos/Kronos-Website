@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20110521143528) do
     t.string   "postalcode"
     t.string   "city"
     t.string   "sex"
-    t.integer  "licensenumber"
+    t.string   "licensenumber"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
