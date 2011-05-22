@@ -20,11 +20,17 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex
   
-  validates :name, :presence => true
+  name_regex = /\A[A-Z][a-z]+\s([a-z]+\s([a-z]+\s)*)?[A-Z][a-z]*(-[A-Z][a-z]+)*\z/
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
-  validates :initials, :presence => true
+  validates :name, :presence => true,
+                   :format => {:with => name_regex}
   
-  validates :email, :presence => true
+  validates :initials, :presence => true,
+                       :format => {:with => /([A-Z][.])+/}
+  
+  validates :email, :presence => true,
+                    :format => {:with => email_regex}
   
   validates :birthdate, :presence => true
   
