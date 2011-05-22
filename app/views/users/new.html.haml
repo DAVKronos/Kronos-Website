@@ -2,7 +2,50 @@
 
 = form_for(@user) do |f|
   #field 
-    = f.label :name 
+    = f.label :naam 
     %br
     = f.text_field :name
+    
+  #field
+    = f.label :initialen
+    %br
+    = f.text_field :initials
+    
+  #field
+    = f.label :email
+    %br
+    = f.email_field :email
+    
+  #field
+    = f.label :geboortedatum
+    %br
+    = f.text_field :birthdate
+    
+  #field
+    = f.label :adres
+    %br
+    = f.text_field :address
+    
+  #field
+    = f.label :postcode
+    %br
+    = f.text_field :postalcode
+    
+  #field
+    = f.label :stad
+    %br
+    = f.text_field :city
+    
+  #field
+    = f.label :geslacht
+    %br
+    = f.text_field :sex
+    
+  #field
+    = f.label :licentienummer
+    %br
+    = f.number_field :licensenumber
+    
+  #actions
+    =f.submit :toevoegen
     
