@@ -7,19 +7,8 @@ nl:
   
   error: "fout weerhield"
   errorpl: "fouten weerhielden"
-  
-  activerecord:
-    models:
-      user: Lid
-    attributes:
-      user:
-        name: "naam"
-  
-  
-  
-  
-  
-  
+  sign_up: "inschrijven"
+    
   date:
     formats:
       default: "%d/%m/%Y"
@@ -200,4 +189,17 @@ nl:
 
       full_messages:
         format: "%{attribute} %{message}"
+        
+    models:
+      user: Lid
+    attributes:
+      user:
+        name: "Naam"
+        initials: "Initialen"
+        birthdate: "Geboortedatum"
+        postalcode: "Postcode"
+        city: "Stad"
+        sex: "Geslacht"
+        licensenumber: "Licentienummer"
+        address: "Adres"
 

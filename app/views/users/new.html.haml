@@ -1,14 +1,14 @@
-%h1 Sign up
+%h1= t(:sign_up).capitalize
 
 = form_for(@user) do |f|
-  = render 'shared/error_messages'
+  = render 'shared/error_messages'  
   #field 
-    = f.label :naam 
+    = f.label :name
     %br
     = f.text_field :name
     
   #field
-    = f.label :initialen
+    = f.label :initials
     %br
     = f.text_field :initials
     
@@ -18,32 +18,32 @@
     = f.email_field :email
     
   #field
-    = f.label :birthdate, t(:birthdate)
+    = f.label :birthdate
     %br
     = f.text_field :birthdate
     
   #field
-    = f.label :adres
+    = f.label :address
     %br
     = f.text_field :address
     
   #field
-    = f.label :postcode
+    = f.label :postalcode
     %br
     = f.text_field :postalcode
     
   #field
-    = f.label :stad
+    = f.label :city
     %br
     = f.text_field :city
     
   #field
-    = f.label :geslacht
+    = f.label :sex
     %br
     = f.text_field :sex
     
   #field
-    = f.label :licentienummer
+    = f.label :licensenumber
     %br
     = f.text_field :licensenumber
     
