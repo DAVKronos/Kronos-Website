@@ -7,6 +7,19 @@ nl:
   
   error: "fout weerhield"
   errorpl: "fouten weerhielden"
+  
+  activerecord:
+    models:
+      user: Lid
+    attributes:
+      user:
+        name: "naam"
+  
+  
+  
+  
+  
+  
   date:
     formats:
       default: "%d/%m/%Y"
