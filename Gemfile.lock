@@ -31,6 +31,9 @@ GEM
     activesupport (3.0.7)
     annotate-models (1.0.4)
     arel (2.0.10)
+    authlogic (3.0.3)
+      activerecord (>= 3.0.7)
+      activerecord (>= 3.0.7)
     builder (2.1.2)
     diff-lcs (1.1.2)
     erubis (2.6.6)
@@ -94,6 +97,7 @@ PLATFORMS
 DEPENDENCIES
   ZenTest (= 4.5.0)
   annotate-models (= 1.0.4)
+  authlogic
   haml (= 3.1.1)
   rails (= 3.0.7)
   rake (= 0.8.7)

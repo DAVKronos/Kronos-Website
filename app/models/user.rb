@@ -18,10 +18,15 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex, :licensenumber
+  
+  attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex, :licensenumber, :login, :password, :password_confirmation
   
   name_regex = /\A[A-Z][a-z]+\s([a-z]+\s([a-z]+\s)*)?[A-Z][a-z]*(-[A-Z][a-z]+)*\z/
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  
+  acts_as_authentic do |config|
+    config.crypto_provider = Authlogic::CryptoProviders::Sha512
+  end
   
   validates :name, :presence => true,
                    :format => {:with => name_regex}
