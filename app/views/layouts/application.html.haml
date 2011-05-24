@@ -10,7 +10,10 @@
     = csrf_meta_tag
 
   %body
-    = link_to "Home", home_path
+    %p
+      = link_to "Home", home_path
+    %p
+      = link_to "Leden", users_path
 
     = yield
 
