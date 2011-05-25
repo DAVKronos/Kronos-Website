@@ -18,7 +18,9 @@ describe UsersController do
         @attr = { :name => "", :email => "", :address => "",
                   :initials => "", :birthdate => "",
                   :city => "", :postalcode => "",
-                  :licensenumber => "", :sex => ""}
+                  :licensenumber => "", :sex => "",
+                  :login => "", :password => "",
+                  :password_confirmation => ""}
       end
 
       it "should not create a user" do
@@ -43,7 +45,10 @@ describe UsersController do
                   :city => "Jeruzalem",
                   :postalcode => "0000 BC",
                   :licensenumber => "000000",
-                  :sex => "Man" }
+                  :sex => "Man",
+                  :login => "Henk",
+                  :password => "Foobar",
+                  :password_confirmation => "Foobar"}
       end
 
       it "should create a user" do

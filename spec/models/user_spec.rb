@@ -11,7 +11,10 @@ describe User do
               :postalcode => "1337 MF",
               :city => "Enschede",
               :sex => "Man",
-              :licensenumber => "123456" }
+              :licensenumber => "123456",
+              :login => "Henk",
+              :password => "Foobar",
+              :password_confirmation => "Foobar"}
   end
 
 
