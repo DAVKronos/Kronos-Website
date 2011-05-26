@@ -1,0 +1,13 @@
+%header
+  %nav{:class => "round"}
+    %ul
+      %li
+        = link_to "Home", home_path
+      %li
+        = link_to "Leden", users_path
+      - if !current_user
+        %li
+          = link_to "Log in", signin_path
+      - else
+        %li
+          = link_to "Log uit", signout_path, :method => :delete

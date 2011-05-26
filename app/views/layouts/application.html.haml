@@ -12,10 +12,7 @@
   %body
     .container
     
-      %p
-        = link_to "Home", home_path
-      %p
-        = link_to "Leden", users_path
+      = render 'layouts/header'
       
       %section{:class => "round"}
 
