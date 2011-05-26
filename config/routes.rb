@@ -6,7 +6,7 @@ KronosWebsite::Application.routes.draw do
   
   match '/home', :to => 'pages#home'
   
-  match '/signin', :to => 'user_sessions#create'
+  match '/signin', :to => 'user_sessions#new'
   match '/signout', :to => 'user_sessions#destroy'
 
   get "pages/contact"
