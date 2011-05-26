@@ -1,14 +1,15 @@
-- if @user.errors.any?
+- if object.errors.any?
   #error_explanation
     %h2
-      - if @user.errors.count > 1
-        = @user.errors.count.to_s + " " + t(:errorpl)
+      - if object.errors.count > 1
+        = object.errors.count.to_s + " " + t(:errorpl)
       - else
         = "1 " + t(:error)
-      het opslaan van dit lid
+      het opslaan van dit
+      = object.class.to_s.underscore.humanize.downcase
     %p
       Er waren problemen met de volgende velden:
       %ul
-        - @user.errors.full_messages.each do |msg|
+        - object.errors.full_messages.each do |msg|
           %li
             = msg

@@ -1,3 +1,26 @@
+.container {
+	width: 710px;
+}
+
+body {
+	background: #18851F;
+}
+
+section {
+	margin-top: 1em;
+	font-size: 120%;
+	padding: 20px;
+	background: #fff;
+}
+
+/* Round corners */
+
+.round {
+	-moz-border-radius:		  10px;
+	-webkit-border-radius:	10px;
+	border-radius:		 	    10px;
+}
+
 .field_with_errors {
   margin-top: 10px;
   padding: 2px;

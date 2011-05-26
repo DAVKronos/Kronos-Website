@@ -10,10 +10,14 @@
     = csrf_meta_tag
 
   %body
-    %p
-      = link_to "Home", home_path
-    %p
-      = link_to "Leden", users_path
+    .container
+    
+      %p
+        = link_to "Home", home_path
+      %p
+        = link_to "Leden", users_path
+      
+      %section{:class => "round"}
 
-    = yield
+        = yield
 
