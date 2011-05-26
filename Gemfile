@@ -19,4 +19,9 @@ group :development, :test do
   gem 'annotate-models', '1.0.4'
 end
 
+group :test do
+
+  gem 'factory_girl_rails', '1.0.1'
+end
+
 

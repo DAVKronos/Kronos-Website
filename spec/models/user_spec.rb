@@ -57,6 +57,21 @@ describe User do
     no_city_user.should_not be_valid
   end
   
+  it "should require a login" do
+    no_login_user = User.new(@attr.merge(:login => ""))
+    no_login_user.should_not be_valid
+  end
+  
+  it "should require a password" do
+    no_password_user = User.new(@attr.merge(:password => ""))
+    no_password_user.should_not be_valid
+  end
+  
+  it "should require a password confirmation" do
+    no_passwordcon_user = User.new(@attr.merge(:password_confirmation => ""))
+    no_passwordcon_user.should_not be_valid
+  end
+  
   it "should accept valid names" do
     names = ["Kegel Kronos", "Wouter Timmermans", "Leipe Harry", "Henk de Vries", "Henk de Vries-Timmermans"]
     names.each do |name|
