@@ -2,6 +2,10 @@
 	width: 710px;
 }
 
+ul.user {
+  list-style-type: none;
+}
+
 body {
 	background: #18851F;
 }

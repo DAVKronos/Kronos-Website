@@ -1,19 +1,29 @@
 %h1 Lid
-= @user.name 
-%br
-= @user.initials
-%br
-= @user.birthdate
-%br
-= @user.email
-%br
-= @user.address
-%br
-= @user.postalcode
-%br
-= @user.city
-%br
-= @user.sex
-%br
-= @user.licensenumber
-%br
+%ul{:class =>"user"}
+  %li
+    = t(:name).capitalize + ": " + @user.name 
+    %br
+  %li
+    = t(:initials).capitalize + ": " + @user.initials
+    %br
+  %li
+    = t(:birthdate).capitalize + ": " + @user.birthdate.to_s
+    %br
+  %li
+    = t(:email).capitalize + ": " + @user.email
+    %br
+  %li
+    = t(:address).capitalize + ": " + @user.address
+    %br
+  %li
+    = t(:postalcode).capitalize + ": " + @user.postalcode
+    %br
+  %li
+    = t(:city).capitalize + ": " + @user.city
+    %br
+  %li
+    = t(:sex).capitalize + ": " + @user.sex
+    %br
+  %li
+    = t(:licensenumber).capitalize + ": " + @user.licensenumber
+    %br

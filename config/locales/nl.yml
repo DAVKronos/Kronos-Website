@@ -8,6 +8,15 @@ nl:
   error: "fout weerhield"
   errorpl: "fouten weerhielden"
   sign_up: "inschrijven"
+  name: "naam"
+  initials: "initialen"
+  birthdate: "geboortedatum"
+  email: "email"
+  address: "adres"
+  licensenumber: "licentienummer"
+  postalcode: "postcode"
+  city: "stad"
+  sex: "geslacht"
     
   date:
     formats:
