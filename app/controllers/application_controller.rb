@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   
   def authenticate
     unless current_user
-      flash[:notice] = "Dit is niet mijn inlog, vriend."
+      flash[:notice] = "Hiervoor moet je inloggen, vriend"
       redirect_to new_user_session_path
       return false
     end

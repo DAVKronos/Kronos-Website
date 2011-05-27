@@ -6,8 +6,10 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
+      flash[:success] = "Welkom, #{current_user.name.split[0]}"
       redirect_to user_path(current_user)
     else
+      flash[:error] = "Onjuiste e-mail/wachtwoord combinatie"
       render :action => :new
     end
   end
