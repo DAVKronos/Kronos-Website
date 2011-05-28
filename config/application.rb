@@ -8,6 +8,11 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module KronosWebsite
   class Application < Rails::Application
+    # Added by the Rails 3 jQuery Template
+    # http://github.com/lleger/Rails-3-jQuery, written by Logan Leger
+    config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+    config.action_view.javascript_expansions[:cdn] = %w(https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js rails)
+
     
     config.generators do |g|
        g.template_engine :haml
