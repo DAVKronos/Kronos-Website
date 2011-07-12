@@ -97,7 +97,7 @@ describe User do
   end
   
   it "should reject invalid initials" do
-    initials = ["h.d.v.", "wjm", "WJM", "S B P E", "H K"]
+    initials = ["h.d.v.", "wjm", "WJM", "S B P E", "H K", "Henk K."]
     initials.each do |initials|
       invalid_initials_user = User.new(@attr.merge(:initials => initials))
       invalid_initials_user.should_not be_valid

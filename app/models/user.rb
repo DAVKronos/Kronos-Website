@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
                    :format => {:with => name_regex}
   
   validates :initials, :presence => true,
-                       :format => {:with => /([A-Z][.])+/}
+                       :format => {:with => /\A([A-Z][.])+\z/}
   
   validates :email, :presence => true,
                     :format => {:with => email_regex}
