@@ -17,6 +17,7 @@ nl:
   postalcode: "postcode"
   city: "stad"
   sex: "geslacht"
+  papieren_kronometer: "papieren kronometer"
     
   date:
     formats:
