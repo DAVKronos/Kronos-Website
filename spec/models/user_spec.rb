@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe User do
   
   let(:attr) {   {:name => "Kegel Kronos", 
@@ -119,7 +117,8 @@ describe User do
     end
   end
 end
-      
+
+
 
 # == Schema Information
 #
