@@ -10,7 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110524150841) do
+ActiveRecord::Schema.define(:version => 20110827214507) do
+
+  create_table "commission_memberships", :force => true do |t|
+    t.string   "function"
+    t.boolean  "installed"
+    t.integer  "user_id"
+    t.integer  "commission_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "commissions", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_sessions", :force => true do |t|
     t.datetime "created_at"
