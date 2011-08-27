@@ -1,8 +1,9 @@
-%h1= t(:sign_up).capitalize
+%h1= t(:edit).capitalize
 
 - form_for(@user) do |f|
+  
   = render 'fields', :f => f
-
+  
   #actions
-  =f.submit :toevoegen
+    =f.submit :update
     

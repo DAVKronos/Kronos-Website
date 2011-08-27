@@ -10,4 +10,6 @@
           = link_to "Log in", signin_path
       - else
         %li
+          = link_to current_user.name.split[0] + "'s stek", current_user
+          = link_to "Instellingen", edit_user_path(current_user)
           = link_to "Log uit", signout_path, :method => :delete

@@ -18,6 +18,7 @@ nl:
   city: "stad"
   sex: "geslacht"
   papieren_kronometer: "papieren kronometer"
+  edit: "aanpassen"
     
   date:
     formats:
