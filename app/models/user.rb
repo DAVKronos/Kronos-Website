@@ -1,35 +1,3 @@
-# == Schema Information
-# Schema version: 20110524150841
-#
-# Table name: users
-#
-#  id                  :integer         not null, primary key
-#  name                :string(255)
-#  initials            :string(255)
-#  email               :string(255)
-#  birthdate           :date
-#  address             :string(255)
-#  postalcode          :string(255)
-#  city                :string(255)
-#  sex                 :string(255)
-#  licensenumber       :string(255)
-#  login               :string(255)     not null
-#  persistence_token   :string(255)     not null
-#  crypted_password    :string(255)     not null
-#  password_salt       :string(255)     not null
-#  single_access_token :string(255)     not null
-#  perishable_token    :string(255)     not null
-#  login_count         :integer         default(0), not null
-#  failed_login_count  :integer         default(0), not null
-#  last_request_at     :datetime
-#  current_login_at    :datetime
-#  last_login_at       :datetime
-#  current_login_ip    :string(255)
-#  last_login_ip       :string(255)
-#  created_at          :datetime
-#  updated_at          :datetime
-#
-
 class User < ActiveRecord::Base
   
   attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex, :licensenumber, :login, :password, :password_confirmation
@@ -61,3 +29,36 @@ class User < ActiveRecord::Base
   validates :address, :presence => true
   
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                  :integer         not null, primary key
+#  name                :string(255)
+#  initials            :string(255)
+#  email               :string(255)
+#  birthdate           :date
+#  address             :string(255)
+#  postalcode          :string(255)
+#  city                :string(255)
+#  sex                 :string(255)
+#  licensenumber       :string(255)
+#  login               :string(255)     not null
+#  persistence_token   :string(255)     not null
+#  crypted_password    :string(255)     not null
+#  password_salt       :string(255)     not null
+#  single_access_token :string(255)     not null
+#  perishable_token    :string(255)     not null
+#  login_count         :integer         default(0), not null
+#  failed_login_count  :integer         default(0), not null
+#  last_request_at     :datetime
+#  current_login_at    :datetime
+#  last_login_at       :datetime
+#  current_login_ip    :string(255)
+#  last_login_ip       :string(255)
+#  papieren_kronometer :boolean         default(FALSE)
+#  created_at          :datetime
+#  updated_at          :datetime
+#
+
