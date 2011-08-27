@@ -1,6 +1,6 @@
 %h1= t(:sign_up).capitalize
 
-= form_for(@user) do |f|
+- form_for(@user) do |f|
   = render 'shared/error_messages', :object => f.object  
   #field 
     = f.label :name
