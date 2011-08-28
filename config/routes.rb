@@ -1,17 +1,8 @@
 KronosWebsite::Application.routes.draw do
   
-  get "commission/new"
-
-  get "commission/create"
-
-  get "commission/edit"
-
-  get "commission/update"
-
-  get "commission/delete"
-
   resource :user_session
   resources :users
+  resources :commissions
   
   
   match '/home', :to => 'pages#home'
