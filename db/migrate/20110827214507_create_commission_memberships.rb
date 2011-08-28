@@ -2,9 +2,9 @@ class CreateCommissionMemberships < ActiveRecord::Migration
   def self.up
     create_table :commission_memberships do |t|
       t.string :function
-      t.boolean :installed
-      t.references :user
-      t.references :commission
+      t.boolean :installed, :default => false
+      t.references :user, :null => false
+      t.references :commission, :null => false
 
       t.timestamps
     end

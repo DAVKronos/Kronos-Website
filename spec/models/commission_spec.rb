@@ -1,7 +1,25 @@
 require 'spec_helper'
 
 describe Commission do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user){ Factory(:user) }
+  let(:commis){ {:name => "test",
+                 :description => "test commissie",
+                 :email => "test@kronos.nl"} }
+                
+                it "should create an commission given valid attributes" do
+                  Commission.create!(commis)
+                end
+                
+                it "should allow to create an association" do
+                  Commission.create!(commis).users << user
+                end
+                
+                it "should remember the associations" do
+                  test_commission = Commission.create!(commis)
+                  test_commission.users << user
+                  test_commission.users.should == [user]
+                end
+                  
 end
 
 # == Schema Information

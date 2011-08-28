@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(:version => 20110827214507) do
 
   create_table "commission_memberships", :force => true do |t|
     t.string   "function"
-    t.boolean  "installed"
-    t.integer  "user_id"
-    t.integer  "commission_id"
+    t.boolean  "installed",     :default => false
+    t.integer  "user_id",                          :null => false
+    t.integer  "commission_id",                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

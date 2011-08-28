@@ -116,6 +116,30 @@ describe User do
       invalid_email_user.should_not be_valid
     end
   end
+  
+  describe "commission associations" do
+    let(:commis){ Factory(:commission) }
+    let(:user){User.new(attr)}
+    let(:user2){ Factory(:user) }
+    
+    before do
+      user2.commissions << commis
+    end
+      
+    
+    it "should have a commission attribute" do
+      user.should respond_to(:commissions)
+    end
+    
+    it "should return the associated commissions" do
+      user2.commissions.should == [commis]
+    end
+    
+    it "should work the other way around too" do
+      commis.users.should == [user2]
+    end
+    
+  end
 end
 
 
