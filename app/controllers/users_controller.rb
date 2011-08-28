@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else
-      @title = "Sign up"
       render 'new'
     end
   end

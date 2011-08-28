@@ -1,1 +1,8 @@
-%h1 Edit
+%h1= t(:new_commission).capitalize
+
+- form_for(@commission) do |f|
+
+  = render 'fields', :f => f
+
+  #actions
+  =f.submit :toevoegen

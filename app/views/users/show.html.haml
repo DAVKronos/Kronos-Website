@@ -1,4 +1,4 @@
-%h1 Lid
+%h1= @user.name
 %ul{:class =>"user"}
   %li
     = t(:name).capitalize + ": " + @user.name 

@@ -1,0 +1,8 @@
+%h1 Alle Commissies
+
+%ul{:class => "commissions"}
+
+  - @commissions.each do |commission|
+  
+    %li
+      = link_to commission.name, commission
