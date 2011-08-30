@@ -15,6 +15,8 @@ group :development, :test do
   gem 'rspec', '2.5.0'
   gem 'webrat', '0.7.1'
   gem 'ZenTest', '4.5.0'
+  gem 'autotest-fsevent'
+  gem 'autotest-growl'
   gem 'spork', '0.8.4'
   gem 'annotate', '2.4.0'
 end
