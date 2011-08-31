@@ -22,6 +22,7 @@ nl:
   commission: "commissie"
   new_commission: "nieuwe commissie"
   function: "functie"
+  description: "beschrijving"
     
   date:
     formats:
