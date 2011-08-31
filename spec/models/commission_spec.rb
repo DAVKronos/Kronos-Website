@@ -14,7 +14,7 @@ describe Commission do
                   Commission.create!(commis).users << user
                 end
                 
-                it "should remember the associations" do
+                it "should save the associations" do
                   test_commission = Commission.create!(commis)
                   test_commission.users << user
                   test_commission.users.should == [user]

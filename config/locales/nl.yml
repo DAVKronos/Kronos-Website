@@ -19,6 +19,9 @@ nl:
   sex: "geslacht"
   papieren_kronometer: "papieren kronometer"
   edit: "aanpassen"
+  commission: "commissie"
+  new_commission: "nieuwe commissie"
+  function: "functie"
     
   date:
     formats:

@@ -1,6 +1,10 @@
 class CommissionMembership < ActiveRecord::Base
   belongs_to :user
   belongs_to :commission
+  
+  validates :commission_id, :presence => true
+  validates :user_id,       :presence => true
+  validates :function,      :presence => true
 end
 
 # == Schema Information

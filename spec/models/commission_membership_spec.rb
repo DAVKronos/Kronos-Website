@@ -1,7 +1,14 @@
 require 'spec_helper'
 
 describe CommissionMembership do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user){ Factory(:user) }
+  let(:commis){ Factory(:commission) }
+  let(:membership){ user.commission_memberships.build(:commission => commis)}
+  
+  it "should create a new instance given valid attributes" do
+      membership.save!
+    end
+  
 end
 
 # == Schema Information
