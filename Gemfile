@@ -1,8 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
-
-gem 'sqlite3'
 gem 'haml', '3.1.2'
 gem 'authlogic'
 
@@ -29,6 +27,7 @@ end
 
 group :development do
   gem 'annotate', '2.4.0'
+  gem 'sqlite3'
 end
 
 group :production do
