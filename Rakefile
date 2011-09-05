@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-KronosWebsite31::Application.load_tasks
+KronosWebsite::Application.load_tasks
