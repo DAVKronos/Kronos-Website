@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-KronosWebsite::Application.config.secret_token = '007eaf44e927c97278a3fab2ff150d01cc6fafe05d9029ca1cc082c2627f63ac0ddef9e48017b6290f2f726c2d64d8be01c43ee330e7e007522819b51f9ed0ff'
+KronosWebsite31::Application.config.secret_token = '134050cff454a36e13309996f2509dce554861c9e86d389d7cd7bf56ac900d072ffe04cabf1b609d9a5ddfea4b7ddab6b9411dc8b9eda69acf07b1ef37e3e492'
