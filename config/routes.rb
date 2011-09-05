@@ -1,4 +1,4 @@
-KronosWebsite31::Application.routes.draw do
+KronosWebsite::Application.routes.draw do
 
   resource :user_session
   resources :users
