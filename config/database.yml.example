@@ -1,7 +1,7 @@
 common: &common
   adapter: postgresql
   username: kronos
-  password: kronoskaplex # from psql setup, see Postgresql
+  password:  # from psql setup, see Postgresql
 
 development:
   <<: *common
