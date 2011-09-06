@@ -6,3 +6,5 @@
   
     %li
       = link_to user.name, user
+
+      = link_to 'verwijder', user, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{user.name}"
