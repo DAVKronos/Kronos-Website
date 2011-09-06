@@ -15,6 +15,7 @@ class CommissionsController < ApplicationController
   
   def show
     @commission = Commission.find_by_id(params[:id])
+    @users = Commission.find_by_id(params[:id]).users
   end
   
   def index

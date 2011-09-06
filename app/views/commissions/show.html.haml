@@ -10,3 +10,8 @@
   %li
     = t(:email).capitalize + ": " + @commission.email
     %br
+  
+  - @users.each do |user|
+	
+    %li
+      = user.name

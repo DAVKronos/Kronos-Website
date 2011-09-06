@@ -5,11 +5,17 @@
         = link_to "Home", home_path
       %li
         = link_to "Leden", users_path
+     
       - if !current_user
         %li
           = link_to "Log in", signin_path
       - else
         %li
           = link_to current_user.name.split[0] + "'s stek", current_user
+        %li
           = link_to "Instellingen", edit_user_path(current_user)
+        - if current_user.admin?
+          %li
+            = link_to "Beheer", admin_path
+        %li
           = link_to "Log uit", signout_path, :method => :delete

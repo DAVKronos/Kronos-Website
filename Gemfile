@@ -29,10 +29,6 @@ group :development do
   gem 'annotate', '2.4.0'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-end
-
 group :production do
   gem 'pg'
 end

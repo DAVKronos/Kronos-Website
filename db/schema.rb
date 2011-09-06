@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110827214507) do
+ActiveRecord::Schema.define(:version => 20110906145300) do
 
   create_table "commission_memberships", :force => true do |t|
     t.string   "function"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20110827214507) do
     t.boolean  "papieren_kronometer", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",               :default => false
   end
 
 end
