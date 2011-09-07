@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 gem 'haml', '3.1.2'
 gem 'authlogic'
+gem 'pg'
 
 
 # Gems used only for assets and not required
@@ -27,8 +28,4 @@ end
 
 group :development do
   gem 'annotate', '2.4.0'
-end
-
-group :production do
-  gem 'pg'
 end
