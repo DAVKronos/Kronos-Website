@@ -123,7 +123,7 @@ describe User do
     let(:user2){ Factory(:user) }
     
     before do
-      user2.commissions << commis
+       user2.commission_memberships.build(:commission => commis,:function => "Voorzitter").save!
     end
       
     

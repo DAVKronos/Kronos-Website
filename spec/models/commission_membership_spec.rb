@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CommissionMembership do
   let(:user){ Factory(:user) }
   let(:commis){ Factory(:commission) }
-  let(:membership){ user.commission_memberships.build(:commission => commis)}
+  let(:membership){ user.commission_memberships.build(:commission => commis,:function => "Voorzitter")}
   
   it "should create a new instance given valid attributes" do
       membership.save!
