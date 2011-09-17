@@ -11,12 +11,12 @@ describe Commission do
                 end
                 
                 it "should allow to create an association" do
-                  Commission.create!(commis).users << user
+                  user.commission_memberships.build(:commission => Commission.create!(commis),:function => "Voorzitter").save!
                 end
                 
                 it "should save the associations" do
                   test_commission = Commission.create!(commis)
-                  test_commission.users << user
+                  user.commission_memberships.build(:commission => test_commission,:function => "Voorzitter").save!
                   test_commission.users.should == [user]
                 end
                   
