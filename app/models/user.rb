@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   
   has_many :commission_memberships
   has_many :commissions, :through => :commission_memberships
+  has_many :chatmessages
   
   name_regex = /\A[A-Z][a-z]+\s([a-z]+\s([a-z]+\s)*)?[A-Z][a-z]*(-[A-Z][a-z]+)*\z/
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

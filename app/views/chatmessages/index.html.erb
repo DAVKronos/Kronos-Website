@@ -1,0 +1,29 @@
+<h1>Listing chatmessages</h1>
+
+<%= will_paginate @chatmessages, :previous_label => '<', :next_label => '>', :class => 'digg_pagination' %>
+
+<% @chatmessages.each do |chatmessage| %>
+<table>
+  <tr>
+    <td class="chatboxhead">
+<% if chatmessage.user_id %>
+  <%= link_to chatmessage.by, chatmessage.user %>
+<% else %>
+  <%= mail_to chatmessage.email, chatmessage.by %>    
+<% end %>
+    </td>
+    <td class="chatboxhead"><%= chatmessage.created_at.strftime("%d %b (%H:%M)") %></td>
+    <td><%= link_to 'Edit', edit_chatmessage_path(chatmessage) %></td>
+    <td><%= link_to 'Destroy', chatmessage, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+  <tr>
+    <td colspan="4" class="chatboxend"><%= simple_format(chatmessage.message, :class => 'chatmessage') %></td>
+  </tr>
+</table>
+<% end %>
+
+<%= will_paginate @chatmessages, :previous_label => '<', :next_label => '>', :class => 'digg_pagination' %>
+
+<div>
+  <%= render 'form' %>
+</div>

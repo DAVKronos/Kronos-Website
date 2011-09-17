@@ -3,7 +3,9 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 gem 'haml', '3.1.2'
 gem 'authlogic'
+gem 'acl9'
 gem 'pg'
+gem 'will_paginate', '3.0.0'
 
 
 # Gems used only for assets and not required
@@ -22,8 +24,8 @@ group :test do
   gem 'spork', '0.9.0.rc9'
   gem 'factory_girl_rails', '1.2.0'
   gem 'ZenTest', '4.6.2'
-  gem 'autotest-fsevent'
-  gem 'autotest-growl'
+#  gem 'autotest-fsevent'
+#  gem 'autotest-growl'
 end
 
 group :development do

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110906145300) do
+ActiveRecord::Schema.define(:version => 20110917113053) do
+
+  create_table "chatmessages", :force => true do |t|
+    t.string   "by"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+    t.integer  "user_id"
+  end
 
   create_table "commission_memberships", :force => true do |t|
     t.string   "function"
