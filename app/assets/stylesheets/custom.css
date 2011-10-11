@@ -1,5 +1,5 @@
 .container {
-	width: 710px;
+	width: 960px;
 }
 
 ul.user {
@@ -7,7 +7,7 @@ ul.user {
 }
 
 body {
-	background: #18851F;
+	background: #EEEEEE;
 }
 
 header {
@@ -28,9 +28,9 @@ section h1 {
 /* Round corners */
 
 .round {
-	-moz-border-radius:		  10px;
-	-webkit-border-radius:	10px;
-	border-radius:		 	    10px;
+	-moz-border-radius:		5px;
+	-webkit-border-radius:	5px;
+	border-radius:		 	5px;
 }
 
 /* Links */
