@@ -12,6 +12,7 @@ body {
 
 header {
 	padding-top: 20px;
+	width: 960px;
 }
 
 section {
@@ -51,13 +52,10 @@ a:visited {
 
 /* Navigation */
 
-nav {
-	float: right;
-	width: 960px;
-}
 
 nav {
-	background-color: white;
+	background-color: #31703E;
+	height: 50px;
 	padding: 0 0.7em;
 	white-space: nowrap;
 }
@@ -71,19 +69,29 @@ nav ul li {
 	list-style-type: none;
 	display: inline-block;
 	padding: 0.2em 0;
+	margin-top: 8px;
+}
+
+nav ul li:hover {
+	
+	background: #EEEEEE;
+	
 }
 
 nav ul li a {
 	padding: 0 5px;
+	font-size: 20px;
 	font-weight: bold;
+	
 }
 
 nav ul li a:visited {
-	color: #09c;
+	color: white;
 }
 
 nav ul li a:hover {
-	text-decoration: underline;
+	text-decoration: none;
+	
 } 
 
 .field_with_errors {
