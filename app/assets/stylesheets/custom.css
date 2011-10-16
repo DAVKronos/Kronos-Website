@@ -17,6 +17,7 @@ header {
 
 section {
 	margin-top: 2em;
+	margin-bottom: 10em;
 	font-size: 120%;
 	padding: 20px;
 	background: #fff;
@@ -72,12 +73,14 @@ nav ul li {
 	padding: 0.2em 0;
 	padding-top: 8px;
 	padding-bottom: 12px;
+	float: left;
+	border-right: 1px solid #DEDEDE;
 	
 }
 
 nav ul li:hover {
 	
-	background: #EEEEEE;
+	background-color: #595E54;
 	
 }
 
@@ -96,6 +99,30 @@ nav ul li a:visited {
 nav ul li a:hover {
 	text-decoration: none;
 	color: white;
+	
+}
+
+nav ul ul {
+	display: none;
+	background-color: #595E54;
+	position: absolute;
+	top: 70px;
+	-moz-border-bottom-right-radius: 	5px;
+	-webkit-border-bottom-right-radius:	5px;
+	border-bottom-right-radius:		 	5px;
+	-moz-border-bottom-left-radius: 	5px;
+	-webkit-border-bottom-left-radius:	5px;
+	border-bottom-left-radius:		 	5px;
+	
+}
+
+nav ul ul li {
+	height: 30px;
+}
+
+nav ul li:hover ul{
+	display: block;
+
 	
 } 
 

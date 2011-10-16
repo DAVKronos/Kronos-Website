@@ -16,6 +16,12 @@ KronosWebsite::Application.routes.draw do
   
   get "pages/about"
   
+  get "pages/information"
+  
+  get "pages/kronos"
+  
+  get "pages/atletiek"
+  
   root :to => 'pages#home'
 
 end

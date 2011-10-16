@@ -4,6 +4,13 @@
       %li
         = link_to "Home", home_path
       %li
+        = link_to "Informatie", pages_information_path
+        %ul
+          %li 
+            = link_to "Kronos", pages_kronos_path
+          %li
+            = link_to "Atletiek", pages_atletiek_path
+      %li
         = link_to "Leden", users_path
      
       - if !current_user
