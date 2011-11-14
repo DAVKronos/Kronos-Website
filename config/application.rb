@@ -44,5 +44,9 @@ module KronosWebsite
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    # String escaping simple_format for enters in chatmessages
+    #config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
+
   end
 end

@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110917113053) do
+ActiveRecord::Schema.define(:version => 20111018150504) do
+
+  create_table "agendaitems", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "date"
+    t.string   "location"
+    t.boolean  "subscribe"
+    t.datetime "subscriptiondeadline"
+    t.integer  "commission_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "category"
+  end
 
   create_table "chatmessages", :force => true do |t|
     t.string   "by"
@@ -37,6 +50,42 @@ ActiveRecord::Schema.define(:version => 20110917113053) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.time     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "eventtype_id"
+    t.integer  "agendaitem_id"
+  end
+
+  create_table "eventtypes", :force => true do |t|
+    t.string   "name"
+    t.string   "calculation"
+    t.string   "shortname"
+    t.string   "measuringunit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "calculated_unit"
+  end
+
+  create_table "results", :force => true do |t|
+    t.string   "username"
+    t.string   "result"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
+    t.integer  "user_id"
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.text     "comment"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "agendaitem_id"
   end
 
   create_table "user_sessions", :force => true do |t|

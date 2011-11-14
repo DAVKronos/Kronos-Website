@@ -1,8 +1,4 @@
 class ChatmessagesController < ApplicationController
-  access_control do
-    allow all
-  end
-  
   # GET /chatmessages
   # GET /chatmessages.json
   def index
@@ -27,6 +23,10 @@ class ChatmessagesController < ApplicationController
   # GET /chatmessages/1/edit
   def edit
     @chatmessage = Chatmessage.find(params[:id])
+    if @chatmessage.allow_edit?(current_user)
+    else
+      redirect_to chatmessages_path, notice: 'You have no rights to edit this message'
+    end
   end
 
   # POST /chatmessages
@@ -53,7 +53,10 @@ class ChatmessagesController < ApplicationController
   # PUT /chatmessages/1.json
   def update
     @chatmessage = Chatmessage.find(params[:id])
-
+    if @chatmessage.allow_edit?(current_user)
+    else
+      redirect_to chatmessages_path, notice: 'You have no rights to edit this message'
+    end
     respond_to do |format|
       if @chatmessage.update_attributes(params[:chatmessage])
         format.html { redirect_to chatmessages_path, notice: 'Chatmessage was successfully updated.' }
@@ -69,19 +72,15 @@ class ChatmessagesController < ApplicationController
   # DELETE /chatmessages/1.json
   def destroy
     @chatmessage = Chatmessage.find(params[:id])
-    @chatmessage.destroy
+    if @chatmessage.allow_destroy?(current_user)
+      @chatmessage.destroy
+    else
+      redirect_to chatmessages_path, notice: 'You have no rights to destroy this message'
+    end
 
     respond_to do |format|
       format.html { redirect_to chatmessages_path }
       format.json { head :ok }
-    end
-  end
-  
-  private
-  
-  def allow_edit?
-    if current_user
-      
     end
   end
   

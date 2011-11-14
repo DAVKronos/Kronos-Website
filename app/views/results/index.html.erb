@@ -1,0 +1,44 @@
+<h1>Listing results</h1>
+
+<h3>Results per agendaitem</h3>
+<table>
+  <tr>
+    <th>Agendaitem</th>
+    <th>Events</th>
+  </tr>
+<% @agendaitems.each do |agendaitem|
+count = 0
+agendaitem.events.each do |event|
+  count += event.results.count
+end
+if count > 0 %>
+  <tr>
+    <td><%= link_to agendaitem.name, "/agendaitems/#{agendaitem.id}/results" %></td>
+    <td><% agendaitem.events.each do |event| %><%= event.eventtype.shortname %><%= if event != agendaitem.events.last; ", " end %><% end %></td>
+  </tr>
+<% end
+end %>
+</table>
+
+<h3>Laatste 10 results</h3>
+
+<%= will_paginate @results, :previous_label => '<', :next_label => '>' %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Event</th>
+    <th>Result</th>
+    <th>Calculated</th>
+  </tr>
+<% @results.each do |result| %>
+  <tr>
+    <td><%= if result.user; link_to result.user.name, result.user else result.username end %></td>
+    <td><%= result.event.eventtype.shortname %></td>
+    <td><%= result.result %></td>
+<% expressie = result.event.eventtype.calculation.gsub('r', result.result.to_s) %>
+<% result.timetoseconds(expressie) %>
+    <td><%= result.stringcal(expressie)[/^\-?\d+\.?\d?\d?/] %> <%= result.event.eventtype.calculated_unit %></td>
+  </tr>
+<% end %>
+</table>
