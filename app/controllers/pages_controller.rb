@@ -10,6 +10,7 @@ class PagesController < ApplicationController
   end
   
   def information
+  end
     
   def test
   end
@@ -25,5 +26,4 @@ class PagesController < ApplicationController
       format.json { render json: @chatmessages }
     end
   end
-
 end

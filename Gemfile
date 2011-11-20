@@ -24,8 +24,6 @@ group :test do
   gem 'spork', '0.9.0.rc9'
   gem 'factory_girl_rails', '1.2.0'
   gem 'ZenTest', '4.6.2'
-#  gem 'autotest-fsevent'
-#  gem 'autotest-growl'
 end
 
 group :development do
