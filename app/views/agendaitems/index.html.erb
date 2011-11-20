@@ -1,0 +1,17 @@
+<h1>Kronos agenda</h1>
+
+<% @agendaitems.each do |agendaitem| %>
+<table>
+  <tr<%= if agendaitem.category == "Kronoswedstrijd"; " bgcolor='lightgreen'" end %>>
+    <td><%= link_to agendaitem.name, agendaitem %></td>
+    <td><%= agendaitem.date.strftime("%d %b (%H:%M)") %></td>
+    <td><%= agendaitem.location %></td>
+    <td><%= agendaitem.category %></td>
+    <td><%= if agendaitem.allow_edit?(current_user); link_to 'Edit', edit_agendaitem_path(agendaitem) end %></td>
+    <td><%= if agendaitem.allow_destroy?(current_user); link_to 'Destroy', agendaitem, confirm: 'Are you sure?', method: :delete end %></td>
+  </tr>
+  <tr>
+    <td colspan="6"><%= agendaitem.description %></td>
+  </tr>
+</table>
+<% end %>

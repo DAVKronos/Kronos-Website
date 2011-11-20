@@ -1,0 +1,32 @@
+<h1>Listing eventtypes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Calculation</th>
+    <th>Calculated unit</th>
+    <th>Shortname</th>
+    <th>Measuringunit</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @eventtypes.each do |eventtype| %>
+  <tr>
+    <td><%= eventtype.name %></td>
+    <td><%= eventtype.calculation %></td>
+    <td><%= eventtype.calculated_unit %></td>
+    <td><%= eventtype.shortname %></td>
+    <td><%= eventtype.measuringunit %></td>
+    <td><%= link_to 'Show', eventtype %></td>
+    <td><%= link_to 'Edit', edit_eventtype_path(eventtype) %></td>
+    <td><%= link_to 'Destroy', eventtype, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Copy', "/eventtypes/#{eventtype.id}/copy" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Eventtype', new_eventtype_path %>

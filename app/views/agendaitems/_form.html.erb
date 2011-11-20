@@ -1,0 +1,62 @@
+<%= form_for(@agendaitem) do |f| %>
+  <% if @agendaitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@agendaitem.errors.count, "error") %> prohibited this agendaitem from being saved:</h2>
+
+      <ul>
+      <% @agendaitem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :date %>
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.select(:category, [['Kronoswedstrijd'], ['Wedstrijd'], ['Borrel'], ['Vergadering'], ['Bardienst'], ['Training']]) %>
+  </div>
+  <div>
+    <%= f.label :events %><br />
+<% eventformnumber = 0 %>
+<%= f.fields_for :events do |event_form|%>
+<% if (!event_form.object.id.blank?) %>
+    <div class="field">
+      <%= event_form.label :date %> <%= event_form.text_field :date %> <%= event_form.label :eventtype %> <%= event_form.select(:eventtype_id , Eventtype.all.collect {|p| [ p.name, p.id ] }) %> <%= link_to 'Destroy', event_form.object, confirm: 'Are you sure?', method: :delete %>
+    </div>
+<% end %>
+<% eventformnumber = eventformnumber + 1 %>
+<% end %>
+<% eventformnumber = 0 %>
+    <%= label_tag "New events" %>
+<%= f.fields_for :events do |event_form|%>
+<% if (event_form.object.id.blank?) %>
+    <div class="field">
+      <%= event_form.label :date %>
+      <%= event_form.text_field :date %>
+      <%= event_form.label :eventtype %>
+      <%= event_form.select(:eventtype_id , Eventtype.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Selecteer...'}) %>
+    </div>
+<% end %>
+<% eventformnumber = eventformnumber + 1 %>
+<% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

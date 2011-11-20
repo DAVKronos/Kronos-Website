@@ -1,0 +1,30 @@
+<%= form_for(@agendaitem) do |f| %>
+  <% if @agendaitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@agendaitem.errors.count, "error") %> prohibited this agendaitem from being saved:</h2>
+
+      <ul>
+      <% @agendaitem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= f.fields_for :events do |event_field| %>
+      <p>
+        <b>Name:</b>
+        <%= event_field.object.eventtype.name %>
+        <div class="field">Username: Result:</div>
+        <%= event_field.fields_for :results do |result_field| %>
+          <div class="field">
+            <%= result_field.text_field :username, :readonly => true %><%= result_field.text_field :result %><%= result_field.hidden_field :user_id %>
+          </div>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

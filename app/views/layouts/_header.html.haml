@@ -12,6 +12,12 @@
             = link_to "Atletiek", pages_atletiek_path
       %li
         = link_to "Leden", users_path
+      %li
+        = link_to "Agenda", agendaitems_path
+      %li
+        = link_to "Uitslagen", results_path
+      %li
+        = link_to "Chatbox", chatmessages_path
      
       - if !current_user
         %li
@@ -21,6 +27,8 @@
           = link_to current_user.name.split[0] + "'s stek", current_user
         %li
           = link_to "Instellingen", edit_user_path(current_user)
+        %li
+          = link_to "Leden", users_path
         - if current_user.admin?
           %li
             = link_to "Beheer", admin_path

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  calculation: MyString
+  shortname: MyString
+  measuringunit: MyString
+
+two:
+  name: MyString
+  calculation: MyString
+  shortname: MyString
+  measuringunit: MyString
