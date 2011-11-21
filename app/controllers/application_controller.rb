@@ -20,4 +20,9 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
+  
+  def gapps_login
+    @gapps = GData::Client::Apps.new
+    @gapps.clientlogin('webmaster@kronos.nl', 'changeme')
+  end
 end

@@ -55,6 +55,7 @@ GEM
     factory_girl_rails (1.2.0)
       factory_girl (~> 2.1.0)
       railties (>= 3.0.0)
+    gdata (1.1.2)
     haml (3.1.2)
     hike (1.2.1)
     i18n (0.6.0)
@@ -151,6 +152,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.0)
   execjs
   factory_girl_rails (= 1.2.0)
+  gdata
   haml (= 3.1.2)
   jquery-rails
   pg

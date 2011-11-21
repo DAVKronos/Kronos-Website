@@ -6,3 +6,5 @@
   
     %li
       = link_to commission.name, commission
+      - if current_user.admin?
+        = link_to "delete", commission, :method => :delete, :confirm => "You sure?", :title => "Delete #{commission.name}"

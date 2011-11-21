@@ -8,6 +8,7 @@ gem 'pg'
 gem 'will_paginate', '3.0.0'
 gem 'execjs'
 gem 'therubyracer'
+gem 'gdata'
 
 
 # Gems used only for assets and not required

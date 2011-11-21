@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroyed]
+  before_filter :authenticate, :only => [:index, :show, :edit, :update, :destroy]
   
   def new
     @user = User.new
@@ -42,4 +42,10 @@ class UsersController < ApplicationController
     flash[:success] = "Gebruiker verwijderd"
     redirect_to users_path
   end
+  
+  private
+  
+  def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
 end
