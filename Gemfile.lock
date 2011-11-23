@@ -46,6 +46,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.3)
+    daemons (1.1.4)
+    delayed_job (2.1.4)
+      activesupport (~> 3.0)
+      daemons
     diff-lcs (1.1.3)
     erubis (2.7.0)
     execjs (1.2.9)
@@ -150,6 +154,7 @@ DEPENDENCIES
   annotate (= 2.4.0)
   authlogic
   coffee-rails (~> 3.1.0)
+  delayed_job
   execjs
   factory_girl_rails (= 1.2.0)
   gdata

@@ -9,6 +9,8 @@ gem 'will_paginate', '3.0.0'
 gem 'execjs'
 gem 'therubyracer'
 gem 'gdata'
+gem 'delayed_job'
+gem 'jquery-rails'
 
 
 # Gems used only for assets and not required
@@ -19,7 +21,6 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
 
 group :test do
   gem 'rspec-rails', '2.6.1'
