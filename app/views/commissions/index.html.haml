@@ -1,5 +1,7 @@
 %h1 Alle Commissies
 
+= link_to "Commissie Toevoegen", new_commission_path
+
 %ul{:class => "commissions"}
 
   - @commissions.each do |commission|
@@ -7,4 +9,6 @@
     %li
       = link_to commission.name, commission
       - if current_user.admin?
-        = link_to "delete", commission, :method => :delete, :confirm => "You sure?", :title => "Delete #{commission.name}"
+        = link_to "edit", edit_commission_path
+        = link_to "delete", commission, :method => :delete, :confirm => "Weet je zeker dat je #{commission.name} uit de commissielijst wilt verwijderen?", 
+         :title => "Verwijder #{commission.name}"

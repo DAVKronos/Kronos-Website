@@ -12,7 +12,10 @@ class PagesController < ApplicationController
   def information
   end
     
-  def test
+  def kronos
+  end
+  
+  def atletiek
   end
   
   def nieuw
