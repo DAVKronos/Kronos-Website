@@ -1,8 +1,8 @@
 require File.join(Rails.root, 'lib','gapps')
 
 class CommissionsController < ApplicationController
-  before_filter :authenticate, :only => [:index, :show]
-  before_filter :admin_user,   :only => :destroy
+  before_filter :authenticate, :only => [:destroy, :new, :create, :update, :edit]
+  before_filter :admin_user,   :only => [:destroy, :new, :create, :update, :edit]
   
   def new
     @commission = Commission.new

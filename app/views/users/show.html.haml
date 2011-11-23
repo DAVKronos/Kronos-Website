@@ -29,3 +29,6 @@
     %br
   %li
     = t(:papieren_kronometer).capitalize + ": " + @user.papieren_kronometer.to_s
+
+- if current_user?(@user)
+  = link_to 'pas je gegevens aan', edit_user_path(@user)

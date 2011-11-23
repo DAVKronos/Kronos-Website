@@ -7,4 +7,5 @@
     %li
       = link_to user.name, user
       - if current_user.admin?
+        = link_to 'edit', edit_user_path(user)
         = link_to 'verwijder', user, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{user.name}"
