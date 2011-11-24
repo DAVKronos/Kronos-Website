@@ -11,6 +11,8 @@ gem 'therubyracer'
 gem 'gdata'
 gem 'delayed_job'
 gem 'jquery-rails'
+gem "paperclip", "~> 2.4"
+gem "rmagick", "~> 2.13.1"
 
 
 # Gems used only for assets and not required

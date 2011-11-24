@@ -32,13 +32,14 @@
 
 class User < ActiveRecord::Base
   
-  attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex, :licensenumber, :login, :password, :password_confirmation, :papieren_kronometer
+  attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex, :licensenumber, :login, :password, :password_confirmation, :papieren_kronometer, :avatar, :avatar_file_name
   
   has_many :commission_memberships
   has_many :commissions, :through => :commission_memberships
   has_many :chatmessages
   has_many :results
   has_many :subscriptions
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
   name_regex = /\A[A-Z][a-z]+\s([a-z]+\s([a-z]+\s)*)?[A-Z][a-z]*(-[A-Z][a-z]+)*\z/
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
