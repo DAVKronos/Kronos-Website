@@ -42,5 +42,9 @@ KronosWebsite::Application.routes.draw do
   get "pages/atletiek"
   
   root :to => 'pages#home'
+  
+  #Redirect all other requests toot ErrorsController for rendering 404 pages
+  #This should be the last route
+  match '*a', :to => 'errors#routing'
 
 end

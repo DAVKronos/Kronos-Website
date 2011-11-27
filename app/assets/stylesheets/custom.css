@@ -166,3 +166,7 @@ nav ul li:hover ul{
   font-size: 12px;
   list-style: square;
 }
+
+#404_image {
+	text-align: center;
+}
