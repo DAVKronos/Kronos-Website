@@ -6,6 +6,10 @@ ul.user {
   list-style-type: none;
 }
 
+ul.users {
+	list-style-type: none;
+}
+
 body {
 	background: #EEEEEE;
 }
