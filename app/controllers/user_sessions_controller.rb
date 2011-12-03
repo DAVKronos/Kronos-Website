@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:success] = "Welkom, #{current_user.name.split[0]}."
-      redirect_to nieuw_path
+      redirect_back_or nieuw_path
     else
       flash.now[:error] = "Onjuiste e-mail/wachtwoord combinatie"
       render :action => :new

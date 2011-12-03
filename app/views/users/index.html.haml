@@ -5,7 +5,7 @@
   - @users.each do |user|
   
     %li
-      = link_to image_tag(user.avatar.url(:medium)), user
+      = link_to image_tag(user.avatar.url(:pass)), user
       %br
       = link_to user.name, user
       - if current_user.admin?
