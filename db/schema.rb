@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111124134923) do
+ActiveRecord::Schema.define(:version => 20111203174254) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(:version => 20111124134923) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "commission_memberships", ["commission_id"], :name => "commission_id_ix"
+  add_index "commission_memberships", ["user_id"], :name => "user_id_ix"
 
   create_table "commissions", :force => true do |t|
     t.string   "name"
@@ -140,5 +143,7 @@ ActiveRecord::Schema.define(:version => 20111124134923) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
+
+  add_index "users", ["id"], :name => "id_ix"
 
 end
