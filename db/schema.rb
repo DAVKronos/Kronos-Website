@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111203174254) do
+ActiveRecord::Schema.define(:version => 20111203184352) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -43,9 +43,6 @@ ActiveRecord::Schema.define(:version => 20111203174254) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "commission_memberships", ["commission_id"], :name => "commission_id_ix"
-  add_index "commission_memberships", ["user_id"], :name => "user_id_ix"
 
   create_table "commissions", :force => true do |t|
     t.string   "name"
@@ -97,6 +94,21 @@ ActiveRecord::Schema.define(:version => 20111203174254) do
     t.integer  "user_id"
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "name",              :limit => 40
+    t.string   "authorizable_type", :limit => 40
+    t.integer  "authorizable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "subscriptions", :force => true do |t|
     t.text     "comment"
     t.string   "name"
@@ -143,7 +155,5 @@ ActiveRecord::Schema.define(:version => 20111203174254) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
-
-  add_index "users", ["id"], :name => "id_ix"
 
 end

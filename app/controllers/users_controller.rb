@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:new, :create, :index, :show, :edit, :update, :destroy]
-  before_filter :admin_user, :only => [:new, :create]
-  before_filter :correct_user, :only => [:edit, :update]
+  access_control do
+      allow :admin
+  end
   
   def new
     @user = User.new
@@ -43,16 +43,5 @@ class UsersController < ApplicationController
     user.destroy
     flash[:success] = "Gebruiker verwijderd"
     redirect_to users_path
-  end
-  
-  private
-  
-  def admin_user
-      redirect_to(root_path) unless current_user.admin?
-    end
-    
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user) || current_user.admin?
   end
 end

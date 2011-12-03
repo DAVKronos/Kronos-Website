@@ -31,6 +31,8 @@
 #
 
 class User < ActiveRecord::Base
+  acts_as_authorization_subject  :association_name => :roles, :join_table_name => :roles_users
+  acts_as_authorization_object join_table_name: "roles_users"
   
   attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex, :licensenumber, :login, :password, :password_confirmation, :papieren_kronometer, :avatar, :avatar_file_name
   
