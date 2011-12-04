@@ -1,15 +1,13 @@
 %h1 Alle Commissies
 
-- if current_user && current_user.admin?
+- show_to :admin do
   = link_to "Commissie Toevoegen", new_commission_path
 
 %ul{:class => "commissions"}
 
   - @commissions.each do |commission|
-  
     %li
       = link_to commission.name, commission
-      - if current_user && current_user.admin?
+      - show_to :admin do
         = link_to "edit", edit_commission_path(commission)
-        = link_to "delete", commission, :method => :delete, :confirm => "Weet je zeker dat je #{commission.name} uit de commissielijst wilt verwijderen?", 
-         :title => "Verwijder #{commission.name}"
+        = link_to "delete", commission, :method => :delete, :confirm => "Weet je zeker dat je #{commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{commission.name}"

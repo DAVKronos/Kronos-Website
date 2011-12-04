@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   access_control do
-      allow :admin
+      actions :new, :create, :destroy do
+        allow :admin
+      end
+      actions :index, :show do
+        allow logged_in
+      end
+      actions :edit, :update do
+        allow logged_in, :if => :user_current_user?
+        allow :admin
+      end
   end
   
   def new
@@ -44,4 +53,11 @@ class UsersController < ApplicationController
     flash[:success] = "Gebruiker verwijderd"
     redirect_to users_path
   end
+  
+  private
+  
+  def user_current_user?
+     @user = User.find(params[:id])
+     current_user?(@user)
+   end
 end

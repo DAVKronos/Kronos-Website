@@ -1,8 +1,14 @@
 require File.join(Rails.root, 'lib','gapps')
-
 class CommissionsController < ApplicationController
-  before_filter :authenticate, :only => [:destroy, :new, :create, :update, :edit]
-  before_filter :admin_user,   :only => [:destroy, :new, :create, :update, :edit]
+  
+  access_control do
+    actions :destroy, :new, :create, :update, :edit do
+      allow :admin
+    end
+    actions :index, :show do
+      allow all
+    end
+  end
   
   def new
     @commission = Commission.new
@@ -50,12 +56,4 @@ class CommissionsController < ApplicationController
       flash[:success] = "Commissie Verwijderd"
       redirect_to commissions_path
   end
-  
-  private
-  
-  def admin_user
-      redirect_to(commissions_path) unless current_user.admin?
-    end
-  
-  
 end

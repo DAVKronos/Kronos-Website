@@ -1,5 +1,12 @@
 class PagesController < ApplicationController
-  before_filter :authenticate, :only => [:admin]
+ access_control do
+   actions :admin do
+     allow :admin
+   end
+ end 
+  def admin
+  end
+  
   def home
   end
 
