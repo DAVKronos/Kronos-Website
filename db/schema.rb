@@ -149,7 +149,6 @@ ActiveRecord::Schema.define(:version => 20111203184352) do
     t.boolean  "papieren_kronometer", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",               :default => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

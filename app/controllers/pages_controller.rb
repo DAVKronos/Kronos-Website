@@ -1,7 +1,10 @@
 class PagesController < ApplicationController
- access_control do
+ access_control do 
    actions :admin do
      allow :admin
+   end
+   actions :home, :contact, :about, :information, :kronos, :atletiek, :nieuw do
+     allow all
    end
  end 
   def admin

@@ -6,3 +6,14 @@
 
   #actions
   =f.submit :wijzigen
+
+%h2 Leden
+- @commission_memberships.each do |commem|
+	
+  %li
+    = commem.user.name
+    = commem.function
+    - show_to :admin do
+      = link_to 'verwijder', commem, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{commem.user.name}"
+
+= render 'shared/commission_memberhsip_form'

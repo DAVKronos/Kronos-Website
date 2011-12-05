@@ -1,13 +1,8 @@
 %h1 Alle Leden
 
+= will_paginate @users
 %ul{:class => "users"}
-
-  - @users.each do |user|
-  
-    %li
-      = link_to image_tag(user.avatar.url(:pass)), user
-      %br
-      = link_to user.name, user
-      - show_to :admin do
-        = link_to 'edit', edit_user_path(user)
-        = link_to 'verwijder', user, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{user.name}"
+  = render @users
+= will_paginate @users
+- show_to :admin do
+  = link_to "Lid Toevoegen", new_user_path

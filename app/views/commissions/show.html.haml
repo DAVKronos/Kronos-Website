@@ -11,7 +11,13 @@
     = t(:email).capitalize + ": " + @commission.email
     %br
   
-  - @users.each do |user|
+  - @commission_memberships.each do |commem|
 	
     %li
-      = user.name
+      = commem.user.name
+      = commem.function
+  - show_to :admin do
+    %li
+      = link_to 'Commissie aanpassen', edit_commission_path(@commission)
+    %li
+      = link_to 'Commissie verwijderen', @commission, :method => :delete, :confirm => "Weet je zeker dat je #{@commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{@commission.name}"

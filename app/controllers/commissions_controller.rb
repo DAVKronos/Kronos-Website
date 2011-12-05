@@ -27,7 +27,7 @@ class CommissionsController < ApplicationController
   
   def show
     @commission = Commission.find_by_id(params[:id])
-    @users = Commission.find_by_id(params[:id]).users
+    @commission_memberships = Commission.find_by_id(params[:id]).commission_memberships
   end
   
   def index
@@ -36,6 +36,9 @@ class CommissionsController < ApplicationController
   
   def edit
     @commission = Commission.find_by_id(params[:id])
+    @commission_membership = CommissionMembership.new
+    @commission_membership.commission_id = @commission.id
+    @commission_memberships = @commission.commission_memberships
   end
   
   def update

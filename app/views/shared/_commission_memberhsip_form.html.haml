@@ -1,0 +1,13 @@
+= form_for(@commission_membership) do |f|
+  = render 'shared/error_messages', :object => f.object  
+  - options_from_collection_for_select(User.all, :id, :name)
+  = collection_select(:commission_membership, :user_id, User.all, :id, :name)
+  #field 
+  = f.label :function
+  %br
+  = f.text_field :function
+  = f.hidden_field :commission_id, :value => @commission_membership.commission.id
+
+  #actions
+
+  = f.submit :toevoegen
