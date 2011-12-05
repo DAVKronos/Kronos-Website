@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   
   attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex, :licensenumber, :login, :password, :password_confirmation, :papieren_kronometer, :avatar, :avatar_file_name
   
-  has_many :commission_memberships
+  has_many :commission_memberships, :dependent => :destroy
   has_many :commissions, :through => :commission_memberships
   has_many :chatmessages
   has_many :results
