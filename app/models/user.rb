@@ -41,7 +41,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :initials, :birthdate,
                   :sex, :licensenumber, :password,
                   :password_confirmation, :papieren_kronometer,
-                  :avatar, :avatar_file_name, :as => :bestuur
+                  :avatar, :avatar_file_name,:email,
+                  :address, :postalcode, :city, :as => :bestuur
   
   has_many :commission_memberships, :dependent => :destroy
   has_many :commissions, :through => :commission_memberships

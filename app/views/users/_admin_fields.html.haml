@@ -1,6 +1,13 @@
 = render 'shared/error_messages', :object => f.object  
 
+#field 
+  = f.label :name
+  = f.text_field :name
     
+#field
+  = f.label :initials
+  = f.text_field :initials    
+
 #field
   = f.label :email
   = f.email_field :email
@@ -37,23 +44,14 @@
   = f.label :profielfoto
   = f.file_field :avatar
 
-- show_to :admin do
-  #field 
-    = f.label :name
-    = f.text_field :name
-    
-  #field
-    = f.label :initials
-    = f.text_field :initials
-	
-  #field
-    = f.label :sex
-    = f.text_field :sex
+#field
+  = f.label :sex
+  = f.text_field :sex
 
-  #field
-    = f.label :licensenumber
-    = f.text_field :licensenumber
+#field
+  = f.label :licensenumber
+  = f.text_field :licensenumber
 
-  #field
-    = f.label :login
-    = f.text_field :login
+#field
+  = f.label :login
+  = f.text_field :login

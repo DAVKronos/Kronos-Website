@@ -2,7 +2,10 @@
 
 = form_for @user, :html => { :multipart => true } do |f|
   
-  = render 'fields', :f => f
+  -if current_user.has_role?(:admin)    
+    = render 'admin_fields', :f => f
+  -else
+    = render 'fields', :f => f
   
   #actions
   =f.submit :update
