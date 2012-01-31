@@ -6,6 +6,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
+
 User.create(:name => "Kegel Kronos", 
                   :initials => "H.J.K.",
                   :email => "kegel@kronos.nl", 
@@ -18,17 +19,3 @@ User.create(:name => "Kegel Kronos",
                   :login => "Henk",
                   :password => "Foobar",
                   :password_confirmation => "Foobar")
-User.first.has_role!(:admin)
-
-User.create(:name => "Wouter Timmermans", 
-                  :initials => "W.J.M.",
-                  :email => "wijdoennietopen@dedeur.nl", 
-                  :birthdate => "01-01-2002",
-                  :address => "Campuslaan 1",
-                  :postalcode => "1337 MF",
-                  :city => "Enschede",
-                  :sex => "Man",
-                  :licensenumber => "123456",
-                  :login => "wouter",
-                  :password => "Henk",
-                  :password_confirmation => "Henk")

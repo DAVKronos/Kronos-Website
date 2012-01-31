@@ -1,6 +1,6 @@
 class CommissionMembership < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :commission
+  belongs_to :user,       :dependent => :destroy
+  belongs_to :commission, :dependent => :destroy
   
   validates :commission_id, :presence => true
   validates :user_id,       :presence => true

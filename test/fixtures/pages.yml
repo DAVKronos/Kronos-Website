@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  modified_by: 1
+  information: MyText
+
+two:
+  modified_by: 1
+  information: MyText

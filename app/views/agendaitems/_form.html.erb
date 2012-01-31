@@ -15,6 +15,10 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label :intern %><br />
+    <%= f.check_box :intern %>
+  </div>
   <div>
     <%= f.label :date %>
     <%= f.datetime_select :date %>
@@ -29,32 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br />
-    <%= f.select(:category, [['Kronoswedstrijd'], ['Wedstrijd'], ['Borrel'], ['Vergadering'], ['Bardienst'], ['Training']]) %>
-  </div>
-  <div>
-    <%= f.label :events %><br />
-<% eventformnumber = 0 %>
-<%= f.fields_for :events do |event_form|%>
-<% if (!event_form.object.id.blank?) %>
-    <div class="field">
-      <%= event_form.label :date %> <%= event_form.text_field :date %> <%= event_form.label :eventtype %> <%= event_form.select(:eventtype_id , Eventtype.all.collect {|p| [ p.name, p.id ] }) %> <%= link_to 'Destroy', event_form.object, confirm: 'Are you sure?', method: :delete %>
-    </div>
-<% end %>
-<% eventformnumber = eventformnumber + 1 %>
-<% end %>
-<% eventformnumber = 0 %>
-    <%= label_tag "New events" %>
-<%= f.fields_for :events do |event_form|%>
-<% if (event_form.object.id.blank?) %>
-    <div class="field">
-      <%= event_form.label :date %>
-      <%= event_form.text_field :date %>
-      <%= event_form.label :eventtype %>
-      <%= event_form.select(:eventtype_id , Eventtype.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Selecteer...'}) %>
-    </div>
-<% end %>
-<% eventformnumber = eventformnumber + 1 %>
-<% end %>
+    <%= f.select(:category, [['Baan-wedstrijd'], ['Cross-wedstrijd'], ['Indoor-wedstrijd'], ['Meerkamp-wedstrijd'], ['Weg-wedstrijd'], ['---'], ['Activiteit'], ['Bardienst'], ['Borrel'], ['Training'], ['Vergadering'], ['---'], ['Overig']]) %>
   </div>
   <div class="actions">
     <%= f.submit %>

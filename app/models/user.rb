@@ -31,25 +31,17 @@
 #
 
 class User < ActiveRecord::Base
-  acts_as_authorization_subject  :association_name => :roles, :join_table_name => :roles_users
-  acts_as_authorization_object join_table_name: "roles_users"
   
-  attr_accessible :email, :address, :postalcode, 
-                  :city, :password, :password_confirmation, 
-                  :papieren_kronometer, :avatar, :avatar_file_name
-                  
-  attr_accessible :name, :initials, :birthdate,
-                  :sex, :licensenumber, :password,
-                  :password_confirmation, :papieren_kronometer,
-                  :avatar, :avatar_file_name,:email,
-                  :address, :postalcode, :city, :as => :bestuur
+  attr_accessible :name, :initials, :birthdate, :email, :address, :postalcode, :city, :sex, :licensenumber, :login, :password, :password_confirmation, :papieren_kronometer
   
-  has_many :commission_memberships, :dependent => :destroy
+  has_many :commission_memberships
   has_many :commissions, :through => :commission_memberships
   has_many :chatmessages
   has_many :results
   has_many :subscriptions
-  has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "150x300" }
+  has_many :newsitems
+  has_many :tags
+  has_many :pages
   
   name_regex = /\A[A-Z][a-z]+\s([a-z]+\s([a-z]+\s)*)?[A-Z][a-z]*(-[A-Z][a-z]+)*\z/
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

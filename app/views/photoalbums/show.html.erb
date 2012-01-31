@@ -1,0 +1,20 @@
+<p>
+  <b>Name:</b>
+  <%= @photoalbum.name %>
+</p>
+<p>
+  <b>Agendaitem:</b>
+  <%= if @photoalbum.agendaitem; @photoalbum.agendaitem.name end %>
+</p>
+<p>
+  <b>Photos:</b>
+  <% @photoalbum.photos.each do |photo| %>
+  <div>
+    <%= link_to image_tag(photo.photo.url(:thumb)), photo %>
+    <%= photo.caption %>
+  </div>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_photoalbum_path(@photoalbum) %> |
+<%= link_to 'Back', photoalbums_path %>

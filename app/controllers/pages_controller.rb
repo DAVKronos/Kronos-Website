@@ -1,31 +1,35 @@
 class PagesController < ApplicationController
- access_control do 
-   actions :admin do
-     allow :admin
-   end
-   actions :home, :contact, :about, :information, :kronos, :atletiek, :nieuw do
-     allow all
-   end
- end 
-  def admin
-  end
-  
+  before_filter :authenticate, :only => [:admin]
   def home
   end
 
-  def contact
-  end
-  
-  def about
-  end
-  
-  def information
+  def show
+    @page = Page.find_by_pagetag(params[:pt])
   end
     
-  def kronos
+  def test
   end
   
-  def atletiek
+  def edit
+    @page = Page.find_by_pagetag(params[:pt])
+  end
+  
+  def update
+    @page = Page.find_by_pagetag(params[:pt])
+    
+    if(current_user)
+      @page.user = current_user;
+    end
+
+    respond_to do |format|
+      if @page.update_attributes(params[:page])
+        format.html { redirect_to '/'+@page.pagetag, notice: 'Page was successfully updated.' }
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @page.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   def nieuw

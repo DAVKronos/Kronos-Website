@@ -1,0 +1,34 @@
+<%= form_for(@photoalbum) do |f| %>
+  <% if @photoalbum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@photoalbum.errors.count, "error") %> prohibited this photoalbum from being saved:</h2>
+
+      <ul>
+      <% @photoalbum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :agendaitem %><br />
+    <%= f.select(:agendaitem_id, Agendaitem.all.delete_if{|x| ((x.photoalbum != @photoalbum) && x.photoalbum) }.collect {|p| [ p.name, p.id ] }) %>
+  </div>
+  <div class="field">
+    <%= f.label :photos %>
+    <%= f.fields_for :photos do |photo_field| %>
+    <div class="field">
+      <%= photo_field.label :caption %><%= photo_field.text_field :caption %>
+      <%= photo_field.label :photo %><%= photo_field.file_field :photo %>
+    </div>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

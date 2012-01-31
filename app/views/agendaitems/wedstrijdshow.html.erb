@@ -27,10 +27,8 @@
 <p>
   <b>Events:</b>
   <ul>
-<% @agendaitem.events.each do |event|  %>
-<% if event.valide %>
+<% @agendaitem.events.each do |event| %>
     <li><%= event.eventtype.name %> <%= event.date.strftime("(%H:%M)") %></li>
-<% end %>
 <% end %>
   </ul>
 </p>

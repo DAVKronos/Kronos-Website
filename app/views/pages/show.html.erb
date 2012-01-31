@@ -1,0 +1,7 @@
+<%= link_to "Edit", '/pages/edit/'+@page.pagetag %>
+
+<p>Last modified by <%= @page.user.name %> at <%= @page.updated_at %></p>
+
+<h1><%= @page.pagetag.capitalize %></h1>
+
+<%= sanitize(simple_format(@page.information)) %>

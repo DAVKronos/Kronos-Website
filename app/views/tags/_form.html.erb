@@ -1,0 +1,46 @@
+<%= form_for(@tag) do |f| %>
+  <% if @tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
+
+      <ul>
+      <% @tag.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div id="tagged_image">
+    <%= image_tag Photo.first.photo.url, :onmousedown => 'getDetails(this)', :id => "picture" %>
+    <div>
+      <a id="demo_tag" style="top:0%;left:0%;width:1%;height:1%;"><span><%= f.select(:user_id , User.all.collect {|p| [ p.name, p.id ] }) %></span></a>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :photo_id %><br />
+    <%= f.select(:photo_id , Photo.all.collect {|p| [ p.caption, p.id ] }, {:include_blank => false}, {:onchange => 'changepicture()'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :xpos %><br />
+    <%= f.number_field :xpos %>
+  </div>
+  <div class="field">
+    <%= f.label :ypos %><br />
+    <%= f.number_field :ypos %>
+  </div>
+  <div class="field">
+    <%= f.label :width %><br />
+    <%= f.number_field :width %>
+  </div>
+  <div class="field">
+    <%= f.label :heigth %><br />
+    <%= f.number_field :heigth %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<input type="hidden" id="captiontourl" value="<%= Photo.all.collect{|p| [p.caption, p.photo.url]}.join('**$$**') %>" />

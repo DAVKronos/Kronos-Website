@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111203184352) do
+ActiveRecord::Schema.define(:version => 20120121175853) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20111203184352) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "category"
+    t.boolean  "intern"
   end
 
   create_table "chatmessages", :force => true do |t|
@@ -52,27 +53,13 @@ ActiveRecord::Schema.define(:version => 20111203184352) do
     t.datetime "updated_at"
   end
 
-  create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
-    t.text     "handler"
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
-
   create_table "events", :force => true do |t|
     t.time     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "eventtype_id"
     t.integer  "agendaitem_id"
+    t.float    "distance"
   end
 
   create_table "eventtypes", :force => true do |t|
@@ -83,6 +70,43 @@ ActiveRecord::Schema.define(:version => 20111203184352) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "calculated_unit"
+    t.string   "display_type"
+  end
+
+  create_table "newsitems", :force => true do |t|
+    t.string   "title"
+    t.text     "news"
+    t.boolean  "agreed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "agreed_by"
+  end
+
+  create_table "pages", :force => true do |t|
+    t.text     "information"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "pagetag"
+    t.integer  "user_id"
+  end
+
+  create_table "photoalbums", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "agendaitem_id"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string   "caption"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "photoalbum_id"
   end
 
   create_table "results", :force => true do |t|
@@ -94,21 +118,6 @@ ActiveRecord::Schema.define(:version => 20111203184352) do
     t.integer  "user_id"
   end
 
-  create_table "roles", :force => true do |t|
-    t.string   "name",              :limit => 40
-    t.string   "authorizable_type", :limit => 40
-    t.integer  "authorizable_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "subscriptions", :force => true do |t|
     t.text     "comment"
     t.string   "name"
@@ -116,6 +125,17 @@ ActiveRecord::Schema.define(:version => 20111203184352) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "agendaitem_id"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.integer  "photo_id"
+    t.integer  "user_id"
+    t.integer  "xpos"
+    t.integer  "ypos"
+    t.integer  "width"
+    t.integer  "heigth"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_sessions", :force => true do |t|
@@ -149,10 +169,7 @@ ActiveRecord::Schema.define(:version => 20111203184352) do
     t.boolean  "papieren_kronometer", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.boolean  "admin",               :default => false
   end
 
 end

@@ -6,9 +6,7 @@ class CommissionMembershipsController < ApplicationController
   def create
     @commission_membership = CommissionMembership.new(params[:commission_membership])
     if @commission_membership.save
-      gapps = Gapps.new
-      gapps.add_group_member(@commission_membership.commission.email.split("@").first, @commission_membership.user.email)
-      redirect_to edit_commission_path(@commission_membership.commission)
+      redirect_to @commission_membership
     else
       render 'new'
     end
@@ -21,13 +19,7 @@ class CommissionMembershipsController < ApplicationController
   def update
   end
 
-  def destroy
-    commission_membership = CommissionMembership.find(params[:id])
-     gapps = Gapps.new
-     gapps.destroy_group_member(commission_membership.commission.email.split("@").first, commission_membership.user.email)
-      commission_membership.destroy
-      flash[:success] = "#{commission_membership.user.name} Verwijderd"
-      redirect_to edit_commission_path(commission_membership.commission)
+  def delete
   end
 
 end

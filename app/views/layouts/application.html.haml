@@ -1,16 +1,15 @@
 !!! 5
 %html
   %head
-    %title Kronos: Sinds 1964 terug uit de Tartaros
+    %title KronosWebsite
     = stylesheet_link_tag 'blueprint/screen', :media => 'screen'
     = stylesheet_link_tag 'blueprint/print', :media => 'print'
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag 'pagination'
     = javascript_include_tag 'application'
-    = favicon_link_tag
     = csrf_meta_tag
 
-  %body
+  %body{ onload: "dowhenloaded()" }
     .container
     
       = render 'layouts/header'
@@ -18,7 +17,6 @@
       %section{:class => "round"}
         -flash.each do |key, value|
           = content_tag :div, value, :class => "flash #{key}"
-            
 
         = yield
 

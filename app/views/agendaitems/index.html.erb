@@ -2,7 +2,7 @@
 
 <% @agendaitems.each do |agendaitem| %>
 <table>
-  <tr<%= if agendaitem.category == "Kronoswedstrijd"; " bgcolor='lightgreen'" end %>>
+  <tr<%= if agendaitem.intern; " bgcolor='lightgreen'" end %>>
     <td><%= link_to agendaitem.name, agendaitem %></td>
     <td><%= agendaitem.date.strftime("%d %b (%H:%M)") %></td>
     <td><%= agendaitem.location %></td>

@@ -1,0 +1,45 @@
+<%= form_for(@agendaitem) do |f| %>
+  <% if @agendaitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@agendaitem.errors.count, "error") %> prohibited this agendaitem from being saved:</h2>
+
+      <ul>
+      <% @agendaitem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :events %><br />
+<%= f.fields_for :events do |event_form|%>
+<% if (!event_form.object.id.blank?) %>
+    <div class="field">
+      <%= event_form.label :date %>
+      <%= event_form.text_field :date %>
+      <%= event_form.label :eventtype %>
+      <%= event_form.select(:eventtype_id , Eventtype.where(:display_type => @agendaitem.category).collect {|p| [ p.name, p.id ] }) %>
+      <%= link_to 'Destroy', event_form.object, confirm: 'Are you sure?', method: :delete %>
+    </div>
+<% end %>
+<% end %>
+    <%= label_tag "New events" %>
+<%= f.fields_for :events do |event_form|%>
+<% if (event_form.object.id.blank?) %>
+<% if (@agendaitem.category == "Weg-wedstrijd" || @agendaitem.category == "Cross-wedstrijd") %>
+    <%= render :partial => "blankeventdistance", :locals => { :evfo => event_form } %>
+<% else %>
+    <%= render :partial => "blankevent", :locals => { :evfo => event_form } %>
+<% end %>
+<% end %>
+<% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

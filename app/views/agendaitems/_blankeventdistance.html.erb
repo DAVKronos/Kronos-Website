@@ -1,0 +1,8 @@
+    <div class="field">
+      <%= evfo.label :date %>
+      <%= evfo.text_field :date %>
+      <%= evfo.label :distance %>
+      <%= evfo.text_field :distance %>
+      <%= evfo.label :eventtype %>
+      <%= evfo.select(:eventtype_id , Eventtype.where(:display_type => @agendaitem.category).collect {|p| [ p.name, p.id ] }, {:include_blank => 'Selecteer...'}) %>
+    </div>

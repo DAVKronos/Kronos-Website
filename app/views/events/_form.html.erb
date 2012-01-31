@@ -20,6 +20,10 @@
     <%= f.select(:eventtype_id , Eventtype.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
   <div class="field">
+    <%= f.label :distance %>
+    <%= f.text_field :distance %>
+  </div>
+  <div class="field">
     <%= f.label :results %>
     <%= f.fields_for :results do |result_field| %>
       <div class="field">

@@ -10,6 +10,10 @@ class ResultsController < ApplicationController
       format.json { render json: @results }
     end
   end
+  
+  def list
+    @results = Result.all
+  end
 
   # GET /results/1/edit
   def edit

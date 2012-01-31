@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  news: MyText
+  agreed: false
+
+two:
+  title: MyString
+  news: MyText
+  agreed: false

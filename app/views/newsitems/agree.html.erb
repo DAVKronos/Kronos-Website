@@ -1,0 +1,27 @@
+<h1>De volgende newsitems wachten op goedkeuring</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>News</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @newsitems.each do |newsitem| %>
+  <tr>
+    <td><%= newsitem.title %></td>
+    <td><%= newsitem.news %></td>
+    <td><%= newsitem.user.name %></td>
+    <td><%= link_to 'Preview', newsitem %></td>
+    <td><%= link_to 'Keur goed', :controller => "newsitems", :action => "agreed", :id => newsitem.id %></td>
+    <td><%= link_to 'Destroy', newsitem, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Newsitem', new_newsitem_path %>

@@ -11,7 +11,7 @@
     <td><%= if chatmessage.allow_destroy?(current_user); link_to 'Destroy', chatmessage, confirm: 'Are you sure?', method: :delete end %></td>
   </tr>
   <tr>
-    <td colspan="4" class="chatboxend"><%= sanitize(simple_format(chatmessage.message, :class => "chatmessage")) %></td>
+    <td colspan="4" class="chatboxend"><%= sanitize(simple_format(chatmessage.message)) %></td>
   </tr>
 </table>
 <% end %>

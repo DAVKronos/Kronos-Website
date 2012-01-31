@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  photo_id: 1
+  user_id: 1
+  xpos: 1
+  ypos: 1
+  width: 1
+  heigth: 1
+
+two:
+  photo_id: 1
+  user_id: 1
+  xpos: 1
+  ypos: 1
+  width: 1
+  heigth: 1

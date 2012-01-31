@@ -20,7 +20,8 @@ if event.eventtype.measuringunit.blank? == false %>
   <tr>
     <td><%= if result.user; result.user.name else result.username end %></td>
     <td><%= result.result %></td>
-<% expressie = event.eventtype.calculation.gsub('r', result.result.to_s) %>
+<% expressie1 = event.eventtype.calculation.gsub('r', result.result.to_s) %>
+<% expressie = expressie1.gsub('d', event.distance.to_s) %>
 <% result.timetoseconds(expressie) %>
     <td><%= result.stringcal(expressie)[/^\-?\d+\.?\d?\d?/] %></td>
   </tr>

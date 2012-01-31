@@ -6,13 +6,7 @@ gem 'authlogic'
 gem 'acl9'
 gem 'pg'
 gem 'will_paginate', '3.0.0'
-gem 'execjs'
-gem 'therubyracer'
-gem 'gdata'
-gem 'delayed_job'
-gem 'jquery-rails'
-gem "paperclip", "~> 2.4"
-gem "rmagick", "~> 2.13.1"
+gem 'paperclip'
 
 
 # Gems used only for assets and not required
@@ -23,6 +17,7 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'jquery-rails'
 
 group :test do
   gem 'rspec-rails', '2.6.1'
@@ -34,6 +29,4 @@ end
 
 group :development do
   gem 'annotate', '2.4.0'
-  gem 'populator'
-  gem 'faker'
 end

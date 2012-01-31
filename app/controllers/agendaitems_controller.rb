@@ -5,6 +5,10 @@ class AgendaitemsController < ApplicationController
 
   def new
     @agendaitem = Agendaitem.new
+  end
+  
+  def newevents
+    @agendaitem = Agendaitem.find(params[:id])
     @agendaitem.events.build
     @agendaitem.events.build
     @agendaitem.events.build
@@ -57,7 +61,7 @@ class AgendaitemsController < ApplicationController
     
     respond_to do |format|
       if @agendaitem.save
-        format.html { redirect_to agendaitems_path, notice: 'Agendaitem was successfully created.' }
+        format.html { redirect_to :controller => "agendaitems", :action => "newevents", :id => @agendaitem.id, notice: 'Agendaitem was successfully created.' }
         format.json { render json: @agendaitem, status: :created, location: @agendaitem }
       else
         format.html { render action: "index" }
