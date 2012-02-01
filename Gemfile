@@ -6,7 +6,15 @@ gem 'authlogic'
 gem 'acl9'
 gem 'pg'
 gem 'will_paginate', '3.0.0'
-gem 'paperclip'
+gem 'paperclip', "~>2.4"
+gem 'gdata'
+gem 'delayed_job'
+gem 'jquery-rails'
+
+# For development under Linux you also need to install
+# an javascript runtime
+# 	gem 'execjs'
+# 	gem 'therubyracer'
 
 
 # Gems used only for assets and not required
@@ -29,4 +37,6 @@ end
 
 group :development do
   gem 'annotate', '2.4.0'
+  gem 'populator'
+  gem 'faker'
 end
