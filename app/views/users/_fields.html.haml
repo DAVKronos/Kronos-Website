@@ -1,65 +1,59 @@
 = render 'shared/error_messages', :object => f.object  
-#field 
-  = f.label :name
-  %br
-  = f.text_field :name
-    
-#field
-  = f.label :initials
-  %br
-  = f.text_field :initials
+
     
 #field
   = f.label :email
-  %br
   = f.email_field :email
     
 #field
   = f.label :birthdate
-  %br
   = f.text_field :birthdate
     
 #field
   = f.label :address
-  %br
   = f.text_field :address
     
 #field
   = f.label :postalcode
-  %br
   = f.text_field :postalcode
     
 #field
   = f.label :city
-  %br
   = f.text_field :city
     
 #field
-  = f.label :sex
-  %br
-  = f.text_field :sex
-    
-#field
-  = f.label :licensenumber
-  %br
-  = f.text_field :licensenumber
-    
-#field
   = f.label :papieren_kronometer
-  
   = f.check_box :papieren_kronometer
     
 #field
-  = f.label :login
-  %br
-  = f.text_field :login
-    
-#field
   = f.label :password
-  %br
   = f.password_field :password
     
 #field
   = f.label :password_confirmation
-  %br
   = f.password_field :password_confirmation
+
+#field
+  = f.label :profielfoto
+  = f.file_field :avatar
+
+- show_to :admin do
+  #field 
+    = f.label :name
+    = f.text_field :name
+    
+  #field
+    = f.label :initials
+    = f.text_field :initials
+
+  #field
+    = f.label :sex
+    = f.text_field :sex
+
+  #field
+    = f.label :licensenumber
+    = f.text_field :licensenumber
+
+  #field
+    = f.label :login
+    = f.text_field :login

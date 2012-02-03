@@ -6,6 +6,10 @@ ul.user {
   list-style-type: none;
 }
 
+ul.users {
+	list-style-type: none;
+}
+
 body {
 	background: #EEEEEE;
 }
@@ -56,7 +60,7 @@ a:visited {
 
 
 nav {
-	background-color: #31703E;
+	background-color: #408254;
 	height: 50px;
 	padding: 0 0.7em;
 	white-space: nowrap;
@@ -75,21 +79,21 @@ nav ul li {
 	padding-bottom: 12px;
 	float: left;
 	border-right: 1px solid #DEDEDE;
-	
+
 }
 
 nav ul li:hover {
-	
+
 	background-color: #595E54;
-	
+
 }
 
 nav ul li a {
-	padding: 0 5px;
-	font-size: 20px;
+	padding: 15px 5px;
+	font-size: 18px;
 	font-weight: bold;
 	color: white;
-	
+
 }
 
 nav ul li a:visited {
@@ -99,7 +103,7 @@ nav ul li a:visited {
 nav ul li a:hover {
 	text-decoration: none;
 	color: white;
-	
+
 }
 
 nav ul ul {
@@ -113,7 +117,7 @@ nav ul ul {
 	-moz-border-bottom-left-radius: 	5px;
 	-webkit-border-bottom-left-radius:	5px;
 	border-bottom-left-radius:		 	5px;
-	
+
 }
 
 nav ul ul li {
@@ -123,8 +127,24 @@ nav ul ul li {
 nav ul li:hover ul{
 	display: block;
 
-	
+
 } 
+
+input:not([type="submit"]):not([type="reset"]):not([type="hidden"]):not(.as-input), textarea {
+    border: 1px solid #CCCCCC;
+    border-radius: 2px 2px 2px 2px;
+    display: block;
+    font-family: "Arial","Helvetica",sans-serif;
+    font-size: 14px;
+    height: auto;
+    padding: 0.3em;
+}
+
+#login form input[type="text"], #login form input[type="password"] {
+    box-shadow: 0 1px 0 white, 0 -1px 0 #888888;
+    max-width: 180px;
+    width: 180px;
+}
 
 .field_with_errors {
   margin-top: 10px;
@@ -165,4 +185,8 @@ nav ul li:hover ul{
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+#404_image {
+	text-align: center;
 }

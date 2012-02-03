@@ -1,9 +1,8 @@
 %h1= t(:sign_up).capitalize
 
-= form_for(@user) do |f|
+= form_for @user, :html => { :multipart => true }  do |f|
 
   = render 'fields', :f => f
 
   #actions
   =f.submit :toevoegen
-    

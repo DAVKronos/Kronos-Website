@@ -35,10 +35,8 @@
         %li
           = link_to current_user.name.split[0] + "'s stek", current_user
         %li
-          = link_to "Instellingen", edit_user_path(current_user)
-        %li
           = link_to "Leden", users_path
-        - if current_user.admin?
+        - show_to :admin do
           %li
             = link_to "Beheer", admin_path
         %li

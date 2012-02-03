@@ -53,6 +53,21 @@ ActiveRecord::Schema.define(:version => 20120121175853) do
     t.datetime "updated_at"
   end
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "events", :force => true do |t|
     t.time     "date"
     t.datetime "created_at"
@@ -118,6 +133,21 @@ ActiveRecord::Schema.define(:version => 20120121175853) do
     t.integer  "user_id"
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "name",              :limit => 40
+    t.string   "authorizable_type", :limit => 40
+    t.integer  "authorizable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "subscriptions", :force => true do |t|
     t.text     "comment"
     t.string   "name"
@@ -170,6 +200,10 @@ ActiveRecord::Schema.define(:version => 20120121175853) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",               :default => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end
