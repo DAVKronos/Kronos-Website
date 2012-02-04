@@ -34,3 +34,30 @@ User.create({:name => "Wouter Timmermans",
                   :password => "Henk",
                   :password_confirmation => "Henk"},
                   :as => :bestuur)
+                
+# pages
+# text     "information"
+# datetime "created_at"
+# datetime "updated_at"
+# string   "pagetag"
+# integer  "user_id"
+
+Page.create({:information => "Hier staat informatie",
+              :pagetag => "informatie",
+              :user_id => User.first.id})
+
+Page.create({:information => "Hier staat informatie",
+              :pagetag => "kronos",
+              :user_id => User.first.id})
+
+Page.create({:information => "Hier staat informatie",
+              :pagetag => "contact",
+              :user_id => User.first.id})
+          
+Page.create({:information => "Hier staat informatie",
+              :pagetag => "atletiek",
+              :user_id => User.first.id})
+         
+Page.create({:information => "Hier staat informatie",
+              :pagetag => "about",
+              :user_id => User.first.id})
