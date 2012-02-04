@@ -13,9 +13,12 @@ gem 'jquery-rails'
 
 # For development under Linux you also need to install
 # an javascript runtime
+platform :ruby do
+    gem 'execjs'
+    gem 'therubyracer'
+end
 # 	gem 'execjs'
 # 	gem 'therubyracer'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,8 +27,6 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end
-
-gem 'jquery-rails'
 
 group :test do
   gem 'rspec-rails', '2.6.1'

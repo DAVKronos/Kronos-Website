@@ -1,5 +1,8 @@
 .bundle
 db/*.sqlite3
+db/schema.rb
+Gemfile.lock
+.rvmc
 *.log
 tmp/
 .sass-cache/
@@ -8,3 +11,14 @@ nbproject/
 public/system/avatars/
 public/system/photos/
 public/assets/
+/public/
+/log/
+/app/
+/script/
+/spec/
+/vendor/
+/config/
+/doc/
+/db/
+/lib/
+/test/
