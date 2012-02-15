@@ -11,13 +11,8 @@
     = csrf_meta_tag
 
   %body{ onload: "dowhenloaded()" }
-    .container
-    
-      = render 'layouts/header'
-      
-      %section{:class => "round"}
-        -flash.each do |key, value|
-          = content_tag :div, value, :class => "flash #{key}"
-
-        = yield
-
+    = render 'layouts/header'
+    %section
+      -flash.each do |key, value|
+        = content_tag :div, value, :class => "flash #{key}"
+      = yield

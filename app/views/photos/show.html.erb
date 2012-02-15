@@ -9,7 +9,7 @@
   %><% end %>
   <h2 id="imnext" onclick='shownext(this)'>></h2>
 </div>
-<div id="tagged_image"><% if @photo.youtube_id == "" %><%= image_tag @photo.photo.url %><% else %><img src="/system/4staattot3spacer.gif" /><iframe src="http://www.youtube.com/embed/<%= @photo.youtube_id %>?rel=0&autoplay=1"></iframe><% end %><div><% @photo.tags.each do |tag| %><%= link_to content_tag(:span, tag.user.name), tag.user, :style => "top:"+tag.ypos.to_s+"%;left:"+tag.xpos.to_s+"%;width:"+tag.width.to_s+"%;height:"+tag.heigth.to_s+"%;" %><% end %></div></div>
+<div id="tagged_image"><% if @photo.youtube_id == "" %><%= image_tag @photo.photo.url %><% else %><img src="/system/4staattot3spacer.gif" /><iframe src="http://www.youtube.com/v/<%= @photo.youtube_id %>?version=3&rel=0&autoplay=1&autohide=1&wmode=opaque"></iframe><% end %><div><% @photo.tags.each do |tag| %><%= link_to content_tag(:span, tag.user.name), tag.user, :style => "top:"+tag.ypos.to_s+"%;left:"+tag.xpos.to_s+"%;width:"+tag.width.to_s+"%;height:"+tag.heigth.to_s+"%;" %><% end %></div></div>
 
 <p>
 <%= link_to 'Back', @photo.photoalbum %>
