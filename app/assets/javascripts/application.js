@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require bootstrap
 setTimeout("$('.flash.success').fadeOut('slow');", 3000);
 var beginX, beginY = 0;
 var first = true;

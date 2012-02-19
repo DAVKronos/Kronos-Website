@@ -10,12 +10,6 @@ body {
 	background: #dbdbdb;
 }
 
-header {
-        position: fixed;
-	width: 100%;
-        z-index: 1;
-}
-
 header img {
         position: absolute;
         height: 57px;
@@ -52,105 +46,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-/* Navigation */
 
-#headerone {
-        background-color: #353030;
-        border-bottom: 5px solid #7dbc53;
-        padding-left: 50%;
-        margin-left: -350px;
-        height: 30px;
-        vertical-align: bottom;
-}
-
-#headerone ul li.selected a {
-        font-size: 18px;
-	color: #7dbc53;
-        text-decoration: none;
-        background-color: #ffffff;
-        border-bottom: 5px solid #dddddd;
-}
-
-#headertwo {
-        position: relative;
-        left: 50%;
-        margin-left: -480px;
-        padding-left: 130px;
-        background-color: #ffffff;
-        width: 830px;
-        height: 30px;
-}
-
-#headertwo ul li.selected a {
-        font-size: 16px;
-        background-color: #dddddd;
-        text-decoration: none;
-        border-radius: 20px;
-        -moz-border-radius: 20px;
-        -webkit-border-radius: 20px;
-}
-
-nav ul {
-        list-style-type: none;
-	margin: 0px;
-	padding: 0px;
-        height: 100%;
-}
-
-nav ul li {
-	float: left;
-        height: 100%;
-}
-
-#headerone ul li a {
-        position: relative;
-        bottom: -5px;
-	font-size: 18px;
-	color: #ffffff;
-        padding: 10px;
-        padding-top: 0px;
-        padding-bottom: 1px;
-}
-
-#headerone ul li a:hover {
-	font-size: 18px;
-	color: #7dbc53;
-        text-decoration: none;
-        background-color: #ffffff;
-}
-
-#headertwo ul li a {
-        background-color: #ffffff;
-	font-size: 16px;
-	color: #000000;
-        padding: 0px 5px;
-        margin: 0px 5px;
-}
-
-#headertwo ul li a:hover {
-	font-size: 16px;
-        background-color: #dddddd;
-        text-decoration: none;
-        border-radius: 20px;
-        -moz-border-radius: 20px;
-        -webkit-border-radius: 20px;
-}
-
-input:not([type="submit"]):not([type="reset"]):not([type="hidden"]):not(.as-input), textarea {
-    border: 1px solid #CCCCCC;
-    border-radius: 2px 2px 2px 2px;
-    display: block;
-    font-family: "Arial","Helvetica",sans-serif;
-    font-size: 14px;
-    height: auto;
-    padding: 0.3em;
-}
-
-#login form input[type="text"], #login form input[type="password"] {
-    box-shadow: 0 1px 0 white, 0 -1px 0 #888888;
-    max-width: 180px;
-    width: 180px;
-}
 
 .field_with_errors {
   margin-top: 10px;

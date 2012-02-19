@@ -2,8 +2,6 @@
 %html
   %head
     %title KronosWebsite
-    = stylesheet_link_tag 'blueprint/screen', :media => 'screen'
-    = stylesheet_link_tag 'blueprint/print', :media => 'print'
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag 'pagination'
     = javascript_include_tag 'application'
@@ -12,7 +10,7 @@
 
   %body{ onload: "dowhenloaded()" }
     = render 'layouts/header'
-    %section
+    .container
       -flash.each do |key, value|
         = content_tag :div, value, :class => "flash #{key}"
       = yield
