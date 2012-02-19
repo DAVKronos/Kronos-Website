@@ -12,10 +12,7 @@ body {
 
 header img {
         position: absolute;
-        height: 57px;
-        left: 50%;
         top: 8px;
-        margin-left: -460px;
         z-index: 2;
 }
 

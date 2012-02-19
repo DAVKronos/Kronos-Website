@@ -6,3 +6,13 @@
  *= require_tree .
  *= require bootstrap
 */
+div.navbar-inner {
+background: rgb(125,188,83); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(125,188,83,1) 8%, rgba(51,51,51,1) 8%, rgba(34,34,34,1) 100%, rgba(125,185,232,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(8%,rgba(125,188,83,1)), color-stop(8%,rgba(51,51,51,1)), color-stop(100%,rgba(34,34,34,1)), color-stop(100%,rgba(125,185,232,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(125,188,83,1) 8%,rgba(51,51,51,1) 8%,rgba(34,34,34,1) 100%,rgba(125,185,232,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(125,188,83,1) 8%,rgba(51,51,51,1) 8%,rgba(34,34,34,1) 100%,rgba(125,185,232,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(125,188,83,1) 8%,rgba(51,51,51,1) 8%,rgba(34,34,34,1) 100%,rgba(125,185,232,1) 100%); /* IE10+ */
+background: linear-gradient(top, rgba(125,188,83,1) 8%,rgba(51,51,51,1) 8%,rgba(34,34,34,1) 100%,rgba(125,185,232,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7dbc53', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+}
