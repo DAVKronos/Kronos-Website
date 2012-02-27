@@ -1,0 +1,6 @@
+%h1 Listing photoalbums
+
+%ul{:class => "thumbnails"}
+  = render @photoalbums
+  
+= link_to 'Nieuw Fotoalbum', new_photoalbum_path

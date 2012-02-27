@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   has_many :newsitems
   has_many :tags
   has_many :pages
-  has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "150x300" }
+  has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "260x180#" }
   
   name_regex = /\A[A-Z][a-z]+\s([a-z]+\s([a-z]+\s)*)?[A-Z][a-z]*(-[A-Z][a-z]+)*\z/
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
