@@ -8,10 +8,9 @@
     = favicon_link_tag
     = csrf_meta_tag
 
-  %body{ onload: "dowhenloaded()", "data-offset" => "50" }
+  %body{ onload: "dowhenloaded()"}
     = render 'layouts/header'
     .container
-      .hero
-        -flash.each do |key, value|
-          = content_tag :div, value, :class => "flash #{key}"
-        = yield
+      -flash.each do |key, value|
+        = content_tag :div, value, :class => "flash #{key}"
+      = yield
