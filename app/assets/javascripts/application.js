@@ -9,3 +9,4 @@
 //= require_tree .
 //= require bootstrap
 setTimeout("$('.flash.success').fadeOut('slow');", 3000);
+$('.carousel').carousel()

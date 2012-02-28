@@ -2,6 +2,6 @@
   - @photoalbum.photos.each do |photo|
     %li.span3
       - if photo.youtube_id == ""
-        = link_to image_tag(photo.photo.url(:thumb)), photo, :class => 'thumbnail'
+        = link_to image_tag(photo.photo.url :thumb), photo, :class => 'thumbnail'
       - else
         = link_to image_tag("http://img.youtube.com/vi/#{photo.youtube_id}/0.jpg"), photo, :class => 'thumbnail'

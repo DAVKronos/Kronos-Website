@@ -1,0 +1,19 @@
+.carousel{:id => "myCarousel"}
+  .carousel-inner
+    - @photo.photoalbum.photos.each do |photo|
+      %div{:class => "item #{@photo == photo ? 'active' : '' }"}
+        - if photo.youtube_id == ""
+          = image_tag photo.photo.url(:normal)
+          .carousel-caption
+            %h4
+              = photo.caption
+        - else
+          <iframe src="http://www.youtube.com/v/#{photo.youtube_id}?version=3&rel=0&autoplay=1&autohide=1&wmode=opaque"></iframe>
+          
+      
+      
+      
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+

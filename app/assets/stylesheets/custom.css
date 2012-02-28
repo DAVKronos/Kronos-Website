@@ -6,9 +6,20 @@ ul.users {
 	list-style-type: none;
 }
 
-body {
-	background: #dbdbdb;
+body{
 	padding-top: 90px;
+}
+
+@font-face {
+    font-family: 'AaarghNormal';
+    src: url('aaargh-webfont.eot');
+    src: url('aaargh-webfont.eot?#iefix') format('embedded-opentype'),
+         url('aaargh-webfont.woff') format('woff'),
+         url('aaargh-webfont.ttf') format('truetype'),
+         url('aaargh-webfont.svg#AaarghNormal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 header img {
@@ -16,6 +27,21 @@ header img {
         top: 8px;
         z-index: 2;
 }
+
+header {
+	font-size: 16px;
+	font-family: 'AaarghNormal', Normal, sans-serif;
+}
+
+.navbar .nav > li > a {
+	color: #ffffff;
+}
+
+.navbar .nav > li > a:hover {
+	color: #999999;
+}
+
+
 
 section {
         position: relative;
