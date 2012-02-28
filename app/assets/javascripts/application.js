@@ -8,5 +8,5 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
-setTimeout("$('.flash.success').fadeOut('slow');", 3000);
+setTimeout("$('.flash').fadeOut('slow');", 3000);
 $('.carousel').carousel()
