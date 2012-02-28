@@ -27,11 +27,15 @@ group :assets do
 end
 
 group :test do
-  gem 'rspec-rails', '2.6.1'
+  gem 'rspec-rails', '2.8.1'
   gem 'webrat', '0.7.3'
-  gem 'spork', '0.9.0.rc9'
+  gem 'spork', '0.9.0'
   gem 'factory_girl_rails', '1.2.0'
   gem 'ZenTest', '4.6.2'
+  if RUBY_PLATFORM =~ /darwin/
+    gem 'autotest-growl', '~> 0.2.16'
+    gem 'autotest-fsevent', '~> 0.2.8'
+  end
 end
 
 group :development do
