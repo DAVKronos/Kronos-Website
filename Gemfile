@@ -6,10 +6,12 @@ gem 'authlogic'
 gem 'acl9'
 gem 'pg'
 gem 'will_paginate', '3.0.0'
-gem 'paperclip', "~>2.4"
+gem "paperclip", "~> 2.7.0"
 gem 'gdata'
 gem 'delayed_job'
+gem 'delayed_job_active_record'
 gem 'jquery-rails'
+gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
 
 # For development under Linux you also need to install
 # an javascript runtime

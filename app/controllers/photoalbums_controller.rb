@@ -25,9 +25,6 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums/new.json
   def new
     @photoalbum = Photoalbum.new
-    
-    @photoalbum.photos.build
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @photoalbum }
@@ -37,8 +34,6 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums/1/edit
   def edit
     @photoalbum = Photoalbum.find(params[:id])
-    
-    @photoalbum.photos.build
   end
 
   # POST /photoalbums

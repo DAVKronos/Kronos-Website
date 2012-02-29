@@ -1,5 +1,5 @@
 %li.span3
   .thumbnail
-    = link_to image_tag(photoalbum.photos.first.photo.url :thumb), photoalbum
+    = link_to image_tag(photoalbum.photos.first.photo.url :thumb), photoalbum  if photoalbum.photos.first
     .caption
       %h5=photoalbum.name
