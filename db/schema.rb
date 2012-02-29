@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120204160625) do
+ActiveRecord::Schema.define(:version => 20120228231958) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20120204160625) do
     t.datetime "photo_updated_at"
     t.integer  "photoalbum_id"
     t.string   "youtube_id"
+    t.boolean  "processing"
   end
 
   create_table "results", :force => true do |t|

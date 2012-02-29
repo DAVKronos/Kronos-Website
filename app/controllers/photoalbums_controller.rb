@@ -27,6 +27,7 @@ class PhotoalbumsController < ApplicationController
     @photoalbum = Photoalbum.new
     
     @photoalbum.photos.build
+    
 
     respond_to do |format|
       format.html # new.html.erb
