@@ -33,6 +33,9 @@
 class User < ActiveRecord::Base
     acts_as_authorization_subject  :association_name => :roles, :join_table_name => :roles_users
     acts_as_authorization_object join_table_name: "roles_users"
+    
+    after_save :add_member_to_group
+    after_destroy :remove_member_from_group
   
     attr_accessible :email, :address, :postalcode, 
                       :city, :password, :password_confirmation, 
@@ -79,6 +82,17 @@ class User < ActiveRecord::Base
   validates :sex, :presence => true
   
   validates :address, :presence => true
+  
+  
+  def add_member_to_group
+    gapps = Gapps.new
+    gapps.add_group_member("leden2", self.email)
+  end
+  
+  def remove_member_from_group
+    gapps = Gapps.new
+    gapps.destroy_group_member("leden2", self.email)
+  end
   
 end
 

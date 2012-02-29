@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(params[:user], :as => :bestuur)
     if @user.save
       redirect_to @user
     else

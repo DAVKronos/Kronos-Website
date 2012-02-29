@@ -1,19 +1,22 @@
 %h1= t(:edit_commission).capitalize
 
-= form_for(@commission) do |f|
+= nested_form_for(@commission) do |f|
 
   = render 'fields', :f => f
+  
+  %h2 Leden
 
+
+  = f.fields_for :commission_memberships do |commem_form|
+    .well
+      = commem_form.collection_select(:user_id, User.all, :id, :name)
+      #field 
+      = commem_form.label :function
+      %br
+      = commem_form.text_field :function
+      = commem_form.link_to_remove "Verwijder dit lid" unless params[:action] == "edit"
+  %p= f.link_to_add "Voeg een lid toe", :commission_memberships
+  
   #actions
   =f.submit :wijzigen
 
-%h2 Leden
-- @commission_memberships.each do |commem|
-
-  %li
-    = commem.user.name
-    = commem.function
-    - show_to :admin do
-      = link_to 'verwijder', commem, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{commem.user.name}"
-
-= render 'shared/commission_memberhsip_form'

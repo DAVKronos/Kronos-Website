@@ -16,6 +16,8 @@
     %li
       = commem.user.name
       = commem.function
+      - show_to :admin do
+        = link_to 'Lid uit commissie verwijderen', commem, :method => :delete, :confirm => "Weet je zeker dat je #{commem.user.name} uit de commissie wilt verwijderen?", :title => "Verwijder #{commem.user.name}"
   - show_to :admin do
     %li
       = link_to 'Commissie aanpassen', edit_commission_path(@commission)
