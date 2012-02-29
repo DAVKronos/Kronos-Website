@@ -1,4 +1,4 @@
-<%= form_for(@photoalbum) do |f| %>
+<%= nested_form_for(@photoalbum) do |f| %>
   <% if @photoalbum.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@photoalbum.errors.count, "error") %> prohibited this photoalbum from being saved:</h2>
@@ -23,12 +23,13 @@
     <%= f.label :photos %>
     <%= f.fields_for :photos do |photo_field| %>
     <div class="field">
-      <%= photo_field.label :caption %><%= photo_field.text_field :caption %>
       <%= photo_field.label :photo %><%= photo_field.file_field :photo %>
+      <%= photo_field.label :caption %><%= photo_field.text_field :caption %>
       <%= photo_field.label :youtube_id %><%= photo_field.text_field :youtube_id %>
-      <div class ="btn" id="upload_photo">Upload</div>
+      <%= photo_field.link_to_remove "Verwijder deze foto" %>
     </div>
     <% end %>
+    <p><%= f.link_to_add "Voeg een foto toe", :photos %></p>
   </div>
   <div class="actions">
     <%= f.submit %>
