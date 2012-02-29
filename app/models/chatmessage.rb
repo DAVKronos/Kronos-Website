@@ -12,7 +12,7 @@ class Chatmessage < ActiveRecord::Base
   
   def allow_edit?(user)
     if user
-      return (user.id == self.user_id)
+      return (user.has_role?(:admin) || user.id == self.user_id)
     else
       return false
     end
@@ -20,7 +20,7 @@ class Chatmessage < ActiveRecord::Base
   
   def allow_destroy?(user)
     if user
-      return (user.id == self.user_id)
+      return (user.has_role?(:admin) || user.id == self.user_id)
     else
       return false
     end
