@@ -44,6 +44,8 @@ GEM
     autotest-fsevent (0.2.8)
       sys-uname
     autotest-growl (0.2.16)
+    bootstrap-will_paginate (0.0.6)
+      will_paginate
     builder (3.0.0)
     cocaine (0.2.1)
     coffee-rails (3.2.2)
@@ -167,7 +169,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
-    will_paginate (3.0.0)
+    will_paginate (3.0.3)
     win32-api (1.4.8-x86-mingw32)
     win32-process (0.6.5)
       windows-pr (>= 1.1.2)
@@ -188,6 +190,7 @@ DEPENDENCIES
   authlogic
   autotest-fsevent (~> 0.2.8)
   autotest-growl (~> 0.2.16)
+  bootstrap-will_paginate (~> 0.0.6)
   coffee-rails (~> 3.2.1)
   delayed_job
   delayed_job_active_record
@@ -210,4 +213,4 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   webrat (= 0.7.3)
-  will_paginate (= 3.0.0)
+  will_paginate (= 3.0.3)

@@ -5,7 +5,7 @@ gem 'haml', '3.1.4'
 gem 'authlogic'
 gem 'acl9'
 gem 'pg'
-gem 'will_paginate', '3.0.0'
+gem 'will_paginate', '3.0.3'
 gem 'paperclip', '~> 2.7.0'
 gem 'gdata'
 gem 'delayed_job'
@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem "settingslogic", "~> 2.0.8"
+gem "bootstrap-will_paginate", "~> 0.0.6"
 
 # For development under Linux you also need to install
 # an javascript runtime
