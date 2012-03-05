@@ -13,7 +13,7 @@
         = if chatmessage.allow_destroy?(current_user); link_to 'Destroy', chatmessage, confirm: 'Are you sure?', method: :delete end
     %tr
       %td.chatboxend
-        = sanitize(simple_format(chatmessage.message))
+        = simple_format(chatmessage.message)
 
 = will_paginate @chatmessages, :previous_label => '<', :next_label => '>'
 

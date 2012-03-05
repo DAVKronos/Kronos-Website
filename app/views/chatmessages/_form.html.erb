@@ -20,7 +20,7 @@
   </div>
   <div class="field">
     <%= f.label :message %><br />
-    <%= raw f.text_area(:message, :rows => '5').gsub("\n", '&#x000A;').gsub("\r",'') %>
+    <%= f.text_area(:message, :rows => '5') %>
   </div>
   <%= recaptcha_tags unless current_user%>
   <div class="actions">
