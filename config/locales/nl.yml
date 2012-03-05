@@ -4,6 +4,9 @@
 # Rails 3 update by Floris Huetink <floris@avocado.nl> (github: florish)
 
 nl:
+  recaptcha:
+    errors:
+      incorrect-captcha-sol: "Vul a.u.b. de captcha goed in"
   
   error: "fout weerhield"
   errorpl: "fouten weerhielden"
