@@ -6,12 +6,14 @@ gem 'authlogic'
 gem 'acl9'
 gem 'pg'
 gem 'will_paginate', '3.0.0'
-gem "paperclip", "~> 2.7.0"
+gem 'paperclip', '~> 2.7.0'
 gem 'gdata'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'jquery-rails'
 gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
+gem 'recaptcha', :require => 'recaptcha/rails'
+gem "settingslogic", "~> 2.0.8"
 
 # For development under Linux you also need to install
 # an javascript runtime
@@ -23,9 +25,9 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.2.3"
-  gem 'coffee-rails', "~> 3.2.1"
-  gem 'uglifier', ">= 1.0.3"
+  gem 'sass-rails', '  ~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
 end
 
 group :test do

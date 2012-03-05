@@ -22,6 +22,7 @@
     <%= f.label :message %><br />
     <%= raw f.text_area(:message).gsub("\n", '&#x000A;').gsub("\r",'') %>
   </div>
+  <%= recaptcha_tags unless current_user%>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -52,11 +52,11 @@ class ChatmessagesController < ApplicationController
     end
 
     respond_to do |format|
-      if @chatmessage.save
+      if humanCheck && @chatmessage.save
         format.html { redirect_to chatmessages_path, notice: 'Chatmessage was successfully created.' }
         format.json { render json: @chatmessage, status: :created, location: @chatmessage }
       else
-        format.html { render action: "index" }
+        format.html { redirect_to chatmessages_path }
         format.json { render json: @chatmessage.errors, status: :unprocessable_entity }
       end
     end
@@ -96,5 +96,15 @@ class ChatmessagesController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  private
+  
+    def humanCheck
+      if current_user
+        true
+      else
+        verify_recaptcha
+      end
+    end
   
 end
