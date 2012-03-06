@@ -209,7 +209,8 @@ nl:
         format: "%{attribute} %{message}"
         
     models:
-      user: Lid
+      user: "Lid"
+      photoalbum: "Fotoalbum"
     attributes:
       user:
         name: "Naam"

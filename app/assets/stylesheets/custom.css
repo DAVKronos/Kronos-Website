@@ -42,18 +42,6 @@ header {
 }
 
 
-
-section {
-        position: relative;
-        top: 65px;
-	font-size: 120%;
-	background: #ffffff;
-        width: 920px;
-        left: 50%;
-        margin-left: -480px;
-        padding: 20px;
-}
-
 section h1 {
 	font-size: 200%;
 }
@@ -68,49 +56,6 @@ a {
 a:hover {
 	color: #069;
 	text-decoration: underline;
-}
-
-
-
-.field_with_errors {
-  margin-top: 10px;
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-.field_with_errors label {
-  color: #fff;
-}
-
-#error_explanation {
-  width: 400px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-}
-
-#error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  background-color: #c00;
-  color: #fff;
-}
-
-#error_explanation p {
-  color: #333;
-  margin-bottom: 0;
-  padding: 5px;
-}
-
-#error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
 }
 
 #404_image {

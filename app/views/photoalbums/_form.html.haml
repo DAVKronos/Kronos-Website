@@ -1,0 +1,20 @@
+= nested_form_for(@photoalbum) do |f|
+  = f.label :name
+  = f.text_field :name
+  
+  = f.label :agendaitem
+  = f.select(:agendaitem_id, Agendaitem.all.delete_if{|x| ((x.photoalbum != @photoalbum) && x.photoalbum) }.collect {|p| [ p.name, p.id ] })
+  
+  = f.label :photos
+  = f.fields_for :photos do |photo_field|
+    %div{:class => "well span4"}
+      = photo_field.label :photo
+      = photo_field.file_field :photo
+      = photo_field.label :caption
+      = photo_field.text_field :caption
+      = photo_field.label :youtube_id
+      = photo_field.text_field :youtube_id
+      = photo_field.link_to_remove "Verwijder deze foto"
+  = f.link_to_add "Voeg een foto toe", :photos, :class => "btn"
+  = f.submit
+

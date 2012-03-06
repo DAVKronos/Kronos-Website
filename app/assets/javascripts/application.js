@@ -10,5 +10,7 @@
 //= require jquery_nested_form
 //= require_tree .
 //= require bootstrap
+$(".alert-message").alert()
+$(".alert").alert()
 setTimeout("$('.flash').fadeOut('slow');", 3000);
 $('.carousel').carousel()

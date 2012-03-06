@@ -76,7 +76,7 @@ class PhotosController < ApplicationController
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to photos_url }
+      format.html { redirect_to @photo.photoalbum }
       format.json { head :ok }
     end
   end

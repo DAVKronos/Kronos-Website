@@ -7,8 +7,7 @@
     = f.text_field :login
     = f.label :password
     = f.password_field :password
-    = f.label :remember_me
-    = f.check_box :remember_me 
-    %br
-    %br
+    %label.checkbox
+      = t :remember_me
+      = f.check_box :remember_me
     = f.submit "Login", :class => "btn"

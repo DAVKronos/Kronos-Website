@@ -3,7 +3,7 @@
 .span5
 
   - @chatmessages.each do |chatmessage|
-    %div{:class => "row page-header"}
+    %div{:class => "row"}
       .row
         - if chatmessage.user
           .span1
@@ -26,6 +26,8 @@
             .span5
               = h time_ago_in_words chatmessage.created_at
               geleden
+    .row
+      %hr
         
 
   = will_paginate @chatmessages, :previous_label => '<', :next_label => '>'

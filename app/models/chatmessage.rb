@@ -9,6 +9,7 @@ class Chatmessage < ActiveRecord::Base
 #  end
   attr_accessible :by, :message, :email 
   belongs_to :user
+  validates_presence_of :by, :message, :email
   
   def allow_edit?(user)
     if user
