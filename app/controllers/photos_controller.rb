@@ -14,6 +14,13 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photo = Photo.find(params[:id])
+    
+    @reaction = Reaction.new;
+    @reaction.photo = @photo;
+    
+    if current_user
+      @reaction.user = current_user
+    end
 
     respond_to do |format|
       format.html # show.html.erb

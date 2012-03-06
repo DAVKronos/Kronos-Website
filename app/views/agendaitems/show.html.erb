@@ -61,5 +61,19 @@
 <% end %>
 <% end %>
 
+
+<p>
+  <b>Reactions:</b>
+<% @agendaitem.reactions.each do |reactie| %>
+<dl>
+  <dd>
+    <%= reactie.reactiontext %>
+  </dd>
+</dl>
+<% end %>
+</p>
+
 <%= link_to 'Edit', edit_agendaitem_path(@agendaitem) %> |
 <%= link_to 'Back', agendaitems_path %>
+
+<%= render 'reactions_form' %>

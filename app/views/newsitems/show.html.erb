@@ -15,6 +15,13 @@
   <%= @newsitem.agreed %>
 </p>
 
+<% @newsitem.reactions.each do |reactie| %>
+<p>
+  <%= reactie.reactiontext %>
+</p>
+<% end %>
 
 <%= link_to 'Edit', edit_newsitem_path(@newsitem) %> |
 <%= link_to 'Back', newsitems_path %>
+
+<%= render 'reactions_form' %>

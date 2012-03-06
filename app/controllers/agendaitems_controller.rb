@@ -38,6 +38,12 @@ class AgendaitemsController < ApplicationController
       @subscription.name = current_user.name.split[0]
     end
     
+    @reaction = Reaction.new
+    @reaction.agendaitem = @agendaitem
+    if current_user
+      @reaction.user = current_user
+    end
+    
     if @agendaitem.category == 'Kronoswedstrijd'
       render :action => "wedstrijdshow"
     end

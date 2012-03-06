@@ -3,6 +3,7 @@ class Agendaitem < ActiveRecord::Base
   has_one :photoalbum
   has_many :events
   has_many :subscriptions
+  has_many :reactions
   accepts_nested_attributes_for :events, :allow_destroy => true, :reject_if => proc { |attributes| attributes['eventtype_id'] == "" }
   accepts_nested_attributes_for :subscriptions, :allow_destroy => true
   

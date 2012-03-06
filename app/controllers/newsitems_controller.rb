@@ -37,6 +37,13 @@ class NewsitemsController < ApplicationController
   # GET /newsitems/1.json
   def show
     @newsitem = Newsitem.find(params[:id])
+    
+    @reaction = Reaction.new;
+    @reaction.newsitem = @newsitem;
+    
+    if current_user
+      @reaction.user = current_user
+    end
 
     respond_to do |format|
       format.html # show.html.erb

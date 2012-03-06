@@ -14,6 +14,16 @@ class ResultsController < ApplicationController
   def list
     @results = Result.all
   end
+  
+  def show
+    @result = Result.find(params[:id])
+    
+    @reaction = Reaction.new
+    @reaction.result = @result
+    if current_user
+      @reaction.user = current_user
+    end
+  end
 
   # GET /results/1/edit
   def edit
