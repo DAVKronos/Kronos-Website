@@ -1,21 +1,34 @@
 %h1 Kronos chatbox
+%br
+.span5
 
-- @chatmessages.each do |chatmessage|
-  %table
-    %tr
-      %td.chatboxhead
-        = if chatmessage.user; link_to chatmessage.by, chatmessage.user else mail_to chatmessage.email, chatmessage.by end
-      %td.chatboxhead
-        = chatmessage.created_at.strftime("%d %b (%H:%M)")
-      %td
-        = if chatmessage.allow_edit?(current_user); link_to 'Edit', edit_chatmessage_path(chatmessage) end
-      %td
-        = if chatmessage.allow_destroy?(current_user); link_to 'Destroy', chatmessage, confirm: 'Are you sure?', method: :delete end
-    %tr
-      %td.chatboxend
-        = simple_format(chatmessage.message)
+  - @chatmessages.each do |chatmessage|
+    %div{:class => "row page-header"}
+      .row
+        - if chatmessage.user
+          .span1
+            =image_tag chatmessage.user.avatar.url(:thumb)
+        .span3
+          .row
+            .span3
+              = if chatmessage.user; link_to chatmessage.by, chatmessage.user else mail_to chatmessage.email, chatmessage.by end
+          .row
+            .span3
+              = simple_format(chatmessage.message)
+          
+  
+          - if chatmessage.allow_edit?(current_user)
+            = link_to 'Edit', edit_chatmessage_path(chatmessage)
+          - if chatmessage.allow_destroy?(current_user)
+            = link_to 'Destroy', chatmessage, confirm: 'Are you sure?', method: :delete
+          .row
+        
+            .span5
+              = h time_ago_in_words chatmessage.created_at
+              geleden
+        
 
-= will_paginate @chatmessages, :previous_label => '<', :next_label => '>'
+  = will_paginate @chatmessages, :previous_label => '<', :next_label => '>'
 
-%div
+%div{:class => "span5 well"}
   = render 'form'

@@ -106,5 +106,10 @@ class ChatmessagesController < ApplicationController
         verify_recaptcha
       end
     end
+    
+    def user_current_user?
+      @user = Chatmessage.find(params[:id]).user
+      current_user?(@user)
+    end
   
 end
