@@ -1,5 +1,7 @@
 KronosWebsite::Application.routes.draw do
 
+  resources :reactions
+
   resources :tags
   resources :photos
   resources :photoalbums

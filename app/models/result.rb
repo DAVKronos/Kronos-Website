@@ -1,6 +1,7 @@
 class Result < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
+  has_many :reactions
   
   def stringcal(expressie)
     while expressie.scan(/\([^\(\)]+\)/).size > 0

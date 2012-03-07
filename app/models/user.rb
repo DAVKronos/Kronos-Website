@@ -55,6 +55,7 @@ class User < ActiveRecord::Base
   has_many :newsitems
   has_many :tags
   has_many :pages
+  has_many :reactions
   has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "260x180#", :thumb => "50x50#" }
   
   name_regex = /\A[A-Z][a-z]+\s([a-z]+\s([a-z]+\s)*)?[A-Z][a-z]*(-[A-Z][a-z]+)*\z/
