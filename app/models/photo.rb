@@ -1,7 +1,8 @@
 class Photo < ActiveRecord::Base
   has_attached_file :photo, :styles => { :thumb => "260x180#", :normal => "940>"}
   belongs_to :photoalbum
-  has_many :tags, :reactions
+  has_many :tags
+  has_many :reactions
   
   validates_attachment_presence :photo
   
