@@ -6,7 +6,11 @@ class AgendaitemsController < ApplicationController
          actions :index, :show, :showresults do
            allow all
          end
-         actions :edit, :update, :new, :create, :newevents, :editevents, :newresults, :editresults do
+         actions :new, :create do
+           allow logged_in
+           allow :admin
+         end
+         actions :edit, :update, :newevents, :editevents, :newresults, :editresults do
            allow logged_in, :if => :user_in_commission?
            allow :admin
          end
