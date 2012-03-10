@@ -1,0 +1,29 @@
+%h1 Kronos agenda
+%br
+.row
+  - @agendaitems.each do |agendaitem|
+    .span6
+      %div{:class => "row"}
+        .row
+          %h2
+            = agendaitem.name
+        .row
+          .span5
+            .row
+              %hr{:class => "no-margin"}
+        .row
+          = agendaitem.date.strftime("%d %b (%H:%M)") + ' - ' + agendaitem.category
+        .row
+          %br
+          = agendaitem.description
+        .row
+          - if agendaitem.subscribe && agendaitem.subsciptiondeadline
+            %i{:class => "icon-ok-sign"}
+          - else
+            %i{:class => "icon-remove-sign"}
+        .row
+          = if agendaitem.commission; link_to agendaitem.commission.name, agendaitem.commission end
+        .row
+          .span5
+            .row
+              %hr
