@@ -32,6 +32,14 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
+    <%= f.label :subscribe %><br />
+    <%= f.check_box :subscribe %>
+  </div>
+  <div class="field">
+    <%= f.label :subscriptiondeadline %>
+    <%= f.datetime_select :subscriptiondeadline %>
+  </div>
+  <div class="field">
     <%= f.label :category %><br />
     <%= f.select(:category, [['Baan-wedstrijd'], ['Cross-wedstrijd'], ['Indoor-wedstrijd'], ['Meerkamp-wedstrijd'], ['Weg-wedstrijd'], ['---'], ['Activiteit'], ['Bardienst'], ['Borrel'], ['Training'], ['Vergadering'], ['---'], ['Overig']]) %>
   </div>

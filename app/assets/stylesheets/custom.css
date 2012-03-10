@@ -61,3 +61,17 @@ a:hover {
 #404_image {
 	text-align: center;
 }
+
+hr.no-margin {
+        margin: 0px;
+}
+
+h2 a {
+        text-decoration: none;
+        color: #333333;
+}
+
+h2 a:hover {
+        text-decoration: none;
+        color: #666666;
+}

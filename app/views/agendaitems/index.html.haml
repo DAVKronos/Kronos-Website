@@ -6,23 +6,29 @@
       %div{:class => "row"}
         .row
           %h2
-            = agendaitem.name
+            = link_to agendaitem.name, agendaitem
         .row
           .span5
             .row
               %hr{:class => "no-margin"}
         .row
-          = agendaitem.date.strftime("%d %b (%H:%M)") + ' - ' + agendaitem.category
+          = agendaitem.category + ' - ' + agendaitem.date.strftime("%d %B %H:%M")
         .row
           %br
-          = agendaitem.description
+          %p
+            = simple_format(agendaitem.description)
         .row
-          - if agendaitem.subscribe && agendaitem.subsciptiondeadline
-            %i{:class => "icon-ok-sign"}
-          - else
-            %i{:class => "icon-remove-sign"}
-        .row
-          = if agendaitem.commission; link_to agendaitem.commission.name, agendaitem.commission end
+          .span4
+            .row
+              Inschrijving:
+              - if agendaitem.subscribe
+                %i{:class => "icon-ok-sign"}
+                = if ((agendaitem.subscriptiondeadline - Time.now) > 0); h distance_of_time_in_words(agendaitem.subscriptiondeadline, Time.now); else 'Gesloten'; end
+              - else
+                %i{:class => "icon-remove-sign"}
+          .span2
+            .row
+              = if agendaitem.commission; link_to agendaitem.commission.name, agendaitem.commission end
         .row
           .span5
             .row
