@@ -1,4 +1,18 @@
 class AgendaitemsController < ApplicationController
+  access_control do
+         actions :destroy do
+           allow :admin
+         end
+         actions :index, :show, :showresults do
+           allow all
+         end
+         actions :edit, :update, :new, :create, :newevents, :editevents, :newresults, :editresults do
+           allow logged_in, :if => :user_current_user?
+           allow :admin
+         end
+     end
+
+  
   def index
     @agendaitems = Agendaitem.all
   end
@@ -14,6 +28,10 @@ class AgendaitemsController < ApplicationController
     @agendaitem.events.build
     @agendaitem.events.build
     @agendaitem.events.build
+  end
+  
+  def editevents
+    @agendaitem = Agendaitem.find(params[:id])
   end
   
   def newresults
@@ -78,9 +96,6 @@ class AgendaitemsController < ApplicationController
 
   def destroy
     @agendaitem = Agendaitem.find(params[:id])
-    @agendaitem.events.each do |event|
-      event.destroy
-    end
     @agendaitem.destroy
 
     respond_to do |format|

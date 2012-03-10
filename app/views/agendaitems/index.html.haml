@@ -7,12 +7,19 @@
         .row
           %h2
             = link_to agendaitem.name, agendaitem
-        .row
           .span5
             .row
               %hr{:class => "no-margin"}
         .row
-          = agendaitem.category + ' - ' + agendaitem.date.strftime("%d %B %H:%M")
+          .span3
+            .row
+              = agendaitem.category + ' - ' + agendaitem.date.strftime("%d %B %H:%M")
+          - show_to :admin do
+            .span2
+              .row
+                = link_to('Bewerken', edit_agendaitem_path(agendaitem))
+                |
+                = link_to('Verwijderen', agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete)
         .row
           %br
           %p
