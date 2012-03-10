@@ -73,10 +73,11 @@ class SubscriptionsController < ApplicationController
   # DELETE /subscriptions/1.json
   def destroy
     @subscription = Subscription.find(params[:id])
+    agendaitem = @subscription.agendaitem
     @subscription.destroy
 
     respond_to do |format|
-      format.html { redirect_to subscriptions_url }
+      format.html { redirect_to agendaitem }
       format.json { head :ok }
     end
   end

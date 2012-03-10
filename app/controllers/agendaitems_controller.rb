@@ -1,13 +1,13 @@
 class AgendaitemsController < ApplicationController
   access_control do
-         actions :destroy do
+         action :destroy do
            allow :admin
          end
          actions :index, :show, :showresults do
            allow all
          end
          actions :edit, :update, :new, :create, :newevents, :editevents, :newresults, :editresults do
-           allow logged_in, :if => :user_current_user?
+           allow logged_in, :if => :user_in_commission?
            allow :admin
          end
      end
@@ -126,4 +126,11 @@ class AgendaitemsController < ApplicationController
       end
     end
   end
+  
+  private
+    
+    def user_in_commission?
+      @commission = Agendaitem.find(params[:id]).commission
+      current_user.commissions.include?(@commission)
+    end
 end

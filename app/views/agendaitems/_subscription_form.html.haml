@@ -1,0 +1,10 @@
+= form_for(@subscription) do |f|
+
+    = f.text_field :name, :class => "input-medium", :placeholder => "naam", :readonly => true
+
+    = f.label :opmerking
+    = f.text_area(:comment, :rows => "3", :class => "input-xlarge")
+
+    = f.hidden_field :agendaitem_id
+
+    = f.submit :class => "btn", :value => "Inschrijven"

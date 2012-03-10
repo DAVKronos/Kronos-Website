@@ -3,40 +3,44 @@
 .row
   - @agendaitems.each do |agendaitem|
     .span6
-      %div{:class => "row"}
-        .row
+      .row
+        - if agendaitem.intern
+          %h2{:class => "kronosactiviteit"}
+            = link_to agendaitem.name, agendaitem
+        - else
           %h2
             = link_to agendaitem.name, agendaitem
-          .span5
-            .row
-              %hr{:class => "no-margin"}
-        .row
-          .span3
-            .row
-              = agendaitem.category + ' - ' + agendaitem.date.strftime("%d %B %H:%M")
-          - show_to :admin do
-            .span2
-              .row
-                = link_to('Bewerken', edit_agendaitem_path(agendaitem))
-                |
-                = link_to('Verwijderen', agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete)
-        .row
-          %br
-          %p
-            = simple_format(agendaitem.description)
-        .row
-          .span4
-            .row
-              Inschrijving:
-              - if agendaitem.subscribe
-                %i{:class => "icon-ok-sign"}
-                = if ((agendaitem.subscriptiondeadline - Time.now) > 0); h distance_of_time_in_words(agendaitem.subscriptiondeadline, Time.now); else 'Gesloten'; end
-              - else
-                %i{:class => "icon-remove-sign"}
+      .row
+        .span5
+          .row
+            %hr{:class => "no-margin"}
+      .row
+        .span3
+          .row
+            = agendaitem.category + ' - ' + agendaitem.date.strftime("%d %B %H:%M")
+        - show_to :admin do
           .span2
             .row
-              = if agendaitem.commission; link_to agendaitem.commission.name, agendaitem.commission end
-        .row
-          .span5
-            .row
-              %hr
+              = link_to('Bewerken', edit_agendaitem_path(agendaitem))
+              |
+              = link_to('Verwijderen', agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete)
+      .row
+        %br
+        %p
+          = simple_format(agendaitem.description)
+      .row
+        .span4
+          .row
+            Inschrijving:
+            - if agendaitem.subscribe
+              %i{:class => "icon-ok-sign"}
+              = if ((agendaitem.subscriptiondeadline - Time.now) > 0); h distance_of_time_in_words(agendaitem.subscriptiondeadline, Time.now); else 'Gesloten'; end
+            - else
+              %i{:class => "icon-remove-sign"}
+        .span2
+          .row
+            = if agendaitem.commission; link_to agendaitem.commission.name, agendaitem.commission end
+      .row
+        .span5
+          .row
+            %hr

@@ -75,3 +75,7 @@ h2 a:hover {
         text-decoration: none;
         color: #666666;
 }
+
+h2.kronosactiviteit a {
+        color: #7dbc53;
+}
