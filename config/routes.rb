@@ -30,6 +30,8 @@ KronosWebsite::Application.routes.draw do
   match '/agendaitems/:id/results/new', :to => 'agendaitems#newresults'
   match '/agendaitems/:id/results/edit', :to => 'agendaitems#editresults'
   match '/agendaitems/:id/addevents', :to => 'agendaitems#newevents'
+  match '/agendaitems/wedstrijden', :to => 'agendaitems#wedstrijden'
+  match '/agendaitems/archief', :to => 'agendaitems#archief'
   resources :agendaitems
   
   match '/signin', :to => 'user_sessions#new'

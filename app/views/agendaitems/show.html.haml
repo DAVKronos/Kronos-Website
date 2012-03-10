@@ -72,7 +72,8 @@
                     .row
                       = link_to 'Uitschrijven', subscription, confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
       - else
-        Je mag deze lijst niet zien.
+        .row
+          Je moet inloggen om deze lijst te kunnen zien.
       - show_to :admin do
         .row
           .span5
@@ -94,14 +95,18 @@
         .row
           %i{:class => "icon-ok-sign"}
           = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
-        - subscription = (current_user.subscriptions | @agendaitem.subscriptions)
-        - if subscription.empty?
-          .row
-            = render 'subscription_form'
+        - if current_user
+          - subscription = (current_user.subscriptions | @agendaitem.subscriptions)
+          - if subscription.empty?
+            .row
+              = render 'subscription_form'
+          - else
+            .row
+              Je hebt je al ingeschreven.
+              = link_to 'Uitschrijven', subscription.first, confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete
         - else
           .row
-            Je hebt je al ingeschreven.
-            = link_to 'Uitschrijven', subscription.first, confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete
+            Je moet inloggen om je te kunnen inschrijven.
       - else
         .row
           %i{:class => "icon-ok-sign"}

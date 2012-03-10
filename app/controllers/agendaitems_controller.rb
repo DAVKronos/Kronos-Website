@@ -3,7 +3,7 @@ class AgendaitemsController < ApplicationController
          action :destroy do
            allow :admin
          end
-         actions :index, :show, :showresults do
+         actions :index, :wedstrijden, :show, :showresults, :archief do
            allow all
          end
          actions :new, :create do
@@ -18,7 +18,17 @@ class AgendaitemsController < ApplicationController
 
   
   def index
-    @agendaitems = Agendaitem.all
+    @agendaitems = Agendaitem.where("date >= ?", Time.now).order("date ASC")
+  end
+  
+  def wedstrijden
+    @agendaitems = Agendaitem.where("date >= ? AND category LIKE ?", Time.now, '%wedstrijd%').order("date ASC")
+    render :action => "index"
+  end
+  
+  def archief
+    @agendaitems = Agendaitem.order("date DESC")
+    render :action => "index"
   end
 
   def new
@@ -64,10 +74,6 @@ class AgendaitemsController < ApplicationController
     @reaction.agendaitem = @agendaitem
     if current_user
       @reaction.user = current_user
-    end
-    
-    if @agendaitem.category == 'Kronoswedstrijd'
-      render :action => "wedstrijdshow"
     end
   end
   
