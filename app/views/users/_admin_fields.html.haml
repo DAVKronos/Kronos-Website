@@ -1,57 +1,45 @@
 = render 'shared/error_messages', :object => f.object  
 
-#field 
-  = f.label :name
-  = f.text_field :name
-    
-#field
-  = f.label :initials
-  = f.text_field :initials    
+= f.label :name
+= f.text_field :name
+  
+= f.label :initials
+= f.text_field :initials    
 
-#field
-  = f.label :email
-  = f.email_field :email
-    
-#field
-  = f.label :birthdate
-  = f.text_field :birthdate
-    
-#field
-  = f.label :address
-  = f.text_field :address
-    
-#field
-  = f.label :postalcode
-  = f.text_field :postalcode
-    
-#field
-  = f.label :city
-  = f.text_field :city
-    
-#field
-  = f.label :papieren_kronometer
-  = f.check_box :papieren_kronometer
-    
-#field
-  = f.label :password
-  = f.password_field :password
-    
-#field
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation
+= f.label :email
+= f.email_field :email
+  
+= f.label :birthdate
+= f.text_field :birthdate
+  
+= f.label :address
+= f.text_field :address
+  
+= f.label :postalcode
+= f.text_field :postalcode
+  
+= f.label :city
+= f.text_field :city
+  
+<label class ="checkbox">
+papieren kronometer
+= f.check_box :papieren_kronometer
+</label>
+  
+= f.label :password
+= f.password_field :password
+  
+= f.label :password_confirmation
+= f.password_field :password_confirmation
 
-#field
-  = f.label :profielfoto
-  = f.file_field :avatar
+= f.label :profielfoto
+= f.file_field :avatar
 
-#field
-  = f.label :sex
-  = f.text_field :sex
+= f.label :sex
+= f.text_field :sex
 
-#field
-  = f.label :licensenumber
-  = f.text_field :licensenumber
+= f.label :licensenumber
+= f.text_field :licensenumber
 
-#field
-  = f.label :login
-  = f.text_field :login
+= f.label :login
+= f.text_field :login

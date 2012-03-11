@@ -6,6 +6,17 @@
  *= require_self
  *= require_tree .
 */
+body{
+background: none repeat scroll 0 0 #F5F6F7;
+}
+
+.round{
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #DEDEDE;
+	border-radius: 5px 5px 5px 5px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+	padding: 2em;
+}
 div.navbar-inner {
 background: #222222; /* Old browsers */
 background: -moz-linear-gradient(top, #222222 0%, #333333 90%, #7dbc53 93%); /* FF3.6+ */
