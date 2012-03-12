@@ -1,11 +1,6 @@
 %h1
   =@agendaitem.name
 %br
-- show_to :admin do
-  .row
-    = link_to('Bewerken', edit_agendaitem_path(@agendaitem))
-    |
-    = link_to('Verwijderen', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete)
 .row
   .span6
     .row
@@ -44,9 +39,6 @@
     - @agendaitem.events.each do |event|
       .row
         Dit is een event
-    - show_to :admin do
-      .row
-        = link_to('Programma aanpassen', '/agendaitems/' + @agendaitem.id.to_s + '/addevents')
     .row
       .span5
         .row
@@ -74,11 +66,6 @@
       - else
         .row
           Je moet inloggen om deze lijst te kunnen zien.
-      - show_to :admin do
-        .row
-          .span5
-            .row
-              = link_to 'Inschrijvingen aanpassen', '/'
       .row
         .span5
           .row
@@ -96,14 +83,13 @@
           %i{:class => "icon-ok-sign"}
           = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
         - if current_user
-          - subscription = (current_user.subscriptions | @agendaitem.subscriptions)
-          - if subscription.empty?
+          - if defined?(@subscription)
             .row
               = render 'subscription_form'
           - else
             .row
               Je hebt je al ingeschreven.
-              = link_to 'Uitschrijven', subscription.first, confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete
+              = link_to 'Uitschrijven', @subscriptionbestaand , confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete
         - else
           .row
             Je moet inloggen om je te kunnen inschrijven.
@@ -121,3 +107,30 @@
       .span5
         .row
           %hr
+  - show_to :admin do
+    .span6
+      .row
+        %h2{:class => "acties"}
+          Agendapunt - acties
+      .row
+        .span5
+          .row
+            %hr{:class => "no-margin"}
+      .row
+        %ul
+          %li
+            = link_to 'Agendapunt bewerken', edit_agendaitem_path(@agendaitem)
+          %li
+            = link_to 'Agendapunt verwijderen', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete
+          %li
+            = link_to 'Inschrijvingen aanpassen', '/'
+          %li
+            = link_to 'Progamma aanpassen', '/agendaitems/' + @agendaitem.id.to_s + '/addevents'
+      .row
+        .span5
+          .row
+            %hr
+.row
+  .span6
+    .row
+      = link_to 'Terug', agendaitems_path

@@ -19,4 +19,6 @@ $(document).ready(function() {
   $('.carousel').carousel();
 
   $('.datumtijdprikker').datetimepicker({ dateFormat: 'yy-mm-dd' });
+  $('.datumprikker').datepicker({ dateFormat: 'yy-mm-dd' });
+  $('.tijdprikker').timepicker({});
 });

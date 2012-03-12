@@ -1,21 +1,27 @@
 = form_for(@agendaitem) do |f|
   .row
+    = f.label :name
     = f.text_field :name, :placeholder => "Naam"
   .row
+    = f.label :intern
     = f.check_box :intern, :placeholder => "Van Kronos?"
   .row
-    = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker"}
+    = f.label :date
+    = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker", :value => @agendaitem.date.strftime('%Y-%m-%d %H:%M')}
   .row
-    = f.label "Omschrijving"
+    = f.label :description
     = f.text_area(:description, :rows => "10", :class => "input-xlarge")
   .row
+    = f.label :location
     = f.text_field :location, :placeholder => "Locatie"
   .row
+    = f.label :subscribe
     = f.check_box :subscribe, :placeholder => "Inschrijven?"
   .row
-    = f.date_select :subscriptiondeadline, :placeholder => "Deadline"
+    = f.label :subscriptiondeadline
+    = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "datumtijdprikker", :value => @agendaitem.subscriptiondeadline.strftime('%Y-%m-%d %H:%M')}
   .row
-    = f.label "Type"
+    = f.label :category
     = f.select(:category, [['Baan-wedstrijd'], ['Cross-wedstrijd'], ['Indoor-wedstrijd'], ['Meerkamp-wedstrijd'], ['Weg-wedstrijd'], ['---'], ['Activiteit'], ['Bardienst'], ['Borrel'], ['Training'], ['Vergadering'], ['---'], ['Overig']])
   .row
-    = f.submit :class => "btn", :value => "Aanmaken"
+    = f.submit :class => "btn", :value => "Opslaan"
