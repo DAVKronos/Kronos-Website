@@ -4,7 +4,7 @@
   .row
     = f.check_box :intern, :placeholder => "Van Kronos?"
   .row
-    = f.datetime_select :date, :placeholder => "Datum"
+    = f.text_field :date, { :placeholder => "Datum", "data-datepicker" => "datepicker" }
   .row
     = f.label "Omschrijving"
     = f.text_area(:description, :rows => "10", :class => "input-xlarge")
