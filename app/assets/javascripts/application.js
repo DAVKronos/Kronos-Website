@@ -10,7 +10,13 @@
 //= require jquery_nested_form
 //= require_tree .
 //= require bootstrap
-$(".alert-message").alert()
-$(".alert").alert()
-setTimeout("$('.flash').fadeOut('slow');", 3000);
-$('.carousel').carousel()
+
+$(document).ready(function() {
+  // Handler for .ready() called.
+  $(".alert-message").alert();
+  $(".alert").alert();
+  setTimeout("$('.flash').fadeOut('slow');", 3000);
+  $('.carousel').carousel();
+
+  $('.datumtijdprikker').datetimepicker({ dateFormat: 'yy-mm-dd' });
+});
