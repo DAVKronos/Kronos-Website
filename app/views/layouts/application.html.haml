@@ -10,11 +10,10 @@
 
   %body.kronos
     = render 'layouts/header'
-    .container
-      %section{:class => "round"}
-        -flash.each do |key, value|
-          - henk = key=="alert" ? "flash alert-#{key} fade in" : "flash alert fade in" 
-          %div{:class => henk}
-            =value
-            %a{:class => :close, "data-dismiss" => "alert"} x
+    .container.round
+      -flash.each do |key, value|
+        - henk = key=="alert" ? "flash alert-#{key} fade in" : "flash alert fade in" 
+        %div{:class => henk}
+          =value
+          %a{:class => :close, "data-dismiss" => "alert"} x
       = yield

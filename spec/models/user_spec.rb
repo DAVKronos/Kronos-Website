@@ -172,7 +172,12 @@ end
 #  current_login_ip    :string(255)
 #  last_login_ip       :string(255)
 #  papieren_kronometer :boolean         default(FALSE)
-#  created_at          :datetime
-#  updated_at          :datetime
+#  created_at          :datetime        not null
+#  updated_at          :datetime        not null
+#  admin               :boolean         default(FALSE)
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 

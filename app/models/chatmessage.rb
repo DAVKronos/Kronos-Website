@@ -27,3 +27,16 @@ class Chatmessage < ActiveRecord::Base
     end
   end
 end
+# == Schema Information
+#
+# Table name: chatmessages
+#
+#  id         :integer         not null, primary key
+#  by         :string(255)
+#  message    :text
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  email      :string(255)
+#  user_id    :integer
+#
+
