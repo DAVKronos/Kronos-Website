@@ -46,3 +46,20 @@ class Photo < ActiveRecord::Base
          self.photo_updated_at_changed?
        end
 end
+# == Schema Information
+#
+# Table name: photos
+#
+#  id                 :integer         not null, primary key
+#  caption            :string(255)
+#  created_at         :datetime        not null
+#  updated_at         :datetime        not null
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#  photoalbum_id      :integer
+#  youtube_id         :string(255)
+#  processing         :boolean
+#
+

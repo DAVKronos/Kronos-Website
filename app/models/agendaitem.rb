@@ -31,3 +31,21 @@ class Agendaitem < ActiveRecord::Base
     end
   end
 end
+# == Schema Information
+#
+# Table name: agendaitems
+#
+#  id                   :integer         not null, primary key
+#  name                 :string(255)
+#  description          :text
+#  date                 :datetime
+#  location             :string(255)
+#  subscribe            :boolean
+#  subscriptiondeadline :datetime
+#  commission_id        :integer
+#  created_at           :datetime        not null
+#  updated_at           :datetime        not null
+#  category             :string(255)
+#  intern               :boolean
+#
+
