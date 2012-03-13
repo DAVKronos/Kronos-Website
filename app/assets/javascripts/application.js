@@ -10,7 +10,6 @@
 //= require jquery_nested_form
 //= require_tree .
 //= require bootstrap
-<<<<<<< HEAD
 $(document).ready(function () {
 $(".alert-message").alert()
 $(".alert").alert()
@@ -23,17 +22,3 @@ $('.datumtijdprikker').datetimepicker({ dateFormat: 'yy-mm-dd' });
 $('.datumprikker').datepicker({ dateFormat: 'yy-mm-dd' });
 $('.tijdprikker').timepicker({});
 });
-=======
-
-$(document).ready(function() {
-  // Handler for .ready() called.
-  $(".alert-message").alert();
-  $(".alert").alert();
-  setTimeout("$('.flash').fadeOut('slow');", 3000);
-  $('.carousel').carousel();
-
-  $('.datumtijdprikker').datetimepicker({ dateFormat: 'yy-mm-dd' });
-  $('.datumprikker').datepicker({ dateFormat: 'yy-mm-dd' });
-  $('.tijdprikker').timepicker({});
-});
->>>>>>> 33cbbb9756f87bdb7f7285f03a436cf77a2dfb1f
