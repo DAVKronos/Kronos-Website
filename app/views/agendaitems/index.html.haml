@@ -44,3 +44,22 @@
         .span5
           .row
             %hr
+  - show_to :admin do
+    .span6
+      .row
+        %h2{:class => "acties"}
+          Agenda - acties
+      .row
+        .span5
+          .row
+            %hr{:class => "no-margin"}
+      .row
+        %ul
+          %li
+            = link_to 'Nieuw agendapunt', new_agendaitem_path
+          %li
+            = link_to 'Archief bekijken', '/agendaitems/archief'
+      .row
+        .span5
+          .row
+            %hr

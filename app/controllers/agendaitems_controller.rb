@@ -33,6 +33,8 @@ class AgendaitemsController < ApplicationController
 
   def new
     @agendaitem = Agendaitem.new
+    @agendaitem.date = Time.now
+    @agendaitem.subscriptiondeadline = Time.now
   end
   
   def newevents
@@ -64,10 +66,17 @@ class AgendaitemsController < ApplicationController
   def show
     @agendaitem = Agendaitem.find(params[:id])
     
-    @subscription = Subscription.new
-    @subscription.agendaitem = @agendaitem
     if current_user
-      @subscription.name = current_user.name.split[0]
+      @agendaitem.subscriptions.each do |subscr|
+        if subscr.user == current_user
+          @subscriptionbestaand = subscr
+        end
+      end
+      if (defined?(@subscriptionbestaand)).nil?
+        @subscription = Subscription.new
+        @subscription.name = current_user.name.split[0]
+        @subscription.agendaitem = @agendaitem
+      end
     end
     
     @reaction = Reaction.new
