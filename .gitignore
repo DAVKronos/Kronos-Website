@@ -13,3 +13,5 @@ public/assets/
 public/javascripts/
 /log/
 config/application.yml
+
+vendor/bundle
