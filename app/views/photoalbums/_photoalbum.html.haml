@@ -4,4 +4,5 @@
     .caption
       %h5=photoalbum.name
       - show_to :admin do
+        = link_to 'aanpassen', edit_photoalbum_path(photoalbum), :class => 'btn'
         = link_to 'verwijder', photoalbum, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{photoalbum.name}", :class => 'btn'

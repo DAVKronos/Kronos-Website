@@ -1,10 +1,11 @@
 KronosWebsite::Application.routes.draw do
 
   resources :reactions
-
-  resources :tags
   resources :photos
-  resources :photoalbums
+  resources :tags
+  resources :photoalbums do
+    resources :photos
+  end
   resources :news_items
   resources :subscriptions
   resources :events

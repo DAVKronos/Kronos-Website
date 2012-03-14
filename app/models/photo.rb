@@ -1,10 +1,22 @@
 class Photo < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   has_attached_file :photo, :styles => { :thumb => "260x180#", :normal => "940>"}
   belongs_to :photoalbum
   has_many :tags
   has_many :reactions
   
   validates_attachment_presence :photo
+  
+  def to_jq_upload
+      {
+        "name" => "picture1.jpg",
+        "size" => photo.size,
+        "url" => photo.url,
+        "thumbnail_url" => photo.url(:thumb),
+        "delete_url" => photo_path(:id => id),
+        "delete_type" => "DELETE" 
+      }
+    end
   
   
   
