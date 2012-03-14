@@ -2,11 +2,12 @@ class Result < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
   has_many :reactions
+  attr_accessor :calculated
   
   def stringcal(expressie)
     while expressie.scan(/\([^\(\)]+\)/).size > 0
       ex = expressie[/\([^\(\)]+\)/]
-      expressie.gsub!(/\([^\(\)]+\)/, cal(ex).to_s)
+      expressie.sub!(/\([^\(\)]+\)/, cal(ex).to_s)
     end
     return expressie
   end

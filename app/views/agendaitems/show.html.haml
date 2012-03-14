@@ -40,7 +40,9 @@
             %hr{:class => "no-margin"}
       - @agendaitem.events.each do |event|
         .row
-          Dit is een event
+          = event.eventtype.name
+          = event.distance
+          = event.date
       .row
         .span5
           .row
@@ -126,8 +128,6 @@
               = link_to 'Agendapunt verwijderen', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete
             %li
               = link_to 'Inschrijvingen aanpassen', '/'
-            %li
-              = link_to 'Progamma aanpassen', '/agendaitems/' + @agendaitem.id.to_s + '/addevents'
         .row
           .span5
             .row

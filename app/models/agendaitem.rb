@@ -2,10 +2,11 @@ class Agendaitem < ActiveRecord::Base
   belongs_to :commission
   has_one :photoalbum
   has_many :events
-  has_many :subscriptions
-  has_many :reactions
-  accepts_nested_attributes_for :events, :allow_destroy => true, :reject_if => proc { |attributes| attributes['eventtype_id'] == "" }
+  has_many :subscriptions, :dependent => :destroy
+  has_many :reactions, :dependent => :destroy
+  accepts_nested_attributes_for :events, :allow_destroy => true
   accepts_nested_attributes_for :subscriptions, :allow_destroy => true
+  validates_associated :events
   
   def allow_edit?(user)
     if user

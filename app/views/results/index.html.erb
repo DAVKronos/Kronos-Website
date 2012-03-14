@@ -36,10 +36,7 @@ end %>
     <td><%= if result.user; link_to result.user.name, result.user else result.username end %></td>
     <td><%= result.event.eventtype.shortname %></td>
     <td><%= result.result %></td>
-<% expressie1 = result.event.eventtype.calculation.gsub('r', result.result.to_s) %>
-<% expressie = expressie1.gsub('d', result.event.distance.to_s) %>
-<% result.timetoseconds(expressie) %>
-    <td><%= result.stringcal(expressie)[/^\-?\d+\.?\d?\d?/] %> <%= result.event.eventtype.calculated_unit %></td>
+    <td><%= result.calculated[/^\-?\d+\.?\d?\d?/] %> <%= result.event.eventtype.calculated_unit %></td>
   </tr>
 <% end %>
 </table>

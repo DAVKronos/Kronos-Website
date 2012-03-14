@@ -1,4 +1,4 @@
-= form_for(@agendaitem) do |f|
+= nested_form_for(@agendaitem) do |f|
   .span12
     .row
       .span6
@@ -23,11 +23,11 @@
           %fieldset
             %legend Optionele argumenten
             = f.label :commission
-            = f.text_field :commission
+            = f.select(:commission_id, current_user.commissions.collect{ |x| [x.name, x.id] }, {:include_blank => 'None'})
       .span6
         .row
           %fieldset
-            %legend Inschrijvingen
+            %legend Inschrijven
             = f.label :subscribe
             = f.check_box :subscribe, :placeholder => "Inschrijven?"
             = f.label :subscriptiondeadline
@@ -37,6 +37,23 @@
         .row
           %fieldset
             %legend Programma
+            = f.fields_for :events do |event_field|
+              %div{:class => "well span4"}
+                .row
+                  = event_field.label :date
+                  - if event_field.object.date.respond_to?(:strftime)
+                    = event_field.text_field :date, {:class => "tijdprikker", :value => event_field.object.date.strftime('%H:%M')}
+                  - else
+                    = event_field.text_field :date, {:class => "tijdprikker", :value => Time.now.strftime('%H:%M')}
+                  = event_field.label :eventtype
+                  = event_field.select(:eventtype_id, Eventtype.all.collect { |p| [p.name, p.id] })
+                  = event_field.label :distance
+                  = event_field.text_field :distance
+                  <br />
+                  = event_field.link_to_remove "Verwijder dit programmaonderdeel"
+            .span4
+              .row
+                = f.link_to_add "Voeg een programmaonderdeel toe", :events
             %hr
     .row
       = f.submit :class => "btn", :value => "Opslaan"

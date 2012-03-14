@@ -8,6 +8,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery_nested_form
+//= require jquery-ui-timepicker-addon
 //= require bootstrap
 //= require load-image
 //= require bootstrap-image-gallery
@@ -23,4 +24,9 @@ $('.dropdown-menu').find('form').click(function (e) {
 $('.datumtijdprikker').datetimepicker({ dateFormat: 'yy-mm-dd' });
 $('.datumprikker').datepicker({ dateFormat: 'yy-mm-dd' });
 $('.tijdprikker').timepicker({});
+
+$("form").live("nested:fieldAdded", function(event) {
+$(event.field).find('.tijdprikker').removeClass('hasDatepicker').timepicker({});
+});
+
 });

@@ -100,7 +100,7 @@ class AgendaitemsController < ApplicationController
     
     respond_to do |format|
       if @agendaitem.save
-        format.html { redirect_to :controller => "agendaitems", :action => "newevents", :id => @agendaitem.id, notice: 'Agendaitem was successfully created.' }
+        format.html { redirect_to @agendaitem, notice: 'Agendaitem was successfully created.' }
         format.json { render json: @agendaitem, status: :created, location: @agendaitem }
       else
         format.html { render action: "index" }
@@ -121,7 +121,6 @@ class AgendaitemsController < ApplicationController
 
   def edit
     @agendaitem = Agendaitem.find(params[:id])
-    @agendaitem.events.build
   end
   
   def editresults

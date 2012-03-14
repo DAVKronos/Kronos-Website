@@ -4,6 +4,13 @@ class ResultsController < ApplicationController
   def index
     @agendaitems = Agendaitem.all
     @results = Result.paginate(:page => params[:page], :order => 'updated_at DESC', :per_page => 10)
+    
+    @results.each do |result|
+        expressie1 = result.event.eventtype.calculation.gsub('r', result.result.to_s)
+        expressie = expressie1.gsub('d', result.event.distance.to_s)
+        result.timetoseconds(expressie)
+        result.calculated = result.stringcal(expressie)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
