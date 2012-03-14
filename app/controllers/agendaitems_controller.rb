@@ -1,10 +1,40 @@
 class AgendaitemsController < ApplicationController
+  access_control do
+         action :destroy do
+           allow :admin
+         end
+         actions :index, :wedstrijden, :show, :showresults, :archief do
+           allow all
+         end
+         actions :new, :create do
+           allow logged_in
+           allow :admin
+         end
+         actions :edit, :update, :newevents, :editevents, :newresults, :editresults do
+           allow logged_in, :if => :user_in_commission?
+           allow :admin
+         end
+     end
+
+  
   def index
-    @agendaitems = Agendaitem.all
+    @agendaitems = Agendaitem.where("date >= ?", Time.now).order("date ASC")
+  end
+  
+  def wedstrijden
+    @agendaitems = Agendaitem.where("date >= ? AND category LIKE ?", Time.now, '%wedstrijd%').order("date ASC")
+    render :action => "index"
+  end
+  
+  def archief
+    @agendaitems = Agendaitem.order("date DESC")
+    render :action => "index"
   end
 
   def new
     @agendaitem = Agendaitem.new
+    @agendaitem.date = Time.now
+    @agendaitem.subscriptiondeadline = Time.now
   end
   
   def newevents
@@ -14,6 +44,10 @@ class AgendaitemsController < ApplicationController
     @agendaitem.events.build
     @agendaitem.events.build
     @agendaitem.events.build
+  end
+  
+  def editevents
+    @agendaitem = Agendaitem.find(params[:id])
   end
   
   def newresults
@@ -32,20 +66,23 @@ class AgendaitemsController < ApplicationController
   def show
     @agendaitem = Agendaitem.find(params[:id])
     
-    @subscription = Subscription.new
-    @subscription.agendaitem = @agendaitem
     if current_user
-      @subscription.name = current_user.name.split[0]
+      @agendaitem.subscriptions.each do |subscr|
+        if subscr.user == current_user
+          @subscriptionbestaand = subscr
+        end
+      end
+      if (defined?(@subscriptionbestaand)).nil?
+        @subscription = Subscription.new
+        @subscription.name = current_user.name.split[0]
+        @subscription.agendaitem = @agendaitem
+      end
     end
     
     @reaction = Reaction.new
     @reaction.agendaitem = @agendaitem
     if current_user
       @reaction.user = current_user
-    end
-    
-    if @agendaitem.category == 'Kronoswedstrijd'
-      render :action => "wedstrijdshow"
     end
   end
   
@@ -78,9 +115,6 @@ class AgendaitemsController < ApplicationController
 
   def destroy
     @agendaitem = Agendaitem.find(params[:id])
-    @agendaitem.events.each do |event|
-      event.destroy
-    end
     @agendaitem.destroy
 
     respond_to do |format|
@@ -111,4 +145,11 @@ class AgendaitemsController < ApplicationController
       end
     end
   end
+  
+  private
+    
+    def user_in_commission?
+      @commission = Agendaitem.find(params[:id]).commission
+      current_user.commissions.include?(@commission)
+    end
 end

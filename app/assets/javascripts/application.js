@@ -18,4 +18,7 @@ $('.carousel').carousel()
 $('.dropdown-menu').find('form').click(function (e) {
 	e.stopPropagation();
 })
+$('.datumtijdprikker').datetimepicker({ dateFormat: 'yy-mm-dd' });
+$('.datumprikker').datepicker({ dateFormat: 'yy-mm-dd' });
+$('.tijdprikker').timepicker({});
 });

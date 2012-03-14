@@ -1,0 +1,136 @@
+%h1
+  =@agendaitem.name
+%br
+.row
+  .span6
+    .row
+      %h2 Informatie
+    .row
+      .span5
+        .row
+          %hr{:class => "no-margin"}
+    .row
+      Type:
+      = if @agendaitem.intern; 'Kronos ' else 'Externe ' end
+      = @agendaitem.category
+    .row
+      Datum:
+      = @agendaitem.date.strftime("%d %B %H:%M")
+    .row
+      Locatie:
+      = @agendaitem.location
+    .row
+      Organiserende commissie:
+      = if @agendaitem.commission; link_to @agendaitem.commission.name, @agendaitem.commission end
+    .row
+      %p
+        = simple_format(@agendaitem.description)
+    .row
+      .span5
+        .row
+          %hr
+  .span6
+    .row
+      %h2 Programma
+    .row
+      .span5
+        .row
+          %hr{:class => "no-margin"}
+    - @agendaitem.events.each do |event|
+      .row
+        Dit is een event
+    .row
+      .span5
+        .row
+          %hr
+  - if @agendaitem.subscribe
+    .span6
+      .row
+        %h2 Inschrijflijst
+      .row
+        .span5
+          .row
+            %hr{:class => "no-margin"}
+      - if current_user
+        .row
+          .span5
+            - @agendaitem.subscriptions.each do |subscription|
+              .row
+                .span4
+                  .row
+                    = subscription.name + ' - ' + subscription.comment
+                - show_to :admin do
+                  .span1
+                    .row
+                      = link_to 'Uitschrijven', subscription, confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
+      - else
+        .row
+          Je moet inloggen om deze lijst te kunnen zien.
+      .row
+        .span5
+          .row
+            %hr
+  .span6
+    .row
+      %h2 Inschrijven
+    .row
+      .span5
+        .row
+          %hr{:class => "no-margin"}
+    - if @agendaitem.subscribe
+      - if ((@agendaitem.subscriptiondeadline - Time.now) > 0)
+        .row
+          %i{:class => "icon-ok-sign"}
+          = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
+        - if current_user
+          - if defined?(@subscription)
+            .row
+              = render 'subscription_form'
+          - else
+            .row
+              Je hebt je al ingeschreven.
+              = link_to 'Uitschrijven', @subscriptionbestaand , confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete
+        - else
+          .row
+            Je moet inloggen om je te kunnen inschrijven.
+      - else
+        .row
+          %i{:class => "icon-ok-sign"}
+          Gesloten
+        .row
+          Je kunt je niet meer in- of uitschrijven.
+    - else
+      .row
+        %i{:class => "icon-remove-sign"}
+        Er is geen inschrijving
+    .row
+      .span5
+        .row
+          %hr
+  - show_to :admin do
+    .span6
+      .row
+        %h2{:class => "acties"}
+          Agendapunt - acties
+      .row
+        .span5
+          .row
+            %hr{:class => "no-margin"}
+      .row
+        %ul
+          %li
+            = link_to 'Agendapunt bewerken', edit_agendaitem_path(@agendaitem)
+          %li
+            = link_to 'Agendapunt verwijderen', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete
+          %li
+            = link_to 'Inschrijvingen aanpassen', '/'
+          %li
+            = link_to 'Progamma aanpassen', '/agendaitems/' + @agendaitem.id.to_s + '/addevents'
+      .row
+        .span5
+          .row
+            %hr
+.row
+  .span6
+    .row
+      = link_to 'Terug', agendaitems_path
