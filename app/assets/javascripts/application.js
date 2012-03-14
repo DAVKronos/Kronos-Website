@@ -8,8 +8,10 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require_tree .
 //= require bootstrap
+//= require load-image
+//= require bootstrap-image-gallery
+//= require_tree .
 $(document).ready(function () {
 $(".alert-message").alert()
 $(".alert").alert()

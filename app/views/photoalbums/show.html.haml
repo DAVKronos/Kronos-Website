@@ -1,11 +1,21 @@
-%ul.thumbnails
-  - @photoalbum.photos.each do |photo|
-    %li.span3
-      .thumbnail
-        - if photo.youtube_id == ""
-          = link_to image_tag(photo.photo.url :thumb), photo
-        - else
-          = link_to image_tag("http://img.youtube.com/vi/#{photo.youtube_id}/0.jpg"), photo
-        .caption
-          - show_to :admin do
-            = link_to 'verwijder', photo, :method => :delete, :confirm => "Weet je het zeker?", :class => 'btn'
+#gallery{"data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
+  %ul.thumbnails
+    - @photoalbum.photos.each do |photo|
+      %li.span3
+        .thumbnail
+          = link_to image_tag(photo.photo.url(:thumb)), photo.photo.url(:normal), html_options = {:rel => "gallery"}
+          .caption
+            - show_to :admin do
+              = link_to 'verwijder', photo, :method => :delete, :confirm => "Weet je het zeker?", :class => 'btn'
+
+%div{:id => "modal-gallery", :class => "modal modal-gallery hide fade"}
+  %div{:class => "modal-header"}
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h3 class="modal-title"></h3>
+  %div{:class =>"modal-body"} 
+    %div{:class => "modal-image"}
+  %div{:class =>"modal-footer"}
+    <a class="btn btn-primary modal-next">Next <i class="icon-arrow-right icon-white"></i></a>
+    <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Previous</a>
+    <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
+    <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>
