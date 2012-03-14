@@ -14,7 +14,8 @@ namespace :import do
       album = Photoalbum.new(:name => old_album.Naam)
       old_album.photos.find_each do |old_photo|
         photo = album.photos.build
-        photo.photo = File.new("/Volumes/Wouter's Secret Disk/Kronosbackup/website/_kronos/files/fotos/foto_#{old_photo.FotoID}.jpg")
+        filename = "/Volumes/Wouter's Secret Disk/Kronosbackup/website/_kronos/files/fotos/foto_#{old_photo.FotoID}.jpg"
+        photo.photo = File.new(filename) if FileTest.exists?(filename)
       end
       album.save
     end
