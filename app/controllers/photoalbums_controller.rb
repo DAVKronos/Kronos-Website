@@ -43,7 +43,7 @@ class PhotoalbumsController < ApplicationController
 
     respond_to do |format|
       if @photoalbum.save
-        format.html { redirect_to @photoalbum, notice: 'Photoalbum was successfully created.' }
+        format.html { redirect_to edit_photoalbum_path @photoalbum, notice: 'Photoalbum was successfully created.' }
         format.json { render json: @photoalbum, status: :created, location: @photoalbum }
       else
         format.html { render action: "new" }

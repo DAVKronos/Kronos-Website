@@ -8,9 +8,15 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require bootstrap
+//= require tmpl
 //= require load-image
+//= require canvas-to-blob
+//= require bootstrap
 //= require bootstrap-image-gallery
+//= require jquery.iframe-transport
+//= require jquery.fileupload
+//= require jquery.fileupload-ip
+//= require jquery.fileupload-ui
 //= require_tree .
 $(document).ready(function () {
 $(".alert-message").alert()
