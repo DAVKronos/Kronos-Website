@@ -83,3 +83,16 @@ h2.kronosactiviteit a {
 h2.acties {
         color: #990000;
 }
+
+legend {
+        color: #333333;
+        font-weight: bold;
+        margin: 0px;
+        width: 380px;
+}
+
+fieldset hr {
+        position: relative;
+        width: 380px;
+        text-align:left
+}

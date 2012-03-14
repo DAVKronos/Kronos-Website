@@ -38,9 +38,6 @@
                 = if ((agendaitem.subscriptiondeadline - Time.now) > 0); h distance_of_time_in_words(agendaitem.subscriptiondeadline, Time.now); else 'Gesloten'; end
               - else
                 %i{:class => "icon-remove-sign"}
-          .span2
-            .row
-              = if agendaitem.commission; link_to agendaitem.commission.name, agendaitem.commission end
         .row
           .span5
             .row
