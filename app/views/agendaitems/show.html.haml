@@ -20,9 +20,10 @@
       .row
         Locatie:
         = @agendaitem.location
-      .row
-        Organiserende commissie:
-        = if @agendaitem.commission; link_to @agendaitem.commission.name, @agendaitem.commission end
+      - if @agendaitem.commission
+        .row
+          Organiserende commissie:
+          = link_to @agendaitem.commission.name, @agendaitem.commission
       .row
         %p
           = simple_format(@agendaitem.description)

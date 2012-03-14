@@ -98,10 +98,6 @@ class AgendaitemsController < ApplicationController
   def create
     @agendaitem = Agendaitem.new(params[:agendaitem])
     
-    commissiont = Commission.last
-    
-    @agendaitem = commissiont.agendaitems.build(params[:agendaitem])
-    
     respond_to do |format|
       if @agendaitem.save
         format.html { redirect_to :controller => "agendaitems", :action => "newevents", :id => @agendaitem.id, notice: 'Agendaitem was successfully created.' }
