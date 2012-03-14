@@ -5,8 +5,9 @@
 
   = f.label :agendaitem
   = f.select(:agendaitem_id, Agendaitem.all.delete_if{|x| ((x.photoalbum != @photoalbum) && x.photoalbum) }.collect {|p| [ p.name, p.id ] })
-
-  = f.submit :class => "btn"
+  
+  .actions
+    = f.submit :class => "btn"
   
   
 - if params[:action]==("edit")
