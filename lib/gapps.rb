@@ -43,6 +43,6 @@ class Gapps
   
   def login
      @gapps = GData::Client::Apps.new
-     @gapps.clientlogin('webmaster@kronos.nl', 'changeme')
+     @gapps.clientlogin('webmaster@kronos.nl', Settings.gapps_password)
    end
 end

@@ -93,7 +93,7 @@ class User < ActiveRecord::Base
   
   def purge_member_from_group
      gapps = Gapps.new
-     gapps.destroy_group_member("leden2", self.email) if self.email_changed?
+     gapps.destroy_group_member("leden2", self.email_was) if self.email_changed? && !self.new_record?
    end
   
   def remove_member_from_group
