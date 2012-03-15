@@ -12,8 +12,7 @@
     = render 'layouts/header'
     .container.round
       -flash.each do |key, value|
-        - henk = key=="alert" ? "flash alert-#{key} fade in" : "flash alert fade in" 
-        %div{:class => henk}
+        %div{:class => "alert alert-#{key} fade in"}
           =value
           %a{:class => :close, "data-dismiss" => "alert"} x
       = yield

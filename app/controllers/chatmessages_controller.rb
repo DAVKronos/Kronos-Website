@@ -53,7 +53,9 @@ class ChatmessagesController < ApplicationController
 
     respond_to do |format|
       if humanCheck && @chatmessage.save
-        format.html { redirect_to chatmessages_path, notice: 'Chatmessage was successfully created.' }
+        format.html { redirect_to chatmessages_path 
+                      flash[:success] = "Chatmessage was successfully created." 
+                    }
         format.json { render json: @chatmessage, status: :created, location: @chatmessage }
       else
         format.html { redirect_to chatmessages_path }

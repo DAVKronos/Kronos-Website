@@ -23,7 +23,7 @@
 $(document).ready(function () {
 $(".alert-message").alert()
 $(".alert").alert()
-setTimeout("$('.flash').fadeOut('slow');", 3000);
+setTimeout("$('.alert').fadeOut('slow');", 3000);
 $('.carousel').carousel()
 $('.dropdown-menu').find('form').click(function (e) {
 	e.stopPropagation();
