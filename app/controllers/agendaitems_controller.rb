@@ -142,9 +142,17 @@ class AgendaitemsController < ApplicationController
   end
   
   private
-    
-    def user_in_commission?
-      @commission = Agendaitem.find(params[:id]).commission
-      current_user.commissions.include?(@commission)
+  
+  def humanCheck
+    if current_user
+      true
+    else
+      verify_recaptcha
     end
+  end  
+  
+  def user_in_commission?
+    @commission = Agendaitem.find(params[:id]).commission
+    current_user.commissions.include?(@commission)
+  end
 end

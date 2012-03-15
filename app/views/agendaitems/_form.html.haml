@@ -40,17 +40,20 @@
             = f.fields_for :events do |event_field|
               %div{:class => "well span4"}
                 .row
-                  = event_field.label :date
+                  = event_field.label "Tijd", :class => "span1"
                   - if event_field.object.date.respond_to?(:strftime)
-                    = event_field.text_field :date, {:class => "tijdprikker", :value => event_field.object.date.strftime('%H:%M')}
+                    = event_field.text_field :date, {:class => "tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}
                   - else
-                    = event_field.text_field :date, {:class => "tijdprikker", :value => Time.now.strftime('%H:%M')}
-                  = event_field.label :eventtype
-                  = event_field.select(:eventtype_id, Eventtype.all.collect { |p| [p.name, p.id] })
-                  = event_field.label :distance
-                  = event_field.text_field :distance
-                  <br />
-                  = event_field.link_to_remove "Verwijder dit programmaonderdeel"
+                    = event_field.text_field :date, {:class => "tijdprikker span1", :value => Time.now.strftime('%H:%M')}
+                .row
+                  = event_field.label "Type", :class => "span1"
+                  = event_field.select :eventtype_id, Eventtype.all.collect { |p| [p.name, p.id] }
+                .row
+                  = event_field.label "Afstand", :class => "span1"
+                  = event_field.text_field :distance, :class => "span1"
+                .row
+                  .span4
+                    = event_field.link_to_remove "Verwijder dit programmaonderdeel"
             .span4
               .row
                 = f.link_to_add "Voeg een programmaonderdeel toe", :events
