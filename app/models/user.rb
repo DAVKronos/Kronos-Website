@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
     acts_as_authorization_subject  :association_name => :roles, :join_table_name => :roles_users
     acts_as_authorization_object join_table_name: "roles_users"
     
-    before_save :remove_member_from_group
+    before_save :purge_member_from_group
     after_save :update_group_membership
     after_destroy :remove_member_from_group
   
@@ -88,8 +88,13 @@ class User < ActiveRecord::Base
   
   def update_group_membership
     gapps = Gapps.new
-    gapps.add_group_member("leden2", self.email)
+    gapps.add_group_member("leden2", self.email) if self.email_changed?
   end
+  
+  def purge_member_from_group
+     gapps = Gapps.new
+     gapps.destroy_group_member("leden2", self.email) if self.email_changed?
+   end
   
   def remove_member_from_group
     gapps = Gapps.new
