@@ -10,7 +10,7 @@
             = f.label :intern
             = f.check_box :intern, :placeholder => "Van Kronos?"
             = f.label :category
-            = f.select(:category, [['Baan-wedstrijd'], ['Cross-wedstrijd'], ['Indoor-wedstrijd'], ['Meerkamp-wedstrijd'], ['Weg-wedstrijd'], ['---'], ['Activiteit'], ['Bardienst'], ['Borrel'], ['Training'], ['Vergadering'], ['---'], ['Overig']])
+            = f.select(:category, [['Baan-wedstrijd'], ['Cross-wedstrijd'], ['Indoor-wedstrijd'], ['Meerkamp-wedstrijd'], ['Weg-wedstrijd'], ['---'], ['Activiteit'], ['Bardienst'], ['Borrel'],                                                ['Training'], ['Vergadering'], ['---'], ['Overig']])
             = f.label :date
             = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker", :value => @agendaitem.date.strftime('%Y-%m-%d %H:%M')}
             = f.label :description

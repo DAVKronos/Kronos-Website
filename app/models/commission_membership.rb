@@ -1,7 +1,7 @@
 class CommissionMembership < ActiveRecord::Base
   belongs_to :user
   belongs_to :commission
-  after_save :add_member_to_group
+  before_save :add_member_to_group
   after_destroy :remove_member_from_group
   
   validates :commission_id, :presence => true
@@ -17,6 +17,15 @@ class CommissionMembership < ActiveRecord::Base
     gapps = Gapps.new
     gapps.destroy_group_member(self.commission.email.split("@").first, self.user.email)
   end
+  
+  def update_commission_email(oldEmail, email)
+    gapps = Gapps.new
+    gapps.destroy_group_member(self.commission.email.split("@").first, oldEmail)
+    gapps.add_group_member(self.commission.email.split("@").first, email)
+  end
+    
+  
+
 end
 
 # == Schema Information

@@ -39,8 +39,7 @@ class User < ActiveRecord::Base
     acts_as_authorization_subject  :association_name => :roles, :join_table_name => :roles_users
     acts_as_authorization_object join_table_name: "roles_users"
     
-    before_save :purge_member_from_group
-    after_save :update_group_membership
+    before_save :purge_member_from_group, :update_group_membership, :update_commission_email
     after_destroy :remove_member_from_group
   
     attr_accessible :email, :address, :postalcode, 
@@ -100,6 +99,15 @@ class User < ActiveRecord::Base
     gapps = Gapps.new
     gapps.destroy_group_member("leden2", self.email)
   end
+  
+  def update_commission_email
+    if self.email_changed?
+      self.commission_memberships.each do |commem|
+        commem.update_commission_email(self.email_was, self.email)
+      end
+    end
+  end
+  
   
 end
 
