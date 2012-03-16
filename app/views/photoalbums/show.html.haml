@@ -1,12 +1,14 @@
 #gallery{"data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
   %ul.thumbnails
-    - @photoalbum.photos.each do |photo|
+    - @photos.each do |photo|
       %li.span3
         .thumbnail
           = link_to image_tag(photo.photo.url(:thumb)), photo.photo.url(:normal), html_options = {:rel => "gallery"}
           .caption
-            - show_to :admin do
-              = link_to 'verwijder', photo, :method => :delete, :confirm => "Weet je het zeker?", :class => 'btn'
+            = photo.caption
+              
+    .span12
+      = will_paginate @photos, :previous_label => '<', :next_label => '>'
 
 %div{:id => "modal-gallery", :class => "modal modal-gallery hide fade"}
   %div{:class => "modal-header"}

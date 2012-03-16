@@ -31,6 +31,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :production do
+  gem 'unicorn'
+  gem 'daemons'
+end
+
 group :test do
   gem 'rspec-rails', '2.8.1'
   gem 'webrat', '0.7.3'

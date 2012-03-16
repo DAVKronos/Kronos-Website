@@ -14,6 +14,7 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums/1.json
   def show
     @photoalbum = Photoalbum.find(params[:id])
+    @photos = @photoalbum.photos.paginate(:page => params[:page], :order => 'created_at DESC', :per_page => 12)
 
     respond_to do |format|
       format.html # show.html.erb
