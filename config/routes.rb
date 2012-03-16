@@ -8,7 +8,6 @@ KronosWebsite::Application.routes.draw do
   end
   resources :news_items
   resources :subscriptions
-  resources :events
   resources :users
   resources :commissions
   resources :commission_memberships
@@ -17,9 +16,6 @@ KronosWebsite::Application.routes.draw do
   match '/eventtypes/:id/copy', :to => 'eventtypes#copy'
   resources :eventtypes
 
-  match '/results/list', :to => 'results#list'
-  resources :results
-
   match '/chatmessages/archief', :to => 'chatmessages#archief'
   resources :chatmessages
 
@@ -27,11 +23,10 @@ KronosWebsite::Application.routes.draw do
   match '/newsitems/agreed/:id', :to => 'newsitems#agreed'
   resources :newsitems
 
-  match '/agendaitems/:id/addevents', :to => 'agendaitems#newevents'
-  match '/agendaitems/wedstrijden', :to => 'agendaitems#wedstrijden'
   match '/agendaitems/archief', :to => 'agendaitems#archief'
   resources :agendaitems do
     resources :results
+    resources :events
   end
   
   match '/signin', :to => 'user_sessions#new'

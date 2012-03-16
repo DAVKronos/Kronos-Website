@@ -16,9 +16,9 @@ class CommissionsController < ApplicationController
   
   def create
     @commission = Commission.new(params[:commission])
-    gapps = Gapps.new
-    gapps.create_group(@commission.email.split('@').first, @commission.name, @commission.description)
     if @commission.save
+      gapps = Gapps.new
+      gapps.create_group(@commission.email.split('@').first, @commission.name, @commission.description)
       redirect_to @commission
     else
       render 'new'
@@ -36,9 +36,6 @@ class CommissionsController < ApplicationController
   
   def edit
     @commission = Commission.find_by_id(params[:id])
-    @commission_membership = CommissionMembership.new
-    @commission_membership.commission_id = @commission.id
-    @commission_memberships = @commission.commission_memberships
   end
   
   def update

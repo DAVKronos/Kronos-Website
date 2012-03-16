@@ -1,7 +1,10 @@
 %li.span3
-  = link_to image_tag(user.avatar.url(:pass)), user, :class => 'thumbnail'
-
-  - show_to :admin do
+  .thumbnail
+    = link_to image_tag(user.avatar.url(:pass)), user
+  
     .caption
-      = link_to 'edit', edit_user_path(user), :class => 'btn'
-      = link_to 'verwijder', user, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{user.name}", :class => 'btn'
+      %h5= user.name
+
+      - show_to :admin do
+        = link_to 'edit', edit_user_path(user), :class => 'btn'
+        = link_to 'verwijder', user, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{user.name}", :class => 'btn'

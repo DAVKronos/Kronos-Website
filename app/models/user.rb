@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
   
   def update_group_membership
     gapps = Gapps.new
-    gapps.add_group_member("leden2", self.email) if self.email_changed?
+    gapps.add_group_member("leden2", self.email, self.name.split[1], self.name.split[0]) if self.email_changed?
   end
   
   def purge_member_from_group

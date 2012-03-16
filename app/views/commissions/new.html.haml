@@ -1,8 +1,8 @@
 %h1= t(:new_commission).capitalize
 
-= form_for(@commission) do |f|
+= nested_form_for(@commission) do |f|
 
   = render 'fields', :f => f
 
-  #actions
-  =f.submit :toevoegen
+  .actions
+    = f.submit :class => "btn"

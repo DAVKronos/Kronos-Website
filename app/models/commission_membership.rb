@@ -10,7 +10,7 @@ class CommissionMembership < ActiveRecord::Base
   
   def add_member_to_group
     gapps = Gapps.new
-    gapps.add_group_member(self.commission.email.split("@").first, self.user.email)
+    gapps.add_group_member(self.commission.email.split("@").first, self.user.email, self.user.name.split[1], self.user.name.split[0])
   end
   
   def remove_member_from_group
@@ -21,7 +21,7 @@ class CommissionMembership < ActiveRecord::Base
   def update_commission_email(oldEmail, email)
     gapps = Gapps.new
     gapps.destroy_group_member(self.commission.email.split("@").first, oldEmail)
-    gapps.add_group_member(self.commission.email.split("@").first, email)
+    gapps.add_group_member(self.commission.email.split("@").first, email, self.user.name.split[1], self.user.name.split[0])
   end
     
   

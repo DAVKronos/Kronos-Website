@@ -4,19 +4,7 @@
 
   = render 'fields', :f => f
   
-  %h2 Leden
+  .actions
+    = f.submit :class => "btn"
 
-
-  = f.fields_for :commission_memberships do |commem_form|
-    .well
-      = commem_form.collection_select(:user_id, User.all, :id, :name)
-      #field 
-      = commem_form.label :function
-      %br
-      = commem_form.text_field :function
-      = commem_form.link_to_remove "Verwijder dit lid" unless params[:action] == "edit"
-  %p= f.link_to_add "Voeg een lid toe", :commission_memberships
-  
-  #actions
-  =f.submit :wijzigen
 

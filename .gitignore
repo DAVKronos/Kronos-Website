@@ -9,7 +9,6 @@ config/database.yml
 nbproject/
 public/system/avatars/
 public/system/photos/
-public/assets/
 public/javascripts/
 /log/
 config/application.yml

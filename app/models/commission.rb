@@ -3,7 +3,7 @@ class Commission < ActiveRecord::Base
   has_many :users, :through => :commission_memberships, :dependent => :destroy
   has_many :agendaitems
   
-  accepts_nested_attributes_for :commission_memberships
+  accepts_nested_attributes_for :commission_memberships, :allow_destroy => true
 end
 
 # == Schema Information

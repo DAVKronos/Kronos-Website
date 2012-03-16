@@ -19,13 +19,14 @@ class Gapps
   end
   handle_asynchronously :destroy_group
   
-  def add_group_member(groupId, memberId)
+  def add_group_member(groupId, memberId, memberFamilyName, memberGivenName)
      post = <<-EOF
 <?xml version="1.0" encoding="UTF-8"?>
       <atom:entry xmlns:atom="http://www.w3.org/2005/Atom"
           xmlns:apps="http://schemas.google.com/apps/2006"
           xmlns:gd="http://schemas.google.com/g/2005">
           <apps:property name="memberId" value="#{memberId}"/>
+          <apps:name familyName="#{memberFamilyName}" givenName="#{memberGivenName}"/>
       </atom:entry>
       EOF
       login

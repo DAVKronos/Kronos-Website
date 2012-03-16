@@ -3,14 +3,14 @@ class AgendaitemsController < ApplicationController
          action :destroy do
            allow :admin
          end
-         actions :index, :wedstrijden, :show, :showresults, :archief do
+         actions :index, :wedstrijden, :show, :archief do
            allow all
          end
          actions :new, :create do
            allow logged_in
            allow :admin
          end
-         actions :edit, :update, :newevents, :editevents, :newresults, :editresults do
+         actions :edit, :update do
            allow logged_in, :if => :user_in_commission?
            allow :admin
          end
@@ -37,32 +37,6 @@ class AgendaitemsController < ApplicationController
     @agendaitem.subscriptiondeadline = Time.now
   end
   
-  def newevents
-    @agendaitem = Agendaitem.find(params[:id])
-    @agendaitem.events.build
-    @agendaitem.events.build
-    @agendaitem.events.build
-    @agendaitem.events.build
-    @agendaitem.events.build
-  end
-  
-  def editevents
-    @agendaitem = Agendaitem.find(params[:id])
-  end
-  
-  def newresults
-    @agendaitem = Agendaitem.find(params[:id])
-    @agendaitem.events.each do |event|
-      @agendaitem.subscriptions.each do |subscription|
-        result = event.results.build
-        result.username = subscription.name
-        if subscription.user
-          result.user = subscription.user
-        end
-      end
-    end
-  end
-  
   def show
     @agendaitem = Agendaitem.find(params[:id])
     
@@ -83,15 +57,6 @@ class AgendaitemsController < ApplicationController
     @reaction.agendaitem = @agendaitem
     if current_user
       @reaction.user = current_user
-    end
-  end
-  
-  def showresults
-    @agendaitem = Agendaitem.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @result }
     end
   end
 
@@ -120,10 +85,6 @@ class AgendaitemsController < ApplicationController
   end
 
   def edit
-    @agendaitem = Agendaitem.find(params[:id])
-  end
-  
-  def editresults
     @agendaitem = Agendaitem.find(params[:id])
   end
 

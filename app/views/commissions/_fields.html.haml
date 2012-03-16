@@ -1,15 +1,18 @@
-= render 'shared/error_messages', :object => f.object  
-#field 
-  = f.label :name
-  %br
-  = f.text_field :name
+= f.label :name
+= f.text_field :name
   
-#field 
-  = f.label :description
-  %br
-  = f.text_area :description
+
+= f.label :description
+= f.text_area :description
   
-#field 
-  = f.label :email
-  %br
-  = f.email_field :email
+
+= f.label :email
+= f.email_field :email
+
+= f.fields_for :commission_memberships do |commem_form|
+  .well
+    = commem_form.collection_select(:user_id, User.all, :id, :name)
+    = commem_form.label :function
+    = commem_form.text_field :function
+    %p= commem_form.link_to_remove "Verwijder dit lid"
+%p= f.link_to_add "Voeg een lid toe", :commission_memberships
