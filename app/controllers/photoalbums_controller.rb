@@ -2,7 +2,7 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums
   # GET /photoalbums.json
   def index
-    @photoalbums = Photoalbum.all
+    @photoalbums = Photoalbum.paginate(:page => params[:page], :order => 'created_at DESC', :per_page => 12)
 
     respond_to do |format|
       format.html # index.html.erb

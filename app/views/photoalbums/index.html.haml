@@ -3,4 +3,8 @@
 %ul{:class => "thumbnails"}
   = render @photoalbums
   
+.span12
+  = will_paginate @photoalbums, :previous_label => '<', :next_label => '>'
+
+  
 = link_to 'Nieuw Fotoalbum', new_photoalbum_path
