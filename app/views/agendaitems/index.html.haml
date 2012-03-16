@@ -35,7 +35,11 @@
               Inschrijving:
               - if agendaitem.subscribe
                 %i{:class => "icon-ok-sign"}
-                = if ((agendaitem.subscriptiondeadline - Time.now) > 0); h distance_of_time_in_words(agendaitem.subscriptiondeadline, Time.now); else 'Gesloten'; end
+                - if ((agendaitem.subscriptiondeadline - Time.now) > 0)
+                  nog
+                  = h distance_of_time_in_words(agendaitem.subscriptiondeadline, Time.now)
+                - else 
+                  Gesloten 
               - else
                 %i{:class => "icon-remove-sign"}
         .row

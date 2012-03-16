@@ -24,8 +24,11 @@
           .row
         
             .span5
-              = h time_ago_in_words chatmessage.created_at
-              geleden
+              - if chatmessage.created_at > 1.day.ago
+                = h time_ago_in_words chatmessage.created_at
+                geleden
+              - else
+                = time_tag(chatmessage.created_at)
     .row
       %hr
         

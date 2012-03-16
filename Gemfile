@@ -15,6 +15,7 @@ gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem "settingslogic", "~> 2.0.8"
 gem "bootstrap-will_paginate", "~> 0.0.6"
+gem "chronic_duration", "~> 0.9.6"
 
 # For development under Linux you also need to install
 # an javascript runtime

@@ -85,6 +85,7 @@
         - if ((@agendaitem.subscriptiondeadline - Time.now) > 0)
           .row
             %i{:class => "icon-ok-sign"}
+            nog
             = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
           - if current_user
             - if defined?(@subscription)

@@ -1,5 +1,41 @@
 class Eventtype < ActiveRecord::Base
   has_many :events
+  
+  def stringcal(expressie)
+    while expressie.scan(/\([^\(\)]+\)/).size > 0
+      ex = expressie[/\([^\(\)]+\)/]
+      expressie.sub!(/\([^\(\)]+\)/, cal(ex).to_s)
+    end
+    return expressie
+  end
+
+  def cal(exp)
+    tempstr = exp
+    gescand = tempstr.scan(/(\d+\.?\d*)/)
+    actie = tempstr.scan(/(\*|\+|\-|\/|\^|\%)/)[0][0]
+    operand1 = gescand[0][0].to_f
+    operand2 = gescand[1][0].to_f
+
+    case actie
+      when "+"
+        result = operand1 + operand2
+      when "-"
+        result = operand1 - operand2
+      when "*"
+        result = operand1 * operand2
+      when "/"
+        result = operand1 / operand2
+      when "^"
+        result = operand1 ** operand2
+      when "%"
+        result = operand1 % operand2
+      else
+        raise RecordNotFound
+    end
+    return result
+  end
+  
+  
 end
 # == Schema Information
 #
