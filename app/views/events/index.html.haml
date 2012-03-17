@@ -10,8 +10,9 @@
             = result.user.name
             prestatie:
             = result.result
-            punten:
-            = result.calculatedResult
+            score:
+            = number_to_human result.calculatedResult, :precision => 2, :significant => false
+            = result.event.eventtype.calculated_unit
       = nested_form_for event,{:remote => true, :html => {:class => "form-inline"}} do |f|
         = f.fields_for :results do |result_field|
           .row

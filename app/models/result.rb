@@ -1,16 +1,22 @@
 class Result < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
-  has_many :reactions
+  has_many :reactions, :dependent => :destroy
   attr_accessor :calculated
   
   def calculatedResult
-    if self.event.eventtype.measuringunit == "s"
-      tempResult = ChronicDuration.parse(self[:result])   # parse the human input
+    result = self[:result].gsub(/,/, ".")
+    if self.event.eventtype.measuringunit =~ /sec/
+      tempResult = ChronicDuration.parse(result)   # parse the human input
     else
-      tempResult = self[:result]
+      tempResult = result
     end
-    self.event.eventtype.calculate_result(tempResult).to_i
+    calculation = event.eventtype.calculate_result(tempResult, self.event.distance)
+    if self.event.eventtype.calculated_unit =~ /punt/
+      calculation.to_i
+    else
+      calculation
+    end
   end
   
   

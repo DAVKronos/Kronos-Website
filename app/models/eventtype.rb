@@ -1,9 +1,11 @@
 class Eventtype < ActiveRecord::Base
-  has_many :events
+  has_many :events, :dependent => :destroy
   
-  def calculate_result(result)
-    engine = MathEngine::MathEngine.new   
-    engine.evaluate(self.formula.gsub(/\$result/, result.to_s))              # Evaluate the expression and output the result
+  def calculate_result(result, distance)
+    engine = MathEngine::MathEngine.new
+    formula = self.formula
+    formula = formula.gsub(/\$distance/, distance.to_s ) if distance
+    engine.evaluate(formula.gsub(/\$result/, result.to_s))              # Evaluate the expression and output the result
 
   end  
 end

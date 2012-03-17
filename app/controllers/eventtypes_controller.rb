@@ -38,7 +38,7 @@ class EventtypesController < ApplicationController
     
     @eventtype.name = copyeventtype.name
     @eventtype.shortname = copyeventtype.shortname    
-    @eventtype.calculation = copyeventtype.calculation
+    @eventtype.formula = copyeventtype.formula
     @eventtype.calculated_unit = copyeventtype.calculated_unit
     @eventtype.measuringunit = copyeventtype.measuringunit
     

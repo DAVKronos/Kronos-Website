@@ -1,15 +1,15 @@
 class Photo < ActiveRecord::Base
   include Rails.application.routes.url_helpers
-  has_attached_file :photo, :styles => { :thumb => "260x180#", :normal => "940>"}
+  has_attached_file :photo, :styles => { :thumb => "260x180#", :normal => "1680x1050>"}
   belongs_to :photoalbum
-  has_many :tags
-  has_many :reactions
+  has_many :tags, :dependent => :destroy
+  has_many :reactions, :dependent => :destroy
   
   validates_attachment_presence :photo
   
   def to_jq_upload
       {
-        "name" => "picture1.jpg",
+        "name" => self.photo_file_name,
         "size" => photo.size,
         "url" => photo.url,
         "thumbnail_url" => photo.url(:thumb),

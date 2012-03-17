@@ -9,6 +9,7 @@
               
     .span12
       = will_paginate @photos, :previous_label => '<', :next_label => '>'
+      <button data-toggle="button" class="btn btn-primary" id="toggle-fullscreen">Toggle Fullscreen</button>
 
 %div{:id => "modal-gallery", :class => "modal modal-gallery hide fade"}
   %div{:class => "modal-header"}
