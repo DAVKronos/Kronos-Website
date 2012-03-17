@@ -4,7 +4,6 @@ class CommissionMembership < ActiveRecord::Base
   before_save :add_member_to_group
   after_destroy :remove_member_from_group
   
-  validates :commission_id, :presence => true
   validates :user_id,       :presence => true
   validates :function,      :presence => true
   

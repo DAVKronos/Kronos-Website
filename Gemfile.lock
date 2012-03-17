@@ -4,6 +4,13 @@ GIT
   specs:
     nested_form (0.2.0)
 
+GIT
+  remote: git@github.com:dmarczal/math_engine.git
+  revision: aac9017a9808876b2a033ec1e63c388f726d1ee2
+  specs:
+    math_engine (0.3.0)
+      lexr (>= 0.2.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -85,15 +92,16 @@ GEM
       thor (~> 0.14)
     json (1.6.5)
     kgio (2.7.3)
+    lexr (0.2.3)
     libv8 (3.3.10.4)
-    mail (2.4.3)
+    mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.1.0)
-    nokogiri (1.5.0)
-    nokogiri (1.5.0-x86-mingw32)
+    nokogiri (1.5.2)
+    nokogiri (1.5.2-x86-mingw32)
     numerizer (0.1.1)
     paperclip (2.7.0)
       activerecord (>= 2.3.0)
@@ -212,6 +220,7 @@ DEPENDENCIES
   gdata
   haml (= 3.1.4)
   jquery-rails
+  math_engine (~> 0.3.0)!
   nested_form!
   paperclip (~> 2.7.0)
   pg

@@ -1,3 +1,12 @@
+-if @commission.errors.any? 
+  .error_explanation
+    %h2
+      = pluralize(@commission.errors.count, "error")
+      prohibited this newsitem from being saved
+    %ul
+      -@commission.errors.full_messages.each do |msg|
+        %li= msg
+
 = f.label :name
 = f.text_field :name
   

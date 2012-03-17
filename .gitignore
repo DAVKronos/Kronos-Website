@@ -10,7 +10,7 @@ nbproject/
 public/system/avatars/
 public/system/photos/
 public/javascripts/
+public/assets
 /log/
 config/application.yml
-
 vendor/bundle

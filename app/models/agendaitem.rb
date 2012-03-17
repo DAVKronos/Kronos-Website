@@ -1,7 +1,7 @@
 class Agendaitem < ActiveRecord::Base
   belongs_to :commission
   has_one :photoalbum
-  has_many :events
+  has_many :events, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
   has_many :reactions, :dependent => :destroy
   accepts_nested_attributes_for :events, :allow_destroy => true

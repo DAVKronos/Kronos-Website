@@ -28,6 +28,7 @@ KronosWebsite::Application.routes.draw do
     resources :results
     resources :events
   end
+  resources :events
   
   match '/signin', :to => 'user_sessions#new'
   match '/signout', :to => 'user_sessions#destroy'

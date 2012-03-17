@@ -4,12 +4,13 @@ class Result < ActiveRecord::Base
   has_many :reactions
   attr_accessor :calculated
   
-  def result=(val)
-        if self.event.event_type.measuringunit == "s"
-          self[:best_performance] = ChronicDuration.parse(val)   # parse the human input
-        else
-          self[:best_performance] = val
-        end
+  def calculatedResult
+    if self.event.eventtype.measuringunit == "s"
+      tempResult = ChronicDuration.parse(self[:result])   # parse the human input
+    else
+      tempResult = self[:result]
+    end
+    self.event.eventtype.calculate_result(tempResult).to_i
   end
   
   

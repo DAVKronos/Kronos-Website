@@ -1,0 +1,25 @@
+%h1 Events
+-@events.each do |event|
+  .row
+    .span12
+      %h5= event.eventtype.name
+      = l event.date
+      %ul
+        - event.results.each do |result|
+          %li
+            = result.user.name
+            prestatie:
+            = result.result
+            punten:
+            = result.calculatedResult
+      = nested_form_for event,{:remote => true, :html => {:class => "form-inline"}} do |f|
+        = f.fields_for :results do |result_field|
+          .row
+            .span8.well
+              = result_field.collection_select(:user_id, User.all, :id, :name)
+              = result_field.text_field :result, :placeholder => "Prestatie"
+              = result_field.link_to_remove "Verwijder deze uitslag"
+        .row
+          .span3
+            = f.link_to_add "Voeg een uitslag toe", :results
+            = f.submit :class => "btn btn-success"
