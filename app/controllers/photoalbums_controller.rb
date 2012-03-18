@@ -1,4 +1,5 @@
 class PhotoalbumsController < ApplicationController
+  load_and_authorize_resource
   # GET /photoalbums
   # GET /photoalbums.json
   def index

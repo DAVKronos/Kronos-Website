@@ -7,4 +7,5 @@
   = will_paginate @photoalbums, :previous_label => '<', :next_label => '>'
 
   
-= link_to 'Nieuw Fotoalbum', new_photoalbum_path
+-if can? :create, Photoalbum
+  = link_to 'Nieuw Fotoalbum', new_photoalbum_path

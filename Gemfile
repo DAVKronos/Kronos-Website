@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'haml', '3.1.4'
 gem 'authlogic'
-gem 'acl9'
+gem 'cancan'
 gem 'pg'
 gem 'will_paginate', '3.0.3'
 gem 'paperclip', '~> 2.7.0'
@@ -17,7 +17,7 @@ gem "settingslogic", "~> 2.0.8"
 gem "bootstrap-will_paginate", "~> 0.0.6"
 gem "chronic_duration", "~> 0.9.6"
 gem 'math_engine', '~> 0.3.0', :git => 'git@github.com:dmarczal/math_engine.git'
-gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
+gem 'client_side_validations', '3.2.0.beta.3'
 gem 'localeapp'
 
 # For development under Linux you also need to install

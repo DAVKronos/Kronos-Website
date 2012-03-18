@@ -1,16 +1,5 @@
 class UsersController < ApplicationController
-  access_control do
-        actions :new, :create, :destroy do
-          allow :admin
-        end
-        actions :index, :show do
-          allow logged_in
-        end
-        actions :edit, :update do
-          allow logged_in, :if => :user_current_user?
-          allow :admin
-        end
-    end
+  load_and_authorize_resource
   
   def new
     @user = User.new

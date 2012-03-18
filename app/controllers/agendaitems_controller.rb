@@ -1,21 +1,5 @@
 class AgendaitemsController < ApplicationController
-  access_control do
-         action :destroy do
-           allow :admin
-         end
-         actions :index, :wedstrijden, :show, :archief do
-           allow all
-         end
-         actions :new, :create do
-           allow logged_in
-           allow :admin
-         end
-         actions :edit, :update do
-           allow logged_in, :if => :user_in_commission?
-           allow :admin
-         end
-     end
-
+  load_and_authorize_resource
   
   def index
     @agendaitems = Agendaitem.where("date >= ?", Time.now).paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
@@ -111,10 +95,5 @@ class AgendaitemsController < ApplicationController
     else
       verify_recaptcha
     end
-  end  
-  
-  def user_in_commission?
-    @commission = Agendaitem.find(params[:id]).commission
-    current_user.commissions.include?(@commission)
   end
 end

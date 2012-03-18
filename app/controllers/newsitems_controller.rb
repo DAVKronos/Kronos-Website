@@ -1,4 +1,5 @@
 class NewsitemsController < ApplicationController
+  load_and_authorize_resource
   # GET /newsitems
   # GET /newsitems.json
   def index

@@ -1,12 +1,5 @@
 class PagesController < ApplicationController
-  access_control do 
-     actions :admin do
-       allow :admin
-     end
-     actions :home, :show, :test, :edit, :update, :nieuw do
-       allow all
-     end
-   end
+  load_and_authorize_resource
   def home
   end
 

@@ -1,17 +1,5 @@
 class ChatmessagesController < ApplicationController
-  
-  access_control do
-         actions :destroy do
-           allow :admin
-         end
-         actions :index, :archief, :new, :create do
-           allow all
-         end
-         actions :edit, :update do
-           allow logged_in, :if => :user_current_user?
-           allow :admin
-         end
-     end
+  load_and_authorize_resource
   # GET /chatmessages
   # GET /chatmessages.json
   def index

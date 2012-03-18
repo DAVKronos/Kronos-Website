@@ -10,22 +10,6 @@ class Chatmessage < ActiveRecord::Base
   attr_accessible :by, :message, :email 
   belongs_to :user
   validates_presence_of :by, :message, :email
-  
-  def allow_edit?(user)
-    if user
-      return (user.has_role?(:admin) || user.id == self.user_id)
-    else
-      return false
-    end
-  end
-  
-  def allow_destroy?(user)
-    if user
-      return (user.has_role?(:admin) || user.id == self.user_id)
-    else
-      return false
-    end
-  end
 end
 # == Schema Information
 #

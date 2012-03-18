@@ -1,4 +1,5 @@
 class EventtypesController < ApplicationController
+  load_and_authorize_resource
   # GET /eventtypes
   # GET /eventtypes.json
   def index

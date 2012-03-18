@@ -16,10 +16,10 @@
             .span3
               = simple_format(chatmessage.message)
           
-  
-          - if chatmessage.allow_edit?(current_user)
+          
+          - if can? :update, chatmessage
             = link_to 'Edit', edit_chatmessage_path(chatmessage)
-          - if chatmessage.allow_destroy?(current_user)
+          - if can? :destroy, chatmessage
             = link_to 'Destroy', chatmessage, confirm: 'Are you sure?', method: :delete
           .row
         

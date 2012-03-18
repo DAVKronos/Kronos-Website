@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316173732) do
+ActiveRecord::Schema.define(:version => 20120318201037) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -97,6 +97,79 @@ ActiveRecord::Schema.define(:version => 20120316173732) do
     t.integer  "agreed_by"
   end
 
+  create_table "old_agendaitems", :id => false, :force => true do |t|
+    t.integer "AgendaID",                            :null => false
+    t.date    "Datum"
+    t.string  "Plaats",               :limit => 100
+    t.string  "Omschrijving",         :limit => 80
+    t.text    "ExtraInfo"
+    t.integer "Inschrijven"
+    t.date    "SluitingInschrijving"
+    t.integer "CommissieID"
+    t.integer "AgendapuntTypeID"
+    t.integer "Voorpagina"
+    t.string  "InschrijvenEmail"
+  end
+
+  create_table "old_events", :id => false, :force => true do |t|
+    t.integer "WedstrijdID",                :null => false
+    t.date    "Datum"
+    t.string  "Plaats",      :limit => 100
+    t.string  "Naam",        :limit => 120
+    t.text    "Opmerking"
+    t.integer "Outdoor"
+  end
+
+  create_table "old_photoalbums", :id => false, :force => true do |t|
+    t.integer "FotoAlbumID",                :null => false
+    t.string  "Naam",        :limit => 150
+    t.date    "Datum"
+  end
+
+  create_table "old_results", :id => false, :force => true do |t|
+    t.integer "UitslagID",                                  :null => false
+    t.integer "WedstrijdID",                :default => 0,  :null => false
+    t.string  "Deelnemer",   :limit => 100, :default => "", :null => false
+    t.string  "Onderdeel",   :limit => 100, :default => "", :null => false
+    t.string  "Prestatie",   :limit => 30,  :default => "", :null => false
+    t.integer "VoorKronos"
+    t.integer "Geslacht"
+    t.float   "Wind"
+    t.string  "Punten",      :limit => 20
+    t.float   "Kosten"
+  end
+
+  create_table "old_users", :id => false, :force => true do |t|
+    t.integer "LidID",                              :null => false
+    t.string  "Voorletters",         :limit => 12
+    t.string  "Voornaam",            :limit => 50
+    t.string  "Achternaam",          :limit => 60
+    t.string  "Naam",                :limit => 70
+    t.date    "GeboorteDatum"
+    t.string  "Email",               :limit => 100
+    t.string  "Adres",               :limit => 100
+    t.string  "Postcode",            :limit => 10
+    t.string  "Woonplaats",          :limit => 80
+    t.string  "Wijk",                :limit => 20
+    t.string  "UIN",                 :limit => 20
+    t.string  "Telefoon",            :limit => 30
+    t.string  "MobieleTelefoon",     :limit => 30
+    t.text    "Opmerking"
+    t.integer "Geslacht"
+    t.string  "Wachtwoord",          :limit => 15
+    t.string  "LicentieNummer",      :limit => 25
+    t.integer "LidTypeID"
+    t.integer "Privacy",             :limit => 2
+    t.integer "Incasso",             :limit => 2
+    t.integer "Jurylid",             :limit => 2
+    t.string  "Campuskaart",         :limit => 20
+    t.string  "Rekeningnummer",      :limit => 20
+    t.string  "WedstrijdVereniging", :limit => 80
+    t.string  "Nickname",            :limit => 100
+    t.integer "OVKaart"
+    t.integer "KMeterPapier",        :limit => 2
+  end
+
   create_table "pages", :force => true do |t|
     t.text     "information"
     t.datetime "created_at",  :null => false
@@ -143,19 +216,6 @@ ActiveRecord::Schema.define(:version => 20120316173732) do
     t.datetime "updated_at", :null => false
     t.integer  "event_id"
     t.integer  "user_id"
-  end
-
-  create_table "roles", :force => true do |t|
-    t.string   "name",              :limit => 40
-    t.string   "authorizable_type", :limit => 40
-    t.integer  "authorizable_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-  end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "role_id"
   end
 
   create_table "subscriptions", :force => true do |t|

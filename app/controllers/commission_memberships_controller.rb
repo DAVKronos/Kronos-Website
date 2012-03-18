@@ -1,4 +1,5 @@
 class CommissionMembershipsController < ApplicationController
+  load_and_authorize_resource
   
   def destroy
     commission_membership = CommissionMembership.find(params[:id])

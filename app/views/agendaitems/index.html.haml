@@ -20,12 +20,13 @@
             .row
               = agendaitem.category + ' - '
               = l agendaitem.date, :format => :long
-          - show_to :admin do
+          - if can? :update, agendaitem
             .span2
               .row
                 = link_to('Bewerken', edit_agendaitem_path(agendaitem))
-                |
-                = link_to('Verwijderen', agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete)
+                - if can? :destroy, agendaitem
+                  |
+                  = link_to('Verwijderen', agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete)
         .row
           %br
           %p
@@ -50,7 +51,7 @@
     .span12
       .row
         = will_paginate @agendaitems, :previous_label => '<', :next_label => '>'
-    - show_to :admin do
+    - if can? :create, Agendaitem
       .span6
         .row
           %h2{:class => "acties"}

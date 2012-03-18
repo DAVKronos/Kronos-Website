@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+  load_and_authorize_resource
   # GET /subscriptions
   # GET /subscriptions.json
   def index

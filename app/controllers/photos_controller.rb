@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  load_and_authorize_resource
     def index
       @photos = Photoalbum.find(params[:photoalbum_id]).photos
       render :json => @photos.collect { |p| p.to_jq_upload }.to_json

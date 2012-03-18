@@ -1,4 +1,5 @@
 class ReactionsController < ApplicationController
+  load_and_authorize_resource
   # GET /reactions
   # GET /reactions.json
   def index

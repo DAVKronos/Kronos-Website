@@ -1,5 +1,6 @@
 require File.join(Rails.root, 'lib','gapps')
 class CommissionsController < ApplicationController
+  load_and_authorize_resource
   
   access_control do
     actions :destroy, :new, :create, :update, :edit do

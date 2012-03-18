@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/bcardarella/client_side_validations.git
-  revision: fa9aa7f610c3a46d89f8bc1b896e62090fe0b8f0
-  specs:
-    client_side_validations (3.2.0.beta.3)
-
-GIT
   remote: git://github.com/ryanb/nested_form.git
   revision: 486e0f0e93f3ca455d5d0fc7869053257b6afce2
   specs:
@@ -21,7 +15,6 @@ GEM
   remote: http://rubygems.org/
   specs:
     ZenTest (4.6.2)
-    acl9 (0.12.0)
     actionmailer (3.2.1)
       actionpack (= 3.2.1)
       mail (~> 2.4.0)
@@ -60,8 +53,10 @@ GEM
     bootstrap-will_paginate (0.0.6)
       will_paginate
     builder (3.0.0)
+    cancan (1.6.7)
     chronic_duration (0.9.6)
       numerizer (~> 0.1.1)
+    client_side_validations (3.2.0.beta.3)
     cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -219,14 +214,14 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest (= 4.6.2)
-  acl9
   annotate (~> 2.4.1.beta1)
   authlogic
   autotest-fsevent (~> 0.2.8)
   autotest-growl (~> 0.2.16)
   bootstrap-will_paginate (~> 0.0.6)
+  cancan
   chronic_duration (~> 0.9.6)
-  client_side_validations!
+  client_side_validations (= 3.2.0.beta.3)
   coffee-rails (~> 3.2.1)
   daemons
   delayed_job

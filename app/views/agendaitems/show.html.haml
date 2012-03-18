@@ -140,7 +140,7 @@
         .span5
           .row
             %hr
-    - show_to :admin do
+    - if can? :update, @agendaitem
       .span6
         .row
           %h2{:class => "acties"}
@@ -153,8 +153,9 @@
           %ul
             %li
               = link_to 'Agendapunt bewerken', edit_agendaitem_path(@agendaitem)
-            %li
-              = link_to 'Agendapunt verwijderen', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete
+            -if can? :destroy, @agendaitem  
+              %li
+                = link_to 'Agendapunt verwijderen', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete
             %li
               = link_to 'Inschrijvingen aanpassen', '/'
         .row

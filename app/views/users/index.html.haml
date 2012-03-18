@@ -4,5 +4,5 @@
 %ul{:class => "thumbnails"}
   = render @users
 = will_paginate @users
-- show_to :admin do
+- if can? :create, User
   = link_to "Lid Toevoegen", new_user_path
