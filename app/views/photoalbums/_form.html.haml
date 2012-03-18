@@ -4,7 +4,7 @@
   = f.text_field :name
 
   = f.label :agendaitem
-  = f.select(:agendaitem_id, Agendaitem.all.delete_if{|x| ((x.photoalbum != @photoalbum) && x.photoalbum) }.collect {|p| [ p.name, p.id ] })
+  = f.collection_select(:agendaitem_id, Agendaitem.order("date DESC").limit("10"), :id, :name, :prompt => true)
   
   .actions
     = f.submit :class => "btn"

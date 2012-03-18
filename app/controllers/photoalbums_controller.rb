@@ -26,6 +26,7 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums/new.json
   def new
     @photoalbum = Photoalbum.new
+    @agendaitems = Agendaitem.order("date DESC").limit("10")
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @photoalbum }
@@ -47,7 +48,7 @@ class PhotoalbumsController < ApplicationController
         format.html { redirect_to edit_photoalbum_path @photoalbum, notice: 'Photoalbum was successfully created.' }
         format.json { render json: @photoalbum, status: :created, location: @photoalbum }
       else
-        format.html { render action: "new" }
+        format.html { render 'new' }
         format.json { render json: @photoalbum.errors, status: :unprocessable_entity }
       end
     end

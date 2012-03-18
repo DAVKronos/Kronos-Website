@@ -18,16 +18,17 @@ class AgendaitemsController < ApplicationController
 
   
   def index
-    @agendaitems = Agendaitem.where("date >= ?", Time.now).order("date ASC")
+    @agendaitems = Agendaitem.where("date >= ?", Time.now).paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
   end
   
   def wedstrijden
-    @agendaitems = Agendaitem.where("date >= ? AND category LIKE ?", Time.now, '%wedstrijd%').order("date ASC")
+    @agendaitems = Agendaitem.where("date >= ? AND category LIKE ?", Time.now, '%wedstrijd%').paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
     render :action => "index"
   end
   
   def archief
-    @agendaitems = Agendaitem.order("date DESC")
+    @agendaitems = Agendaitem.paginate(:page => params[:page], :order => 'date DESC', :per_page => 10)
+    
     render :action => "index"
   end
 

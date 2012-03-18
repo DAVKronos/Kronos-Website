@@ -2,7 +2,8 @@ class Result < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
   has_many :reactions, :dependent => :destroy
-  attr_accessor :calculated
+  
+  validates_presence_of :result
   
   def calculatedResult
     result = self[:result].gsub(/,/, ".")
@@ -17,6 +18,12 @@ class Result < ActiveRecord::Base
     else
       calculation
     end
+  end
+  
+  def username=(val)
+    user = User.find_by_name(val)
+    self[:user_id] = user.id if user
+    self[:username] = val
   end
   
   

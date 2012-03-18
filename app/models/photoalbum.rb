@@ -3,6 +3,8 @@ class Photoalbum < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
   accepts_nested_attributes_for :photos
   validates_associated :photos
+  
+  validates_uniqueness_of :agendaitem_id
 end
 # == Schema Information
 #

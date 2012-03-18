@@ -1,0 +1,25 @@
+%h5= event.eventtype.name
+= l event.date
+%ul
+  - event.results.each do |result|
+    %li
+      = result.username
+      prestatie:
+      = result.result
+      score:
+      = number_to_human result.calculatedResult, :precision => 2, :significant => false
+      = result.event.eventtype.calculated_unit
+= nested_form_for event,{:remote => true, :html => {:class => "resultform form-inline"}} do |f|
+  = f.fields_for :results do |result_field|
+    .row
+      .span8.well
+        - nameArray = []
+        - User.all.each do |user|
+          - nameArray << user.name
+        = result_field.text_field :username, :class => :typeahead , "data-source" => "#{nameArray}", "data-provide" => "typeahead"
+        = result_field.text_field :result, :placeholder => "Prestatie"
+        = result_field.link_to_remove "Verwijder deze uitslag"
+  .row
+    .span3
+      = f.link_to_add "Voeg een uitslag toe", :results
+      = f.submit :class => "btn btn-success"

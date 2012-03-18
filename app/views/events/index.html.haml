@@ -1,23 +1,26 @@
 %h1 Events
 -@events.each do |event|
   .row
-    .span12
+    .span12.event
       %h5= event.eventtype.name
       = l event.date
       %ul
         - event.results.each do |result|
           %li
-            = result.user.name
+            = result.username
             prestatie:
             = result.result
             score:
             = number_to_human result.calculatedResult, :precision => 2, :significant => false
             = result.event.eventtype.calculated_unit
-      = nested_form_for event,{:remote => true, :html => {:class => "form-inline"}} do |f|
+      = nested_form_for event,{:remote => true, :html => {:class => "resultform form-inline"}} do |f|
         = f.fields_for :results do |result_field|
           .row
             .span8.well
-              = result_field.collection_select(:user_id, User.all, :id, :name)
+              - nameArray = []
+              - User.all.each do |user|
+                - nameArray << user.name
+              = result_field.text_field :username, :class => :typeahead , "data-source" => "#{nameArray}", "data-provide" => "typeahead"
               = result_field.text_field :result, :placeholder => "Prestatie"
               = result_field.link_to_remove "Verwijder deze uitslag"
         .row

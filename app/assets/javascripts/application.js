@@ -19,9 +19,11 @@
 //= require jquery.fileupload
 //= require jquery.fileupload-ip
 //= require jquery.fileupload-ui
+//= require rails.validations
 //= require_tree .
 $(document).ready(function () {
 $(".alert-message").alert()
+$('.typeahead').typeahead()
 $(".alert").alert()
 setTimeout("$('.alert').fadeOut('slow');", 3000);
 $('.carousel').carousel()

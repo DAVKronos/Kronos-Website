@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/bcardarella/client_side_validations.git
+  revision: fa9aa7f610c3a46d89f8bc1b896e62090fe0b8f0
+  specs:
+    client_side_validations (3.2.0.beta.3)
+
+GIT
   remote: git://github.com/ryanb/nested_form.git
   revision: 486e0f0e93f3ca455d5d0fc7869053257b6afce2
   specs:
@@ -210,6 +216,7 @@ DEPENDENCIES
   autotest-growl (~> 0.2.16)
   bootstrap-will_paginate (~> 0.0.6)
   chronic_duration (~> 0.9.6)
+  client_side_validations!
   coffee-rails (~> 3.2.1)
   daemons
   delayed_job

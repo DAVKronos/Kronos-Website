@@ -1,0 +1,4 @@
+- @results.each do |result|
+  = result.user.name
+  
+= will_paginate @results, :previous_label => '<', :next_label => '>'
