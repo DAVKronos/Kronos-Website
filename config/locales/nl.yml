@@ -1,224 +1,283 @@
-# Dutch translations for Ruby on Rails, based on US English template
-# Original version by Ariejan de Vroom <ariejan@ariejan.net>
-# - Sponsored by Kabisa ICT - http://kabisa.nl
-# Rails 3 update by Floris Huetink <floris@avocado.nl> (github: florish)
-
 nl:
   recaptcha:
     errors:
-      incorrect-captcha-sol: "Vul a.u.b. de captcha goed in"
-  
-  error: "fout weerhield"
-  errorpl: "fouten weerhielden"
-  sign_up: "inschrijven"
-  name: "naam"
-  initials: "initialen"
-  birthdate: "geboortedatum"
-  email: "email"
-  address: "adres"
-  licensenumber: "licentienummer"
-  postalcode: "postcode"
-  city: "stad"
-  sex: "geslacht"
-  papieren_kronometer: "papieren kronometer"
-  edit: "aanpassen"
-  commission: "commissie"
-  new_commission: "nieuwe commissie"
-  function: "functie"
-  description: "beschrijving"
-    
+      incorrect-captcha-sol: Vul a.u.b. de captcha goed in
+  error: fout weerhield
+  errorpl: fouten weerhielden
+  sign_up: inschrijven
+  name: naam
+  initials: initialen
+  birthdate: geboortedatum
+  email: email
+  address: adres
+  licensenumber: licentienummer
+  postalcode: postcode
+  city: stad
+  sex: geslacht
+  papieren_kronometer: papieren kronometer
+  edit: aanpassen
+  commission: commissie
+  new_commission: nieuwe commissie
+  function: functie
+  description: beschrijving
   date:
     formats:
-      default: "%d/%m/%Y"
-      short: "%e %b"
-      long: "%e %B %Y"
-      only_day: "%e"
-
-    day_names: [zondag, maandag, dinsdag, woensdag, donderdag, vrijdag, zaterdag]
-    abbr_day_names: [zon, maa, din, woe, don, vri, zat]
-
-    month_names: [~, januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december]
-    abbr_month_names: [~, jan, feb, mar, apr, mei, jun, jul, aug, sep, okt, nov, dec]
+      default: ! '%d/%m/%Y'
+      short: ! '%e %b'
+      long: ! '%e %B %Y'
+      only_day: ! '%e'
+    day_names:
+    - zondag
+    - maandag
+    - dinsdag
+    - woensdag
+    - donderdag
+    - vrijdag
+    - zaterdag
+    abbr_day_names:
+    - zon
+    - maa
+    - din
+    - woe
+    - don
+    - vri
+    - zat
+    month_names:
+    - 
+    - januari
+    - februari
+    - maart
+    - april
+    - mei
+    - juni
+    - juli
+    - augustus
+    - september
+    - oktober
+    - november
+    - december
+    abbr_month_names:
+    - 
+    - jan
+    - feb
+    - mar
+    - apr
+    - mei
+    - jun
+    - jul
+    - aug
+    - sep
+    - okt
+    - nov
+    - dec
     order:
-      - :day
-      - :month
-      - :year
-
+    - :day
+    - :month
+    - :year
   time:
     formats:
-      default: "%a %d %b %Y %H:%M:%S %Z"
-      short: "%d %b %H:%M"
-      long: "%d %B %Y %H:%M"
-      time: "%H:%M"
-      only_second: "%S"
-    am: "'s ochtends"
-    pm: "'s middags"
-
+      default: ! '%a %d %b %Y %H:%M:%S %Z'
+      short: ! '%d %b %H:%M'
+      long: ! '%d %B %Y %H:%M'
+      time: ! '%H:%M'
+      only_second: ! '%S'
+    am: ! '''s ochtends'
+    pm: ! '''s middags'
   support:
     array:
-      words_connector: ", "
-      two_words_connector: " en "
-      last_word_connector: " en "
-
+      words_connector: ! ', '
+      two_words_connector: ! ' en '
+      last_word_connector: ! ' en '
     select:
-      prompt: "Selecteer"
-
+      prompt: Selecteer
   number:
     format:
-      separator: ","
-      delimiter: "."
+      separator: ! ','
+      delimiter: .
       precision: 2
       significant: false
       strip_insignificant_zeros: false
-
     currency:
       format:
-        format: "%u%n"
-        unit: "€"
-        separator: ","
-        delimiter: "."
+        format: ! '%u%n'
+        unit: €
+        separator: ! ','
+        delimiter: .
         precision: 2
         significant: false
         strip_insignificant_zeros: false
-
     percentage:
       format:
-        delimiter: ""
-
+        delimiter: ''
     precision:
       format:
-        delimiter: ""
-
+        delimiter: ''
     human:
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 3
         significant: true
         strip_insignificant_zeros: true
       storage_units:
-        format: "%n %u"
+        format: ! '%n %u'
         units:
           byte:
-            one: "Byte"
-            other: "Bytes"
-          kb: "KB"
-          mb: "MB"
-          gb: "GB"
-          tb: "TB"
+            one: Byte
+            other: Bytes
+          kb: KB
+          mb: MB
+          gb: GB
+          tb: TB
       decimal_units:
-        format: "%n %u"
+        format: ! '%n %u'
         units:
-          unit: ""
-          thousand: "duizend"
-          million: "miljoen"
-          billion: "miljard"
-          trillion: "biljoen"
-          quadrillion: "biljard"
-
+          unit: ''
+          thousand: duizend
+          million: miljoen
+          billion: miljard
+          trillion: biljoen
+          quadrillion: biljard
   datetime:
     distance_in_words:
-      half_a_minute: "een halve minuut"
+      half_a_minute: een halve minuut
       less_than_x_seconds:
-        one: "minder dan één seconde"
-        other: "minder dan %{count} seconden"
+        one: minder dan één seconde
+        other: minder dan %{count} seconden
       x_seconds:
-        one: "1 seconde"
-        other: "%{count} seconden"
+        one: 1 seconde
+        other: ! '%{count} seconden'
       less_than_x_minutes:
-        one: "minder dan één minuut"
-        other: "minder dan %{count} minuten"
+        one: minder dan één minuut
+        other: minder dan %{count} minuten
       x_minutes:
-        one: "1 minuut"
-        other: "%{count} minuten"
+        one: 1 minuut
+        other: ! '%{count} minuten'
       about_x_hours:
-        one: "ongeveer één uur"
-        other: "ongeveer %{count} uur"
+        one: ongeveer één uur
+        other: ongeveer %{count} uur
       x_days:
-        one: "1 dag"
-        other: "%{count} dagen"
+        one: 1 dag
+        other: ! '%{count} dagen'
       about_x_months:
-        one: "ongeveer één maand"
-        other: "ongeveer %{count} maanden"
+        one: ongeveer één maand
+        other: ongeveer %{count} maanden
       x_months:
-        one: "1 maand"
-        other: "%{count} maanden"
+        one: 1 maand
+        other: ! '%{count} maanden'
       about_x_years:
-        one: "ongeveer één jaar"
-        other: "ongeveer %{count} jaar"
+        one: ongeveer één jaar
+        other: ongeveer %{count} jaar
       over_x_years:
-        one: "meer dan één jaar"
-        other: "meer dan %{count} jaar"
+        one: meer dan één jaar
+        other: meer dan %{count} jaar
       almost_x_years:
-        one: "bijna één jaar"
-        other: "bijna %{count} jaar"
+        one: bijna één jaar
+        other: bijna %{count} jaar
     prompts:
-      year: "jaar"
-      month: "maand"
-      day: "dag"
-      hour: "uur"
-      minute: "minuut"
-      second: "seconde"
-
+      year: jaar
+      month: maand
+      day: dag
+      hour: uur
+      minute: minuut
+      second: seconde
   helpers:
     select:
-      prompt: "Selecteer"
-
+      prompt: Selecteer
     submit:
-      create: '%{model} toevoegen'
-      update: '%{model} bewaren'
-      submit: '%{model} opslaan'
-
+      create: ! '%{model} toevoegen'
+      update: ! '%{model} bewaren'
+      submit: ! '%{model} opslaan'
   errors:
-    format: "%{attribute} %{message}"
-
-    messages: &errors_messages
-      inclusion: "is niet in de lijst opgenomen"
-      exclusion: "is niet beschikbaar"
-      invalid: "is ongeldig"
-      confirmation: "komt niet met de bevestiging overeen"
-      accepted: "moet worden geaccepteerd"
-      empty: "moet opgegeven zijn"
-      blank: "moet opgegeven zijn"
-      too_long: "is te lang (maximaal %{count} tekens)"
-      too_short: "is te kort (minimaal %{count} tekens)"
-      wrong_length: "heeft onjuiste lengte (moet %{count} tekens lang zijn)"
-      not_a_number: "is geen getal"
-      not_an_integer: "moet een geheel getal zijn"
-      greater_than: "moet groter zijn dan %{count}"
-      greater_than_or_equal_to: "moet groter dan of gelijk zijn aan %{count}"
-      equal_to: "moet gelijk zijn aan %{count}"
-      less_than: "moet minder zijn dan %{count}"
-      less_than_or_equal_to: "moet minder dan of gelijk zijn aan %{count}"
-      odd: "moet oneven zijn"
-      even: "moet even zijn"
-
+    format: ! '%{attribute} %{message}'
+    messages:
+      inclusion: is niet in de lijst opgenomen
+      exclusion: is niet beschikbaar
+      invalid: is ongeldig
+      confirmation: komt niet met de bevestiging overeen
+      accepted: moet worden geaccepteerd
+      empty: moet opgegeven zijn
+      blank: moet opgegeven zijn
+      too_long: is te lang (maximaal %{count} tekens)
+      too_short: is te kort (minimaal %{count} tekens)
+      wrong_length: heeft onjuiste lengte (moet %{count} tekens lang zijn)
+      not_a_number: is geen getal
+      not_an_integer: moet een geheel getal zijn
+      greater_than: moet groter zijn dan %{count}
+      greater_than_or_equal_to: moet groter dan of gelijk zijn aan %{count}
+      equal_to: moet gelijk zijn aan %{count}
+      less_than: moet minder zijn dan %{count}
+      less_than_or_equal_to: moet minder dan of gelijk zijn aan %{count}
+      odd: moet oneven zijn
+      even: moet even zijn
+      record_invalid: ! 'Validatie mislukt: %{errors}'
+      taken: is al in gebruik
+    template:
+      body: ! 'Controleer de volgende velden:'
+      header:
+        one: ! '%{model} niet opgeslagen: 1 fout gevonden'
+        other: ! '%{model} niet opgeslagen: %{count} fouten gevonden'
   activerecord:
     errors:
       template:
         header:
-          one: "%{model} niet opgeslagen: 1 fout gevonden"
-          other: "%{model} niet opgeslagen: %{count} fouten gevonden"
-        body: "Controleer de volgende velden:"
-
+          one: ! '%{model} niet opgeslagen: 1 fout gevonden'
+          other: ! '%{model} niet opgeslagen: %{count} fouten gevonden'
+        body: ! 'Controleer de volgende velden:'
       messages:
-        taken: "is al in gebruik"
-        record_invalid: "Validatie mislukt: %{errors}"
-        <<: *errors_messages
-
+        taken: is al in gebruik
+        record_invalid: ! 'Validatie mislukt: %{errors}'
+        inclusion: is niet in de lijst opgenomen
+        exclusion: is niet beschikbaar
+        invalid: is ongeldig
+        confirmation: komt niet met de bevestiging overeen
+        accepted: moet worden geaccepteerd
+        empty: moet opgegeven zijn
+        blank: moet opgegeven zijn
+        too_long: is te lang (maximaal %{count} tekens)
+        too_short: is te kort (minimaal %{count} tekens)
+        wrong_length: heeft onjuiste lengte (moet %{count} tekens lang zijn)
+        not_a_number: is geen getal
+        not_an_integer: moet een geheel getal zijn
+        greater_than: moet groter zijn dan %{count}
+        greater_than_or_equal_to: moet groter dan of gelijk zijn aan %{count}
+        equal_to: moet gelijk zijn aan %{count}
+        less_than: moet minder zijn dan %{count}
+        less_than_or_equal_to: moet minder dan of gelijk zijn aan %{count}
+        odd: moet oneven zijn
+        even: moet even zijn
       full_messages:
-        format: "%{attribute} %{message}"
-        
+        format: ! '%{attribute} %{message}'
     models:
-      user: "Lid"
-      photoalbum: "Fotoalbum"
+      user: Lid
+      photoalbum: Fotoalbum
     attributes:
       user:
-        name: "Naam"
-        initials: "Initialen"
-        birthdate: "Geboortedatum"
-        postalcode: "Postcode"
-        city: "Stad"
-        sex: "Geslacht"
-        licensenumber: "Licentienummer"
-        address: "Adres"
-
+        name: Naam
+        initials: Initialen
+        birthdate: Geboortedatum
+        postalcode: Postcode
+        city: Stad
+        sex: Geslacht
+        licensenumber: Licentienummer
+        address: Adres
+  edit_commission: Commissie aanpassen
+  distance:
+    centi:
+      one: centimeter
+      other: centimeter
+    thousand:
+      one: kilometer
+      other: kilometer
+    unit:
+      one: meter
+      other: meter
+  page_gap: ! '......'
+  remember_me: onthoud mij
+  next_label: volgende
+  previous_label: vorige
+  photos:
+    title: Foto's
+  will_paginate:
+    next_label: volgende →
+    page_gap: ! '&hellip;'
+    previous_label: ← vorige

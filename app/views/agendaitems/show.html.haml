@@ -41,7 +41,7 @@
       - @agendaitem.events.each do |event|
         .row
           = event.eventtype.name
-          = event.distance
+          = number_to_human event.distance, :units => :distance
           = event.date
       .row
         .span5

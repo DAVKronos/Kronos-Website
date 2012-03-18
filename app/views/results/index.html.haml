@@ -1,4 +1,9 @@
-- @results.each do |result|
-  = result.user.name
+%ul.results
+  - @results.each do |result|
+    %li
+      - if result.user
+        =link_to result.user.name, result.user
+      - else
+        = result.username
   
 = will_paginate @results, :previous_label => '<', :next_label => '>'

@@ -1,5 +1,5 @@
 %div#login
-  =form_for @user_session, :url => user_session_path do |f|
+  =form_for @user_session, :url => user_session_path, :html => {:class => "navbar-form"} do |f|
     %br
     = f.label :login
     = f.text_field :login
@@ -8,4 +8,4 @@
     %label.checkbox
       = t :remember_me
       = f.check_box :remember_me
-    = f.submit "Login", :class => "btn"
+    = f.submit "Login", :class => "btn btn-primary"

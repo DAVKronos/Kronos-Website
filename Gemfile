@@ -18,6 +18,7 @@ gem "bootstrap-will_paginate", "~> 0.0.6"
 gem "chronic_duration", "~> 0.9.6"
 gem 'math_engine', '~> 0.3.0', :git => 'git@github.com:dmarczal/math_engine.git'
 gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
+gem 'localeapp'
 
 # For development under Linux you also need to install
 # an javascript runtime
