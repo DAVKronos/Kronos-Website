@@ -24,10 +24,6 @@ class ChatmessagesController < ApplicationController
   # GET /chatmessages/1/edit
   def edit
     @chatmessage = Chatmessage.find(params[:id])
-    if @chatmessage.allow_edit?(current_user)
-    else
-      redirect_to chatmessages_path, notice: 'You have no rights to edit this message'
-    end
   end
 
   # POST /chatmessages
