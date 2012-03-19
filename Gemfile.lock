@@ -1,15 +1,15 @@
 GIT
-  remote: git://github.com/ryanb/nested_form.git
-  revision: 486e0f0e93f3ca455d5d0fc7869053257b6afce2
-  specs:
-    nested_form (0.2.0)
-
-GIT
-  remote: git@github.com:dmarczal/math_engine.git
+  remote: git://github.com/dmarczal/math_engine.git
   revision: aac9017a9808876b2a033ec1e63c388f726d1ee2
   specs:
     math_engine (0.3.0)
       lexr (>= 0.2.2)
+
+GIT
+  remote: git://github.com/ryanb/nested_form.git
+  revision: 486e0f0e93f3ca455d5d0fc7869053257b6afce2
+  specs:
+    nested_form (0.2.0)
 
 GEM
   remote: http://rubygems.org/
