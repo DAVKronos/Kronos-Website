@@ -1,6 +1,6 @@
 class Agendaitem < ActiveRecord::Base
   belongs_to :commission
-  has_one :photoalbum
+  has_many :photoalbums
   has_many :events, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
   has_many :reactions, :dependent => :destroy
