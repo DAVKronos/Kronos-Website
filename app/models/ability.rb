@@ -23,6 +23,8 @@ class Ability
          can :home, Page
          can :create, Chatmessage
          cannot :read, User
+         cannot :read, Photoalbum
+         cannot :read, Photo
        end
   end
 end
