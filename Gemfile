@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.1'
 gem 'haml', '3.1.4'
-gem 'authlogic'
+gem 'devise'
 gem 'cancan'
 gem 'pg'
 gem 'will_paginate', '3.0.3'

@@ -1,5 +1,7 @@
 KronosWebsite::Application.routes.draw do
 
+  devise_for :users
+
   resources :reactions
   resources :photos
   resources :tags
@@ -30,10 +32,6 @@ KronosWebsite::Application.routes.draw do
     resources :events
   end
   resources :events
-  
-  match '/signin', :to => 'user_sessions#new'
-  match '/signout', :to => 'user_sessions#destroy'
-  resource :user_session
   
   match '/home', :to => 'pages#home'
   match '/nieuw', :to => 'pages#nieuw'

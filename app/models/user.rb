@@ -1,17 +1,21 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable
     
     before_save :purge_member_from_group, :update_group_membership, :update_commission_email
     after_destroy :remove_member_from_group
   
     attr_accessible :email, :address, :postalcode, 
-                      :city, :password, :password_confirmation, 
-                      :papieren_kronometer, :avatar, :avatar_file_name
+                      :city, :phonenumber, :password, :password_confirmation, 
+                      :papieren_kronometer, :avatar, :avatar_file_name, :remember_me
 
     attr_accessible :name, :initials, :birthdate,
                       :sex, :licensenumber, :password,
                       :password_confirmation, :papieren_kronometer,
                       :avatar, :avatar_file_name,:email,
-                      :address, :postalcode, :city, :login, :as => :bestuur
+                      :address, :postalcode, :city, :phonenumber, :as => :bestuur
   
   has_many :commission_memberships, :dependent => :destroy
   has_many :commissions, :through => :commission_memberships
@@ -25,11 +29,6 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "260x180#", :thumb => "50x50#" }
   
   name_regex = /\A[A-Z].+\s(.+\s(.+\s)*)?[A-Z].*(-[A-Z].+)*\z/
-  
-  acts_as_authentic do |config|
-    config.crypto_provider = Authlogic::CryptoProviders::Sha512
-    config.validate_email_field = false
-  end
   
   validates :name, :presence => true,
                    :format => {:with => name_regex}
@@ -67,6 +66,10 @@ class User < ActiveRecord::Base
         commem.update_commission_email(self.email_was, self.email)
       end
     end
+  end
+  
+  def admin?
+    self.commissions.include?(Commission.find_by_name('bestuur'))
   end
   
   

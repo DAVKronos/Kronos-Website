@@ -28,9 +28,10 @@ class UsersController < ApplicationController
   
   def update
     user = User.find_by_id(params[:id])
-        role = (current_user.has_role?(:admin) ? :bestuur : :default)
+        role = (current_user.admin? ? :bestuur : :default)
         if user.update_attributes(params[:user], :as => role)
           flash[:success] = "Profile updated."
+          sign_in user, :bypass => true
           redirect_to user
         else
           render 'edit'

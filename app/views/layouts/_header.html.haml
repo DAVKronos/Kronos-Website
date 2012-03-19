@@ -29,8 +29,15 @@
                 Log in
                 %b.caret
               %ul.dropdown-menu
-                .span4
-                  = render "user_sessions/new"
+                .span4.login-form
+                  = form_tag user_session_path do
+                    = text_field_tag 'user[email]', "", "placeholder" => "emailadres"
+                    = password_field_tag 'user[password]', "", "placeholder" => "wachtwoord"
+                    = label_tag 'user[remember_me]', :class => "checkbox" do
+                      = t :remember_me
+                      = check_box_tag 'user[remember_me]'
+                    %button.btn.btn-primary=t :sign_in
+                    = link_to "Wachtwoord vergeten?", new_password_path('user')
           - else
             %li
               = link_to current_user.name.split[0] + "'s stek", current_user
@@ -40,4 +47,4 @@
               %li
                 = link_to "Beheer", admin_path
             %li
-              = link_to "Log uit", signout_path, :method => :delete
+              = link_to "Log uit", destroy_user_session_path, :method => :delete

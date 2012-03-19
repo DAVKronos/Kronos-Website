@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120318201037) do
+ActiveRecord::Schema.define(:version => 20120319011235) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -97,79 +97,6 @@ ActiveRecord::Schema.define(:version => 20120318201037) do
     t.integer  "agreed_by"
   end
 
-  create_table "old_agendaitems", :id => false, :force => true do |t|
-    t.integer "AgendaID",                            :null => false
-    t.date    "Datum"
-    t.string  "Plaats",               :limit => 100
-    t.string  "Omschrijving",         :limit => 80
-    t.text    "ExtraInfo"
-    t.integer "Inschrijven"
-    t.date    "SluitingInschrijving"
-    t.integer "CommissieID"
-    t.integer "AgendapuntTypeID"
-    t.integer "Voorpagina"
-    t.string  "InschrijvenEmail"
-  end
-
-  create_table "old_events", :id => false, :force => true do |t|
-    t.integer "WedstrijdID",                :null => false
-    t.date    "Datum"
-    t.string  "Plaats",      :limit => 100
-    t.string  "Naam",        :limit => 120
-    t.text    "Opmerking"
-    t.integer "Outdoor"
-  end
-
-  create_table "old_photoalbums", :id => false, :force => true do |t|
-    t.integer "FotoAlbumID",                :null => false
-    t.string  "Naam",        :limit => 150
-    t.date    "Datum"
-  end
-
-  create_table "old_results", :id => false, :force => true do |t|
-    t.integer "UitslagID",                                  :null => false
-    t.integer "WedstrijdID",                :default => 0,  :null => false
-    t.string  "Deelnemer",   :limit => 100, :default => "", :null => false
-    t.string  "Onderdeel",   :limit => 100, :default => "", :null => false
-    t.string  "Prestatie",   :limit => 30,  :default => "", :null => false
-    t.integer "VoorKronos"
-    t.integer "Geslacht"
-    t.float   "Wind"
-    t.string  "Punten",      :limit => 20
-    t.float   "Kosten"
-  end
-
-  create_table "old_users", :id => false, :force => true do |t|
-    t.integer "LidID",                              :null => false
-    t.string  "Voorletters",         :limit => 12
-    t.string  "Voornaam",            :limit => 50
-    t.string  "Achternaam",          :limit => 60
-    t.string  "Naam",                :limit => 70
-    t.date    "GeboorteDatum"
-    t.string  "Email",               :limit => 100
-    t.string  "Adres",               :limit => 100
-    t.string  "Postcode",            :limit => 10
-    t.string  "Woonplaats",          :limit => 80
-    t.string  "Wijk",                :limit => 20
-    t.string  "UIN",                 :limit => 20
-    t.string  "Telefoon",            :limit => 30
-    t.string  "MobieleTelefoon",     :limit => 30
-    t.text    "Opmerking"
-    t.integer "Geslacht"
-    t.string  "Wachtwoord",          :limit => 15
-    t.string  "LicentieNummer",      :limit => 25
-    t.integer "LidTypeID"
-    t.integer "Privacy",             :limit => 2
-    t.integer "Incasso",             :limit => 2
-    t.integer "Jurylid",             :limit => 2
-    t.string  "Campuskaart",         :limit => 20
-    t.string  "Rekeningnummer",      :limit => 20
-    t.string  "WedstrijdVereniging", :limit => 80
-    t.string  "Nickname",            :limit => 100
-    t.integer "OVKaart"
-    t.integer "KMeterPapier",        :limit => 2
-  end
-
   create_table "pages", :force => true do |t|
     t.text     "information"
     t.datetime "created_at",  :null => false
@@ -246,34 +173,33 @@ ActiveRecord::Schema.define(:version => 20120318201037) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "initials"
-    t.string   "email"
+    t.string   "email",                  :default => "",    :null => false
     t.date     "birthdate"
     t.string   "address"
     t.string   "postalcode"
     t.string   "city"
     t.string   "sex"
     t.string   "licensenumber"
-    t.string   "login",                                  :null => false
-    t.string   "persistence_token",                      :null => false
-    t.string   "crypted_password",                       :null => false
-    t.string   "password_salt",                          :null => false
-    t.string   "single_access_token",                    :null => false
-    t.string   "perishable_token",                       :null => false
-    t.integer  "login_count",         :default => 0,     :null => false
-    t.integer  "failed_login_count",  :default => 0,     :null => false
-    t.datetime "last_request_at"
-    t.datetime "current_login_at"
-    t.datetime "last_login_at"
-    t.string   "current_login_ip"
-    t.string   "last_login_ip"
-    t.boolean  "papieren_kronometer", :default => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.boolean  "admin",               :default => false
+    t.boolean  "papieren_kronometer",    :default => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "phonenumber"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
