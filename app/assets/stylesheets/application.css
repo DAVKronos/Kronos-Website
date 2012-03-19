@@ -12,6 +12,11 @@ body{
 background: none repeat scroll 0 0 #F5F6F7;
 }
 
+header .brand img {
+    margin-left: -9px;
+	top: 0px;
+}
+
 .round{
 	background: none repeat scroll 0 0 #FFFFFF;
 	border: 1px solid #DEDEDE;
