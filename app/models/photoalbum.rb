@@ -4,7 +4,7 @@ class Photoalbum < ActiveRecord::Base
   accepts_nested_attributes_for :photos
   validates_associated :photos
   
-  validates_uniqueness_of :agendaitem_id
+  validates_uniqueness_of :agendaitem_id, :unless => self.agendaitem_id == nil
 end
 # == Schema Information
 #

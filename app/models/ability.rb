@@ -6,6 +6,9 @@ class Ability
        if user.admin?
          can :manage, :all
          cannot :update, Chatmessage
+         user.chatmessages.each do |chatmessage|
+           can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
+         end
        elsif !user.new_record?
          can :read, :all
          can :home, Page
