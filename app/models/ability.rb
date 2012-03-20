@@ -13,6 +13,8 @@ class Ability
          can :read, :all
          can :home, Page
          can :create, Chatmessage
+         can :create, Photoalbum
+         can :create, Photo
          can :update, user
          can :destroy, user.chatmessages
          user.chatmessages.each do |chatmessage|

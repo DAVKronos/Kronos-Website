@@ -63,7 +63,7 @@
                   .span4
                     .row
                       = subscription.name + ' - ' + subscription.comment
-                  - show_to :admin do
+                  - if can? :destroy, subscription
                     .span1
                       .row
                         = link_to 'Uitschrijven', subscription, confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete

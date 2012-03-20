@@ -254,6 +254,11 @@ nl:
         even: moet even zijn
       full_messages:
         format: ! '%{attribute} %{message}'
+      models:
+        user:
+          attributes:
+            avatar:
+              block: test
     models:
       user: Lid
       photoalbum: Fotoalbum

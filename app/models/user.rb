@@ -26,7 +26,8 @@ class User < ActiveRecord::Base
   has_many :tags
   has_many :pages
   has_many :reactions
-  has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "260x180#", :thumb => "50x50#" }
+  has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "260x180#", :thumb => "50x50#" }, :path => ":rails_root/public/system/:attachment/:hash.:extension",
+  :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
   
   name_regex = /\A[A-Z].+\s(.+\s(.+\s)*)?[A-Z].*(-[A-Z].+)*\z/
   
