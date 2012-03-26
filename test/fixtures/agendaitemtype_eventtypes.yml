@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  agendaitemtype_id: 1
+  eventtype_id: 1
+
+two:
+  agendaitemtype_id: 1
+  eventtype_id: 1

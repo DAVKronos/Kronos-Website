@@ -1,5 +1,7 @@
 KronosWebsite::Application.routes.draw do
 
+  resources :agendaitemtype_eventtypes
+
   resources :agendaitemtypes
 
   devise_for :users

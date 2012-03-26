@@ -1,0 +1,25 @@
+<%= form_for(@agendaitemtype_eventtype) do |f| %>
+  <% if @agendaitemtype_eventtype.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@agendaitemtype_eventtype.errors.count, "error") %> prohibited this agendaitemtype_eventtype from being saved:</h2>
+
+      <ul>
+      <% @agendaitemtype_eventtype.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :agendaitemtype_id %><br />
+    <%= f.number_field :agendaitemtype_id %>
+  </div>
+  <div class="field">
+    <%= f.label :eventtype_id %><br />
+    <%= f.number_field :eventtype_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

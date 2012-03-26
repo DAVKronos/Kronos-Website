@@ -1,4 +1,5 @@
 class AgendaitemtypesController < ApplicationController
+  load_and_authorize_resource
   # GET /agendaitemtypes
   # GET /agendaitemtypes.json
   def index
