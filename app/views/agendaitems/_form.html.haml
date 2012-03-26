@@ -9,8 +9,8 @@
             = f.text_field :name, :placeholder => "Naam"
             = f.label :intern
             = f.check_box :intern, :placeholder => "Van Kronos?"
-            = f.label :category
-            = f.select(:category, [['Baan-wedstrijd'], ['Cross-wedstrijd'], ['Indoor-wedstrijd'], ['Meerkamp-wedstrijd'], ['Weg-wedstrijd'], ['---'], ['Activiteit'], ['Bardienst'], ['Borrel'],                                                ['Training'], ['Vergadering'], ['---'], ['Overig']])
+            = f.label :agendaitemtype
+            = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name)
             = f.label :date
             = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker"}
             = f.label :description

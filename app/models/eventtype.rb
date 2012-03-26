@@ -2,6 +2,8 @@ class Eventtype < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   has_many :agendaitemtype_eventtypes
   has_many :agendaitemtypes, :through => :agendaitemtype_eventtypes
+  
+  accepts_nested_attributes_for :agendaitemtype_eventtypes, :allow_destroy => true
 
   def calculate_result(result, distance)
     engine = MathEngine::MathEngine.new

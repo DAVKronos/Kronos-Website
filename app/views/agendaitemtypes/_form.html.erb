@@ -1,15 +1,4 @@
-<%= form_for(@agendaitemtype) do |f| %>
-  <% if @agendaitemtype.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@agendaitemtype.errors.count, "error") %> prohibited this agendaitemtype from being saved:</h2>
-
-      <ul>
-      <% @agendaitemtype.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= nested_form_for(@agendaitemtype) do |f| %>
 
   <div class="field">
     <%= f.label :name %><br />

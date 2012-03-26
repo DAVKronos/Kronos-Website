@@ -4,6 +4,7 @@ class Agendaitem < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
   has_many :reactions, :dependent => :destroy
+  belongs_to :agendaitemtype
   accepts_nested_attributes_for :events, :allow_destroy => true
   accepts_nested_attributes_for :subscriptions, :allow_destroy => true
   validates_associated :events

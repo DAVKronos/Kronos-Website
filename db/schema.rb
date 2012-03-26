@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120326185634) do
+ActiveRecord::Schema.define(:version => 20120326195940) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120326185634) do
     t.datetime "updated_at"
     t.string   "category"
     t.boolean  "intern"
+    t.integer  "agendaitemtype_id"
   end
 
   create_table "agendaitemtype_eventtypes", :force => true do |t|
