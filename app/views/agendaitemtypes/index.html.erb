@@ -1,0 +1,23 @@
+<h1>Listing agendaitemtypes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @agendaitemtypes.each do |agendaitemtype| %>
+  <tr>
+    <td><%= agendaitemtype.name %></td>
+    <td><%= link_to 'Show', agendaitemtype %></td>
+    <td><%= link_to 'Edit', edit_agendaitemtype_path(agendaitemtype) %></td>
+    <td><%= link_to 'Destroy', agendaitemtype, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Agendaitemtype', new_agendaitemtype_path %>

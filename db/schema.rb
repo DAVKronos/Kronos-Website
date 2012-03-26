@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
     t.boolean  "subscribe"
     t.datetime "subscriptiondeadline"
     t.integer  "commission_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "category"
     t.boolean  "intern"
   end
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
   create_table "chatmessages", :force => true do |t|
     t.string   "by"
     t.text     "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "email"
     t.integer  "user_id"
   end
@@ -41,16 +41,16 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
     t.boolean  "installed",     :default => false
     t.integer  "user_id",                          :null => false
     t.integer  "commission_id",                    :null => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "commissions", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "email"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -62,16 +62,16 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
     t.datetime "locked_at"
     t.datetime "failed_at"
     t.string   "locked_by"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "events", :force => true do |t|
     t.time     "date"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "eventtype_id"
     t.integer  "agendaitem_id"
     t.float    "distance"
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
     t.string   "formula"
     t.string   "shortname"
     t.string   "measuringunit"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "calculated_unit"
   end
 
@@ -91,31 +91,31 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
     t.string   "title"
     t.text     "news"
     t.boolean  "agreed"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "agreed_by"
   end
 
   create_table "pages", :force => true do |t|
     t.text     "information"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "pagetag"
     t.integer  "user_id"
   end
 
   create_table "photoalbums", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "agendaitem_id"
   end
 
   create_table "photos", :force => true do |t|
     t.string   "caption"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -126,8 +126,8 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
   end
 
   create_table "reactions", :force => true do |t|
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "agendaitem_id"
     t.integer  "result_id"
@@ -139,8 +139,8 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
   create_table "results", :force => true do |t|
     t.string   "username"
     t.string   "result"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "event_id"
     t.integer  "user_id"
   end
@@ -148,8 +148,8 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
   create_table "subscriptions", :force => true do |t|
     t.text     "comment"
     t.string   "name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "agendaitem_id"
   end
@@ -161,13 +161,13 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
     t.integer  "ypos"
     t.integer  "width"
     t.integer  "heigth"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_sessions", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -181,8 +181,8 @@ ActiveRecord::Schema.define(:version => 20120319011235) do
     t.string   "sex"
     t.string   "licensenumber"
     t.boolean  "papieren_kronometer",    :default => false
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
