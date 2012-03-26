@@ -47,7 +47,7 @@
                     = event_field.text_field :date, {:class => "tijdprikker span1", :value => Time.now.strftime('%H:%M')}
                 .row
                   = event_field.label "Type", :class => "span1"
-                  = event_field.select :eventtype_id, Eventtype.all.collect { |p| [p.name, p.id] }
+                  = event_field.select :eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect { |p| [p.name, p.id] }
                 .row
                   = event_field.label "Afstand", :class => "span1"
                   = event_field.text_field :distance, :class => "span1"
