@@ -96,3 +96,15 @@ fieldset hr {
         width: 380px;
         text-align:left
 }
+
+.login-form{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 13px;
+	padding-top : 20px;
+}
+
+
+.login-form a{
+	padding : 0px;
+	margin-top : 5px;
+}
