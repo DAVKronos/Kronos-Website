@@ -1,9 +1,30 @@
-%ul.results
-  - @results.each do |result|
-    %li
-      - if result.user
-        =link_to result.user.name, result.user
-      - else
-        = result.username
+.span12
+  .row
+    %h1 Uitslagen
+  .row
+    - @results.each do |result|
+      .span6
+        .row
+          %h2
+            - if result.event.agendaitem
+              = result.event.agendaitem.name
+              = '-'
+              = result.event.eventtype.name
+              = '(' + result.event.distance.to_s + ')'
+            - else
+              Losse uitslag
+        .row
+          %ul.results
+            %li
+              - if result.user
+                = link_to result.user.name, result.user
+              - else
+                = result.username
+              - if result.result
+                = result.result
+              - if result.event
+                = result.event.eventtype.name
+                - if result.event.distance
+                  = result.event.distance
   
-= will_paginate @results, :previous_label => '<', :next_label => '>'
+  = will_paginate @results, :previous_label => '<', :next_label => '>'
