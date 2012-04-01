@@ -2,29 +2,22 @@
   .row
     %h1 Uitslagen
   .row
-    - @results.each do |result|
-      .span6
-        .row
-          %h2
-            - if result.event.agendaitem
-              = result.event.agendaitem.name
-              = '-'
-              = result.event.eventtype.name
-              = '(' + result.event.distance.to_s + ')'
-            - else
-              Losse uitslag
-        .row
-          %ul.results
-            %li
-              - if result.user
-                = link_to result.user.name, result.user
-              - else
-                = result.username
-              - if result.result
-                = result.result
-              - if result.event
-                = result.event.eventtype.name
-                - if result.event.distance
-                  = result.event.distance
-  
-  = will_paginate @results, :previous_label => '<', :next_label => '>'
+    %ul{:class => "nav nav-tabs"}
+      - @slicedresults.each do |resultset|
+        %li
+          %a{:href => '#' + resultset.first, "data-toggle" => 'tag'}
+            = resultset.first
+  .row
+    .tab-content
+      - @slicedresults.each do |resultset|
+        %div{:class => "tab-pane", :id => "laatste"}
+          .span6
+            .row
+              %ul
+                - resultset.last.each do |result|
+                  %li
+                    = result.created_at
+                    - if result.user
+                      = link_to result.user.name, result.user
+                    - else
+                      = result.username
