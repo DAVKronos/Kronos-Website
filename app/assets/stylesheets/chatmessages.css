@@ -1,0 +1,25 @@
+td.chatboxhead
+{
+  width:40%;
+}
+
+td.chatboxend
+{
+  padding-left:10px;
+}
+
+td.chatboxend p {
+  margin-bottom:0px;
+}
+
+.pagination
+{
+}
+
+.previous_page
+{
+}
+
+.next_page
+{
+}
