@@ -32,6 +32,14 @@ class Agendaitem < ActiveRecord::Base
       return false
     end
   end
+  
+  def count_results()
+    counter = 0
+    self.events.each do |ev|
+      counter += ev.results.count
+    end
+    return counter
+  end
 end
 # == Schema Information
 #

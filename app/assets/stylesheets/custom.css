@@ -103,8 +103,32 @@ fieldset hr {
 	padding-top : 20px;
 }
 
-
 .login-form a{
 	padding : 0px;
 	margin-top : 5px;
+}
+
+.resulttable{
+    width: 100%;
+}
+
+.resulttable thead {
+    background-color: #7dbc53;
+    color: #ffffff;
+}
+
+.resulttable thead td {
+    padding: 5px;
+}
+
+.resulttable tbody td {
+    padding: 5px;
+}
+
+.resulttable tbody tr:nth-child(odd) {
+    background-color: #eff7ea;
+}
+
+.nav-tabs {
+    margin-bottom: 0px;
 }

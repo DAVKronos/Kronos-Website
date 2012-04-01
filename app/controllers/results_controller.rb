@@ -7,10 +7,20 @@ class ResultsController < ApplicationController
     
     @slicedresults = Array.new
 
-    @slicedresults[0] = ["Laatste", Result.where(:created_at => (DateTime.now() - 1.year)..(DateTime.now()))]
-    @slicedresults[1] = ["2012", Result.where(:created_at => (DateTime.now() - 1.year)..(DateTime.now()))]
-    @slicedresults[2] = ["2011", Result.where(:created_at => (DateTime.now() - 1.year)..(DateTime.now()))]
-    @slicedresults[3] = ["2010", Result.where(:created_at => (DateTime.now() - 1.year)..(DateTime.now()))]
+    @slicedresults[0] = ["Laatste", Agendaitem.where("date <= ?", DateTime.now).limit(20)]
+    currentyear = DateTime.now.year
+    
+    tussenresult = [Date.new(currentyear).year.to_s, Agendaitem.where(:date => (Date.new(currentyear - 1)..DateTime.now()))]
+    if !tussenresult.last.empty?
+      @slicedresults[1] = tussenresult
+    end
+    
+    (2..10).each do |i|
+      tussenresult = [Date.new(currentyear - i + 1).year.to_s, Agendaitem.where(:date => (Date.new(currentyear - i)..Date.new(currentyear - i + 2)))]
+      if !tussenresult.last.empty?
+        @slicedresults[i] = tussenresult
+      end
+    end
     
     respond_to do |format|
       format.html # index.html.erb
