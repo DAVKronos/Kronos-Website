@@ -12,7 +12,7 @@
         .tab-content
           - @slicedresults.each do |resultset|
             %div{:class => "tab-pane", :id => resultset.first}
-              %table{:class => "resulttable"}
+              %table{:class => "resulttable", :id => resultset.first}
                 %thead
                   %tr
                     %td Wedstrijd
@@ -36,3 +36,40 @@
     .span3
       .row
         Plaatjes
+  .row
+    %table{:id => "myTable"}
+      %thead
+        %tr
+          %th
+            Last Name
+          %th
+            First Name
+          %th
+            Email
+          %th
+            Due
+          %th
+            Web Site
+      %tbody
+        %tr
+          %td
+            Schenk
+          %td
+            John
+          %td
+            jsmith@gmail.com
+          %td
+            $50.00
+          %td
+            http://www.jsmith.com
+        %tr
+          %td
+            Heinsbroek
+          %td
+            John
+          %td
+            jsmith@gmail.com
+          %td
+            $50.00
+          %td
+            http://www.jsmith.com

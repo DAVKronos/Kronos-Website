@@ -19,6 +19,7 @@
 //= require jquery.fileupload
 //= require jquery.fileupload-ip
 //= require jquery.fileupload-ui
+//= require jquery.tablesorter.js
 //= require rails.validations
 //= require_tree .
 $(document).ready(function () {
@@ -33,6 +34,10 @@ $('.dropdown-menu').find('form').click(function (e) {
 $('.datumtijdprikker').datetimepicker({ dateFormat: 'yy-mm-dd' });
 $('.datumprikker').datepicker({ dateFormat: 'yy-mm-dd' });
 $('.tijdprikker').timepicker({});
+
+$('.resulttable').tablesorter();
+$('#Laatste').tablesorter();
+$('#myTable').tablesorter();
 
 $("form").live("nested:fieldAdded", function(event) {
 $(event.field).find('.tijdprikker').removeClass('hasDatepicker').timepicker({});
