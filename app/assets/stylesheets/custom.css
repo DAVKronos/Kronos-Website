@@ -103,8 +103,65 @@ fieldset hr {
 	padding-top : 20px;
 }
 
-
 .login-form a{
 	padding : 0px;
 	margin-top : 5px;
+}
+
+.nav-tabs{
+    margin-bottom: 0px;
+    margin-left: 8px;
+}
+
+.nav-tabs li a{
+    position: relative;
+    background-color: #bbbdb9;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px 0px #000000;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    bottom: -4px;
+    margin-right: 0px;
+    z-index: 0;
+}
+
+.nav-tabs li.active a{
+    background-color: #7dbc53;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: 5px 0px 6px -3px #000000;
+    padding-top: 9px;
+    bottom: 0px;
+    z-index: 1;
+}
+
+.nav-tabs li a:hover, .nav-tabs li.active a:hover{
+    background-color: #7dbc53;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 0px;
+}
+
+.resulttable{
+    width: 100%;
+}
+
+.resulttable thead {
+    background-color: #7dbc53;
+    color: #ffffff;
+}
+
+.resulttable thead td {
+    padding: 5px;
+}
+
+.resulttable tbody td {
+    padding: 5px;
+}
+
+.resulttable tbody tr:nth-child(odd) {
+    background-color: #eff7ea;
 }

@@ -2,22 +2,37 @@
   .row
     %h1 Uitslagen
   .row
-    %ul{:class => "nav nav-tabs"}
-      - @slicedresults.each do |resultset|
-        %li
-          %a{:href => '#' + resultset.first, "data-toggle" => 'tag'}
-            = resultset.first
-  .row
-    .tab-content
-      - @slicedresults.each do |resultset|
-        %div{:class => "tab-pane", :id => "laatste"}
-          .span6
-            .row
-              %ul
-                - resultset.last.each do |result|
-                  %li
-                    = result.created_at
-                    - if result.user
-                      = link_to result.user.name, result.user
-                    - else
-                      = result.username
+    .span9
+      .row
+        %ul{:class => "nav nav-tabs"}
+          - @slicedresults.each do |resultset|
+            %li
+              %a{:href => '#' + resultset.first, "data-toggle" => 'tab'}
+                = resultset.first
+        .tab-content
+          - @slicedresults.each do |resultset|
+            %div{:class => "tab-pane", :id => resultset.first}
+              %table{:class => "resulttable"}
+                %thead
+                  %tr
+                    %td Wedstrijd
+                    %td Datum
+                    %td Plaats
+                    %td Type
+                    %td Aantal uitslagen
+                %tbody
+                  - resultset.last.each do |agendaitem|
+                    %tr
+                      %td
+                        = agendaitem.name
+                      %td
+                        = agendaitem.date.strftime("%e %B")
+                      %td
+                        = agendaitem.location
+                      %td
+                        = agendaitem.agendaitemtype.name
+                      %td
+                        = agendaitem.count_results
+    .span3
+      .row
+        Plaatjes
