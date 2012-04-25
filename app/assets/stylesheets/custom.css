@@ -154,8 +154,10 @@ fieldset hr {
     color: #ffffff;
 }
 
-.resulttable thead td {
+.resulttable thead th {
     padding: 5px;
+    text-align: left;
+    font-weight: normal;
 }
 
 .resulttable tbody td {

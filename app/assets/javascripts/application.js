@@ -36,8 +36,6 @@ $('.datumprikker').datepicker({ dateFormat: 'yy-mm-dd' });
 $('.tijdprikker').timepicker({});
 
 $('.resulttable').tablesorter();
-$('#Laatste').tablesorter();
-$('#myTable').tablesorter();
 
 $("form").live("nested:fieldAdded", function(event) {
 $(event.field).find('.tijdprikker').removeClass('hasDatepicker').timepicker({});

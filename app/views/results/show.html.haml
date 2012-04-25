@@ -24,7 +24,7 @@
                   - resultset.last.each do |agendaitem|
                     %tr
                       %td
-                        = link_to agendaitem.name, agendaitem
+                        = agendaitem.name
                       %td
                         = agendaitem.date.strftime("%e %B")
                       %td
