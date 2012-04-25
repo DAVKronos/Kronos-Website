@@ -12,7 +12,7 @@
         .tab-content
           - @slicedresults.each do |resultset|
             %div{:class => "tab-pane", :id => resultset.first}
-              %table{:class => "resulttable", :id => resultset.first}
+              %table{:class => "resulttable"}
                 %thead
                   %tr
                     %th Wedstrijd ⇕
@@ -24,7 +24,7 @@
                   - resultset.last.each do |agendaitem|
                     %tr
                       %td
-                        = link_to agendaitem.name, agendaitem
+                        = link_to agendaitem.name, '/uitslagen/' + agendaitem.id.to_s
                       %td
                         = agendaitem.date.strftime("%e %B")
                       %td

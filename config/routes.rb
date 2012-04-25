@@ -32,6 +32,7 @@ KronosWebsite::Application.routes.draw do
   match '/agendaitems/archief', :to => 'agendaitems#archief'
   match '/wedstrijden', :to => 'agendaitems#wedstrijden'
   match '/uitslagen', :to => 'results#index'
+  match '/uitslagen/:id', :to => 'results#show'
   resources :agendaitems do
     resources :events
   end

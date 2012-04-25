@@ -27,4 +27,13 @@ class ResultsController < ApplicationController
       format.json { render json: @results }
     end
   end
+  
+  def show
+    @result = Result.all
+    @agendaitem = Agendaitem.find(params[:id])
+    
+    respond_to do |format|
+      format.html
+    end
+  end
 end
