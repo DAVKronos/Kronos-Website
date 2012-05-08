@@ -13,7 +13,7 @@ class Ability
          can :read, :all
          can :home, Page
          can :create, Chatmessage
-         can :create, :update Photoalbum
+         can :create, :update, Photoalbum
          can :create, Photo
          can :update, user
          can :destroy, user.chatmessages
