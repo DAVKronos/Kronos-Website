@@ -13,10 +13,9 @@ class Ability
          can :read, :all
          can :home, Page
          can :create, Chatmessage
-         can :create, Photoalbum
+         can :create, :update Photoalbum
          can :create, Photo
          can :update, user
-         can :update, Photoalbum
          can :destroy, user.chatmessages
          user.chatmessages.each do |chatmessage|
            can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
