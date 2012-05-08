@@ -112,6 +112,59 @@ ActiveRecord::Schema.define(:version => 20120425094348) do
     t.integer  "agreed_by"
   end
 
+  create_table "old_events", :id => false, :force => true do |t|
+    t.integer "WedstrijdID",                :null => false
+    t.date    "Datum"
+    t.string  "Plaats",      :limit => 100
+    t.string  "Naam",        :limit => 120
+    t.text    "Opmerking"
+    t.integer "Outdoor"
+  end
+
+  create_table "old_results", :id => false, :force => true do |t|
+    t.integer "UitslagID",                                  :null => false
+    t.integer "WedstrijdID",                :default => 0,  :null => false
+    t.string  "Deelnemer",   :limit => 100, :default => "", :null => false
+    t.string  "Onderdeel",   :limit => 100, :default => "", :null => false
+    t.string  "Prestatie",   :limit => 30,  :default => "", :null => false
+    t.integer "VoorKronos"
+    t.integer "Geslacht"
+    t.float   "Wind"
+    t.string  "Punten",      :limit => 20
+    t.float   "Kosten"
+  end
+
+  create_table "old_users", :id => false, :force => true do |t|
+    t.integer "LidID",                              :null => false
+    t.string  "Voorletters",         :limit => 12
+    t.string  "Voornaam",            :limit => 50
+    t.string  "Achternaam",          :limit => 60
+    t.string  "Naam",                :limit => 70
+    t.date    "GeboorteDatum"
+    t.string  "Email",               :limit => 100
+    t.string  "Adres",               :limit => 100
+    t.string  "Postcode",            :limit => 10
+    t.string  "Woonplaats",          :limit => 80
+    t.string  "Wijk",                :limit => 20
+    t.string  "UIN",                 :limit => 20
+    t.string  "Telefoon",            :limit => 30
+    t.string  "MobieleTelefoon",     :limit => 30
+    t.text    "Opmerking"
+    t.integer "Geslacht"
+    t.string  "Wachtwoord",          :limit => 15
+    t.string  "LicentieNummer",      :limit => 25
+    t.integer "LidTypeID"
+    t.integer "Privacy"
+    t.integer "Incasso"
+    t.integer "Jurylid"
+    t.string  "Campuskaart",         :limit => 20
+    t.string  "Rekeningnummer",      :limit => 20
+    t.string  "WedstrijdVereniging", :limit => 80
+    t.string  "Nickname",            :limit => 100
+    t.integer "OVKaart"
+    t.integer "KMeterPapier"
+  end
+
   create_table "pages", :force => true do |t|
     t.text     "information"
     t.datetime "created_at"
