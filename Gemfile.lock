@@ -152,6 +152,7 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     recaptcha (0.3.4)
+    redcarpet (2.1.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.8.0)
@@ -247,6 +248,7 @@ DEPENDENCIES
   populator
   rails (= 3.2.3)
   recaptcha
+  redcarpet
   rspec-rails (= 2.8.1)
   sass-rails (~> 3.2.3)
   settingslogic (~> 2.0.8)

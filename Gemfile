@@ -19,6 +19,7 @@ gem "chronic_duration", "~> 0.9.6"
 gem 'math_engine', '~> 0.3.0', :git => 'git://github.com/dmarczal/math_engine.git'
 gem 'client_side_validations', '3.2.0.beta.3'
 gem 'localeapp'
+gem 'redcarpet'
 
 # For development under Linux you also need to install
 # an javascript runtime
