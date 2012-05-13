@@ -25,6 +25,7 @@ gem 'localeapp'
 platform :ruby do
     gem 'execjs'
     gem 'therubyracer'
+    gem 'unicorn'
 end
 
 # Gems used only for assets and not required
@@ -36,7 +37,6 @@ group :assets do
 end
 
 group :production do
-  gem 'unicorn'
   gem 'daemons'
 end
 

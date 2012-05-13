@@ -2,7 +2,7 @@ class ResultsController < ApplicationController
   load_and_authorize_resource
   # GET /results
   # GET /results.json
-  def index
+  def frontpage
     #@results = Result.all
     
     @slicedresults = Array.new
@@ -10,13 +10,13 @@ class ResultsController < ApplicationController
     @slicedresults[0] = ["Laatste", Agendaitem.where("date <= ?", DateTime.now).limit(20)]
     currentyear = DateTime.now.year
     
-    tussenresult = [Date.new(currentyear).year.to_s, Agendaitem.where(:date => (Date.new(currentyear - 1)..DateTime.now()))]
+    tussenresult = [Date.new(currentyear).year.to_s, Agendaitem.where(:date => (Date.new(currentyear)..DateTime.now()))]
     if !tussenresult.last.empty?
       @slicedresults[1] = tussenresult
     end
     
-    (2..10).each do |i|
-      tussenresult = [Date.new(currentyear - i + 1).year.to_s, Agendaitem.where(:date => (Date.new(currentyear - i)..Date.new(currentyear - i + 2)))]
+    (2..6).each do |i|
+      tussenresult = [Date.new(currentyear - i + 1).year.to_s, Agendaitem.where(:date => (Date.new(currentyear - i + 1)..Date.new(currentyear - i + 2)))]
       if !tussenresult.last.empty?
         @slicedresults[i] = tussenresult
       end
@@ -28,9 +28,8 @@ class ResultsController < ApplicationController
     end
   end
   
-  def show
-    @result = Result.all
-    @agendaitem = Agendaitem.find(params[:id])
+  def index
+    @agendaitem = Agendaitem.find(params[:agendaitem_id])
     
     respond_to do |format|
       format.html
