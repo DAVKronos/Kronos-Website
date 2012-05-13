@@ -14,7 +14,7 @@
               = if chatmessage.user; link_to chatmessage.by, chatmessage.user else mail_to chatmessage.email, chatmessage.by end
           .row
             .span3
-              = simple_format(chatmessage.message)
+              = markdown chatmessage.message
           
           
           - if can? :update, chatmessage
