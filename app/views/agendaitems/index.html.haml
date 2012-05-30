@@ -18,7 +18,7 @@
         .row
           .span3
             .row
-              = agendaitem.agendaitemtype.name + ' - ' if agendaitem.agendaitemtype.name
+              = agendaitem.agendaitemtype.name + ' - ' if agendaitem.agendaitemtype
               = l agendaitem.date, :format => :long
           - if can? :update, agendaitem
             .span2
