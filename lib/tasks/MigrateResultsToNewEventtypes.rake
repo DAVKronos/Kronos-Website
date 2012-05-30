@@ -3,7 +3,7 @@ namespace :migrate do
   task :results => :environment do
     Eventtype.find(:all, :conditions=> ["name ILIKE ?","%#{"weg"}%"]).each do |eventtype|
       destinationeventtype = Eventtype.find_by_name("Weg")
-      puts "Wat is de afstand van #{eventype.name} ?"
+      puts "Wat is de afstand van #{eventtype.name} ?"
       distance = STDIN.gets
       eventtype.events.each do |event|
         puts distance
