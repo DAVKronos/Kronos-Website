@@ -10,7 +10,7 @@
 
 <% @agendaitemtypes.each do |agendaitemtype| %>
   <tr>
-    <td><%= agendaitemtype.name %></td>
+    <td><%= agendaitemtype.name if agendaitemtype.name %></td>
     <td><%= link_to 'Show', agendaitemtype %></td>
     <td><%= link_to 'Edit', edit_agendaitemtype_path(agendaitemtype) %></td>
     <td><%= link_to 'Destroy', agendaitemtype, confirm: 'Are you sure?', method: :delete %></td>
