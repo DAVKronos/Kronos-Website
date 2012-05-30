@@ -10,7 +10,8 @@ namespace :migrate do
         newDistance = STDIN.gets
         eventtype.events.each do |event|
           event.distance = newDistance
-          event.eventtype_id = destinationeventtype.id
+          event.eventtype = destinationeventtype
+          event.save!
         end
         eventtype.destroy
       end
