@@ -9,9 +9,10 @@ namespace :migrate do
         puts "Wat is de afstand van #{eventtype.name} ?"
         newDistance = STDIN.gets
         eventtype.events.each do |event|
-          event.distance = newDistance
-          event.eventtype = destinationeventtype
-          event.save!
+          tempevent = event
+          tempevent.distance = newDistance
+          tempevent.eventtype = destinationeventtype
+          tempevent.save!
         end
         eventtype.destroy
       end
