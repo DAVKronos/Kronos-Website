@@ -5,7 +5,7 @@ namespace :migrate do
       destinationeventtype = Eventtype.find_by_name("Weg")
       puts "Wilt u dit #{eventtype.name} aanpassen?"
       answer = STDIN.gets
-      if answer == "Ja" do
+      if answer == "Ja"
         puts "Wat is de afstand van #{eventtype.name} ?"
         newDistance = STDIN.gets
         eventtype.events.each do |event|
