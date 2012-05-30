@@ -1,26 +1,15 @@
-%h3 Kronos bata trainingen
-Iedere dinsdag vanaf 7 februari organiseert Kronos, Bata trainingen. Onder begeleiding van een ervaren trainer zul je worden klaar gestoomd voor de Batavierenrace. Iedere training zal bestaan uit een goede warming up met rek oefeningen, deel twee zal bestaan uit loopscholing en deel drie zal interval training zijn.
-Wil je je dus goed voorbereiden voor de Batavierenrace onder professionele begeleiding met een gezellige groep? Kom dan naar de Kronos bata trainingen, iedere dinsdag van 18:00-19:30 u op de Sintelbaan UT.
-%ul
-  %li Gezellig samen trainen
-  %li Begeleiding van een ervaren trainer
-  %li En helemaal gratis!
-
-%h3 
-  %a{:href => "http://campusloop.nl"} Kronos Campusloop 
-\- De Kronos Campusloop is een avondwedstrijd van 2 of 4 Engelse Mijl over de Campus en wordt georganiseerd op woensdag 28 maart.
-
-%h3 
-  %a{:href => "http://jkg.kronos.nl"} JKG 
-Op woensdagavond  25 april 2012 worden de Johan Knaap Games gehouden. Dit is een baanwedstrijd voor senioren en A/B-junioren die wordt gehouden in het Fanny Blankers-Koen stadion in Hengelo. De wedstrijd begint om 18:30 en de volgende onderdelen komen aan bod: 100m - 200m - 800m - 5000m - 4x400m - 3000m steeple chase - discuswerpen - speer - kogel - hoogspringen - ver - pols
-
-
-%h3 
-  %a{:href => "http://nskbaan.nl"} NSK Baan 
-\- Op donderdag 17 mei (Hemelvaart) en vrijdag 18 mei organiseert DAV Kronos het Nederlands Studentenkampioenschap Baanatletiek 2012. Dit evenement zal plaatsvinden in het FBK-stadion in Hengelo.
-
-
-%h3 Laphap 
-\- Donderdag 22 maart zal Wouter de Pollepel gebruiken om voor alle diehard trainende mensen een voedzame maaltijd te koken. Opgeven kan door een mail naar 
-%a{:href => "mailto:theboss@woutertimmermans.nl"}Wouter 
-te sturen of door opgave bij de training!
+#slider
+  - images = Photo.order('RANDOM()').limit(4)
+  #mask
+    %ul
+      %li
+        = image_tag(images[0].photo.url :normal)
+      %li
+        = image_tag(images[1].photo.url :normal)
+      %li
+        = image_tag(images[2].photo.url :normal)
+      %li
+        = image_tag(images[3].photo.url :normal)
+  #progress
+  #overlay
+  #pause
