@@ -14,6 +14,7 @@ namespace :migrate do
           tempevent.eventtype = destinationeventtype
           tempevent.save!
         end
+        eventtype.reload
         eventtype.destroy
       end
     end
