@@ -13,7 +13,7 @@
       .row
         Type:
         = if @agendaitem.intern; 'Kronos ' else 'Externe ' end
-        = @agendaitem.agendaitemtype.name
+        = @agendaitem.agendaitemtype.name if @agendaitem.agendaitemtype
       .row
         Datum:
         = @agendaitem.date.strftime("%d %B %H:%M")
