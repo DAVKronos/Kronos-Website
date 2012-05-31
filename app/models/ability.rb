@@ -14,7 +14,8 @@ class Ability
          can :home, Page
          can :frontpage, Results
          can :create, Chatmessage
-         can :create, :update, Photoalbum
+         can :manage, Photoalbum
+         cannot :destroy, Photoalbum
          can :create, Photo
          can :update, user
          can :destroy, user.chatmessages
