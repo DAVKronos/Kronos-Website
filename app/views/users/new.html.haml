@@ -2,7 +2,7 @@
 
 = form_for @user, :validate => true, :html => { :multipart => true }  do |f|
 
-  -if current_user.has_role?(:admin)    
+  -if can? :new, User    
     = render 'admin_fields', :f => f
   -else
     = render 'fields', :f => f
