@@ -1,6 +1,6 @@
 %h1 Kronos chatbox
 %br
-.span5
+.span6
 
   - @chatmessages.each do |chatmessage|
     %div{:class => "row"}
@@ -35,5 +35,5 @@
 
   = will_paginate @chatmessages, :previous_label => '<', :next_label => '>'
 
-%div{:class => "span5 well"}
+%div{:class => "span4 well"}
   = render 'form'
