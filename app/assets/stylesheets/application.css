@@ -19,11 +19,16 @@ header .brand img {
 	top: 0px;
 }
 
-.newsitem {
+.newscontent {
 	background-color: #eff7ea;
 	padding: 10px;
-	margin-bottom: 20px;
 }
+
+.newsitem {
+	margin-bottom:20px;
+}
+
+
 
 /*
 .round{

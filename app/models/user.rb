@@ -81,36 +81,32 @@ end
 #
 # Table name: users
 #
-#  id                  :integer         not null, primary key
-#  name                :string(255)
-#  initials            :string(255)
-#  email               :string(255)
-#  birthdate           :date
-#  address             :string(255)
-#  postalcode          :string(255)
-#  city                :string(255)
-#  sex                 :string(255)
-#  licensenumber       :string(255)
-#  login               :string(255)     not null
-#  persistence_token   :string(255)     not null
-#  crypted_password    :string(255)     not null
-#  password_salt       :string(255)     not null
-#  single_access_token :string(255)     not null
-#  perishable_token    :string(255)     not null
-#  login_count         :integer         default(0), not null
-#  failed_login_count  :integer         default(0), not null
-#  last_request_at     :datetime
-#  current_login_at    :datetime
-#  last_login_at       :datetime
-#  current_login_ip    :string(255)
-#  last_login_ip       :string(255)
-#  papieren_kronometer :boolean         default(FALSE)
-#  created_at          :datetime        not null
-#  updated_at          :datetime        not null
-#  admin               :boolean         default(FALSE)
-#  avatar_file_name    :string(255)
-#  avatar_content_type :string(255)
-#  avatar_file_size    :integer
-#  avatar_updated_at   :datetime
+#  id                     :integer         not null, primary key
+#  name                   :string(255)
+#  initials               :string(255)
+#  email                  :string(255)     default(""), not null
+#  birthdate              :date
+#  address                :string(255)
+#  postalcode             :string(255)
+#  city                   :string(255)
+#  sex                    :string(255)
+#  licensenumber          :string(255)
+#  papieren_kronometer    :boolean         default(FALSE)
+#  created_at             :datetime
+#  updated_at             :datetime
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
+#  encrypted_password     :string(255)     default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer         default(0)
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  phonenumber            :string(255)
 #
 

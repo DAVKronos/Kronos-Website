@@ -5,3 +5,14 @@ class AgendaitemtypeEventtype < ActiveRecord::Base
   validates :agendaitemtype_id, :presence => true
   validates :eventtype_id, :presence => true
 end
+# == Schema Information
+#
+# Table name: agendaitemtype_eventtypes
+#
+#  id                :integer         not null, primary key
+#  agendaitemtype_id :integer
+#  eventtype_id      :integer
+#  created_at        :datetime        not null
+#  updated_at        :datetime        not null
+#
+

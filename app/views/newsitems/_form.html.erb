@@ -19,6 +19,10 @@
     <%= f.label :nieuwsbericht %>
     <%= f.text_area :news, :class => "markItUp" %>
   </div>
+  <div class="field">
+	  <%= f.label :profielfoto %>
+	  <%= f.file_field :articlephoto %>
+  </div>
   <div class="actions">
     <%= f.submit :class => "btn"%>
   </div>
