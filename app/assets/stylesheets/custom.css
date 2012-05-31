@@ -29,8 +29,8 @@ header img {
 }
 
 header {
-	font-size: 16px;
-	font-family: 'AaarghNormal', Normal, sans-serif;
+	font-size: 18px;
+	/*font-family: 'AaarghNormal', Bold, sans-serif;*/
 }
 
 .navbar .nav > li > a {

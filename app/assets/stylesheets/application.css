@@ -9,7 +9,7 @@
  *= require_tree .
 */
 body{
-background: none repeat scroll 0 0 #F5F6F7;
+background: none repeat scroll 0 0 #FFFFFF;
 }
 
 header .brand img {
@@ -17,6 +17,7 @@ header .brand img {
 	top: 0px;
 }
 
+/*
 .round{
 	background: none repeat scroll 0 0 #FFFFFF;
 	border: 1px solid #DEDEDE;
@@ -24,15 +25,9 @@ header .brand img {
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 	padding: 2em;
 }
+*/
 div.navbar-inner {
-background: #222222; /* Old browsers */
-background: -moz-linear-gradient(top, #222222 0%, #333333 90%, #7dbc53 93%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#222222), color-stop(90%,#333333), color-stop(93%,#7dbc53)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, #222222 0%,#333333 90%,#7dbc53 93%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, #222222 0%,#333333 90%,#7dbc53 93%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, #222222 0%,#333333 90%,#7dbc53 93%); /* IE10+ */
-background: linear-gradient(top, #222222 0%,#333333 90%,#7dbc53 93%); /* W3C */
-/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#7dbc53',GradientType=0 ); IE6-9 */
+background: #000000; 
 }
 
 .ie-navbar-fix {

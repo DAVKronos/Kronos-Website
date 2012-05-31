@@ -1,50 +1,48 @@
 %header
   %div{:class => "navbar navbar-fixed-top"}
-    %div{:class => "navbar-inner"}
-      %div{:class => "ie-navbar-fix"}
-      %div{:class => "container"}
-        <a class="brand" href="/">#{image_tag "Logo_site.png", :width => "100", :height => "100"}...........</a>
-        %ul.nav
-          %li
-            = link_to "Home", home_path
-          %li.dropdown
-            <a href="#" class="dropdown-toggle"data-toggle="dropdown">
-            Agenda
-            <b class="caret"></b>
-            </a>
-            %ul.dropdown-menu
-              %li
-                = link_to "Overzicht", agendaitems_path
-              %li
-                = link_to "Wedstrijden", '/wedstrijden'
-          %li
-            = link_to "Uitslagen", '/uitslagen'
-          %li
-            = link_to "Foto's", photoalbums_path
-          %li
-            = link_to "Chatbox", chatmessages_path
-          - if !current_user
-            %li.dropdown
-              %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
-                Log in
-                %b.caret
-              %ul.dropdown-menu
-                .span4.login-form
-                  = form_tag user_session_path do
-                    = text_field_tag 'user[email]', "", "placeholder" => "emailadres"
-                    = password_field_tag 'user[password]', "", "placeholder" => "wachtwoord"
-                    = label_tag 'user[remember_me]', :class => "checkbox" do
-                      = t :remember_me
-                      = check_box_tag 'user[remember_me]'
-                    %button.btn.btn-primary=t :sign_in
-                    = link_to "Wachtwoord vergeten?", new_password_path('user')
-          - else
+    .row
+      %div{:class => "navbar-inner"}
+        %div{:class => "ie-navbar-fix"}
+        %div{:class => "container"}
+          <a class="brand" href="/">#{image_tag "Logo_site.png", :width => "100", :height => "100"}...........</a>
+          %ul.nav
             %li
-              = link_to current_user.name.split[0] + "'s stek", current_user
+              = link_to "Home", home_path
             %li
-              = link_to "Leden", users_path
-            - if current_user && current_user.admin?
+              = link_to "Agenda", agendaitems_path
+            %li
+              = link_to "Uitslagen", '/uitslagen'
+            %li
+              = link_to "Foto's", photoalbums_path
+            %li
+              = link_to "Chatbox", chatmessages_path
+            - if !current_user
+              %li.dropdown
+                %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
+                  Log in
+                  %b.caret
+                %ul.dropdown-menu
+                  .span4.login-form
+                    = form_tag user_session_path do
+                      = text_field_tag 'user[email]', "", "placeholder" => "emailadres"
+                      = password_field_tag 'user[password]', "", "placeholder" => "wachtwoord"
+                      = label_tag 'user[remember_me]', :class => "checkbox" do
+                        = t :remember_me
+                        = check_box_tag 'user[remember_me]'
+                      %button.btn.btn-primary=t :sign_in
+                      = link_to "Wachtwoord vergeten?", new_password_path('user')
+            - else
               %li
-                = link_to "Beheer", admin_path
-            %li
-              = link_to "Log uit", destroy_user_session_path, :method => :delete
+                = link_to current_user.name.split[0] + "'s stek", current_user
+              %li
+                = link_to "Leden", users_path
+              - if current_user && current_user.admin?
+                %li
+                  = link_to "Beheer", admin_path
+              %li
+                = link_to "Log uit", destroy_user_session_path, :method => :delete
+    .row
+      %div{:class => "navbar-inner", :id => "subnav"}
+        %div{:class => "ie-navbar-fix"}
+        %div{:class => "container"}
+          = render :partial => "subnav" rescue nil

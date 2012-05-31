@@ -3,13 +3,12 @@
   #mask
     %ul
       %li
-        = image_tag(images[0].photo.url :normal)
+        = image_tag(images[0].photo.url :normal) if images[0]
       %li
-        = image_tag(images[1].photo.url :normal)
+        = image_tag(images[1].photo.url :normal) if images[1]
       %li
-        = image_tag(images[2].photo.url :normal)
+        = image_tag(images[2].photo.url :normal) if images[2]
       %li
-        = image_tag(images[3].photo.url :normal)
+        = image_tag(images[3].photo.url :normal) if images[3]
   #progress
-  #overlay
   #pause

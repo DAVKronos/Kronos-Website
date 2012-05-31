@@ -1,3 +1,25 @@
+#subnav {
+	background: white;
+	border-bottom: 3px solid #7dbc53;
+	color: black;
+}
+
+ul#white > li > a {
+    color: black;
+}
+
+#triangle-right {
+	margin: 9px 10px 11px;
+	width: 0; 
+	height: 0; 
+	border-top: 10px solid transparent; 
+	border-left: 20px solid #7dbc53; 
+	border-bottom: 10px solid transparent; 
+} 
+
+ul#white {
+	margin-left: 90px;
+}
 #slider {
 	width:600px;
 	height:200px;
