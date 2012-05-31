@@ -20,6 +20,7 @@
 //= require jquery.fileupload-ip
 //= require jquery.fileupload-ui
 //= require jquery.tablesorter.js
+//= require jquery.markitup.js
 //= require rails.validations
 //= require_tree .
 $(document).ready(function () {
