@@ -23,6 +23,7 @@
 //= require rails.validations
 //= require_tree .
 $(document).ready(function () {
+$(".markItUp").markItUp(myMarkdownSettings);
 $(".alert-message").alert()
 $('.typeahead').typeahead()
 $(".alert").alert()
