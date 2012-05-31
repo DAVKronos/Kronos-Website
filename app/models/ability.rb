@@ -12,6 +12,7 @@ class Ability
        elsif !user.new_record?
          can :read, :all
          can :home, Page
+         can :frontpage, Results
          can :create, Chatmessage
          can :create, :update, Photoalbum
          can :create, Photo
