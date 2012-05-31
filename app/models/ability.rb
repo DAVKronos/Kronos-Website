@@ -18,6 +18,7 @@ class Ability
          can :manage, Photoalbum
          cannot :destroy, Photoalbum
          can :create, Photo
+         can :create, Newsitem
          can :update, user
          can :create, Chatmessage
          can :destroy, user.chatmessages

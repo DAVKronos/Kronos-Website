@@ -12,20 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :titel %>
     <%= f.text_field :title %>
   </div>
-  <%= fields_for(@newsitem.user) do |g| %>
   <div class="field">
-    <%= g.label :name %><br />
-    <%= g.text_field :name, :readonly => true %>
-  </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :news %><br />
-    <%= f.text_area :news %>
+    <%= f.label :nieuwsbericht %>
+    <%= f.text_area :news, :class => "markItUp" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn"%>
   </div>
 <% end %>
