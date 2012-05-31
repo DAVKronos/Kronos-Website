@@ -18,9 +18,9 @@
           
           
           - if can? :update, chatmessage
-            = link_to 'Edit', edit_chatmessage_path(chatmessage)
+            = link_to raw("<i class='icon-edit'></i>"), edit_chatmessage_path(chatmessage)
           - if can? :destroy, chatmessage
-            = link_to 'Destroy', chatmessage, confirm: 'Are you sure?', method: :delete
+            = link_to raw("<i class='icon-remove'></i>"), chatmessage, confirm: 'Are you sure?', method: :delete
           .row
         
             .span5

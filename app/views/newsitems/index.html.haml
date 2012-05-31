@@ -8,6 +8,7 @@
           %h1= newsitem.title
           = markdown newsitem.news
           = link_to raw("<i class='icon-edit'></i>"), edit_newsitem_path(newsitem) if can? :update, newsitem
+          = link_to raw("<i class='icon-remove'></i>"), newsitem, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
           = time_tag newsitem.created_at
   .row
     = link_to 'New Newsitem', new_newsitem_path if can? :create, Newsitem
