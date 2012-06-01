@@ -1,9 +1,9 @@
 %h1 Nieuws
 
-.span10
+.span12
   -@newsitems.each do |newsitem|
     .row
-      .span5.newsitem
+      .span8.newsitem
         .row.newscontent
           = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
           %h1= newsitem.title
