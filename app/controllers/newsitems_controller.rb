@@ -3,7 +3,7 @@ class NewsitemsController < ApplicationController
   # GET /newsitems
   # GET /newsitems.json
   def index
-    @newsitems = Newsitem.where(:agreed => true)
+    @newsitems = Newsitem.where(:agreed => true).order('created_at desc')
 
     respond_to do |format|
       format.html # index.html.erb
