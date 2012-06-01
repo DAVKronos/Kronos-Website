@@ -21,6 +21,21 @@ ul#white {
 	margin-left: 90px;
 }
 
+agenda {
+	list-style: none;
+	margin: 0px;
+	font-size: 15px;
+}
+
+.agenda .span5{
+	padding: 5px;
+}
+
+.agenda > div:nth-of-type(2n+3) div{
+	background-color: #EFF7EA;
+}
+
+
 
 
 /* 
@@ -48,7 +63,7 @@ a:hover, a:active { outline: 0; }
 font-family: arial;
 width: 480px;
 margin: 0 auto;
-margin-top: 20px;
+margin-top: 10px;
 }
 
 #content {

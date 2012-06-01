@@ -24,6 +24,7 @@ nl:
     formats:
       default: ! '%d/%m/%Y'
       short: ! '%e %b'
+      medium: ! '%e %B'
       long: ! '%e %B %Y'
       only_day: ! '%e'
     day_names:
