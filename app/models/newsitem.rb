@@ -1,7 +1,7 @@
 class Newsitem < ActiveRecord::Base
   belongs_to :user
   has_many :reactions
-  has_attached_file :articlephoto, :styles => { :normal => "x150>"}, :path => ":rails_root/public/system/:attachment/:hash.:extension",
+  has_attached_file :articlephoto, :styles => { :normal => "x150>" , :slider => "480x260#"}, :path => ":rails_root/public/system/:attachment/:hash.:extension",
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "ci74eFweHJz1SuFRxcWK5gOQvZMrbHhThljgLz1JeCHVnYi9M8w29TBxuf696mE"
   
   

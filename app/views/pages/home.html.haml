@@ -1,14 +1,26 @@
-#slider
-  - images = Photo.order('RANDOM()').limit(4)
-  #mask
-    %ul
-      %li
-        = image_tag(images[0].photo.url :normal) if images[0]
-      %li
-        = image_tag(images[1].photo.url :normal) if images[1]
-      %li
-        = image_tag(images[2].photo.url :normal) if images[2]
-      %li
-        = image_tag(images[3].photo.url :normal) if images[3]
-  #progress
-  #pause
+.span5
+  %div{:id => "content-slider"}
+    #content
+      %div{:id => "content-inner-1"}
+        %div{:id => "content-inner-2"}
+          %div{:id => "content-inner-3"}
+            %div{:id => "content-inner"}
+              - pagecounter = 1
+              - @newsitems.each do |newsitem|
+                %div{:class => "page", :id => "page#{pagecounter.to_s}"}
+                  = image_tag newsitem.articlephoto.url :slider
+                  %div{:class => "page-info", :id => "info#{pagecounter.to_s}"}
+                    %h2= newsitem.title
+                    %div{:class => "page-text"}
+                      = newsitem.news.split('.').first
+                - pagecounter = pagecounter + 1
+                  
+    %ul#nav
+      %li.button#button1
+        %a{:href => "#content-inner-1"}
+      %li.button#button2
+        %a{:href => "#content-inner-2"}
+      %li.button#button3
+        %a{:href => "#content-inner-3"}
+
+  

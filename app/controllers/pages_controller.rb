@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   load_and_authorize_resource
   def home
+    @newsitems = Newsitem.limit(3)
   end
 
   def show
