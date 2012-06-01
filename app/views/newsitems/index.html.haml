@@ -1,8 +1,8 @@
 %h1 Nieuws
 
 .span10
-  .row
-    -@newsitems.each do |newsitem|
+  -@newsitems.each do |newsitem|
+    .row
       .span5.newsitem
         .row.newscontent
           = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
