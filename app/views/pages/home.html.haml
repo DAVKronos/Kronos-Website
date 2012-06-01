@@ -10,7 +10,7 @@
                 %div{:class => "page", :id => "page#{pagecounter.to_s}"}
                   = image_tag newsitem.articlephoto.url :slider
                   %div{:class => "page-info", :id => "info#{pagecounter.to_s}"}
-                    %h2= newsitem.title
+                    %h2= link_to newsitem.title, newsitems_path
                     %div{:class => "page-text"}
                       = newsitem.news.split('.').first
                 - pagecounter = pagecounter + 1
