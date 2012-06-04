@@ -27,6 +27,11 @@ agenda {
 	font-size: 15px;
 }
 
+a.newslink {
+	text-decoration: none;
+	color: #000000;
+}
+
 .agenda .span5{
 	padding: 5px;
 }

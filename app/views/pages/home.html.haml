@@ -11,7 +11,7 @@
                   %div{:class => "page", :id => "page#{pagecounter.to_s}"}
                     = image_tag newsitem.articlephoto.url :slider
                     %div{:class => "page-info", :id => "info#{pagecounter.to_s}"}
-                      %h2= link_to newsitem.title, newsitems_path
+                      %h2= link_to newsitem.title, "##{newsitem.title}"
                       %div{:class => "page-text"}
                         = newsitem.news.split('.').first
                   - pagecounter = pagecounter + 1
@@ -35,14 +35,16 @@
               = l agendaitem.date, :format => :medium
 .row
   .span5
+    %br
     %h1 Nieuws
+    %br
     -@newsitems.each do |newsitem|
       .row
         .span5.newsitem
           .row.newscontent
             .span5
               = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
-              %h1= newsitem.title
+              %h1= link_to newsitem.title, {}, {:name => newsitem.title, :class => "newslink"}
               = markdown newsitem.news
           .row.newscontent
             .span5
