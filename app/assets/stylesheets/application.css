@@ -5,8 +5,8 @@
  *= require bootstrap
  *= require bootstrap-image-gallery
  *= require jquery.fileupload-ui
- *= require style.css
- *= require markdowncss.css
+ *= require style
+ *= require markdowncss
  *= require_self
  *= require_tree .
 */

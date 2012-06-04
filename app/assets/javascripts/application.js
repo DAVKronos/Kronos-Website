@@ -19,9 +19,10 @@
 //= require jquery.fileupload
 //= require jquery.fileupload-ip
 //= require jquery.fileupload-ui
-//= require jquery.tablesorter.js
-//= require jquery.markitup.js
+//= require jquery.tablesorter
+//= require jquery.markitup
 //= require rails.validations
+//= require jwplayer
 //= require_tree .
 $(document).ready(function () {
 $(".markItUp").markItUp(myMarkdownSettings);
