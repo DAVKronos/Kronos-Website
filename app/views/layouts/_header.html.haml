@@ -13,8 +13,9 @@
               = link_to "Agenda", agendaitems_path
             %li
               = link_to "Uitslagen", '/uitslagen'
-            %li
-              = link_to "Foto's", photoalbums_path
+            - if can? :read, Photoalbum
+              %li
+                = link_to "Foto's", photoalbums_path
             %li
               = link_to "Chatbox", chatmessages_path
             - if !current_user

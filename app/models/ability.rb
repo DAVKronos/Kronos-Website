@@ -31,6 +31,7 @@ class Ability
        else
          can :read, :all
          can :home, Page
+         can :frontpage, Result
          can :create, Chatmessage
          cannot :read, User
          cannot :read, Photoalbum
