@@ -16,18 +16,6 @@ img.floatleft{
 	padding-top: 5px;
 }
 
-@font-face {
-    font-family: 'AaarghNormal';
-    src: url('aaargh-webfont.eot');
-    src: url('aaargh-webfont.eot?#iefix') format('embedded-opentype'),
-         url('aaargh-webfont.woff') format('woff'),
-         url('aaargh-webfont.ttf') format('truetype'),
-         url('aaargh-webfont.svg#AaarghNormal') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 header img {
         position: absolute;
         top: 8px;
@@ -36,7 +24,6 @@ header img {
 
 header {
 	font-size: 18px;
-	/*font-family: 'AaarghNormal', Bold, sans-serif;*/
 }
 
 .navbar .nav > li > a {

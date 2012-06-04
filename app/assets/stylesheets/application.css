@@ -20,12 +20,14 @@ header .brand img {
 }
 
 .newscontent {
-	background-color: #eff7ea;
-	padding: 10px;
+
 }
 
 .newsitem {
 	margin-bottom:20px;
+	background-color: #eff7ea;
+	padding: 10px;
+	
 }
 
 

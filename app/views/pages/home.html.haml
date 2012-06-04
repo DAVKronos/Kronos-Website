@@ -34,6 +34,26 @@
               = agendaitem.name
               = l agendaitem.date, :format => :medium
 .row
+  .span5
+    %h1 Nieuws
+    -@newsitems.each do |newsitem|
+      .row
+        .span5.newsitem
+          .row.newscontent
+            .span5
+              = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
+              %h1= newsitem.title
+              = markdown newsitem.news
+          .row.newscontent
+            .span5
+              = link_to raw("<i class='icon-edit'></i>"), edit_newsitem_path(newsitem) if can? :update, newsitem
+              = link_to raw("<i class='icon-remove'></i>"), newsitem, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
+              = time_tag newsitem.created_at
+    
+  
+  
+  
+.row
   .span12
     %br
 

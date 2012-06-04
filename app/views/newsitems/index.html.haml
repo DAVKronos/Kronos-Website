@@ -1,16 +1,18 @@
-%h1 Nieuws
-
 .span12
+  %h1 Nieuws
   -@newsitems.each do |newsitem|
     .row
       .span8.newsitem
         .row.newscontent
-          = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
-          %h1= newsitem.title
-          = markdown newsitem.news
+          .span8
+            = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
+            %h1= newsitem.title
+            = markdown newsitem.news
         .row.newscontent
-          = link_to raw("<i class='icon-edit'></i>"), edit_newsitem_path(newsitem) if can? :update, newsitem
-          = link_to raw("<i class='icon-remove'></i>"), newsitem, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
-          = time_tag newsitem.created_at
+          .span8
+            = link_to raw("<i class='icon-edit'></i>"), edit_newsitem_path(newsitem) if can? :update, newsitem
+            = link_to raw("<i class='icon-remove'></i>"), newsitem, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
+            = time_tag newsitem.created_at
   .row
-    = link_to 'New Newsitem', new_newsitem_path if can? :create, Newsitem
+    .span12
+      = link_to 'New Newsitem', new_newsitem_path if can? :create, Newsitem
