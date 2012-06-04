@@ -14,8 +14,9 @@ KronosWebsite::Application.routes.draw do
   end
   resources :news_items
   resources :subscriptions
-  resources :users
-  match '/users/:id/editpassword', :to => 'users#editpassword'
+  resources :users do
+    get 'editpassword', :on => :member
+  end
   resources :commissions
   resources :commission_memberships
   resources :subscriptions
