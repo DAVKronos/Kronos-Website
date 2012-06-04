@@ -15,4 +15,7 @@
             = time_tag newsitem.created_at
   .row
     .span12
+      = will_paginate @newsitems, :previous_label => '<', :next_label => '>'
+  .row
+    .span12
       = link_to 'New Newsitem', new_newsitem_path if can? :create, Newsitem
