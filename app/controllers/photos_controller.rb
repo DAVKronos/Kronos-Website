@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
   load_and_authorize_resource
+  protect_from_forgery :except => [:create]
+  
     def index
       @photos = Photoalbum.find(params[:photoalbum_id]).photos
       render :json => @photos.collect { |p| p.to_jq_upload }.to_json
@@ -10,9 +12,7 @@ class PhotosController < ApplicationController
       if @photo.save
         respond_to do |format|
           format.html {  
-            render :json => [@photo.to_jq_upload].to_json, 
-            :content_type => 'text/html',
-            :layout => false
+            render :json => [@photo.to_jq_upload].to_json
           }
           format.json {  
             render :json => [@photo.to_jq_upload].to_json			
