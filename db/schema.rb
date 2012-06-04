@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601141409) do
+ActiveRecord::Schema.define(:version => 20120604110319) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -242,6 +242,14 @@ ActiveRecord::Schema.define(:version => 20120601141409) do
     t.datetime "updated_at"
   end
 
+  create_table "user_types", :force => true do |t|
+    t.string   "name"
+    t.boolean  "donor"
+    t.boolean  "recreational"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "initials"
@@ -269,6 +277,9 @@ ActiveRecord::Schema.define(:version => 20120601141409) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "phonenumber"
+    t.integer  "user_type_id"
+    t.string   "bank_account_number"
+    t.string   "xtracard"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

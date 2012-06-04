@@ -15,6 +15,7 @@ KronosWebsite::Application.routes.draw do
   resources :news_items
   resources :subscriptions
   resources :users
+  match '/users/:id/editpassword', :to => 'users#editpassword'
   resources :commissions
   resources :commission_memberships
   resources :subscriptions
@@ -47,8 +48,4 @@ KronosWebsite::Application.routes.draw do
   match '/:pt', :to => 'pages#show'
   
   root :to => 'pages#home'
-  
-  #Redirect all other requests toot ErrorsController for rendering 404 pages
-  #This should be the last route
-  match '*a', :to => 'errors#routing'
 end

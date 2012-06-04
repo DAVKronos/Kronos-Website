@@ -21,6 +21,6 @@ end
 #  articlephoto_file_name    :string(255)
 #  articlephoto_content_type :string(255)
 #  articlephoto_file_size    :integer
-#  articlephoto_updated_at   :date
+#  articlephoto_updated_at   :datetime
 #
 

@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
                       :sex, :licensenumber, :password,
                       :password_confirmation, :papieren_kronometer,
                       :avatar, :avatar_file_name,:email,
-                      :address, :postalcode, :city, :phonenumber, :as => :bestuur
+                      :address, :postalcode, :city, :phonenumber,
+                      :user_type_id, :xtracard, :bank_account_number, :as => :bestuur
   
   has_many :commission_memberships, :dependent => :destroy
   has_many :commissions, :through => :commission_memberships
@@ -26,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :tags
   has_many :pages
   has_many :reactions
+  belongs_to :userType
   has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "260x180#", :thumb => "50x50#" }, :path => ":rails_root/public/system/:attachment/:hash.:extension",
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
   
@@ -108,5 +110,6 @@ end
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
 #  phonenumber            :string(255)
+#  user_type_id           :integer
 #
 
