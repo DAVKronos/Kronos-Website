@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   end
   
   def admin?
-    self.commissions.include?(Commission.find_by_name('bestuur'))
+    self.commissions.include?(Commission.find_by_name('Bestuur'))
   end
   
   
