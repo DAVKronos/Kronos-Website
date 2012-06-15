@@ -75,6 +75,10 @@ class User < ActiveRecord::Base
     self.commissions.include?(Commission.find_by_name('Bestuur'))
   end
   
+  def active?
+    self.commissions.size > 0
+  end
+  
   
 end
 

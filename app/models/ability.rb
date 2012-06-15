@@ -9,6 +9,11 @@ class Ability
          user.chatmessages.each do |chatmessage|
            can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
          end
+       elsif user.active?
+         can :create, Agendaitem
+         can :update, user.commissions.each do |com|
+           com.agendaitems 
+         end  
        elsif !user.new_record?
          can :read, :all
          can :home, Page
