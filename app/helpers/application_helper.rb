@@ -6,5 +6,9 @@ module ApplicationHelper
             
     markdown.render(h(text)).html_safe
   end
+  
+  def getPages
+      Page.all
+  end
     
 end

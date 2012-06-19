@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   end
   
   def show
-    @pag = Page.find(params[:id])
+    @page = Page.find(params[:id])
   end
     
   def test
@@ -46,6 +46,13 @@ class PagesController < ApplicationController
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def destroy
+    page = Page.find(params[:id])
+    page.destroy
+    flash[:success] = "Pagina verwijderd"
+    redirect_to :root
   end
   
   def nieuw

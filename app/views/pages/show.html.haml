@@ -1,0 +1,8 @@
+- if can? :update, @page 
+  =link_to "Edit", edit_page_path(@page)
+- if can? :destroy, @page 
+  =link_to "verwijder", page_path(@page), :method => :delete
+
+%h1= @page.pagetag.capitalize
+
+= markdown @page.information

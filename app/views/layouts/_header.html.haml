@@ -9,6 +9,14 @@
               = link_to "Home", home_path
             %li
               = link_to "Nieuws", newsitems_path
+            %li.dropdown
+              %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
+                Informatie
+                %b.caret
+              %ul.dropdown-menu
+                - getPages.each do |page|
+                  %li
+                    = link_to page.pagetag, "/#{page.pagetag}"
             %li
               = link_to "Agenda", agendaitems_path
             %li
