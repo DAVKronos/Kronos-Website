@@ -2,7 +2,9 @@
   =link_to "Edit", edit_page_path(@page)
 - if can? :destroy, @page 
   =link_to "verwijder", page_path(@page), :method => :delete
+  
+#multicolumn
 
-%h1= @page.pagetag.capitalize
+  %h1= @page.pagetag.capitalize
 
-= markdown @page.information
+  = markdown @page.information
