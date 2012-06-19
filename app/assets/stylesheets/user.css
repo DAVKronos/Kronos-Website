@@ -8,7 +8,7 @@
 figure {
 	/*as the images are held within figure its that we style*/ 
 	float: left; /*places the images in a line*/ 
-	width: 200px; /*width of the images*/ 
+	width: 300px; /*width of the images*/ 
 	margin: 10px 20px; /*space between the images*/
 }
 
@@ -53,7 +53,7 @@ figure:nth-child(even) {
 figcaption {
 	text-align: center;
 	font-family: 'Reenie Beanie', cursive; /*Reenie Beanie is available through Google Webfonts http://code.google.com/webfonts/specimen/Reenie+Beanie*/
-	font-size: 1.5em;
+	font-size: 2em;
 	color: #454f40;
 	letter-spacing: 0.09em;
 }
