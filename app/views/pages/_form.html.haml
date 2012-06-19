@@ -1,0 +1,9 @@
+= form_for @page do |f|
+  
+  = f.label :title
+  = f.text_field(:pagetag)
+  
+  = f.label :information
+  = f.text_area(:information, :class =>"input-xlarge markItUp")
+  .actions
+    = f.submit :class => "btn"

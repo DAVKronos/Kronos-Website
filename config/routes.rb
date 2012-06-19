@@ -44,9 +44,8 @@ KronosWebsite::Application.routes.draw do
   match '/nieuw', :to => 'pages#nieuw'
   match '/test', :to => 'pages#test'
   match '/admin', :to => 'pages#admin'
-  match '/pages/edit/:pt', :to => 'pages#edit'
-  match '/pages/update/:pt', :to => 'pages#update'
-  match '/:pt', :to => 'pages#show'
+  resources :pages
+  match '/:pt', :to => 'pages#titleshow'
   
   root :to => 'pages#home'
 end

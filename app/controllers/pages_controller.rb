@@ -5,23 +5,37 @@ class PagesController < ApplicationController
     @agendaitems = Agendaitem.where("date >= ?", Time.now).order('date ASC').limit(10)
   end
 
-  def show
+  def titleshow
     @page = Page.find_by_pagetag(params[:pt])
+    render 'show'
+  end
+  
+  def show
+    @pag = Page.find(params[:id])
   end
     
   def test
   end
   
+  def new
+    @page = Page.new
+  end
+  
+  def create
+    @page = Page.new(params[:page])
+    if @page.save
+      redirect_to @page
+    else
+      render 'new'
+    end
+  end
+  
   def edit
-    @page = Page.find_by_pagetag(params[:pt])
+    @page = Page.find(params[:id])
   end
   
   def update
-    @page = Page.find_by_pagetag(params[:pt])
-    
-    if(current_user)
-      @page.user = current_user;
-    end
+    @page = Page.find(params[:id])
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
