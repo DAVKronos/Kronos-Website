@@ -49,20 +49,26 @@ class User < ActiveRecord::Base
   
   def update_group_membership
     gapps = Gapps.new
-    gapps.add_group_member("leden", self.email, self.name.split[1], self.name.split[0]) if self.email_changed? && !self.email.empty? && self.user_type_id == (1||2)
+    gapps.add_group_member("leden", self.email, self.name.split[1], self.name.split[0]) if (self.email_changed? || self.user_type_id_changed?) && !self.email.empty? && self.user_type_id == (1||2)
     gapps.add_group_member("alleleden", self.email, self.name.split[1], self.name.split[0]) if self.email_changed? && !self.email.empty?
   end
   
   def purge_member_from_group
      gapps = Gapps.new
-     gapps.destroy_group_member("leden", self.email_was) if self.email_changed? && !self.new_record? && self.user_type_id_was == (1||2)
+     gapps.destroy_group_member("leden", self.email_was) if (self.email_changed? || self.user_type_id_changed?) && !self.new_record? && self.user_type_id_was == (1||2)
      gapps.destroy_group_member("alleleden", self.email_was) if self.email_changed? && !self.new_record?
    end
   
   def remove_member_from_group
     gapps = Gapps.new
-    gapps.destroy_group_member("leden", self.email) if selft.user_type_id == (1||2)
+    gapps.destroy_group_member("leden", self.email) if self.user_type_id == (1||2)
     gapps.destroy_group_member("alleleden", self.email)
+  end
+  
+  def add_member_to_group
+    gapps = Gapps.new
+    gapps.add_group_member("leden", self.email, self.name.split[1], self.name.split[0]) if !self.email.empty? && self.user_type_id == (1||2)
+    gapps.add_group_member("alleleden", self.email, self.name.split[1], self.name.split[0]) if !self.email.empty?
   end
   
   def update_commission_email
