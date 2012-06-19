@@ -7,7 +7,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user], :as => :bestuur)
+    password = Devise.friendly_token.first(10)
+    @user.password = password
+    @user.password_confirmation = password
     if @user.save
+      UserMailer.welcome_email(@user,password).deliver
       redirect_to @user
     else
       render 'new'
@@ -51,7 +55,6 @@ class UsersController < ApplicationController
   
   def update_mailinglists
     User.all.each do |user|
-      user.purge_member_from_group
       user.add_member_to_group
     end
     redirect_to :root

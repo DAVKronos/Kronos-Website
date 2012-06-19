@@ -8,15 +8,12 @@ class User < ActiveRecord::Base
     after_destroy :remove_member_from_group
   
     attr_accessible :email, :address, :postalcode, 
-                      :city, :phonenumber, :password, :password_confirmation, 
-                      :papieren_kronometer, :avatar, :avatar_file_name, :remember_me
+                    :city, :phonenumber, :password, :password_confirmation, 
+                    :papieren_kronometer, :avatar, :avatar_file_name, :remember_me, :as => [:default, :admin]
 
-    attr_accessible :name, :initials, :birthdate,
-                      :sex, :licensenumber, :password,
-                      :password_confirmation, :papieren_kronometer,
-                      :avatar, :avatar_file_name,:email,
-                      :address, :postalcode, :city, :phonenumber,
-                      :user_type_id, :xtracard, :bank_account_number, :as => :bestuur
+    attr_accessible :name, :initials, :birthdate,:sex,
+                    :licensenumber, :user_type_id, :xtracard,
+                    :bank_account_number, :as => :bestuur
   
   has_many :commission_memberships, :dependent => :destroy
   has_many :commissions, :through => :commission_memberships
@@ -58,12 +55,6 @@ class User < ActiveRecord::Base
      gapps.destroy_group_member("leden", self.email_was) if (self.email_changed? || self.user_type_id_changed?) && !self.new_record? && self.user_type_id_was == (1||2)
      gapps.destroy_group_member("alleleden", self.email_was) if self.email_changed? && !self.new_record?
    end
-  
-  def remove_member_from_group
-    gapps = Gapps.new
-    gapps.destroy_group_member("leden", self.email) if self.user_type_id == (1||2)
-    gapps.destroy_group_member("alleleden", self.email)
-  end
   
   def add_member_to_group
     gapps = Gapps.new
