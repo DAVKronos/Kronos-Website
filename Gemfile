@@ -12,7 +12,6 @@ gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'jquery-rails'
 gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
-gem 'recaptcha', :require => 'recaptcha/rails'
 gem "settingslogic", "~> 2.0.8"
 gem "bootstrap-will_paginate", "~> 0.0.6"
 gem "chronic_duration", "~> 0.9.6"
@@ -20,6 +19,7 @@ gem 'math_engine', '~> 0.3.0', :git => 'git://github.com/dmarczal/math_engine.gi
 gem 'client_side_validations', '3.2.0.beta.3'
 gem 'localeapp'
 gem 'redcarpet'
+gem 'rakismet'
 
 # For development under Linux you also need to install
 # an javascript runtime

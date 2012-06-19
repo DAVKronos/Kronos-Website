@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120619094140) do
+ActiveRecord::Schema.define(:version => 20120619214208) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(:version => 20120619094140) do
     t.datetime "updated_at"
     t.string   "email"
     t.integer  "user_id"
+    t.string   "remote_ip"
+    t.string   "user_agent"
+    t.string   "referrer"
   end
 
   create_table "commission_memberships", :force => true do |t|

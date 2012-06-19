@@ -1,15 +1,24 @@
 class Chatmessage < ActiveRecord::Base
-#  create_table "chatmessages", :force => true do |t|
-#    t.string   "by"
-#    t.text     "message"
-#    t.datetime "created_at"
-#    t.datetime "updated_at"
-#    t.string   "email"
-#    t.integer  "user_id"
-#  end
-  attr_accessible :by, :message, :email 
+  include Rakismet::Model
+  after_save :spam_check
+  attr_accessible :by, :message, :email
   belongs_to :user
   validates_presence_of :by, :message, :email
+  rakismet_attrs :author => :by, :author_email => :email, :content => :message
+  
+  def spam_check
+    if self.spam?
+      self.destroy
+    end
+  end
+  
+  handle_asynchronously :spam_check
+  
+  def request=(request)
+    self.user_ip    = request.remote_ip
+    self.user_agent = request.env['HTTP_USER_AGENT']
+    self.referrer   = request.env['HTTP_REFERER']
+  end
 end
 # == Schema Information
 #

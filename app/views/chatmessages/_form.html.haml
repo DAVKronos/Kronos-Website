@@ -9,6 +9,4 @@
     = f.label :bericht
     = f.text_area(:message, :rows => "3", :class => "input-xlarge markItUp")
 
-    = recaptcha_tags :ssl => true unless current_user
-
     = f.submit :class => "btn"

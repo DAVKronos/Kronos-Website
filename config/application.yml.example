@@ -1,8 +1,7 @@
 # config/application.yml
 defaults: &defaults
-  recaptcha_public_key: ""
-  recaptcha_private_key: ""
   gapps_password: ""
+  akismet_api_key: ""
 
 development:
   <<: *defaults

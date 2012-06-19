@@ -87,13 +87,5 @@ class AgendaitemsController < ApplicationController
     end
   end
   
-  private
-  
-  def humanCheck
-    if current_user
-      true
-    else
-      verify_recaptcha
-    end
-  end
+
 end

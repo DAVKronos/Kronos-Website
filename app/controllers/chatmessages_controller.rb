@@ -29,22 +29,25 @@ class ChatmessagesController < ApplicationController
   # POST /chatmessages
   # POST /chatmessages.json
   def create
-    @chatmessage = Chatmessage.new(params[:chatmessage])
-
     if current_user
       @chatmessage = current_user.chatmessages.build(params[:chatmessage])
-    end
-
-    respond_to do |format|
-      if humanCheck && @chatmessage.save
-        format.html { redirect_to chatmessages_path 
-                      flash[:success] = "Chatmessage was successfully created." 
-                    }
-        format.json { render json: @chatmessage, status: :created, location: @chatmessage }
-      else
-        format.html { redirect_to chatmessages_path }
-        format.json { render json: @chatmessage.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @chatmessage.save
+          format.html { redirect_to chatmessages_path 
+                        flash[:success] = "Chatmessage was successfully created." 
+                      }
+          format.json { render json: @chatmessage, status: :created, location: @chatmessage }
+        else
+          format.html { redirect_to chatmessages_path }
+          format.json { render json: @chatmessage.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      @chatmessage = Chatmessage.new(params[:chatmessage])
+      @chatmessage.request = request
+      @chatmessage.save
+      redirect_to chatmessages_path
+      flash[:success] = "Bericht ontvangen. We controleren eerst nog even of het geen spam is."
     end
   end
 
@@ -76,14 +79,7 @@ class ChatmessagesController < ApplicationController
   end
   
   private
-  
-    def humanCheck
-      if current_user
-        true
-      else
-        verify_recaptcha
-      end
-    end
+    
     
     def user_current_user?
       @user = Chatmessage.find(params[:id]).user
