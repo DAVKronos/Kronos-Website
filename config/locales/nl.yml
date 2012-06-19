@@ -354,3 +354,6 @@ nl:
       unlocked: Je account is ge-unlocked. Je kan nu weer inloggen.
   sign_in: Inloggen
   phonenumber: telefoonnummer
+  bankaccountnumber: Bankrekeningnummber
+  usertype: Lidtype
+  xtracardnumber: xtracardnummer
