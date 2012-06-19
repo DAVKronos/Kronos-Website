@@ -5,11 +5,11 @@ end
 #
 # Table name: user_types
 #
-#  id           :integer         not null, primary key
-#  name         :string(255)
-#  donor        :boolean
-#  recreational :boolean
-#  created_at   :datetime        not null
-#  updated_at   :datetime        not null
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  donor       :boolean
+#  competition :boolean
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
 #
 

@@ -114,5 +114,7 @@ end
 #  last_sign_in_ip        :string(255)
 #  phonenumber            :string(255)
 #  user_type_id           :integer
+#  bank_account_number    :string(255)
+#  xtracard               :string(255)
 #
 
