@@ -19,7 +19,11 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.where(:user_type_id => 1||2).order('name asc').paginate(:page => params[:page], :per_page => 12)
+    if current_user && current_user.admin?
+       @users = User.order('name asc').paginate(:page => params[:page], :per_page => 12)
+    else
+      @users = User.where(:user_type_id => 1||2).order('name asc').paginate(:page => params[:page], :per_page => 12)
+    end
   end
   
   def edit
