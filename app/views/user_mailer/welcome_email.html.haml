@@ -3,14 +3,15 @@
   %head
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   %body
-    %h1 Welkom bij Kronos, #{@user.name}
+    %h1 Welkom bij Kronos, #{@user.name}.
     %p
       Ik heb voor jou een account aangemaakt op de website van Kronos.
       Je kunt inloggen met de volgende gegevens:
     %p
       e-mailadres: #{@user.email}
+	  %br
       wachtwoord: #{@password}
-      
+    %p
       Het wachtwoord is automatisch gegenereerd en hoef je dus niet te veranderen. Mocht je het wachtwoord toch
       willen veranderen dan kan dat via je persoonlijke pagina op de website.
       
