@@ -17,6 +17,7 @@ KronosWebsite::Application.routes.draw do
   resources :users do
     get 'editpassword', :on => :member
   end
+  match '/rebuildmailinglists', :to => 'users#update_mailinglists'
   resources :commissions
   resources :commission_memberships
   resources :subscriptions

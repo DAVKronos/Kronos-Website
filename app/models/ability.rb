@@ -10,11 +10,13 @@ class Ability
            can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
          end
          can :titleshow, Page
+         can :update_mailinglists, User
        elsif user.active?
          can :create, Agendaitem
          can :update, user.commissions.each do |com|
            com.agendaitems 
          end
+         
          can :read, :all
          can :home, Page
          can :frontpage, Result

@@ -48,6 +48,15 @@ class UsersController < ApplicationController
     flash[:success] = "Gebruiker verwijderd"
       redirect_to users_path
   end
+  
+  def update_mailinglists
+    User.all.each do |user|
+      user.purge_member_from_group
+      user.add_member_to_group
+    end
+    redirect_to :root
+    flash[:success] = "Ik ben de mailinglijst aan het herbouwen, een ogenblik"
+  end
 
   private
     def user_current_user?
