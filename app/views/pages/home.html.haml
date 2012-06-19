@@ -1,76 +1,84 @@
 .row
   .span12
-    %div{:class => "span5", :id => "content-slider"}
-      #content
-        %div{:id => "content-inner-1"}
-          %div{:id => "content-inner-2"}
-            %div{:id => "content-inner-3"}
-              %div{:id => "content-inner"}
-                - pagecounter = 1
-                - @newsitems.each do |newsitem|
-                  %div{:class => "page", :id => "page#{pagecounter.to_s}"}
-                    = image_tag newsitem.articlephoto.url :slider
-                    %div{:class => "page-info", :id => "info#{pagecounter.to_s}"}
-                      %h2= link_to newsitem.title, "##{newsitem.title}"
-                      %div{:class => "page-text"}
-                        = newsitem.news.split('.').first
-                  - pagecounter = pagecounter + 1
+    .span5
+      .row
+        %div{:class => "span5", :id => "content-slider"}
+          #content
+            %div{:id => "content-inner-1"}
+              %div{:id => "content-inner-2"}
+                %div{:id => "content-inner-3"}
+                  %div{:id => "content-inner"}
+                    - pagecounter = 1
+                    - @newsitems.each do |newsitem|
+                      %div{:class => "page", :id => "page#{pagecounter.to_s}"}
+                        = image_tag newsitem.articlephoto.url :slider
+                        %div{:class => "page-info", :id => "info#{pagecounter.to_s}"}
+                          %h2= link_to newsitem.title, "##{newsitem.title}"
+                          %div{:class => "page-text"}
+                            = newsitem.news.split('.').first
+                      - pagecounter = pagecounter + 1
                   
-      %ul#nav
-        %li.button#button1
-          %a{:href => "#content-inner-1"}
-        %li.button#button2
-          %a{:href => "#content-inner-2"}
-        %li.button#button3
-          %a{:href => "#content-inner-3"}
-    .span5.agenda
+          %ul#nav
+            %li.button#button1
+              %a{:href => "#content-inner-1"}
+            %li.button#button2
+              %a{:href => "#content-inner-2"}
+            %li.button#button3
+              %a{:href => "#content-inner-3"}
+     
       .row
-        .span5
+        %br
+        %h1 Nieuws
+        %br
+        -@newsitems.each do |newsitem|
+          .row
+            .span5.newsitem
+              .row.newscontent
+                .span5
+                  = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
+                  %h1= link_to newsitem.title, {}, {:name => newsitem.title, :class => "newslink"}
+                  = markdown newsitem.news
+              .row.newscontent
+                .span5
+                  = link_to raw("<i class='icon-edit'></i>"), edit_newsitem_path(newsitem) if can? :update, newsitem
+                  = link_to raw("<i class='icon-remove'></i>"), newsitem, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
+                  = time_tag newsitem.created_at
+    .span5
+      .row
+        .agenda
           %h1 Agenda
-      - @agendaitems.each do |agendaitem|
-        .row
-          .span5
-            = link_to agendaitem do
-              = agendaitem.name
-              = l agendaitem.date, :format => :medium
-.row
-  .span5
-    %br
-    %h1 Nieuws
-    %br
-    -@newsitems.each do |newsitem|
+          - @agendaitems.each do |agendaitem|
+            .row
+              .span5
+                = link_to agendaitem do
+                  = agendaitem.name
+                = l agendaitem.date, :format => :medium
+                
       .row
-        .span5.newsitem
-          .row.newscontent
-            .span5
-              = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
-              %h1= link_to newsitem.title, {}, {:name => newsitem.title, :class => "newslink"}
-              = markdown newsitem.news
-          .row.newscontent
-            .span5
-              = link_to raw("<i class='icon-edit'></i>"), edit_newsitem_path(newsitem) if can? :update, newsitem
-              = link_to raw("<i class='icon-remove'></i>"), newsitem, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
-              = time_tag newsitem.created_at
-  .span5
-    %br
-    %h1 Youtube
-    %br
+        %br
+        %h1 Sponsors
+        = link_to image_tag("RC_Enschede-PMS.jpg"), "http://www.runenschede.nl/"
+        
+      .row
+        %br
+        %h1 Youtube
+        %br
 
-    <div id='mediaplayer'></div>
+        <div id='mediaplayer'></div>
 
-    <script type="text/javascript">
-    jwplayer('mediaplayer').setup({
-    'flashplayer': 'assets/player.swf',
-    'id': 'playerID',
-    'width': '480',
-    'height': '270',
-    'file': 'GzOdeqD0WhE',
-    'provider': 'youtube',
-    'plugins': {
-    'hd-2': {}
-    }
-    });
-    </script>
+        <script type="text/javascript">
+        jwplayer('mediaplayer').setup({
+        'flashplayer': 'assets/player.swf',
+        'id': 'playerID',
+        'width': '480',
+        'height': '270',
+        'file': 'GzOdeqD0WhE',
+        'provider': 'youtube',
+        'plugins': {
+        'hd-2': {}
+        }
+        });
+        </script>
     
     
   
