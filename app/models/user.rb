@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   
     attr_accessible :email, :address, :postalcode, 
                     :city, :phonenumber, :password, :password_confirmation, 
-                    :papieren_kronometer, :avatar, :avatar_file_name, :remember_me, :as => [:default, :admin]
+                    :papieren_kronometer, :avatar, :avatar_file_name, :remember_me, :as => [:default, :bestuur]
 
     attr_accessible :name, :initials, :birthdate,:sex,
                     :licensenumber, :user_type_id, :xtracard,
