@@ -1,12 +1,10 @@
 = form_for(@chatmessage) do |f|
   
+  = f.text_field :by, :class => "input-medium", :placeholder => "naam"
+  = f.text_field :email, :class => "input-medium", :placeholder => "email"
+  
+  = f.label :bericht
+  
+  = f.text_area(:message, :rows => "3", :class => "span3 markItUp")
 
-    = f.text_field :by, :class => "input-medium", :placeholder => "naam"
-
-    = f.text_field :email, :class => "input-medium", :placeholder => "email"
-
-
-    = f.label :bericht
-    = f.text_area(:message, :rows => "3", :class => "input-xlarge markItUp")
-
-    = f.submit :class => "btn"
+  = f.submit :class => "btn"
