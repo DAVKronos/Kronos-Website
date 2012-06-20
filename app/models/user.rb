@@ -62,6 +62,12 @@ class User < ActiveRecord::Base
     gapps.add_group_member("alleleden", self.email, self.name.split[1], self.name.split[0]) if !self.email.empty?
   end
   
+  def remove_member_from_group
+    gapps = Gapps.new
+    gapps.destroy_group_member("leden", self.email) if self.user_type_id == (1||2)
+    gapps.destroy_group_member("alleleden", self.email)
+  end
+  
   def update_commission_email
     if self.email_changed?
       self.commission_memberships.each do |commem|
