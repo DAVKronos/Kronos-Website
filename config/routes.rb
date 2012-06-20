@@ -15,6 +15,7 @@ KronosWebsite::Application.routes.draw do
   resources :kronometers
   resources :news_items
   resources :subscriptions
+  match '/users/xtracard', :to => 'users#xtracard'
   resources :users do
     get 'editpassword', :on => :member
   end

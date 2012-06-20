@@ -60,6 +60,10 @@ class UsersController < ApplicationController
     redirect_to :root
     flash[:success] = "Ik ben de mailinglijst aan het herbouwen, een ogenblik"
   end
+  
+  def xtracard
+    @users = User.where(:user_type_id => [1,2])
+  end
 
   private
     def user_current_user?
