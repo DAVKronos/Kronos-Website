@@ -8,7 +8,6 @@
 figure {
 	/*as the images are held within figure its that we style*/ 
 	float: left; /*places the images in a line*/ 
-	width: 300px; /*width of the images*/ 
 	margin: 10px 20px; /*space between the images*/
 }
 
