@@ -12,6 +12,7 @@ KronosWebsite::Application.routes.draw do
   resources :photoalbums do
     resources :photos
   end
+  resources :kronometers
   resources :news_items
   resources :subscriptions
   resources :users do

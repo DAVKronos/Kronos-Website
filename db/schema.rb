@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120619214208) do
+ActiveRecord::Schema.define(:version => 20120620104053) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20120619214208) do
     t.datetime "updated_at"
     t.string   "email"
     t.integer  "user_id"
-    t.string   "remote_ip"
+    t.string   "user_ip"
     t.string   "user_agent"
     t.string   "referrer"
   end
@@ -103,6 +103,17 @@ ActiveRecord::Schema.define(:version => 20120619214208) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "calculated_unit"
+  end
+
+  create_table "kronometers", :force => true do |t|
+    t.string   "name"
+    t.date     "date"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "newsitems", :force => true do |t|

@@ -1,0 +1,13 @@
+%h1 Kronometers
+
+%ul.thumbnails
+  - @kms.each do |km|
+    %li.span3
+      .thumbnail
+        = link_to image_tag(km.file.url(:thumb)), km.file.url
+        .caption
+          %h5= km.date
+          - if can? :destroy, km
+            = link_to 'verwijder', km, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{km.name}", :class => 'btn'
+- if can? :create, Kronometer
+  = link_to 'nieuwe Kronometer', new_kronometer_path
