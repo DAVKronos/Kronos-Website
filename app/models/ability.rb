@@ -16,7 +16,7 @@ class Ability
          can :update, user.commissions.each do |com|
            com.agendaitems 
          end
-         if user.commissions.contains(Commission.find_by_name("Redactie"))
+         if user.commissions.include?(Commission.find_by_name("Redactie"))
            can :manage, Kronometer
          end
          can :read, :all
