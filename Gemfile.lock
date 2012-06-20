@@ -14,6 +14,9 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    Ascii85 (1.0.1)
+    RedCloth (4.2.9)
+    RedCloth (4.2.9-x86-mingw32)
     ZenTest (4.6.2)
     actionmailer (3.2.5)
       actionpack (= 3.2.5)
@@ -44,6 +47,11 @@ GEM
       multi_json (~> 1.0)
     annotate (2.4.1.beta1)
     arel (3.0.2)
+    auto_html (1.4.2)
+      RedCloth
+      redcarpet
+      rinku
+      tag_helper
     autotest-fsevent (0.2.8)
       sys-uname
     autotest-growl (0.2.16)
@@ -122,10 +130,16 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (>= 0.0.2)
       mime-types
+    pdf-reader (1.1.1)
+      Ascii85 (~> 1.0.0)
+      ruby-rc4
     pg (0.13.2)
     pg (0.13.2-x86-mingw32)
     polyglot (0.3.3)
     populator (1.0.0)
+    prawn (0.12.0)
+      pdf-reader (>= 0.9.0)
+      ttfunk (~> 1.0.2)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -156,6 +170,7 @@ GEM
     redcarpet (2.1.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rinku (1.5.1)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -169,6 +184,7 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.8.0)
+    ruby-rc4 (0.1.5)
     sass (3.1.19)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -185,6 +201,7 @@ GEM
     sys-uname (0.9.0)
       ffi (>= 1.0.0)
     sys-uname (0.9.0-x86-mingw32)
+    tag_helper (0.0.3)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
     thor (0.15.2)
@@ -192,6 +209,7 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    ttfunk (1.0.3)
     tzinfo (0.3.33)
     uglifier (1.2.4)
       execjs (>= 0.3.0)
@@ -224,6 +242,7 @@ PLATFORMS
 DEPENDENCIES
   ZenTest (= 4.6.2)
   annotate (~> 2.4.1.beta1)
+  auto_html
   autotest-fsevent (~> 0.2.8)
   autotest-growl (~> 0.2.16)
   bootstrap-will_paginate (~> 0.0.6)
@@ -247,6 +266,7 @@ DEPENDENCIES
   paperclip (~> 3.1.2)
   pg
   populator
+  prawn
   rails (= 3.2.5)
   rakismet
   redcarpet
