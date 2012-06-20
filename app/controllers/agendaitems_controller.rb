@@ -20,6 +20,7 @@ class AgendaitemsController < ApplicationController
     @agendaitem = Agendaitem.new
     @agendaitem.date = Time.now
     @agendaitem.subscriptiondeadline = Time.now
+    @commissions = current_user.admin? ? Commission.all : current_user.commissions
   end
   
   def show
@@ -71,6 +72,7 @@ class AgendaitemsController < ApplicationController
 
   def edit
     @agendaitem = Agendaitem.find(params[:id])
+    @commissions = current_user.admin? ? Commission.all : current_user.commissions
   end
 
   def update
