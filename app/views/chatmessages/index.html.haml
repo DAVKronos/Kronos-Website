@@ -8,12 +8,12 @@
         - if chatmessage.user
           .span1
             =image_tag chatmessage.user.avatar.url(:thumb)
-        .span3
+        .span5
           .row
-            .span3
+            .span5
               = if chatmessage.user; link_to chatmessage.by, chatmessage.user else mail_to chatmessage.email, chatmessage.by end
           .row
-            .span3
+            .span5
               = markdown chatmessage.message
           
           

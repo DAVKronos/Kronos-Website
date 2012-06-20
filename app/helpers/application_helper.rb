@@ -5,7 +5,7 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
             :autolink => true)
             
-    markdown.render(auto_html(text) {html_escape; youtube(:width => 400, :height => 250)}).html_safe
+    markdown.render(auto_html(text) {html_escape; youtube(:width => "100%", :height => 250)}).html_safe
   end
   
   def getPages
