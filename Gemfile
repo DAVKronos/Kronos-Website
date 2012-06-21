@@ -20,7 +20,7 @@ gem 'client_side_validations', '3.2.0.beta.3'
 gem 'localeapp'
 gem 'redcarpet'
 gem 'rakismet'
-gem 'prawn'
+gem 'wicked_pdf'
 gem 'auto_html'
 
 # For development under Linux you also need to install

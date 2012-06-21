@@ -14,7 +14,6 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    Ascii85 (1.0.1)
     ZenTest (4.6.2)
     actionmailer (3.2.6)
       actionpack (= 3.2.6)
@@ -126,16 +125,10 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (>= 0.0.2)
       mime-types
-    pdf-reader (1.1.1)
-      Ascii85 (~> 1.0.0)
-      ruby-rc4
     pg (0.13.2)
     pg (0.13.2-x86-mingw32)
     polyglot (0.3.3)
     populator (1.0.0)
-    prawn (0.12.0)
-      pdf-reader (>= 0.9.0)
-      ttfunk (~> 1.0.2)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -180,7 +173,6 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.8.0)
-    ruby-rc4 (0.1.5)
     sass (3.1.19)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -204,7 +196,6 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    ttfunk (1.0.3)
     tzinfo (0.3.33)
     uglifier (1.2.5)
       execjs (>= 0.3.0)
@@ -219,6 +210,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    wicked_pdf (0.7.9)
     will_paginate (3.0.3)
     win32-api (1.4.8-x86-mingw32)
     win32-process (0.6.5)
@@ -261,7 +253,6 @@ DEPENDENCIES
   paperclip (~> 3.1.2)
   pg
   populator
-  prawn
   rails (= 3.2.6)
   rakismet
   redcarpet
@@ -273,4 +264,5 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn
   webrat (= 0.7.3)
+  wicked_pdf
   will_paginate (= 3.0.3)

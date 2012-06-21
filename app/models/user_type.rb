@@ -1,5 +1,6 @@
 class UserType < ActiveRecord::Base
   attr_accessible :donor, :name, :recreational
+  has_many :users
 end
 # == Schema Information
 #

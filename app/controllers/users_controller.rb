@@ -7,13 +7,13 @@ class UsersController < ApplicationController
 
   def create
     role = :bestuur
-    @user = User.new(params[:user], :as => :bestuur)
+    user = User.new(params[:user], :as => :bestuur)
     password = Devise.friendly_token.first(10)
-    @user.password = password
-    @user.password_confirmation = password
-    if @user.save
-      UserMailer.welcome_email(@user,password).deliver
-      redirect_to @user
+    user.password = password
+    user.password_confirmation = password
+    if user.save
+      UserMailer.welcome_email(user,password).deliver
+      redirect_to user
     else
       render 'new'
     end
@@ -29,6 +29,21 @@ class UsersController < ApplicationController
     else
       @users = User.where(:user_type_id => [1,2]).order('name asc').paginate(:page => params[:page], :per_page => 12)
     end
+    respond_to do |format|
+          format.html
+          format.pdf do
+            @users = Array.new
+            counter = 0
+            UserType.all.each do |ut|
+              @users[counter] = Array.new
+              ut.users.each do |user|
+                @users[counter] << user
+              end
+              counter += 1
+            end
+            render :pdf => "ledenlijst #{Time.now}"
+          end
+        end
   end
   
   def edit
@@ -40,7 +55,7 @@ class UsersController < ApplicationController
         role = (current_user.admin? ? :bestuur : :default)
         if user.update_attributes(params[:user], :as => role)
           flash[:success] = "Profile updated."
-          sign_in user, :bypass => true
+          sign_in user, :bypass => true unless current_user.admin?
           redirect_to user
         else
           render 'edit'
