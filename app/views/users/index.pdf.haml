@@ -1,9 +1,10 @@
 %h1 Ledenlijst #{Time.now}
 
 - @users.each do |ut|
-  = ut.first.user_type.name if ut.first
-  %br
-  Aantal: #{ut.first.user_type.users.count}
-  %br
-  - ut.each do |user|
-    #{user.name}    #{user.initials}    #{user.bank_account_number}
+  - if ut.first
+    = ut.first.user_type.name
+    %br
+    Aantal: #{ut.first.user_type.users.count}
+    %br
+    - ut.each do |user|
+      #{user.name}    #{user.initials}    #{user.bank_account_number}
