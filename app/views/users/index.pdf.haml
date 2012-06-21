@@ -1,7 +1,7 @@
 %h1 Ledenlijst #{Time.now}
 
 - @users.each do |ut|
-  = ut.first.user_type.name
+  = ut.first.user_type.name if ut.first
   %br
   Aantal: #{ut.first.user_type.users.count}
   %br
