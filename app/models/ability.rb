@@ -38,6 +38,7 @@ class Ability
            can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
          end
          can :titleshow, Page
+         can :editpassword, user
        elsif !user.new_record?
          can :read, :all
          can :home, Page
@@ -58,6 +59,7 @@ class Ability
            can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
          end
          can :titleshow, Page
+         can :editpassword, user
        else
          can :read, :all
          can :home, Page

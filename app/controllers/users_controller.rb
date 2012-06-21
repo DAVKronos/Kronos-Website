@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    role = :bestuur
     @user = User.new(params[:user], :as => :bestuur)
     password = Devise.friendly_token.first(10)
     @user.password = password
