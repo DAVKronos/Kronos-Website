@@ -22,7 +22,11 @@
                   - event.results.each do |result|
                     %tr
                       %td
-                        = result.user.name
+                        - if result.user
+                          = link_to result.user.name, result.user
+                        - else
+                          = result.username
+                        - end
                       %td
                         = result.result
     .span3
