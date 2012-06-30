@@ -3,7 +3,9 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Agendaitem.find(params[:agendaitem_id]).events
+    @agendaitem = Agendaitem.find(params[:agendaitem_id])
+    @events = @agendaitem.events
+    @event = Event.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,7 +49,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to @event.agendaitem.event_path, notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render action: "new" }

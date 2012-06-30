@@ -27,3 +27,25 @@
           .span3
             = f.link_to_add "Voeg een uitslag toe", :results
             = f.submit :class => "btn btn-success"
+            
+%h1 Voeg een onderdeel toe
+
+= form_for @event do |f|
+  = f.label "Tijd", :class => "span1"
+  - if f.object.date.respond_to?(:strftime)
+    = f.text_field :date, {:class => "tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}
+  - else
+    = f.text_field :date, {:class => "tijdprikker span1", :value => Time.now.strftime('%H:%M')}
+  %br
+  = f.label "Type", :class => "span1"
+  = f.select :eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect { |p| [p.name, p.id] }
+  %br
+  = f.label "Afstand", :class => "span1"
+  = f.text_field :distance, :class => "span1"
+  %br
+  = f.hidden_field :agendaitem_id, :value => @agendaitem.id
+  
+  = f.submit :class => "btn"
+    
+    
+			

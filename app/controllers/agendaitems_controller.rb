@@ -6,7 +6,8 @@ class AgendaitemsController < ApplicationController
   end
   
   def wedstrijden
-    @agendaitems = Agendaitem.where("date >= ? AND category LIKE ?", Time.now, '%wedstrijd%').paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
+    @agendaitems = Agendaitem.where("date >= ?", Time.now).order('date ASC').paginate(:page => params[:page], :per_page => 10)
+    @agendaitems.delete_if{|x| x.agendaitemtype.is_match = false }
     render :action => "index"
   end
   

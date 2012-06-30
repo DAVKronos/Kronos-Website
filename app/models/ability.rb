@@ -29,6 +29,7 @@ class Ability
            can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
          end
          can :editpassword, user
+         can :create, Event
        end
        
          
