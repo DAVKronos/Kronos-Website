@@ -14,7 +14,7 @@ class Ability
        elsif user.active?
          can :create, Agendaitem
          user.commissions.each do |com|
-           can :update com.agendaitems 
+           can :update, com.agendaitems 
          end
          if user.commissions.include?(Commission.find_by_name("Redactie"))
            can :manage, Kronometer
