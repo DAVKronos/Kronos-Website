@@ -13,8 +13,8 @@ class Ability
          can :update_mailinglists, User
        elsif user.active?
          can :create, Agendaitem
-         can :update, user.commissions.each do |com|
-           com.agendaitems 
+         user.commissions.each do |com|
+           can :update com.agendaitems 
          end
          if user.commissions.include?(Commission.find_by_name("Redactie"))
            can :manage, Kronometer
