@@ -31,15 +31,15 @@
     = t(:sex).capitalize + ": " + @user.sex
     %br
   %li
-    = t(:licensenumber).capitalize + ": " + @user.licensenumber
+    = t(:licensenumber).capitalize + ": " + @user.licensenumber if user.licensenumber
     %br
   %li
-    = t(:xtracardnumber).capitalize + ": " + @user.xtracard
+    = t(:xtracardnumber).capitalize + ": " + @user.xtracard if user.xtracard
   %li
     = t(:papieren_kronometer).capitalize + ": " + @user.papieren_kronometer.to_s
   -if current_user.admin?
     %li
-      = t(:bankaccountnumber).capitalize + ": " + @user.bank_account_number
+      = t(:bankaccountnumber).capitalize + ": " + @user.bank_account_number if user.bank_account_number
 
 - if can? :update, @user
   = link_to 'pas je gegevens aan', edit_user_path(@user)
