@@ -122,6 +122,8 @@
       .row
         - @agendaitem.reactions.each do |reaction|
           %div{:class => "well span4"}
+		  	= reaction.user.name if reaction.user
+			-
             = reaction.reactiontext
       .row
         .span5

@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620104053) do
+ActiveRecord::Schema.define(:version => 20120702175034) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.date     "date"
+    t.datetime "date"
     t.string   "location"
     t.boolean  "subscribe"
     t.datetime "subscriptiondeadline"

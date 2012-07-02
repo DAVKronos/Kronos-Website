@@ -48,7 +48,7 @@ end
 #  id                   :integer         not null, primary key
 #  name                 :string(255)
 #  description          :text
-#  date                 :date
+#  date                 :datetime
 #  location             :string(255)
 #  subscribe            :boolean
 #  subscriptiondeadline :datetime

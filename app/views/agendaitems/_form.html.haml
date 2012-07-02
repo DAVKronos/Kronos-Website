@@ -7,7 +7,7 @@
             %legend Algemene informatie
             = f.label :name
             = f.text_field :name, :placeholder => "Naam"
-            = f.label :intern
+            = f.label "Kronos Activiteit"
             = f.check_box :intern, :placeholder => "Van Kronos?"
             = f.label :agendaitemtype
             = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name)
