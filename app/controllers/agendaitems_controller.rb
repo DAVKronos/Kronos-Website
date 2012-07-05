@@ -6,9 +6,8 @@ class AgendaitemsController < ApplicationController
   end
   
   def wedstrijden
-    @agendaitems = Agendaitem.where("date >= ?", Time.now).where(:agendaitemtype => {:is_match => true}).order('date ASC').paginate(:page => params[:page], :per_page => 10)
-    render :action => "index"
-    users.where(:company_memberships => {:admin => true})
+    @agendaitems = Agendaitem.joins(:agendaitemtype).where(:agendaitemtypes => {:is_match => true}).where("date >= ?", Time.now).paginate(:page => params[:page], :per_page => 10)
+    render :action => "index"    
   end
   
   def archief
