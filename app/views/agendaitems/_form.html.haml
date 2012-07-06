@@ -23,7 +23,7 @@
           %fieldset
             %legend Optionele argumenten
             = f.label :commission
-            = f.select(:commission_id, @commissions.collect{ |x| [x.name, x.id] }, {:include_blank => 'None'})
+            = f.collection_select(:commission_id, @commissions, :id, :name)
       .span6
         .row
           %fieldset
