@@ -25,6 +25,8 @@ class AgendaitemsController < ApplicationController
   
   def show
     @agendaitem = Agendaitem.find(params[:id])
+    @comments = @agendaitem.comments
+    @comment = @agendaitem.comments.build
     
     if current_user
       @agendaitem.subscriptions.each do |subscr|
@@ -37,12 +39,6 @@ class AgendaitemsController < ApplicationController
         @subscription.name = current_user.name.split[0]
         @subscription.agendaitem = @agendaitem
       end
-    end
-    
-    @reaction = Reaction.new
-    @reaction.agendaitem = @agendaitem
-    if current_user
-      @reaction.user = current_user
     end
   end
 
@@ -77,10 +73,20 @@ class AgendaitemsController < ApplicationController
 
   def update
     @agendaitem = Agendaitem.find(params[:id])
+    @agendaitem.attributes = params[:agendaitem]
+    @agendaitem.comments.each do |comment|
+        comment.user = current_user if comment.new_record?
+    end
+    
 
     respond_to do |format|
-      if @agendaitem.update_attributes(params[:agendaitem])
-        format.html { redirect_to edit_agendaitem_path(@agendaitem), notice: 'Agendaitem was successfully updated.' }
+      if @agendaitem.save
+        format.html { if params[:action] == "edit"
+                        redirect_to edit_agendaitem_path(@agendaitem), notice: 'Agendaitem was successfully updated.'
+                      else
+                        redirect_to @agendaitem
+                      end
+        }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

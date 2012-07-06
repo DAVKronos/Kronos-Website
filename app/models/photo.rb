@@ -4,7 +4,7 @@ class Photo < ActiveRecord::Base
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
   belongs_to :photoalbum
   has_many :tags, :dependent => :destroy
-  has_many :reactions, :dependent => :destroy
+  has_many :comments, :as => :commentable, :dependent => :destroy
   
   validates_attachment_presence :photo
   

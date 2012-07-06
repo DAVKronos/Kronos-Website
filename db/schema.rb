@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702175034) do
+ActiveRecord::Schema.define(:version => 20120705110440) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -52,6 +52,19 @@ ActiveRecord::Schema.define(:version => 20120702175034) do
     t.string   "user_ip"
     t.string   "user_agent"
     t.string   "referrer"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "user_id"
+    t.integer  "agendaitem_id"
+    t.integer  "result_id"
+    t.integer  "photo_id"
+    t.integer  "newsitem_id"
+    t.text     "commenttext"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
   end
 
   create_table "commission_memberships", :force => true do |t|
@@ -155,17 +168,6 @@ ActiveRecord::Schema.define(:version => 20120702175034) do
     t.integer  "photoalbum_id"
     t.string   "youtube_id"
     t.boolean  "processing"
-  end
-
-  create_table "reactions", :force => true do |t|
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "user_id"
-    t.integer  "agendaitem_id"
-    t.integer  "result_id"
-    t.integer  "photo_id"
-    t.integer  "newsitem_id"
-    t.text     "reactiontext"
   end
 
   create_table "results", :force => true do |t|

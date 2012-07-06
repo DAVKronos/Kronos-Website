@@ -5,9 +5,8 @@ KronosWebsite::Application.routes.draw do
   resources :agendaitemtypes
 
   devise_for :users
-
-  resources :reactions
   resources :photos
+  resources :comments
   resources :tags
   resources :photoalbums do
     resources :photos
@@ -40,6 +39,7 @@ KronosWebsite::Application.routes.draw do
   resources :agendaitems do
     resources :events
     resources :results
+    resources :comments
   end
   resources :events
   

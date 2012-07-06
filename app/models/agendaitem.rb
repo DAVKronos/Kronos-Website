@@ -3,10 +3,11 @@ class Agendaitem < ActiveRecord::Base
   has_many :photoalbums
   has_many :events, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
-  has_many :reactions, :dependent => :destroy
+  has_many :comments, :as => :commentable, :dependent => :destroy
   belongs_to :agendaitemtype
   accepts_nested_attributes_for :events, :allow_destroy => true
   accepts_nested_attributes_for :subscriptions, :allow_destroy => true
+  accepts_nested_attributes_for :comments, :reject_if => :all_blank
   validates_associated :events
   
   def allow_edit?(user)
