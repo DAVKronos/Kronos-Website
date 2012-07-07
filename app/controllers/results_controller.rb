@@ -36,4 +36,8 @@ class ResultsController < ApplicationController
       format.html
     end
   end
+  
+  def new
+    @agendaitems = Agendaitem.joins(:agendaitemtype).where(:agendaitemtypes => {:is_match => true}).order('date DESC')
+  end
 end

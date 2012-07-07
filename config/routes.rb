@@ -36,6 +36,7 @@ KronosWebsite::Application.routes.draw do
   match '/agendaitems/archief', :to => 'agendaitems#archief'
   match '/wedstrijden', :to => 'agendaitems#wedstrijden'
   match '/uitslagen', :to => 'results#frontpage'
+  match '/results/new', :to => 'results#new'
   resources :agendaitems do
     resources :events
     resources :results

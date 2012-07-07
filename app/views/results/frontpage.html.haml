@@ -34,3 +34,5 @@
     .span3
       .row
         Plaatjes
+%br
+= link_to "voeg een uitslag toe", new_result_path if can? :create, Result

@@ -1,0 +1,6 @@
+%h1 Voeg een uitslag toe
+
+Kies hieronder de wedstrijd waarvan je een uitslag wil toevoegen:
+
+- @agendaitems.each do |agendaitem|
+  = link_to agendaitem.name, agendaitem_event_path(agendaitem)
