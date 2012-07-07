@@ -7,7 +7,7 @@ class ResultsController < ApplicationController
     
     @slicedresults = Array.new
 
-    @slicedresults[0] = ["Laatste", Agendaitem.where("date <= ?", DateTime.now).limit(20)]
+    @slicedresults[0] = ["Laatste", Agendaitem.order('date ASC').where("date <= ?", DateTime.now).limit(20)]
     currentyear = DateTime.now.year
     
     tussenresult = [Date.new(currentyear).year.to_s, Agendaitem.where(:date => (Date.new(currentyear)..DateTime.now()))]
