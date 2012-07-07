@@ -6,5 +6,11 @@ namespace :migrate do
       agendaitem.agendaitemtype = destinationagendaitemtype
       agendaitem.save!
     end
+    Agendaitem.find(:all, :conditions=> ["category ILIKE ?","%#{"wedstrijd(oude database)"}%"]).each do |agendaitem|
+      destinationagendaitemtype = Agendaitemtype.find_by_name("Baanwestrijd")
+      agendaitem.agendaitemtype = destinationagendaitemtype
+      agendaitem.save!
+    end
+    
   end
 end
