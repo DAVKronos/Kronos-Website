@@ -8,6 +8,10 @@ bindFormEvents = () =>
 		  
   .bind "ajax:error", (evt, xhr, status, error) ->
     alert(xhr.responseText)
+    
+  $(".new_event").bind 'ajax:success', (evt, data, status, xhr) ->
+    $(".events").append($('<div>').attr('class', "row").html($('<div>').attr('class', "span12 event").html(xhr.responseText)))
+      
 
 $(document).ready ->
   bindFormEvents()
