@@ -39,11 +39,10 @@ class NewsitemsController < ApplicationController
   def show
     @newsitem = Newsitem.find(params[:id])
     
-    @reaction = Reaction.new;
-    @reaction.newsitem = @newsitem;
+    @comment = Comment.new;
     
     if current_user
-      @reaction.user = current_user
+      @comment.user = current_user
     end
 
     respond_to do |format|

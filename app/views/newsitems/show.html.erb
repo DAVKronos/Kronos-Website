@@ -13,9 +13,9 @@
   <%= @newsitem.agreed %>
 </p>
 
-<% @newsitem.reactions.each do |reactie| %>
+<% @newsitem.comments.each do |comment| %>
 <p>
-  <%= reactie.reactiontext %>
+  <%= comment.reactiontext %>
 </p>
 <% end %>
 
