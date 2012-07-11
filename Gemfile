@@ -22,6 +22,7 @@ gem 'redcarpet'
 gem 'rakismet'
 gem 'wicked_pdf'
 gem 'auto_html'
+gem 'memcache-client'
 
 # For development under Linux you also need to install
 # an javascript runtime
