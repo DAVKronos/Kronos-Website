@@ -30,23 +30,23 @@
         %br
         %h1 Nieuws
         %br
-      -@newsitems.each do |newsitem|
-        .row
-          .span6.newsitem
-            .row.newscontent
-              .span6
-                = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
-                %h1= link_to newsitem.title, {}, {:name => newsitem.title, :class => "newslink"}
-                = markdown newsitem.news
-            .row.newscontent
-              .span6
-                = link_to raw("<i class='icon-edit'></i>"), edit_newsitem_path(newsitem) if can? :update, newsitem
-                = link_to raw("<i class='icon-remove'></i>"), newsitem, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
-                = time_tag newsitem.created_at
+        -@newsitems.each do |newsitem|
+          .row
+            .span6.newsitem
+              .row.newscontent
+                .span6
+                  = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
+                  %h1= link_to newsitem.title, {}, {:name => newsitem.title, :class => "newslink"}
+                  = markdown newsitem.news
+              .row.newscontent
+                .span6
+                  = link_to raw("<i class='icon-edit'></i>"), edit_newsitem_path(newsitem) if can? :update, newsitem
+                  = link_to raw("<i class='icon-remove'></i>"), newsitem, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
+                  = time_tag newsitem.created_at
                 
   .span6
     .row
-      .agenda
+      .span6.agenda
         %h1 Agenda
         - @agendaitems.each do |agendaitem|
           .row
@@ -56,31 +56,33 @@
               = l agendaitem.date, :format => :only_date
                 
     .row
-      %br
-      %h1 Sponsors
-      = link_to image_tag("RC_Enschede-PMS.jpg"), "http://www.runenschede.nl/"
-      = link_to image_tag("sportraad_logo_125x110.gif"), "http://sportraadut.nl"
+      .span6
+        %br
+        %h1 Sponsors
+        = link_to image_tag("RC_Enschede-PMS.jpg"), "http://www.runenschede.nl/"
+        = link_to image_tag("sportraad_logo_125x110.gif"), "http://sportraadut.nl"
         
     .row
-      %br
-      %h1 Youtube
-      %br
+      .span6
+        %br
+        %h1 Youtube
+        %br
 
-      <div id='mediaplayer'></div>
+        <div id='mediaplayer'></div>
 
-      <script type="text/javascript">
-      jwplayer('mediaplayer').setup({
-      'flashplayer': 'assets/player.swf',
-      'id': 'playerID',
-      'width': 'auto',
-      'height': '270',
-      'file': 'GzOdeqD0WhE',
-      'provider': 'youtube',
-      'plugins': {
-      'hd-2': {}
-      }
-      });
-      </script>
+        <script type="text/javascript">
+        jwplayer('mediaplayer').setup({
+        'flashplayer': 'assets/player.swf',
+        'id': 'playerID',
+        'width': 'auto',
+        'height': '270',
+        'file': 'GzOdeqD0WhE',
+        'provider': 'youtube',
+        'plugins': {
+        'hd-2': {}
+        }
+        });
+        </script>
     
     
   
