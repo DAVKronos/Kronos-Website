@@ -1,39 +1,38 @@
-- cache do
-  .span12
-    .row
-      %h1 Uitslagen
-    .row
-      .span9
-        .row
-          %ul{:class => "nav nav-tabs"}
-            - @slicedresults.each do |resultset|
-              %li
-                %a{:href => '#' + resultset.first, "data-toggle" => 'tab'}
-                  = resultset.first
-          .tab-content
-            - @slicedresults.each do |resultset|
-              %div{:class => "tab-pane", :id => resultset.first}
-                %table{:class => "resulttable"}
-                  %thead
+.span12
+  .row
+    %h1 Uitslagen
+  .row
+    .span9
+      .row
+        %ul{:class => "nav nav-tabs"}
+          - @slicedresults.each do |resultset|
+            %li
+              %a{:href => '#' + resultset.first, "data-toggle" => 'tab'}
+                = resultset.first
+        .tab-content
+          - @slicedresults.each do |resultset|
+            %div{:class => "tab-pane", :id => resultset.first}
+              %table{:class => "resulttable"}
+                %thead
+                  %tr
+                    %th Wedstrijd ⇕
+                    %th Datum ⇕
+                    %th Plaats ⇕
+                    %th Type ⇕
+                    %th Aantal uitslagen ⇕
+                %tbody
+                  - resultset.last.each do |agendaitem|
                     %tr
-                      %th Wedstrijd ⇕
-                      %th Datum ⇕
-                      %th Plaats ⇕
-                      %th Type ⇕
-                      %th Aantal uitslagen ⇕
-                  %tbody
-                    - resultset.last.each do |agendaitem|
-                      %tr
-                        %td
-                          = link_to agendaitem.name, agendaitem_results_path(agendaitem)
-                        %td
-                          = agendaitem.date.strftime("%e %B")
-                        %td
-                          = agendaitem.location
-                        %td
-                          = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
-      .span3
-        .row
-          Plaatjes
+                      %td
+                        = link_to agendaitem.name, agendaitem_results_path(agendaitem)
+                      %td
+                        = agendaitem.date.strftime("%e %B")
+                      %td
+                        = agendaitem.location
+                      %td
+                        = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
+    .span3
+      .row
+        Plaatjes
 %br
 = link_to "voeg een uitslag toe", new_result_path if can? :create, Result
