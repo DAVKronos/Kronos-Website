@@ -1,39 +1,42 @@
 %h1 Kronos chatbox
 %br
-.span6
+.row
+  .span6
 
-  - @chatmessages.each do |chatmessage|
-    %div{:class => "row"}
+    - @chatmessages.each do |chatmessage|
       .row
         - if chatmessage.user
           .span1
-            =image_tag chatmessage.user.avatar.url(:thumb)
-        .span5
-          .row
-            .span5
-              = if chatmessage.user; link_to chatmessage.by, chatmessage.user else mail_to chatmessage.email, chatmessage.by end
-          .row
-            .span5
-              = markdown chatmessage.message
+            .chatimage
+              =image_tag chatmessage.user.avatar.url(:thumb)
+        .span5.small-left-margin
+          .chattext
+            .row
+              .span5
+                = if chatmessage.user; link_to chatmessage.by, chatmessage.user else mail_to chatmessage.email, chatmessage.by end
+            .row
+              .span5
+                = markdown chatmessage.message
           
           
-          - if can? :update, chatmessage
-            = link_to raw("<i class='icon-edit'></i>"), edit_chatmessage_path(chatmessage)
-          - if can? :destroy, chatmessage
-            = link_to raw("<i class='icon-remove'></i>"), chatmessage, confirm: 'Are you sure?', method: :delete
-          .row
+                - if can? :update, chatmessage
+                  = link_to raw("<i class='icon-edit'></i>"), edit_chatmessage_path(chatmessage)
+                - if can? :destroy, chatmessage
+                  = link_to raw("<i class='icon-remove'></i>"), chatmessage, confirm: 'Are you sure?', method: :delete
+                .row
         
-            .span5
-              - if chatmessage.created_at > 1.day.ago
-                = h time_ago_in_words chatmessage.created_at
-                geleden
-              - else
-                = time_tag(chatmessage.created_at)
-    .row
-      %hr
+                  .span5
+                    - if chatmessage.created_at > 1.day.ago
+                      = h time_ago_in_words chatmessage.created_at
+                      geleden
+                    - else
+                      = time_tag(chatmessage.created_at)
+      .row
+        .span6
+          %hr
         
 
-  = will_paginate @chatmessages, :previous_label => '<', :next_label => '>'
+    = will_paginate @chatmessages, :previous_label => '<', :next_label => '>'
 
-%div{:class => "span4 well"}
-  = render 'form'
+  .span6
+    = render 'form'

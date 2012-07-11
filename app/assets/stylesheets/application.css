@@ -10,17 +10,35 @@
  *= require_self
  *= require_tree .
 */
+
+.container.round{
+	background: none repeat scroll 0 0 #FFFFFF;
+	padding: 1em;
+}
+
+.no-bottom-margin {
+	margin-bottom: 0px;
+}
+
+header .kronos-logo {
+	
+	position: absolute;
+	top: -10px;
+
+}
+
+.navbar .nav {
+	
+	margin-left: 90px;
+
+}
+
+
+
+
+
 body{
-background: none repeat scroll 0 0 #FFFFFF;
-}
-
-header .brand img {
-    margin-left: -9px;
-	top: 0px;
-}
-
-.newscontent {
-
+	background-color: #dbdbdb;
 }
 
 .newsitem {
