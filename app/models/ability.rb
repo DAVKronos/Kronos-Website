@@ -14,6 +14,7 @@ class Ability
        cannot :read, Photo
        
        if !user.new_record?
+         can :read, :all
          can :archief, Agendaitem
          can :wedstrijden, Agendaitem
          can :manage, Photoalbum
@@ -30,7 +31,6 @@ class Ability
          end
          can :editpassword, user
          can :create, Event
-         can :index, User
        end
        
          
