@@ -16,7 +16,7 @@ gem "settingslogic", "~> 2.0.8"
 gem "bootstrap-will_paginate", "~> 0.0.6"
 gem "chronic_duration", "~> 0.9.6"
 gem 'math_engine', '~> 0.3.0', :git => 'git://github.com/dmarczal/math_engine.git'
-gem 'client_side_validations', '3.2.0.beta.3'
+gem 'client_side_validations', '3.2.0.beta.4'
 gem 'localeapp'
 gem 'redcarpet'
 gem 'rakismet'
@@ -45,11 +45,11 @@ group :production do
 end
 
 group :test do
-  gem 'rspec-rails', '2.8.1'
+  gem 'rspec-rails', '2.11.0'
   gem 'webrat', '0.7.3'
-  gem 'spork', '0.9.0'
-  gem 'factory_girl_rails', '1.2.0'
-  gem 'ZenTest', '4.6.2'
+  gem 'spork', '0.9.2'
+  gem 'factory_girl_rails', '3.5.0'
+  gem 'ZenTest', '4.8.1'
   if RUBY_PLATFORM =~ /darwin/
     gem 'autotest-growl', '~> 0.2.16'
     gem 'autotest-fsevent', '~> 0.2.8'
@@ -57,7 +57,7 @@ group :test do
 end
 
 group :development do
-  gem 'annotate', '~> 2.4.1.beta1 '
+  gem 'annotate', '~> 2.5.0.pre1 '
   gem 'populator'
   gem 'faker'
 end
