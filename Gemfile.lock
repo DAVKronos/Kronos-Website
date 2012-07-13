@@ -68,7 +68,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
+    columnize (0.3.6)
     daemons (1.1.8)
+    debugger (1.1.4)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.1.1)
+      debugger-ruby_core_source (~> 1.1.3)
+    debugger-linecache (1.1.2)
+      debugger-ruby_core_source (>= 1.1.1)
+    debugger-ruby_core_source (1.1.3)
     delayed_job (3.0.3)
       activesupport (~> 3.0)
     delayed_job_active_record (0.3.2)
@@ -230,6 +238,7 @@ DEPENDENCIES
   client_side_validations (= 3.2.0.beta.4)
   coffee-rails (~> 3.2.1)
   daemons
+  debugger
   delayed_job
   delayed_job_active_record
   devise

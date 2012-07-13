@@ -60,4 +60,5 @@ group :development do
   gem 'annotate', '~> 2.5.0.pre1 '
   gem 'populator'
   gem 'faker'
+  gem 'debugger'
 end

@@ -30,6 +30,7 @@ class Ability
          end
          can :editpassword, user
          can :create, Event
+         can :index, User
        end
        
          

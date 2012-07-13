@@ -190,6 +190,8 @@ nl:
       create: ! '%{model} toevoegen'
       update: ! '%{model} bewaren'
       submit: ! '%{model} opslaan'
+      agendaitem:
+        update: Agendaitem bewaren
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -260,8 +262,30 @@ nl:
       models:
         user:
           attributes:
-            avatar:
-              block: test
+            address:
+              blank: moet opgegeven zijn
+            birthdate:
+              blank: moet opgegeven zijn
+            city:
+              blank: moet opgegeven zijn
+            email:
+              blank: moet opgegeven zijn
+              invalid: is ongeldig
+              taken: is al in gebruik
+            initials:
+              blank: moet opgegeven zijn
+            name:
+              blank: moet opgegeven zijn
+              invalid: is ongeldig
+            password:
+              blank: moet opgegeven zijn
+              confirmation: komt niet met de bevestiging overeen
+              too_long: is te lang (maximaal 128 tekens)
+              too_short: is te kort (minimaal 6 tekens)
+            postalcode:
+              blank: moet opgegeven zijn
+            sex:
+              blank: moet opgegeven zijn
     models:
       user: Lid
       photoalbum: Fotoalbum
@@ -275,6 +299,28 @@ nl:
         sex: Geslacht
         licensenumber: Licentienummer
         address: Adres
+        avatar: Avatar
+        bankaccountnumber: Bankaccountnumber
+        email: Email
+        lidtype: Lidtype
+        password: Password
+        phonenumber: Phonenumber
+        profielfoto: Profielfoto
+        xtracardnumber: Xtracardnumber
+      agendaitem:
+        Kronos Activiteit: Kronos activiteit
+        agendaitemtype: Agendaitemtype
+        commission: Commission
+        date: Date
+        description: Description
+        location: Location
+        name: Name
+        subscribe: Subscribe
+        subscriptiondeadline: Subscriptiondeadline
+      event:
+        Afstand: Afstand
+        Tijd: Tijd
+        Type: Type
   edit_commission: Commissie aanpassen
   distance:
     centi:
@@ -299,11 +345,8 @@ nl:
   devise:
     confirmations:
       confirmed: Je account is bevestigd.
-      send_instructions: Je ontvangt via e-mail instructies hoe je je account kan
-        bevestigen.
-      send_paranoid_instructions: Als we je e-mail adres terugvinden in onze database,
-        zal je binnen enkele ogenblikken via e-mail, de instructies ontvangen hoe
-        je je account kan bevestigen.
+      send_instructions: Je ontvangt via e-mail instructies hoe je je account kan bevestigen.
+      send_paranoid_instructions: Als we je e-mail adres terugvinden in onze database, zal je binnen enkele ogenblikken via e-mail, de instructies ontvangen hoe je je account kan bevestigen.
     failure:
       already_authenticated: Je bent reeds ingelogd.
       inactive: Je account is nog niet geactiveerd.
@@ -324,38 +367,55 @@ nl:
       failure: We konden je niet inloggen op je %{kind} omdat "%{reason}".
       success: Je bent succesvol ingelogd op je %{kind} account.
     passwords:
-      send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet
-        resetten.
-      send_paranoid_instructions: Als we je e-mail adres terugvinden in onze database,
-        zal je binnen enkele ogenblikken via e-mail een link ontvangen om je paswoord
-        te resetten.
+      send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet resetten.
+      send_paranoid_instructions: Als we je e-mail adres terugvinden in onze database, zal je binnen enkele ogenblikken via e-mail een link ontvangen om je paswoord te resetten.
       updated: Je wachtwoord is gewijzigd. Je bent nu ingelogd.
       updated_not_active: Je wachtwoord werd met succes gewijzigd.
     registrations:
       destroyed: Je account is verwijderd, wellicht tot ziens!
       signed_up: Je bent inschreven.
-      signed_up_but_inactive: Je bent ingeschreven, maar we konden je niet inloggen
-        omdat je account nog niet is geactiveerd.
-      signed_up_but_locked: Je bent ingeschreven, maar we konden je niet inloggen
-        omdat je account is gelocked.
-      signed_up_but_unconfirmed: Een e-mail met een confirmatie link is naar je e-mail
-        adres gestuurd. Open de link in je browser om je account te activeren.
+      signed_up_but_inactive: Je bent ingeschreven, maar we konden je niet inloggen omdat je account nog niet is geactiveerd.
+      signed_up_but_locked: Je bent ingeschreven, maar we konden je niet inloggen omdat je account is gelocked.
+      signed_up_but_unconfirmed: Een e-mail met een confirmatie link is naar je e-mail adres gestuurd. Open de link in je browser om je account te activeren.
       updated: Je account gegevens zijn opgeslagen.
-      update_needs_confirmation: Je account is geüpdatet, maar we moeten je e-mail
-        adres nog valideren. Een e-mail met een confirmatie link is naar je e-mail
-        adres gestuurd. Open de link in je browser om je e-mail adres te confirmeren.
+      update_needs_confirmation: Je account is geüpdatet, maar we moeten je e-mail adres nog valideren. Een e-mail met een confirmatie link is naar je e-mail adres gestuurd. Open de link in je browser om je e-mail adres te confirmeren.
     sessions:
       signed_in: Je bent succesvol ingelogd.
       signed_out: Je bent succesvol uitgelogd.
     unlocks:
-      send_instructions: Je ontvangt via e-mail instructies hoe je je account kan
-        unlocken.
-      send_paranoid_instructions: Als we je e-mail adres terugvinden in onze database,
-        zal je binnen enkele ogenblikken via e-mail, de instructies ontvangen hoe
-        je je account kan unlocken.
+      send_instructions: Je ontvangt via e-mail instructies hoe je je account kan unlocken.
+      send_paranoid_instructions: Als we je e-mail adres terugvinden in onze database, zal je binnen enkele ogenblikken via e-mail, de instructies ontvangen hoe je je account kan unlocken.
       unlocked: Je account is ge-unlocked. Je kan nu weer inloggen.
   sign_in: Inloggen
   phonenumber: telefoonnummer
   bankaccountnumber: Bankrekeningnummber
   usertype: Lidtype
   xtracardnumber: xtracardnummer
+  agendaitem:
+    Kronos Activiteit: ''
+    agendaitemtype: ''
+    commission: ''
+    description: ''
+    location: ''
+    name: ''
+    subscribe: ''
+    subscriptiondeadline: ''
+  agendaitem[events_attributes][new_events]:
+    Afstand: ''
+    Tijd: ''
+    Type: ''
+  user:
+    address: ''
+    bankaccountnumber: ''
+    birthdate: ''
+    city: ''
+    email: ''
+    initials: ''
+    licensenumber: ''
+    lidtype: ''
+    name: ''
+    phonenumber: ''
+    postalcode: ''
+    profielfoto: ''
+    sex: ''
+    xtracardnumber: ''
