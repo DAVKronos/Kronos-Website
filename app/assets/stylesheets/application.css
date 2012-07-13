@@ -52,8 +52,8 @@ body{
 	
 }
 
-.newsitem span6{
-	padding-right: 1em;
+.newscontent .span6{
+	padding-right: 2em;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;
