@@ -2,9 +2,3 @@
 
 require ::File.expand_path('../config/environment',  __FILE__)
 run KronosWebsite::Application
-
-if ENV['RAILS_ENV'] == "production"
-  require 'amnesia'
-  use Amnesia::Application
-  run Sinatra::Application
-end

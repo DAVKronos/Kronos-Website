@@ -42,7 +42,6 @@ end
 
 group :production do
   gem 'daemons'
-  gem 'amnesia'
 end
 
 group :test do
