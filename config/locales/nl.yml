@@ -192,6 +192,8 @@ nl:
       submit: ! '%{model} opslaan'
       agendaitem:
         update: Agendaitem bewaren
+      chatmessage:
+        create: Chatmessage toevoegen
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -262,6 +264,8 @@ nl:
       models:
         user:
           attributes:
+            avatar:
+              block: 1
             address:
               blank: moet opgegeven zijn
             birthdate:
@@ -307,6 +311,7 @@ nl:
         phonenumber: Phonenumber
         profielfoto: Profielfoto
         xtracardnumber: Xtracardnumber
+        remember_me: Remember me
       agendaitem:
         Kronos Activiteit: Kronos activiteit
         agendaitemtype: Agendaitemtype
@@ -321,6 +326,8 @@ nl:
         Afstand: Afstand
         Tijd: Tijd
         Type: Type
+      chatmessage:
+        bericht: Bericht
   edit_commission: Commissie aanpassen
   distance:
     centi:
@@ -419,3 +426,10 @@ nl:
     profielfoto: ''
     sex: ''
     xtracardnumber: ''
+    password: ''
+    remember_me: ''
+    signed_in: Je bent succesvol ingelogd.
+  chatmessage:
+    bericht: ''
+  unauthorized:
+    default: You are not authorized to access this page.
