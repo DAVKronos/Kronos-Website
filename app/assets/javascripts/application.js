@@ -34,11 +34,18 @@ $('.carousel').carousel()
 $('.dropdown-menu').find('form').click(function (e) {
 	e.stopPropagation();
 })
-$('.datumtijdprikker').datetimepicker({ dateFormat: 'yy-mm-dd' });
-$('.datumprikker').datepicker({ dateFormat: 'yy-mm-dd' });
+$('.datumtijdprikker').datetimepicker({dateFormat: 'yy-mm-dd'});
+$('.datumprikker').datepicker({dateFormat: 'yy-mm-dd'});
 $('.tijdprikker').timepicker({});
 
-$('.resulttable').tablesorter();
+//$('.resulttable').tablesorter();
+$('a[data-toggle="tab"]').on('shown', function (e) {
+  var pattern=/#.+/gi //use regex to get anchor(==selector)           
+  var contentID = e.target.toString().match(pattern)[0]; //get anchor
+  //load content for selected tab
+  contentID = contentID.replace("#", '');
+  $('#' + contentID).load('uitslagen?ajaxladen=' + contentID);
+});
 
 $("form").live("nested:fieldAdded", function(event) {
 $(event.field).find('.tijdprikker').removeClass('hasDatepicker').timepicker({});

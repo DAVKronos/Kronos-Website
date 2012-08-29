@@ -2,35 +2,36 @@
   .row
     %h1 Uitslagen
   .row
-    .span9
+    .span7
       .row
         %ul{:class => "nav nav-tabs"}
-          - @slicedresults.each do |resultset|
-            %li
-              %a{:href => '#' + resultset.first, "data-toggle" => 'tab'}
-                = resultset.first
+          %li{:class => "active"}
+            %a{:href => '#Laatste', "data-toggle" => 'tab'}
+              Laatste
+          %li
+            %a{:href => '#2012', "data-toggle" => 'tab'}
+              2012
         .tab-content
-          - @slicedresults.each do |resultset|
-            %div{:class => "tab-pane", :id => resultset.first}
-              %table{:class => "resulttable"}
-                %thead
+          %div{:class => "tab-pane active", :id => 'Laatste'}
+            %table{:class => "resulttable"}
+              %thead
+                %tr
+                  %th Wedstrijd ⇕
+                  %th Datum ⇕
+                  %th Plaats ⇕
+                  %th Type ⇕
+              %tbody
+                - @results.each do |agendaitem|
                   %tr
-                    %th Wedstrijd ⇕
-                    %th Datum ⇕
-                    %th Plaats ⇕
-                    %th Type ⇕
-                    %th Aantal uitslagen ⇕
-                %tbody
-                  - resultset.last.each do |agendaitem|
-                    %tr
-                      %td
-                        = link_to agendaitem.name, agendaitem_results_path(agendaitem)
-                      %td
-                        = agendaitem.date.strftime("%e %B")
-                      %td
-                        = agendaitem.location
-                      %td
-                        = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
-    .span3
+                    %td
+                      = link_to agendaitem.name, agendaitem_results_path(agendaitem)
+                    %td
+                      = agendaitem.date.strftime("%e %B")
+                    %td
+                      = agendaitem.location
+                    %td
+                      = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
+          %div{:class => "tab-pane", :id => '2012'}
+    .span5
       .row
         Plaatjes

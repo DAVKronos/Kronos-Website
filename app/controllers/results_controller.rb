@@ -4,27 +4,23 @@ class ResultsController < ApplicationController
   # GET /results.json
   def frontpage
     #@results = Result.all
-    
-    @slicedresults = Array.new
-
-    @slicedresults[0] = ["Laatste", Agendaitem.where("date <= ?", DateTime.now).limit(20)]
-    currentyear = DateTime.now.year
-    
-    tussenresult = [Date.new(currentyear).year.to_s, Agendaitem.where(:date => (Date.new(currentyear)..DateTime.now()))]
-    if !tussenresult.last.empty?
-      @slicedresults[1] = tussenresult
-    end
-    
-    (2..6).each do |i|
-      tussenresult = [Date.new(currentyear - i + 1).year.to_s, Agendaitem.where(:date => (Date.new(currentyear - i + 1)..Date.new(currentyear - i + 2)))]
-      if !tussenresult.last.empty?
-        @slicedresults[i] = tussenresult
+    if request.xhr?
+      ajaxladen = params[:ajaxladen]
+      if ajaxladen == 'Laatste'
+        @results = Agendaitem.where("date <= ?", DateTime.now).limit(20)
+      else
+        @results = Agendaitem.where(Date.strptime(:date, "%Y-%m-%d %H:%M:%S").year == ajaxladen)
       end
+    else
+      @results = Agendaitem.where("date <= ?", DateTime.now).limit(20)
     end
     
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @results }
+      format.html do
+        if request.xhr?
+          render 'results/tabtable', :layout => false
+        end
+      end
     end
   end
   
