@@ -170,17 +170,6 @@ ActiveRecord::Schema.define(:version => 20120705110440) do
     t.boolean  "processing"
   end
 
-  create_table "reactions", :force => true do |t|
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "user_id"
-    t.integer  "agendaitem_id"
-    t.integer  "result_id"
-    t.integer  "photo_id"
-    t.integer  "newsitem_id"
-    t.text     "reactiontext"
-  end
-
   create_table "results", :force => true do |t|
     t.string   "username"
     t.string   "result"

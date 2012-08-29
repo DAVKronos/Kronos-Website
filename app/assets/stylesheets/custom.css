@@ -150,3 +150,38 @@ fieldset hr {
 .resulttable tbody tr:nth-child(odd) {
     background-color: #eff7ea;
 }
+
+#ajaxuitslagengebied {
+    background-color: #eff7ea;
+}
+
+.uitslagentitel {
+    text-align: center;
+    width: 100%;
+}
+
+.uitslagenverhaal {
+    text-align: center;
+    width: 100%;
+    background-color: #fff;
+    margin: 5px;
+}
+
+.uitslagencollapse {
+    margin: 5px;
+}
+
+.uitslagencollapse .collapsetitle {
+    padding: 5px;
+    width: 100%;
+    background-color: #7dbc53;
+    color: #fff;
+}
+
+.uitslagencollapse .collapse table {
+    width: 100%;
+}
+
+.uitslagencollapse .collapse table tr:nth-child(odd) {
+    background-color: #fff;
+}

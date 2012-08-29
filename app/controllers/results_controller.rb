@@ -9,10 +9,11 @@ class ResultsController < ApplicationController
       if ajaxladen == 'Laatste'
         @results = Agendaitem.where("date <= ?", DateTime.now).limit(20)
       else
-        @results = Agendaitem.where(Date.strptime(:date, "%Y-%m-%d %H:%M:%S").year == ajaxladen)
+        @results = Agendaitem.where(:date => (DateTime.new(Integer(ajaxladen))..(DateTime.new(Integer(ajaxladen))+1.year)))
       end
     else
       @results = Agendaitem.where("date <= ?", DateTime.now).limit(20)
+      @tabs = [2012, 2011, 2010, 2009, 2008];
     end
     
     respond_to do |format|
@@ -28,7 +29,11 @@ class ResultsController < ApplicationController
     @agendaitem = Agendaitem.find(params[:agendaitem_id])
     
     respond_to do |format|
-      format.html
+      format.html do
+        if request.xhr?
+          render 'results/indextab', :layout => false
+        end
+      end
     end
   end
   

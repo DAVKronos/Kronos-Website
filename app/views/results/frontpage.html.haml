@@ -6,11 +6,12 @@
       .row
         %ul{:class => "nav nav-tabs"}
           %li{:class => "active"}
-            %a{:href => '#Laatste', "data-toggle" => 'tab'}
+            %a{:href => '#Laatste', "data-toggle" => 'tab', "ajaxtab" => 'tab'}
               Laatste
-          %li
-            %a{:href => '#2012', "data-toggle" => 'tab'}
-              2012
+          - @tabs.each do |tab|
+            %li
+              %a{:href => '#' + String(tab), "data-toggle" => 'tab', "ajaxtab" => 'tab'}
+                = tab
         .tab-content
           %div{:class => "tab-pane active", :id => 'Laatste'}
             %table{:class => "resulttable"}
@@ -22,18 +23,19 @@
                   %th Type ⇕
               %tbody
                 - @results.each do |agendaitem|
-                  %tr
+                  %tr{:class => "ajaxuitslag", "ajaxid" => agendaitem.id}
                     %td
-                      = link_to agendaitem.name, agendaitem_results_path(agendaitem)
+                      = agendaitem.name
                     %td
                       = agendaitem.date.strftime("%e %B")
                     %td
                       = agendaitem.location
                     %td
                       = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
-          %div{:class => "tab-pane", :id => '2012'}
-    .span5
+          - @tabs.each do |tab|
+            %div{:class => "tab-pane", :id => tab}
+    .span4
       .row
-        Plaatjes
+        %div{:id => "ajaxuitslagengebied"}
 %br
 = link_to "voeg een uitslag toe", new_result_path if can? :create, Result

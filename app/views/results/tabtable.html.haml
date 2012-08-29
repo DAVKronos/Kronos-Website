@@ -7,9 +7,9 @@
       %th Type ⇕
   %tbody
     - @results.each do |agendaitem|
-      %tr
+      %tr{:class => "ajaxuitslag", "ajaxid" => agendaitem.id}
         %td
-          = link_to agendaitem.name, agendaitem_results_path(agendaitem)
+          = agendaitem.name
         %td
           = agendaitem.date.strftime("%e %B")
         %td
