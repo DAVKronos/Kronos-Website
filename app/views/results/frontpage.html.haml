@@ -2,37 +2,40 @@
   .row
     %h1 Uitslagen
   .row
-    .span9
+    .span7
       .row
         %ul{:class => "nav nav-tabs"}
-          - @slicedresults.each do |resultset|
+          %li{:class => "active"}
+            %a{:href => '#Laatste', "data-toggle" => 'tab', "ajaxtab" => 'tab'}
+              Laatste
+          - @tabs.each do |tab|
             %li
-              %a{:href => '#' + resultset.first, "data-toggle" => 'tab'}
-                = resultset.first
+              %a{:href => '#' + String(tab), "data-toggle" => 'tab', "ajaxtab" => 'tab'}
+                = tab
         .tab-content
-          - @slicedresults.each do |resultset|
-            %div{:class => "tab-pane", :id => resultset.first}
-              %table{:class => "resulttable"}
-                %thead
-                  %tr
-                    %th Wedstrijd ⇕
-                    %th Datum ⇕
-                    %th Plaats ⇕
-                    %th Type ⇕
-                    %th Aantal uitslagen ⇕
-                %tbody
-                  - resultset.last.each do |agendaitem|
-                    %tr
-                      %td
-                        = link_to agendaitem.name, agendaitem_results_path(agendaitem)
-                      %td
-                        = agendaitem.date.strftime("%e %B")
-                      %td
-                        = agendaitem.location
-                      %td
-                        = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
-    .span3
+          %div{:class => "tab-pane active", :id => 'Laatste'}
+            %table{:class => "resulttable"}
+              %thead
+                %tr
+                  %th Wedstrijd ⇕
+                  %th Datum ⇕
+                  %th Plaats ⇕
+                  %th Type ⇕
+              %tbody
+                - @results.each do |agendaitem|
+                  %tr{:class => "ajaxuitslag", "ajaxid" => agendaitem.id}
+                    %td
+                      = agendaitem.name
+                    %td
+                      = agendaitem.date.strftime("%e %B")
+                    %td
+                      = agendaitem.location
+                    %td
+                      = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
+          - @tabs.each do |tab|
+            %div{:class => "tab-pane", :id => tab}
+    .span4
       .row
-        Plaatjes
+        %div{:id => "ajaxuitslagengebied"}
 %br
 = link_to "voeg een uitslag toe", new_result_path if can? :create, Result

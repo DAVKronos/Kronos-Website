@@ -1,0 +1,22 @@
+%div{:class => "uitslagentitel"}
+  %h2
+    = @agendaitem.name
+%div{:class => "uitslagenverhaal"}
+  = @agendaitem.description
+- @agendaitem.events.each do |event|
+  %div{:class => "uitslagencollapse"}
+    %div{:class => "collapsetitle", "data-toggle" => "collapse", "data-target" => '#event' + event.id.to_s }
+      = event.eventtype.name
+    %div{:class => "collapse", :id => 'event' + event.id.to_s}
+      %table
+        - event.results.each do |result|
+          %tr
+            %td
+              - if result.user
+                = link_to result.user.name, result.user
+              - else
+                = result.username
+            %td
+              = result.result
+%div
+  = link_to "Naar de wedstrijdpagina", @agendaitem

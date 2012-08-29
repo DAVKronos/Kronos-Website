@@ -4,28 +4,24 @@ class ResultsController < ApplicationController
   # GET /results.json
   def frontpage
     #@results = Result.all
-    
-    @slicedresults = Array.new
-    @matches = Agendaitem.joins(:agendaitemtype).where(:agendaitemtypes => {:is_match => true}).order('date DESC')
-
-    @slicedresults[0] = ["Laatste", @matches.where("date <= ?", DateTime.now).limit(20)]
-    currentyear = DateTime.now.year
-    
-    tussenresult = [Date.new(currentyear).year.to_s, @matches.where(:date => (Date.new(currentyear)..DateTime.now()))]
-    if !tussenresult.last.empty?
-      @slicedresults[1] = tussenresult
-    end
-    
-    (2..6).each do |i|
-      tussenresult = [Date.new(currentyear - i + 1).year.to_s, @matches.where(:date => (Date.new(currentyear - i + 1)..Date.new(currentyear - i + 2)))]
-      if !tussenresult.last.empty?
-        @slicedresults[i] = tussenresult
+    if request.xhr?
+      ajaxladen = params[:ajaxladen]
+      if ajaxladen == 'Laatste'
+        @results = Agendaitem.where("date <= ?", DateTime.now).limit(20)
+      else
+        @results = Agendaitem.where(:date => (DateTime.new(Integer(ajaxladen))..(DateTime.new(Integer(ajaxladen))+1.year)))
       end
+    else
+      @results = Agendaitem.where("date <= ?", DateTime.now).limit(20)
+      @tabs = [2012, 2011, 2010, 2009, 2008];
     end
     
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @results }
+      format.html do
+        if request.xhr?
+          render 'results/tabtable', :layout => false
+        end
+      end
     end
   end
   
@@ -33,7 +29,11 @@ class ResultsController < ApplicationController
     @agendaitem = Agendaitem.find(params[:agendaitem_id])
     
     respond_to do |format|
-      format.html
+      format.html do
+        if request.xhr?
+          render 'results/indextab', :layout => false
+        end
+      end
     end
   end
   

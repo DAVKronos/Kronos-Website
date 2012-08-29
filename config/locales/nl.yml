@@ -407,6 +407,7 @@ nl:
     name: ''
     subscribe: ''
     subscriptiondeadline: ''
+    date: ''
   agendaitem[events_attributes][new_events]:
     Afstand: ''
     Tijd: ''
@@ -429,6 +430,7 @@ nl:
     password: ''
     remember_me: ''
     signed_in: Je bent succesvol ingelogd.
+    invalid: Ongeldig e-mail of wachtwoord.
   chatmessage:
     bericht: ''
   unauthorized:

@@ -1,0 +1,18 @@
+%table{:class => "resulttable"}
+  %thead
+    %tr
+      %th Wedstrijd ⇕
+      %th Datum ⇕
+      %th Plaats ⇕
+      %th Type ⇕
+  %tbody
+    - @results.each do |agendaitem|
+      %tr{:class => "ajaxuitslag", "ajaxid" => agendaitem.id}
+        %td
+          = agendaitem.name
+        %td
+          = agendaitem.date.strftime("%e %B")
+        %td
+          = agendaitem.location
+        %td
+          = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
