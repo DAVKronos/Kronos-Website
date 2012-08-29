@@ -8,4 +8,4 @@
       - if can? :update, user
         = link_to 'edit', edit_user_path(user), :class => 'btn'
       - if can? :destroy, user
-        = link_to 'verwijder', user, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{user.name}", :class => 'btn'
+        = link_to 'verwijder', user, :method => :delete, :title => "Verwijder #{user.name}", :class => 'btn', :data => { :confirm => 'Weet je het zeker?' }

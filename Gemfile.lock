@@ -7,14 +7,14 @@ GIT
 
 GIT
   remote: git://github.com/ryanb/nested_form.git
-  revision: 504985118c2205f36e42417e6d99cecf23385290
+  revision: ebe513b1a7e4a0f730040eb255bde8e5ec81ca5e
   specs:
-    nested_form (0.2.1)
+    nested_form (0.2.2)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.6.2)
+    ZenTest (4.8.1)
     actionmailer (3.2.6)
       actionpack (= 3.2.6)
       mail (~> 2.4.4)
@@ -42,7 +42,13 @@ GEM
     activesupport (3.2.6)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    annotate (2.4.1.beta1)
+    amnesia (1.0.1)
+      gchart (= 1.0.0)
+      haml (>= 3.0.0)
+      memcached-northscale (>= 0.19.5.4)
+      sinatra (>= 1.0)
+    annotate (2.5.0.pre1)
+      rake
     arel (3.0.2)
     auto_html (1.5.3)
       redcarpet (~> 2.0.0)
@@ -52,10 +58,10 @@ GEM
     bootstrap-will_paginate (0.0.7)
       will_paginate
     builder (3.0.0)
-    cancan (1.6.7)
+    cancan (1.6.8)
     chronic_duration (0.9.6)
       numerizer (~> 0.1.1)
-    client_side_validations (3.2.0.beta.3)
+    client_side_validations (3.2.0.beta.4)
     cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -79,13 +85,15 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (2.1.2)
-      activesupport
-    factory_girl_rails (1.2.0)
-      factory_girl (~> 2.1.0)
+    factory_girl (3.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (3.5.0)
+      factory_girl (~> 3.5.0)
       railties (>= 3.0.0)
     faker (1.0.1)
       i18n (~> 0.4)
+    ffi (1.0.11)
+    gchart (1.0.0)
     gdata (1.1.2)
     gli (1.6.0)
     haml (3.1.6)
@@ -99,7 +107,7 @@ GEM
     kgio (2.7.4)
     lexr (0.2.3)
     libv8 (3.3.10.4)
-    localeapp (0.4.3)
+    localeapp (0.5.0)
       gli
       i18n
       json
@@ -109,25 +117,29 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcache-client (1.8.5)
+    memcached-northscale (0.19.5.4)
     mime-types (1.19)
     multi_json (1.3.6)
-    nokogiri (1.5.4)
-    nokogiri (1.5.4-x86-mingw32)
+    nokogiri (1.5.5)
+    nokogiri (1.5.5-x86-mingw32)
     numerizer (0.1.1)
-    orm_adapter (0.3.0)
+    orm_adapter (0.4.0)
     paperclip (3.1.2)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (>= 0.0.2)
       mime-types
-    pg (0.13.2)
-    pg (0.13.2-x86-mingw32)
+    pg (0.14.0)
+    pg (0.14.0-x86-mingw32)
     polyglot (0.3.3)
     populator (1.0.0)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-protection (1.2.0)
+      rack
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.1)
@@ -156,41 +168,43 @@ GEM
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rinku (1.5.1)
-    rspec (2.8.0)
-      rspec-core (~> 2.8.0)
-      rspec-expectations (~> 2.8.0)
-      rspec-mocks (~> 2.8.0)
-    rspec-core (2.8.0)
-    rspec-expectations (2.8.0)
-      diff-lcs (~> 1.1.2)
-    rspec-mocks (2.8.0)
-    rspec-rails (2.8.1)
+    rspec (2.11.0)
+      rspec-core (~> 2.11.0)
+      rspec-expectations (~> 2.11.0)
+      rspec-mocks (~> 2.11.0)
+    rspec-core (2.11.0)
+    rspec-expectations (2.11.1)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.11.1)
+    rspec-rails (2.11.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec (~> 2.8.0)
-    sass (3.1.19)
+      rspec (~> 2.11.0)
+    sass (3.1.20)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
     settingslogic (2.0.8)
-    spork (0.9.0)
-    spork (0.9.0-x86-mingw32)
-      win32-process
+    sinatra (1.3.2)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    spork (0.9.2)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
-    thor (0.15.3)
+    thor (0.15.4)
     tilt (1.3.3)
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.33)
-    uglifier (1.2.5)
+    uglifier (1.2.6)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
     unicorn (4.3.1)
@@ -221,26 +235,28 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  ZenTest (= 4.6.2)
-  annotate (~> 2.4.1.beta1)
+  ZenTest (= 4.8.1)
+  amnesia
+  annotate (~> 2.5.0.pre1)
   auto_html
   bootstrap-will_paginate (~> 0.0.6)
   cancan
   chronic_duration (~> 0.9.6)
-  client_side_validations (= 3.2.0.beta.3)
+  client_side_validations (= 3.2.0.beta.4)
   coffee-rails (~> 3.2.1)
   daemons
   delayed_job
   delayed_job_active_record
   devise
   execjs
-  factory_girl_rails (= 1.2.0)
+  factory_girl_rails (= 3.5.0)
   faker
   gdata
   haml (= 3.1.6)
   jquery-rails
   localeapp
   math_engine (~> 0.3.0)!
+  memcache-client
   nested_form!
   paperclip (~> 3.1.2)
   pg
@@ -248,10 +264,10 @@ DEPENDENCIES
   rails (= 3.2.6)
   rakismet
   redcarpet
-  rspec-rails (= 2.8.1)
+  rspec-rails (= 2.11.0)
   sass-rails (~> 3.2.3)
   settingslogic (~> 2.0.8)
-  spork (= 0.9.0)
+  spork (= 0.9.2)
   therubyracer
   uglifier (>= 1.0.3)
   unicorn

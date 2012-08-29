@@ -47,6 +47,8 @@ module KronosWebsite
     
     # String escaping simple_format for enters in chatmessages
     #config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
+    
+    config.cache_store = :mem_cache_store
 
   end
 end

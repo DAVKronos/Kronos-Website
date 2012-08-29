@@ -5,9 +5,8 @@ KronosWebsite::Application.routes.draw do
   resources :agendaitemtypes
 
   devise_for :users
-
-  resources :reactions
   resources :photos
+  resources :comments
   resources :tags
   resources :photoalbums do
     resources :photos
@@ -37,9 +36,11 @@ KronosWebsite::Application.routes.draw do
   match '/agendaitems/archief', :to => 'agendaitems#archief'
   match '/wedstrijden', :to => 'agendaitems#wedstrijden'
   match '/uitslagen', :to => 'results#frontpage'
+  resources :results
   resources :agendaitems do
     resources :events
     resources :results
+    resources :comments
   end
   resources :events
   

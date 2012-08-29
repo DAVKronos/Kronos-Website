@@ -7,7 +7,7 @@
             %legend Algemene informatie
             = f.label :name
             = f.text_field :name, :placeholder => "Naam"
-            = f.label :intern
+            = f.label "Kronos Activiteit"
             = f.check_box :intern, :placeholder => "Van Kronos?"
             = f.label :agendaitemtype
             = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name)
@@ -23,7 +23,7 @@
           %fieldset
             %legend Optionele argumenten
             = f.label :commission
-            = f.select(:commission_id, @commissions.collect{ |x| [x.name, x.id] }, {:include_blank => 'None'})
+            = f.collection_select(:commission_id, @commissions, :id, :name)
       .span6
         .row
           %fieldset

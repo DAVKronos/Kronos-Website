@@ -1,29 +1,52 @@
 %h1 Events
--@events.each do |event|
-  .row
-    .span12.event
-      %h5= event.eventtype.name
-      = l event.date
-      %ul
-        - event.results.each do |result|
-          %li
-            = result.username
-            prestatie:
-            = result.result
-            score:
-            = number_to_human result.calculatedResult, :precision => 2, :significant => false
-            = result.event.eventtype.calculated_unit
-      = nested_form_for event,{:remote => true, :html => {:class => "resultform form-inline"}} do |f|
-        = f.fields_for :results do |result_field|
+.events
+  -@events.each do |event|
+    .row
+      .span12.event
+        %h5= event.eventtype.name
+        = l event.date
+        %ul
+          - event.results.each do |result|
+            %li
+              = result.username
+              prestatie:
+              = result.result
+              score:
+              = number_to_human result.calculatedResult, :precision => 2, :significant => false
+              = result.event.eventtype.calculated_unit
+        = nested_form_for event,{:remote => true, :html => {:class => "resultform form-inline"}} do |f|
+          = f.fields_for :results do |result_field|
+            .row
+              .span8.well
+                - nameArray = []
+                - User.all.each do |user|
+                  - nameArray << user.name
+                = result_field.text_field :username, :class => :typeahead , "data-source" => "#{nameArray}", "data-provide" => "typeahead"
+                = result_field.text_field :result, :placeholder => "Prestatie"
+                = result_field.link_to_remove "Verwijder deze uitslag" if can? :destroy, Result
           .row
-            .span8.well
-              - nameArray = []
-              - User.all.each do |user|
-                - nameArray << user.name
-              = result_field.text_field :username, :class => :typeahead , "data-source" => "#{nameArray}", "data-provide" => "typeahead"
-              = result_field.text_field :result, :placeholder => "Prestatie"
-              = result_field.link_to_remove "Verwijder deze uitslag"
-        .row
-          .span3
-            = f.link_to_add "Voeg een uitslag toe", :results
-            = f.submit :class => "btn btn-success"
+            .span3
+              = f.link_to_add "Voeg een uitslag toe", :results
+              = f.submit :class => "btn btn-success"
+            
+%h1 Voeg een onderdeel toe
+
+= form_for @event, :remote => true do |f|
+  = f.label "Tijd", :class => "span1"
+  - if f.object.date.respond_to?(:strftime)
+    = f.text_field :date, {:class => "tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}
+  - else
+    = f.text_field :date, {:class => "tijdprikker span1", :value => Time.now.strftime('%H:%M')}
+  %br
+  = f.label "Type", :class => "span1"
+  = f.select :eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect { |p| [p.name, p.id] }
+  %br
+  = f.label "Afstand", :class => "span1"
+  = f.text_field :distance, :class => "span1"
+  %br
+  = f.hidden_field :agendaitem_id, :value => @agendaitem.id
+  
+  = f.submit :class => "btn"
+    
+    
+			

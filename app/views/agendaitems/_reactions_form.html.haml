@@ -1,7 +1,0 @@
-= form_for(@reaction) do |f|
-  .span5
-    .row
-      = f.text_area :reactiontext, :rows => "5", :class => "input-xlarge"
-    .row
-      = f.hidden_field :agendaitem_id
-      = f.submit :class => "btn", :value => "Plaatsen"

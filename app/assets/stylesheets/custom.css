@@ -6,20 +6,10 @@ ul.users {
 	list-style-type: none;
 }
 
-body{
-	padding-top: 100px;
-}
-
 img.floatleft{
 	float: left;
 	margin: 0 10px 10px 0;
 	padding-top: 5px;
-}
-
-header img {
-        position: absolute;
-        top: 8px;
-        z-index: 2;
 }
 
 header {

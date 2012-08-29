@@ -1,7 +1,6 @@
 %h1= t(:edit).capitalize
 
-= form_for @user, :validate => true, :html => { :multipart => true} do |f|
-  
+= form_for @user, :validate => true, :html => { :multipart => true} do |f|  
   -if current_user.admin?    
     = render 'admin_fields', :f => f
   -else

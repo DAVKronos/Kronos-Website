@@ -120,9 +120,10 @@
           .row
             %hr{:class => "no-margin"}
       .row
-        - @agendaitem.reactions.each do |reaction|
+        - @comments.each do |comment|
           %div{:class => "well span4"}
-            = reaction.reactiontext
+            = comment.user.name if comment.user
+            = comment.commenttext
       .row
         .span5
           .row
@@ -135,7 +136,7 @@
           .row
             %hr{:class => "no-margin"}
       .row
-        = render 'reactions_form'
+        = render 'comments_form'
       .row
         .span5
           .row

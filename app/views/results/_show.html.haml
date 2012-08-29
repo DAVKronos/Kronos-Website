@@ -18,7 +18,7 @@
           - nameArray << user.name
         = result_field.text_field :username, :class => :typeahead , "data-source" => "#{nameArray}", "data-provide" => "typeahead"
         = result_field.text_field :result, :placeholder => "Prestatie"
-        = result_field.link_to_remove "Verwijder deze uitslag"
+        = result_field.link_to_remove "Verwijder deze uitslag" if can? :destroy, Result
   .row
     .span3
       = f.link_to_add "Voeg een uitslag toe", :results

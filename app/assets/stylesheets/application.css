@@ -10,24 +10,53 @@
  *= require_self
  *= require_tree .
 */
+
+.container.round{
+	background: none repeat scroll 0 0 #FFFFFF;
+	padding: 1em;
+}
+
+.no-bottom-margin {
+	margin-bottom: 0px;
+}
+
+header .kronos-logo {
+	
+	position: absolute;
+	top: -10px;
+
+}
+
+.navbar .nav {
+	
+	margin-left: 90px;
+
+}
+
+
+
+
+
 body{
-background: none repeat scroll 0 0 #FFFFFF;
-}
-
-header .brand img {
-    margin-left: -9px;
-	top: 0px;
-}
-
-.newscontent {
-
+	background-color: #dbdbdb;
 }
 
 .newsitem {
-	margin-bottom:20px;
+	margin-bottom: 2em;
 	background-color: #eff7ea;
-	padding: 10px;
+	padding: 1em;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
 	
+	
+}
+
+.newscontent .span6{
+	padding-right: 2em;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
 }
 
 
