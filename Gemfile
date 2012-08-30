@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.6'
-gem 'haml', '3.1.6'
+gem 'haml', '3.1.7'
 gem 'devise'
 gem 'cancan'
 gem 'pg'

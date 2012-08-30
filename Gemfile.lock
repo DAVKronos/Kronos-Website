@@ -87,7 +87,7 @@ GEM
     ffi (1.1.5)
     gdata (1.1.2)
     gli (2.0.0)
-    haml (3.1.6)
+    haml (3.1.7)
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.4)
@@ -232,7 +232,7 @@ DEPENDENCIES
   factory_girl_rails (= 3.5.0)
   faker
   gdata
-  haml (= 3.1.6)
+  haml (= 3.1.7)
   jquery-rails
   localeapp
   math_engine (~> 0.3.0)!
