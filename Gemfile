@@ -11,7 +11,7 @@ gem 'gdata'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'jquery-rails'
-gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
+gem 'nested_form'
 gem "settingslogic", "~> 2.0.8"
 gem "bootstrap-will_paginate", "~> 0.0.6"
 gem "chronic_duration", "~> 0.9.6"

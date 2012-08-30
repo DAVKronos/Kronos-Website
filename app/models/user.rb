@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
                   :sex, :licensenumber, :user_type_id,
                   :xtracard, :bank_account_number, :as => :bestuur
   
+  
   attr_accessible :email, :address, :postalcode, 
                   :city, :phonenumber, :password, :password_confirmation, 
                   :papieren_kronometer, :avatar, :avatar_file_name, :remember_me, :as => [:default, :bestuur]

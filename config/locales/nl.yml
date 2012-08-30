@@ -431,6 +431,7 @@ nl:
     remember_me: ''
     signed_in: Je bent succesvol ingelogd.
     invalid: Ongeldig e-mail of wachtwoord.
+    signed_out: Je bent succesvol uitgelogd.
   chatmessage:
     bericht: ''
   unauthorized:
