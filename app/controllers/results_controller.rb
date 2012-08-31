@@ -7,13 +7,14 @@ class ResultsController < ApplicationController
     if request.xhr?
       ajaxladen = params[:ajaxladen]
       if ajaxladen == 'Laatste'
-        @results = Agendaitem.where("date <= ?", DateTime.now).limit(20)
+        @results = Agendaitem.where("date <= ?", DateTime.now).order("date DESC").limit(20)
       else
-        @results = Agendaitem.where(:date => (DateTime.new(Integer(ajaxladen))..(DateTime.new(Integer(ajaxladen))+1.year)))
+        @results = Agendaitem.where(:date => (DateTime.new(Integer(ajaxladen))..(DateTime.new(Integer(ajaxladen))+1.year))).order("date DESC")
       end
     else
-      @results = Agendaitem.where("date <= ?", DateTime.now).limit(20)
-      @tabs = [2012, 2011, 2010, 2009, 2008];
+      @results = Agendaitem.where("date <= ?", DateTime.now).order("date DESC").limit(20)
+      @agendaitem = @results.first
+      @tabs = Agendaitem.uniq.order('year desc').limit(5).pluck("extract(year from date) as year")
     end
     
     respond_to do |format|

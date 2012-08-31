@@ -194,6 +194,12 @@ nl:
         update: Agendaitem bewaren
       chatmessage:
         create: Chatmessage toevoegen
+      event:
+        create: Event toevoegen
+        update: Event bewaren
+      eventtype:
+        create: Eventtype toevoegen
+        update: Eventtype bewaren
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -290,6 +296,10 @@ nl:
               blank: moet opgegeven zijn
             sex:
               blank: moet opgegeven zijn
+        agendaitemtype_eventtype:
+          attributes:
+            eventtype_id:
+              blank: moet opgegeven zijn
     models:
       user: Lid
       photoalbum: Fotoalbum
@@ -328,6 +338,15 @@ nl:
         Type: Type
       chatmessage:
         bericht: Bericht
+      eventtype:
+        agendaitemtypes: Agendaitemtypes
+        calculated_unit: Calculated unit
+        formula: Formula
+        measuringunit: Measuringunit
+        name: Name
+        shortname: Shortname
+      agendaitemtype_eventtype:
+        eventtype_id: Eventtype
   edit_commission: Commissie aanpassen
   distance:
     centi:
@@ -431,7 +450,17 @@ nl:
     remember_me: ''
     signed_in: Je bent succesvol ingelogd.
     invalid: Ongeldig e-mail of wachtwoord.
+    signed_out: Je bent succesvol uitgelogd.
   chatmessage:
     bericht: ''
   unauthorized:
     default: You are not authorized to access this page.
+  event: Event
+  eventtype:
+    agendaitemtypes: ''
+    calculated_unit: ''
+    formula: ''
+    measuringunit: ''
+    name: ''
+    shortname: ''
+  agendaitemtype_eventtype: Agendaitemtype eventtype

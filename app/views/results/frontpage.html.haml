@@ -37,5 +37,29 @@
     .span4
       .row
         %div{:id => "ajaxuitslagengebied"}
-%br
-= link_to "voeg een uitslag toe", new_result_path if can? :create, Result
+          %div{:class => "uitslagentitel"}
+            %h2
+              = @agendaitem.name
+          %div{:class => "uitslagenverhaal"}
+            = @agendaitem.description
+          - @agendaitem.events.each_with_index do |event,i|
+            - if (i == 0) then hoio = " in" end
+            %div{:class => "uitslagencollapse"}
+              %div{:class => "collapsetitle", "data-toggle" => "collapse", "data-target" => '#event' + event.id.to_s }
+                = event.eventtype.name
+                - if event.distance
+                  = event.distance
+              %div{:class => "collapse#{hoio}", :id => 'event' + event.id.to_s}
+                %table
+                  - event.results.each do |result|
+                    %tr
+                      %td
+                        - if result.user
+                          = link_to result.user.name, result.user
+                        - else
+                          = result.username
+                      %td
+                        = result.result
+          %div
+            = link_to "Naar de wedstrijdpagina", @agendaitem
+            = link_to "Voeg een uitslag toe", agendaitem_events_path(@agendaitem) if can? :create, Result

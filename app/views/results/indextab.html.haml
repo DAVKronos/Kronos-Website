@@ -3,11 +3,14 @@
     = @agendaitem.name
 %div{:class => "uitslagenverhaal"}
   = @agendaitem.description
-- @agendaitem.events.each do |event|
+- @agendaitem.events.each_with_index do |event,i|
+  - if (i == 0) then hoio = " in" end
   %div{:class => "uitslagencollapse"}
     %div{:class => "collapsetitle", "data-toggle" => "collapse", "data-target" => '#event' + event.id.to_s }
       = event.eventtype.name
-    %div{:class => "collapse", :id => 'event' + event.id.to_s}
+      - if event.distance
+        = event.distance
+    %div{:class => "collapse#{hoio}", :id => 'event' + event.id.to_s}
       %table
         - event.results.each do |result|
           %tr
@@ -20,3 +23,4 @@
               = result.result
 %div
   = link_to "Naar de wedstrijdpagina", @agendaitem
+  = link_to "Voeg een uitslag toe", agendaitem_events_path(@agendaitem) if can? :create, Result
