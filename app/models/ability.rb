@@ -9,6 +9,7 @@ class Ability
        can :frontpage, Result
        can :create, Chatmessage
        can :titleshow, Page
+       can :create, User
        cannot :read, User
        cannot :read, Photoalbum
        cannot :read, Photo

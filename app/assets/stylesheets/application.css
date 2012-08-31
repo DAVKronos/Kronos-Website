@@ -11,10 +11,12 @@
  *= require_tree .
 */
 
+
 .container.round{
-	background: none repeat scroll 0 0 #FFFFFF;
+	background: none repeat scroll 0 0 #ffffff;
 	padding: 1em;
 }
+
 
 .no-bottom-margin {
 	margin-bottom: 0px;
@@ -61,24 +63,23 @@ body{
 
 
 div.navbar-inner {
-  background: #39423f; 
+	background: #39423f; 
 }
 
 
 .field_with_errors {
-  position: relative;
+	position: relative;
 }
 
 .field_with_errors input {
-    border: 1px solid #DD0000 !important;
-    box-shadow: 0 0 8px #FF7777;
+	border: 1px solid #DD0000 !important;
+	box-shadow: 0 0 8px #FF7777;
 }
 
 .field_with_errors .message {
-    color: #DD0000;
-    font-size: 12px;
-    left: auto;
-    position: absolute;
-    left: 230px;
-    top: 4px;
+	color: #DD0000;
+	font-size: 12px;
+	left: auto;
+	position: absolute;
+	left: 230px;top: 4px;
 }

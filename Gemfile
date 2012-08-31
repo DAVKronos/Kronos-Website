@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.6'
-gem 'haml', '3.1.6'
+gem 'rails', '3.2.8'
+gem 'haml', '3.1.7'
 gem 'devise'
 gem 'cancan'
 gem 'pg'
@@ -11,7 +11,7 @@ gem 'gdata'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'jquery-rails'
-gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
+gem 'nested_form'
 gem "settingslogic", "~> 2.0.8"
 gem "bootstrap-will_paginate", "~> 0.0.6"
 gem "chronic_duration", "~> 0.9.6"
@@ -35,9 +35,9 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '  ~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails', '  ~> 3.2.5'
+  gem 'coffee-rails', '~> 3.2.2'
+  gem 'uglifier', '>= 1.2.7'
 end
 
 group :production do
