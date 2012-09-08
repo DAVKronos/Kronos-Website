@@ -1,1 +1,2 @@
+[![Build Status](https://secure.travis-ci.org/DAVKronos/Kronos-Website.png)](http://travis-ci.org/DAVKronos/Kronos-Website)[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/DAVKronos/Kronos-Website)
 Migration to Rails 3.1
