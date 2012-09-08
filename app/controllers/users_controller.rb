@@ -15,6 +15,9 @@ class UsersController < ApplicationController
 		end
     if user.save
       UserMailer.welcome_email(user,password).deliver
+			if !current_user
+				sign_in user, :bypass => true
+			end
       redirect_to user
     else
       render 'new'
