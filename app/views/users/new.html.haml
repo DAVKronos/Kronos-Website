@@ -1,8 +1,14 @@
 %h1= t(:sign_up).capitalize
 
+- if !user_signed_in?
+  = render 'trial_info'
+
 = form_for @user, :validate => true, :html => { :multipart => true }  do |f|
-  
-  = render 'admin_fields', :f => f
+
+  - if !user_signed_in?
+    = render 'trial_fields', :f => f
+  - else
+    = render 'admin_fields', :f => f
 
 
 
