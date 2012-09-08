@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     password = Devise.friendly_token.first(10)
     user.password = password
     user.password_confirmation = password
-		if current_user.new_record?
+		if !current_user
 			user.user_type = UserType.find_by_name("Proeflid")
 		end
     if user.save
