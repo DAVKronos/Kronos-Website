@@ -27,9 +27,8 @@ gem 'memcache-client'
 # For development under Linux you also need to install
 # an javascript runtime
 platform :ruby do
-    gem 'execjs'
-    gem 'therubyracer'
-    gem 'unicorn'
+	gem 'execjs'
+	gem 'therubyracer'
 end
 
 # Gems used only for assets and not required
@@ -42,23 +41,28 @@ end
 
 group :production do
   gem 'daemons'
+	platform :ruby do
+		gem 'unicorn'
+	end
 end
 
 group :test do
   gem 'rspec-rails', '2.11.0'
   gem 'webrat', '0.7.3'
-  gem 'spork', '0.9.2'
   gem 'factory_girl_rails', '4.0.0'
-  gem 'ZenTest', '4.8.2'
 	gem 'rake'
-  if RUBY_PLATFORM =~ /darwin/
-    gem 'autotest-growl', '~> 0.2.16'
-    gem 'autotest-fsevent', '~> 0.2.8'
-  end
 end
 
 group :development do
   gem 'annotate', '~> 2.5.0'
   gem 'populator'
   gem 'faker'
+	gem 'guard'
+	gem 'spork', '0.9.2'
+	gem 'rb-fsevent', '~> 0.9.1'
+	gem 'guard-rspec'
+	gem 'guard-spork'
+	if RUBY_PLATFORM =~ /darwin/
+		gem 'terminal-notifier-guard'
+	end
 end

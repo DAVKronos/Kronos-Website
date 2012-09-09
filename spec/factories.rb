@@ -18,7 +18,7 @@ FactoryGirl.define do
 			email	"woutertimmermans@kronos.nl"
 			after(:create) do |admin|
 				commission = FactoryGirl.create(:bestuur)
-				FactoryGirl.create(:commission_membership, user: user, commission: commission)
+				FactoryGirl.create(:commission_membership, user: admin, commission: commission)
 			end
 		end
 	end
@@ -28,19 +28,17 @@ FactoryGirl.define do
 		user
 		commission
 	end
+	
+	factory :bestuur, class: Commission do
+		name					"Bestuur"
+		description 	"Het bestuur van Kronos"
+		email 				"bestuur@kronos.nl"
+	end
 		
-
-
 	factory :commission do
 	  name           "Test"
 	  description    "Test Commission"
 	  email          "test@kronos.nl"
-	end
-	
-	factory :bestuur do
-		name					"Bestuur"
-		description 	"Het bestuur van Kronos"
-		email 				"bestuur@kronos.nl"
 	end
 end
 
