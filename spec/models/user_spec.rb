@@ -34,6 +34,8 @@
 #  xtracard               :string(255)
 #
 
+require 'spec_helper'
+
 describe User do
   
   let(:attr) {   {:name => "Kegel Kronos", 
