@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id            :integer          not null, primary key
+#  date          :time
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  eventtype_id  :integer
+#  agendaitem_id :integer
+#  distance      :float
+#
+
 class Event < ActiveRecord::Base
   belongs_to :eventtype
   belongs_to :agendaitem
@@ -5,16 +18,3 @@ class Event < ActiveRecord::Base
   
   accepts_nested_attributes_for :results, :allow_destroy => true
 end
-# == Schema Information
-#
-# Table name: events
-#
-#  id            :integer         not null, primary key
-#  date          :time
-#  created_at    :datetime        not null
-#  updated_at    :datetime        not null
-#  eventtype_id  :integer
-#  agendaitem_id :integer
-#  distance      :float
-#
-

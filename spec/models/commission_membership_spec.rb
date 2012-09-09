@@ -1,26 +1,25 @@
-require 'spec_helper'
-
-describe CommissionMembership do
-  let(:user){ Factory(:user) }
-  let(:commis){ Factory(:commission) }
-  let(:membership){ user.commission_memberships.build(:commission => commis,:function => "Voorzitter")}
-  
-  it "should create a new instance given valid attributes" do
-      membership.save!
-    end
-  
-end
-
 # == Schema Information
 #
 # Table name: commission_memberships
 #
-#  id            :integer         not null, primary key
+#  id            :integer          not null, primary key
 #  function      :string(255)
-#  installed     :boolean
-#  user_id       :integer
-#  commission_id :integer
-#  created_at    :datetime
-#  updated_at    :datetime
+#  installed     :boolean          default(FALSE)
+#  user_id       :integer          not null
+#  commission_id :integer          not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 
+require 'spec_helper'
+
+describe CommissionMembership do
+  let(:user){ FactoryGirl.create(:user) }
+  let(:commis){ FactoryGirl.create(:commission) }
+  let(:membership){ user.commission_memberships.build(:commission => commis,:function => "Voorzitter")}
+  
+  it "should create a new instance given valid attributes" do
+      membership.save!
+  end
+  
+end

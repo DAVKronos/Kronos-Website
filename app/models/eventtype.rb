@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: eventtypes
+#
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  formula         :string(255)
+#  shortname       :string(255)
+#  measuringunit   :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  calculated_unit :string(255)
+#
+
 class Eventtype < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   has_many :agendaitemtype_eventtypes
@@ -13,17 +27,3 @@ class Eventtype < ActiveRecord::Base
 
   end  
 end
-# == Schema Information
-#
-# Table name: eventtypes
-#
-#  id              :integer         not null, primary key
-#  name            :string(255)
-#  formula         :string(255)
-#  shortname       :string(255)
-#  measuringunit   :string(255)
-#  created_at      :datetime        not null
-#  updated_at      :datetime        not null
-#  calculated_unit :string(255)
-#
-

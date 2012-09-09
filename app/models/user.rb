@@ -1,3 +1,39 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  name                   :string(255)
+#  initials               :string(255)
+#  email                  :string(255)      default(""), not null
+#  birthdate              :date
+#  address                :string(255)
+#  postalcode             :string(255)
+#  city                   :string(255)
+#  sex                    :string(255)
+#  licensenumber          :string(255)
+#  papieren_kronometer    :boolean          default(FALSE)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0)
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  phonenumber            :string(255)
+#  user_type_id           :integer
+#  bank_account_number    :string(255)
+#  xtracard               :string(255)
+#
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -29,7 +65,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "260x180#", :thumb => "50x50#" }, :path => ":rails_root/public/system/:attachment/:hash.:extension",
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
   
-  name_regex = /\A[A-Z].+\s(.+\s(.+\s)*)?[A-Z].*(-[A-Z].+)*\z/
+  name_regex = /\A[A-Z]\w+\s(\w+\s)*[A-Z]\w*(-[A-Z]\w+)*\z/
   
   validates :name, :presence => true,
                    :format => {:with => name_regex}
@@ -88,41 +124,4 @@ class User < ActiveRecord::Base
   
   
 end
-
-
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :integer         not null, primary key
-#  name                   :string(255)
-#  initials               :string(255)
-#  email                  :string(255)     default(""), not null
-#  birthdate              :date
-#  address                :string(255)
-#  postalcode             :string(255)
-#  city                   :string(255)
-#  sex                    :string(255)
-#  licensenumber          :string(255)
-#  papieren_kronometer    :boolean         default(FALSE)
-#  created_at             :datetime
-#  updated_at             :datetime
-#  avatar_file_name       :string(255)
-#  avatar_content_type    :string(255)
-#  avatar_file_size       :integer
-#  avatar_updated_at      :datetime
-#  encrypted_password     :string(255)     default(""), not null
-#  reset_password_token   :string(255)
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  sign_in_count          :integer         default(0)
-#  current_sign_in_at     :datetime
-#  last_sign_in_at        :datetime
-#  current_sign_in_ip     :string(255)
-#  last_sign_in_ip        :string(255)
-#  phonenumber            :string(255)
-#  user_type_id           :integer
-#  bank_account_number    :string(255)
-#  xtracard               :string(255)
-#
 

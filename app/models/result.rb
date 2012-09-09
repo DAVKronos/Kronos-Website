@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: results
+#
+#  id         :integer          not null, primary key
+#  username   :string(255)
+#  result     :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  event_id   :integer
+#  user_id    :integer
+#
+
 class Result < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
@@ -28,16 +41,3 @@ class Result < ActiveRecord::Base
   
   
 end
-# == Schema Information
-#
-# Table name: results
-#
-#  id         :integer         not null, primary key
-#  username   :string(255)
-#  result     :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  event_id   :integer
-#  user_id    :integer
-#
-

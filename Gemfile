@@ -48,8 +48,8 @@ group :test do
   gem 'rspec-rails', '2.11.0'
   gem 'webrat', '0.7.3'
   gem 'spork', '0.9.2'
-  gem 'factory_girl_rails', '3.5.0'
-  gem 'ZenTest', '4.8.1'
+  gem 'factory_girl_rails', '4.0.0'
+  gem 'ZenTest', '4.8.2'
   if RUBY_PLATFORM =~ /darwin/
     gem 'autotest-growl', '~> 0.2.16'
     gem 'autotest-fsevent', '~> 0.2.8'
@@ -57,7 +57,7 @@ group :test do
 end
 
 group :development do
-  gem 'annotate', '~> 2.5.0.pre1 '
+  gem 'annotate', '~> 2.5.0'
   gem 'populator'
   gem 'faker'
 end

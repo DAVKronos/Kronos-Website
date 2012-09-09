@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: chatmessages
+#
+#  id         :integer          not null, primary key
+#  by         :string(255)
+#  message    :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  email      :string(255)
+#  user_id    :integer
+#  user_ip    :string(255)
+#  user_agent :string(255)
+#  referrer   :string(255)
+#
+
 class Chatmessage < ActiveRecord::Base
   include Rakismet::Model
   after_save :spam_check
@@ -20,19 +36,3 @@ class Chatmessage < ActiveRecord::Base
     self.referrer   = request.env['HTTP_REFERER']
   end
 end
-# == Schema Information
-#
-# Table name: chatmessages
-#
-#  id         :integer         not null, primary key
-#  by         :string(255)
-#  message    :text
-#  created_at :datetime
-#  updated_at :datetime
-#  email      :string(255)
-#  user_id    :integer
-#  user_ip    :string(255)
-#  user_agent :string(255)
-#  referrer   :string(255)
-#
-

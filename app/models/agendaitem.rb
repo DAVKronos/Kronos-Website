@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: agendaitems
+#
+#  id                   :integer          not null, primary key
+#  name                 :string(255)
+#  description          :text
+#  date                 :datetime
+#  location             :string(255)
+#  subscribe            :boolean
+#  subscriptiondeadline :datetime
+#  commission_id        :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  category             :string(255)
+#  intern               :boolean
+#  agendaitemtype_id    :integer
+#
+
 class Agendaitem < ActiveRecord::Base
   belongs_to :commission
   has_many :photoalbums
@@ -42,22 +61,3 @@ class Agendaitem < ActiveRecord::Base
     return counter
   end
 end
-# == Schema Information
-#
-# Table name: agendaitems
-#
-#  id                   :integer         not null, primary key
-#  name                 :string(255)
-#  description          :text
-#  date                 :datetime
-#  location             :string(255)
-#  subscribe            :boolean
-#  subscriptiondeadline :datetime
-#  commission_id        :integer
-#  created_at           :datetime
-#  updated_at           :datetime
-#  category             :string(255)
-#  intern               :boolean
-#  agendaitemtype_id    :integer
-#
-

@@ -8,7 +8,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.8.1)
+    ZenTest (4.8.2)
     actionmailer (3.2.8)
       actionpack (= 3.2.8)
       mail (~> 2.4.4)
@@ -77,10 +77,10 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (3.5.0)
+    factory_girl (4.0.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (3.5.0)
-      factory_girl (~> 3.5.0)
+    factory_girl_rails (4.0.0)
+      factory_girl (~> 4.0.0)
       railties (>= 3.0.0)
     faker (1.0.1)
       i18n (~> 0.4)
@@ -214,8 +214,8 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  ZenTest (= 4.8.1)
-  annotate (~> 2.5.0.pre1)
+  ZenTest (= 4.8.2)
+  annotate (~> 2.5.0)
   auto_html
   autotest-fsevent (~> 0.2.8)
   autotest-growl (~> 0.2.16)
@@ -229,7 +229,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   execjs
-  factory_girl_rails (= 3.5.0)
+  factory_girl_rails (= 4.0.0)
   faker
   gdata_19
   haml (= 3.1.7)
