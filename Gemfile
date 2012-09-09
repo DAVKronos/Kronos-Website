@@ -24,19 +24,19 @@ gem 'wicked_pdf'
 gem 'auto_html'
 gem 'memcache-client'
 
-# For development under Linux you also need to install
-# an javascript runtime
-platform :ruby do
-	gem 'execjs'
-	gem 'therubyracer'
-end
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails', '  ~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.7'
+	
+	# For development under Linux you also need to install
+	# an javascript runtime
+	platform :ruby do
+		gem 'execjs'
+		gem 'therubyracer'
+	end
 end
 
 group :production do
