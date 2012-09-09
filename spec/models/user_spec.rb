@@ -168,25 +168,29 @@ describe User do
   end
   
   describe "commission associations" do
-    let(:commis){ FactoryGirl.create(:commission) }
-    let(:user){User.new(attr, :as => :bestuur)}
-    let(:user2){ FactoryGirl.create(:user) }
+		
+	  before(:each) do
+	    @commis = FactoryGirl.create(:commission)
+	    @user = User.new(attr, :as => :bestuur)
+	    @user2 = FactoryGirl.create(:user)
+	  end
+   
     
     before do
-       user2.commission_memberships.build(:commission => commis,:function => "Voorzitter").save!
+       @user2.commission_memberships.build(:commission => @commis,:function => "Voorzitter").save!
     end
       
     
     it "should have a commission attribute" do
-      user.should respond_to(:commissions)
+      @user.should respond_to(:commissions)
     end
     
     it "should return the associated commissions" do
-      user2.commissions.should == [commis]
+      @user2.commissions.should == [@commis]
     end
     
     it "should work the other way around too" do
-      commis.users.should == [user2]
+      @commis.users.should == [@user2]
     end
     
   end
