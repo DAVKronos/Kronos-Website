@@ -1,7 +1,7 @@
 common: &common
   adapter: postgresql
-  username: kronos
-  password: kronos
+  username: postgres
+  password:
 
 development:
   <<: *common

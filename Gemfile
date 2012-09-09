@@ -50,6 +50,7 @@ group :test do
   gem 'spork', '0.9.2'
   gem 'factory_girl_rails', '4.0.0'
   gem 'ZenTest', '4.8.2'
+	gem 'rake'
   if RUBY_PLATFORM =~ /darwin/
     gem 'autotest-growl', '~> 0.2.16'
     gem 'autotest-fsevent', '~> 0.2.8'

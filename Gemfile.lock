@@ -242,6 +242,7 @@ DEPENDENCIES
   pg
   populator
   rails (= 3.2.8)
+  rake
   rakismet
   redcarpet
   rspec-rails (= 2.11.0)
