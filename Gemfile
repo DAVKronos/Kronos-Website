@@ -57,7 +57,7 @@ group :development do
   gem 'populator'
   gem 'faker'
 	gem 'guard'
-	gem 'spork', '~> 0.9'
+	gem 'spork', '~> 1.0.0.rc3'
 	gem 'rb-fsevent', '~> 0.9.1'
 	gem 'guard-rspec'
 	gem 'guard-spork'
