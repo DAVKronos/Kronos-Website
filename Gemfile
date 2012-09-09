@@ -47,7 +47,6 @@ group :production do
 end
 
 group :test do
-  gem 'rspec-rails', '2.11.0'
   gem 'webrat', '0.7.3'
   gem 'factory_girl_rails', '4.0.0'
 	gem 'rake'
@@ -65,4 +64,8 @@ group :development do
 	if RUBY_PLATFORM =~ /darwin/
 		gem 'terminal-notifier-guard'
 	end
+end
+
+group :test, :development do
+  gem "rspec-rails", "~> 2.11.0"
 end

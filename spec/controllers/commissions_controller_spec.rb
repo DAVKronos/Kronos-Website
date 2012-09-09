@@ -8,7 +8,7 @@ describe CommissionsController do
 		describe "GET 'new'" do
 			it "should redirect to homepage" do
 				get 'new'
-				response.should be_redirect
+				response.should redirect_to(root_path)
 			end
 		end
 	end
@@ -19,7 +19,7 @@ describe CommissionsController do
 	  describe "GET 'new'" do
 	    it "should redirect to homepage" do
 	      get 'new'
-	      response.should be_redirect
+	     	response.should redirect_to(root_path)
 	    end
 	  end
 	end
