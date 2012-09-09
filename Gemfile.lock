@@ -49,7 +49,7 @@ GEM
     cancan (1.6.8)
     chronic_duration (0.9.6)
       numerizer (~> 0.1.1)
-    client_side_validations (3.2.0.beta.4)
+    client_side_validations (3.2.0.beta.6)
     cocaine (0.3.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -222,20 +222,20 @@ DEPENDENCIES
   bootstrap-will_paginate (~> 0.0.6)
   cancan
   chronic_duration (~> 0.9.6)
-  client_side_validations (= 3.2.0.beta.4)
+  client_side_validations (~> 3.2.0.beta.6)
   coffee-rails (~> 3.2.2)
   daemons
   delayed_job
   delayed_job_active_record
   devise
   execjs
-  factory_girl_rails (= 4.0.0)
+  factory_girl_rails (~> 4.0.0)
   faker
   gdata_19
   guard
   guard-rspec
   guard-spork
-  haml (= 3.1.7)
+  haml (~> 3.1.7)
   jquery-rails
   localeapp
   math_engine (~> 0.3.0)!
@@ -244,7 +244,7 @@ DEPENDENCIES
   paperclip (~> 3.1.2)
   pg
   populator
-  rails (= 3.2.8)
+  rails (~> 3.2.8)
   rake
   rakismet
   rb-fsevent (~> 0.9.1)
@@ -252,11 +252,11 @@ DEPENDENCIES
   rspec-rails (~> 2.11.0)
   sass-rails (~> 3.2.5)
   settingslogic (~> 2.0.8)
-  spork (= 0.9.2)
+  spork (~> 0.9.2)
   terminal-notifier-guard
   therubyracer
   uglifier (>= 1.2.7)
   unicorn
-  webrat (= 0.7.3)
+  webrat (~> 0.7.3)
   wicked_pdf
-  will_paginate (= 3.0.3)
+  will_paginate (~> 3.0.3)

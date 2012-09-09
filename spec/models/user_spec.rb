@@ -50,7 +50,41 @@ describe User do
                   :password => "Foobar",
                   :password_confirmation => "Foobar"}
             }
+	describe "attributes" do
+		before { @user = FactoryGirl.build(:user) }
 
+		  subject { @user }
+
+		  it { should respond_to(:name) }
+		  it { should respond_to(:initials) }
+			it { should respond_to(:email) }
+			it { should respond_to(:birthdate) }
+			it { should respond_to(:address) }
+			it { should respond_to(:postalcode) }
+			it { should respond_to(:city) }
+			it { should respond_to(:sex) }
+			it { should respond_to(:licensenumber) }
+			it { should respond_to(:papieren_kronometer) }
+			it { should respond_to(:created_at) }
+			it { should respond_to(:updated_at) }
+			it { should respond_to(:avatar_file_name) }
+			it { should respond_to(:avatar_content_type) }
+			it { should respond_to(:avatar_file_size) }
+			it { should respond_to(:avatar_updated_at) }
+			it { should respond_to(:encrypted_password) }
+			it { should respond_to(:reset_password_token) }
+			it { should respond_to(:reset_password_sent_at) }
+			it { should respond_to(:remember_created_at) }
+			it { should respond_to(:sign_in_count) }
+			it { should respond_to(:current_sign_in_at) }
+			it { should respond_to(:last_sign_in_at) }
+			it { should respond_to(:current_sign_in_ip) }
+			it { should respond_to(:last_sign_in_ip) }
+			it { should respond_to(:phonenumber) }
+			it { should respond_to(:user_type_id) }
+			it { should respond_to(:bank_account_number) }
+			it { should respond_to(:xtracard) }
+	end
 
   it "should create a new instance given valid attributes" do
     User.create!(attr, :as => :bestuur)
