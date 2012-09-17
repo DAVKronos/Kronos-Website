@@ -6,6 +6,12 @@
 	box-sizing: border-box;
 	
 }
+chatimage-empty{
+	padding: 1em;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+}
 
 .chatmessages > div:nth-of-type(4n+3) .chattext {
 	background: #bbf199;
@@ -14,8 +20,6 @@
 .chatmessages > div:nth-of-type(4n+3) .chatimage {
 	background: #bbf199;
 }
-
-
 
 .chattext {
 	background: #eff7ea;
@@ -40,3 +44,4 @@
 .small-left-margin {
 	margin-left: 1%;
 }
+

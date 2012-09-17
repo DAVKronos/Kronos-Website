@@ -1,10 +1,20 @@
-= form_for(@chatmessage) do |f|
-  
-  = f.text_field :by, :class => "input-medium", :placeholder => "naam"
-  = f.text_field :email, :class => "input-medium", :placeholder => "email"
-  
-  = f.label :bericht
-  
+= form_for @chatmessage, :html => {:class => "well form form-horizontal "} do |f|  
+  %legend Nieuw bericht  
+  .control-group
+    %label{:for => "chatmessage_by", :class => "control-label"} 
+      = t :name
+    .controls
+      .input-prepend
+        %span.add-on
+          %i.icon-user
+        = f.text_field :by, :class => "span3", :placeholder => t(:name)
+  .control-group
+    %label{:for => "chatmessage_email", :class => "control-label"} 
+      = t :email
+    .controls
+      .input-prepend
+        %span.add-on
+          %i.icon-envelope
+        = f.text_field :email,:class => "span3", :placeholder => t(:email)
   = f.text_area(:message, :rows => "3", :class => "span3 markItUp")
-
-  = f.submit :class => "btn"
+  = f.submit :class => "btn btn-primary"
