@@ -8,7 +8,7 @@
         - if chatmessage.user
           .span1
             .chatimage 
-              %a.thumbnail{:href => chatmessage.by}
+              %a.thumbnail{:href => chatmessage.user}
                 = image_tag chatmessage.user.avatar.url(:thumb) 
         %div{ :class => chatmessage.user ? 'span5' : 'span5 offset1' }
           .chattext
