@@ -193,7 +193,7 @@ nl:
       agendaitem:
         update: Agendaitem bewaren
       chatmessage:
-        create: Chatmessage toevoegen
+        create: Bericht toevoegen
       event:
         create: Event toevoegen
         update: Event bewaren
@@ -300,6 +300,14 @@ nl:
           attributes:
             eventtype_id:
               blank: moet opgegeven zijn
+        chatmessage:
+          attributes:
+            by:
+              blank: moet opgegeven zijn
+            email:
+              blank: moet opgegeven zijn
+            message:
+              blank: moet opgegeven zijn
     models:
       user: Lid
       photoalbum: Fotoalbum
@@ -338,6 +346,9 @@ nl:
         Type: Type
       chatmessage:
         bericht: Bericht
+        by: By
+        message: Message
+        email: Email
       eventtype:
         agendaitemtypes: Agendaitemtypes
         calculated_unit: Calculated unit
@@ -453,6 +464,7 @@ nl:
     signed_out: Je bent succesvol uitgelogd.
   chatmessage:
     bericht: ''
+    page_title: Kronos kletsdoos
   unauthorized:
     default: You are not authorized to access this page.
   event: Event
