@@ -83,3 +83,8 @@ div.navbar-inner {
 	position: absolute;
 	left: 230px;top: 4px;
 }
+
+.input-prepend .add-on,
+.input-append input {
+  float: left;
+}
