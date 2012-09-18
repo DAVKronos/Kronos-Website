@@ -462,6 +462,7 @@ nl:
     signed_in: Je bent succesvol ingelogd.
     invalid: Ongeldig e-mail of wachtwoord.
     signed_out: Je bent succesvol uitgelogd.
+    send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet resetten.
   chatmessage:
     bericht: ''
     page_title: Kronos kletsdoos
@@ -476,3 +477,4 @@ nl:
     name: ''
     shortname: ''
   agendaitemtype_eventtype: Agendaitemtype eventtype
+  user_subject: Wachtwoord resetten
