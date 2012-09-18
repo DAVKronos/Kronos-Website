@@ -61,7 +61,7 @@ class Photo < ActiveRecord::Base
        end
        handle_asynchronously :processImageJob
 
-       # generate styles (downloads original first)
+       # generate styles
        def regenerate_styles!
          self.photo.reprocess! 
          self.processing = false   
@@ -72,7 +72,6 @@ class Photo < ActiveRecord::Base
        def photo_changed?
          self.photo_file_size_changed? || 
          self.photo_file_name_changed? ||
-         self.photo_content_type_changed? || 
-         self.photo_updated_at_changed?
+         self.photo_content_type_changed?
        end
 end
