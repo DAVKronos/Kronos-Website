@@ -63,3 +63,9 @@
           %div
             = link_to "Naar de wedstrijdpagina", @agendaitem
             = link_to "Voeg een uitslag toe", agendaitem_events_path(@agendaitem) if can? :create, Result
+  -if can? :create, Agendaitem
+    .row
+      %h5
+        Ik wil een uitslag toevoegen maar mijn wedstrijd staat er niet tussen!!1!!1
+      = link_to "Wedstrijd toevoegen", new_agendaitem_path, :class => "btn btn-primary"
+    

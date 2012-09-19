@@ -22,6 +22,8 @@ class Ability
          cannot :destroy, Photoalbum
          can :create, Photo
          can :create, Newsitem
+         can :create, Agendaitem
+         can :create, Event
          can :manage, Subscription
          cannot :destroy, Subscription
          can :destroy, user.subscriptions
@@ -31,7 +33,6 @@ class Ability
            can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
          end
          can :editpassword, user
-         can :create, Event
        end
        
          

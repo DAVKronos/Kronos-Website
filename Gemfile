@@ -41,9 +41,7 @@ end
 
 group :production do
   gem 'daemons'
-	platform :ruby do
-		gem 'unicorn'
-	end
+	gem 'unicorn'
 end
 
 group :test do

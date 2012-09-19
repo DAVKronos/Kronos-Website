@@ -11,6 +11,7 @@ bindFormEvents = () =>
     
   $(".new_event").bind 'ajax:success', (evt, data, status, xhr) ->
     $(".events").append($('<div>').attr('class', "row").html($('<div>').attr('class', "span12 event").html(xhr.responseText)))
+    bindFormEvents()
       
 
 $(document).ready ->

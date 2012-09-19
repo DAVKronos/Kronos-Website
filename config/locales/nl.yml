@@ -192,6 +192,7 @@ nl:
       submit: ! '%{model} opslaan'
       agendaitem:
         update: Agendaitem bewaren
+        create: Agendaitem toevoegen
       chatmessage:
         create: Bericht toevoegen
       event:
@@ -438,6 +439,10 @@ nl:
     subscribe: ''
     subscriptiondeadline: ''
     date: ''
+    events:
+      Afstand: ''
+      Tijd: ''
+      Type: ''
   agendaitem[events_attributes][new_events]:
     Afstand: ''
     Tijd: ''

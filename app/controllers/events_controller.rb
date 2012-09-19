@@ -98,7 +98,7 @@ class EventsController < ApplicationController
 
     if(agendaitem)
       respond_to do |format|
-        format.html { redirect_to edit_agendaitem_url(agendaitem) }
+        format.html { redirect_to agendaitem_events_path(agendaitem) }
         format.json { head :ok }
       end
     else
