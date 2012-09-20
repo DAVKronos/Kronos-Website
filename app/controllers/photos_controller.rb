@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   load_and_authorize_resource
-  protect_from_forgery :except => [:create]
+  protect_from_forgery :except => [:create, :delete]
   
     def index
       @photos = Photoalbum.find(params[:photoalbum_id]).photos
