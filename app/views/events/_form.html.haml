@@ -1,0 +1,12 @@
+- eventResult = event.results.build
+= form_for eventResult, :url => event_results_path(event), :remote => true do |f|
+  .row
+    .span8
+      - nameArray = []
+      - User.all.each do |user|
+        - nameArray << user.name
+      = f.text_field :username, :class => :typeahead , "data-source" => "#{nameArray}", "data-provide" => "typeahead"
+      = f.text_field :result, :placeholder => "Prestatie"
+  .row
+    .span3
+      = f.submit :class => "btn btn-success"

@@ -24,6 +24,7 @@ class Ability
          can :create, Newsitem
          can :create, Agendaitem
          can :create, Event
+         can :create, Result
          can :manage, Subscription
          cannot :destroy, Subscription
          can :destroy, user.subscriptions

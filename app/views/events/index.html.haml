@@ -1,7 +1,10 @@
 %h3 Onderdelen
 .events
   -@events.each do |event|
-    = render :partial => "results/show", :locals => { :event => event }
+    .event
+      .results
+        = render :partial => "results/show", :locals => { :event => event }
+      = render :partial => "form", :locals => { :event => event }
             
 %h3 Voeg een onderdeel toe
 

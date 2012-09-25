@@ -43,4 +43,24 @@ class ResultsController < ApplicationController
   def new
     @agendaitems = Agendaitem.joins(:agendaitemtype).where(:agendaitemtypes => {:is_match => true}).order('date DESC')
   end
+  
+  def create
+    event = Event.find(params[:event_id])
+    result = event.results.build(params[:result])
+    result.save
+    if request.xhr?
+      render 'results/_show', :layout => false, :locals => {:event => Event.find(event.id)}
+    end
+  end
+  
+  def destroy
+    @result = Result.find(params[:id])
+    @result.destroy
+    respond_to do |format|
+      format.html { redirect_to agendaitem_events_path(@result.event.agendaitem) }
+      format.json {
+        render :json => true
+      }
+    end
+  end
 end

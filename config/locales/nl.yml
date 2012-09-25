@@ -201,6 +201,8 @@ nl:
       eventtype:
         create: Eventtype toevoegen
         update: Eventtype bewaren
+      result:
+        create: Result toevoegen
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -313,6 +315,10 @@ nl:
           attributes:
             function:
               blank: moet opgegeven zijn
+        result:
+          attributes:
+            result:
+              blank: moet opgegeven zijn
     models:
       user: Lid
       photoalbum: Fotoalbum
@@ -365,6 +371,8 @@ nl:
         eventtype_id: Eventtype
       commission_membership:
         function: Function
+      result:
+        result: Result
   edit_commission: Commissie aanpassen
   distance:
     centi:
@@ -490,4 +498,4 @@ nl:
   agendaitemtype_eventtype: Agendaitemtype eventtype
   commission_membership: Commission membership
   user_subject: Wachtwoord resetten
-
+  result: Result

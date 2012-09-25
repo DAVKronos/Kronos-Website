@@ -26,7 +26,6 @@
 $(document).ready(function () {
 $(".markItUp").markItUp(myMarkdownSettings);
 $(".alert-message").alert()
-$('.typeahead').typeahead()
 $(".alert").alert()
 setTimeout("$('.alert').fadeOut('slow');", 3000);
 $('.carousel').carousel()
