@@ -445,6 +445,10 @@ nl:
     subscribe: ''
     subscriptiondeadline: ''
     date: ''
+    events:
+      Afstand: ''
+      Tijd: ''
+      Type: ''
   agendaitem[events_attributes][new_events]:
     Afstand: ''
     Tijd: ''
@@ -469,6 +473,7 @@ nl:
     signed_in: Je bent succesvol ingelogd.
     invalid: Ongeldig e-mail of wachtwoord.
     signed_out: Je bent succesvol uitgelogd.
+    send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet resetten.
   chatmessage:
     bericht: ''
     page_title: Kronos kletsdoos
@@ -484,3 +489,5 @@ nl:
     shortname: ''
   agendaitemtype_eventtype: Agendaitemtype eventtype
   commission_membership: Commission membership
+  user_subject: Wachtwoord resetten
+

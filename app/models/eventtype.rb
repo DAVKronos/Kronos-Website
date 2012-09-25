@@ -24,6 +24,9 @@ class Eventtype < ActiveRecord::Base
     formula = self.formula
     formula = formula.gsub(/\$distance/, distance.to_s ) if distance
     engine.evaluate(formula.gsub(/\$result/, result.to_s))              # Evaluate the expression and output the result
+    
+    rescue MathEngine::MathEngine::ParseError
+      0
 
-  end  
+  end
 end

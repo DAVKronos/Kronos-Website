@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe UsersController do
-  render_views
 
   describe "GET 'new'" do
     it "should be successful" do
@@ -9,4 +8,10 @@ describe UsersController do
       response.should be_success
     end
   end
+	
+	describe "Create trial member" do
+		it "should be successful" do
+			user = FactoryGirl.create(:user)
+		end
+	end
 end

@@ -13,7 +13,6 @@
 //= require tmpl
 //= require load-image
 //= require canvas-to-blob
-//= require bootstrap
 //= require bootstrap-image-gallery
 //= require jquery.iframe-transport
 //= require jquery.fileupload

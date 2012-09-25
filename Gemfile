@@ -47,7 +47,7 @@ group :production do
 end
 
 group :test do
-  gem 'webrat', '~> 0.7.3'
+  gem "capybara", "~> 1.1"
   gem 'factory_girl_rails', '~> 4.0.0'
 	gem 'rake'
 end

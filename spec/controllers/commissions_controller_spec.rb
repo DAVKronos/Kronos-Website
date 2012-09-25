@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe CommissionsController do
-  render_views
 	
 	describe 'guest user' do
 		
