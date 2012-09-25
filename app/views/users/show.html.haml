@@ -5,6 +5,8 @@
       %figcaption
         = @user.name
   %li
+    = t(:name).capitalize + ": " + @user.name
+  %li
     = t(:initials).capitalize + ": " + @user.initials
     %br
   %li

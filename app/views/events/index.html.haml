@@ -8,7 +8,7 @@
             
 %h3 Voeg een onderdeel toe
 
-= form_for @event, :remote => true do |f|
+= form_for @event do |f|
   = f.label "Tijd", :class => "span1"
   - if f.object.date.respond_to?(:strftime)
     = f.text_field :date, {:class => "tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}

@@ -322,6 +322,8 @@ nl:
     models:
       user: Lid
       photoalbum: Fotoalbum
+      result: Uitslag
+      event: Onderdeel
     attributes:
       user:
         name: Naam
@@ -487,7 +489,7 @@ nl:
     page_title: Kronos kletsdoos
   unauthorized:
     default: You are not authorized to access this page.
-  event: Event
+  event: Onderdeel
   eventtype:
     agendaitemtypes: ''
     calculated_unit: ''
@@ -496,6 +498,7 @@ nl:
     name: ''
     shortname: ''
   agendaitemtype_eventtype: Agendaitemtype eventtype
-  commission_membership: Commission membership
+  commission_membership: commissie lidmaatschap
   user_subject: Wachtwoord resetten
-  result: Result
+  result: Onderdeel
+  page_title: paginatitel
