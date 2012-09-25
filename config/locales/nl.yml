@@ -192,6 +192,7 @@ nl:
       submit: ! '%{model} opslaan'
       agendaitem:
         update: Agendaitem bewaren
+        create: Agendaitem toevoegen
       chatmessage:
         create: Bericht toevoegen
       event:
@@ -308,6 +309,10 @@ nl:
               blank: moet opgegeven zijn
             message:
               blank: moet opgegeven zijn
+        commission_membership:
+          attributes:
+            function:
+              blank: moet opgegeven zijn
     models:
       user: Lid
       photoalbum: Fotoalbum
@@ -358,6 +363,8 @@ nl:
         shortname: Shortname
       agendaitemtype_eventtype:
         eventtype_id: Eventtype
+      commission_membership:
+        function: Function
   edit_commission: Commissie aanpassen
   distance:
     centi:
@@ -476,3 +483,4 @@ nl:
     name: ''
     shortname: ''
   agendaitemtype_eventtype: Agendaitemtype eventtype
+  commission_membership: Commission membership

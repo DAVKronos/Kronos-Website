@@ -192,6 +192,7 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.6)
     sys-proctable (0.9.1)
     sys-proctable (0.9.1-x86-mingw32)
     terminal-notifier-guard (1.5.3)
@@ -261,6 +262,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.5)
   settingslogic (~> 2.0.8)
   spork (~> 1.0.0.rc3)
+  sqlite3
   terminal-notifier-guard
   therubyracer
   uglifier (>= 1.2.7)

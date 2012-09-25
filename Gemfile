@@ -4,7 +4,6 @@ gem 'rails', '~> 3.2.8'
 gem 'haml', '~> 3.1'
 gem 'devise'
 gem 'cancan'
-gem 'pg'
 gem 'will_paginate', '~> 3.0.3'
 gem 'paperclip', '~> 3.2'
 gem 'gdata_19'
@@ -41,6 +40,7 @@ end
 
 group :production do
   gem 'daemons'
+  gem 'pg'
 	platform :ruby do
 		gem 'unicorn'
 	end
@@ -61,6 +61,7 @@ group :development do
 	gem 'rb-fsevent', '~> 0.9.1'
 	gem 'guard-rspec'
 	gem 'guard-spork'
+  gem 'sqlite3'
 	if RUBY_PLATFORM =~ /darwin/
 		gem 'terminal-notifier-guard'
 	end

@@ -20,7 +20,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-User.create({:name => "Leon Schenk", 
+user = User.create({:name => "Leon Schenk", 
                   :initials => "H.J.K.",
                   :email => "leon_schenk@kronos.nl", 
                   :birthdate => "01-01-2002",
@@ -32,3 +32,18 @@ User.create({:name => "Leon Schenk",
                   :password => "Foobar",
                   :password_confirmation => "Foobar"}, 
                   :as => :bestuur)
+                  
+com = Commission.create({:name => "Bestuur",
+                   :email => "bestuur@kronos.nl",
+                   :description => "Het bestuur van Kronos"})
+                   
+CommissionMembership.create({:commission => com,
+                             :user => user, 
+                             :function => "Voorzitter"})
+                             
+eventtype = Eventtype.create({:name => "1500m", :formula => "( 1500 / $result ) * 3.6",
+                  :measuringunit => "sec", :calculated_unit => "km/h"})
+                  
+agendaitemtype = Agendaitemtype.create({:name => "Baanwedstrijd", :is_match => true})
+
+AgendaitemtypeEventtype.create({:eventtype => eventtype, :agendaitemtype => agendaitemtype})

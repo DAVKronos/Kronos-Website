@@ -13,8 +13,10 @@ class ResultsController < ApplicationController
       end
     else
       @results = Agendaitem.where("date <= ?", DateTime.now).order("date DESC").limit(20)
-      @agendaitem = @results.first
-      @tabs = Agendaitem.uniq.order('year desc').limit(5).pluck("extract(year from date) as year")
+      @tabs = []
+      Agendaitem.uniq.order('date DESC').limit(5).each do |agendaitem|
+        @tabs << agendaitem.date.year
+      end
     end
     
     respond_to do |format|
