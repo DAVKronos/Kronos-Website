@@ -14,8 +14,10 @@ class ResultsController < ApplicationController
     else
       @results = Agendaitem.joins(:agendaitemtype).where(:agendaitemtypes => {:is_match => true}).where("date <= ?", DateTime.now).order("date DESC").limit(20)
       @tabs = []
-      Agendaitem.uniq.order('date DESC').limit(5).each do |agendaitem|
-        @tabs << agendaitem.date.year
+      counter = 0
+      5.times do
+        @tabs << counter.year.ago.year
+        counter += 1
       end
     end
     
