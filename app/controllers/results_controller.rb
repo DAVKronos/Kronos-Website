@@ -24,7 +24,7 @@ class ResultsController < ApplicationController
     respond_to do |format|
       format.html do
         if request.xhr?
-          render 'results/tabtable', :layout => false
+          render 'results/_tabtable', :layout => false
         end
       end
     end

@@ -14,24 +14,8 @@
                 = tab
         .tab-content
           %div{:class => "tab-pane active", :id => 'Laatste'}
-            %table{:class => "resulttable"}
-              %thead
-                %tr
-                  %th Wedstrijd ⇕
-                  %th Datum ⇕
-                  %th Plaats ⇕
-                  %th Type ⇕
-              %tbody
-                - @results.each do |agendaitem|
-                  %tr{:class => "ajaxuitslag", "ajaxid" => agendaitem.id}
-                    %td
-                      = agendaitem.name
-                    %td
-                      = agendaitem.date.strftime("%e %B")
-                    %td
-                      = agendaitem.location
-                    %td
-                      = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
+            = render :partial => "tabtable"
+            
           - @tabs.each do |tab|
             %div{:class => "tab-pane", :id => tab}
     .span4
