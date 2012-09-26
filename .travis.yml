@@ -8,5 +8,6 @@ before_script:
   - cp config/database.yml.example config/database.yml
   - cp config/application.yml.example config/application.yml
   - psql -c 'create database kronos_test;' -U postgres
+  - gem install activerecord-postgresql-adapter
   - RAILS_ENV=test bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
