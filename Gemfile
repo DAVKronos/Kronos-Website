@@ -50,6 +50,7 @@ group :test do
   gem "capybara", "~> 1.1"
   gem 'factory_girl_rails', '~> 4.0.0'
 	gem 'rake'
+  gem 'pg'
 end
 
 group :development do
