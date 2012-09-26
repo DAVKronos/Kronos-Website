@@ -1,3 +1,4 @@
+require 'gdata'
 class Gapps
   def create_group(id, name, description)
     post = <<-EOF
