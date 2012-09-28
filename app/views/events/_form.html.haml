@@ -1,11 +1,11 @@
 - eventResult = event.results.build
-= form_for eventResult, :url => event_results_path(event), :remote => true do |f|
+= form_for eventResult, :url => event_results_path(event), :remote => true, :html => {:autocomplete => "off"} do |f|
   .row
     .span8
       - nameArray = []
       - User.all.each do |user|
         - nameArray << user.name
-      = f.text_field :username, :class => :typeahead , "data-source" => "#{nameArray}", "data-provide" => "typeahead"
+      = f.text_field :username, :placeholder => t(:name).capitalize, :class => :typeahead , "data-source" => "#{nameArray}", "data-provide" => "typeahead"
       = f.text_field :result, :placeholder => "Prestatie"
   .row
     .span3
