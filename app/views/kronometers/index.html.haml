@@ -11,3 +11,5 @@
             = link_to 'verwijder', km, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{km.name}", :class => 'btn'
 - if can? :create, Kronometer
   = link_to 'nieuwe Kronometer', new_kronometer_path
+  %h3 Totaal benodigde Kronometers voor deze maand:
+  = @users.count

@@ -2,6 +2,7 @@ class KronometersController < ApplicationController
   authorize_resource
   def index
     @kms = Kronometer.all
+    @users = User.where(:papieren_kronometer => true)
   end
   
   def new
