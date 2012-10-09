@@ -11,7 +11,11 @@ KronosWebsite::Application.routes.draw do
   resources :photoalbums do
     resources :photos
   end
-  resources :kronometers
+  resources :kronometers do
+    collection do
+      get 'labels'
+    end
+  end
   resources :news_items
   resources :subscriptions
   match '/users/xtracard', :to => 'users#xtracard'

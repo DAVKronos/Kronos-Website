@@ -40,4 +40,14 @@ class KronometersController < ApplicationController
     redirect_to kronometers_path
     flash[:success] = "Kronometer succesvol verwijderd"
   end
+  
+  def labels
+    @users = User.where(:papieren_kronometer => true)
+    
+    respond_to do |format|
+      format.pdf do
+        render :pdf => "kronometer stickers #{Time.now}"
+      end
+    end
+  end
 end
