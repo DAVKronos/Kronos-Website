@@ -1,13 +1,13 @@
 %table
--@users.each_with_index do |user, index|
-  - if index % 3 == 0
-    %tr
-  %td
-    = user.name
-    %br
-    = user.address
-    %br
-    = user.postalcode
-    = user.city
+-@users.in_groups_of(3, false) do |users|
+  %tr
+    -users.each do |user|
+      %td
+        = user.name
+        %br
+        = user.address
+        %br
+        = user.postalcode
+        = user.city
  
   
