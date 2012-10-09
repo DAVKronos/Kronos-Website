@@ -1,5 +1,8 @@
--@users.each do |user|
-  %p
+%table
+-@users.each_with_index do |user, index|
+  - if index % 3 == 0
+    %tr
+  %td
     = user.name
     %br
     = user.address
