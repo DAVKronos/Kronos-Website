@@ -1,0 +1,72 @@
+%h1 Kronos agenda
+%br
+.span12
+  .row
+    - @agendaitems.each do |agendaitem|
+      .span6
+        .row
+          - if agendaitem.intern
+            %h2{:class => "kronosactiviteit"}
+              = link_to agendaitem.name, agendaitem
+          - else
+            %h2
+              = link_to agendaitem.name, agendaitem
+        .row
+          .span5
+            .row
+              %hr{:class => "no-margin"}
+        .row
+          .span3
+            .row
+              = agendaitem.agendaitemtype.name + ' - ' if agendaitem.agendaitemtype
+              = l agendaitem.date, :format => :long
+          - if can? :update, agendaitem
+            .span2
+              .row
+                = link_to('Bewerken', edit_agendaitem_path(agendaitem))
+                - if can? :destroy, agendaitem
+                  |
+                  = link_to('Verwijderen', agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete)
+        .row
+          %br
+          %p
+            = simple_format(agendaitem.description)
+        .row
+          .span4
+            .row
+              Inschrijving:
+              - if agendaitem.subscribe
+                %i{:class => "icon-ok-sign"}
+                - if ((agendaitem.subscriptiondeadline - Time.now) > 0)
+                  nog
+                  = h distance_of_time_in_words(agendaitem.subscriptiondeadline, Time.now)
+                - else 
+                  Gesloten 
+              - else
+                %i{:class => "icon-remove-sign"}
+        .row
+          .span5
+            .row
+              %hr
+    .span12
+      .row
+        = will_paginate @agendaitems, :previous_label => '<', :next_label => '>'
+    - if can? :create, Agendaitem
+      .span6
+        .row
+          %h2{:class => "acties"}
+            Agenda - acties
+        .row
+          .span5
+            .row
+              %hr{:class => "no-margin"}
+        .row
+          %ul
+            %li
+              = link_to 'Nieuw agendapunt', new_agendaitem_path
+            %li
+              = link_to 'Archief bekijken', '/agendaitems/archief'
+        .row
+          .span5
+            .row
+              %hr
