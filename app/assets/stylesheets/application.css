@@ -8,6 +8,7 @@
  *= require style
  *= require markdowncss
  *= require_self
+ *= require 'calendar_styles/blue'
  *= require_tree .
 */
 

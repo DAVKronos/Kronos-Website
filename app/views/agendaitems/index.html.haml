@@ -2,58 +2,97 @@
 %br
 .span12
   .row
-    - @agendaitems.each do |agendaitem|
-      .span8
+    .span8
+      - @agendaitems.each do |agendaitem|
         .activityoverview
           .row
-            .span6
-              .row{:class => "head"}
-                %h3
-                  = agendaitem.name
-              .row{:class => "information"}
-                .span1
-                  .row
-                    Wat:
-                .span2
-                  .row
-                    = if agendaitem.intern; 'Kronos ' else 'Externe ' end
-                    = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
-                .span1
-                  .row
-                    Wanneer:
-                .span2
-                  .row
-                    = agendaitem.date.strftime("%d %B %H:%M")
-              .row{:class => "information"}
-                .span1
-                  .row
-                    Waar:
-                .span5
-                  .row
-                    = agendaitem.location
-              .row{:class => "description"}
-                %p
-                  = simple_format(agendaitem.description)
-            .span2
-              .row{:class => "head"}
-                %h3
-                  %i{:class => "icon-white icon-play"}
-                  Subscriptions
-              - if agendaitem.subscribe and current_user
-                - agendaitem.subscriptions.each do |subscription|
-                  .row
-                    - if subscription.user
-                      = link_to subscription.user.name, subscription.user, :class => "subscriptionrow"
-                    - else
-                      %a{:class => "subscriptionrow"}
-                        = subscription.name
+            - if agendaitem.subscribe
+              .span6
+                .row{:class => "head"}
+                  %h3
+                    = agendaitem.name
+                .row{:class => "information"}
+                  .span1
+                    .row
+                      Wat:
+                  .span2
+                    .row
+                      = if agendaitem.intern; 'Kronos ' else 'Externe ' end
+                      = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
+                  .span1
+                    .row
+                      Wanneer:
+                  .span2
+                    .row
+                      = agendaitem.date.strftime("%d %B %H:%M")
+                .row{:class => "information"}
+                  .span1
+                    .row
+                      Waar:
+                  .span5
+                    .row
+                      = agendaitem.location
+                .row{:class => "description"}
+                  %p
+                    = simple_format(agendaitem.description)
+              .span2
+                .row{:class => "head"}
+                  %h3
+                    %i{:class => "icon-white icon-play"}
+                    Subscriptions
+                - if current_user
+                  - agendaitem.subscriptions.each do |subscription|
+                    .row
+                      - if subscription.user
+                        = link_to subscription.user.name, subscription.user, :class => "subscriptionrow"
+                      - else
+                        %a{:class => "subscriptionrow"}
+                          = subscription.name
+            - else
+              .span8
+                .row{:class => "head"}
+                  %h3
+                    = agendaitem.name
+                .row{:class => "information"}
+                  .span1
+                    .row
+                      Wat:
+                  .span2
+                    .row
+                      = if agendaitem.intern; 'Kronos ' else 'Externe ' end
+                      = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
+                  .span1
+                    .row
+                      Wanneer:
+                  .span2
+                    .row
+                      = agendaitem.date.strftime("%d %B %H:%M")
+                .row{:class => "information"}
+                  .span1
+                    .row
+                      Waar:
+                  .span5
+                    .row
+                      = agendaitem.location
+                .row{:class => "description"}
+                  %p
+                    = simple_format(agendaitem.description)
           .row
-            .span6
-              .row{:class => "foot"}
-                = link_to 'Lees meer', agendaitem_path(agendaitem)
-            .span2
-              .row{:class => "foot"}
-                = link_to 'Subscribe', agendaitem_path(agendaitem), :class => "subscribebutton"
+            - if agendaitem.subscribe
+              .span6
+                .row{:class => "foot"}
+                  = link_to 'Lees meer', agendaitem_path(agendaitem)
+              .span2
+                .row{:class => "foot"}
+                  = link_to 'Subscribe', agendaitem_path(agendaitem), :class => "subscribebutton"
+            - else
+              .span8
+                .row{:class => "foot"}
+                  = link_to 'Lees meer', agendaitem_path(agendaitem)
     .span4
       .row
-        %a Hier komt een kalender te staan
+        = calendar(:year => 2013, :month => 4, :first_day_of_week => 1) do |d|
+          - d.to_s
+  .row
+    .span12
+      = link_to 'Nieuw agendapunt', new_agendaitem_path
