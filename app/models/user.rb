@@ -115,7 +115,7 @@ class User < ActiveRecord::Base
   end
   
   def admin?
-    self.commissions.include?(Commission.find_by_name('Bestuur'))
+    self.commissions.include?(Commission.find_by_name('Bestuur')) || self.commissions.include?(Commission.find_by_name('Webcie'))
   end
   
   def active?
