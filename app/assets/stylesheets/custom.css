@@ -185,3 +185,46 @@ fieldset hr {
 .uitslagencollapse .collapse table tr:nth-child(odd) {
     background-color: #fff;
 }
+
+.activityoverview .head {
+	  background-color: #7dbc53;
+	  color: #fff;
+	  padding-left: 10px;
+}
+
+.activityoverview .description {
+	  border-top: 1px #7dbc53 solid;
+}
+
+.activityoverview .foot {
+	  border-bottom: 1px #7dbc53 solid;
+	  margin-bottom: 10px;
+}
+
+.activityoverview .foot {
+	  text-align: right;
+}
+
+.activityoverview .foot a {
+	  color: #7dbc53;
+	  font-weight: bold;
+	  margin-right: 10px;
+}
+
+.activityoverview .foot a.subscribebutton {
+	  color: #fff;
+	  display: block;
+	  background-color: #7dbc53;
+	  text-align: center;
+	  font-weight: bold;
+	  margin-right: 0px;
+}
+
+.activityoverview a.subscriptionrow {
+	  display: block;
+	  color: #000;
+	  background-color: #ddd;
+	  padding-left: 10px;
+	  padding-top: 5px;
+	  padding-bottom: 5px;
+}

@@ -22,6 +22,7 @@ gem 'rakismet'
 gem 'wicked_pdf'
 gem 'auto_html'
 gem 'memcache-client'
+gem 'calendar_helper'
 
 # Gems used only for assets and not required
 # in production environments by default.

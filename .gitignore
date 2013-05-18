@@ -1,4 +1,6 @@
 .bundle
+.buildpath
+.project
 db/*.sqlite3
 Gemfile.lock
 .rvmrc
