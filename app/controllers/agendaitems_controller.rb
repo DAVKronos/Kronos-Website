@@ -35,7 +35,7 @@ class AgendaitemsController < ApplicationController
   
   def wedstrijden
     @agendaitems = Agendaitem.joins(:agendaitemtype).where(:agendaitemtypes => {:is_match => true}).where("date >= ?", Time.now).paginate(:page => params[:page], :per_page => 10)
-    render :action => "index"    
+    render :action => "archief"    
   end
   
   def archief
