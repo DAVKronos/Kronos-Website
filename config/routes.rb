@@ -38,6 +38,7 @@ KronosWebsite::Application.routes.draw do
   resources :newsitems
 
   match '/agendaitems/archief', :to => 'agendaitems#archief'
+  match '/agendaitems/dag/:day', :to => 'agendaitems#perdag', :as => :perdag
   match '/wedstrijden', :to => 'agendaitems#wedstrijden'
   match '/uitslagen', :to => 'results#frontpage'
   resources :agendaitems do

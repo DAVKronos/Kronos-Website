@@ -57,6 +57,14 @@ $('a[ajaxtab="tab"]').on('shown', function (e) {
   });
 });
 
+$('.collapser').hide();
+$('.collapser[data-date='+$('.monthpicker').data("selected")+']').show();
+$('.head').click(function (e) {
+    $('.collapser').filter(':visible').hide("slide", function(){
+		$($(e.target).data("toggle")).show("slide");
+	});
+});
+
 $("form").live("nested:fieldAdded", function(event) {
 $(event.field).find('.tijdprikker').removeClass('hasDatepicker').timepicker({});
 });

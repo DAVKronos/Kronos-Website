@@ -2,7 +2,35 @@ class AgendaitemsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @agendaitems = Agendaitem.where("date >= ?", Time.now).paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
+#    @agendaitems = Agendaitem.where("date >= ?", Time.now).paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
+    @agendaitems = Agendaitem.where("date >= ?", Time.now).order("date ASC");
+	@dates = Hash.new;
+	@cals = Hash.new;
+    @agendaitems.each do |d|
+	    if d.agendaitemtype.is_match
+			@dates[d.date.strftime("%F")] = {"htmlclass" => "match"};
+		else
+			@dates[d.date.strftime("%F")] = {"htmlclass" => "activity"};
+		end
+		@cals[d.date.strftime("%Y-%m")] = d.date;
+	end
+	@agendaitems = @agendaitems.take(2);
+  end
+  
+  def perdag
+    days = Agendaitem.where("date >= ?", Time.now);
+	@dates = Hash.new;
+	@cals = Hash.new;
+    days.each do |d|
+	    if d.agendaitemtype.is_match
+			@dates[d.date.strftime("%F")] = {"htmlclass" => "match"};
+		else
+			@dates[d.date.strftime("%F")] = {"htmlclass" => "activity"};
+		end
+		@cals[d.date.strftime("%Y-%m")] = d.date;
+	end
+	@agendaitems = Agendaitem.where(:date => (Time.parse(params[:day]).midnight)..(Time.parse(params[:day]).midnight + 1.day));
+	render :action => "index"
   end
   
   def wedstrijden
@@ -12,8 +40,6 @@ class AgendaitemsController < ApplicationController
   
   def archief
     @agendaitems = Agendaitem.paginate(:page => params[:page], :order => 'date DESC', :per_page => 10)
-    
-    render :action => "index"
   end
 
   def new
