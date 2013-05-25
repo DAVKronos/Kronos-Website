@@ -1,8 +1,8 @@
 namespace :migrate do
   desc "Move results to new eventtype"
   task :results => :environment do
-    Eventtype.find(:all, :conditions=> ["name ILIKE ?","%#{"weg"}%"]).each do |eventtype|
-      destinationeventtype = Eventtype.find_by_name("Weg")
+    Eventtype.find(:all, :conditions=> ["name ILIKE ?","%#{"cross"}%"]).each do |eventtype|
+      destinationeventtype = Eventtype.find_by_name("Cross")
       puts "Wilt u dit #{eventtype.name} aanpassen?"
       answer = STDIN.gets
       if answer.chomp == "Ja"

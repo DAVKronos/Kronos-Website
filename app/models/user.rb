@@ -65,7 +65,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "260x180#", :thumb => "50x50#" }, :path => ":rails_root/public/system/:attachment/:hash.:extension",
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
   
-  name_regex = /\A[A-Z]\w+\s(\w+\s)*[A-Z]\w*(-[A-Z]\w+)*\z/
+  name_regex = /\A[A-Z]\S+\s(\S+\s)*[A-Z]\S*(-[A-Z]\S+)*\z/
+
   
   validates :name, :presence => true,
                    :format => {:with => name_regex}

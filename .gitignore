@@ -17,3 +17,6 @@ public/assets
 config/application.yml
 vendor/bundle
 public/system/articlephotos/
+public/system/kronometers/
+shared/
+unicorn.conf.rb
