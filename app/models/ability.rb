@@ -6,6 +6,7 @@ class Ability
        
        can :read, :all
        can :home, Page
+       can :perdag, Agendaitem
        can :frontpage, Result
        can :create, Chatmessage
        can :titleshow, Page
