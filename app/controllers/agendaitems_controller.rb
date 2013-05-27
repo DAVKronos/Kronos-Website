@@ -7,29 +7,53 @@ class AgendaitemsController < ApplicationController
 	@dates = Hash.new;
 	@cals = Hash.new;
     @agendaitems.each do |d|
-	    if d.agendaitemtype.is_match
-			@dates[d.date.strftime("%F")] = {"htmlclass" => "match"};
+	    if !d.agendaitemtype.is_match
+			if @dates[d.date.strftime("%F")]
+				@dates[d.date.strftime("%F")]["htmlclass"] = "activity";
+				@dates[d.date.strftime("%F")]["tooltips"] += "
+";
+			else
+				@dates[d.date.strftime("%F")] = {"htmlclass" => "activity", "tooltips" => ""};
+			end
 		else
-			@dates[d.date.strftime("%F")] = {"htmlclass" => "activity"};
+			if !@dates[d.date.strftime("%F")]
+				@dates[d.date.strftime("%F")] = {"htmlclass" => "match", "tooltips" => ""};
+			else
+				@dates[d.date.strftime("%F")]["tooltips"] += "
+";
+			end
 		end
+		@dates[d.date.strftime("%F")]["tooltips"] += d.name + "";
 		@cals[d.date.strftime("%Y-%m")] = d.date;
 	end
 	@agendaitems = @agendaitems.take(2);
   end
   
   def perdag
-    days = Agendaitem.where("date >= ?", Time.now);
+    days = Agendaitem.where("date >= ?", Time.now).order("date ASC");
 	@dates = Hash.new;
 	@cals = Hash.new;
     days.each do |d|
-	    if d.agendaitemtype.is_match
-			@dates[d.date.strftime("%F")] = {"htmlclass" => "match"};
+	    if !d.agendaitemtype.is_match
+			if @dates[d.date.strftime("%F")]
+				@dates[d.date.strftime("%F")]["htmlclass"] = "activity";
+				@dates[d.date.strftime("%F")]["tooltips"] += "
+";
+			else
+				@dates[d.date.strftime("%F")] = {"htmlclass" => "activity", "tooltips" => ""};
+			end
 		else
-			@dates[d.date.strftime("%F")] = {"htmlclass" => "activity"};
+			if !@dates[d.date.strftime("%F")]
+				@dates[d.date.strftime("%F")] = {"htmlclass" => "match", "tooltips" => ""};
+			else
+				@dates[d.date.strftime("%F")]["tooltips"] += "
+";
+			end
 		end
+		@dates[d.date.strftime("%F")]["tooltips"] += d.name + "";
 		@cals[d.date.strftime("%Y-%m")] = d.date;
 	end
-	@agendaitems = Agendaitem.where(:date => (Time.parse(params[:day]).midnight)..(Time.parse(params[:day]).midnight + 1.day));
+	@agendaitems = Agendaitem.where(:date => (Time.parse(params[:day]).midnight)..(Time.parse(params[:day]).midnight + 1.day)).order("date ASC");
 	render :action => "index"
   end
   
