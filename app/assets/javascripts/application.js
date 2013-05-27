@@ -57,10 +57,10 @@ $('a[ajaxtab="tab"]').on('shown', function (e) {
   });
 });
 
-$('.collapser').hide();
-$('.collapser[data-date='+$('.monthpicker').data("selected")+']').show();
-$('.head').click(function (e) {
-    $('.collapser').filter(':visible').hide("slide", function(){
+$('.monthpicker .collapser').hide();
+$('.monthpicker .collapser[data-date='+$('.monthpicker').data("selected")+']').show();
+$('.monthpicker .head').click(function (e) {
+    $('.monthpicker .collapser').filter(':visible').hide("slide", function(){
 		$($(e.target).data("toggle")).show("slide");
 	});
 });

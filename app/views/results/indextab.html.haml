@@ -21,6 +21,9 @@
                 = result.username
             %td
               = result.result
+            %td
+              = number_to_human result.calculatedResult, :precision => 2, :significant => false
+              = event.eventtype.calculated_unit
 %div
   = link_to "Naar de wedstrijdpagina", @agendaitem
   = link_to "Voeg een uitslag toe", agendaitem_events_path(@agendaitem) if can? :create, Result

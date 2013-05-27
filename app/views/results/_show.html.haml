@@ -14,4 +14,4 @@
       score:
       = number_to_human result.calculatedResult, :precision => 2, :significant => false
       = result.event.eventtype.calculated_unit
-      =link_to "verwijder", result, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, result
+      = link_to "verwijder", result, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, result

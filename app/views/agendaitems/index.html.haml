@@ -1,6 +1,6 @@
 %h1
   Kronos Agenda - 
-  = @agendaitems.first.date.strftime("%F")
+  = I18n.localize(@agendaitems.first.date.to_date)
 %br
 .span12
   .row
@@ -26,7 +26,7 @@
                       Wanneer:
                   .span2
                     .row
-                      = agendaitem.date.strftime("%d %B %H:%M")
+                      = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
                 .row{:class => "information"}
                   .span1
                     .row
@@ -68,7 +68,7 @@
                       Wanneer:
                   .span2
                     .row
-                      = agendaitem.date.strftime("%d %B %H:%M")
+                      = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
                 .row{:class => "information"}
                   .span1
                     .row
@@ -96,12 +96,12 @@
         .monthpicker{"data-selected" => @agendaitems.first.date.strftime("%Y-%m")}
           - @cals.each_with_index do |cal, index|
             %a{:class => "head", "data-toggle" => "#collapse"+index.to_s}
-              = cal.second.strftime("%B")
+              = I18n.localize(cal.second.to_date, :format => "%B")
           - @cals.each_with_index do |cal, index|
             %div{:class => "collapser", :id => "collapse"+index.to_s, "data-date" => cal.second.strftime("%Y-%m")}
               = calendar(:year => cal.second.year, :month => cal.second.month, :first_day_of_week => 1) do |d|
                 - if @dates.keys.include?(d.strftime("%F"))
-                  - link_to d.strftime("%d"), perdag_url(d.strftime("%F")), :class => @dates[d.strftime("%F")]["htmlclass"]
+                  - link_to d.strftime("%d"), perdag_url(d.strftime("%F")), {:class => @dates[d.strftime("%F")]["htmlclass"], "data-toggle" => "tooltip", "title" => @dates[d.strftime("%F")]["tooltips"]}
                 - else
                   - '<div>' + d.strftime("%e") + '</div>'
   .row
