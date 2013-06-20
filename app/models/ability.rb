@@ -14,6 +14,7 @@ class Ability
        cannot :read, User
        cannot :read, Photoalbum
        cannot :read, Photo
+       cannot :read, Kronobox
        
        if !user.new_record?
          can :read, :all
@@ -27,6 +28,7 @@ class Ability
          can :create, Event
          can :create, Result
          can :manage, Subscription
+         can :manage, Kronobox
          cannot :destroy, Subscription
          can :destroy, user.subscriptions
          can :update, user
@@ -57,9 +59,6 @@ class Ability
            can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
          end
          can :update_mailinglists, User
-
-         
-         
       
        end
   end
