@@ -9,6 +9,10 @@
     <![endif]-->
     <link href='https://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
     = javascript_include_tag 'application'
+    
+    - if @page_specific_scripts_in 
+      = javascript_include_tag @page_specific_scripts_in 
+    
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tag
 

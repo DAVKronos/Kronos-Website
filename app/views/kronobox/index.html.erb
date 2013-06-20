@@ -1,17 +1,2 @@
-<%= javascript_tag do %>
- $().ready(function() { 
-	var rails_csrf = {};
-	rails_csrf[$('meta[name=csrf-param]').attr('content')] = $('meta[name=csrf-token]').attr('content');
-
-	$('#elfinder').elfinder({
-		lang : 'en',
-		height : '600',
-		url : '/elfinder',
-		transport : new elFinderSupportVer1(),
-		customData : rails_csrf,
-		resizable : false,
-		loadTmbs : 0,
-	});
-})
-<% end %>
+<% @page_specific_scripts_in = "elfinder/kronobox"  %>
 <div id='elfinder'></div>
