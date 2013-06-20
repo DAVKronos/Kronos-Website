@@ -23,6 +23,9 @@
 //= require rails.validations
 //= require jwplayer
 //= require_tree .
+//= require elfinder/elfinder.min.js
+//= require elfinder/proxy/elFinderSupportVer1.js
+//= require elfinder/i18n/elfinder.ru.js
 
 $(document).ready(function () {
 $(".markItUp").markItUp(myMarkdownSettings);
