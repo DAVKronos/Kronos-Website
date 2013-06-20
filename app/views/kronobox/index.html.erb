@@ -1,5 +1,5 @@
 <%= javascript_tag do %>
-$(function() {
+ $().ready(function() { 
 	var rails_csrf = {};
 	rails_csrf[$('meta[name=csrf-param]').attr('content')] = $('meta[name=csrf-token]').attr('content');
 
@@ -12,6 +12,6 @@ $(function() {
 		resizable : false,
 		loadTmbs : 0,
 	});
-}); 
+})
 <% end %>
 <div id='elfinder'></div>
