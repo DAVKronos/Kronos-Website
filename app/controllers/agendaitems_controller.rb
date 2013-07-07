@@ -127,7 +127,6 @@ class AgendaitemsController < ApplicationController
     @agendaitem.comments.each do |comment|
         comment.user = current_user if comment.new_record?
     end
-    
 
     respond_to do |format|
       if @agendaitem.save

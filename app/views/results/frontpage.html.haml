@@ -8,6 +8,9 @@
           %li{:class => "active"}
             %a{:href => '#Laatste', "data-toggle" => 'tab', "ajaxtab" => 'tab'}
               Laatste
+          %li
+            %a{:href => '#Toevoegen', "data-toggle" => 'tab', "ajaxtab" => 'tab'}
+              Uitslagen toevoegen
           - @tabs.each do |tab|
             %li
               %a{:href => '#' + String(tab), "data-toggle" => 'tab', "ajaxtab" => 'tab'}
@@ -15,7 +18,7 @@
         .tab-content
           %div{:class => "tab-pane active", :id => 'Laatste'}
             = render :partial => "tabtable"
-            
+          %div{:class => "tab-pane", :id => 'Toevoegen'}
           - @tabs.each do |tab|
             %div{:class => "tab-pane", :id => tab}
     .span4
