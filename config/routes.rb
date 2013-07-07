@@ -4,6 +4,9 @@ KronosWebsite::Application.routes.draw do
 
   resources :agendaitemtypes
 
+  match '/kronobox' => 'kronobox#index'
+  match '/elfinder' => 'kronobox#elfinder'
+
   devise_for :users
   resources :photos
   resources :comments

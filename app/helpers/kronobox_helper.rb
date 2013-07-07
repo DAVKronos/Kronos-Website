@@ -1,0 +1,2 @@
+module KronoboxHelper
+end

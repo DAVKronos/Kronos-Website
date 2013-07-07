@@ -23,6 +23,7 @@
 //= require rails.validations
 //= require jwplayer
 //= require_tree .
+
 $(document).ready(function () {
 $(".markItUp").markItUp(myMarkdownSettings);
 $(".alert-message").alert()
