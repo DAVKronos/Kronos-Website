@@ -10,14 +10,34 @@
     white: ffffff
 */
 
+/* kalender uitlijnen met onderkant van headers van de items aan linkerkant */
 .calendar {
-  margin: auto;
+  margin: 9px auto 0 auto;
   color: white;
   text-align: center;
 }
 
 .calendar thead tr {
   color: black;
+}
+
+/* kalendermaanden centreren */
+.monthpicker {
+	text-align:center;
+}
+/* pointer toevoegen aan kalendermaanden */
+.monthpicker a:hover {
+	cursor:pointer;
+}
+/* kalendermaanden iets meer horizontale spacing geving */
+.monthpicker > a.head {
+	margin:0 3px;
+}
+/* huidige maand een groene achtergrond geven en iets hoger maken */
+th.monthName {
+	background: #7dbc53;
+	height: 27px;
+	color: #fff;
 }
 
 .monthName th {
