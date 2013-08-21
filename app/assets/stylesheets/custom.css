@@ -151,7 +151,14 @@ fieldset hr {
     background-color: #eff7ea;
 }
 
+/* pointer toegevoegd zodat duidelijk is dat men kan klikken */
+.ajaxuitslag:hover {
+	cursor:pointer;	
+}
+
+/* uitslagengebied uitlijnen met tabel aan linkerkant */
 #ajaxuitslagengebied {
+	margin-top:31px;
     background-color: #eff7ea;
 }
 
@@ -160,11 +167,13 @@ fieldset hr {
     width: 100%;
 }
 
+/* padding toegevoegd en breedte auto (zodat hij niet uitbreekt) */
 .uitslagenverhaal {
     text-align: center;
-    width: 100%;
+    width: auto;
     background-color: #fff;
     margin: 5px;
+    padding:3px;
 }
 
 .uitslagencollapse {
