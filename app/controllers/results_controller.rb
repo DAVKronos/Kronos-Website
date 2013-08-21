@@ -7,17 +7,17 @@ class ResultsController < ApplicationController
     if request.xhr?
       ajaxladen = params[:ajaxladen]
       if ajaxladen == 'Laatste'
-        @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(20)
+        @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(40)
 		@results.delete_if {|re| re.count_results() == 0}
       elsif ajaxladen == 'Toevoegen'
-        @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(20)
+        @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(40)
 		@results.delete_if {|re| re.count_results() != 0}
 	  else
         @results = Agendaitem.joins(:agendaitemtype).where(:date => (DateTime.new(Integer(ajaxladen))..(DateTime.new(Integer(ajaxladen))+1.year))).order("date DESC")
 		@results.delete_if {|re| re.count_results() == 0}
       end
     else
-      @results = Agendaitem.joins(:agendaitemtype).where(:agendaitemtypes => {:is_match => true}).where("agendaitems.date <= ?", DateTime.now).order("date DESC").limit(20)
+      @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(40)
       @results.delete_if {|re| re.count_results() == 0}
       @tabs = []
       counter = 0
