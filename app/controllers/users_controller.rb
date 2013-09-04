@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
+  skip_load_resource :only => :create
   
   def new
     @user = User.new
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
 			end
       redirect_to user
     else
+	  @user = user
       render 'new'
     end
   end

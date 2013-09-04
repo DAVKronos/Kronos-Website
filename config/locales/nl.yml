@@ -464,22 +464,22 @@ nl:
     Tijd: ''
     Type: ''
   user:
-    address: ''
-    bankaccountnumber: ''
-    birthdate: ''
-    city: ''
-    email: ''
-    initials: ''
-    licensenumber: ''
-    lidtype: ''
-    name: ''
-    phonenumber: ''
-    postalcode: ''
-    profielfoto: ''
-    sex: ''
-    xtracardnumber: ''
-    password: ''
-    remember_me: ''
+    address: 
+    bankaccountnumber: 
+    birthdate: 
+    city: 
+    email: 
+    initials: 
+    licensenumber: 
+    lidtype: 
+    name: 
+    phonenumber: 
+    postalcode: 
+    profielfoto: 
+    sex: 
+    xtracardnumber: 
+    password: 
+    remember_me: 
     signed_in: Je bent succesvol ingelogd.
     invalid: Ongeldig e-mail of wachtwoord.
     signed_out: Je bent succesvol uitgelogd.
