@@ -47,6 +47,8 @@ GEM
     bootstrap-will_paginate (0.0.8)
       will_paginate
     builder (3.0.3)
+    calendar_helper (0.2.6)
+      open4
     cancan (1.6.8)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -80,6 +82,8 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     diff-lcs (1.1.3)
+    el_finder (1.1.9)
+      image_size (>= 1.0.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -107,6 +111,7 @@ GEM
     haml (3.1.7)
     hike (1.2.1)
     i18n (0.6.1)
+    image_size (1.1.3)
     journey (1.0.4)
     jquery-rails (2.1.2)
       railties (>= 3.1.0, < 5.0)
@@ -135,6 +140,7 @@ GEM
     nokogiri (1.5.5)
     nokogiri (1.5.5-x86-mingw32)
     numerizer (0.1.1)
+    open4 (1.3.0)
     orm_adapter (0.4.0)
     paperclip (3.2.0)
       activemodel (>= 3.0.0)
@@ -243,6 +249,7 @@ DEPENDENCIES
   annotate (~> 2.5.0)
   auto_html
   bootstrap-will_paginate (~> 0.0.6)
+  calendar_helper
   cancan
   capybara (~> 1.1)
   chronic_duration (~> 0.9.6)
@@ -252,6 +259,7 @@ DEPENDENCIES
   delayed_job
   delayed_job_active_record
   devise
+  el_finder
   execjs
   factory_girl_rails (~> 4.0.0)
   faker

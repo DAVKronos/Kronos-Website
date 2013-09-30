@@ -15,9 +15,11 @@ class Ability
        cannot :read, Photoalbum
        cannot :read, Photo
        cannot :read, Kronobox
+       cannot :see_email, Commission
        
        if !user.new_record?
          can :read, :all
+         can :see_email, Commission
          can :archief, Agendaitem
          can :wedstrijden, Agendaitem
          can :manage, Photoalbum

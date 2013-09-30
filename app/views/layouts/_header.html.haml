@@ -25,6 +25,8 @@
                   - getPages.each do |page|
                     %li
                       = link_to page.pagetag, "/#{page.pagetag}"
+                  %li
+                    = link_to "Commissies", '/commissions'
               %li
                 = link_to "Agenda", agendaitems_path
               %li
