@@ -5,8 +5,8 @@
     %tr 
       %th Naam
   %tbody
-    %tr
-      - @commissions.each do |commission|
+    - @commissions.each do |commission|
+      %tr
         %td 
           = link_to commission.name, commission
         - if can? :update, commission

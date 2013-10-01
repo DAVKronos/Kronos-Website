@@ -1,30 +1,24 @@
 %h1= @commission.name
 %p.lead
   = @commission.description
-
 - if can? :see_email, @commission
   = mail_to @commission.email
-
 %table.table.table-striped
   %thead
     %tr 
       %th Naam
       %th Functie
   %tbody    
-    %tr
-
     - @commission_memberships.each do |commem|
-
-      %td
-        = commem.user.name
-      %td
-        = commem.function
-        - if can? :destroy, commem
-          = link_to 'Lid uit commissie verwijderen', commem, :method => :delete, :confirm => "Weet je zeker dat je #{commem.user.name} uit de commissie wilt verwijderen?", :title => "Verwijder #{commem.user.name}"
-
+      %tr
+        %td
+          = commem.user.name
+        %td
+          = commem.function
+          - if can? :destroy, commem
+            = link_to 'Lid uit commissie verwijderen', commem, :method => :delete, :confirm => "Weet je zeker dat je #{commem.user.name} uit de commissie wilt verwijderen?", :title => "Verwijder #{commem.user.name}"
 - if can? :update, @commission
+  = link_to 'Commissie aanpassen', edit_commission_path(@commission)
+- if can? :destroy, @commission
   %li
-    = link_to 'Commissie aanpassen', edit_commission_path(@commission)
-  - if can? :destroy, @commission
-    %li
-      = link_to 'Commissie verwijderen', @commission, :method => :delete, :confirm => "Weet je zeker dat je #{@commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{@commission.name}"
+  = link_to 'Commissie verwijderen', @commission, :method => :delete, :confirm => "Weet je zeker dat je #{@commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{@commission.name}"
