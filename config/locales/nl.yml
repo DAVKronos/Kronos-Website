@@ -203,6 +203,13 @@ nl:
         update: Eventtype bewaren
       result:
         create: Result toevoegen
+      page:
+        create: Page toevoegen
+      comment:
+        create: Comment toevoegen
+      newsitem:
+        create: Newsitem toevoegen
+        update: Newsitem bewaren
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -315,6 +322,8 @@ nl:
           attributes:
             function:
               blank: moet opgegeven zijn
+            user_id:
+              blank: moet opgegeven zijn
         result:
           attributes:
             result:
@@ -343,6 +352,7 @@ nl:
         profielfoto: Profielfoto
         xtracardnumber: Xtracardnumber
         remember_me: Remember me
+        password_confirmation: Password confirmation
       agendaitem:
         Kronos Activiteit: Kronos activiteit
         agendaitemtype: Agendaitemtype
@@ -373,8 +383,19 @@ nl:
         eventtype_id: Eventtype
       commission_membership:
         function: Function
+        user_id: User
       result:
         result: Result
+      page:
+        information: Information
+        title: Title
+      comment:
+        commenttext: Commenttext
+      newsitem:
+        articlephoto: Articlephoto
+        nieuwsbericht: Nieuwsbericht
+        profielfoto: Profielfoto
+        titel: Titel
   edit_commission: Commissie aanpassen
   distance:
     centi:
@@ -484,6 +505,7 @@ nl:
     invalid: Ongeldig e-mail of wachtwoord.
     signed_out: Je bent succesvol uitgelogd.
     send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet resetten.
+    password_confirmation: 
   chatmessage:
     bericht: ''
     page_title: Kronos kletsdoos
@@ -498,7 +520,16 @@ nl:
     name: ''
     shortname: ''
   agendaitemtype_eventtype: Agendaitemtype eventtype
-  commission_membership: commissie lidmaatschap
+  commission_membership: Commission membership
   user_subject: Wachtwoord resetten
   result: Onderdeel
   page_title: paginatitel
+  page:
+    information: 
+    title: 
+  comment:
+    commenttext: 
+  newsitem:
+    nieuwsbericht: 
+    profielfoto: 
+    titel: 

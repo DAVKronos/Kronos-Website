@@ -6,7 +6,8 @@ KronosWebsite::Application.routes.draw do
 
   match '/kronobox' => 'kronobox#index'
   match '/elfinder' => 'kronobox#elfinder'
-
+#  match '/apps' => 'kronobox#appshome'
+  
   devise_for :users
   resources :photos
   resources :comments

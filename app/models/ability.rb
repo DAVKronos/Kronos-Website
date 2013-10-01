@@ -10,12 +10,17 @@ class Ability
        can :frontpage, Result
        can :create, Chatmessage
        can :titleshow, Page
-       can :create, User
        cannot :read, User
        cannot :read, Photoalbum
        cannot :read, Photo
        cannot :read, Kronobox
        cannot :see_email, Commission
+	   
+	   if user.new_record?
+		can :create, User
+	   end
+	   
+	   return if user.oudlid?
        
        if !user.new_record?
          can :read, :all

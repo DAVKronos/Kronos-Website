@@ -24,6 +24,7 @@ gem 'auto_html'
 gem 'memcache-client'
 gem 'calendar_helper'
 gem 'el_finder'
+gem 'google-api-client'
 
 # Gems used only for assets and not required
 # in production environments by default.

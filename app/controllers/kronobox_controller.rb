@@ -1,6 +1,14 @@
 class KronoboxController < ApplicationController
   load_and_authorize_resource
-
+  
+#  def appshome
+#	key = Google::APIClient::PKCS12.load_key('C:\Users\Leon\Downloads\9040e86c549f6d390f6320313ce87b87f8e349ad-privatekey.p12', 'notasecret')
+#	service_account = Google::APIClient::JWTAsserter.new('971459186596-qb3ge4rqatff6tsjv4ccmcsvl9r65osi@developer.gserviceaccount.com', \
+#	['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/youtube'] \
+#	, key)
+#	@token = service_account.authorize
+#  end
+  
   def elfinder
 
     all_commissions = Commission.all
