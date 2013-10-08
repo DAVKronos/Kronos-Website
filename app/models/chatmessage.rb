@@ -28,7 +28,7 @@ class Chatmessage < ActiveRecord::Base
     end
   end
   
-  handle_asynchronously :spam_check
+#  handle_asynchronously :spam_check
   
   def request=(request)
     self.user_ip    = request.remote_ip
