@@ -29,8 +29,9 @@
           = simple_format(@agendaitem.description)
       .row
         .span5
-          .row
-            %hr
+          %a{:class => 'btn btn-mini fb-share'}
+            %i.icon-fb 
+            Share
     .span6
       .row
         %h2 Programma
@@ -111,7 +112,8 @@
       .row
         .span5
           .row
-            %hr
+            %p
+              %hr
     .span6
       .row
         %h2 Reacties

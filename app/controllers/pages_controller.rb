@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   load_and_authorize_resource
   def home
-    @newsitems = Newsitem.where(:agreed => true).order('created_at DESC').limit(3)
+    @newsitems = Newsitem.where(:agreed => true).order('created_at DESC').limit(6)
     @agendaitems = Agendaitem.where("date >= ?", Time.now).order('date ASC').limit(10)
   end
 

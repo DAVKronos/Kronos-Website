@@ -1,0 +1,17 @@
+%h1 
+	= @newsitem.title
+= image_tag @newsitem.articlephoto.url(:normal)
+= markdown @newsitem.news 
+
+%a{:class => 'btn btn-mini fb-share' , :href => '#'}
+	%i.icon-fb 
+	share
+
+- if can? :edit, @newsitem 
+	%p Geaccepteerd
+	= @newsitem.agreed 
+
+-@newsitem.comments.each do |comment| 
+	%p comment.reactiontext 
+
+= render 'reactions_form'

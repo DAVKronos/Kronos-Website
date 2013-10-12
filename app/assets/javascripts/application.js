@@ -25,6 +25,14 @@
 //= require_tree .
 
 $(document).ready(function () {
+
+$( ".fb-share" ).click(function() {
+  window.open(
+    'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+    'facebook-share-dialog', 
+    'width=626,height=436'); 
+});
+
 $(".markItUp").markItUp(myMarkdownSettings);
 $(".alert-message").alert()
 $(".alert").alert()
@@ -91,3 +99,18 @@ $.noop).apply(document);
 }); 
 
 });
+
+
+KRNS = {
+
+    fbshare: function(loc) {
+
+      window.open(
+        'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(loc), 
+        'facebook-share-dialog', 
+        'width=626,height=436'); 
+
+    }
+}
+ 
+

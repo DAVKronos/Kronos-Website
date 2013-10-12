@@ -1,7 +1,8 @@
 .row
   .span12
     -if !user_signed_in?
-      =link_to image_tag('banner_intro.png'), new_user_path
+      = link_to image_tag('banner_intro.png'), new_user_path
+.row
   .span6
     .row.hidden-phone
       %div{:class => "span6", :id => "content-slider"}
@@ -19,7 +20,7 @@
                         %div{:class => "page-text"}
                           = newsitem.news.split('.').first
                     - pagecounter = pagecounter + 1
-                  
+
         %ul#nav
           %li.button#button1
             %a{:href => "#content-inner-1"}
@@ -27,25 +28,34 @@
             %a{:href => "#content-inner-2"}
           %li.button#button3
             %a{:href => "#content-inner-3"}
-     
+   
     .row
       .span6
-        %br
-        %h1 Nieuws
-        %br
+        %h1= link_to "Nieuws", newsitems_path,:class => "newslink"
+        %p
+          = link_to raw("<i class='icon-plus'></i> Maak aan"), new_newsitem_path,:class => 'btn btn-mini' if can? :create, Newsitem
         -@newsitems.each do |newsitem|
           .row
             .span6.newsitem
               .row.newscontent
                 .span6
-                  = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
-                  %h1= link_to newsitem.title, {}, {:name => newsitem.title, :class => "newslink"}
-                  = markdown newsitem.news
-              .row.newscontent
-                .span6
-                  = link_to raw("<i class='icon-edit'></i>"), edit_newsitem_path(newsitem) if can? :update, newsitem
-                  = link_to raw("<i class='icon-remove'></i>"), newsitem, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
-                  = time_tag newsitem.created_at
+                
+                  = link_to (image_tag newsitem.articlephoto.url(:normal)), newsitem, :class => "floatleft thumbnail"
+                  %h1= link_to newsitem.title, newsitem, {:name => newsitem.title, :class => "newslink"}
+                  %p.muted 
+                    = time_tag newsitem.created_at
+                  %p
+                    = markdown newsitem.news.split( /\r?\n/ ).first
+                    = link_to 'lees verder', newsitem, :class => "pull-right"
+
+                  .btn-toolbar
+                    .btn-group
+                      %a{:class => 'btn btn-mini' , :onclick => "KRNS.fbshare('#{newsitem_url(newsitem)}')"}
+                        %i.icon-fb 
+                        Share
+                      = link_to raw("<i class='icon-edit'></i> Edit"), edit_newsitem_path(newsitem),:class => 'btn btn-mini' if can? :update, newsitem
+                      = link_to raw("<i class='icon-remove'></i> Delete"), newsitem,:class => 'btn btn-mini', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
+        = link_to "Meer nieuws", newsitems_path, :class =>  'pull-right'
                 
   .span6
     .row
