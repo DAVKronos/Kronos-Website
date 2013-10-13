@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008135132) do
+ActiveRecord::Schema.define(:version => 20131013105947) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -114,9 +114,11 @@ ActiveRecord::Schema.define(:version => 20131008135132) do
     t.string   "formula"
     t.string   "shortname"
     t.string   "measuringunit"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "calculated_unit"
+    t.boolean  "show_wind",       :default => false
+    t.string   "female_formula"
   end
 
   create_table "kronometers", :force => true do |t|
@@ -178,6 +180,8 @@ ActiveRecord::Schema.define(:version => 20131008135132) do
     t.datetime "updated_at", :null => false
     t.integer  "event_id"
     t.integer  "user_id"
+    t.decimal  "wind"
+    t.integer  "place"
   end
 
   create_table "subscriptions", :force => true do |t|

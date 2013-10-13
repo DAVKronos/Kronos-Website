@@ -12,7 +12,7 @@
             = f.label :agendaitemtype
             = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name)
             = f.label :date
-            = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker"}
+            = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
             = f.label :description
             = f.text_area(:description, :rows => "10", :class => "input-xlarge")
             = f.label :location
@@ -31,7 +31,7 @@
             = f.label :subscribe
             = f.check_box :subscribe, :placeholder => "Inschrijven?"
             = f.label :subscriptiondeadline
-            = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "datumtijdprikker"}
+            = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "datumtijdprikker", :value => @agendaitem.subscriptiondeadline.strftime("%Y-%m-%d %H:%M")}
             %hr
       .span6
         .row

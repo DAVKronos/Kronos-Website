@@ -1,6 +1,7 @@
 %h1
   Kronos Agenda - 
-  = I18n.localize(@agendaitems.first.date.to_date)
+  - if @agendaitems.first
+    = I18n.localize(@agendaitems.first.date.to_date)
 %br
 .span12
   .row
@@ -93,7 +94,11 @@
                   = link_to 'Lees meer', agendaitem_path(agendaitem)
     .span4
       .row
-        .monthpicker{"data-selected" => @agendaitems.first.date.strftime("%Y-%m")}
+        - if @agendaitems.first
+          - fdat = @agendaitems.first.date.strftime("%Y-%m")
+        - else
+          - fdat = '0000-00'
+        .monthpicker{"data-selected" => fdat}
           - @cals.each_with_index do |cal, index|
             %a{:class => "head", "data-toggle" => "#collapse"+index.to_s}
               = I18n.localize(cal.second.to_date, :format => "%B")

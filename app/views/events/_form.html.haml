@@ -7,6 +7,9 @@
         - nameArray << user.name
       = f.text_field :username, :placeholder => t(:name).capitalize, :class => :typeahead , "data-source" => "#{nameArray}", "data-provide" => "typeahead"
       = f.text_field :result, :placeholder => "Prestatie"
+      - if event.eventtype.show_wind
+        = f.text_field :wind, :placeholder => "m/s"
+      = f.text_field :place, :placeholder => "Plaats"
   .row
     .span3
       = f.submit :class => "btn btn-success"

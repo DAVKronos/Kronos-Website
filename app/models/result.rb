@@ -26,7 +26,10 @@ class Result < ActiveRecord::Base
       else
         tempResult = result
       end
-      calculation = event.eventtype.calculate_result(tempResult, self.event.distance)
+	  if self.user
+	    gender = self.user.sex
+	  end
+      calculation = event.eventtype.calculate_result(tempResult, self.event.distance, gender)
       if self.event.eventtype.calculated_unit =~ /punt/
         calculation.to_i
       else

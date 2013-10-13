@@ -6,11 +6,11 @@
 - @agendaitem.events.each_with_index do |event,i|
   - if (i == 0) then hoio = " in" end
   %div{:class => "uitslagencollapse"}
-    %div{:class => "collapsetitle", "data-toggle" => "collapse", "data-target" => '#event' + event.id.to_s }
+    %div{:class => "collapsetitle"}
       = event.eventtype.name
       - if event.distance
         = event.distance
-    %div{:class => "collapse#{hoio}", :id => 'event' + event.id.to_s}
+    %div{:class => "collapse in", :id => 'event' + event.id.to_s}
       %table
         - event.results.each do |result|
           %tr
@@ -21,6 +21,10 @@
                 = result.username
             %td
               = result.result
+              = '(' if (result.wind || result.place)
+              = result.wind.to_s + 'm/s' if result.wind
+              = result.place.to_s + 'e' if result.place
+              = ')' if (result.wind || result.place)
             %td
               = number_to_human result.calculatedResult, :precision => 2, :significant => false
               = event.eventtype.calculated_unit
