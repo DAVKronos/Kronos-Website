@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   
   attr_accessible :name, :initials, :birthdate,
                   :sex, :licensenumber, :user_type_id,
-                  :xtracard, :bank_account_number, :as => :bestuur
+                  :xtracard, :bank_account_number, :iban, :as => :bestuur
   
   
   attr_accessible :email, :address, :postalcode, 

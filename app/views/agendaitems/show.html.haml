@@ -43,7 +43,7 @@
         .row
           = event.eventtype.name
           = number_to_human event.distance, :units => :distance
-          = event.date
+          = event.date.strftime("%H:%M")
       .row
         .span5
           .row

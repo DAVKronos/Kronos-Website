@@ -52,6 +52,9 @@
     %li
       = t(:bankaccountnumber).capitalize + ": "
       @user.bank_account_number
+    %li
+      = t(:iban).capitalize + ": "
+      @user.iban
 
 - if can? :update, @user
   = link_to 'pas je gegevens aan', edit_user_path(@user)

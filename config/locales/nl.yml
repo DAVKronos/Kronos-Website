@@ -353,6 +353,7 @@ nl:
         xtracardnumber: Xtracardnumber
         remember_me: Remember me
         password_confirmation: Password confirmation
+        iban: Iban
       agendaitem:
         Kronos Activiteit: Kronos activiteit
         agendaitemtype: Agendaitemtype
@@ -379,6 +380,8 @@ nl:
         measuringunit: Measuringunit
         name: Name
         shortname: Shortname
+        female_formula: Female formula
+        show_wind: Show wind
       agendaitemtype_eventtype:
         eventtype_id: Eventtype
       commission_membership:
@@ -467,23 +470,23 @@ nl:
   usertype: Lidtype
   xtracardnumber: xtracardnummer
   agendaitem:
-    Kronos Activiteit: ''
-    agendaitemtype: ''
-    commission: ''
-    description: ''
-    location: ''
-    name: ''
-    subscribe: ''
-    subscriptiondeadline: ''
-    date: ''
+    Kronos Activiteit: 
+    agendaitemtype: 
+    commission: 
+    description: 
+    location: 
+    name: 
+    subscribe: 
+    subscriptiondeadline: 
+    date: 
     events:
       Afstand: ''
       Tijd: ''
       Type: ''
   agendaitem[events_attributes][new_events]:
-    Afstand: ''
-    Tijd: ''
-    Type: ''
+    Afstand: 
+    Tijd: 
+    Type: 
   user:
     address: 
     bankaccountnumber: 
@@ -506,6 +509,7 @@ nl:
     signed_out: Je bent succesvol uitgelogd.
     send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet resetten.
     password_confirmation: 
+    iban: 
   chatmessage:
     bericht: ''
     page_title: Kronos kletsdoos
@@ -513,12 +517,14 @@ nl:
     default: You are not authorized to access this page.
   event: Onderdeel
   eventtype:
-    agendaitemtypes: ''
-    calculated_unit: ''
-    formula: ''
-    measuringunit: ''
-    name: ''
-    shortname: ''
+    agendaitemtypes: 
+    calculated_unit: 
+    formula: 
+    measuringunit: 
+    name: 
+    shortname: 
+    female_formula: 
+    show_wind: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
   commission_membership: Commission membership
   user_subject: Wachtwoord resetten
@@ -533,3 +539,4 @@ nl:
     nieuwsbericht: 
     profielfoto: 
     titel: 
+  iban: 
