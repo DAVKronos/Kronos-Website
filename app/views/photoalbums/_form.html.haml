@@ -22,7 +22,7 @@
         load: function(query, callback) {
             if (!query.length) return callback();
             $.ajax({
-                url: '#{request.protocol + request.host_with_port}/agendaitems.json',
+                url: '#{agendaitems_path(:format => :json )}',
                 type: 'GET',                
                 data: {
                     q: query
