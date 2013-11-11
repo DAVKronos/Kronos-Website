@@ -1,14 +1,20 @@
 %li.span3
-	.thumbnail
-		= link_to image_tag(photoalbum.photos.order('RANDOM()').first.photo.url :thumb), photoalbum unless photoalbum.photos.empty?
-		.caption
-			%h5
-				= link_to photoalbum.name, photoalbum
-			- unless photoalbum.agendaitem.nil?
-				%p
-					%small
-						= time_tag photoalbum.agendaitem.date
-			- if can? :update, photoalbum
-				= link_to 'aanpassen', edit_photoalbum_path(photoalbum), :class => 'btn'
-			- if can? :destroy, photoalbum
-				= link_to 'verwijder', photoalbum, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{photoalbum.name}", :class => 'btn'
+  .thumbnail
+    = link_to image_tag(photoalbum.photos.order('RANDOM()').first.photo.url :thumb), photoalbum unless photoalbum.photos.empty?
+    .caption
+      %h5
+        = link_to photoalbum.name, photoalbum
+      - unless photoalbum.agendaitem.nil?
+        %p
+          %small
+            evenement op:
+            = time_tag photoalbum.agendaitem.date
+      - else
+        %p
+          %small
+            aangemaakt op:
+            = time_tag photoalbum.created_at
+      - if can? :update, photoalbum
+        = link_to 'aanpassen', edit_photoalbum_path(photoalbum), :class => 'btn'
+      - if can? :destroy, photoalbum
+        = link_to 'verwijder', photoalbum, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{photoalbum.name}", :class => 'btn'
