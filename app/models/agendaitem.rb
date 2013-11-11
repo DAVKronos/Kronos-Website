@@ -60,4 +60,12 @@ class Agendaitem < ActiveRecord::Base
     end
     return counter
   end
+
+  def self.search(search,limit)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"],:limit=>limit,:select => "id, name")
+    else
+      find(:all,:limit=>limit,:select => "id, name")
+    end
+  end
 end

@@ -22,6 +22,7 @@
 //= require jquery.markitup
 //= require rails.validations
 //= require jwplayer
+//= require selectize
 //= require_tree .
 
 $(document).ready(function () {

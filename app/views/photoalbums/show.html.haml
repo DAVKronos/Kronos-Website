@@ -1,27 +1,35 @@
-#gallery{"data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
-  %ul.thumbnails
-    - @photos.each do |photo|
-      %li.span3
-        .thumbnail
-          = link_to image_tag(photo.photo.url(:thumb)), photo.photo.url(:normal), html_options = {:rel => "gallery"}
-          .caption
-            = photo.caption
-              
-    .span12
-      = will_paginate @photos, :previous_label => '<', :next_label => '>'
-      <button data-toggle="button" class="btn btn-primary" id="toggle-fullscreen">Toggle Fullscreen</button>
+.span12 
+  .page-header
+    %h1= @photoalbum.name
+  - unless @photoalbum.agendaitem.nil? 
+    %p
+      %small
+        = time_tag @photoalbum.agendaitem.date
+        = raw("-")
+      = link_to @photoalbum.agendaitem.name, @photoalbum.agendaitem
 
-%div{:id => "modal-gallery", :class => "modal modal-gallery hide fade"}
-  %div{:class => "modal-header"}
-    <a class="close" data-dismiss="modal">&times;</a>
-    <h3 class="modal-title"></h3>
-  %div{:class =>"modal-body"} 
-    %div{:class => "modal-image"}
-  %div{:class =>"modal-footer"}
-    <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>
-    <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
-    <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Previous</a>
-    <a class="btn btn-primary modal-next">Next <i class="icon-arrow-right icon-white"></i></a>
-    
-    
-    
+  #gallery{"data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
+    %ul.thumbnails
+      - @photos.each do |photo|
+        %li.span3
+          .thumbnail
+            = link_to image_tag(photo.photo.url(:thumb)), photo.photo.url(:normal), html_options = {:rel => "gallery"}
+            .caption
+              = photo.caption
+  = will_paginate @photos, :previous_label => '<', :next_label => '>'
+  <button data-toggle="button" class="btn btn-primary" id="toggle-fullscreen">Toggle Fullscreen</button>
+
+  %div{:id => "modal-gallery", :class => "modal modal-gallery hide fade"}
+    %div{:class => "modal-header"}
+      <a class="close" data-dismiss="modal">&times;</a>
+      <h3 class="modal-title"></h3>
+    %div{:class =>"modal-body"} 
+      %div{:class => "modal-image"}
+    %div{:class =>"modal-footer"}
+      <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>
+      <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
+      <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Previous</a>
+      <a class="btn btn-primary modal-next">Next <i class="icon-arrow-right icon-white"></i></a>
+      
+      
+      

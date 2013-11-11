@@ -4,29 +4,32 @@ class AgendaitemsController < ApplicationController
   def index
 #    @agendaitems = Agendaitem.where("date >= ?", Time.now).paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
     @agendaitems = Agendaitem.where("date >= ?", Time.now).order("date ASC");
-	@dates = Hash.new;
-	@cals = Hash.new;
+  	@dates = Hash.new;
+  	@cals = Hash.new;
     @agendaitems.each do |d|
-	    if !d.agendaitemtype.is_match
-			if @dates[d.date.strftime("%F")]
-				@dates[d.date.strftime("%F")]["htmlclass"] = "activity";
-				@dates[d.date.strftime("%F")]["tooltips"] += "
-";
-			else
-				@dates[d.date.strftime("%F")] = {"htmlclass" => "activity", "tooltips" => ""};
-			end
-		else
-			if !@dates[d.date.strftime("%F")]
-				@dates[d.date.strftime("%F")] = {"htmlclass" => "match", "tooltips" => ""};
-			else
-				@dates[d.date.strftime("%F")]["tooltips"] += "
-";
-			end
-		end
-		@dates[d.date.strftime("%F")]["tooltips"] += d.name + "";
-		@cals[d.date.strftime("%Y-%m")] = d.date;
-	end
-	@agendaitems = @agendaitems.take(2);
+      if !d.agendaitemtype.is_match
+  			if @dates[d.date.strftime("%F")]
+  				@dates[d.date.strftime("%F")]["htmlclass"] = "activity";
+  				@dates[d.date.strftime("%F")]["tooltips"] += "";
+  			else
+  				@dates[d.date.strftime("%F")] = {"htmlclass" => "activity", "tooltips" => ""};
+  			end
+  		else
+  			if !@dates[d.date.strftime("%F")]
+  				@dates[d.date.strftime("%F")] = {"htmlclass" => "match", "tooltips" => ""};
+  			else
+  				@dates[d.date.strftime("%F")]["tooltips"] += "";
+  			end
+  		end
+  		@dates[d.date.strftime("%F")]["tooltips"] += d.name + "";
+  		@cals[d.date.strftime("%Y-%m")] = d.date;
+  	end
+  	@agendaitems = @agendaitems.take(2);
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: Agendaitem.search(params[:q],10)}
+    end
   end
   
   def perdag

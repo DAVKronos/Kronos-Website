@@ -8,6 +8,8 @@
  *= require style
  *= require markdowncss
  *= require_self
+ *= require selectize
+ *= require selectize.default
  *= require_tree .
 */
 

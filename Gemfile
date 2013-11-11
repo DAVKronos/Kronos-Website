@@ -26,6 +26,7 @@ gem 'memcache-client'
 gem 'calendar_helper'
 gem 'el_finder'
 gem 'google-api-client'
+gem 'selectize-rails', '~> 0.8.1' 
 
 # Gems used only for assets and not required
 # in production environments by default.

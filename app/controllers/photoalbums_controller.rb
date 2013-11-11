@@ -3,7 +3,7 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums
   # GET /photoalbums.json
   def index
-    @photoalbums = Photoalbum.paginate(:page => params[:page], :order => 'created_at DESC', :per_page => 12)
+    @photoalbums = Photoalbum.includes('agendaitem').order("case when agendaitems is null then photoalbums.created_at else agendaitems.date end DESC").paginate(:page => params[:page], :per_page => 12)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +27,8 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums/new.json
   def new
     @photoalbum = Photoalbum.new
-    @agendaitems = Agendaitem.order("date DESC").limit("10")
+    @agendaitems = Agendaitem.order("date DESC").limit("50")
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @photoalbum }

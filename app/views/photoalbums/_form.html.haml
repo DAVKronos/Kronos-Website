@@ -1,10 +1,42 @@
-
 = form_for(@photoalbum) do |f|
   = f.label :name
   = f.text_field :name
 
   = f.label :agendaitem
   = f.collection_select(:agendaitem_id, Agendaitem.order("date DESC").limit("10"), :id, :name, :prompt => true)
+
+  :javascript
+
+    $('#photoalbum_agendaitem_id').selectize({
+        valueField: 'id',
+        labelField: 'name',
+        searchField: 'name',
+        create: false,
+        render: {
+            option: function(item, escape) {
+               return '<div>' +                    
+                  '<span class="name">' + escape(item.name) + '</span>' +
+                '</div>';
+            }
+        },
+        load: function(query, callback) {
+            if (!query.length) return callback();
+            $.ajax({
+                url: '#{request.protocol + request.host_with_port}/agendaitems.json',
+                type: 'GET',                
+                data: {
+                    q: query
+                },
+                error: function() {
+                    callback();
+                },
+                success: function(res) {
+                    callback(res);
+                }
+            });
+        }
+    });
+
   
   .actions
     = f.submit :class => "btn"
