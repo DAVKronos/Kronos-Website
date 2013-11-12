@@ -50,7 +50,9 @@ $('.resulttable').tablesorter();
 $('.ajaxuitslag').click(function () {
       // laad de uitslagen van deze wedstrijd in het uitslagenveld
       var identiteit = $(this).attr("ajaxid");
-      $('#ajaxuitslagengebied').load('agendaitems/'+identiteit+'/results');
+      $('#ajaxuitslagengebied').load('agendaitems/'+identiteit+'/results', function(data){
+		$('html,body').animate({scrollTop: $('#ajaxuitslagengebied').offset().top, scrollLeft: $('#ajaxuitslagengebied').offset().left},'slow');
+	  });
     });
 $('a[ajaxtab="tab"]').on('shown', function (e) {
   var pattern=/#.+/gi //use regex to get anchor(==selector)           
@@ -62,7 +64,9 @@ $('a[ajaxtab="tab"]').on('shown', function (e) {
     $('.ajaxuitslag').click(function () {
       // laad de uitslagen van deze wedstrijd in het uitslagenveld
       var identiteit = $(this).attr("ajaxid");
-      $('#ajaxuitslagengebied').load('agendaitems/'+identiteit+'/results');
+      $('#ajaxuitslagengebied').load('agendaitems/'+identiteit+'/results', function(data){
+		$('html,body').animate({scrollTop: $('#ajaxuitslagengebied').offset().top, scrollLeft: $('#ajaxuitslagengebied').offset().left},'slow');
+	  });
     });
   });
 });
