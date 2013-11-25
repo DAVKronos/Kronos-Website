@@ -11,7 +11,7 @@
           = link_to @photoalbum.agendaitem.name, @photoalbum.agendaitem
         - else
           aangemaakt op:
-          = time_tag photoalbum.created_at
+          = time_tag @photoalbum.created_at
 
     #gallery{"data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
       %ul.thumbnails
@@ -43,9 +43,9 @@
 :javascript
   $('#modal-gallery').bind('last', function () {
     $('#modal-gallery').modal('hide');
-    if($('.pagination').length) $('.pagination.next a').click();
+    window.location = $('.pagination.pagination').find('.next.next_page a').attr("href");
   })
   $('#modal-gallery').bind('first', function () {
     $('#modal-gallery').modal('hide');
-    if($('.pagination').length) $('.pagination.next a').click();
+    window.location = $('.pagination.pagination').find('.prev.previous_page a').attr("href");
   })
