@@ -43,15 +43,16 @@
 :javascript
   $('#modal-gallery').bind('last', function () {
     $('#modal-gallery').modal('hide');
-    if($('.pagination.pagination').find('.next.next_page a').length) window.location = ($('.pagination.pagination').find('.next.next_page a').attr("href")+'?o=1');
+    if($('.pagination.pagination').find('.next.next_page a').length) window.location.href = ($('.pagination.pagination').find('.next.next_page a').attr("href")#{!(params[:o]) ? "+ '&o=1'" : ''});
   })
   $('#modal-gallery').bind('first', function () {
     $('#modal-gallery').modal('hide');
-    if(window.location = $('.pagination.pagination').find('.prev.previous_page a').length) window.location = ($('.pagination.pagination').find('.prev.previous_page a').attr("href")+'?o=1');
+    if($('.pagination.pagination').find('.prev.previous_page a').length) window.location.href = ($('.pagination.pagination').find('.prev.previous_page a').attr("href")#{!(params[:o]) ? "+ '&o=1'" : ''});
   })
 
 - if (params[:o]=='1')
   :javascript
     $( document ).ready(function() {
-      $('#modal-gallery').modal('show');      
+      $('#gallery ul div a').first().click();    
     });
+
