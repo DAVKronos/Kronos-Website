@@ -20,6 +20,14 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
+usertype_proeflid = UserType.create({	:name => "Proeflid",
+										:donor => false,
+										:competition => false})
+
+usertype_oudlid = UserType.create({		:name => "Oudlid",
+										:donor => false,
+										:competition => false})
+
 user = User.create({:name => "Leon Schenk", 
                   :initials => "H.J.K.",
                   :email => "leon_schenk@kronos.nl", 
