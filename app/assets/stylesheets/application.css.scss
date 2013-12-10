@@ -2,7 +2,7 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require bootstrap
+ *= require bootstrap.min
  *= require bootstrap-image-gallery
  *= require jquery.fileupload-ui
  *= require style
@@ -11,63 +11,43 @@
  *= require selectize
  *= require selectize.default
  *= require_tree .
+ *= require menu
 */
 
+@import "variables";
 
+/**** ALGEMEEN ****/
+body{
+	background-color: $grey;
+}
+
+.container {
+	background:#FFF;
+}
+
+/* Nog nodig??
 .container.round{
 	background: none repeat scroll 0 0 #ffffff;
 	padding: 1em;
-}
+	background:#FFF;
+}*/
 
-
+/**** UTILITY ****/
 .no-bottom-margin {
 	margin-bottom: 0px;
 }
 
-header .kronos-logo {
-	
-	position: absolute;
-	top: -10px;
-
+.push-down-for-logo {
+	margin-top:30px;
 }
 
-.navbar .nav {
-	
-	margin-left: 90px;
-
-}
-
-
-
-
-
-body{
-	background-color: #dbdbdb;
-}
-
-.newsitem {
-	margin-bottom: 2em;
-	background-color: #eff7ea;
-	padding: 1em;
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;
-	
-	
-}
-
+/* TODO: aanpassen aan bootstrap 3 */
 .newscontent .span6{
 	padding-right: 2em;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;
 }
-
-
-div.navbar-inner {
-	background: #39423f; 
-}
-
 
 .field_with_errors {
 	position: relative;
@@ -89,4 +69,46 @@ div.navbar-inner {
 .input-prepend .add-on,
 .input-append input {
   float: left;
+}
+
+/* FORMS */
+label {
+	display:block;
+}
+
+/**** FOOTER ****/
+#footer {
+	padding:15px 0;
+	background:#39423F;
+	color:#FFF;
+}
+
+#footer .adresgegevens {
+	text-align:right;
+}
+
+/**** TYPOGRAFIE ****/
+h1, h2, h3, h4 { 
+	margin-top:0;
+}
+
+h1 {
+	font-size:$x-large;
+}
+
+h2 {
+	font-size:$large;
+}
+
+h3 {
+	font-size:$medium;
+}
+
+h4 {
+	font-size:$medium;
+}
+
+.emphasis {
+	font-weight:bold;
+	color:$green;	
 }

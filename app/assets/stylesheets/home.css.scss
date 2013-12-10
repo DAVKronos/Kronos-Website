@@ -1,9 +1,4 @@
-#subnav {
-	background: white;
-	border-bottom: 3px solid #7dbc53;
-	color: black;
-}
-
+/* TODO: Kijken of onderstaande wel gebruikt worden..
 ul#white > li > a {
     color: black;
 }
@@ -20,27 +15,24 @@ ul#white > li > a {
 ul#white {
 	margin-left: 110px;
 }
+*/
 
-agenda {
+
+/**** AGENDA ****/
+.agenda {
 	list-style: none;
 	margin: 0px;
 	font-size: 15px;
 }
 
-a.newslink {
-	text-decoration: none;
-	color: #000000;
-}
-
+/* TODO: controleren of deze in bootstrap 3 nodig is */
 .agenda .span5{
 	padding: 5px;
 }
 
-.agenda > div:nth-of-type(2n+2) div{
+.agenda-item:nth-of-type(2n+2) {
 	background-color: #EFF7EA;
 }
-
-
 
 
 /* 
@@ -49,8 +41,8 @@ a.newslink {
  * Also: hot pink!
  */
 
-::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
-::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::-moz-selection { background: #7dbc53; color: #fff; text-shadow: none; }
+::selection { background: #7dbc53; color: #fff; text-shadow: none; }
 
 
 /* =============================================================================
@@ -60,13 +52,9 @@ a.newslink {
 a:hover, a:active { outline: 0; }
 
 
-/*=================================================
-	Main Styles
-==================================================*/
-
+/**** CARROUSEL ****/
 #content-slider {
-font-family: arial;
-margin-top: 10px;
+	font-family: arial;
 }
 
 #content {
@@ -92,7 +80,7 @@ height: 260px;
 }
 
 .page {
-width: 480px;
+width: 750px;/*480px;*/
 height: 260px;
 float: left;
 }
@@ -101,11 +89,11 @@ float: left;
 	0% {opacity:0;}
 	2% {opacity:1;}
 	27% {margin-left:0px;}
-	33% {margin-left:-480px;}
-	60% {margin-left:-480px;}
-	66% {margin-left:-960px;}
+	33% {margin-left:-750px;}
+	60% {margin-left:-750px;}
+	66% {margin-left:-1500px;}
 	96% {opacity:1;}
-	99% {margin-left:-960px; opacity:0;}
+	99% {margin-left:-1500px; opacity:0;}
 	100% {margin-left:0px; opacity:0;}
 }
 
@@ -113,11 +101,11 @@ float: left;
 	0% {opacity:0;}
 	2% {opacity:1;}
 	27% {margin-left:0px;}
-	33% {margin-left:-480px;}
-	60% {margin-left:-480px;}
-	66% {margin-left:-960px;}
+	33% {margin-left:-750px;}
+	60% {margin-left:-750px;}
+	66% {margin-left:-1500px;}
 	96% {opacity:1;}
-	99% {margin-left:-960px; opacity:0;}
+	99% {margin-left:-1500px; opacity:0;}
 	100% {margin-left:0px; opacity:0;}
 }
 
@@ -145,7 +133,7 @@ float: left;
 	-moz-transition: all 400ms ease;
 	-o-transition: all 400ms ease;
 	transition: all 400ms ease;
-	margin-left: -480px;
+	margin-left: -750px;
 }
 
 #content-inner-3:target #content-inner {
@@ -155,9 +143,23 @@ float: left;
 	-moz-transition: all 400ms ease;
 	-o-transition: all 400ms ease;
 	transition: all 400ms ease;
-	margin-left: -960px;
+	margin-left: -1500px;
 }
 
+/**** NIEUWS ****/
+.newsitem {
+	margin-bottom: 2em;
+	background-color: #eff7ea;
+	padding: 1em;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+}
+
+a.newslink {
+	text-decoration: none;
+	color: #000000;
+}
 
 /*=======================================
 	Generic styling here.

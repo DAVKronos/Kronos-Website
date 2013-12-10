@@ -17,19 +17,6 @@ a.floatleft{
     padding-top: 5px;
 }
 
-header {
-	font-size: 18px;
-}
-
-.navbar .nav > li > a {
-	color: #ffffff;
-}
-
-.navbar .nav > li > a:hover {
-	color: #999999;
-}
-
-
 section h1 {
 	font-size: 200%;
 }
@@ -244,7 +231,7 @@ fieldset hr {
 }
 
 .icon-fb {
-    background-image: url(<%= asset_path 'fb-icon.png' %>);
+    background-image: url(asset_path('fb-icon.png', image));
     background-position: center center;
     background-size:14px 14px;
 }

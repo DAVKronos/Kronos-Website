@@ -1,51 +1,49 @@
+-if !user_signed_in?
+  .row
+    .hidden-xs.hidden-s
+      = link_to image_tag('banner_intro.png'), new_user_path
 %header
-  %div{:class => "navbar no-bottom-margin"}
-    .row
-      %div{:class => "navbar-inner"}
-        %div{:class => "container-fluid"}
-        
-          = link_to image_tag("Logo_site.png"), root_path, :class => "kronos-logo pull-left"
-		
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </a>
-          
-          %div{:class => "nav-collapse"}
-		
-            %ul.nav
-              %li
-                = link_to "Home", home_path
-              %li.dropdown
-                %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
-                  Informatie
-                  %b.caret
-                %ul.dropdown-menu
-                  - getPages.each do |page|
-                    %li
-                      = link_to page.pagetag, "/#{page.pagetag}"
-                  %li
-                    = link_to "Commissies", '/commissions'
-              %li
-                = link_to "Agenda", agendaitems_path
-              %li
-                = link_to "Uitslagen", '/uitslagen'
-              - if can? :read, Photoalbum
+  %div{:class => "navbar", "id" => "navbar-kronos",  :role => "navigation"}
+    %div{:class => "navbar-header"}
+      %button{:type => "button", :class => "navbar-toggle", :"data-toggle" => "collapse", :"data-target" => "#navbar-collapse-kronos"}
+        %span{:class => "sr-only"}Toggle menu
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to image_tag("Logo_site.png"), root_path, :class => "kronos-logo pull-left"
+    
+    %div{:class => "collapse navbar-collapse", "id" => "navbar-collapse-kronos"}
+      %ul{:class => "nav navbar-nav"}
+        %li
+          = link_to "Home", home_path
+        %li.dropdown
+          %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
+            Informatie
+            %b.caret
+            %ul.dropdown-menu
+              - getPages.each do |page|
                 %li
-                  = link_to "Foto's", photoalbums_path
+                  = link_to page.pagetag, "/#{page.pagetag}"
               %li
-                = link_to "Kronometer", kronometers_path
-            
+                = link_to "Commissies", '/commissions'
+            %li
+              = link_to "Agenda", agendaitems_path
+            %li
+              = link_to "Uitslagen", '/uitslagen'
+            - if can? :read, Photoalbum
               %li
-                = link_to "Chatbox", chatmessages_path
-              - if !current_user
-                %li.dropdown
-                  %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
-                    Log in
-                    %b.caret
+                = link_to "Foto's", photoalbums_path
+            %li
+              = link_to "Kronometer", kronometers_path
+            %li
+              = link_to "Chatbox", chatmessages_path
+            - if !current_user
+              %li.dropdown.login-menu
+                %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
+                  Log in
+                  %b.caret
                   %ul.dropdown-menu
-                    .span4.login-form
+                    .col-lg-4.login-form
                       = form_tag user_session_path do
                         = text_field_tag 'user[email]', "", "placeholder" => "emailadres"
                         = password_field_tag 'user[password]', "", "placeholder" => "wachtwoord"
@@ -54,18 +52,13 @@
                           = check_box_tag 'user[remember_me]'
                         %button.btn.btn-primary=t :sign_in
                         = link_to "Wachtwoord vergeten?", new_password_path('user')
-              - else
+            - else
+              %li
+                = link_to current_user.name.split[0] + "'s stek", current_user
+              %li
+                = link_to "Leden", users_path
+              - if current_user && current_user.admin?
                 %li
-                  = link_to current_user.name.split[0] + "'s stek", current_user
-                %li
-                  = link_to "Leden", users_path
-                - if current_user && current_user.admin?
-                  %li
-                    = link_to "Beheer", admin_path
-                %li
-                  = link_to "Log uit", destroy_user_session_path, :method => :delete
-    .row
-      %div{:class => "navbar-inner", :id => "subnav"}
-        %div{:class => "ie-navbar-fix"}
-        %div{:class => "container"}
-          = render :partial => "subnav" rescue nil
+                  = link_to "Beheer", admin_path
+              %li
+                = link_to "Log uit", destroy_user_session_path, :method => :delete

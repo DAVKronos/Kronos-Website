@@ -205,11 +205,72 @@ nl:
         create: Result toevoegen
       page:
         create: Page toevoegen
+        update: Update Page
       comment:
         create: Comment toevoegen
       newsitem:
         create: Newsitem toevoegen
         update: Newsitem bewaren
+      photoalbum:
+        create: Fotoalbum toevoegen
+        update: Fotoalbum bewaren
+      subscription:
+        create: Create Subscription
+      commission:
+        update: Update Commission
+    label:
+      comment:
+        commenttext: 
+      newsitem:
+        nieuwsbericht: 
+        profielfoto: 
+        titel: 
+      user:
+        email: 
+        password: 
+        remember_me: 
+        initials: 
+        name: 
+        phonenumber: 
+        address: 
+        bankaccountnumber: 
+        birthdate: 
+        city: 
+        iban: 
+        licensenumber: 
+        lidtype: 
+        postalcode: 
+        profielfoto: 
+        sex: 
+        xtracardnumber: 
+      agendaitem:
+        agendaitemtype: 
+        commission: 
+        date: 
+        description: 
+        Kronos Activiteit: 
+        location: 
+        name: 
+        subscribe: 
+        subscriptiondeadline: 
+      agendaitem[events_attributes][new_events]:
+        Afstand: 
+        Tijd: 
+        Type: 
+      photoalbum:
+        agendaitem: 
+        name: 
+      commission:
+        description: 
+        name: 
+        commission_memberships:
+          function: 
+        email: 
+      commission[commission_memberships_attributes][new_commission_memberships]:
+        function: 
+      page:
+        information: 
+        title: 
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -333,6 +394,12 @@ nl:
       photoalbum: Fotoalbum
       result: Uitslag
       event: Onderdeel
+      comment: Comment
+      newsitem: Newsitem
+      agendaitem: Agendaitem
+      chatmessage: Chatmessage
+      commission: Commission
+      page: Page
     attributes:
       user:
         name: Naam
@@ -354,6 +421,7 @@ nl:
         remember_me: Remember me
         password_confirmation: Password confirmation
         iban: Iban
+        reset_password_token: Reset password token
       agendaitem:
         Kronos Activiteit: Kronos activiteit
         agendaitemtype: Agendaitemtype
@@ -399,6 +467,15 @@ nl:
         nieuwsbericht: Nieuwsbericht
         profielfoto: Profielfoto
         titel: Titel
+      photoalbum:
+        agendaitem: Agendaitem
+        name: Name
+      subscription:
+        opmerking: Opmerking
+      commission:
+        description: Description
+        name: Name
+        email: Email
   edit_commission: Commissie aanpassen
   distance:
     centi:
@@ -434,6 +511,8 @@ nl:
       timeout: Je sessie is verlopen, log a.u.b. opnieuw in.
       unauthenticated: Je dient in te loggen of je in te schrijven.
       unconfirmed: Je dient eerst je account te bevestigen.
+      user:
+        not_found_in_database: 
     mailer:
       confirmation_instructions:
         subject: Bevestiging
@@ -527,7 +606,7 @@ nl:
     show_wind: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
   commission_membership: Commission membership
-  user_subject: Wachtwoord resetten
+  user_subject: Reset password instructions
   result: Onderdeel
   page_title: paginatitel
   page:
@@ -540,3 +619,7 @@ nl:
     profielfoto: 
     titel: 
   iban: 
+  photoalbum:
+    agendaitem: 
+    name: 
+  subscription: Subscription
