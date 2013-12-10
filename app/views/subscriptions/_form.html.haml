@@ -1,0 +1,16 @@
+= form_for(@subscription, :url => "subscriptions") do |f|
+  .span4
+    .row
+      - nameArray = []
+      - User.all.each do |user|
+        -nameArray << user.name
+      = f.text_field :name, :class => "input-medium typeahead", "data-source" => "#{nameArray}", "data-provide" => "typeahead", :placeholder => "naam"
+  .span1
+    .row
+      = f.submit :class => "btn", :value => "Inschrijven"
+  .span5
+    .row
+      = f.label :opmerking
+  .span5
+    .row
+      = f.text_area(:comment, :rows => "5", :class => "input-xlarge")

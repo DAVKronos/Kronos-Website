@@ -3,7 +3,9 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions
   # GET /subscriptions.json
   def index
-    @subscriptions = Subscription.all
+    @agendaitem = Agendaitem.find(params[:agendaitem_id])
+    @subscriptions = @agendaitem.subscriptions
+    @subscription = @subscriptions.build
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,8 +43,9 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json
   def create
-    @subscription = current_user.subscriptions.build(params[:subscription])
-	
+    @agendaitem = Agendaitem.find(params[:agendaitem_id])
+	@subscription = @agendaitem.subscriptions.build(params[:subscription])
+
     respond_to do |format|
       if @subscription.save
 	  	# send a mail
