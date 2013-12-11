@@ -29,7 +29,6 @@ KronosWebsite::Application.routes.draw do
   match '/rebuildmailinglists', :to => 'users#update_mailinglists'
   resources :commissions
   resources :commission_memberships
-  resources :subscriptions
   
   match '/eventtypes/:id/copy', :to => 'eventtypes#copy'
   resources :eventtypes
@@ -49,6 +48,7 @@ KronosWebsite::Application.routes.draw do
     resources :events
     resources :results
     resources :comments
+	resources :subscriptions
   end
   
   resources :events do

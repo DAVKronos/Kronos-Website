@@ -3,7 +3,9 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions
   # GET /subscriptions.json
   def index
-    @subscriptions = Subscription.all
+    @agendaitem = Agendaitem.find(params[:agendaitem_id])
+    @subscriptions = @agendaitem.subscriptions
+    @subscription = @subscriptions.build
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,10 +43,15 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json
   def create
-    @subscription = current_user.subscriptions.build(params[:subscription])
+    @agendaitem = Agendaitem.find(params[:agendaitem_id])
+	@subscription = @agendaitem.subscriptions.build(params[:subscription])
+	@subscription.detectUser(@subscription.name)
 
     respond_to do |format|
       if @subscription.save
+	  	# send a mail
+		CommissionMailer.subscription_email(@subscription.agendaitem, current_user).deliver
+
         format.html { redirect_to agendaitem_path(@subscription.agendaitem), notice: 'Subscription was successfully created.' }
         format.json { render json: @subscription, status: :created, location: @subscription }
       else

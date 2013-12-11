@@ -89,7 +89,7 @@ class AgendaitemsController < ApplicationController
       end
       if (defined?(@subscriptionbestaand)).nil?
         @subscription = Subscription.new
-        @subscription.name = current_user.name.split[0]
+        @subscription.name = current_user.name
         @subscription.agendaitem = @agendaitem
       end
     end
