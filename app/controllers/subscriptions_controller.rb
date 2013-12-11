@@ -45,6 +45,7 @@ class SubscriptionsController < ApplicationController
   def create
     @agendaitem = Agendaitem.find(params[:agendaitem_id])
 	@subscription = @agendaitem.subscriptions.build(params[:subscription])
+	@subscription.detectUser(@subscription.name)
 
     respond_to do |format|
       if @subscription.save
