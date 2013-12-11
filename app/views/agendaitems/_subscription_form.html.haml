@@ -1,4 +1,4 @@
-= form_for(@subscription) do |f|
+= form_for(@subscription, :url => "#{@subscription.agendaitem.id}/subscriptions") do |f|
   .span4
     .row
       = f.text_field :name, :class => "input-medium", :placeholder => "naam", :readonly => true

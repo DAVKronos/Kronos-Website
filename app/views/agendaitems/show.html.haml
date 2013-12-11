@@ -160,7 +160,7 @@
               %li
                 = link_to 'Agendapunt verwijderen', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete
             %li
-              = link_to 'Inschrijvingen aanpassen', '/'
+              = link_to 'Inschrijvingen aanpassen', "#{@agendaitem.id}/subscriptions"
         .row
           .span5
             .row
