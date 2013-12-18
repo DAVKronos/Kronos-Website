@@ -190,7 +190,11 @@ fieldset hr {
 .activityoverview .head {
 	  background-color: #7dbc53;
 	  color: #fff;
-	  padding-left: 10px;
+}
+
+.activityoverview .head h3 {
+    padding-left: 10px;
+    margin-bottom:0;
 }
 
 .activityoverview .description {

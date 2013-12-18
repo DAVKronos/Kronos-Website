@@ -7,91 +7,59 @@
 .row
   .col-lg-8
     - @agendaitems.each do |agendaitem|
-      .activityoverview
-        .row
-          - if agendaitem.subscribe
-            .col-lg-8
-              .row.head
-                %h3
-                  = agendaitem.name
-              .row{:class => "information"}
-                .col-lg-1
-                  .row
-                    Wat:
-                .col-lg-2
-                  .row
-                    = if agendaitem.intern; 'Kronos ' else 'Externe ' end
-                    = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
-                .col-lg-1
-                  .row
-                    Wanneer:
-                .col-lg-2
-                  .row
-                    = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
-              .row{:class => "information"}
-                .scol-lg-1
-                  .row
-                    Waar:
-                .col-lg-5
-                  .row
-                    = agendaitem.location
-              .row{:class => "description"}
-                %p
-                  = simple_format(agendaitem.description)
-            .col-lg-4
-              .row{:class => "head"}
-                %h3
-                  %i{:class => "icon-white icon-play"}
-                  Subscriptions
-              - if current_user
-                - agendaitem.subscriptions.each do |subscription|
-                  .row
-                    - if subscription.user
-                      = link_to subscription.user.name, subscription.user, :class => "subscriptionrow"
-                    - else
-                      %a{:class => "subscriptionrow"}
-                        = subscription.name
-          - else
-            .col-lg-8
-              .row{:class => "head"}
-                %h3
-                  = agendaitem.name
-              .row{:class => "information"}
-                .col-lg-1
-                  .row
-                    Wat:
-                .col-lg-2
-                  .row
-                    = if agendaitem.intern; 'Kronos ' else 'Externe ' end
-                    = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
-                .col-lg-1
-                  .row
-                    Wanneer:
-                .col-lg-2
-                  .row
-                    = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
-              .row{:class => "information"}
-                .col-lg-1
-                  .row
-                    Waar:
-                .col-lg-5
-                  .row
-                    = agendaitem.location
-              .row{:class => "description"}
-                %p
-                  = simple_format(agendaitem.description)
-        .row
-          - if agendaitem.subscribe
-            .col-lg-6
-              .row{:class => "foot"}
-                = link_to 'Lees meer', agendaitem_path(agendaitem)
-            .col-lg-2
-              .row{:class => "foot"}
+      .row.activityoverview
+        .col-lg-12
+          .row
+            %div{:class => (agendaitem.subscribe? ? 'col-lg-8' : 'col-lg-12')}
+              .row
+                .col-lg-12
+                  .head
+                    %h3
+                      = agendaitem.name
+              .row
+                .col-lg-6
+                  Wat:
+                  = if agendaitem.intern; 'Kronos ' else 'Externe ' end
+                  = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
+                .col-lg-6
+                  Wanneer: 
+                  = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
+              .row
+                .col-lg-12
+                  Waar:
+                  = agendaitem.location
+              .row
+                .col-lg-12
+                  .description
+                    = simple_format(agendaitem.description)
+                
+            - if agendaitem.subscribe
+              .col-lg-4
+                .row
+                  .col-lg-12
+                    .head
+                      %h3
+                        %i{:class => "glyphicon-white glyphicon-play"}
+                        Subscriptions
+                .row
+                  .col-lg-12
+                    - if current_user
+                      - agendaitem.subscriptions.each do |subscription|
+                        .row
+                          .col-lg-12
+                            - if subscription.user
+                              = link_to subscription.user.name, subscription.user, :class => "subscriptionrow"
+                            - else
+                              %a{:class => "subscriptionrow"}
+                                = subscription.name
+                            
+          .row
+            %div{:class => (agendaitem.subscribe? ? 'col-lg-8' : 'col-lg-12')}
+              = link_to 'Lees meer', agendaitem_path(agendaitem)
+            - if agendaitem.subscribe
+              .col-lg-4
                 = link_to 'Subscribe', agendaitem_path(agendaitem), :class => "subscribebutton"
-          - else
-            .col-lg-8
-              .row{:class => "foot"}
-                = link_to 'Lees meer', agendaitem_path(agendaitem)
+      
   .col-lg-4
     .row
       - if @agendaitems.first
