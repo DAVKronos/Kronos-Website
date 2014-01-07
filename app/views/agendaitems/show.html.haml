@@ -20,6 +20,9 @@
       .row
         Locatie:
         = @agendaitem.location
+      .row
+        Url:
+        = link_to @agendaitem.url, @agendaitem.url
       - if @agendaitem.commission
         .row
           Organiserende commissie:

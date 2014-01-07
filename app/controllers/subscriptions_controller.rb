@@ -50,7 +50,7 @@ class SubscriptionsController < ApplicationController
     respond_to do |format|
       if @subscription.save
 	  	# send a mail
-		CommissionMailer.subscription_email(@subscription.agendaitem, current_user).deliver
+		CommissionMailer.subscription_email(@subscription.agendaitem, @subscription.name, current_user).deliver
 
         format.html { redirect_to agendaitem_path(@subscription.agendaitem), notice: 'Subscription was successfully created.' }
         format.json { render json: @subscription, status: :created, location: @subscription }

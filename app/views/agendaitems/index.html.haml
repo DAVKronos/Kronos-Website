@@ -32,9 +32,12 @@
                   .span1
                     .row
                       Waar:
-                  .span5
+                  .span2
                     .row
                       = agendaitem.location
+                  .span3
+                    .row
+                      = link_to agendaitem.url, agendaitem.url
                 .row{:class => "description"}
                   %p
                     = simple_format(agendaitem.description)
