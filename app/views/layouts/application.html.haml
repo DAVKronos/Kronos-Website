@@ -17,10 +17,11 @@
     = csrf_meta_tag
 
   %body
-    = render 'layouts/header'
-    .container.round
+    .container
+      = render 'layouts/header'
       -flash.each do |key, value|
         %div{:class => "alert alert-#{key} fade in"}
           =value
           %a{:class => :close, "data-dismiss" => "alert"} x
       = yield
+      = render 'layouts/footer'

@@ -9,7 +9,7 @@
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require jquery-ui-timepicker-addon
-//= require bootstrap
+//= require bootstrap.min
 //= require tmpl
 //= require load-image
 //= require canvas-to-blob

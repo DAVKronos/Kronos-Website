@@ -1,117 +1,120 @@
-%h1
-  Kronos Agenda - 
-  - if @agendaitems.first
-    = I18n.localize(@agendaitems.first.date.to_date)
-%br
-.span12
-  .row
-    .span8
-      - @agendaitems.each do |agendaitem|
-        .activityoverview
-          .row
-            - if agendaitem.subscribe
-              .span6
-                .row{:class => "head"}
-                  %h3
-                    = agendaitem.name
-                .row{:class => "information"}
-                  .span1
-                    .row
-                      Wat:
-                  .span2
-                    .row
-                      = if agendaitem.intern; 'Kronos ' else 'Externe ' end
-                      = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
-                  .span1
-                    .row
-                      Wanneer:
-                  .span2
-                    .row
-                      = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
-                .row{:class => "information"}
-                  .span1
-                    .row
-                      Waar:
-                  .span2
-                    .row
-                      = agendaitem.location
-                  .span3
-                    .row
-                      = link_to agendaitem.url, agendaitem.url
-                .row{:class => "description"}
-                  %p
-                    = simple_format(agendaitem.description)
-              .span2
-                .row{:class => "head"}
-                  %h3
-                    %i{:class => "icon-white icon-play"}
-                    Subscriptions
-                - if current_user
-                  - agendaitem.subscriptions.each do |subscription|
-                    .row
-                      - if subscription.user
-                        = link_to subscription.user.name, subscription.user, :class => "subscriptionrow"
-                      - else
-                        %a{:class => "subscriptionrow"}
-                          = subscription.name
-            - else
-              .span8
-                .row{:class => "head"}
-                  %h3
-                    = agendaitem.name
-                .row{:class => "information"}
-                  .span1
-                    .row
-                      Wat:
-                  .span2
-                    .row
-                      = if agendaitem.intern; 'Kronos ' else 'Externe ' end
-                      = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
-                  .span1
-                    .row
-                      Wanneer:
-                  .span2
-                    .row
-                      = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
-                .row{:class => "information"}
-                  .span1
-                    .row
-                      Waar:
-                  .span5
-                    .row
-                      = agendaitem.location
-                .row{:class => "description"}
-                  %p
-                    = simple_format(agendaitem.description)
-          .row
-            - if agendaitem.subscribe
-              .span6
-                .row{:class => "foot"}
-                  = link_to 'Lees meer', agendaitem_path(agendaitem)
-              .span2
-                .row{:class => "foot"}
-                  = link_to 'Subscribe', agendaitem_path(agendaitem), :class => "subscribebutton"
-            - else
-              .span8
-                .row{:class => "foot"}
-                  = link_to 'Lees meer', agendaitem_path(agendaitem)
-    .span4
-      .row
-        - if @agendaitems.first
-          - fdat = @agendaitems.first.date.strftime("%Y-%m")
-        - else
-          - fdat = '0000-00'
-        .monthpicker{"data-selected" => fdat}
-          - @cals.each_with_index do |cal, index|
-            %a{:class => "head", "data-toggle" => "#collapse"+index.to_s}
-              = I18n.localize(cal.second.to_date, :format => "%B")
-          - @cals.each_with_index do |cal, index|
-            %div{:class => "collapser", :id => "collapse"+index.to_s, "data-date" => cal.second.strftime("%Y-%m")}
-              = calendar(:year => cal.second.year, :month => cal.second.month, :first_day_of_week => 1) do |d|
-                - if @dates.keys.include?(d.strftime("%F"))
-                  - link_to d.strftime("%d"), perdag_url(d.strftime("%F")), {:class => @dates[d.strftime("%F")]["htmlclass"], "data-toggle" => "tooltip", "title" => @dates[d.strftime("%F")]["tooltips"]}
-                - else
-                  - '<div>' + d.strftime("%e") + '</div>'
-  .row
-    .span12
-      = link_to 'Nieuw agendapunt', new_agendaitem_path
+.row
+  .col-lg-12
+    %h1.push-down-for-logo
+      Kronos Agenda - 
+      - if @agendaitems.first
+        = I18n.localize(@agendaitems.first.date.to_date)
+.row
+  .col-lg-8
+    - @agendaitems.each do |agendaitem|
+      .activityoverview
+        .row
+          - if agendaitem.subscribe
+            .col-lg-8
+              .row.head
+                %h3
+                  = agendaitem.name
+              .row{:class => "information"}
+                .col-lg-1
+                  .row
+                    Wat:
+                .col-lg-2
+                  .row
+                    = if agendaitem.intern; 'Kronos ' else 'Externe ' end
+                    = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
+                .col-lg-1
+                  .row
+                    Wanneer:
+                .col-lg-2
+                  .row
+                    = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
+              .row{:class => "information"}
+                .col-lg-1
+                  .row
+                    Waar:
+                .col-lg-2
+                  .row
+                    = agendaitem.location
+                .col-lg-3
+                  .row
+                    = link_to agendaitem.url, agendaitem.url
+              .row{:class => "description"}
+                %p
+                  = simple_format(agendaitem.description)
+            .col-lg-4
+              .row{:class => "head"}
+                %h3
+                  %i{:class => "icon-white icon-play"}
+                  Subscriptions
+              - if current_user
+                - agendaitem.subscriptions.each do |subscription|
+                  .row
+                    - if subscription.user
+                      = link_to subscription.user.name, subscription.user, :class => "subscriptionrow"
+                    - else
+                      %a{:class => "subscriptionrow"}
+                        = subscription.name
+          - else
+            .col-lg-8
+              .row{:class => "head"}
+                %h3
+                  = agendaitem.name
+              .row{:class => "information"}
+                .col-lg-1
+                  .row
+                    Wat:
+                .col-lg-2
+                  .row
+                    = if agendaitem.intern; 'Kronos ' else 'Externe ' end
+                    = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
+                .col-lg-1
+                  .row
+                    Wanneer:
+                .col-lg-2
+                  .row
+                    = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
+              .row{:class => "information"}
+                .col-lg-1
+                  .row
+                    Waar:
+                .col-lg-2
+                  .row
+                    = agendaitem.location
+                .col-lg-3
+                  .row
+                    = link_to agendaitem.url, agendaitem.url
+              .row{:class => "description"}
+                %p
+                  = simple_format(agendaitem.description)
+        .row
+          - if agendaitem.subscribe
+            .col-lg-6
+              .row{:class => "foot"}
+                = link_to 'Lees meer', agendaitem_path(agendaitem)
+            .col-lg-2
+              .row{:class => "foot"}
+                = link_to 'Subscribe', agendaitem_path(agendaitem), :class => "subscribebutton"
+          - else
+            .col-lg-8
+              .row{:class => "foot"}
+                = link_to 'Lees meer', agendaitem_path(agendaitem)
+  .col-lg-4
+    .row
+      - if @agendaitems.first
+        - fdat = @agendaitems.first.date.strftime("%Y-%m")
+      - else
+        - fdat = '0000-00'
+      .monthpicker{"data-selected" => fdat}
+        - @cals.each_with_index do |cal, index|
+          %a{:class => "head", "data-toggle" => "#collapse"+index.to_s}
+            = I18n.localize(cal.second.to_date, :format => "%B")
+        - @cals.each_with_index do |cal, index|
+          %div{:class => "collapser", :id => "collapse"+index.to_s, "data-date" => cal.second.strftime("%Y-%m")}
+            = calendar(:year => cal.second.year, :month => cal.second.month, :first_day_of_week => 1) do |d|
+              - if @dates.keys.include?(d.strftime("%F"))
+                - link_to d.strftime("%d"), perdag_url(d.strftime("%F")), {:class => @dates[d.strftime("%F")]["htmlclass"], "data-toggle" => "tooltip", "title" => @dates[d.strftime("%F")]["tooltips"]}
+              - else
+                - '<div>' + d.strftime("%e") + '</div>'
+.row
+  .col-lg-12
+    = link_to 'Nieuw agendapunt', new_agendaitem_path
