@@ -1,14 +1,14 @@
 = form_for(@subscription, :url => "#{@subscription.agendaitem.id}/subscriptions") do |f|
-  .span4
-    .row
+  .row
+    .col-lg-12
       = f.text_field :name, :class => "input-medium", :placeholder => "naam", :readonly => true
-  .span1
-    .row
+  .row
+    .col-lg-12
       = f.submit :class => "btn", :value => "Inschrijven"
-  .span5
-    .row
+  .row
+    .col-lg-12
       = f.label :opmerking
-  .span5
-    .row
+  .row
+    .col-lg-12
       = f.text_area(:comment, :rows => "5", :class => "input-xlarge")
       = f.hidden_field :agendaitem_id

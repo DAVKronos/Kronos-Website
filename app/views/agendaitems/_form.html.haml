@@ -1,31 +1,31 @@
 = nested_form_for(@agendaitem) do |f|
-  .span12
-    .row
-      .span6
-        .row
-          %fieldset
-            %legend Algemene informatie
-            = f.label :name
-            = f.text_field :name, :placeholder => "Naam"
-            = f.label "Kronos Activiteit"
-            = f.check_box :intern, :placeholder => "Van Kronos?"
-            = f.label :agendaitemtype
-            = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name)
-            = f.label :date
-            = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
-            = f.label :description
-            = f.text_area(:description, :rows => "10", :class => "input-xlarge")
-            = f.label :location
-            = f.text_field :location, :placeholder => "Locatie"
-            %hr
-      .span6
-        .row
+  .row
+    .col-lg-6
+      %fieldset
+        %legend Algemene informatie
+        = f.label :name
+        = f.text_field :name, :placeholder => "Naam"
+        = f.label "Kronos Activiteit"
+        = f.check_box :intern, :placeholder => "Van Kronos?"
+        = f.label :agendaitemtype
+        = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name)
+        = f.label :date
+        = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
+        = f.label :description
+        = f.text_area(:description, :rows => "10", :class => "input-xlarge")
+        = f.label :location
+        = f.text_field :location, :placeholder => "Locatie"
+        %hr
+
+    .col-lg-6
+      .row
+        .col-lg-12
           %fieldset
             %legend Optionele argumenten
             = f.label :commission
             = f.collection_select(:commission_id, @commissions, :id, :name)
-      .span6
-        .row
+      .row
+        .col-lg-12
           %fieldset
             %legend Inschrijven
             = f.label :subscribe
@@ -33,30 +33,34 @@
             = f.label :subscriptiondeadline
             = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "datumtijdprikker", :value => @agendaitem.subscriptiondeadline.strftime("%Y-%m-%d %H:%M")}
             %hr
-      .span6
-        .row
+      .row
+        .col-lg-12
           %fieldset
             %legend Programma
             = f.fields_for :events do |event_field|
-              %div{:class => "well span4"}
+              %div{:class => "well col-lg-12"}
                 .row
-                  = event_field.label "Tijd", :class => "span1"
-                  - if event_field.object.date.respond_to?(:strftime)
-                    = event_field.text_field :date, {:class => "tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}
-                  - else
-                    = event_field.text_field :date, {:class => "tijdprikker span1", :value => Time.now.strftime('%H:%M')}
+                  .col-lg-12
+                    = event_field.label "Tijd", :class => "span1"
+                    - if event_field.object.date.respond_to?(:strftime)
+                      = event_field.text_field :date, {:class => "tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}
+                    - else
+                      = event_field.text_field :date, {:class => "tijdprikker span1", :value => Time.now.strftime('%H:%M')}
                 .row
-                  = event_field.label "Type", :class => "span1"
-                  = event_field.select :eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect { |p| [p.name, p.id] }
+                  .col-lg-12
+                    = event_field.label "Type", :class => "span1"
+                    = event_field.select :eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect { |p| [p.name, p.id] }
                 .row
-                  = event_field.label "Afstand", :class => "span1"
-                  = event_field.text_field :distance, :class => "span1"
+                  .col-lg-12
+                    = event_field.label "Afstand", :class => "span1"
+                    = event_field.text_field :distance, :class => "span1"
                 .row
-                  .span4
+                  .col-lg-12
                     = event_field.link_to_remove "Verwijder dit programmaonderdeel"
-            .span4
-              .row
-                = f.link_to_add "Voeg een programmaonderdeel toe", :events
-            %hr
-    .row
+      .row
+        .col-lg-12
+          = f.link_to_add "Voeg een programmaonderdeel toe", :events
+          %hr
+  .row
+    .col-lg-12
       = f.submit :class => "btn", :value => "Opslaan"

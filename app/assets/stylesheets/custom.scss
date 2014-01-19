@@ -63,7 +63,7 @@ legend {
         color: #333333;
         font-weight: bold;
         margin: 0px;
-        width: 380px;
+  /*width: 380px; Fix for <hr> width*/
 }
 
 fieldset hr {
@@ -187,14 +187,27 @@ fieldset hr {
     background-color: #fff;
 }
 
-.activityoverview .head {
-	  background-color: #7dbc53;
-	  color: #fff;
+h2.head {
+  background-color: #7dbc53;
+  color: #fff;
 }
 
-.activityoverview .head h3 {
-    padding-left: 10px;
-    margin-bottom:0;
+.no-space {
+  margin-left:-15px;
+  margin-right:-15px;
+}
+
+.start {
+  margin-left:0!important;
+}
+
+.end {
+  margin-right:0!important;
+}
+
+.activityoverview h2 {
+  line-height:31px;
+  padding-left: 10px;
 }
 
 .activityoverview .description {

@@ -1,7 +1,8 @@
 = form_for(@agendaitem) do |f|
   = f.fields_for :comments, @comment do |comment_form|
-    .span5
-      .row
+    .row
+      .col-lg-12
         = comment_form.text_area :commenttext, :rows => "5", :class => "input-xlarge"
-      .row
+    .row
+      .col-lg-12
         = f.submit :class => "btn", :value => "Plaatsen"
