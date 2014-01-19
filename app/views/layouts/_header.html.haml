@@ -26,39 +26,39 @@
                   = link_to page.pagetag, "/#{page.pagetag}"
               %li
                 = link_to "Commissies", '/commissions'
+        %li
+          = link_to "Agenda", agendaitems_path
+        %li
+          = link_to "Uitslagen", '/uitslagen'
+        - if can? :read, Photoalbum
+          %li
+            = link_to "Foto's", photoalbums_path
+        %li
+          = link_to "Kronometer", kronometers_path
+        %li
+          = link_to "Chatbox", chatmessages_path
+        - if !current_user
+          %li.dropdown.login-menu
+            %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
+              Log in
+              %b.caret
+              %ul.dropdown-menu
+                .col-lg-4.login-form
+                  = form_tag user_session_path do
+                    = text_field_tag 'user[email]', "", "placeholder" => "emailadres"
+                    = password_field_tag 'user[password]', "", "placeholder" => "wachtwoord"
+                    = label_tag 'user[remember_me]', :class => "checkbox" do
+                      = t :remember_me
+                      = check_box_tag 'user[remember_me]'
+                    %button.btn.btn-primary=t :sign_in
+                    = link_to "Wachtwoord vergeten?", new_password_path('user')
+        - else
+          %li
+            = link_to current_user.name.split[0] + "'s stek", current_user
+          %li
+            = link_to "Leden", users_path
+          - if current_user && current_user.admin?
             %li
-              = link_to "Agenda", agendaitems_path
-            %li
-              = link_to "Uitslagen", '/uitslagen'
-            - if can? :read, Photoalbum
-              %li
-                = link_to "Foto's", photoalbums_path
-            %li
-              = link_to "Kronometer", kronometers_path
-            %li
-              = link_to "Chatbox", chatmessages_path
-            - if !current_user
-              %li.dropdown.login-menu
-                %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
-                  Log in
-                  %b.caret
-                  %ul.dropdown-menu
-                    .col-lg-4.login-form
-                      = form_tag user_session_path do
-                        = text_field_tag 'user[email]', "", "placeholder" => "emailadres"
-                        = password_field_tag 'user[password]', "", "placeholder" => "wachtwoord"
-                        = label_tag 'user[remember_me]', :class => "checkbox" do
-                          = t :remember_me
-                          = check_box_tag 'user[remember_me]'
-                        %button.btn.btn-primary=t :sign_in
-                        = link_to "Wachtwoord vergeten?", new_password_path('user')
-            - else
-              %li
-                = link_to current_user.name.split[0] + "'s stek", current_user
-              %li
-                = link_to "Leden", users_path
-              - if current_user && current_user.admin?
-                %li
-                  = link_to "Beheer", admin_path
-              %li
-                = link_to "Log uit", destroy_user_session_path, :method => :delete
+              = link_to "Beheer", admin_path
+          %li
+            = link_to "Log uit", destroy_user_session_path, :method => :delete
