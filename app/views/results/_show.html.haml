@@ -1,10 +1,7 @@
 .eventname-edit
-  .row
-    .span6
-      = event.eventtype.name
-    -if can? :destroy, event
-      .span0.offset5
-        =link_to raw("<i class='icon-remove'></i>"), event, confirm: 'Weet je het zeker?', method: :delete
+  = event.eventtype.name
+  -if can? :destroy, event
+    =link_to raw("<i class='glyphicon white glyphicon-remove'></i>"), event, confirm: 'Weet je het zeker?', method: :delete
 %ul
   - event.results.each do |result|
     %li

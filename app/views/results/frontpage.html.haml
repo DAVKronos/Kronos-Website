@@ -1,32 +1,30 @@
-.span12
+.row
+  .col-lg-12
+    %h1.push-down-for-logo Uitslagen
+.row
+  .col-lg-8
+    %ul{:class => "nav nav-tabs"}
+      %li{:class => "active"}
+        %a{:href => '#Laatste', "data-toggle" => 'tab', "ajaxtab" => 'tab'}
+          Laatste
+      %li
+        %a{:href => '#Toevoegen', "data-toggle" => 'tab', "ajaxtab" => 'tab'}
+          Uitslagen toevoegen
+      - @tabs.each do |tab|
+        %li
+          %a{:href => '#' + String(tab), "data-toggle" => 'tab', "ajaxtab" => 'tab'}
+            = tab
+    .tab-content
+      %div{:class => "tab-pane active", :id => 'Laatste'}
+        = render :partial => "tabtable"
+      %div{:class => "tab-pane", :id => 'Toevoegen'}
+      - @tabs.each do |tab|
+        %div{:class => "tab-pane", :id => tab}
+  .col-lg-4
+    %div{:id => "ajaxuitslagengebied"}
+-if can? :create, Agendaitem
   .row
-    %h1 Uitslagen
-  .row
-    .span7
-      .row
-        %ul{:class => "nav nav-tabs"}
-          %li{:class => "active"}
-            %a{:href => '#Laatste', "data-toggle" => 'tab', "ajaxtab" => 'tab'}
-              Laatste
-          %li
-            %a{:href => '#Toevoegen', "data-toggle" => 'tab', "ajaxtab" => 'tab'}
-              Uitslagen toevoegen
-          - @tabs.each do |tab|
-            %li
-              %a{:href => '#' + String(tab), "data-toggle" => 'tab', "ajaxtab" => 'tab'}
-                = tab
-        .tab-content
-          %div{:class => "tab-pane active", :id => 'Laatste'}
-            = render :partial => "tabtable"
-          %div{:class => "tab-pane", :id => 'Toevoegen'}
-          - @tabs.each do |tab|
-            %div{:class => "tab-pane", :id => tab}
-    .span4
-      .row
-        %div{:id => "ajaxuitslagengebied"}
-  -if can? :create, Agendaitem
-    %br
-    .row
+    .col-lg-12
       %h5
         Ik wil een uitslag toevoegen maar mijn wedstrijd staat er niet tussen!!1!!1
       = link_to "Wedstrijd toevoegen", new_agendaitem_path, :class => "btn btn-primary"
