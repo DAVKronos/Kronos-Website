@@ -122,6 +122,23 @@ p {
 	font-weight:bold;
 	color:$green;	
 }
+
+/**** IMAGES & RELATED ****/
+ul.thumbnails {
+  padding:0;
+}
+.thumbnails li {
+  list-style: none;
+}
+
+.thumbnail {
+  text-align: center;
+}
+
+.thumbnail .caption {
+  text-align: left;
+}
+
 /**** GLYPHS ****/
 @font-face {
   font-family: 'Glyphicons Halflings';

@@ -1,4 +1,4 @@
-%li.span3
+%li.col-lg-3
   .thumbnail
     = link_to image_tag(photoalbum.photos.order('RANDOM()').first.photo.url :thumb), photoalbum unless photoalbum.photos.empty?
     .caption

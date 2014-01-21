@@ -1,7 +1,7 @@
 .row
-  .span12 
-    .page-header
-      %h1= @photoalbum.name
+  .col-lg-12
+    %h1.push-down-for-logo
+      = @photoalbum.name
     %p
       %small
         - unless @photoalbum.agendaitem.nil? 
@@ -13,19 +13,20 @@
           aangemaakt op:
           = time_tag @photoalbum.created_at
 
-    #gallery{"data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
-      %ul.thumbnails
-        - @photos.each do |photo|
-          %li.span3
-            .thumbnail
-              = link_to image_tag(photo.photo.url(:thumb)), photo.photo.url(:normal), html_options = {:rel => "gallery"}
-              .caption
-                = photo.caption
 .row
-  .span12 
+  #gallery{"data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
+    %ul.thumbnails
+      - @photos.each do |photo|
+        %li.col-lg-3
+          .thumbnail
+            = link_to image_tag(photo.photo.url(:thumb)), photo.photo.url(:normal), html_options = {:rel => "gallery"}
+            .caption
+              = photo.caption
+.row
+  .col-lg-12
     = will_paginate @photos, :previous_label => '<', :next_label => '>'
 .row
-  .span12 
+  .col-lg-12
     <button data-toggle="button" class="btn btn-primary" id="toggle-fullscreen">Toggle Fullscreen</button>
 
 %div{:id => "modal-gallery", :class => "modal modal-gallery hide fade"}
