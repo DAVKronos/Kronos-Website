@@ -43,15 +43,20 @@
               Log in
               %b.caret
               %ul.dropdown-menu
-                .col-lg-4.login-form
+                .login-form
                   = form_tag user_session_path do
-                    = text_field_tag 'user[email]', "", "placeholder" => "emailadres"
-                    = password_field_tag 'user[password]', "", "placeholder" => "wachtwoord"
-                    = label_tag 'user[remember_me]', :class => "checkbox" do
-                      = t :remember_me
-                      = check_box_tag 'user[remember_me]'
-                    %button.btn.btn-primary=t :sign_in
-                    = link_to "Wachtwoord vergeten?", new_password_path('user')
+                    .form-group
+                      = text_field_tag 'user[email]', "", "placeholder" => "emailadres", class: 'form-control'
+                    .form-group
+                      = password_field_tag 'user[password]', "", "placeholder" => "wachtwoord",  class: 'form-control'
+                    .form-group
+                      = label_tag 'user[remember_me]', :class => "checkbox" do
+                        = t :remember_me
+                        = check_box_tag 'user[remember_me]'
+                    .form-group
+                      %button.btn.btn-primary=t :sign_in
+                    .form-group
+                      = link_to "Wachtwoord vergeten?", new_password_path('user')
         - else
           %li
             = link_to current_user.name.split[0] + "'s stek", current_user
