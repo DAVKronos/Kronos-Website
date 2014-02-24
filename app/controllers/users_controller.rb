@@ -32,9 +32,9 @@ class UsersController < ApplicationController
   
   def index
     if current_user && current_user.admin?
-      @users, @alphaParams = User.where('user_type_id not in (?)', [9]).order('name asc').alpha_paginate(params[:letter],{:include_all=>false,:js=>false}){|user| user.name}
+      @users, @alphaParams = User.where('user_type_id not in (?)', [9]).order('name asc').alpha_paginate(params[:letter],{:include_all=>false,:js=>false,:bootstrap3=>true}){|user| user.name}
     else
-      @users, @alphaParams = User.where(:user_type_id => [1,2,8]).order('name asc').alpha_paginate(params[:letter], {:include_all=>false,:js=>false}){|user| user.name}
+      @users, @alphaParams = User.where(:user_type_id => [1,2,8]).order('name asc').alpha_paginate(params[:letter], {:include_all=>false,:js=>false,:bootstrap3=>true}){|user| user.name}
     end
     respond_to do |format|
           format.html

@@ -7,7 +7,7 @@ header {
 
 #navbar-kronos .kronos-logo {
 	position: absolute;
-	top: -10px;
+	top: -25px;
 	left:-10px;
 	z-index:100;
 	font-size: 18px;
@@ -22,7 +22,7 @@ header {
 #navbar-kronos ul.navbar-nav {
 	width:100%;
 	border:0;
-	padding:0;
+	padding:0 0 0 80px;
 }
 
 #navbar-kronos .navbar-toggle .icon-bar {

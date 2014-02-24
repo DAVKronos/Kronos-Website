@@ -1,30 +1,35 @@
-%h3 Onderdelen
-.events
-  -@events.each do |event|
-    .event
-      .results
-        = render :partial => "results/show", :locals => { :event => event }
-      = render :partial => "form", :locals => { :event => event }
-            
-%h3 Voeg een onderdeel toe
+.row
+  .col-lg-12
+    %h1.push-down-for-logo Onderdelen
+.row
+  .col-lg-12.events
+    -@events.each do |event|
+      .event
+        .results
+          = render :partial => "results/show", :locals => { :event => event }
+        = render :partial => "form", :locals => { :event => event }
 
-= form_for @event do |f|
-  = f.label "Tijd", :class => "span1"
-  - if f.object.date.respond_to?(:strftime)
-    = f.text_field :date, {:class => "tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}
-  - else
-    = f.text_field :date, {:class => "tijdprikker span1", :value => Time.now.strftime('%H:%M')}
-  %br
-  = f.label "Type", :class => "span1"
-  = f.select :eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect { |p| [p.name, p.id] }
-  %br
-  = f.label "Afstand", :class => "span1"
-  = f.text_field :distance, :class => "span1"
-  m
-  %br
-  = f.hidden_field :agendaitem_id, :value => @agendaitem.id
-  
-  = f.submit :class => "btn btn-success"
+.row
+  .col-lg-12
+    %h2.push-down-for-logo Voeg een onderdeel toe
+
+    = form_for @event do |f|
+      = f.label "Tijd", :class => "span1"
+      - if f.object.date.respond_to?(:strftime)
+        = f.text_field :date, {:class => "tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}
+      - else
+        = f.text_field :date, {:class => "tijdprikker span1", :value => Time.now.strftime('%H:%M')}
+      %br
+      = f.label "Type", :class => "span1"
+      = f.select :eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect { |p| [p.name, p.id] }
+      %br
+      = f.label "Afstand", :class => "span1"
+      = f.text_field :distance, :class => "span1"
+      m
+      %br
+      = f.hidden_field :agendaitem_id, :value => @agendaitem.id
+
+      = f.submit :class => "btn btn-success"
     
     
 			

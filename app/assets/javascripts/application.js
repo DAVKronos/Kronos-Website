@@ -54,7 +54,8 @@ $('.ajaxuitslag').click(function () {
 		$('html,body').animate({scrollTop: $('#ajaxuitslagengebied').offset().top, scrollLeft: $('#ajaxuitslagengebied').offset().left},'slow');
 	  });
     });
-$('a[ajaxtab="tab"]').on('shown', function (e) {
+$('a[ajaxtab="tab"]').on('click', function (e) {
+    console.log("test");
   var pattern=/#.+/gi //use regex to get anchor(==selector)           
   var contentID = e.target.toString().match(pattern)[0]; //get anchor
   //load content for selected tab

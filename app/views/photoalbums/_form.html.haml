@@ -43,11 +43,10 @@
   
   
 - if params[:action]==("edit")
-  <h2>
-  = t('photos.title')
-  </h2>
+  %h2
+    = t('photos.title')
   <form id="fileupload" class="edit_photoalbum" method="post" enctype="multipart/form-data" action="/photoalbums/#{@photoalbum.id}/photos" accept-charset="UTF-8">
-  <div class="row fileupload-buttonbar">
+  <div class="fileupload-buttonbar">
   <div class="span7">
   <!-- The fileinput-button span is used to style the file input field as button -->
   <span class="btn btn-success fileinput-button">

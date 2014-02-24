@@ -1,174 +1,171 @@
-%h1
-  =@agendaitem.name
-%br
-.span12
-  .row
-    .span6
-      .row
+.row
+  .col-lg-12
+    %h1.push-down-for-logo
+      =@agendaitem.name
+
+.row
+  .col-lg-6
+    .row
+      .col-lg-12
         %h2 Informatie
-      .row
-        .span5
-          .row
-            %hr{:class => "no-margin"}
-      .row
+        %hr{:class => "no-margin"}
+    .row
+      .col-lg-12
         Type:
         = if @agendaitem.intern; 'Kronos ' else 'Externe ' end
         = @agendaitem.agendaitemtype.name if @agendaitem.agendaitemtype
-      .row
+    .row
+      .col-lg-12
         Datum:
         = @agendaitem.date.strftime("%d %B %H:%M")
-      .row
+    .row
+      .col-lg-12
         Locatie:
         = @agendaitem.location
-      .row
+    .row
+      .col-lg-12
         Url:
         = link_to @agendaitem.url, @agendaitem.url
-      - if @agendaitem.commission
-        .row
+    - if @agendaitem.commission
+      .row
+        .col-lg-12
           Organiserende commissie:
           = link_to @agendaitem.commission.name, @agendaitem.commission
-      .row
-        %p
+    .row
+      .col-lg-12
+        .description
           = simple_format(@agendaitem.description)
-      .row
-        .span5
-          %a{:class => 'btn btn-mini fb-share'}
-            %i.icon-fb 
-            Share
-    .span6
-      .row
+    .row
+      .col-lg-12
+        %a{:class => 'btn btn-mini fb-share'}
+          %i.icon-fb
+          Share
+  .col-lg-6
+    .row
+      .col-lg-12
         %h2 Programma
+        %hr{:class => "no-margin"}
+    - @agendaitem.events.each do |event|
       .row
-        .span5
-          .row
-            %hr{:class => "no-margin"}
-      - @agendaitem.events.each do |event|
-        .row
+        .col-lg-12
           = event.eventtype.name
           = number_to_human event.distance, :units => :distance
           = event.date.strftime("%H:%M")
-      .row
-        .span5
-          .row
-            %hr
+    .row
+      .col-lg-12
+        %hr
+
     - if @agendaitem.subscribe
-      .span6
-        .row
+      .row
+        .col-lg-12
           %h2 Inschrijflijst
-        .row
-          .span5
-            .row
-              %hr{:class => "no-margin"}
-        - if current_user
-          .row
-            .span5
-              - @agendaitem.subscriptions.each do |subscription|
-                .row
-                  .span4
-                    .row
-                      = subscription.name + ' - ' + subscription.comment
-                  - if can? :destroy, subscription
-                    .span1
-                      .row
-                        = link_to 'Uitschrijven', subscription, confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
-        - else
-          .row
-            Je moet inloggen om deze lijst te kunnen zien.
-        .row
-          .span5
-            .row
-              %hr
-    .span6
+          %hr{:class => "no-margin"}
+
+    - if current_user
       .row
+        .col-lg-12
+          - @agendaitem.subscriptions.each do |subscription|
+            .row
+              .col-lg-8
+                = subscription.name + ' - ' + subscription.comment
+              - if can? :destroy, subscription
+                .col-lg-4
+                  = link_to 'Uitschrijven', subscription, confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
+    - else
+      .row
+        .col-lg-12
+          Je moet inloggen om deze lijst te kunnen zien.
+          %hr
+
+
+    .row
+      .col-lg-12
         %h2 Inschrijven
-      .row
-        .span5
-          .row
-            %hr{:class => "no-margin"}
-      - if @agendaitem.subscribe
-        - if ((@agendaitem.subscriptiondeadline - Time.now) > 0)
-          .row
-            %i{:class => "icon-ok-sign"}
+        %hr{:class => "no-margin"}
+    - if @agendaitem.subscribe
+      - if ((@agendaitem.subscriptiondeadline - Time.now) > 0)
+        .row
+          .col-lg-12
+            %i{:class => "glyphicon glyphicon-ok-sign"}
             nog
             = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
-          - if current_user
-            - if defined?(@subscription)
-              .row
+        - if current_user
+          - if defined?(@subscription)
+            .row
+              .col-lg-12
                 = render 'subscription_form'
-            - else
-              .row
-                Je hebt je al ingeschreven.
-                = link_to 'Uitschrijven', @subscriptionbestaand , confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete
           - else
             .row
-              Je moet inloggen om je te kunnen inschrijven.
+              .col-lg-12
+                Je hebt je al ingeschreven.
+                = link_to 'Uitschrijven', @subscriptionbestaand , confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete
         - else
           .row
-            %i{:class => "icon-ok-sign"}
-            Gesloten
-          .row
-            Je kunt je niet meer in- of uitschrijven.
+            .col-lg-12
+              Je moet inloggen om je te kunnen inschrijven.
       - else
         .row
+          .col-lg-12
+            %i{:class => "icon-ok-sign"}
+            Gesloten
+        .row
+          .col-lg-12
+            Je kunt je niet meer in- of uitschrijven.
+    - else
+      .row
+        .col-lg-12
           %i{:class => "icon-remove-sign"}
           Er is geen inschrijving
-      .row
-        .span5
-          .row
-            %p
-              %hr
-    .span6
-      .row
+    .row
+      .col-lg-12
+        %hr
+
+    .row
+      .col-lg-12
         %h2 Reacties
-      .row
-        .span5
-          .row
-            %hr{:class => "no-margin"}
-      .row
-        - @comments.each do |comment|
-          %div{:class => "well span4"}
-            = comment.user.name if comment.user
-            = comment.commenttext
-      .row
-        .span5
-          .row
-            %hr
-    .span6
-      .row
+        %hr{:class => "no-margin"}
+    .row
+      - @comments.each do |comment|
+        %div{:class => "well col-lg-offset-2 col-lg-8"}
+          = comment.user.name if comment.user
+          = comment.commenttext
+    .row
+      .col-lg-12
+        %hr
+
+.row
+  .col-lg-6
+    .row
+      .col-lg-12
         %h2 Reactie plaatsen
-      .row
-        .span5
-          .row
-            %hr{:class => "no-margin"}
-      .row
+        %hr{:class => "no-margin"}
+    .row
+      .col-lg-12
         = render 'comments_form'
+    .row
+      .col-lg-12
+        %hr
+  - if can? :update, @agendaitem
+    .col-lg-6
       .row
-        .span5
-          .row
-            %hr
-    - if can? :update, @agendaitem
-      .span6
-        .row
+        .col-lg-12
           %h2{:class => "acties"}
             Agendapunt - acties
-        .row
-          .span5
-            .row
-              %hr{:class => "no-margin"}
-        .row
+            %hr{:class => "no-margin"}
+      .row
+        .col-lg-12
           %ul
             %li
               = link_to 'Agendapunt bewerken', edit_agendaitem_path(@agendaitem)
-            -if can? :destroy, @agendaitem  
+            -if can? :destroy, @agendaitem
               %li
                 = link_to 'Agendapunt verwijderen', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete
             %li
               = link_to 'Inschrijvingen aanpassen', "#{@agendaitem.id}/subscriptions"
-        .row
-          .span5
-            .row
-              %hr
-  .row
-    .span6
       .row
-        = link_to 'Terug', agendaitems_path
+        .col-lg-12
+          %hr
+
+.row
+  .col-lg-12
+    = link_to 'Terug', agendaitems_path

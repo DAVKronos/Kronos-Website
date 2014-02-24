@@ -1,12 +1,16 @@
-.page-header
-  %h1 Fotoalbums
+.row
+  .col-lg-12
+    %h1.push-down-for-logo Fotoalbums
 
-%ul{:class => "thumbnails"}
-  = render @photoalbums
+.row
+  %ul{:class => "thumbnails"}
+    = render @photoalbums
   
-.span12
-  = will_paginate @photoalbums, :previous_label => '<', :next_label => '>'
+.row
+  .col-lg-12
+    = will_paginate @photoalbums, :previous_label => '<', :next_label => '>'
 
-  
 -if can? :create, Photoalbum
-  = link_to 'Nieuw Fotoalbum', new_photoalbum_path
+  .row
+    .col-lg-12
+      = link_to 'Nieuw Fotoalbum', new_photoalbum_path

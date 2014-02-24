@@ -5,7 +5,7 @@ gem 'haml', '~> 3.1'
 gem 'devise', '~> 3.1.0'
 gem 'cancan', '~> 1.6.10'
 gem 'will_paginate', '~> 3.0.3'
-gem 'alphabetical_paginate', '~> 1.6.1' 
+gem 'alphabetical_paginate', '~> 2.1.0'
 gem 'paperclip', '~> 3.2'
 gem 'gdata_19', '~> 1.1.5'
 gem 'delayed_job', '~> 4.0.0'
@@ -27,6 +27,7 @@ gem 'calendar_helper', '~> 0.2.6'
 gem 'el_finder', '~> 1.1.10'
 gem 'google-api-client', '~> 0.6.4'
 gem 'selectize-rails', '~> 0.8.1' 
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
