@@ -3,6 +3,8 @@
   %head
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   %body
-    %h1 Een nieuwe inschrijing voor de activiteit
+    %h1 Een nieuwe inschrijving voor de activiteit
     %p
-      #{@user.name} heeft zich ingeschreven voor #{@agendaitem.name}.
+      #{@username} heeft zich ingeschreven voor #{@agendaitem.name}.
+    %p
+      Deze inschrijving is gedaan door #{@user.name}.
