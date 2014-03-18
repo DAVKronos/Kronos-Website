@@ -1,17 +1,20 @@
-%h1 
-	= @newsitem.title
-= image_tag @newsitem.articlephoto.url(:normal)
-= markdown @newsitem.news 
+.row
+  .col-lg-8
+    %h1.push-down-for-logo
+      = @newsitem.title
+    = image_tag @newsitem.articlephoto.url(:normal), :class => "floatleft thumbnail"
+    %p.muted
+      = markdown @newsitem.news
 
-%a{:class => 'btn btn-mini fb-share' , :href => '#'}
-	%i.icon-fb 
-	share
+    %a{:class => 'btn btn-mini fb-share' , :href => '#'}
+      %i.icon-fb
+      share
 
-- if can? :edit, @newsitem 
-	%p Geaccepteerd
-	= @newsitem.agreed 
+    - if can? :edit, @newsitem
+      %p Geaccepteerd
+      = @newsitem.agreed
 
--@newsitem.comments.each do |comment| 
-	%p comment.reactiontext 
+    -@newsitem.comments.each do |comment|
+      %p comment.reactiontext
 
-= render 'reactions_form'
+    = render 'reactions_form'

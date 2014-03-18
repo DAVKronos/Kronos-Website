@@ -1,27 +1,30 @@
-.span12
-  %h1 Kronos Nieuws
-  %p
-    = link_to raw("<i class='icon-plus'></i> Maak aan"), new_newsitem_path,:class => 'btn btn-mini' if can? :create, Newsitem
-  -@newsitems.each do |newsitem|
-    .row
-      .span8.newsitem
+.row
+  .col-lg-12
+    %h1.push-down-for-logo Kronos Nieuws
+    %p
+      = link_to raw("<i class='icon-plus'></i> Maak aan"), new_newsitem_path,:class => 'btn btn-mini' if can? :create, Newsitem
+
+.row
+  .col-lg-8
+    -@newsitems.each do |newsitem|
+      .newsitem
         .row.newscontent
-          .span8
-            %h1= link_to newsitem.title, newsitem, {:name => newsitem.title, :class => "newslink"}
+          .col-lg-12
+            = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft thumbnail"
+            %h2= link_to newsitem.title, newsitem, {:name => newsitem.title, :class => "newslink"}
             %p.muted
               = time_tag newsitem.created_at
-            = image_tag newsitem.articlephoto.url(:normal), :class => "thumbnail"
-            = markdown newsitem.news
+              = markdown newsitem.news
             .btn-toolbar
               .btn-group
                 %a{:class => 'btn btn-mini' , :onclick => "KRNS.fbshare('#{newsitem_url(newsitem)}')"}
-                  %i.icon-fb 
+                  %i.icon-fb
                   Share
                 = link_to raw("<i class='icon-edit'></i> Edit"), edit_newsitem_path(newsitem),:class => 'btn btn-mini' if can? :update, newsitem
                 = link_to raw("<i class='icon-remove'></i> Delete"), newsitem,:class => 'btn btn-mini', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
-  .row
-    .span12
-      = will_paginate @newsitems, :previous_label => '<', :next_label => '>'
-  .row
-    .span12
-      = link_to 'New Newsitem', new_newsitem_path if can? :create, Newsitem
+        .row
+          .col-lg-12
+            = will_paginate @newsitems, :previous_label => '<', :next_label => '>'
+        .row
+          .col-lg-12
+            = link_to 'New Newsitem', new_newsitem_path if can? :create, Newsitem
