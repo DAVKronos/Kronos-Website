@@ -3,7 +3,10 @@
   = f.text_field :name
 
   = f.label :agendaitem
-  = f.collection_select(:agendaitem_id, Agendaitem.order("date DESC").limit("10"), :id, :name, :prompt => true)
+
+  -# = f.collection_select(:agendaitem_id, Agendaitem.order("date DESC").limit("10"), :id, :select_name, :prompt => true) 
+
+  = f.select(:agendaitem_id, [[]])
 
   :javascript
 
@@ -12,15 +15,17 @@
         labelField: 'name',
         searchField: 'name',
         create: false,
+        preload: true,
         render: {
             option: function(item, escape) {
                return '<div>' +                    
-                  '<span class="name">' + escape(item.name) + '</span>' +
+                  '<span class="name">' + escape(item.name) + ' - </span> '+
+                  '<small>'+ item.date + '</small>' +
                 '</div>';
             }
         },
         load: function(query, callback) {
-            if (!query.length) return callback();
+            if (!query.length) query = "";
             $.ajax({
                 url: '#{agendaitems_path(:format => :json )}',
                 type: 'GET',                
@@ -43,10 +48,11 @@
   
   
 - if params[:action]==("edit")
-  %h2
-    = t('photos.title')
+  <h2>
+  = t('photos.title')
+  </h2>
   <form id="fileupload" class="edit_photoalbum" method="post" enctype="multipart/form-data" action="/photoalbums/#{@photoalbum.id}/photos" accept-charset="UTF-8">
-  <div class="fileupload-buttonbar">
+  <div class="row fileupload-buttonbar">
   <div class="span7">
   <!-- The fileinput-button span is used to style the file input field as button -->
   <span class="btn btn-success fileinput-button">

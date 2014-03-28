@@ -253,6 +253,7 @@ nl:
         name: 
         subscribe: 
         subscriptiondeadline: 
+        url: 
       agendaitem[events_attributes][new_events]:
         Afstand: 
         Tijd: 
@@ -435,6 +436,7 @@ nl:
         name: Name
         subscribe: Subscribe
         subscriptiondeadline: Subscriptiondeadline
+        url: Url
       event:
         Afstand: Afstand
         Tijd: Tijd

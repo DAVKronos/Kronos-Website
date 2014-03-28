@@ -63,9 +63,11 @@ class Agendaitem < ActiveRecord::Base
 
   def self.search(search,limit)
     if search
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"],:limit=>limit,:select => "id, name")
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"],:order => "date(date) DESC",:limit=>limit,:select => "id, name, date")
     else
-      find(:all,:limit=>limit,:select => "id, name")
+      find(:all,:limit=>limit,:select => "id, name, date",:order => "date(date) DESC")
     end
+
   end
+
 end
