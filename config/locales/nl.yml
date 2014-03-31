@@ -599,6 +599,12 @@ nl:
     page_title: Kronos kletsdoos
   unauthorized:
     default: You are not authorized to access this page.
+    user:
+      iban: 
+      remember_me: 
+      signed_in: 
+    commission[commission_memberships_attributes][new_commission_memberships]:
+      function: 
   event: Onderdeel
   eventtype:
     agendaitemtypes: 

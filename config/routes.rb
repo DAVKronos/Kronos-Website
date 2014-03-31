@@ -9,6 +9,12 @@ KronosWebsite::Application.routes.draw do
 #  match '/apps' => 'kronobox#appshome'
   
   devise_for :users
+  match '/users/xtracard', :to => 'users#xtracard'
+  resources :users do
+    get 'editpassword', :on => :member
+    get 'overview', on: :collection
+  end
+
   resources :photos
   resources :comments
   resources :tags
@@ -22,10 +28,7 @@ KronosWebsite::Application.routes.draw do
   end
   resources :news_items
   resources :subscriptions
-  match '/users/xtracard', :to => 'users#xtracard'
-  resources :users do
-    get 'editpassword', :on => :member
-  end
+
   match '/rebuildmailinglists', :to => 'users#update_mailinglists'
   resources :commissions
   resources :commission_memberships

@@ -29,13 +29,34 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
   end
+
+  def overview
+
+    @usertypes = UserType.all;
+    if current_user && current_user.admin?
+      @users, @alphaParams = User.where(:user_type_id => params[:user_type_id]).alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+    elsif [1,2,8].include? params[:user_type_id]
+      @users, @alphaParams = User.where(:user_type_id => params[:user_type_id]).alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+     
+      @usertypes.keep_if {|u| [1,2,8].include? u.id};
+    end
+   
+    respond_to do |format|
+        format.html
+      end
+  end
   
   def index
+  
+    @usertypes = UserType.all;
+    
     if current_user && current_user.admin?
-      @users, @alphaParams = User.where('user_type_id not in (?)', [9]).order('name asc').alpha_paginate(params[:letter],{:include_all=>false,:js=>false,:bootstrap3=>true}){|user| user.name}
+      @users, @alphaParams = User.where('user_type_id not in (?)', [9]).order('name asc').alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
     else
-      @users, @alphaParams = User.where(:user_type_id => [1,2,8]).order('name asc').alpha_paginate(params[:letter], {:include_all=>false,:js=>false,:bootstrap3=>true}){|user| user.name}
+      @users, @alphaParams = User.where(:user_type_id => [1,2,8]).order('name asc').alpha_paginate(params[:letter], {:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+      @usertypes.keep_if {|u| [1,2,8].include? u.id};
     end
+
     respond_to do |format|
           format.html
           format.pdf do
@@ -87,6 +108,7 @@ class UsersController < ApplicationController
   def xtracard
     @users = User.where(:user_type_id => [1,2])
   end
+  
 
   private
     def user_current_user?

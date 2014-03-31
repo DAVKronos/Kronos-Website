@@ -3,6 +3,14 @@
     %h1.push-down-for-logo Alle Leden
 
 .row
+  .col-lg-12
+    %ul{:class => "nav nav-pills"}
+      %li{:class => "active"}
+        = link_to "Alle leden", users_path 
+      - @usertypes.each do |usertype|
+        %li 
+          = link_to usertype.name, overview_users_path(:user_type_id => usertype.id)
+.row
   #pagination_table
     %ul{:class => "thumbnails"}
       - @users.each do |user|
