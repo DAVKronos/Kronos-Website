@@ -36,6 +36,12 @@
   .row   
     .col-lg-12
       = alphabetical_paginate @alphaParams
+  - unless params[:user_type_id].nil?
+    :javascript
+      $("ul.pagination").find("a").each(function() {
+         var _href = $(this).attr("href"); 
+         $(this).attr("href", _href + '&user_type_id=#{params[:user_type_id]}');
+      });
 
 - if can? :create, User
   .row  
