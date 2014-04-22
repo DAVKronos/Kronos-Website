@@ -25,7 +25,7 @@
     .row
       .col-lg-12
         Url:
-        = link_to @agendaitem.url, @agendaitem.url
+        = link_to @agendaitem.url, @agendaitem.get_url
     - if @agendaitem.commission
       .row
         .col-lg-12

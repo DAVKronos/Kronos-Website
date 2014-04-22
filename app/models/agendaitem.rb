@@ -69,5 +69,17 @@ class Agendaitem < ActiveRecord::Base
     end
 
   end
+  
+  def get_url()
+    if self.url.index("/") == 0
+		return self.url
+    elsif self.url["http://"]
+		return self.url
+	elsif self.url["https://"]
+		return self.url
+	else
+	    return "http://" + self.url
+	end
+  end
 
 end
