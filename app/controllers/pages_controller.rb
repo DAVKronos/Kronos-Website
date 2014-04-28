@@ -3,6 +3,11 @@ class PagesController < ApplicationController
   def home
     @newsitems = Newsitem.where(:agreed => true).order('created_at DESC').limit(6)
     @agendaitems = Agendaitem.where("date >= ?", Time.now).order('date ASC').limit(10)
+    
+    @birthdays = User.where(:user_type_id => [1,2,8])
+    @birthdays.keep_if {|bd| (bd.days_until_birthday.between?(0,14) || bd.days_until_birthday.between?(358,366))}
+    @birthdays.sort_by{|e| e.days_until_birthday}
+    
   end
 
   def titleshow

@@ -124,11 +124,17 @@ class User < ActiveRecord::Base
   end
   
   def oudlid?
-	if self.user_type
-	  self.user_type.name == "Oudlid"
-	else
-	  false
-	end
+	  if self.user_type
+	    self.user_type.name == "Oudlid"
+	  else
+	    false
+	  end
+  end
+
+  def days_until_birthday
+    bday = Date.new(Date.today.year, birthdate.month, birthdate.day)
+    bday += 1.year if Date.today >= bday
+    (bday - Date.today).to_i
   end
   
 end
