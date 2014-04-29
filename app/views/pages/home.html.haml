@@ -1,6 +1,9 @@
+
+
 .row
   .col-lg-7
     %h1= link_to "Nieuws", newsitems_path,:class => "newslink"
+    = render "carousel"
     -@newsitems.each do |newsitem|
       .frow
         .fcol-lg-12.newsitem

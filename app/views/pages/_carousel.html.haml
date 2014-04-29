@@ -1,0 +1,15 @@
+#kronos-carousel{:class => 'carousel slide',:data=>{:ride=>'carousel'}}
+  %ol.carousel-indicators
+    -@newsitems[0..2].each do |n|
+      %li{:data=>{:target=>'#kronos-carousel', :slide_to=>"#{@newsitems.index(n)}"}}
+  .carousel-inner
+    -@newsitems[0..2].each do |n|   
+      %div{:class=>(@newsitems.index(n) == 0) ? 'item active' : 'item' }      
+        = image_tag n.articlephoto.url(:normal)
+        .carousel-caption 
+          =n.title
+  %a{:class=>'left carousel-control',:href=>'#kronos-carousel', :data => {:slide => 'prev'}}
+    %span{:class=>"glyphicon glyphicon-chevron-left"}
+  %a{:class=>'right carousel-control',:href=>'#kronos-carousel', :data=>{:slide => 'next'}}
+    %span{:class=>"glyphicon glyphicon-chevron-right"}
+
