@@ -5,7 +5,7 @@
   .carousel-inner
     -@newsitems[0..2].each do |n|   
       %div{:class=>(@newsitems.index(n) == 0) ? 'item active' : 'item' }      
-        = image_tag n.articlephoto.url(:normal)
+        = image_tag(n.articlephoto.url(:carrousel), :class=>'img-responsive')
         .carousel-caption 
           =n.title
   %a{:class=>'left carousel-control',:href=>'#kronos-carousel', :data => {:slide => 'prev'}}
