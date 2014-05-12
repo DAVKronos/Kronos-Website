@@ -27,6 +27,7 @@ nl:
       medium: ! '%e %B'
       long: ! '%e %B %Y'
       only_day: ! '%e'
+      only_date: ! '%e %B'
     day_names:
     - zondag
     - maandag
