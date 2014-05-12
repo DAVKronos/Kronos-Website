@@ -2,11 +2,11 @@
   %legend Nieuw bericht  
   .input-group
     %span.input-group-addon
-      %i.glyphicon.glyphicon-user
+      %span{:class => "glyphicon glyphicon-user"}
     = f.text_field :by, :class => "form-control", :placeholder => t(:name)
   .input-group
     %span.input-group-addon
-      %i.glyphicon.glyphicon-envelope
+      %span{:class => "glyphicon glyphicon-envelope"}
     = f.text_field :email,:class => "form-control", :placeholder => t(:email)
   = f.text_area(:message, :rows => "3", :class => "span3 markItUp")
   = f.submit :class => "btn btn-primary"

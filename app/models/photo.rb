@@ -64,7 +64,7 @@ class Photo < ActiveRecord::Base
        # generate styles
        def regenerate_styles!
          self.photo.reprocess! 
-         self.processing = false   
+         self.processing = false
          self.save(:validations => false)
        end
 

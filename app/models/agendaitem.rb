@@ -69,6 +69,14 @@ class Agendaitem < ActiveRecord::Base
     end
 
   end
+
+  def get_url_name()
+    if self.url.length > 40
+      return self.url[0..37] + "..."
+	else
+	  return self.url
+	end
+  end
   
   def get_url()
     if self.url.index("/") == 0

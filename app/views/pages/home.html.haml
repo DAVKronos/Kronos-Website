@@ -39,7 +39,7 @@
   .col-lg-6
     %h1= link_to "Nieuws", newsitems_path,:class => "newslink"
     %p
-      = link_to raw("<i class='icon-plus'></i> Maak aan"), new_newsitem_path,:class => 'btn btn-mini' if can? :create, Newsitem
+      = link_to raw("<span class='glyphicon glyphicon-plus'></span> Maak aan"), new_newsitem_path,:class => 'btn btn-mini' if can? :create, Newsitem
     -@newsitems.each do |newsitem|
       .frow
         .fcol-lg-12.newsitem
@@ -56,11 +56,11 @@
 
               .btn-toolbar
                 .btn-group
-                  %a{:class => 'btn btn-mini' , :onclick => "KRNS.fbshare('#{newsitem_url(newsitem)}')"}
-                    %i.icon-fb 
+                  %a{:class => 'btn btn-mini icon-fb' , :onclick => "KRNS.fbshare('#{newsitem_url(newsitem)}')"}
+                    %span{:class => 'glyphicon'}
                     Share
-                  = link_to raw("<i class='icon-edit'></i> Edit"), edit_newsitem_path(newsitem),:class => 'btn btn-mini' if can? :update, newsitem
-                  = link_to raw("<i class='icon-remove'></i> Delete"), newsitem,:class => 'btn btn-mini', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
+                  = link_to raw("<span class='glyphicon glyphicon-edit'></span> Edit"), edit_newsitem_path(newsitem),:class => 'btn btn-mini' if can? :update, newsitem
+                  = link_to raw("<span class='glyphicon glyphicon-remove'></span> Delete"), newsitem,:class => 'btn btn-mini', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
     = link_to "Meer nieuws", newsitems_path, :class =>  'pull-right'
 
   .col-lg-6

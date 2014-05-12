@@ -6,9 +6,9 @@
     %p.muted
       = markdown @newsitem.news
 
-    %a{:class => 'btn btn-mini fb-share' , :href => '#'}
-      %i.icon-fb
-      share
+    %a{:class => 'btn btn-mini fb-share icon-fb' , :href => '#'}
+      %span.glyphicon
+      Share
 
     - if can? :edit, @newsitem
       %p Geaccepteerd

@@ -28,7 +28,7 @@
                   Waar:
                   = agendaitem.location
                 .col-lg-6
-                  = link_to agendaitem.url, agendaitem.get_url
+                  = link_to agendaitem.get_url_name, agendaitem.get_url
               .row
                 .col-lg-12
                   .description
@@ -39,7 +39,7 @@
                 .row
                   .col-lg-12
                     %h2.head.no-space.end
-                      %i{:class => "glyphicon white glyphicon-play"}
+                      %span{:class => "glyphicon white glyphicon-play"}
                       Subscriptions
                 .row
                   .col-lg-12

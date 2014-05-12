@@ -34,14 +34,14 @@
         .col-lg-12
           Inschrijving:
           - if agendaitem.subscribe
-            %i{:class => "icon-ok-sign"}
+            %span{:class => "glyphicon glyphicon-ok-sign"}
             - if ((agendaitem.subscriptiondeadline - Time.now) > 0)
               nog
               = h distance_of_time_in_words(agendaitem.subscriptiondeadline, Time.now)
             - else
               Gesloten
           - else
-            %i{:class => "icon-remove-sign"}
+            %span{:class => "glyphicon glyphicon-remove-sign"}
       .row
         .col-lg-12
           %hr

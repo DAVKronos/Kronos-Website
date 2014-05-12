@@ -37,8 +37,8 @@
           = simple_format(@agendaitem.description)
     .row
       .col-lg-12
-        %a{:class => 'btn btn-mini fb-share'}
-          %i.icon-fb
+        %a{:class => 'btn btn-mini fb-share icon-fb'}
+          %span.glyphicon
           Share
   .col-lg-6
     .row
@@ -106,7 +106,7 @@
       - else
         .row
           .col-lg-12
-            %i{:class => "icon-ok-sign"}
+            %span{:class => "glyphicon glyphicon-ok-sign"}
             Gesloten
         .row
           .col-lg-12
@@ -114,7 +114,7 @@
     - else
       .row
         .col-lg-12
-          %i{:class => "icon-remove-sign"}
+          %span{:class => "glyphicon glyphicon-remove-sign"}
           Er is geen inschrijving
     .row
       .col-lg-12

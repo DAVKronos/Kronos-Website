@@ -13,47 +13,55 @@
           aangemaakt op:
           = time_tag @photoalbum.created_at
 
+.modal{:id => "myModal", "tabindex" => "-1", "role" => "dialog"}
+  %div{:class => "modal-dialog"}
+    .modal-content
+      .modal-header
+        %h1
+          = @photoalbum.name
+      .modal-body
+        %div{:class => "carousel slide", :id => "carousel-example-generic", "data-ride" => "carousel"}
+          .carousel-inner
+            -@allphotos.each do |n|
+              %div{:class=>(@allphotos.index(n) == 0) ? 'item active' : 'item' }
+                = link_to(image_tag(n.photo.url(:normal), :class=>'img-responsive'), n.photo.url(:normal), :target => "_blank")
+                .carousel-caption
+                  %h1
+                    #{@allphotos.index(n)+1}/#{@allphotos.count}
+          %a{:class => "left carousel-control", "href" => "#carousel-example-generic", "data-slide" => "prev"}
+            %span{:class => "glyphicon glyphicon-chevron-left"}
+          %a{:class => "right carousel-control", "href" => "#carousel-example-generic", "data-slide" => "next"}
+            %span{:class => "glyphicon glyphicon-chevron-right"}
+      .modal-footer
 .row
-  #gallery{"data-toggle" => "modal-gallery", "data-target" => "#modal-gallery"}
+  #gallery
     %ul.thumbnails
       - @photos.each do |photo|
         %li.col-lg-3
-          .thumbnail
-            = link_to image_tag(photo.photo.url(:thumb)), photo.photo.url(:normal), html_options = {:rel => "gallery"}
+          .thumbnail{"data-toggle" => "modal", "data-target" => "#myModal", "data-index" => @allphotos.index(photo)}
+            = image_tag(photo.photo.url(:thumb))
             .caption
               = photo.caption
 .row
   .col-lg-12
-    = will_paginate @photos, :previous_label => '<', :next_label => '>'
+    %button{:class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#myModal"}
+      Fullscreen
 .row
   .col-lg-12
-    <button data-toggle="button" class="btn btn-primary" id="toggle-fullscreen">Toggle Fullscreen</button>
-
-%div{:id => "modal-gallery", :class => "modal modal-gallery hide fade"}
-  %div{:class => "modal-header"}
-    <a class="close" data-dismiss="modal">&times;</a>
-    <h3 class="modal-title"></h3>
-  %div{:class =>"modal-body"} 
-    %div{:class => "modal-image"}
-  %div{:class =>"modal-footer"}
-    <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>
-    <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
-    <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Previous</a>
-    <a class="btn btn-primary modal-next">Next <i class="icon-arrow-right icon-white"></i></a>
+    = will_paginate @photos, :previous_label => '<', :next_label => '>'
 
 :javascript
-  $('#modal-gallery').bind('last', function () {
-    $('#modal-gallery').modal('hide');
-    if($('.pagination.pagination').find('.next.next_page a').length) window.location.href = ($('.pagination.pagination').find('.next.next_page a').attr("href")#{!(params[:o]) ? "+ '&o=1'" : ''});
-  })
-  $('#modal-gallery').bind('first', function () {
-    $('#modal-gallery').modal('hide');
-    if($('.pagination.pagination').find('.prev.previous_page a').length) window.location.href = ($('.pagination.pagination').find('.prev.previous_page a').attr("href")#{!(params[:o]) ? "+ '&o=1'" : ''});
-  })
-
-- if (params[:o]=='1')
-  :javascript
-    $( document ).ready(function() {
-      $('#gallery ul div a').first().click();    
+    $(document).ready(function() {
+        $(document).keypress(function(event) {
+            if(typeof event !== 'undefined' && $('#myModal').is(':visible')) {
+                if(event.keyCode === 46) {
+                    $('#carousel-example-generic').carousel('next');
+                } else if (event.keyCode == 44) {
+                    $('#carousel-example-generic').carousel('prev');
+                }
+            }
+        });
+        $('.thumbnail').click(function(){
+            $('#carousel-example-generic').carousel($(this).data('index'));
+        });
     });
-
