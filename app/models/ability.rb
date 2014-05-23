@@ -32,6 +32,7 @@ class Ability
          can :create, Photo
          can :create, Newsitem
          can :create, Agendaitem
+         can :update, user.agendaitems
          can :create, Event
          can :create, Result
          can :manage, Subscription
@@ -46,9 +47,8 @@ class Ability
          can :editpassword, user
        end
        
-         
        if user.active?
-         can :create, Agendaitem
+         can :manage, user.agendaitems
          user.commissions.each do |com|
            can :update, com.agendaitems 
          end

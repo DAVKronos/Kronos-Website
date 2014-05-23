@@ -24,6 +24,7 @@ class Agendaitem < ActiveRecord::Base
   has_many :subscriptions, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   belongs_to :agendaitemtype
+  belongs_to :user
   accepts_nested_attributes_for :events, :allow_destroy => true
   accepts_nested_attributes_for :subscriptions, :allow_destroy => true
   accepts_nested_attributes_for :comments, :reject_if => :all_blank
@@ -36,6 +37,9 @@ class Agendaitem < ActiveRecord::Base
           return true
         end
       end
+	  if self.user == user
+        return true
+      end
     else
       return false
     end
@@ -47,6 +51,9 @@ class Agendaitem < ActiveRecord::Base
         if (commission.id == self.commission_id)
           return true
         end
+      end
+      if self.user == user
+        return true
       end
     else
       return false

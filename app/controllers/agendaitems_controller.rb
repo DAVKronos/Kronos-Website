@@ -97,6 +97,7 @@ class AgendaitemsController < ApplicationController
 
   def create
     @agendaitem = Agendaitem.new(params[:agendaitem])
+	@agendaitem.user = current_user
     
     respond_to do |format|
       if @agendaitem.save

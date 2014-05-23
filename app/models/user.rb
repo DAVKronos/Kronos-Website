@@ -61,6 +61,7 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :newsitems
   has_many :tags
+  has_many :agendaitems
   belongs_to :user_type
   has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "260x180#", :thumb => "50x50#" }, :path => ":rails_root/public/system/:attachment/:hash.:extension",
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
