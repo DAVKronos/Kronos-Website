@@ -15,9 +15,20 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums/1.json
   def show
     @photoalbum = Photoalbum.find(params[:id])
-	@allphotos = @photoalbum.photos.all(:order => 'created_at DESC')
-    @photos = @photoalbum.photos.paginate(:page => params[:page], :order => 'created_at DESC', :per_page => 12)
-
+	
+	# temporary solution to get exif information in photos which are on the server
+	@exifphotos = @photoalbum.photos.where(exif_date: nil, photo_content_type: "image/jpeg")
+	@exifphotos.each do |p|
+		exif = EXIFR::JPEG.new(p.photo.path)
+		p.exif_date = exif.date_time
+		if not exif.date_time.nil?
+			p.save
+		end
+	end
+	
+	@allphotos = @photoalbum.photos.all(:order => 'exif_date DESC, created_at DESC')
+    @photos = @photoalbum.photos.paginate(:page => params[:page], :order => 'exif_date DESC, created_at DESC', :per_page => 12)
+	
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @photoalbum }

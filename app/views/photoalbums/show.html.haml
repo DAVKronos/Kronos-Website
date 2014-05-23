@@ -23,8 +23,9 @@
         %div{:class => "carousel slide", :id => "carousel-example-generic", "data-ride" => "carousel"}
           .carousel-inner
             -@allphotos.each do |n|
-              %div{:class=>(@allphotos.index(n) == 0) ? 'item active' : 'item' }
-                = link_to(image_tag(n.photo.url(:normal), :class=>'img-responsive'), n.photo.url(:normal), :target => "_blank")
+              %div{:class=>(@allphotos.index(n) == 0) ? 'item active' : 'item'}
+                %a{:href => n.photo.url(:normal), :target => "_blank"}
+                  %img{:class => 'img-responsive', :data => {:src => n.photo.url(:normal), "slide-index" => @allphotos.index(n)+1 }}
                 .carousel-caption
                   %h1
                     #{@allphotos.index(n)+1}/#{@allphotos.count}
@@ -44,13 +45,18 @@
               = photo.caption
 .row
   .col-lg-12
-    %button{:class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#myModal"}
+    %button{:class => "btn btn-primary fullscreenbutton", :data => {:toggle => "modal", :target => "#myModal", :index => @allphotos.index(@photos.first)}}
       Fullscreen
 .row
   .col-lg-12
     = will_paginate @photos, :previous_label => '<', :next_label => '>'
 
 :javascript
+    function loadSrc(target) {
+        if(target.attr('src') == undefined) {
+            target.attr('src', target.data('src'));
+        }
+    }
     $(document).ready(function() {
         $(document).keypress(function(event) {
             if(typeof event !== 'undefined' && $('#myModal').is(':visible')) {
@@ -61,7 +67,17 @@
                 }
             }
         });
+        $('.fullscreenbutton').click(function(){
+            $('#carousel-example-generic').carousel($(this).data('index'));
+            loadSrc($('img[data-slide-index='+($(this).data('index')+1)+']'));
+        });
         $('.thumbnail').click(function(){
             $('#carousel-example-generic').carousel($(this).data('index'));
+            loadSrc($('img[data-slide-index='+($(this).data('index')+1)+']'));
+        });
+        $('#carousel-example-generic').on('slide.bs.carousel', function(e) {
+            if($('#myModal').is(':visible')) {
+                loadSrc($(e.relatedTarget).find('img'));
+            }
         });
     });
