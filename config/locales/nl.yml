@@ -20,9 +20,10 @@ nl:
   new_commission: nieuwe commissie
   function: functie
   description: beschrijving
+  iban: IBAN
   date:
     formats:
-      default: ! '%d/%m/%Y'
+      default: ! '%d-%m-%Y'
       short: ! '%e %b'
       medium: ! '%e %B'
       long: ! '%e %B %Y'
@@ -275,6 +276,10 @@ nl:
         title: 
       subscription:
         opmerking: 
+      event:
+        Afstand: 
+        Tijd: 
+        Type: 
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -630,7 +635,6 @@ nl:
     nieuwsbericht: 
     profielfoto: 
     titel: 
-  iban: 
   photoalbum:
     agendaitem: 
     name: 
