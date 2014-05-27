@@ -27,6 +27,7 @@ gem 'calendar_helper', '~> 0.2.6'
 gem 'el_finder', '~> 1.1.10'
 gem 'google-api-client', '~> 0.6.4'
 gem 'selectize-rails', '~> 0.8.5' 
+gem 'twitter-typeahead-rails', '~> 0.10.2'
 gem 'thin'
 
 # Gems used only for assets and not required

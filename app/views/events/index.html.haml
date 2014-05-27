@@ -4,32 +4,33 @@
 .row
   .col-lg-12.events
     -@events.each do |event|
-      .event
-        .results
-          = render :partial => "results/show", :locals => { :event => event }
-        = render :partial => "form", :locals => { :event => event }
+      = render :partial => "results/show", :locals => { :event => event }
+      
 
 .row
   .col-lg-12
     %h2.push-down-for-logo Voeg een onderdeel toe
 
-    = form_for @event do |f|
-      = f.label "Tijd", :class => "span1"
-      - if f.object.date.respond_to?(:strftime)
-        = f.text_field :date, {:class => "tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}
-      - else
-        = f.text_field :date, {:class => "tijdprikker span1", :value => Time.now.strftime('%H:%M')}
-      %br
-      = f.label "Type", :class => "span1"
-      = f.select :eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect { |p| [p.name, p.id] }
-      %br
-      = f.label "Afstand", :class => "span1"
-      = f.text_field :distance, :class => "span1"
-      m
-      %br
+    = form_for @event, :html=>{:class => "form-horizontal"} do |f|
+      .form-group
+        = f.label "Tijd", :class => "col-sm-2 control-label"
+        .col-sm-10
+          - if f.object.date.respond_to?(:strftime)
+            = f.text_field :date, {:class => "tijdprikker form-control", :value => event_field.object.date.strftime('%H:%M')}
+          - else
+            = f.text_field :date, {:class => "tijdprikker form-control", :value => Time.now.strftime('%H:%M')}
+      .form-group
+        = f.label "Type", :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.select(:eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect{ |p| [p.name, p.id] }, {}, {:class=>"form-control"})
+      .form-group 
+        = f.label "Afstand", :class => "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :distance, :class => "form-control"
       = f.hidden_field :agendaitem_id, :value => @agendaitem.id
-
-      = f.submit :class => "btn btn-success"
+      .col-sm-offset-2.col-sm-10
+        = f.submit :class => "btn btn-success"
+%br
     
     
 			

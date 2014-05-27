@@ -23,6 +23,7 @@
 //= require rails.validations
 //= require jwplayer
 //= require selectize
+//= require twitter/typeahead.min
 //= require_tree .
 
 $(document).ready(function () {

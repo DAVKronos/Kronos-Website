@@ -220,6 +220,7 @@ nl:
         create: Create Subscription
       commission:
         update: Update Commission
+        create: Create Commission
     label:
       comment:
         commenttext: 
@@ -280,6 +281,10 @@ nl:
         Afstand: 
         Tijd: 
         Type: 
+      result:
+        username: 
+        place: 
+        result: 
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -468,6 +473,8 @@ nl:
         user_id: User
       result:
         result: Result
+        username: Username
+        place: Place
       page:
         information: Information
         title: Title
@@ -611,6 +618,8 @@ nl:
       signed_in: 
     commission[commission_memberships_attributes][new_commission_memberships]:
       function: 
+    agendaitem[events_attributes][new_events]:
+      Afstand: 
   event: Onderdeel
   eventtype:
     agendaitemtypes: 
