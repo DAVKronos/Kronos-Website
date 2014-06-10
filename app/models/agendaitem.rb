@@ -90,4 +90,8 @@ class Agendaitem < ActiveRecord::Base
 	end
   end
 
+  def deadline_passed?()
+    return ((self.subscriptiondeadline - Time.now) <= 0)
+  end
+
 end

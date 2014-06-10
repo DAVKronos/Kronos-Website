@@ -1,8 +1,10 @@
-= form_for(@agendaitem) do |f|
-  = f.fields_for :comments, @comment do |comment_form|
-    .row
-      .col-lg-12
-        = comment_form.text_area :commenttext, :rows => "5", :class => "input-xlarge"
-    .row
-      .col-lg-12
-        = f.submit :class => "btn", :value => "Plaatsen"
+- if current_user
+  = form_for(@agendaitem) do |f|
+    = f.fields_for :comments, @comment , :html => {:class => 'form-horizontal', :role=>'form'} do |ff|
+      .row
+        .col-lg-1      
+          = link_to image_tag(current_user.avatar.url(:thumb),:class=>'img-rounded'), current_user      
+        .col-lg-11.col
+          = ff.text_area :commenttext ,:rows => 3, :class => 'form-control'
+          %br
+          = ff.submit :class=> 'btn btn-primary'
