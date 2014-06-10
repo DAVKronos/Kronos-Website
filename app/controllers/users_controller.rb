@@ -32,13 +32,19 @@ class UsersController < ApplicationController
 
   def overview
 
-    @usertypes = UserType.all;
-    if current_user && current_user.admin?
-      @users, @alphaParams = User.where(:user_type_id => params[:user_type_id]).alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
-    elsif [1,2,8].include? params[:user_type_id]
-      @users, @alphaParams = User.where(:user_type_id => params[:user_type_id]).alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
-     
-      @usertypes.keep_if {|u| [1,2,8].include? u.id};
+    if current_user 
+      if current_user.admin? # Dan mag veel
+        @users, @alphaParams = User.where(:user_type_id => params[:user_type_id]).alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes = UserType.all
+      elsif ([1,2,8].include? current_user.user_type_id) && ([1,2,8].include? params[:user_type_id] ) # Dan mag alleen in [1,2,8]
+        @users, @alphaParams = User.where(:user_type_id => params[:user_type_id]).alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes.keep_if {|u| [1,2,8].include? u.id}
+      elsif current_user.user_type_id == params[:user_type_id] && !([9].include? current_user.user_type_id) # Dan mag alleen in eigen groep         
+        @users, @alphaParams = User.where(:user_type_id => params[:user_type_id]).alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes = UserType.all.keep_if {|u| u.id==current_user.user_type_id};
+      else #anders niks
+        @usertypes, @users, @alphaParams = [];
+      end
     end
    
     respond_to do |format|
@@ -47,14 +53,22 @@ class UsersController < ApplicationController
   end
   
   def index
-  
-    @usertypes = UserType.all;
-    
-    if current_user && current_user.admin?
-      @users, @alphaParams = User.where('user_type_id not in (?)', [9]).order('name asc').alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
-    else
-      @users, @alphaParams = User.where(:user_type_id => [1,2,8]).order('name asc').alpha_paginate(params[:letter], {:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
-      @usertypes.keep_if {|u| [1,2,8].include? u.id};
+
+    if current_user 
+      
+      if current_user.admin?
+        @users, @alphaParams = User.where('user_type_id not in (?)', [9]).order('name asc').alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes = UserType.all;
+      elsif [1,2,8].include? current_user.user_type_id
+        @users, @alphaParams = User.where(:user_type_id => [1,2,8]).order('name asc').alpha_paginate(params[:letter], {:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes = UserType.all.keep_if {|u| [1,2,8].include? u.id};
+      elsif !([9].include? current_user.user_type_id)  
+        @users, @alphaParams = User.where(:user_type_id => current_user.user_type_id).order('name asc').alpha_paginate(params[:letter], {:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes = UserType.all.keep_if {|u| u.id == current_user.user_type_id};
+      else 
+        @usertypes, @users, @alphaParams = []; 
+      end
+
     end
 
     respond_to do |format|
