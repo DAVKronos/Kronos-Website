@@ -219,6 +219,14 @@ nl:
         create: Create Subscription
       commission:
         update: Update Commission
+        create: Create Commission
+      agendaitem[comments_attributes][0]:
+        create: Create Comment
+        update: Update Comment
+      agendaitem[comments_attributes][1]:
+        update: Update Comment
+      agendaitem[comments_attributes][2]:
+        create: Create Comment
     label:
       comment:
         commenttext: 
@@ -255,6 +263,10 @@ nl:
         subscribe: 
         subscriptiondeadline: 
         url: 
+        events:
+          Afstand: 
+          Tijd: 
+          Type: 
       agendaitem[events_attributes][new_events]:
         Afstand: 
         Tijd: 
@@ -268,6 +280,7 @@ nl:
         commission_memberships:
           function: 
         email: 
+        role: 
       commission[commission_memberships_attributes][new_commission_memberships]:
         function: 
       page:
@@ -275,6 +288,14 @@ nl:
         title: 
       subscription:
         opmerking: 
+      event:
+        Afstand: 
+        Tijd: 
+        Type: 
+      result:
+        place: 
+        result: 
+        username: 
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -463,6 +484,8 @@ nl:
         user_id: User
       result:
         result: Result
+        place: Place
+        username: Username
       page:
         information: Information
         title: Title
@@ -482,6 +505,7 @@ nl:
         description: Description
         name: Name
         email: Email
+        role: Role
   edit_commission: Commissie aanpassen
   distance:
     centi:
@@ -604,8 +628,15 @@ nl:
       iban: 
       remember_me: 
       signed_in: 
+      signed_out: 
     commission[commission_memberships_attributes][new_commission_memberships]:
       function: 
+    agendaitem[events_attributes][new_events]:
+      Afstand: 
+    event:
+      Afstand: 
+    subscription:
+      opmerking: 
   event: Onderdeel
   eventtype:
     agendaitemtypes: 

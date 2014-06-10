@@ -68,20 +68,12 @@ class User < ActiveRecord::Base
   
   name_regex = /\A[A-Z]\S+\s(\S+\s)*[A-Z]\S*(-[A-Z]\S+)*\z/
 
-  
-  validates :name, :presence => true,
-                   :format => {:with => name_regex}
-  
+  validates :name, :presence => true, :format => {:with => name_regex}
   validates :initials, :presence => true
-  
   validates :birthdate, :presence => true
-  
   validates :postalcode, :presence => true
-  
   validates :city, :presence => true
-  
   validates :sex, :presence => true
-  
   validates :address, :presence => true
   
   def update_group_membership
@@ -117,7 +109,31 @@ class User < ActiveRecord::Base
   end
   
   def admin?
+    self.commissions.each do |com|
+      if com.role == 'ADMIN' then
+        return true
+      end
+    end
+	# voor backwards compatibility
     self.commissions.exists?(Commission.find_by_name('Bestuur')) or self.commissions.exists?(Commission.find_by_name('Webcie'))
+  end
+  
+  def uitslagen_admin?
+    self.commissions.each do |com|
+      if com.role == 'RESULT_ADMIN' then
+        return true
+      end
+    end
+    false
+  end
+  
+  def kronometer_admin?
+    self.commissions.each do |com|
+      if com.role == 'KRONOMETER_ADMIN' then
+        return true
+      end
+    end
+    false
   end
   
   def active?
@@ -125,11 +141,11 @@ class User < ActiveRecord::Base
   end
   
   def oudlid?
-	  if self.user_type
-	    self.user_type.name == "Oudlid"
-	  else
-	    false
-	  end
+    if self.user_type
+      self.user_type.name == "Oudlid"
+    else
+      false
+    end
   end
 
   def days_until_birthday

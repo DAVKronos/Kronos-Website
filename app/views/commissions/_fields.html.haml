@@ -9,14 +9,15 @@
 
 = f.label :name
 = f.text_field :name
-  
 
 = f.label :description
 = f.text_area :description
-  
 
 = f.label :email
 = f.email_field :email
+
+= f.label :role
+= f.text_field :role
 
 = f.fields_for :commission_memberships do |commem_form|
   .well

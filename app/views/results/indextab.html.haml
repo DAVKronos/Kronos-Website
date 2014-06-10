@@ -2,7 +2,11 @@
   %h2
     = @agendaitem.name
 %div{:class => "uitslagenverhaal"}
-  = @agendaitem.description
+  - @agendaitem.comments.each do |comment|
+    %strong
+      = comment.user.name if comment.user
+    %p
+      = comment.commenttext
 - @agendaitem.events.each_with_index do |event,i|
   - if (i == 0) then hoio = " in" end
   %div{:class => "uitslagencollapse"}

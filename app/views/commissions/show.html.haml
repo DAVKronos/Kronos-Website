@@ -2,7 +2,12 @@
 %p.lead
   = @commission.description
 - if can? :see_email, @commission
+  %strong Email
   = mail_to @commission.email
+- if can? :update, @commission
+  %p
+    %strong Rol
+    = @commission.role
 %table.table.table-striped
   %thead
     %tr 

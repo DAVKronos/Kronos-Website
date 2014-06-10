@@ -16,7 +16,7 @@ class PhotoalbumsController < ApplicationController
   def show
     @photoalbum = Photoalbum.find(params[:id])
 	
-	# temporary solution to get exif information in photos which are on the server
+	# temporary solution to get exif information in photos which are on the server: TODO
 	@exifphotos = @photoalbum.photos.where(exif_date: nil, photo_content_type: "image/jpeg")
 	@exifphotos.each do |p|
 		exif = EXIFR::JPEG.new(p.photo.path)
@@ -26,8 +26,8 @@ class PhotoalbumsController < ApplicationController
 		end
 	end
 	
-	@allphotos = @photoalbum.photos.all(:order => 'exif_date DESC, created_at DESC')
-    @photos = @photoalbum.photos.paginate(:page => params[:page], :order => 'exif_date DESC, created_at DESC', :per_page => 12)
+	@allphotos = @photoalbum.photos.all(:order => 'exif_date DESC, photo_file_name DESC, created_at DESC')
+    @photos = @photoalbum.photos.paginate(:page => params[:page], :order => 'exif_date DESC, photo_file_name DESC, created_at DESC', :per_page => 12)
 	
     respond_to do |format|
       format.html # show.html.erb

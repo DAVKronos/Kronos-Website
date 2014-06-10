@@ -4,12 +4,16 @@
   %thead
     %tr 
       %th Naam
+      - if can? :update, Commission
+        %th Rol
   %tbody
     - @commissions.each do |commission|
       %tr
         %td 
           = link_to commission.name, commission
         - if can? :update, commission
+          %td
+            = commission.role
           %td
             = link_to "edit", edit_commission_path(commission)
         - if can? :destroy, commission

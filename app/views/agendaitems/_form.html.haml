@@ -24,7 +24,7 @@
           %fieldset
             %legend Optionele argumenten
             = f.label :commission
-            = f.collection_select(:commission_id, @commissions, :id, :name)
+            = f.collection_select(:commission_id, @commissions, :id, :name, {:include_blank => 'Geen'})
       .row
         .col-lg-12
           %fieldset
