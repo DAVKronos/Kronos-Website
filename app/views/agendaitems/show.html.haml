@@ -82,7 +82,7 @@
               -if !@agendaitem.deadline_passed?
                 nog
                 = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
-              open            
+                open            
           .list-group
             - if @agendaitem.subscriptions.empty?  
               .list-group-item
