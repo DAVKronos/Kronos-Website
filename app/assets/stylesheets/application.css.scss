@@ -10,6 +10,7 @@
  *= require_self
  *= require selectize
  *= require selectize.default
+ *= require typeaheadjs
  *= require_tree .
  *= require menu
 */
@@ -148,4 +149,11 @@ ul.thumbnails {
 
 .glyphicon {
   top:2px; /* betere uitlijning */
+}
+
+.bs-callout {
+  margin: 20px 0px;
+  padding: 20px;
+  border-left: 3px solid #EEE;
+  background-color: #F5F5F5; 
 }

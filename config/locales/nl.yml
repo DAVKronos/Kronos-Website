@@ -20,9 +20,10 @@ nl:
   new_commission: nieuwe commissie
   function: functie
   description: beschrijving
+  iban: IBAN
   date:
     formats:
-      default: ! '%d/%m/%Y'
+      default: ! '%d-%m-%Y'
       short: ! '%e %b'
       medium: ! '%e %B'
       long: ! '%e %B %Y'
@@ -293,9 +294,9 @@ nl:
         Tijd: 
         Type: 
       result:
+        username: 
         place: 
         result: 
-        username: 
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -484,8 +485,8 @@ nl:
         user_id: User
       result:
         result: Result
-        place: Place
         username: Username
+        place: Place
       page:
         information: Information
         title: Title
@@ -661,7 +662,6 @@ nl:
     nieuwsbericht: 
     profielfoto: 
     titel: 
-  iban: 
   photoalbum:
     agendaitem: 
     name: 

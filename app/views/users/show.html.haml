@@ -1,60 +1,54 @@
-%ul{:class =>"user"}
-  %section.polaroid
-    %figure
-      = image_tag @user.avatar.url(:medium)
-      %figcaption
-        = @user.name
-  %li
-    = t(:name).capitalize + ": " + @user.name
-  %li
-    = t(:initials).capitalize + ": " + @user.initials
-    %br
-  %li
-    = t(:birthdate).capitalize + ": " + @user.birthdate.to_s
-    %br
-  %li
-    = t(:email).capitalize + ": " + @user.email
-    %br
-  %li
-    = t(:usertype).capitalize + ": "
-    = @user.user_type.name if @user.user_type
-  %li
-    = t(:phonenumber).capitalize + ": "
-    = @user.phonenumber
-    %br
-  %li
-    = t(:address).capitalize + ": "
-    = @user.address
-    %br
-  %li
-    = t(:postalcode).capitalize + ": "
-    = @user.postalcode
-    %br
-  %li
-    = t(:city).capitalize + ": "
-    = @user.city
-    %br
-  %li
-    = t(:sex).capitalize + ": "
-    = @user.sex
-    %br
-  %li
-    = t(:licensenumber).capitalize + ": "
-    = @user.licensenumber
-    %br
-  %li
-    = t(:xtracardnumber).capitalize + ": "
-    = @user.xtracard
-  %li
-    = t(:papieren_kronometer).capitalize + ": "
-    = @user.papieren_kronometer.to_s
-  -if current_user.admin?
-    %li
-      = t(:bankaccountnumber).capitalize + ": "
-      @user.bank_account_number
-    %li
-      = t(:iban).capitalize + ": "
-      @user.iban
+%h1.push-down-for-logo
+  = @user.name
+.row
+  .col-lg-6
+    %dl{:class => "dl-horizontal"}
+      %dt= t(:initials).capitalize 
+      %dd= @user.initials
+
+      %dt= t(:birthdate).capitalize
+      %dd= l @user.birthdate, :format => :default
+
+      %dt= t(:email).capitalize 
+      %dd= @user.email
+
+      %dt= t(:usertype).capitalize
+      %dd= @user.user_type.name if @user.user_type
+
+      %dt= t(:phonenumber).capitalize
+      %dd= @user.phonenumber
+
+      %dt= t(:address).capitalize 
+      %dd= @user.address
+
+      %dt= t(:postalcode).capitalize
+      %dd= @user.postalcode
+
+      %dt= t(:city).capitalize
+      %dd= @user.city
+
+      %dt= t(:sex).capitalize
+      %dd= @user.sex
+
+      %dt= t(:licensenumber).capitalize
+      %dd= @user.licensenumber
+
+      %dt= t(:xtracardnumber).capitalize
+      %dd= @user.xtracard
+
+      %dt= t(:papieren_kronometer).capitalize 
+      %dd= @user.papieren_kronometer.to_s
+      -if current_user.admin?
+        %dt= t(:bankaccountnumber).capitalize
+        %dd= @user.bank_account_number
+        %dt= t(:iban).capitalize
+        %dt= @user.iban
+  .col-lg-6
+    %section.polaroid
+      %figure
+        = image_tag @user.avatar.url(:medium)
+        %figcaption
+          = @user.name
 
 - if can? :update, @user
   = link_to 'pas je gegevens aan', edit_user_path(@user)

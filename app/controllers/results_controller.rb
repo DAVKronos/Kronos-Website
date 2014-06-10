@@ -58,6 +58,8 @@ class ResultsController < ApplicationController
     result.save
     if request.xhr?
       render 'results/_show', :layout => false, :locals => {:event => Event.find(event.id)}
+    else
+      redirect_to agendaitem_events_path(event.agendaitem)
     end
   end
   

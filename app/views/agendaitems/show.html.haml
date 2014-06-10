@@ -2,169 +2,106 @@
   .col-lg-12
     %h1.push-down-for-logo
       =@agendaitem.name
-
 .row
-  .col-lg-6
-    .row
-      .col-lg-12
-        %h2 Informatie
-        %hr{:class => "no-margin"}
-    .row
-      .col-lg-12
-        Type:
+  .col-lg-8    
+    %ul.list-inline.small
+      %li
+        %span.glyphicon.glyphicon-tag        
         = if @agendaitem.intern; 'Kronos ' else 'Externe ' end
-        = @agendaitem.agendaitemtype.name if @agendaitem.agendaitemtype
-    .row
-      .col-lg-12
-        Datum:
+        = @agendaitem.agendaitemtype.name if @agendaitem.agendaitemtype    
+      %li
+        %span.glyphicon.glyphicon-calendar 
         = @agendaitem.date.strftime("%d %B %H:%M")
-    .row
-      .col-lg-12
-        Locatie:
-        = @agendaitem.location
-    .row
-      .col-lg-12
-        Url:
-    - if @agendaitem.commission
-      .row
-        .col-lg-12
-          Organiserende commissie:
+      -unless @agendaitem.location.empty?
+        %li
+          %span.glyphicon.glyphicon-map-marker
+          = @agendaitem.location
+      -unless @agendaitem.url.empty?
+        %li
+          %span.glyphicon.glyphicon-globe
+          = link_to @agendaitem.get_url_name, @agendaitem.get_url
+      -if @agendaitem.commission
+        %li
+          %span.glyphicon.glyphicon-book 
           = link_to @agendaitem.commission.name, @agendaitem.commission
-    .row
-      .col-lg-12
-        .description
-          = simple_format(@agendaitem.description)
-    .row
-      .col-lg-12
+      %li 
         %a{:class => 'btn btn-mini fb-share icon-fb'}
           %span.glyphicon
           Share
-  .col-lg-6
-    .row
-      .col-lg-12
-        %h2 Programma
-        %hr{:class => "no-margin"}
-    - @agendaitem.events.each do |event|
-      .row
-        .col-lg-12
-          = event.eventtype.name
-          = number_to_human event.distance, :units => :distance
-          = event.date.strftime("%H:%M")
-    .row
-      .col-lg-12
-        %hr
 
-    - if @agendaitem.subscribe
-      .row
-        .col-lg-12
-          %h2 Inschrijflijst
-          %hr{:class => "no-margin"}
+    %p= simple_format(@agendaitem.description)
 
     - if current_user
-      .row
-        .col-lg-12
-          - @agendaitem.subscriptions.each do |subscription|
-            .row
-              .col-lg-8
-                = subscription.name + ' - ' + subscription.comment
-              - if can? :destroy, subscription
-                .col-lg-4
-                  = link_to 'Uitschrijven', subscription, confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
-    - else
-      .row
-        .col-lg-12
-          Je moet inloggen om deze lijst te kunnen zien.
-          %hr
-
-
-    .row
-      .col-lg-12
-        %h2 Inschrijven
-        %hr{:class => "no-margin"}
-    - if @agendaitem.subscribe
-      - if ((@agendaitem.subscriptiondeadline - Time.now) > 0)
-        .row
-          .col-lg-12
-            %i{:class => "glyphicon glyphicon-ok-sign"}
-            nog
-            = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
-        - if current_user
-          - if defined?(@subscription)
-            .row
-              .col-lg-12
-                = render 'subscription_form'
-          - else
-            .row
-              .col-lg-12
-                Je hebt je al ingeschreven.
-                = link_to 'Uitschrijven', @subscriptionbestaand , confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete
-        - else
+      .bs-callout
+        - @comments.each do |comment|
           .row
-            .col-lg-12
-              Je moet inloggen om je te kunnen inschrijven.
-      - else
-        .row
-          .col-lg-12
-            %span{:class => "glyphicon glyphicon-ok-sign"}
-            Gesloten
-        .row
-          .col-lg-12
-            Je kunt je niet meer in- of uitschrijven.
-    - else
-      .row
-        .col-lg-12
-          %span{:class => "glyphicon glyphicon-remove-sign"}
-          Er is geen inschrijving
-    .row
-      .col-lg-12
-        %hr
-
-    .row
-      .col-lg-12
-        %h2 Reacties
-        %hr{:class => "no-margin"}
-    .row
-      - @comments.each do |comment|
-        %div{:class => "well col-lg-offset-2 col-lg-8"}
-          = comment.user.name if comment.user
-          = comment.commenttext
-    .row
-      .col-lg-12
-        %hr
-
-.row
-  .col-lg-6
-    .row
-      .col-lg-12
-        %h2 Reactie plaatsen
-        %hr{:class => "no-margin"}
-    .row
-      .col-lg-12
+            -if comment.user
+              .col-lg-1
+                = link_to image_tag(comment.user.avatar.url(:thumb),:class=>'img-rounded'), comment.user
+              .col-lg-11
+                = link_to comment.user.name, comment.user
+                %span.small
+                  - if comment.created_at > 1.day.ago
+                    = h time_ago_in_words comment.created_at
+                    geleden
+                  - else
+                    = time_tag(comment.created_at)
+                %p= comment.commenttext
         = render 'comments_form'
-    .row
-      .col-lg-12
-        %hr
-  - if can? :update, @agendaitem
-    .col-lg-6
-      .row
-        .col-lg-12
-          %h2{:class => "acties"}
-            Agendapunt - acties
-            %hr{:class => "no-margin"}
-      .row
-        .col-lg-12
-          %ul
-            %li
-              = link_to 'Agendapunt bewerken', edit_agendaitem_path(@agendaitem)
-            -if can? :destroy, @agendaitem
-              %li
-                = link_to 'Agendapunt verwijderen', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete
-            %li
-              = link_to 'Inschrijvingen aanpassen', "#{@agendaitem.id}/subscriptions"
-      .row
-        .col-lg-12
-          %hr
 
-.row
-  .col-lg-12
-    = link_to 'Terug', agendaitems_path
+  .col-lg-4
+    - if can? :update, @agendaitem
+      .btn-group.btn-group-sm
+        = link_to 'Bewerk', edit_agendaitem_path(@agendaitem), class: 'btn btn-default'
+        -if can? :destroy, @agendaitem
+          = link_to 'Verwijder', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete, class: 'btn btn-default'
+        = link_to 'Inschrijvingen aanpassen', "#{@agendaitem.id}/subscriptions", class: 'btn btn-default'
+      %br
+      %br
+
+    .panel.panel-default
+      .panel-heading Programma
+      -if @agendaitem.events.empty?      
+        .panel-body
+          %p.text-info Geen programma
+      %table{:class=>'table'}
+        %tbody
+          -@agendaitem.events.each do |event|
+            %tr
+              %td= event.date.strftime("%H:%M")
+              %td
+                = event.eventtype.name
+                = number_to_human event.distance, :units => :distance
+
+    - if @agendaitem.subscribe
+      - if current_user
+        .panel{:class => inschrijvingen_panel_type(@agendaitem, @subscription)}
+          .panel-heading 
+            Inschrijflijst
+            .small
+              -if !@agendaitem.deadline_passed?
+                nog
+                = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
+                open            
+          .list-group
+            - if @agendaitem.subscriptions.empty?  
+              .list-group-item
+                %p.text-info Geen inschrijvingen
+            - @agendaitem.subscriptions.each do |subscription|
+              .list-group-item
+                = subscription.name
+                .small= subscription.comment
+                - if can? :destroy, subscription
+                  = link_to 'Uitschrijven', subscription, confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
+          .panel-footer
+            - if !@agendaitem.deadline_passed?
+              - if defined?(@subscription)
+                = render 'subscription_form'
+              - else # al ingeschreven
+                = link_to 'Uitschrijven', @subscriptionbestaand , confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete, class: 'btn btn-danger'
+            - else # buiten inschrijfdeadline
+              Gesloten
+      - else # Niet ingelogd      
+        .panel.panel-info
+          .panel-heading Inschrijflijst
+          .panel-body Je moet inloggen om inschrijvingen te zien of aan te vullen. 
