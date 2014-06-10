@@ -3,7 +3,7 @@
     %h1.push-down-for-logo
       =@agendaitem.name
 .row
-  .col-lg-12
+  .col-lg-8    
     %ul.list-inline.small
       %li
         %span.glyphicon.glyphicon-tag        
@@ -19,18 +19,18 @@
       -unless @agendaitem.url.empty?
         %li
           %span.glyphicon.glyphicon-globe
-          = link_to @agendaitem.url, @agendaitem.get_url 
+          = link_to @agendaitem.get_url_name, @agendaitem.get_url
       -if @agendaitem.commission
         %li
           %span.glyphicon.glyphicon-book 
           = link_to @agendaitem.commission.name, @agendaitem.commission
-
       %li 
         %a{:class => 'btn btn-mini fb-share icon-fb'}
           %span.glyphicon
           Share
-  .col-lg-8    
+
     %p= simple_format(@agendaitem.description)
+
     - if current_user
       .bs-callout
         - @comments.each do |comment|
@@ -52,15 +52,18 @@
   .col-lg-4
     - if can? :update, @agendaitem
       .btn-group.btn-group-sm
-        = link_to 'Bewerk', edit_agendaitem_path(@agendaitem), class: 'btn btn-warning'
+        = link_to 'Bewerk', edit_agendaitem_path(@agendaitem), class: 'btn btn-default'
         -if can? :destroy, @agendaitem
-          = link_to 'Verwijder', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete, class: 'btn btn-danger'
-        = link_to 'Inschrijvingen aanpassen', "#{@agendaitem.id}/subscriptions", class: 'btn btn-warning'
+          = link_to 'Verwijder', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete, class: 'btn btn-default'
+        = link_to 'Inschrijvingen aanpassen', "#{@agendaitem.id}/subscriptions", class: 'btn btn-default'
       %br
       %br
 
     .panel.panel-default
       .panel-heading Programma
+      -if @agendaitem.events.empty?      
+        .panel-body
+          %p.text-info Geen programma
       %table{:class=>'table'}
         %tbody
           -@agendaitem.events.each do |event|
