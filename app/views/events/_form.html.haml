@@ -3,7 +3,7 @@
 - User.all.each do |user|
   - nameArray << user.name
 
-= form_for eventResult, :url => event_results_path(event), :remote => true, :html => { :id => "event_result_#{event.id}", :autocomplete => "off", :class => 'form-inline', :role=>'form'} do |f|
+= form_for eventResult, :url => event_results_path(event), :remote => false, :html => { :id => "event_result_#{event.id}", :autocomplete => "off", :class => 'form-inline', :role=>'form'} do |f|
   .form-group.col-md-2
     = f.label :username, :class=>'sr-only' 
     = f.text_field :username, :class => 'typeahead form-control', :placeholder => t(:name).capitalize, :size=>'40'
