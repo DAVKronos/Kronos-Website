@@ -1,17 +1,18 @@
 ul.user {
-  list-style-type: none;
+	list-style-type: none;
 }
 
 ul.users {
 	list-style-type: none;
 }
 
-img.floatleft{
+img.floatleft {
 	float: left;
 	margin: 0 10px 10px 0;
 	padding-top: 5px;
 }
-a.floatleft{
+
+a.floatleft {
     float: left;
     margin: 0 10px 10px 0;
     padding-top: 5px;
@@ -38,42 +39,42 @@ a:hover {
 }
 
 hr.no-margin {
-        margin: 0px;
+	margin: 0px;
 }
 
 h2 a {
-        text-decoration: none;
-        color: #333333;
+	text-decoration: none;
+	color: #333333;
 }
 
 h2 a:hover {
-        text-decoration: none;
-        color: #666666;
+	text-decoration: none;
+	color: #666666;
 }
 
 h2.kronosactiviteit a {
-        color: #7dbc53;
+	color: #7dbc53;
 }
 
 h2.acties {
-        color: #990000;
+	color: #990000;
 }
 
 legend {
-        color: #333333;
-        font-weight: bold;
-        margin: 0px;
-  /*width: 380px; Fix for <hr> width*/
+	color: #333333;
+	font-weight: bold;
+	margin: 0px;
+	/*width: 380px; Fix for <hr> width*/
 }
 
 fieldset hr {
-        position: relative;
-        width: 380px;
-        text-align:left
+	position: relative;
+	width: 380px;
+	text-align:left
 }
 
 .login-form {
-    width:320px;
+	width:320px;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 13px;
 	padding: 20px;
@@ -84,173 +85,28 @@ fieldset hr {
 	margin-top : 5px;
 }
 
-.nav-tabs{
-    margin-bottom: 0px;
-    margin-left: 8px;
-}
-
-.nav-tabs li a{
-    position: relative;
-    background-color: #bbbdb9;
-    color: #ffffff;
-    border: 0px;
-    border-radius: 0px;
-    box-shadow: 0px 0px 0px 0px #000000;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    bottom: -4px;
-    margin-right: 0px;
-    z-index: 0;
-}
-
-.nav-tabs li.active a{
-    background-color: #7dbc53;
-    color: #ffffff;
-    border: 0px;
-    border-radius: 0px;
-    box-shadow: 5px 0px 6px -3px #000000;
-    padding-top: 9px;
-    bottom: 0px;
-    z-index: 1;
-}
-
-.nav-tabs li a:hover, .nav-tabs li.active a:hover{
-    background-color: #7dbc53;
-    color: #ffffff;
-    border: 0px;
-    border-radius: 0px;
-}
-
-.resulttable{
-    width: 100%;
-}
-
-.resulttable thead {
-    background-color: #7dbc53;
-    color: #ffffff;
-}
-
-.resulttable thead th {
-    padding: 5px;
-    text-align: left;
-    font-weight: normal;
-}
-
-.resulttable tbody td {
-    padding: 5px;
-}
-
-.resulttable tbody tr:nth-child(odd) {
-    background-color: #eff7ea;
-}
-
-/* pointer toegevoegd zodat duidelijk is dat men kan klikken */
-.ajaxuitslag:hover {
-	cursor:pointer;	
-}
-
-/* uitslagengebied uitlijnen met tabel aan linkerkant */
-#ajaxuitslagengebied {
-	margin-top:31px;
-    background-color: #eff7ea;
-}
-
-.uitslagentitel {
-    text-align: center;
-    width: 100%;
-}
-
-/* padding toegevoegd en breedte auto (zodat hij niet uitbreekt) */
-.uitslagenverhaal {
-    text-align: center;
-    width: auto;
-    background-color: #fff;
-    margin: 5px;
-    padding:3px;
-}
-
-.uitslagencollapse {
-    margin: 5px;
-}
-
-.uitslagencollapse .collapsetitle {
-    padding: 5px;
-    width: 100%;
-    background-color: #7dbc53;
-    color: #fff;
-}
-
-.uitslagencollapse .collapse table {
-    width: 100%;
-}
-
-.uitslagencollapse .collapse table tr:nth-child(odd) {
-    background-color: #fff;
-}
-
 h2.head {
-  background-color: #7dbc53;
-  color: #fff;
+	background-color: #7dbc53;
+	color: #fff;
 }
 
 .no-space {
-  margin-left:-15px;
-  margin-right:-15px;
+	margin-left:-15px;
+	margin-right:-15px;
 }
 
+/* waar zijn deze voor? */
 .start {
-  margin-left:0!important;
+	margin-left:0!important;
 }
-
 .end {
-  margin-right:0!important;
+	margin-right:0!important;
 }
 
-.activityoverview h2 {
-  line-height:31px;
-  padding-left: 10px;
-}
-
-.activityoverview .description {
-	  border-top: 1px #7dbc53 solid;
-}
-
-.activityoverview .foot {
-	  border-bottom: 1px #7dbc53 solid;
-	  margin-bottom: 10px;
-}
-
-.activityoverview .foot {
-	  text-align: right;
-}
-
-.activityoverview .foot a {
-	  color: #7dbc53;
-	  font-weight: bold;
-	  margin-right: 10px;
-}
-
-.activityoverview .foot a.subscribebutton {
-	  color: #fff;
-	  display: block;
-	  background-color: #7dbc53;
-	  text-align: center;
-	  font-weight: bold;
-	  margin-right: 0px;
-}
-
-.activityoverview a.subscriptionrow {
-	  display: block;
-	  color: #000;
-	  background-color: #ddd;
-	  padding-left: 10px;
-	  padding-top: 5px;
-	  padding-bottom: 5px;
-}
-
+/* facebook icon */
 .icon-fb {
-    background-image: url(asset_path('fb-icon.png', image));
-    background-position: 12px center;
-    background-size: 14px 14px;
-    background-repeat: no-repeat;
+	background-image: url(asset_path('fb-icon.png', image));
+	background-position: 12px center;
+	background-size: 14px 14px;
+	background-repeat: no-repeat;
 }

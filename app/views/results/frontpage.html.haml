@@ -28,4 +28,121 @@
       %h5
         Ik wil een uitslag toevoegen maar mijn wedstrijd staat er niet tussen!!1!!1
       = link_to "Wedstrijd toevoegen", new_agendaitem_path, :class => "btn btn-primary"
-   
+
+:css
+  .resulttable{
+    width: 100%;
+  }
+  .resulttable thead {
+    background-color: #7dbc53;
+    color: #ffffff;
+  }
+  .resulttable thead th {
+    padding: 5px;
+    text-align: left;
+    font-weight: normal;
+  }
+  .resulttable tbody td {
+    padding: 5px;
+  }
+  .resulttable tbody tr:nth-child(odd) {
+    background-color: #eff7ea;
+  }
+  /* pointer toegevoegd zodat duidelijk is dat men kan klikken */
+  .ajaxuitslag:hover {
+    cursor:pointer;	
+  }
+  /* uitslagengebied uitlijnen met tabel aan linkerkant */
+  #ajaxuitslagengebied {
+    margin-top:31px;
+    background-color: #eff7ea;
+  }
+  .uitslagentitel {
+    text-align: center;
+    width: 100%;
+  }
+  /* padding toegevoegd en breedte auto (zodat hij niet uitbreekt) */
+  .uitslagenverhaal {
+    text-align: center;
+    width: auto;
+    background-color: #fff;
+    margin: 5px;
+    padding:3px;
+  }
+  .uitslagencollapse {
+    margin: 5px;
+  }
+  .uitslagencollapse .collapsetitle {
+    padding: 5px;
+    width: 100%;
+    background-color: #7dbc53;
+    color: #fff;
+  }
+  .uitslagencollapse .collapse table {
+    width: 100%;
+  }
+  .uitslagencollapse .collapse table tr:nth-child(odd) {
+    background-color: #fff;
+  }
+  .nav-tabs{
+    margin-bottom: 0px;
+    margin-left: 8px;
+  }
+  .nav-tabs li a{
+    position: relative;
+    background-color: #bbbdb9;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px 0px #000000;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    bottom: -4px;
+    margin-right: 0px;
+    z-index: 0;
+  }
+  .nav-tabs li.active a{
+    background-color: #7dbc53;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: 5px 0px 6px -3px #000000;
+    padding-top: 9px;
+    bottom: 0px;
+    z-index: 1;
+  }
+  .nav-tabs li a:hover, .nav-tabs li.active a:hover{
+    background-color: #7dbc53;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 0px;
+  }
+
+:javascript
+  $(document).ready(function() {
+    $('.resulttable').tablesorter();
+    $('.ajaxuitslag').click(function () {
+      // laad de uitslagen van deze wedstrijd in het uitslagenveld
+      var identiteit = $(this).attr("ajaxid");
+      $('#ajaxuitslagengebied').load('agendaitems/'+identiteit+'/results', function(data){
+        $('html,body').animate({scrollTop: $('#ajaxuitslagengebied').offset().top, scrollLeft: $('#ajaxuitslagengebied').offset().left},'slow');
+      });
+    });
+
+    $('a[ajaxtab="tab"]').on('click', function (e) {
+      var pattern=/#.+/gi //use regex to get anchor(==selector)           
+      var contentID = e.target.toString().match(pattern)[0]; //get anchor
+      //load content for selected tab
+      contentID = contentID.replace("#", '');
+      $('#' + contentID).load('uitslagen?ajaxladen=' + contentID, function() {
+        $('.resulttable').tablesorter();
+        $('.ajaxuitslag').click(function () {
+          // laad de uitslagen van deze wedstrijd in het uitslagenveld
+          var identiteit = $(this).attr("ajaxid");
+          $('#ajaxuitslagengebied').load('agendaitems/'+identiteit+'/results', function(data){
+            $('html,body').animate({scrollTop: $('#ajaxuitslagengebied').offset().top, scrollLeft: $('#ajaxuitslagengebied').offset().left},'slow');
+          });
+        });
+      });
+    });
+  });

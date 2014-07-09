@@ -74,6 +74,10 @@ class AgendaitemsController < ApplicationController
     @agendaitem.date = Time.now
     @agendaitem.subscriptiondeadline = Time.now
     @commissions = current_user.admin? ? Commission.all : current_user.commissions
+    @agendaitemtypes = Agendaitemtype.all
+#    @agendaitemtypes.each do |item|
+#      @selects[item.id] = options_for_select(item.eventtypes.collect { |p| [p.name, p.id] })
+#    end
   end
   
   def show
@@ -123,6 +127,7 @@ class AgendaitemsController < ApplicationController
   def edit
     @agendaitem = Agendaitem.find(params[:id])
     @commissions = current_user.admin? ? Commission.all : current_user.commissions
+    @agendaitemtypes = Agendaitemtype.all
   end
 
   def update

@@ -8,7 +8,7 @@
         = f.label "Kronos Activiteit"
         = f.check_box :intern, :placeholder => "Van Kronos?"
         = f.label :agendaitemtype
-        = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name)
+        = f.collection_select(:agendaitemtype_id, @agendaitemtypes, :id, :name, {}, {:class => "prototypetarget"})
         = f.label :date
         = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
         = f.label :description
@@ -38,6 +38,9 @@
         .col-lg-12
           %fieldset
             %legend Programma
+            - @selects = {}
+            - @agendaitemtypes.each do |item|
+              - @selects[item.id] = "'"+options_for_select(item.eventtypes.collect { |p| [p.name, p.id] })+"'"
             = f.fields_for :events do |event_field|
               %div{:class => "well col-lg-12"}
                 .row
@@ -50,7 +53,7 @@
                 .row
                   .col-lg-12
                     = event_field.label "Type", :class => "span1"
-                    = event_field.select :eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect { |p| [p.name, p.id] }
+                    = select_tag(:eventtype_id, "", class: "prototypeselect", data: @selects)
                 .row
                   .col-lg-12
                     = event_field.label "Afstand", :class => "span1"
@@ -65,3 +68,19 @@
   .row
     .col-lg-12
       = f.submit :class => "btn", :value => "Opslaan"
+
+:javascript
+  $(document).on('nested:fieldAdded', function(event){
+    var protoField = event.field.find('.prototypeselect');
+    $(protoField).html($(protoField).data($(".prototypetarget").val()));
+  });
+  $(document).ready(function(){
+    $(".prototypeselect").each(function(key,value){
+      $(value).html($(value).data($(".prototypetarget").val()));
+    });
+  });
+  $(".prototypetarget").change(function(){
+    $(".prototypeselect").each(function(key,value){
+      $(value).html($(value).data($(".prototypetarget").val()));
+    });
+  });
