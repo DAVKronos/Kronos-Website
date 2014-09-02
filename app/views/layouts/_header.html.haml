@@ -1,5 +1,7 @@
--if !user_signed_in?
-  .row
+.row
+  .hidden-xs.hidden-s
+    = link_to image_tag('banner_lustrum.png'), '/lustrum'
+  -if !user_signed_in?
     .hidden-xs.hidden-s
       = link_to image_tag('banner_intro.png'), new_user_path
 %header
