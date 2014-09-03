@@ -20,13 +20,15 @@ nl:
   new_commission: nieuwe commissie
   function: functie
   description: beschrijving
+  iban: IBAN
   date:
     formats:
-      default: ! '%d/%m/%Y'
+      default: ! '%d-%m-%Y'
       short: ! '%e %b'
       medium: ! '%e %B'
       long: ! '%e %B %Y'
       only_day: ! '%e'
+      only_date: ! '%e %B'
     day_names:
     - zondag
     - maandag
@@ -201,6 +203,100 @@ nl:
       eventtype:
         create: Eventtype toevoegen
         update: Eventtype bewaren
+      result:
+        create: Result toevoegen
+      page:
+        create: Page toevoegen
+        update: Update Page
+      comment:
+        create: Comment toevoegen
+      newsitem:
+        create: Newsitem toevoegen
+        update: Newsitem bewaren
+      photoalbum:
+        create: Fotoalbum toevoegen
+        update: Fotoalbum bewaren
+      subscription:
+        create: Create Subscription
+      commission:
+        update: Update Commission
+        create: Create Commission
+      agendaitem[comments_attributes][0]:
+        create: Create Comment
+        update: Update Comment
+      agendaitem[comments_attributes][1]:
+        update: Update Comment
+      agendaitem[comments_attributes][2]:
+        create: Create Comment
+    label:
+      comment:
+        commenttext: 
+      newsitem:
+        nieuwsbericht: 
+        profielfoto: 
+        titel: 
+      user:
+        email: 
+        password: 
+        remember_me: 
+        initials: 
+        name: 
+        phonenumber: 
+        address: 
+        bankaccountnumber: 
+        birthdate: 
+        city: 
+        iban: 
+        licensenumber: 
+        lidtype: 
+        postalcode: 
+        profielfoto: 
+        sex: 
+        xtracardnumber: 
+      agendaitem:
+        agendaitemtype: 
+        commission: 
+        date: 
+        description: 
+        Kronos Activiteit: 
+        location: 
+        name: 
+        subscribe: 
+        subscriptiondeadline: 
+        url: 
+        events:
+          Afstand: 
+          Tijd: 
+          Type: 
+      agendaitem[events_attributes][new_events]:
+        Afstand: 
+        Tijd: 
+        Type: 
+      photoalbum:
+        agendaitem: 
+        name: 
+      commission:
+        description: 
+        name: 
+        commission_memberships:
+          function: 
+        email: 
+        role: 
+      commission[commission_memberships_attributes][new_commission_memberships]:
+        function: 
+      page:
+        information: 
+        title: 
+      subscription:
+        opmerking: 
+      event:
+        Afstand: 
+        Tijd: 
+        Type: 
+      result:
+        username: 
+        place: 
+        result: 
   errors:
     format: ! '%{attribute} %{message}'
     messages:
@@ -309,9 +405,28 @@ nl:
               blank: moet opgegeven zijn
             message:
               blank: moet opgegeven zijn
+        commission_membership:
+          attributes:
+            function:
+              blank: moet opgegeven zijn
+            user_id:
+              blank: moet opgegeven zijn
+        result:
+          attributes:
+            result:
+              blank: moet opgegeven zijn
     models:
       user: Lid
       photoalbum: Fotoalbum
+      result: Uitslag
+      event: Onderdeel
+      comment: Comment
+      newsitem: Newsitem
+      agendaitem: Agendaitem
+      chatmessage: Chatmessage
+      commission: Commission
+      page: Page
+      subscription: Subscription
     attributes:
       user:
         name: Naam
@@ -331,6 +446,9 @@ nl:
         profielfoto: Profielfoto
         xtracardnumber: Xtracardnumber
         remember_me: Remember me
+        password_confirmation: Password confirmation
+        iban: Iban
+        reset_password_token: Reset password token
       agendaitem:
         Kronos Activiteit: Kronos activiteit
         agendaitemtype: Agendaitemtype
@@ -341,6 +459,7 @@ nl:
         name: Name
         subscribe: Subscribe
         subscriptiondeadline: Subscriptiondeadline
+        url: Url
       event:
         Afstand: Afstand
         Tijd: Tijd
@@ -357,8 +476,37 @@ nl:
         measuringunit: Measuringunit
         name: Name
         shortname: Shortname
+        female_formula: Female formula
+        show_wind: Show wind
       agendaitemtype_eventtype:
         eventtype_id: Eventtype
+      commission_membership:
+        function: Function
+        user_id: User
+      result:
+        result: Result
+        username: Username
+        place: Place
+      page:
+        information: Information
+        title: Title
+      comment:
+        commenttext: Commenttext
+      newsitem:
+        articlephoto: Articlephoto
+        nieuwsbericht: Nieuwsbericht
+        profielfoto: Profielfoto
+        titel: Titel
+      photoalbum:
+        agendaitem: Agendaitem
+        name: Name
+      subscription:
+        opmerking: Opmerking
+      commission:
+        description: Description
+        name: Name
+        email: Email
+        role: Role
   edit_commission: Commissie aanpassen
   distance:
     centi:
@@ -394,6 +542,8 @@ nl:
       timeout: Je sessie is verlopen, log a.u.b. opnieuw in.
       unauthenticated: Je dient in te loggen of je in te schrijven.
       unconfirmed: Je dient eerst je account te bevestigen.
+      user:
+        not_found_in_database: 
     mailer:
       confirmation_instructions:
         subject: Bevestiging
@@ -430,56 +580,89 @@ nl:
   usertype: Lidtype
   xtracardnumber: xtracardnummer
   agendaitem:
-    Kronos Activiteit: ''
-    agendaitemtype: ''
-    commission: ''
-    description: ''
-    location: ''
-    name: ''
-    subscribe: ''
-    subscriptiondeadline: ''
-    date: ''
+    Kronos Activiteit: 
+    agendaitemtype: 
+    commission: 
+    description: 
+    location: 
+    name: 
+    subscribe: 
+    subscriptiondeadline: 
+    date: 
     events:
       Afstand: ''
       Tijd: ''
       Type: ''
   agendaitem[events_attributes][new_events]:
-    Afstand: ''
-    Tijd: ''
-    Type: ''
+    Afstand: 
+    Tijd: 
+    Type: 
   user:
-    address: ''
-    bankaccountnumber: ''
-    birthdate: ''
-    city: ''
-    email: ''
-    initials: ''
-    licensenumber: ''
-    lidtype: ''
-    name: ''
-    phonenumber: ''
-    postalcode: ''
-    profielfoto: ''
-    sex: ''
-    xtracardnumber: ''
-    password: ''
-    remember_me: ''
+    address: 
+    bankaccountnumber: 
+    birthdate: 
+    city: 
+    email: 
+    initials: 
+    licensenumber: 
+    lidtype: 
+    name: 
+    phonenumber: 
+    postalcode: 
+    profielfoto: 
+    sex: 
+    xtracardnumber: 
+    password: 
+    remember_me: 
     signed_in: Je bent succesvol ingelogd.
     invalid: Ongeldig e-mail of wachtwoord.
     signed_out: Je bent succesvol uitgelogd.
     send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet resetten.
+    password_confirmation: 
+    iban: 
   chatmessage:
     bericht: ''
     page_title: Kronos kletsdoos
   unauthorized:
     default: You are not authorized to access this page.
-  event: Event
+    user:
+      iban: 
+      remember_me: 
+      signed_in: 
+      signed_out: 
+    commission[commission_memberships_attributes][new_commission_memberships]:
+      function: 
+    agendaitem[events_attributes][new_events]:
+      Afstand: 
+    event:
+      Afstand: 
+    subscription:
+      opmerking: 
+  event: Onderdeel
   eventtype:
-    agendaitemtypes: ''
-    calculated_unit: ''
-    formula: ''
-    measuringunit: ''
-    name: ''
-    shortname: ''
+    agendaitemtypes: 
+    calculated_unit: 
+    formula: 
+    measuringunit: 
+    name: 
+    shortname: 
+    female_formula: 
+    show_wind: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
-  user_subject: Wachtwoord resetten
+  commission_membership: Commission membership
+  user_subject: Reset password instructions
+  result: Onderdeel
+  page_title: paginatitel
+  page:
+    information: 
+    title: 
+  comment:
+    commenttext: 
+  newsitem:
+    nieuwsbericht: 
+    profielfoto: 
+    titel: 
+  photoalbum:
+    agendaitem: 
+    name: 
+  subscription: Subscription

@@ -1,20 +1,22 @@
-%h1 
-  =t("chatmessage.page_title")
-%br
 .row
-  .span6.chatmessages
+  .col-lg-12
+    %h1.push-down-for-logo
+      =t("chatmessage.page_title")
+
+.row
+  .col-lg-6.chatmessages
     - @chatmessages.each do |chatmessage|
       .row
         - if chatmessage.user
-          .span1
-            .chatimage 
+          .col-lg-2
+            .chatimage
               = link_to image_tag(chatmessage.user.avatar.url(:thumb)), chatmessage.user, :class => "thumbnail"
-        %div{ :class => chatmessage.user ? 'span5' : 'span5 offset1' }
+        %div{ :class => chatmessage.user ? 'col-lg-10' : 'col-lg-10 col-lg-offset-2' }
           .chattext
             %strong
               - if chatmessage.user
                 = link_to chatmessage.by, chatmessage.user
-              - else 
+              - else
                 = mail_to chatmessage.email, chatmessage.by
             %p= markdown chatmessage.message
             - if can? :update, chatmessage
@@ -29,8 +31,8 @@
                 - else
                   = time_tag(chatmessage.created_at)
       .row
-        .span6
+        .col-lg-12
           %hr
     = will_paginate @chatmessages, :previous_label => '<', :next_label => '>'
-  .span6
+  .col-lg-6
     = render 'form'

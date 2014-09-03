@@ -19,9 +19,12 @@ class Eventtype < ActiveRecord::Base
   
   accepts_nested_attributes_for :agendaitemtype_eventtypes, :allow_destroy => true
 
-  def calculate_result(result, distance)
+  def calculate_result(result, distance, gender)
     engine = MathEngine::MathEngine.new
-    formula = self.formula
+	formula = self.formula
+	if gender != "Man" && self.female_formula
+		formula = self.female_formula
+	end
     formula = formula.gsub(/\$distance/, distance.to_s ) if distance
     engine.evaluate(formula.gsub(/\$result/, result.to_s))              # Evaluate the expression and output the result
     

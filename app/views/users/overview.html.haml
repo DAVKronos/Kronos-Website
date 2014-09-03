@@ -1,0 +1,51 @@
+.row
+  .col-lg-12
+    %h1.push-down-for-logo Overzicht leden
+
+- unless @usertypes.nil?
+  .row
+    .col-lg-12
+      %ul{:class => "nav nav-pills"}
+        %li
+          = link_to "Alle leden",users_path 
+        - @usertypes.each do |usertype|
+          - if usertype.id == params[:user_type_id].to_f
+            %li{:class => "active"}
+              = link_to usertype.name, overview_users_path(:user_type_id => usertype.id)
+          - else
+            %li 
+              = link_to usertype.name, overview_users_path(:user_type_id => usertype.id)
+
+.row
+  .col-lg-12
+    #pagination_table
+      %ul{:class => "thumbnails"}
+        - if @users.nil? || @users.empty?
+          %p.text-info.text-center Geen gebruikers met deze letter of in deze categorie.
+        - else      
+          - @users.each do |user|
+            %li.col-lg-3
+              .thumbnail
+                = link_to image_tag(user.avatar.url(:pass)), user
+                .caption
+                  %h5= user.name
+                  - if can? :update, user
+                    = link_to 'edit', edit_user_path(user), :class => 'btn btn-default'
+                  - if can? :destroy, user
+                    = link_to 'verwijder', user, :method => :delete, :title => "Verwijder #{user.name}", :class => 'btn btn-default', :data => { :confirm => 'Weet je het zeker?' }
+
+- unless @alphaParams.nil?
+  .row   
+    .col-lg-12
+      = alphabetical_paginate @alphaParams
+  - unless params[:user_type_id].nil?
+    :javascript
+      $("ul.pagination").find("a").each(function() {
+         var _href = $(this).attr("href"); 
+         $(this).attr("href", _href + '&user_type_id=#{params[:user_type_id]}');
+      });
+
+- if can? :create, User
+  .row  
+    .col-lg-12 
+      = link_to "Lid Toevoegen", new_user_path, :class => "btn btn-default"

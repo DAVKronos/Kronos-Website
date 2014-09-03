@@ -1,14 +1,24 @@
-%h1 Alle Commissies
-
-- if can? :create, Commission
-  = link_to "Commissie Toevoegen", new_commission_path
-
-%ul{:class => "commissions"}
-
-  - @commissions.each do |commission|
-    %li
-      = link_to commission.name, commission
-      - if can? :update, commission
-        = link_to "edit", edit_commission_path(commission)
+%h1 Commissies der DAV Kronos
+%p.lead Onderstaand treft u een overzicht van de huidige commissies der DAV Kronos.
+%table.table.table-striped
+  %thead
+    %tr 
+      %th Naam
+      - if can? :update, Commission
+        %th Rol
+  %tbody
+    - @commissions.each do |commission|
+      %tr
+        %td 
+          = link_to commission.name, commission
+        - if can? :update, commission
+          %td
+            = commission.role
+          %td
+            = link_to "edit", edit_commission_path(commission)
         - if can? :destroy, commission
-          = link_to "delete", commission, :method => :delete, :confirm => "Weet je zeker dat je #{commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{commission.name}"
+          %td
+            = link_to "delete", commission, :method => :delete, :confirm => "Weet je zeker dat je #{commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{commission.name}"
+- if can? :create, Commission
+  = link_to new_commission_path, :class => 'btn btn-small' do
+    <i class="icon-file"></i> nieuw

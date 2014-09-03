@@ -7,20 +7,30 @@ class ResultsController < ApplicationController
     if request.xhr?
       ajaxladen = params[:ajaxladen]
       if ajaxladen == 'Laatste'
-        @results = Agendaitem.where("date <= ?", DateTime.now).order("date DESC").limit(20)
-      else
-        @results = Agendaitem.where(:date => (DateTime.new(Integer(ajaxladen))..(DateTime.new(Integer(ajaxladen))+1.year))).order("date DESC")
+        @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(40)
+		@results.delete_if {|re| re.count_results() == 0}
+      elsif ajaxladen == 'Toevoegen'
+        @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(40)
+		@results.delete_if {|re| re.count_results() != 0}
+	  else
+        @results = Agendaitem.joins(:agendaitemtype).where(:date => (DateTime.new(Integer(ajaxladen))..(DateTime.new(Integer(ajaxladen))+1.year))).order("date DESC")
+		@results.delete_if {|re| re.count_results() == 0}
       end
     else
-      @results = Agendaitem.where("date <= ?", DateTime.now).order("date DESC").limit(20)
-      @agendaitem = @results.first
-      @tabs = Agendaitem.uniq.order('year desc').limit(5).pluck("extract(year from date) as year")
+      @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(40)
+      @results.delete_if {|re| re.count_results() == 0}
+      @tabs = []
+      counter = 0
+      5.times do
+        @tabs << counter.year.ago.year
+        counter += 1
+      end
     end
-    
+	    
     respond_to do |format|
       format.html do
         if request.xhr?
-          render 'results/tabtable', :layout => false
+          render 'results/_tabtable', :layout => false
         end
       end
     end
@@ -40,5 +50,27 @@ class ResultsController < ApplicationController
   
   def new
     @agendaitems = Agendaitem.joins(:agendaitemtype).where(:agendaitemtypes => {:is_match => true}).order('date DESC')
+  end
+  
+  def create
+    event = Event.find(params[:event_id])
+    result = event.results.build(params[:result])
+    result.save
+    if request.xhr?
+      render 'results/_show', :layout => false, :locals => {:event => Event.find(event.id)}
+    else
+      redirect_to agendaitem_events_path(event.agendaitem)
+    end
+  end
+  
+  def destroy
+    @result = Result.find(params[:id])
+    @result.destroy
+    respond_to do |format|
+      format.html { redirect_to agendaitem_events_path(@result.event.agendaitem) }
+      format.json {
+        render :json => true
+      }
+    end
   end
 end

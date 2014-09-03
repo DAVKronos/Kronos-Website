@@ -1,0 +1,225 @@
+/* TODO: Kijken of onderstaande wel gebruikt worden..
+ul#white > li > a {
+    color: black;
+}
+
+#triangle-right {
+	margin: 9px 10px 11px;
+	width: 0; 
+	height: 0; 
+	border-top: 10px solid transparent; 
+	border-left: 20px solid #7dbc53; 
+	border-bottom: 10px solid transparent; 
+} 
+
+ul#white {
+	margin-left: 110px;
+}
+*/
+
+
+/**** AGENDA ****/
+.agenda {
+	list-style: none;
+	margin: 0px;
+	font-size: 15px;
+}
+
+/* TODO: controleren of deze in bootstrap 3 nodig is */
+.agenda .span5{
+	padding: 5px;
+}
+
+.agenda-item:nth-of-type(2n+2) {
+	background-color: #EFF7EA;
+}
+
+
+/* 
+ * These selection declarations have to be separate
+ * No text-shadow: twitter.com/miketaylr/status/12228805301
+ * Also: hot pink!
+ */
+
+::-moz-selection { background: #7dbc53; color: #fff; text-shadow: none; }
+::selection { background: #7dbc53; color: #fff; text-shadow: none; }
+
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a:hover, a:active { outline: 0; }
+
+
+/**** CARROUSEL ****/
+#content-slider {
+	font-family: arial;
+}
+
+#content {
+overflow: hidden;
+height: 260px;
+/*-webkit-box-shadow: 0px 0px 25px 5px #c9c9c9;
+-moz-box-shadow: 0px 0px 25px 5px #c9c9c9;
+box-shadow: 0px 0px 25px 5px #c9c9c9;
+*/
+}
+
+#content:hover #content-inner{
+	-moz-animation-play-state:paused;
+	-webkit-animation-play-state:paused;
+}
+
+#content-inner {
+width:10000px;
+height: 260px;
+-moz-animation:slide-animation 10s infinite;
+-webkit-animation:slide-animation 10s infinite;
+
+}
+
+.page {
+width: 750px;/*480px;*/
+height: 260px;
+float: left;
+}
+
+@-webkit-keyframes slide-animation { 
+	0% {opacity:0;}
+	2% {opacity:1;}
+	27% {margin-left:0px;}
+	33% {margin-left:-750px;}
+	60% {margin-left:-750px;}
+	66% {margin-left:-1500px;}
+	96% {opacity:1;}
+	99% {margin-left:-1500px; opacity:0;}
+	100% {margin-left:0px; opacity:0;}
+}
+
+@-moz-keyframes slide-animation { 
+	0% {opacity:0;}
+	2% {opacity:1;}
+	27% {margin-left:0px;}
+	33% {margin-left:-750px;}
+	60% {margin-left:-750px;}
+	66% {margin-left:-1500px;}
+	96% {opacity:1;}
+	99% {margin-left:-1500px; opacity:0;}
+	100% {margin-left:0px; opacity:0;}
+}
+
+
+
+/*================================================
+	Styling the targets.  There are 6 nested divs -
+	each div corresponds to a page.  6 pages = 
+	6 divs.
+================================================*/
+#content-inner-1:target #content-inner {
+	-moz-animation: none;
+	-webkit-animation: none;
+	-webkit-transition: all 400ms ease;
+	-moz-transition: all 400ms ease;
+	-o-transition: all 400ms ease;
+	transition: all 400ms ease;
+	margin-left: 0px;
+}
+
+#content-inner-2:target #content-inner {
+	-moz-animation: none;
+	-webkit-animation: none;
+	-webkit-transition: all 400ms ease;
+	-moz-transition: all 400ms ease;
+	-o-transition: all 400ms ease;
+	transition: all 400ms ease;
+	margin-left: -750px;
+}
+
+#content-inner-3:target #content-inner {
+	-moz-animation: none;
+	-webkit-animation: none;
+	-webkit-transition: all 400ms ease;
+	-moz-transition: all 400ms ease;
+	-o-transition: all 400ms ease;
+	transition: all 400ms ease;
+	margin-left: -1500px;
+}
+
+/**** NIEUWS ****/
+.newsitem {
+	margin-bottom: 2em;
+	background-color: #eff7ea;
+	padding: 1em;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+}
+
+a.newslink {
+	text-decoration: none;
+	color: #000000;
+}
+
+/*=======================================
+	Generic styling here.
+========================================*/
+
+.page-info {
+height: 80px;
+background-color: rgba(99, 99, 99, 0.6);
+position: relative;
+margin-top: 0px;
+bottom: 90px;
+color: #dedede;
+padding-left: 20px;
+padding-top: 10px;
+}
+
+.page-info a {
+	color: #fafafa;
+}
+
+.page-info h2 {
+font-size: 30px;
+margin-bottom: 10px;
+margin-top: 0px;
+color: #fafafa;
+}
+
+.page-text {
+font-size: 15px;
+}
+
+#nav {
+list-style-type: none;
+width: 120px;
+height: 12px;
+margin: 0 auto;
+margin-top: 10px;
+padding: 0;
+float: left;
+}
+
+.button {
+float: left;
+background: #bababa;
+width: 25px;
+height: 12px;
+margin-right: 10px;
+}
+
+.button:active {
+background: #7dbc53;
+}
+
+.button:hover {
+	background: #7dbc53;
+}
+
+.button a {
+display: block;
+width: 25px;
+height: 12px;
+}
+

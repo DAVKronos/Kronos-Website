@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   load_and_authorize_resource
-  protect_from_forgery :except => [:create]
+  protect_from_forgery :except => [:create, :delete]
   
     def index
       @photos = Photoalbum.find(params[:photoalbum_id]).photos
@@ -9,13 +9,19 @@ class PhotosController < ApplicationController
 
     def create
       @photo = Photoalbum.find(params[:photoalbum_id]).photos.build(params[:photo])
+	  
+	  if @photo.photo.content_type == "image/jpeg"
+		exif = EXIFR::JPEG.new(params[:photo][:photo].path)
+		@photo.exif_date = exif.date_time
+	  end
+	  
       if @photo.save
         respond_to do |format|
-          format.html {  
+          format.html {
             render :json => [@photo.to_jq_upload].to_json
           }
-          format.json {  
-            render :json => [@photo.to_jq_upload].to_json			
+          format.json {
+            render :json => [@photo.to_jq_upload].to_json
           }
         end
       else 

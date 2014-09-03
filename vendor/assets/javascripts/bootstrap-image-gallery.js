@@ -214,17 +214,21 @@
         },
         prev: function () {
             var options = this.options;
+            var modal = this.$element;
             options.index -= 1;
             if (options.index < 0) {
                 options.index = this.$links.length - 1;
+                modal.trigger('first');
             }
             this.loadImage();
         },
         next: function () {
             var options = this.options;
+            var modal = this.$element;
             options.index += 1;
             if (options.index > this.$links.length - 1) {
                 options.index = 0;
+                modal.trigger('last');
             }
             this.loadImage();
         },

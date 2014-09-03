@@ -1,7 +1,36 @@
-%h1 Alle Leden
+.row
+  .col-lg-12
+    %h1.push-down-for-logo Alle Leden
 
-%ul{:class => "thumbnails"}
-  = render @users
-= will_paginate @users
-- if can? :create, User
-  = link_to "Lid Toevoegen", new_user_path
+.row
+  .col-lg-12
+    %ul{:class => "nav nav-pills"}
+      %li{:class => "active"}
+        = link_to "Alle leden", users_path 
+      - @usertypes.each do |usertype|
+        %li 
+          = link_to usertype.name, overview_users_path(:user_type_id => usertype.id)
+.row
+  .col-lg-12
+    #pagination_table
+      %ul{:class => "thumbnails"}
+        - if @users.nil? || @users.empty?
+          %p.text-info.text-center Geen gebruikers met deze letter of in deze categorie.
+        - else  
+          - @users.each do |user|
+            %li.col-lg-3
+              .thumbnail
+                = link_to image_tag(user.avatar.url(:pass)), user
+                .caption
+                  %h5= user.name
+                  - if can? :update, user
+                    = link_to 'edit', edit_user_path(user), :class => 'btn'
+                  - if can? :destroy, user
+                    = link_to 'verwijder', user, :method => :delete, :title => "Verwijder #{user.name}", :class => 'btn', :data => { :confirm => 'Weet je het zeker?' }
+
+.row
+  .col-lg-12
+    = alphabetical_paginate @alphaParams
+
+  - if can? :create, User
+    = link_to "Lid Toevoegen", new_user_path

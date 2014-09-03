@@ -9,14 +9,19 @@
     <![endif]-->
     <link href='https://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
     = javascript_include_tag 'application'
+    
+    - if @page_specific_scripts_in 
+      = javascript_include_tag @page_specific_scripts_in 
+    
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tag
 
   %body
-    = render 'layouts/header'
-    .container.round
+    .container
+      = render 'layouts/header'
       -flash.each do |key, value|
         %div{:class => "alert alert-#{key} fade in"}
           =value
           %a{:class => :close, "data-dismiss" => "alert"} x
       = yield
+      = render 'layouts/footer'

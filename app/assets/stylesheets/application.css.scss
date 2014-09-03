@@ -1,0 +1,159 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require bootstrap.min
+ *= require bootstrap-image-gallery
+ *= require jquery.fileupload-ui
+ *= require style
+ *= require markdowncss
+ *= require_self
+ *= require selectize
+ *= require selectize.default
+ *= require typeaheadjs
+ *= require_tree .
+ *= require menu
+*/
+
+@import "variables";
+
+/**** ALGEMEEN ****/
+body{
+	background-color: $grey;
+}
+
+.container {
+	background:#FFF;
+}
+
+/* Nog nodig??
+.container.round{
+	background: none repeat scroll 0 0 #ffffff;
+	padding: 1em;
+	background:#FFF;
+}*/
+
+/**** UTILITY ****/
+.no-bottom-margin {
+	margin-bottom: 0px;
+}
+
+.push-down-for-logo {
+	margin-top:10px;
+}
+
+/* TODO: aanpassen aan bootstrap 3 */
+.newscontent .span6{
+	padding-right: 2em;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+}
+
+.field_with_errors {
+	position: relative;
+}
+
+.field_with_errors input {
+	border: 1px solid #DD0000 !important;
+	box-shadow: 0 0 8px #FF7777;
+}
+
+.field_with_errors .message {
+	color: #DD0000;
+	font-size: 12px;
+	left: auto;
+	position: absolute;
+	left: 230px;top: 4px;
+}
+
+.input-prepend .add-on,
+.input-append input {
+  float: left;
+}
+
+/* FORMS */
+label {
+	display:block;
+}
+
+/**** FOOTER ****/
+#footer {
+	padding:15px 0;
+	background:#39423F;
+	color:#FFF;
+}
+
+#footer .adresgegevens {
+	text-align:right;
+}
+
+/**** TYPOGRAFIE ****/
+h1, h2, h3, h4 { 
+	margin-top:0;
+}
+
+h1 {
+  font:36px Arial;
+  font-weight:normal;
+  line-height:36px;
+}
+
+h2 {
+  font:24px Arial;
+  font-weight:bold;
+  line-height:24px;
+}
+
+h3 {
+  font:16px Arial;
+  font-weight:normal;
+  line-height:16px;
+}
+
+h4 {
+	font-size:$medium;
+}
+
+p {
+  margin:10px 0;
+}
+
+.emphasis {
+	font-weight:bold;
+	color:$green;	
+}
+
+/**** IMAGES & RELATED ****/
+ul.thumbnails {
+  padding:0;
+}
+.thumbnails li {
+  list-style: none;
+}
+
+.thumbnail {
+  text-align: center;
+}
+
+.thumbnail .caption {
+  text-align: left;
+}
+
+/**** GLYPHS ****/
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: font-url('glyphicons-halflings-regular.eot');
+  src: font-url('glyphicons-halflings-regular.eot?#iefix') format('embedded- opentype'), font-url('glyphicons-halflings-regular.woff') format('woff'), font-url('glyphicons-halflings-regular.ttf') format('truetype'), font-url('glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+.glyphicon {
+  top:2px; /* betere uitlijning */
+}
+
+.bs-callout {
+  margin: 20px 0px;
+  padding: 20px;
+  border-left: 3px solid #EEE;
+  background-color: #F5F5F5; 
+}

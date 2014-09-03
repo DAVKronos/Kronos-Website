@@ -1,26 +1,29 @@
 %h1= @commission.name
-
-%ul{:class =>"commission"}
+%p.lead
+  = @commission.description
+- if can? :see_email, @commission
+  %strong Email
+  = mail_to @commission.email
+- if can? :update, @commission
+  %p
+    %strong Rol
+    = @commission.role
+%table.table.table-striped
+  %thead
+    %tr 
+      %th Naam
+      %th Functie
+  %tbody    
+    - @commission_memberships.each do |commem|
+      %tr
+        %td
+          = commem.user.name
+        %td
+          = commem.function
+          - if can? :destroy, commem
+            = link_to 'Lid uit commissie verwijderen', commem, :method => :delete, :confirm => "Weet je zeker dat je #{commem.user.name} uit de commissie wilt verwijderen?", :title => "Verwijder #{commem.user.name}"
+- if can? :update, @commission
+  = link_to 'Commissie aanpassen', edit_commission_path(@commission)
+- if can? :destroy, @commission
   %li
-    = t(:name).capitalize + ": " + @commission.name 
-    %br
-  %li
-    = t(:description).capitalize + ": " + @commission.description
-    %br
-  %li
-    = t(:email).capitalize + ": " + @commission.email
-    %br
-  
-  - @commission_memberships.each do |commem|
-
-    %li
-      = commem.user.name
-      = commem.function
-      - if can? :destroy, commem
-        = link_to 'Lid uit commissie verwijderen', commem, :method => :delete, :confirm => "Weet je zeker dat je #{commem.user.name} uit de commissie wilt verwijderen?", :title => "Verwijder #{commem.user.name}"
-  - if can? :update, @commission
-    %li
-      = link_to 'Commissie aanpassen', edit_commission_path(@commission)
-    - if can? :destroy, @commission
-      %li
-        = link_to 'Commissie verwijderen', @commission, :method => :delete, :confirm => "Weet je zeker dat je #{@commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{@commission.name}"
+  = link_to 'Commissie verwijderen', @commission, :method => :delete, :confirm => "Weet je zeker dat je #{@commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{@commission.name}"

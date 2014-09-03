@@ -1,72 +1,44 @@
+
+
 .row
-  .span12
-    -if !user_signed_in?
-      =link_to image_tag('banner_intro.png'), new_user_path
-  .span6
-    .row.hidden-phone
-      %div{:class => "span6", :id => "content-slider"}
-        #content
-          %div{:id => "content-inner-1"}
-            %div{:id => "content-inner-2"}
-              %div{:id => "content-inner-3"}
-                %div{:id => "content-inner"}
-                  - pagecounter = 1
-                  - @newsitems.each do |newsitem|
-                    %div{:class => "page", :id => "page#{pagecounter.to_s}"}
-                      = image_tag newsitem.articlephoto.url :slider
-                      %div{:class => "page-info", :id => "info#{pagecounter.to_s}"}
-                        %h2= link_to newsitem.title, "##{newsitem.title}"
-                        %div{:class => "page-text"}
-                          = newsitem.news.split('.').first
-                    - pagecounter = pagecounter + 1
-                  
-        %ul#nav
-          %li.button#button1
-            %a{:href => "#content-inner-1"}
-          %li.button#button2
-            %a{:href => "#content-inner-2"}
-          %li.button#button3
-            %a{:href => "#content-inner-3"}
-     
-    .row
-      .span6
-        %br
-        %h1 Nieuws
-        %br
-        -@newsitems.each do |newsitem|
-          .row
-            .span6.newsitem
-              .row.newscontent
-                .span6
-                  = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft"
-                  %h1= link_to newsitem.title, {}, {:name => newsitem.title, :class => "newslink"}
-                  = markdown newsitem.news
-              .row.newscontent
-                .span6
-                  = link_to raw("<i class='icon-edit'></i>"), edit_newsitem_path(newsitem) if can? :update, newsitem
-                  = link_to raw("<i class='icon-remove'></i>"), newsitem, confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
+  .col-lg-7
+    %h1= link_to "Nieuws", newsitems_path,:class => "newslink"
+    %p
+      = link_to raw("<span class='glyphicon glyphicon-plus'></span> Maak aan"), new_newsitem_path,:class => 'btn btn-mini' if can? :create, Newsitem
+    = render "carousel"
+    -@newsitems.each do |newsitem|
+      .frow
+        .fcol-lg-12.newsitem
+          .frow.newscontent
+            .fcol-lg-12
+              %h2= link_to newsitem.title, newsitem, {:name => newsitem.title, :class => "newslink"}
+              %p
+                = link_to (image_tag newsitem.articlephoto.url(:normal)), newsitem, :class => "floatleft thumbnail"
+                %p.muted 
                   = time_tag newsitem.created_at
-                
-  .span6
+                = markdown newsitem.news.split( /\r?\n/ ).first
+                = link_to 'lees verder', newsitem
+              .btn-toolbar
+                .btn-group.btn-group-sm
+                  %a{:class => 'btn btn-default icon-fb' , :onclick => "KRNS.fbshare('#{newsitem_url(newsitem)}')"}
+                    %span{:class => 'glyphicon'}
+                    Share
+                  = link_to raw("<span class='glyphicon glyphicon-edit'></span> Edit"), edit_newsitem_path(newsitem),:class => 'btn btn-default' if can? :update, newsitem
+                  = link_to raw("<span class='glyphicon glyphicon-remove'></span> Delete"), newsitem,:class => 'btn btn-default', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
+    = link_to "Meer nieuws", newsitems_path, :class =>  'pull-right'
+    = link_to raw("<span class='glyphicon glyphicon-plus'></span> Maak aan"), new_newsitem_path,:class => 'btn btn-default' if can? :create, Newsitem 
+  .col-lg-5
     .row
-      .span6.agenda
+      .col-lg-12.agenda
         %h1 Agenda
         - @agendaitems.each do |agendaitem|
-          .row
-            .span6
-              = link_to agendaitem do
-                = agendaitem.name
-              = l agendaitem.date, :format => :only_date
-                
+          .agenda-item
+            = link_to agendaitem do
+              = agendaitem.name
+            = l agendaitem.date, :format => :only_date
+  .col-lg-5
     .row
-      .span6
-        %br
-        %h1 Sponsors
-        = link_to image_tag("RC_Enschede-PMS.jpg"), "http://www.runenschede.nl/"
-        = link_to image_tag("sportraad_logo_125x110.gif"), "http://sportraadut.nl"
-        
-    .row
-      .span6
+      .col-lg-12
         %br
         %h1 Youtube
         %br
@@ -86,6 +58,32 @@
         }
         });
         </script>
+
+  -if user_signed_in?
+    .col-lg-5
+      .row
+        .col-lg-12
+          %h1 Verjaardagen
+          %ul{:class=>'nav nav-pills nav-stacked'}
+            -@birthdays.sort().each do |user|
+              %li
+                %a{:href=>user_url(user)}
+                  - if user.days_until_birthday == 0
+                    %span{:class=>"label label-success pull-right"} 
+                      vandaag
+                  - else
+                    %span{:class=>"label label-default pull-right"} 
+                      = l user.birthdate, :format => :only_date                    
+                  = user.name
+
+
+          
+            
+              
+
+        
+
+          
     
     
   

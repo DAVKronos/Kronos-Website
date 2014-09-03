@@ -1,72 +1,121 @@
-%h1 Kronos agenda
-%br
-.span12
-  .row
+.row
+  .col-lg-12
+    %h1.push-down-for-logo
+      Kronos Agenda - 
+      - if @agendaitems.first
+        = I18n.localize(@agendaitems.first.date.to_date)
+.row
+  .col-lg-8
     - @agendaitems.each do |agendaitem|
-      .span6
-        .row
-          - if agendaitem.intern
-            %h2{:class => "kronosactiviteit"}
-              = link_to agendaitem.name, agendaitem
-          - else
-            %h2
-              = link_to agendaitem.name, agendaitem
-        .row
-          .span5
-            .row
-              %hr{:class => "no-margin"}
-        .row
-          .span3
-            .row
-              = agendaitem.agendaitemtype.name + ' - ' if agendaitem.agendaitemtype
-              = l agendaitem.date, :format => :long
-          - if can? :update, agendaitem
-            .span2
+      .row.activityoverview
+        .col-lg-12
+          .row
+            %div{:class => (agendaitem.subscribe? ? 'col-lg-8' : 'col-lg-12')}
               .row
-                = link_to('Bewerken', edit_agendaitem_path(agendaitem))
-                - if can? :destroy, agendaitem
-                  |
-                  = link_to('Verwijderen', agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete)
-        .row
-          %br
-          %p
-            = simple_format(agendaitem.description)
-        .row
-          .span4
-            .row
-              Inschrijving:
-              - if agendaitem.subscribe
-                %i{:class => "icon-ok-sign"}
-                - if ((agendaitem.subscriptiondeadline - Time.now) > 0)
-                  nog
-                  = h distance_of_time_in_words(agendaitem.subscriptiondeadline, Time.now)
-                - else 
-                  Gesloten 
+                .col-lg-12
+                  %h2.head.no-space.start
+                    = agendaitem.name
+              .row
+                .col-lg-6
+                  Wat:
+                  = if agendaitem.intern; 'Kronos ' else 'Externe ' end
+                  = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
+                .col-lg-6
+                  Wanneer:
+                  = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
+              .row
+                .col-lg-6
+                  Waar:
+                  = agendaitem.location
+                .col-lg-6
+                  = link_to agendaitem.get_url_name, agendaitem.get_url
+              .row
+                .col-lg-12
+                  .description
+                    = simple_format(agendaitem.description)
+                
+            - if agendaitem.subscribe
+              .col-lg-4
+                .row
+                  .col-lg-12
+                    %h2.head.no-space.end
+                      %span{:class => "glyphicon white glyphicon-play"}
+                      Subscriptions
+                .row
+                  .col-lg-12
+                    - if current_user
+                      - agendaitem.subscriptions.each do |subscription|
+                        .row
+                          .col-lg-12
+                            - if subscription.user
+                              = link_to subscription.user.name, subscription.user, :class => "subscriptionrow"
+                            - else
+                              %a{:class => "subscriptionrow"}
+                                = subscription.name
+                            
+          .row
+            %div{:class => (agendaitem.subscribe? ? 'col-lg-8' : 'col-lg-12')}
+              .foot.no-space.start
+                = link_to 'Lees meer', agendaitem_path(agendaitem)
+            - if agendaitem.subscribe
+              .col-lg-4
+                .foot.no-space.end
+                  = link_to 'Subscribe', agendaitem_path(agendaitem), :class => "subscribebutton"
+      
+  .col-lg-4
+    .row
+      - if @agendaitems.first
+        - fdat = @agendaitems.first.date.strftime("%Y-%m")
+      - else
+        - fdat = '0000-00'
+      .monthpicker{"data-selected" => fdat}
+        - @cals.each_with_index do |cal, index|
+          %a{:class => "head", "data-toggle" => "#collapse"+index.to_s}
+            = I18n.localize(cal.second.to_date, :format => "%B")
+        - @cals.each_with_index do |cal, index|
+          %div{:class => "collapser", :id => "collapse"+index.to_s, "data-date" => cal.second.strftime("%Y-%m")}
+            = calendar(:year => cal.second.year, :month => cal.second.month, :first_day_of_week => 1) do |d|
+              - if @dates.keys.include?(d.strftime("%F"))
+                - link_to d.strftime("%d"), perdag_url(d.strftime("%F")), {:class => @dates[d.strftime("%F")]["htmlclass"], "data-toggle" => "tooltip", "title" => @dates[d.strftime("%F")]["tooltips"]}
               - else
-                %i{:class => "icon-remove-sign"}
-        .row
-          .span5
-            .row
-              %hr
-    .span12
-      .row
-        = will_paginate @agendaitems, :previous_label => '<', :next_label => '>'
-    - if can? :create, Agendaitem
-      .span6
-        .row
-          %h2{:class => "acties"}
-            Agenda - acties
-        .row
-          .span5
-            .row
-              %hr{:class => "no-margin"}
-        .row
-          %ul
-            %li
-              = link_to 'Nieuw agendapunt', new_agendaitem_path
-            %li
-              = link_to 'Archief bekijken', '/agendaitems/archief'
-        .row
-          .span5
-            .row
-              %hr
+                - '<div>' + d.strftime("%e") + '</div>'
+.row
+  .col-lg-12
+    = link_to 'Nieuw agendapunt', new_agendaitem_path
+
+:css
+  .activityoverview h2 {
+    line-height:31px;
+    padding-left: 10px;
+  }
+  .activityoverview .description {
+    border-top: 1px #7dbc53 solid;
+  }
+  .activityoverview .foot {
+    border-bottom: 1px #7dbc53 solid;
+    margin-bottom: 10px;
+  }
+  .activityoverview .foot {
+    text-align: right;
+  }
+  .activityoverview .foot a {
+    color: #7dbc53;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .activityoverview .foot a.subscribebutton {
+    color: #fff;
+    display: block;
+    background-color: #7dbc53;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 0px;
+  }
+  .activityoverview a.subscriptionrow {
+    display: block;
+    color: #000;
+    background-color: #ddd;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }

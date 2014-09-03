@@ -1,30 +1,24 @@
-.eventname-edit
-  .row
-    .span6
+.panel.panel-default
+  .panel-heading
+    %h3{:class=>'panel-title'}
       = event.eventtype.name
-    -if can? :destroy, event
-      .span0.offset5
-        =link_to raw("<i class='icon-remove'></i>"), event, confirm: 'Weet je het zeker?', method: :delete
-%ul
-  - event.results.each do |result|
-    %li
-      = result.username
-      prestatie:
-      = result.result
-      score:
-      = number_to_human result.calculatedResult, :precision => 2, :significant => false
-      = result.event.eventtype.calculated_unit
-= nested_form_for event,{:remote => true, :html => {:class => "resultform form-inline"}} do |f|
-  = f.fields_for :results do |result_field|
-    .row
-      .span8
-        - nameArray = []
-        - User.all.each do |user|
-          - nameArray << user.name
-        = result_field.text_field :username, :class => :typeahead , "data-source" => "#{nameArray}", "data-provide" => "typeahead"
-        = result_field.text_field :result, :placeholder => "Prestatie"
-        = result_field.link_to_remove "Verwijder deze uitslag" if can? :destroy, Result
-  .row
-    .span3
-      = f.link_to_add "Voeg een uitslag toe", :results
-      = f.submit :class => "btn btn-success"
+      = ' - ' + event.distance.to_s  + 'm'  unless (event.distance.nil?||event.distance==0)       
+  %table{:class=>'table'}
+    %tbody
+      - event.results.each do |result|
+        %tr
+          %td= result.username
+          %td
+            = result.result
+            - if result.place
+              = '(' + result.place.to_s + 'e)'
+            = number_to_human result.calculatedResult, :precision => 2, :significant => false
+            = result.event.eventtype.calculated_unit
+          %td
+            = link_to "verwijder", result, :class => 'btn btn-danger btn-xs', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, result
+  .panel-body
+    = render :partial => "events/form", :locals => { :event => event }
+    
+  -if can? :destroy, event
+    .panel-footer
+      =link_to 'Evenement verwijderen', event, confirm: 'Weet je het zeker?', method: :delete,:class => 'btn btn-danger'

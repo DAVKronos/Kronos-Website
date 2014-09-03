@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
+  skip_load_resource :only => :create
   
   def new
     @user = User.new
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
 			end
       redirect_to user
     else
+	  @user = user
       render 'new'
     end
   end
@@ -27,13 +29,48 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
   end
+
+  def overview
+
+    if current_user 
+      if current_user.admin? # Dan mag veel
+        @users, @alphaParams = User.where(:user_type_id => params[:user_type_id]).alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes = UserType.all
+      elsif ([1,2,8].include? current_user.user_type_id) && ([1,2,8].include? params[:user_type_id] ) # Dan mag alleen in [1,2,8]
+        @users, @alphaParams = User.where(:user_type_id => params[:user_type_id]).alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes.keep_if {|u| [1,2,8].include? u.id}
+      elsif current_user.user_type_id == params[:user_type_id] && !([9].include? current_user.user_type_id) # Dan mag alleen in eigen groep         
+        @users, @alphaParams = User.where(:user_type_id => params[:user_type_id]).alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes = UserType.all.keep_if {|u| u.id==current_user.user_type_id};
+      else #anders niks
+        @usertypes, @users, @alphaParams = [];
+      end
+    end
+   
+    respond_to do |format|
+        format.html
+      end
+  end
   
   def index
-    if current_user && current_user.admin?
-       @users = User.order('name asc').paginate(:page => params[:page], :per_page => 12)
-    else
-      @users = User.where(:user_type_id => [1,2]).order('name asc').paginate(:page => params[:page], :per_page => 12)
+
+    if current_user 
+      
+      if current_user.admin?
+        @users, @alphaParams = User.where('user_type_id not in (?)', [9]).order('name asc').alpha_paginate(params[:letter],{:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes = UserType.all;
+      elsif [1,2,8].include? current_user.user_type_id
+        @users, @alphaParams = User.where(:user_type_id => [1,2,8]).order('name asc').alpha_paginate(params[:letter], {:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes = UserType.all.keep_if {|u| [1,2,8].include? u.id};
+      elsif !([9].include? current_user.user_type_id)  
+        @users, @alphaParams = User.where(:user_type_id => current_user.user_type_id).order('name asc').alpha_paginate(params[:letter], {:include_all=>false,:js=>true,:bootstrap3=>true}){|user| user.name}
+        @usertypes = UserType.all.keep_if {|u| u.id == current_user.user_type_id};
+      else 
+        @usertypes, @users, @alphaParams = []; 
+      end
+
     end
+
     respond_to do |format|
           format.html
           format.pdf do
@@ -85,6 +122,7 @@ class UsersController < ApplicationController
   def xtracard
     @users = User.where(:user_type_id => [1,2])
   end
+  
 
   private
     def user_current_user?

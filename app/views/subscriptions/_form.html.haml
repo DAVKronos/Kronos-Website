@@ -1,0 +1,36 @@
+- nameArray = []
+- User.all.each do |user|
+  - nameArray << user.name
+
+= form_for(@subscription, :url => "subscriptions") do |f|
+  = f.text_field :name, :class => 'typeahead form-control', :placeholder => t(:name).capitalize, :size=>'40'
+  = f.label :opmerking
+  = f.text_area(:comment, :rows => "5", :class => "input-xlarge")
+  = f.submit :class => "btn btn-success", :value => "Inschrijven"
+
+  :javascript
+    var substringMatcher = function(strs) {
+      return function findMatches(q, cb) {
+      var matches, substringRegex;
+      matches = [];
+      substrRegex = new RegExp(q, 'i');
+      $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+      matches.push({ value: str });
+      }
+      });
+      cb(matches);
+      };
+    };
+    var states = #{nameArray};
+    $('.typeahead').typeahead({
+      hint: true,
+      highlight: true,
+      minLength: 1
+      },
+      {
+      name: 'states',
+      displayKey: 'value',
+      source: substringMatcher(states)
+    });
+

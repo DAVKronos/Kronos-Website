@@ -2,6 +2,7 @@ class KronometersController < ApplicationController
   authorize_resource
   def index
     @kms = Kronometer.all
+    @users = User.where(:papieren_kronometer => true)
   end
   
   def new
@@ -38,5 +39,15 @@ class KronometersController < ApplicationController
     km.destroy
     redirect_to kronometers_path
     flash[:success] = "Kronometer succesvol verwijderd"
+  end
+  
+  def labels
+    @users = User.where(:papieren_kronometer => true)
+    
+    respond_to do |format|
+      format.pdf do
+        render :pdf => "kronometer stickers #{Time.now}"
+      end
+    end
   end
 end

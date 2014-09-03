@@ -14,4 +14,10 @@
 class Subscription < ActiveRecord::Base
   belongs_to :user
   belongs_to :agendaitem
+  
+  def detectUser(val)
+    user = User.find_by_name(val)
+    self[:user_id] = user.id if user
+    self[:name] = val
+  end
 end

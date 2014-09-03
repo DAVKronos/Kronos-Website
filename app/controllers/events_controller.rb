@@ -67,7 +67,7 @@ class EventsController < ApplicationController
   # PUT /events/1
   def update
     @event = Event.find(params[:id])
-
+	
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html do

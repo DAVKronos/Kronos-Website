@@ -1,0 +1,59 @@
+@import "variables";
+
+/**** MENU ****/
+header {
+	margin:0 -15px 0 -15px;
+}
+
+#navbar-kronos .kronos-logo {
+	position: absolute;
+	top: -25px;
+	left:-10px;
+	z-index:100;
+	font-size: 18px;
+}
+
+#navbar-kronos.navbar {
+	margin-bottom:15px;
+	background: $dark-green;
+	border-radius:0;
+}
+
+#navbar-kronos ul.navbar-nav {
+	width:100%;
+	border:0;
+	padding:0 0 0 80px;
+}
+
+#navbar-kronos .navbar-toggle .icon-bar {
+	background:#CCC;
+}
+
+#navbar-kronos .login-menu {
+	float:right;
+}
+
+#navbar-collapse-kronos {
+ 
+}
+
+#navbar-kronos .nav > li > a {
+	color: #ffffff;
+	background:none;
+}
+
+#navbar-kronos .nav > li > a:hover {
+	color: #7dbc53;
+	background:none;
+}
+
+#navbar-kronos .nav .caret {
+	border-top-color: #7dbc53;
+	border-bottom-color: #7dbc53;
+}
+
+#subnav {
+	background: white;
+	border-bottom: 3px solid #7dbc53;
+	color: black;
+}

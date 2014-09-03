@@ -2,18 +2,71 @@ class AgendaitemsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @agendaitems = Agendaitem.where("date >= ?", Time.now).paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
+#    @agendaitems = Agendaitem.where("date >= ?", Time.now).paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
+    @agendaitems = Agendaitem.where("date >= ?", Time.now).order("date ASC");
+  	@dates = Hash.new;
+  	@cals = Hash.new;
+    @agendaitems.each do |d|
+      if !d.agendaitemtype.is_match
+  			if @dates[d.date.strftime("%F")]
+  				@dates[d.date.strftime("%F")]["htmlclass"] = "activity";
+  				@dates[d.date.strftime("%F")]["tooltips"] += "";
+  			else
+  				@dates[d.date.strftime("%F")] = {"htmlclass" => "activity", "tooltips" => ""};
+  			end
+  		else
+  			if !@dates[d.date.strftime("%F")]
+  				@dates[d.date.strftime("%F")] = {"htmlclass" => "match", "tooltips" => ""};
+  			else
+  				@dates[d.date.strftime("%F")]["tooltips"] += "";
+  			end
+  		end
+  		@dates[d.date.strftime("%F")]["tooltips"] += d.name + "";
+  		@cals[d.date.strftime("%Y-%m")] = d.date;
+  	end
+  	@agendaitems = @agendaitems.take(2);
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: Agendaitem.search(params[:q],10)}
+    end
+  end
+  
+  def perdag
+    days = Agendaitem.where("date >= ?", Time.now).order("date ASC");
+	@dates = Hash.new;
+	@cals = Hash.new;
+    days.each do |d|
+	    if !d.agendaitemtype.is_match
+			if @dates[d.date.strftime("%F")]
+				@dates[d.date.strftime("%F")]["htmlclass"] = "activity";
+				@dates[d.date.strftime("%F")]["tooltips"] += "
+";
+			else
+				@dates[d.date.strftime("%F")] = {"htmlclass" => "activity", "tooltips" => ""};
+			end
+		else
+			if !@dates[d.date.strftime("%F")]
+				@dates[d.date.strftime("%F")] = {"htmlclass" => "match", "tooltips" => ""};
+			else
+				@dates[d.date.strftime("%F")]["tooltips"] += "
+";
+			end
+		end
+		@dates[d.date.strftime("%F")]["tooltips"] += d.name + "";
+		@cals[d.date.strftime("%Y-%m")] = d.date;
+	end
+	@agendaitems = Agendaitem.where(:date => (Time.parse(params[:day]).midnight)..(Time.parse(params[:day]).midnight + 1.day)).order("date ASC");
+	render :action => "index"
   end
   
   def wedstrijden
     @agendaitems = Agendaitem.joins(:agendaitemtype).where(:agendaitemtypes => {:is_match => true}).where("date >= ?", Time.now).paginate(:page => params[:page], :per_page => 10)
-    render :action => "index"    
+    render :action => "archief"    
   end
   
   def archief
     @agendaitems = Agendaitem.paginate(:page => params[:page], :order => 'date DESC', :per_page => 10)
-    
-    render :action => "index"
   end
 
   def new
@@ -21,6 +74,10 @@ class AgendaitemsController < ApplicationController
     @agendaitem.date = Time.now
     @agendaitem.subscriptiondeadline = Time.now
     @commissions = current_user.admin? ? Commission.all : current_user.commissions
+    @agendaitemtypes = Agendaitemtype.all
+#    @agendaitemtypes.each do |item|
+#      @selects[item.id] = options_for_select(item.eventtypes.collect { |p| [p.name, p.id] })
+#    end
   end
   
   def show
@@ -36,7 +93,7 @@ class AgendaitemsController < ApplicationController
       end
       if (defined?(@subscriptionbestaand)).nil?
         @subscription = Subscription.new
-        @subscription.name = current_user.name.split[0]
+        @subscription.name = current_user.name
         @subscription.agendaitem = @agendaitem
       end
     end
@@ -44,6 +101,7 @@ class AgendaitemsController < ApplicationController
 
   def create
     @agendaitem = Agendaitem.new(params[:agendaitem])
+	@agendaitem.user = current_user
     
     respond_to do |format|
       if @agendaitem.save
@@ -69,6 +127,7 @@ class AgendaitemsController < ApplicationController
   def edit
     @agendaitem = Agendaitem.find(params[:id])
     @commissions = current_user.admin? ? Commission.all : current_user.commissions
+    @agendaitemtypes = Agendaitemtype.all
   end
 
   def update
@@ -77,7 +136,6 @@ class AgendaitemsController < ApplicationController
     @agendaitem.comments.each do |comment|
         comment.user = current_user if comment.new_record?
     end
-    
 
     respond_to do |format|
       if @agendaitem.save

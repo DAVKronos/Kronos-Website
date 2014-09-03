@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705110440) do
+ActiveRecord::Schema.define(:version => 20140610071423) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20120705110440) do
     t.string   "category"
     t.boolean  "intern"
     t.integer  "agendaitemtype_id"
+    t.string   "url"
+    t.integer  "user_id"
   end
 
   create_table "agendaitemtype_eventtypes", :force => true do |t|
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20120705110440) do
     t.string   "email"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "role"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -95,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20120705110440) do
     t.string   "locked_by"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+    t.string   "queue"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
@@ -113,9 +117,11 @@ ActiveRecord::Schema.define(:version => 20120705110440) do
     t.string   "formula"
     t.string   "shortname"
     t.string   "measuringunit"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "calculated_unit"
+    t.boolean  "show_wind",       :default => false
+    t.string   "female_formula"
   end
 
   create_table "kronometers", :force => true do |t|
@@ -168,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20120705110440) do
     t.integer  "photoalbum_id"
     t.string   "youtube_id"
     t.boolean  "processing"
+    t.datetime "exif_date"
   end
 
   create_table "results", :force => true do |t|
@@ -177,6 +184,8 @@ ActiveRecord::Schema.define(:version => 20120705110440) do
     t.datetime "updated_at", :null => false
     t.integer  "event_id"
     t.integer  "user_id"
+    t.decimal  "wind"
+    t.integer  "place"
   end
 
   create_table "subscriptions", :force => true do |t|
@@ -242,6 +251,7 @@ ActiveRecord::Schema.define(:version => 20120705110440) do
     t.integer  "user_type_id"
     t.string   "bank_account_number"
     t.string   "xtracard"
+    t.string   "iban"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

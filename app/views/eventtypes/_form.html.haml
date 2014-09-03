@@ -6,6 +6,9 @@
 
   = f.label :formula 
   = f.text_field :formula
+  
+  = f.label :female_formula
+  = f.text_field :female_formula
     
   = f.label :calculated_unit
   = f.text_field :calculated_unit
@@ -15,6 +18,9 @@
 
   = f.label :measuringunit 
   = f.text_field :measuringunit
+  
+  = f.label :show_wind
+  = f.check_box :show_wind
 
   = f.label :agendaitemtypes
   = f.fields_for :agendaitemtype_eventtypes do |agendaitemtypeform|

@@ -1,0 +1,13 @@
+.row
+  .col-lg-12
+    %h1 Photoalbum bewerken
+
+.row
+  .col-lg-12
+    = render 'form'
+
+.row
+  .col-lg-12
+    = link_to 'Bekijk', @photoalbum
+    |
+    = link_to 'Terug', photoalbums_path

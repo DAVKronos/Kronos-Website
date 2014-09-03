@@ -1,0 +1,68 @@
+.row
+  .col-lg-12
+    %h1.push-down-for-logo Kronos agenda
+
+.row
+  - @agendaitems.each do |agendaitem|
+    .col-lg-6
+      .row
+        .col-lg-12
+          - if agendaitem.intern
+            %h2{:class => "kronosactiviteit"}
+              = link_to agendaitem.name, agendaitem
+          - else
+            %h2
+              = link_to agendaitem.name, agendaitem
+      .row
+        .col-lg-12
+          %hr{:class => "no-margin"}
+      .row
+        .col-lg-8
+          = agendaitem.agendaitemtype.name + ' - ' if agendaitem.agendaitemtype
+          = l agendaitem.date, :format => :long
+        - if can? :update, agendaitem
+          .col-lg-4
+            = link_to('Bewerken', edit_agendaitem_path(agendaitem))
+            - if can? :destroy, agendaitem
+              |
+              = link_to('Verwijderen', agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete)
+      .row
+        .col-lg-12
+          %p
+            = simple_format(agendaitem.description)
+      .row
+        .col-lg-12
+          Inschrijving:
+          - if agendaitem.subscribe
+            %span{:class => "glyphicon glyphicon-ok-sign"}
+            - if ((agendaitem.subscriptiondeadline - Time.now) > 0)
+              nog
+              = h distance_of_time_in_words(agendaitem.subscriptiondeadline, Time.now)
+            - else
+              Gesloten
+          - else
+            %span{:class => "glyphicon glyphicon-remove-sign"}
+      .row
+        .col-lg-12
+          %hr
+
+.row
+  .col-lg-12
+    = will_paginate @agendaitems, :previous_label => '<', :next_label => '>'
+
+- if can? :create, Agendaitem
+  .row
+    .col-lg-12
+      %h2{:class => "acties"}
+        Agenda - acties
+    .col-lg-12
+      %hr{:class => "no-margin"}
+    .col-lg-12
+      %ul
+        %li
+          = link_to 'Nieuw agendapunt', new_agendaitem_path
+        %li
+          = link_to 'Archief bekijken', '/agendaitems/archief'
+.row
+  .col-lg-12
+    %hr

@@ -1,8 +1,12 @@
-div#multicolumn {
-	-moz-column-count: 3;
+#multicolumn {
+	-moz-column-count: 2;
 	-moz-column-gap: 20px;
-	-webkit-column-count: 3;
+	-webkit-column-count: 2;
 	-webkit-column-gap: 20px;
-	column-count: 3;
+	column-count: 2;
 	column-gap: 20px;
+}
+
+#multicolumn > p {
+	display:inline-block;
 }
