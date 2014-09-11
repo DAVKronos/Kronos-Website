@@ -6,6 +6,22 @@
     %br
     Aantal: #{ut.first.user_type.users.count}
     %br
-    - ut.each do |user|
-      #{user.name}    #{user.initials}    #{user.iban}    #{user.bank_account_number}
-      %br
+    %table
+      - ut.each do |user|
+        %tr
+          %td
+            = user.sex
+          %td
+            #{user.name}, #{user.initials}
+          %td
+            = user.address
+          %td
+            = user.postalcode
+          %td
+            = user.city
+          %td
+            = l @user.birthdate, :format => :default
+          %td
+            = user.licensenumber
+          %td
+            #{user.iban}
