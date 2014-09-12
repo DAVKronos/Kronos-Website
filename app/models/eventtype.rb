@@ -10,6 +10,8 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  calculated_unit :string(255)
+#  show_wind       :boolean          default(FALSE)
+#  female_formula  :string(255)
 #
 
 class Eventtype < ActiveRecord::Base

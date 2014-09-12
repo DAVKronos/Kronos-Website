@@ -13,6 +13,7 @@
 #  photoalbum_id      :integer
 #  youtube_id         :string(255)
 #  processing         :boolean
+#  exif_date          :datetime
 #
 
 class Photo < ActiveRecord::Base

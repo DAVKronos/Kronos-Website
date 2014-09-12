@@ -9,6 +9,8 @@
 #  updated_at :datetime         not null
 #  event_id   :integer
 #  user_id    :integer
+#  wind       :decimal(, )
+#  place      :integer
 #
 
 class Result < ActiveRecord::Base

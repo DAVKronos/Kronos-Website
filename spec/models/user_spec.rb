@@ -32,6 +32,7 @@
 #  user_type_id           :integer
 #  bank_account_number    :string(255)
 #  xtracard               :string(255)
+#  iban                   :string(255)
 #
 
 require 'spec_helper'
