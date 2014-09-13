@@ -70,7 +70,7 @@ group :development do
 	gem 'guard-spork', '~> 1.5.1'
   gem 'sqlite3', '~> 1.3.8'
 	if RUBY_PLATFORM =~ /darwin/
-		gem 'terminal-notifier-guard'
+		gem 'growl'
 	end
 end
 
