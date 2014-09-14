@@ -18,7 +18,7 @@ gem "bootstrap-will_paginate", '~> 0.0.6'
 gem "chronic_duration", '~> 0.9.6'
 gem 'math_engine', '~> 0.3.0', :git => 'git://github.com/dmarczal/math_engine.git'
 gem 'client_side_validations', '~> 3.2.0.beta.6'
-gem 'localeapp', '~> 0.6.12'
+gem 'localeapp'
 gem 'redcarpet', '~> 2.3.0'
 gem 'rakismet', '~> 1.4.0'
 gem 'wicked_pdf', '~> 0.9.7'
@@ -78,3 +78,5 @@ end
 group :test, :production do
   gem 'pg', '~> 0.17.0'
 end
+
+gem "codeclimate-test-reporter", group: :test, require: nil

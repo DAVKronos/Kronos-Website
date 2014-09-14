@@ -39,9 +39,6 @@ user = User.create({:name => "Leon Schenk",
                   :password_confirmation => "Foobar"}, 
                   :as => :bestuur)
                   
-user.user_type = usertype_proeflid
-
-user.save()
                   
 com = Commission.create({:name => "Bestuur",
                    :email => "bestuur@kronos.nl",

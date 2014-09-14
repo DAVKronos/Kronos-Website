@@ -1,398 +1,111 @@
 nl:
-  recaptcha:
-    errors:
-      incorrect-captcha-sol: Vul a.u.b. de captcha goed in
-  error: fout weerhield
-  errorpl: fouten weerhielden
-  sign_up: inschrijven
-  name: naam
-  initials: initialen
-  birthdate: geboortedatum
-  email: email
-  address: adres
-  licensenumber: licentienummer
-  postalcode: postcode
-  city: stad
-  sex: geslacht
-  papieren_kronometer: papieren kronometer
-  edit: aanpassen
-  commission: commissie
-  new_commission: nieuwe commissie
-  function: functie
-  description: beschrijving
-  iban: IBAN
-  date:
-    formats:
-      default: ! '%d-%m-%Y'
-      short: ! '%e %b'
-      medium: ! '%e %B'
-      long: ! '%e %B %Y'
-      only_day: ! '%e'
-      only_date: ! '%e %B'
-    day_names:
-    - zondag
-    - maandag
-    - dinsdag
-    - woensdag
-    - donderdag
-    - vrijdag
-    - zaterdag
-    abbr_day_names:
-    - zon
-    - maa
-    - din
-    - woe
-    - don
-    - vri
-    - zat
-    month_names:
-    - 
-    - januari
-    - februari
-    - maart
-    - april
-    - mei
-    - juni
-    - juli
-    - augustus
-    - september
-    - oktober
-    - november
-    - december
-    abbr_month_names:
-    - 
-    - jan
-    - feb
-    - mar
-    - apr
-    - mei
-    - jun
-    - jul
-    - aug
-    - sep
-    - okt
-    - nov
-    - dec
-    order:
-    - :day
-    - :month
-    - :year
-  time:
-    formats:
-      default: ! '%a %d %b %Y %H:%M:%S %Z'
-      short: ! '%d %b %H:%M'
-      medium: ! '%e %B %H:%M'
-      only_date: ! '%e %B'
-      long: ! '%d %B %Y %H:%M'
-      time: ! '%H:%M'
-      only_second: ! '%S'
-    am: ! '''s ochtends'
-    pm: ! '''s middags'
-  support:
-    array:
-      words_connector: ! ', '
-      two_words_connector: ! ' en '
-      last_word_connector: ! ' en '
-    select:
-      prompt: Selecteer
-  number:
-    format:
-      separator: ! ','
-      delimiter: .
-      precision: 2
-      significant: false
-      strip_insignificant_zeros: false
-    currency:
-      format:
-        format: ! '%u%n'
-        unit: €
-        separator: ! ','
-        delimiter: .
-        precision: 2
-        significant: false
-        strip_insignificant_zeros: false
-    percentage:
-      format:
-        delimiter: ''
-    precision:
-      format:
-        delimiter: ''
-    human:
-      format:
-        delimiter: ''
-        precision: 3
-        significant: true
-        strip_insignificant_zeros: true
-      storage_units:
-        format: ! '%n %u'
-        units:
-          byte:
-            one: Byte
-            other: Bytes
-          kb: KB
-          mb: MB
-          gb: GB
-          tb: TB
-      decimal_units:
-        format: ! '%n %u'
-        units:
-          unit: ''
-          thousand: duizend
-          million: miljoen
-          billion: miljard
-          trillion: biljoen
-          quadrillion: biljard
-  datetime:
-    distance_in_words:
-      half_a_minute: een halve minuut
-      less_than_x_seconds:
-        one: minder dan één seconde
-        other: minder dan %{count} seconden
-      x_seconds:
-        one: 1 seconde
-        other: ! '%{count} seconden'
-      less_than_x_minutes:
-        one: minder dan één minuut
-        other: minder dan %{count} minuten
-      x_minutes:
-        one: 1 minuut
-        other: ! '%{count} minuten'
-      about_x_hours:
-        one: ongeveer één uur
-        other: ongeveer %{count} uur
-      x_days:
-        one: 1 dag
-        other: ! '%{count} dagen'
-      about_x_months:
-        one: ongeveer één maand
-        other: ongeveer %{count} maanden
-      x_months:
-        one: 1 maand
-        other: ! '%{count} maanden'
-      about_x_years:
-        one: ongeveer één jaar
-        other: ongeveer %{count} jaar
-      over_x_years:
-        one: meer dan één jaar
-        other: meer dan %{count} jaar
-      almost_x_years:
-        one: bijna één jaar
-        other: bijna %{count} jaar
-    prompts:
-      year: jaar
-      month: maand
-      day: dag
-      hour: uur
-      minute: minuut
-      second: seconde
-  helpers:
-    select:
-      prompt: Selecteer
-    submit:
-      create: ! '%{model} toevoegen'
-      update: ! '%{model} bewaren'
-      submit: ! '%{model} opslaan'
-      agendaitem:
-        update: Agendaitem bewaren
-        create: Agendaitem toevoegen
-      chatmessage:
-        create: Bericht toevoegen
-      event:
-        create: Event toevoegen
-        update: Event bewaren
-      eventtype:
-        create: Eventtype toevoegen
-        update: Eventtype bewaren
-      result:
-        create: Result toevoegen
-      page:
-        create: Page toevoegen
-        update: Update Page
-      comment:
-        create: Comment toevoegen
-      newsitem:
-        create: Newsitem toevoegen
-        update: Newsitem bewaren
-      photoalbum:
-        create: Fotoalbum toevoegen
-        update: Fotoalbum bewaren
-      subscription:
-        create: Create Subscription
-      commission:
-        update: Update Commission
-        create: Create Commission
-      agendaitem[comments_attributes][0]:
-        create: Create Comment
-        update: Update Comment
-      agendaitem[comments_attributes][1]:
-        update: Update Comment
-      agendaitem[comments_attributes][2]:
-        create: Create Comment
-    label:
-      comment:
-        commenttext: 
-      newsitem:
-        nieuwsbericht: 
-        profielfoto: 
-        titel: 
-      user:
-        email: 
-        password: 
-        remember_me: 
-        initials: 
-        name: 
-        phonenumber: 
-        address: 
-        bankaccountnumber: 
-        birthdate: 
-        city: 
-        iban: 
-        licensenumber: 
-        lidtype: 
-        postalcode: 
-        profielfoto: 
-        sex: 
-        xtracardnumber: 
-      agendaitem:
-        agendaitemtype: 
-        commission: 
-        date: 
-        description: 
-        Kronos Activiteit: 
-        location: 
-        name: 
-        subscribe: 
-        subscriptiondeadline: 
-        url: 
-        events:
-          Afstand: 
-          Tijd: 
-          Type: 
-      agendaitem[events_attributes][new_events]:
-        Afstand: 
-        Tijd: 
-        Type: 
-      photoalbum:
-        agendaitem: 
-        name: 
-      commission:
-        description: 
-        name: 
-        commission_memberships:
-          function: 
-        email: 
-        role: 
-      commission[commission_memberships_attributes][new_commission_memberships]:
-        function: 
-      page:
-        information: 
-        title: 
-      subscription:
-        opmerking: 
-      event:
-        Afstand: 
-        Tijd: 
-        Type: 
-      result:
-        username: 
-        place: 
-        result: 
-  errors:
-    format: ! '%{attribute} %{message}'
-    messages:
-      inclusion: is niet in de lijst opgenomen
-      exclusion: is niet beschikbaar
-      invalid: is ongeldig
-      confirmation: komt niet met de bevestiging overeen
-      accepted: moet worden geaccepteerd
-      empty: moet opgegeven zijn
-      blank: moet opgegeven zijn
-      too_long: is te lang (maximaal %{count} tekens)
-      too_short: is te kort (minimaal %{count} tekens)
-      wrong_length: heeft onjuiste lengte (moet %{count} tekens lang zijn)
-      not_a_number: is geen getal
-      not_an_integer: moet een geheel getal zijn
-      greater_than: moet groter zijn dan %{count}
-      greater_than_or_equal_to: moet groter dan of gelijk zijn aan %{count}
-      equal_to: moet gelijk zijn aan %{count}
-      less_than: moet minder zijn dan %{count}
-      less_than_or_equal_to: moet minder dan of gelijk zijn aan %{count}
-      odd: moet oneven zijn
-      even: moet even zijn
-      record_invalid: ! 'Validatie mislukt: %{errors}'
-      taken: is al in gebruik
-      already_confirmed: is reeds bevestigd
-      expired: is verlopen, vraag een nieuwe aan
-      not_found: niet gevonden
-      not_locked: is niet gesloten
-      not_saved:
-        one: ! '1 error verhinderde het opslaan van deze %{resource}:'
-        other: ! '%{count} errors verhinderde het opslaan van deze %{resource}:'
-    template:
-      body: ! 'Controleer de volgende velden:'
-      header:
-        one: ! '%{model} niet opgeslagen: 1 fout gevonden'
-        other: ! '%{model} niet opgeslagen: %{count} fouten gevonden'
   activerecord:
+    attributes:
+      agendaitem:
+        Kronos Activiteit: Kronos activiteit
+        agendaitemtype: Agendaitemtype
+        commission: Commission
+        date: Date
+        description: Description
+        location: Location
+        name: Name
+        subscribe: Subscribe
+        subscriptiondeadline: inschrijfdeadline
+        url: Url
+      agendaitemtype_eventtype:
+        eventtype_id: Eventtype
+      chatmessage:
+        bericht: Bericht
+        by: By
+        email: Email
+        message: Message
+      comment:
+        commenttext: Commenttext
+      commission:
+        description: Description
+        email: Email
+        name: Name
+        role: Role
+      commission_membership:
+        function: Function
+        user_id: User
+      event:
+        Afstand: Afstand
+        Tijd: Tijd
+        Type: Type
+      eventtype:
+        agendaitemtypes: Agendaitemtypes
+        calculated_unit: Calculated unit
+        female_formula: Female formula
+        formula: Formula
+        measuringunit: Measuringunit
+        name: Name
+        shortname: Shortname
+        show_wind: Show wind
+      newsitem:
+        articlephoto: Articlephoto
+        nieuwsbericht: Nieuwsbericht
+        profielfoto: Profielfoto
+        titel: Titel
+      page:
+        information: Information
+        title: Title
+      photoalbum:
+        agendaitem: Agendaitem
+        name: Name
+      result:
+        place: Place
+        result: Result
+        username: Username
+      subscription:
+        opmerking: Opmerking
+      user:
+        address: Adres
+        avatar: Avatar
+        bankaccountnumber: Bankaccountnumber
+        birthdate: Geboortedatum
+        city: Stad
+        email: Email
+        iban: Iban
+        initials: Initialen
+        licensenumber: Licentienummer
+        lidtype: Lidtype
+        name: Naam
+        password: Password
+        password_confirmation: Password confirmation
+        phonenumber: Phonenumber
+        postalcode: Postcode
+        profielfoto: Profielfoto
+        remember_me: Remember me
+        reset_password_token: Reset password token
+        sex: Geslacht
+        xtracardnumber: Xtracardnumber
     errors:
-      template:
-        header:
-          one: ! '%{model} niet opgeslagen: 1 fout gevonden'
-          other: ! '%{model} niet opgeslagen: %{count} fouten gevonden'
-        body: ! 'Controleer de volgende velden:'
+      full_messages:
+        format: ! '%{attribute} %{message}'
       messages:
-        taken: is al in gebruik
-        record_invalid: ! 'Validatie mislukt: %{errors}'
-        inclusion: is niet in de lijst opgenomen
-        exclusion: is niet beschikbaar
-        invalid: is ongeldig
-        confirmation: komt niet met de bevestiging overeen
         accepted: moet worden geaccepteerd
-        empty: moet opgegeven zijn
         blank: moet opgegeven zijn
+        confirmation: komt niet met de bevestiging overeen
+        empty: moet opgegeven zijn
+        equal_to: moet gelijk zijn aan %{count}
+        even: moet even zijn
+        exclusion: is niet beschikbaar
+        greater_than: moet groter zijn dan %{count}
+        greater_than_or_equal_to: moet groter dan of gelijk zijn aan %{count}
+        inclusion: is niet in de lijst opgenomen
+        invalid: is ongeldig
+        less_than: moet minder zijn dan %{count}
+        less_than_or_equal_to: moet minder dan of gelijk zijn aan %{count}
+        not_a_number: is geen getal
+        not_an_integer: moet een geheel getal zijn
+        odd: moet oneven zijn
+        record_invalid: ! 'Validatie mislukt: %{errors}'
+        taken: is al in gebruik
         too_long: is te lang (maximaal %{count} tekens)
         too_short: is te kort (minimaal %{count} tekens)
         wrong_length: heeft onjuiste lengte (moet %{count} tekens lang zijn)
-        not_a_number: is geen getal
-        not_an_integer: moet een geheel getal zijn
-        greater_than: moet groter zijn dan %{count}
-        greater_than_or_equal_to: moet groter dan of gelijk zijn aan %{count}
-        equal_to: moet gelijk zijn aan %{count}
-        less_than: moet minder zijn dan %{count}
-        less_than_or_equal_to: moet minder dan of gelijk zijn aan %{count}
-        odd: moet oneven zijn
-        even: moet even zijn
-      full_messages:
-        format: ! '%{attribute} %{message}'
       models:
-        user:
-          attributes:
-            avatar:
-              block: 1
-            address:
-              blank: moet opgegeven zijn
-            birthdate:
-              blank: moet opgegeven zijn
-            city:
-              blank: moet opgegeven zijn
-            email:
-              blank: moet opgegeven zijn
-              invalid: is ongeldig
-              taken: is al in gebruik
-            initials:
-              blank: moet opgegeven zijn
-            name:
-              blank: moet opgegeven zijn
-              invalid: is ongeldig
-            password:
-              blank: moet opgegeven zijn
-              confirmation: komt niet met de bevestiging overeen
-              too_long: is te lang (maximaal 128 tekens)
-              too_short: is te kort (minimaal 6 tekens)
-            postalcode:
-              blank: moet opgegeven zijn
-            sex:
-              blank: moet opgegeven zijn
         agendaitemtype_eventtype:
           attributes:
             eventtype_id:
@@ -415,119 +128,181 @@ nl:
           attributes:
             result:
               blank: moet opgegeven zijn
+        user:
+          attributes:
+            address:
+              blank: moet opgegeven zijn
+            avatar:
+              block: 1
+            birthdate:
+              blank: moet opgegeven zijn
+            city:
+              blank: moet opgegeven zijn
+            email:
+              blank: moet opgegeven zijn
+              invalid: is ongeldig
+              taken: is al in gebruik
+            initials:
+              blank: moet opgegeven zijn
+            name:
+              blank: moet opgegeven zijn
+              invalid: is ongeldig
+            password:
+              blank: moet opgegeven zijn
+              confirmation: komt niet met de bevestiging overeen
+              too_long: is te lang (maximaal 128 tekens)
+              too_short: is te kort (minimaal 6 tekens)
+            postalcode:
+              blank: moet opgegeven zijn
+            sex:
+              blank: moet opgegeven zijn
+      template:
+        body: ! 'Controleer de volgende velden:'
+        header:
+          one: ! '%{model} niet opgeslagen: 1 fout gevonden'
+          other: ! '%{model} niet opgeslagen: %{count} fouten gevonden'
     models:
-      user: Lid
-      photoalbum: Fotoalbum
-      result: Uitslag
-      event: Onderdeel
-      comment: Comment
-      newsitem: Newsitem
       agendaitem: Agendaitem
       chatmessage: Chatmessage
+      comment: Comment
       commission: Commission
+      event: Onderdeel
+      newsitem: Newsitem
       page: Page
+      photoalbum: Fotoalbum
+      result: Uitslag
       subscription: Subscription
-    attributes:
-      user:
-        name: Naam
-        initials: Initialen
-        birthdate: Geboortedatum
-        postalcode: Postcode
-        city: Stad
-        sex: Geslacht
-        licensenumber: Licentienummer
-        address: Adres
-        avatar: Avatar
-        bankaccountnumber: Bankaccountnumber
-        email: Email
-        lidtype: Lidtype
-        password: Password
-        phonenumber: Phonenumber
-        profielfoto: Profielfoto
-        xtracardnumber: Xtracardnumber
-        remember_me: Remember me
-        password_confirmation: Password confirmation
-        iban: Iban
-        reset_password_token: Reset password token
-      agendaitem:
-        Kronos Activiteit: Kronos activiteit
-        agendaitemtype: Agendaitemtype
-        commission: Commission
-        date: Date
-        description: Description
-        location: Location
-        name: Name
-        subscribe: Subscribe
-        subscriptiondeadline: Subscriptiondeadline
-        url: Url
-      event:
-        Afstand: Afstand
-        Tijd: Tijd
-        Type: Type
-      chatmessage:
-        bericht: Bericht
-        by: By
-        message: Message
-        email: Email
-      eventtype:
-        agendaitemtypes: Agendaitemtypes
-        calculated_unit: Calculated unit
-        formula: Formula
-        measuringunit: Measuringunit
-        name: Name
-        shortname: Shortname
-        female_formula: Female formula
-        show_wind: Show wind
-      agendaitemtype_eventtype:
-        eventtype_id: Eventtype
-      commission_membership:
-        function: Function
-        user_id: User
-      result:
-        result: Result
-        username: Username
-        place: Place
-      page:
-        information: Information
-        title: Title
-      comment:
-        commenttext: Commenttext
-      newsitem:
-        articlephoto: Articlephoto
-        nieuwsbericht: Nieuwsbericht
-        profielfoto: Profielfoto
-        titel: Titel
-      photoalbum:
-        agendaitem: Agendaitem
-        name: Name
-      subscription:
-        opmerking: Opmerking
-      commission:
-        description: Description
-        name: Name
-        email: Email
-        role: Role
-  edit_commission: Commissie aanpassen
-  distance:
-    centi:
-      one: centimeter
-      other: centimeter
-    thousand:
-      one: kilometer
-      other: kilometer
-    unit:
-      one: meter
-      other: meter
-  page_gap: ! '......'
-  remember_me: onthoud mij
-  next_label: volgende
-  previous_label: vorige
-  photos:
-    title: Foto's
-  will_paginate:
-    next_label: volgende →
-    page_gap: ! '&hellip;'
-    previous_label: ← vorige
+      user: Lid
+  address: adres
+  agendaitem:
+    Kronos Activiteit: 
+    agendaitemtype: 
+    commission: 
+    date: 
+    description: 
+    events:
+      Afstand: 
+      Tijd: 
+      Type: 
+    location: 
+    name: 
+    subscribe: 
+    subscriptiondeadline: 
+  agendaitem[events_attributes][new_events]:
+    Afstand: 
+    Tijd: 
+    Type: 
+  agendaitemtype_eventtype: Agendaitemtype eventtype
+  bankaccountnumber: Bankrekeningnummber
+  birthdate: geboortedatum
+  chatmessage:
+    bericht: 
+    page_title: Kronos kletsdoos
+  city: stad
+  comment:
+    commenttext: 
+  commission: commissie
+  commission_membership: Commission membership
+  date:
+    abbr_day_names:
+    - zon
+    - maa
+    - din
+    - woe
+    - don
+    - vri
+    - zat
+    abbr_month_names:
+    - 
+    - jan
+    - feb
+    - mar
+    - apr
+    - mei
+    - jun
+    - jul
+    - aug
+    - sep
+    - okt
+    - nov
+    - dec
+    day_names:
+    - zondag
+    - maandag
+    - dinsdag
+    - woensdag
+    - donderdag
+    - vrijdag
+    - zaterdag
+    formats:
+      default: ! '%d-%m-%Y'
+      long: ! '%e %B %Y'
+      medium: ! '%e %B'
+      only_date: ! '%e %B'
+      only_day: ! '%e'
+      short: ! '%e %b'
+    month_names:
+    - 
+    - januari
+    - februari
+    - maart
+    - april
+    - mei
+    - juni
+    - juli
+    - augustus
+    - september
+    - oktober
+    - november
+    - december
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: ongeveer één uur
+        other: ongeveer %{count} uur
+      about_x_months:
+        one: ongeveer één maand
+        other: ongeveer %{count} maanden
+      about_x_years:
+        one: ongeveer één jaar
+        other: ongeveer %{count} jaar
+      almost_x_years:
+        one: bijna één jaar
+        other: bijna %{count} jaar
+      half_a_minute: een halve minuut
+      less_than_x_minutes:
+        one: minder dan één minuut
+        other: minder dan %{count} minuten
+      less_than_x_seconds:
+        one: minder dan één seconde
+        other: minder dan %{count} seconden
+      over_x_years:
+        one: meer dan één jaar
+        other: meer dan %{count} jaar
+      x_days:
+        one: 1 dag
+        other: ! '%{count} dagen'
+      x_minutes:
+        one: 1 minuut
+        other: ! '%{count} minuten'
+      x_months:
+        one: 1 maand
+        other: ! '%{count} maanden'
+      x_seconds:
+        one: 1 seconde
+        other: ! '%{count} seconden'
+    prompts:
+      day: dag
+      hour: uur
+      minute: minuut
+      month: maand
+      second: seconde
+      year: jaar
+  description: beschrijving
   devise:
     confirmations:
       confirmed: Je account is bevestigd.
@@ -565,8 +340,8 @@ nl:
       signed_up_but_inactive: Je bent ingeschreven, maar we konden je niet inloggen omdat je account nog niet is geactiveerd.
       signed_up_but_locked: Je bent ingeschreven, maar we konden je niet inloggen omdat je account is gelocked.
       signed_up_but_unconfirmed: Een e-mail met een confirmatie link is naar je e-mail adres gestuurd. Open de link in je browser om je account te activeren.
-      updated: Je account gegevens zijn opgeslagen.
       update_needs_confirmation: Je account is geüpdatet, maar we moeten je e-mail adres nog valideren. Een e-mail met een confirmatie link is naar je e-mail adres gestuurd. Open de link in je browser om je e-mail adres te confirmeren.
+      updated: Je account gegevens zijn opgeslagen.
     sessions:
       signed_in: Je bent succesvol ingelogd.
       signed_out: Je bent succesvol uitgelogd.
@@ -574,95 +349,321 @@ nl:
       send_instructions: Je ontvangt via e-mail instructies hoe je je account kan unlocken.
       send_paranoid_instructions: Als we je e-mail adres terugvinden in onze database, zal je binnen enkele ogenblikken via e-mail, de instructies ontvangen hoe je je account kan unlocken.
       unlocked: Je account is ge-unlocked. Je kan nu weer inloggen.
-  sign_in: Inloggen
-  phonenumber: telefoonnummer
-  bankaccountnumber: Bankrekeningnummber
-  usertype: Lidtype
-  xtracardnumber: xtracardnummer
-  agendaitem:
-    Kronos Activiteit: 
-    agendaitemtype: 
-    commission: 
-    description: 
-    location: 
+  distance:
+    centi:
+      one: centimeter
+      other: centimeter
+    thousand:
+      one: kilometer
+      other: kilometer
+    unit:
+      one: meter
+      other: meter
+  edit: aanpassen
+  edit_commission: Commissie aanpassen
+  email: e-mail
+  error: fout weerhield
+  errorpl: fouten weerhielden
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: moet worden geaccepteerd
+      already_confirmed: is reeds bevestigd
+      blank: moet opgegeven zijn
+      confirmation: komt niet met de bevestiging overeen
+      empty: moet opgegeven zijn
+      equal_to: moet gelijk zijn aan %{count}
+      even: moet even zijn
+      exclusion: is niet beschikbaar
+      expired: is verlopen, vraag een nieuwe aan
+      greater_than: moet groter zijn dan %{count}
+      greater_than_or_equal_to: moet groter dan of gelijk zijn aan %{count}
+      inclusion: is niet in de lijst opgenomen
+      invalid: is ongeldig
+      less_than: moet minder zijn dan %{count}
+      less_than_or_equal_to: moet minder dan of gelijk zijn aan %{count}
+      not_a_number: is geen getal
+      not_an_integer: moet een geheel getal zijn
+      not_found: niet gevonden
+      not_locked: is niet gesloten
+      not_saved:
+        one: ! '1 error verhinderde het opslaan van deze %{resource}:'
+        other: ! '%{count} errors verhinderde het opslaan van deze %{resource}:'
+      odd: moet oneven zijn
+      record_invalid: ! 'Validatie mislukt: %{errors}'
+      taken: is al in gebruik
+      too_long: is te lang (maximaal %{count} tekens)
+      too_short: is te kort (minimaal %{count} tekens)
+      wrong_length: heeft onjuiste lengte (moet %{count} tekens lang zijn)
+    template:
+      body: ! 'Controleer de volgende velden:'
+      header:
+        one: ! '%{model} niet opgeslagen: 1 fout gevonden'
+        other: ! '%{model} niet opgeslagen: %{count} fouten gevonden'
+  event: Onderdeel
+  eventtype:
+    agendaitemtypes: 
+    calculated_unit: 
+    female_formula: 
+    formula: 
+    measuringunit: 
     name: 
-    subscribe: 
-    subscriptiondeadline: 
-    date: 
-    events:
-      Afstand: ''
-      Tijd: ''
-      Type: ''
-  agendaitem[events_attributes][new_events]:
-    Afstand: 
-    Tijd: 
-    Type: 
+    shortname: 
+    show_wind: 
+  function: functie
+  hello: 
+  helpers:
+    label:
+      agendaitem:
+        Kronos Activiteit: 
+        agendaitemtype: 
+        commission: 
+        date: 
+        description: 
+        events:
+          Afstand: 
+          Tijd: 
+          Type: 
+        location: 
+        name: 
+        subscribe: 
+        subscriptiondeadline: 
+        url: 
+      agendaitem[events_attributes][new_events]:
+        Afstand: 
+        Tijd: 
+        Type: 
+      comment:
+        commenttext: 
+      commission:
+        commission_memberships:
+          function: 
+        description: 
+        email: 
+        name: 
+        role: 
+      commission[commission_memberships_attributes][new_commission_memberships]:
+        function: 
+      event:
+        Afstand: 
+        Tijd: 
+        Type: 
+      newsitem:
+        nieuwsbericht: 
+        profielfoto: 
+        titel: 
+      page:
+        information: 
+        title: 
+      photoalbum:
+        agendaitem: 
+        name: 
+      result:
+        place: 
+        result: 
+        username: 
+      subscription:
+        opmerking: 
+      user:
+        address: 
+        bankaccountnumber: 
+        birthdate: 
+        city: 
+        email: 
+        iban: 
+        initials: 
+        licensenumber: 
+        lidtype: 
+        name: 
+        password: 
+        phonenumber: 
+        postalcode: 
+        profielfoto: 
+        remember_me: 
+        sex: 
+        xtracardnumber: 
+    select:
+      prompt: Selecteer
+    submit:
+      agendaitem:
+        create: Agendaitem toevoegen
+        update: Agendaitem bewaren
+      agendaitem[comments_attributes][0]:
+        create: Create Comment
+        update: Update Comment
+      agendaitem[comments_attributes][1]:
+        update: Update Comment
+      agendaitem[comments_attributes][2]:
+        create: Create Comment
+      chatmessage:
+        create: Bericht toevoegen
+      comment:
+        create: Comment toevoegen
+      commission:
+        create: Create Commission
+        update: Update Commission
+      create: ! '%{model} toevoegen'
+      event:
+        create: Event toevoegen
+        update: Event bewaren
+      eventtype:
+        create: Eventtype toevoegen
+        update: Eventtype bewaren
+      newsitem:
+        create: Newsitem toevoegen
+        update: Newsitem bewaren
+      page:
+        create: Page toevoegen
+        update: Update Page
+      photoalbum:
+        create: Fotoalbum toevoegen
+        update: Fotoalbum bewaren
+      result:
+        create: Result toevoegen
+      submit: ! '%{model} opslaan'
+      subscription:
+        create: Create Subscription
+      update: ! '%{model} bewaren'
+  iban: IBAN
+  initials: initialen
+  licensenumber: licentienummer
+  name: naam
+  new_commission: nieuwe commissie
+  newsitem:
+    nieuwsbericht: 
+    profielfoto: 
+    titel: 
+  next_label: volgende
+  number:
+    currency:
+      format:
+        delimiter: .
+        format: ! '%u%n'
+        precision: 2
+        separator: ! ','
+        significant: false
+        strip_insignificant_zeros: false
+        unit: €
+    format:
+      delimiter: .
+      precision: 2
+      separator: ! ','
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: miljard
+          million: miljoen
+          quadrillion: biljard
+          thousand: duizend
+          trillion: biljoen
+          unit: 
+      format:
+        delimiter: 
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: 
+    precision:
+      format:
+        delimiter: 
+  page:
+    information: 
+    title: 
+  page_gap: ! '......'
+  page_title: paginatitel
+  papieren_kronometer: papieren kronometer
+  phonenumber: telefoonnummer
+  photoalbum:
+    agendaitem: 
+    name: 
+  photos:
+    title: Foto's
+  postalcode: postcode
+  previous_label: vorige
+  recaptcha:
+    errors:
+      incorrect-captcha-sol: Vul a.u.b. de captcha goed in
+  remember_me: onthoud mij
+  result: Onderdeel
+  sex: geslacht
+  sign_in: Inloggen
+  sign_up: inschrijven
+  subscription: Subscription
+  support:
+    array:
+      last_word_connector: ! ' en '
+      two_words_connector: ! ' en '
+      words_connector: ! ', '
+    select:
+      prompt: Selecteer
+  time:
+    am: ! '''s ochtends'
+    formats:
+      default: ! '%a %d %b %Y %H:%M:%S %Z'
+      long: ! '%d %B %Y %H:%M'
+      medium: ! '%e %B %H:%M'
+      only_date: ! '%e %B'
+      only_second: ! '%S'
+      short: ! '%d %b %H:%M'
+      time: ! '%H:%M'
+    pm: ! '''s middags'
+  unauthorized:
+    agendaitem[events_attributes][new_events]:
+      Afstand: 
+    commission[commission_memberships_attributes][new_commission_memberships]:
+      function: 
+    default: You are not authorized to access this page.
+    event:
+      Afstand: 
+    subscription:
+      opmerking: 
+    user:
+      iban: 
+      remember_me: 
+      signed_in: 
+      signed_out: 
   user:
     address: 
     bankaccountnumber: 
     birthdate: 
     city: 
     email: 
+    iban: 
     initials: 
+    invalid: Ongeldig e-mail of wachtwoord.
     licensenumber: 
     lidtype: 
     name: 
+    password: 
+    password_confirmation: 
     phonenumber: 
     postalcode: 
     profielfoto: 
-    sex: 
-    xtracardnumber: 
-    password: 
     remember_me: 
-    signed_in: Je bent succesvol ingelogd.
-    invalid: Ongeldig e-mail of wachtwoord.
-    signed_out: Je bent succesvol uitgelogd.
     send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet resetten.
-    password_confirmation: 
-    iban: 
-  chatmessage:
-    bericht: ''
-    page_title: Kronos kletsdoos
-  unauthorized:
-    default: You are not authorized to access this page.
-    user:
-      iban: 
-      remember_me: 
-      signed_in: 
-      signed_out: 
-    commission[commission_memberships_attributes][new_commission_memberships]:
-      function: 
-    agendaitem[events_attributes][new_events]:
-      Afstand: 
-    event:
-      Afstand: 
-    subscription:
-      opmerking: 
-  event: Onderdeel
-  eventtype:
-    agendaitemtypes: 
-    calculated_unit: 
-    formula: 
-    measuringunit: 
-    name: 
-    shortname: 
-    female_formula: 
-    show_wind: 
-  agendaitemtype_eventtype: Agendaitemtype eventtype
-  commission_membership: Commission membership
+    sex: 
+    signed_in: Je bent succesvol ingelogd.
+    signed_out: Je bent succesvol uitgelogd.
+    xtracardnumber: 
   user_subject: Reset password instructions
-  result: Onderdeel
-  page_title: paginatitel
-  page:
-    information: 
-    title: 
-  comment:
-    commenttext: 
-  newsitem:
-    nieuwsbericht: 
-    profielfoto: 
-    titel: 
-  photoalbum:
-    agendaitem: 
-    name: 
-  subscription: Subscription
+  usertype: Lidtype
+  will_paginate:
+    next_label: volgende →
+    page_gap: ! '&hellip;'
+    previous_label: ← vorige
+  xtracardnumber: xtracardnummer
