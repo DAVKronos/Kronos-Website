@@ -32,6 +32,7 @@
 #  user_type_id           :integer
 #  bank_account_number    :string(255)
 #  xtracard               :string(255)
+#  iban                   :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -66,7 +67,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300", :pass => "260x180#", :thumb => "50x50#" }, :path => ":rails_root/public/system/:attachment/:hash.:extension",
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
   
-  name_regex = /\A[A-Z]\S+\s(\S+\s)*[A-Z]\S*(-[A-Z]\S+)*\z/
+  name_regex = /\A[A-Z]\w+(-[A-Z]\w+)*\s(\w+\s)*[A-Z]\w+(-[A-Z]\w+)*\z/
 
   validates :name, :presence => true, :format => {:with => name_regex}
   validates :initials, :presence => true
@@ -78,26 +79,26 @@ class User < ActiveRecord::Base
   
   def update_group_membership
     gapps = Gapps.new
-    gapps.add_group_member("leden", self.email, self.name.split[1], self.name.split[0]) if (self.email_changed? || self.user_type_id_changed?) && !self.email.empty? && (self.user_type_id == 1 || self.user_type_id == 2 || self.user_type_id == UserType.find_by_name("Proeflid").id)
-    gapps.add_group_member("alleleden", self.email, self.name.split[1], self.name.split[0]) if self.email_changed? && !self.email.empty? && (self.user_type_id != UserType.find_by_name("Oudlid").id)
+    gapps.add_group_member("leden", self.email, self.name.split[1], self.name.split[0]) if (self.email_changed? || self.user_type_id_changed?) && !self.email.empty? && (self.user_type_id == 1 || self.user_type_id == 2 || self.user_type == UserType.find_by_name("Proeflid"))
+    gapps.add_group_member("alleleden", self.email, self.name.split[1], self.name.split[0]) if self.email_changed? && !self.email.empty? && (self.user_type != UserType.find_by_name("Oudlid"))
   end
   
   def purge_member_from_group
      gapps = Gapps.new
-     gapps.destroy_group_member("leden", self.email_was) if (self.email_changed? || self.user_type_id_changed?) && !self.new_record? && (self.user_type_id_was == 1 || self.user_type_id_was == 2 || self.user_type_id == UserType.find_by_name("Proeflid").id)
-     gapps.destroy_group_member("alleleden", self.email_was) if self.email_changed? && !self.new_record? && (self.user_type_id_was != UserType.find_by_name("Oudlid").id)
+     gapps.destroy_group_member("leden", self.email_was) if (self.email_changed? || self.user_type_id_changed?) && !self.new_record? && (self.user_type_id_was == 1 || self.user_type_id_was == 2 || self.user_type == UserType.find_by_name("Proeflid"))
+     gapps.destroy_group_member("alleleden", self.email_was) if self.email_changed? && !self.new_record? && (self.user_type_was != UserType.find_by_name("Oudlid"))
    end
   
   def add_member_to_group
     gapps = Gapps.new
-    gapps.add_group_member("leden", self.email, self.name.split[1], self.name.split[0]) if !self.email.empty? && (self.user_type_id == 1 || self.user_type_id == 2 || self.user_type_id == UserType.find_by_name("Proeflid").id)
-    gapps.add_group_member("alleleden", self.email, self.name.split[1], self.name.split[0]) if !self.email.empty? && (self.user_type_id != UserType.find_by_name("Oudlid").id)
+    gapps.add_group_member("leden", self.email, self.name.split[1], self.name.split[0]) if !self.email.empty? && (self.user_type_id == 1 || self.user_type_id == 2 || self.user_type == UserType.find_by_name("Proeflid"))
+    gapps.add_group_member("alleleden", self.email, self.name.split[1], self.name.split[0]) if !self.email.empty? && (self.user_type != UserType.find_by_name("Oudlid"))
   end
   
   def remove_member_from_group
     gapps = Gapps.new
-    gapps.destroy_group_member("leden", self.email) if (self.user_type_id == 1 || self.user_type_id == 2 || self.user_type_id == UserType.find_by_name("Proeflid").id)
-    gapps.destroy_group_member("alleleden", self.email) if (self.user_type_id != UserType.find_by_name("Oudlid").id)
+    gapps.destroy_group_member("leden", self.email) if (self.user_type_id == 1 || self.user_type_id == 2 || self.user_type == UserType.find_by_name("Proeflid"))
+    gapps.destroy_group_member("alleleden", self.email) if (self.user_type != UserType.find_by_name("Oudlid"))
   end
   
   def update_commission_email

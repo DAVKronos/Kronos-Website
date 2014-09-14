@@ -3,7 +3,6 @@
 .project
 .idea
 db/*.sqlite3
-Gemfile.lock
 .rvmrc
 *.log
 tmp/

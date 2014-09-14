@@ -15,6 +15,8 @@
 #  category             :string(255)
 #  intern               :boolean
 #  agendaitemtype_id    :integer
+#  url                  :string(255)
+#  user_id              :integer
 #
 
 class Agendaitem < ActiveRecord::Base

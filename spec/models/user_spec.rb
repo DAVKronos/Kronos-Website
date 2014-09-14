@@ -32,6 +32,7 @@
 #  user_type_id           :integer
 #  bank_account_number    :string(255)
 #  xtracard               :string(255)
+#  iban                   :string(255)
 #
 
 require 'spec_helper'
@@ -136,7 +137,10 @@ describe User do
   end
   
   it "should accept valid names" do
-    names = ["Kegel Kronos", "Wouter Timmermans", "Leipe Harry", "Henk de Vries", "Henk de Vries-Timmermans"]
+    names = ["Kegel Kronos", "Wouter Timmermans",
+             "Leipe Harry", "Henk de Vries",
+             "Henk de Vries-Timmermans", "Jan Peter Balkenende",
+             "Willem-Frits van Oranje-Nassau"]
     names.each do |name|
       valid_name_user = User.new(attr.merge(:name => name), :as => :bestuur)
       valid_name_user.should be_valid
@@ -144,7 +148,8 @@ describe User do
   end
   
   it "should reject invalid names" do
-    names = ["Henk de Vries-timmermans"]
+    names = ["Henk de Vries-timmermans", "Willem-Frits van Oranje-nassau",
+    "indiana jones"]
     names.each do |name|
       invalid_name_user = User.new(attr.merge(:name => name), :as => :bestuur)
       invalid_name_user.should_not be_valid
