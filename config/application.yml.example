@@ -2,6 +2,7 @@
 defaults: &defaults
   gapps_password: ""
   akismet_api_key: ""
+  localeapp_api_key: ""
 
 development:
   <<: *defaults
