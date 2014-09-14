@@ -69,9 +69,6 @@ group :development do
 	gem 'guard-rspec', '~> 2.5.4'
 	gem 'guard-spork', '~> 1.5.1'
   gem 'sqlite3', '~> 1.3.8'
-	if RUBY_PLATFORM =~ /darwin/
-		gem 'growl'
-	end
 end
 
 group :test, :development do
