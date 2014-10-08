@@ -3,7 +3,7 @@ class AgendaitemsController < ApplicationController
   
   def index
 #    @agendaitems = Agendaitem.where("date >= ?", Time.now).paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
-    @agendaitems = Agendaitem.where("date >= ?", Time.now).order("date ASC");
+    @agendaitems = Agendaitem.where("date >= ?", Time.now.midnight).order("date ASC");
   	@dates = Hash.new;
   	@cals = Hash.new;
     @agendaitems.each do |d|
