@@ -80,6 +80,9 @@ nl:
         reset_password_token: Reset password token
         sex: Geslacht
         xtracardnumber: Xtracardnumber
+        aanvang: Aanvang
+        instelling: Instelling
+        studie: Studie
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -177,11 +180,11 @@ nl:
   agendaitem:
     Kronos Activiteit: 
     agendaitemtype: 
-    commission: 
-    date: 
-    description: 
+    commission: comissie
+    date: datum
+    description: beschrijving
     events:
-      Afstand: 
+      Afstand: Afstand
       Tijd: 
       Type: 
     location: 
@@ -189,7 +192,7 @@ nl:
     subscribe: 
     subscriptiondeadline: 
   agendaitem[events_attributes][new_events]:
-    Afstand: 
+    Afstand: Afstand
     Tijd: 
     Type: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
@@ -482,6 +485,9 @@ nl:
         remember_me: 
         sex: 
         xtracardnumber: 
+        aanvang: aanvang
+        instelling: 
+        studie: studie
     select:
       prompt: Selecteer
     submit:
@@ -653,10 +659,10 @@ nl:
     password_confirmation: 
     phonenumber: 
     postalcode: 
-    profielfoto: 
-    remember_me: 
+    profielfoto: profielfoto
+    remember_me: onthoud mij
     send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet resetten.
-    sex: 
+    sex: geslacht
     signed_in: Je bent succesvol ingelogd.
     signed_out: Je bent succesvol uitgelogd.
     xtracardnumber: 
@@ -667,3 +673,7 @@ nl:
     page_gap: ! '&hellip;'
     previous_label: ← vorige
   xtracardnumber: xtracardnummer
+  aanvang: aanvang
+  created_at: 
+  instelling: 
+  studie: studie

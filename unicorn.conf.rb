@@ -21,7 +21,7 @@ worker_processes 4
 
 #APP_PATH = "/opt/railsapps/Kronos-Website"
 #APP_PATH = "/home/kegel/Documents/new/Kronos-Website"
-APP_PATH = $APP_DIR
+APP_PATH = "/opt/railsapps/Kronos-Website"
 
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
@@ -41,8 +41,8 @@ pid APP_PATH + "/tmp/pids/unicorn.pid"
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path APP_PATH + "/log/unicorn.stderr.log"
-stdout_path APP_PATH + "/log/unicorn.stdout.log"
+#stderr_path APP_PATH + "/log/unicorn.stderr.log"
+#stdout_path APP_PATH + "/log/unicorn.stdout.log"
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow

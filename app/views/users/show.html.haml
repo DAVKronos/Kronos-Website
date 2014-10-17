@@ -27,6 +27,15 @@
       %dt= t(:city).capitalize
       %dd= @user.city
 
+      %dt= t(:studie).capitalize
+      %dd= @user.studie
+
+      %dt= t(:instelling).capitalize
+      %dd= @user.instelling
+
+      %dt= t(:aanvang).capitalize
+      %dd= @user.aanvang
+
       %dt= t(:sex).capitalize
       %dd= @user.sex
 
@@ -43,6 +52,8 @@
         %dd= @user.bank_account_number
         %dt= t(:iban).capitalize
         %dd= @user.iban
+        %dt= t(:created_at).capitalize
+        %dd= l @user.created_at.to_date, :format => :default
   .col-lg-6
     %section.polaroid
       %figure
