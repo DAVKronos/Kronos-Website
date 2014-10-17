@@ -4,54 +4,54 @@ nl:
       agendaitem:
         Kronos Activiteit: Kronos activiteit
         agendaitemtype: Agendaitemtype
-        commission: Commission
-        date: Date
-        description: Description
-        location: Location
-        name: Name
-        subscribe: Subscribe
+        commission: Commissie
+        date: Datum
+        description: Beschrijving
+        location: Locatie
+        name: Naam
+        subscribe: Abonneer
         subscriptiondeadline: inschrijfdeadline
         url: Url
       agendaitemtype_eventtype:
-        eventtype_id: Eventtype
+        eventtype_id: Evenementtype
       chatmessage:
         bericht: Bericht
-        by: By
-        email: Email
-        message: Message
+        by: Van
+        email: E-mail
+        message: Bericht
       comment:
-        commenttext: Commenttext
+        commenttext: Bericht
       commission:
-        description: Description
-        email: Email
-        name: Name
-        role: Role
+        description: Beschrijving
+        email: E-mail
+        name: Naam
+        role: Rol
       commission_membership:
-        function: Function
-        user_id: User
+        function: Functie
+        user_id: Lid
       event:
         Afstand: Afstand
         Tijd: Tijd
         Type: Type
       eventtype:
         agendaitemtypes: Agendaitemtypes
-        calculated_unit: Calculated unit
-        female_formula: Female formula
-        formula: Formula
-        measuringunit: Measuringunit
-        name: Name
-        shortname: Shortname
-        show_wind: Show wind
+        calculated_unit: Berekende eenheid
+        female_formula: Formule voor vrouwen
+        formula: Formule
+        measuringunit: Gemeten eenheid
+        name: Naam
+        shortname: Korte naam
+        show_wind: Geef wind weer
       newsitem:
-        articlephoto: Articlephoto
+        articlephoto: Artikelfoto
         nieuwsbericht: Nieuwsbericht
         profielfoto: Profielfoto
         titel: Titel
       page:
-        information: Information
-        title: Title
+        information: Informatie
+        title: Titel
       photoalbum:
-        agendaitem: Agendaitem
+        agendaitem: Agendapunt
         name: Name
       result:
         place: Place

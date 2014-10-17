@@ -2,56 +2,56 @@ en:
   activerecord:
     attributes:
       agendaitem:
-        Kronos Activiteit: 
-        agendaitemtype: 
-        commission: 
-        date: 
-        description: 
-        location: 
-        name: 
-        subscribe: 
+        Kronos Activiteit: Kronos activity
+        agendaitemtype: Calendaritemtype
+        commission: Commission
+        date: Date
+        description: Description
+        location: Location
+        name: Name
+        subscribe: Subscribe
         subscriptiondeadline: subscription deadline
-        url: 
+        url: Url
       agendaitemtype_eventtype:
-        eventtype_id: 
+        eventtype_id: Event type
       chatmessage:
-        bericht: 
-        by: 
-        email: 
-        message: 
+        bericht: Message
+        by: By
+        email: E-mail
+        message: Message
       comment:
-        commenttext: 
+        commenttext: Comment
       commission:
-        description: 
-        email: 
-        name: 
-        role: 
+        description: Description
+        email: E-mail
+        name: Name
+        role: Role
       commission_membership:
-        function: 
-        user_id: 
+        function: Function
+        user_id: Member
       event:
-        Afstand: 
-        Tijd: 
-        Type: 
+        Afstand: Distance
+        Tijd: Time
+        Type: Type
       eventtype:
-        agendaitemtypes: 
-        calculated_unit: 
-        female_formula: 
-        formula: 
-        measuringunit: 
-        name: 
-        shortname: 
-        show_wind: 
+        agendaitemtypes: Calendaritemtypes
+        calculated_unit: Calculated unit
+        female_formula: Female formula
+        formula: Formula
+        measuringunit: Measuring unit
+        name: Name
+        shortname: Short name
+        show_wind: Show wind
       newsitem:
-        articlephoto: 
-        nieuwsbericht: 
-        profielfoto: 
-        titel: 
+        articlephoto: Article photo
+        nieuwsbericht: Newsmessage
+        profielfoto: Profile picture
+        titel: Title
       page:
-        information: 
-        title: 
+        information: Information
+        title: Title
       photoalbum:
-        agendaitem: 
+        agendaitem: Calendar item
         name: 
       result:
         place: 
