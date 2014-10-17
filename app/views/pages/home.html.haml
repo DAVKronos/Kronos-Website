@@ -5,8 +5,7 @@
   .col-md-8      
     = render "carousel"
     .row
-      .col-md-12
-        %span &nbsp;
+      %span &nbsp;
     -@newsitems.each do |newsitem|
       .row
         .col-md-3.text-right
@@ -23,9 +22,8 @@
             %small.text-muted= time_tag newsitem.created_at       
           = markdown newsitem.news.split( /\r?\n/ ).first
           = link_to 'lees verder', newsitem
-        .col-md-12
-          %span &nbsp;
- 
+      .row
+        %span &nbsp;
     .span{:class=>'text-center'}
       %p
         .btn-group
@@ -58,18 +56,3 @@
                   %span{:class=>"label label-default pull-right"} 
                     = l user.birthdate, :format => :only_date                    
                 = user.name
-
-
-          
-            
-              
-
-        
-
-          
-    
-    
-  
-  
-
-  
