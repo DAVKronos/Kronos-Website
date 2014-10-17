@@ -19,7 +19,9 @@ worker_processes 4
 # user, do this to switch euid/egid in the workers (also chowns logs):
 # user "unprivileged_user", "unprivileged_group"
 
-APP_PATH = "/opt/railsapps/Kronos-Website"
+#APP_PATH = "/opt/railsapps/Kronos-Website"
+#APP_PATH = "/home/kegel/Documents/new/Kronos-Website"
+APP_PATH = $APP_DIR
 
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
