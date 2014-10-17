@@ -36,6 +36,15 @@ papieren kronometer
 = f.label :lidtype
 = collection_select(:user, :user_type_id, UserType.all, :id, :name, :prompt => true)
 
+= f.label :studie
+= f.text_field :studie
+
+= f.label :instelling
+= f.text_field :instelling
+
+= f.label :aanvang
+= f.text_field :aanvang
+
 = f.label :licensenumber
 = f.text_field :licensenumber
 
