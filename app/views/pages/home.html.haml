@@ -1,80 +1,63 @@
-
-
 .row
-  .col-lg-7
-    %h1= link_to "Nieuws", newsitems_path,:class => "newslink"
-    %p
-      = link_to raw("<span class='glyphicon glyphicon-plus'></span> Maak aan"), new_newsitem_path,:class => 'btn btn-mini' if can? :create, Newsitem
+  .col-md-12 
+    %h1.push-down-for-logo= link_to "Nieuws", newsitems_path,:class => "newslink"
+.row
+  .col-md-8      
     = render "carousel"
+    .row
+      .col-md-12
+        %span &nbsp;
     -@newsitems.each do |newsitem|
-      .frow
-        .fcol-lg-12.newsitem
-          .frow.newscontent
-            .fcol-lg-12
-              %h2= link_to newsitem.title, newsitem, {:name => newsitem.title, :class => "newslink"}
-              %p
-                = link_to (image_tag newsitem.articlephoto.url(:normal)), newsitem, :class => "floatleft thumbnail"
-                %p.muted 
-                  = time_tag newsitem.created_at
-                = markdown newsitem.news.split( /\r?\n/ ).first
-                = link_to 'lees verder', newsitem
-              .btn-toolbar
-                .btn-group.btn-group-sm
-                  %a{:class => 'btn btn-default icon-fb' , :onclick => "KRNS.fbshare('#{newsitem_url(newsitem)}')"}
-                    %span{:class => 'glyphicon'}
-                    Share
-                  = link_to raw("<span class='glyphicon glyphicon-edit'></span> Edit"), edit_newsitem_path(newsitem),:class => 'btn btn-default' if can? :update, newsitem
-                  = link_to raw("<span class='glyphicon glyphicon-remove'></span> Delete"), newsitem,:class => 'btn btn-default', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
-    = link_to "Meer nieuws", newsitems_path, :class =>  'pull-right'
-    = link_to raw("<span class='glyphicon glyphicon-plus'></span> Maak aan"), new_newsitem_path,:class => 'btn btn-default' if can? :create, Newsitem 
-  .col-lg-5
-    .row
-      .col-lg-12.agenda
-        %h1 Agenda
-        - @agendaitems.each do |agendaitem|
-          .agenda-item
-            = link_to agendaitem do
-              = agendaitem.name
-            = l agendaitem.date, :format => :only_date
-  .col-lg-5
-    .row
-      .col-lg-12
-        %br
-        %h1 Youtube
-        %br
-
-        <div id='mediaplayer'></div>
-
-        <script type="text/javascript">
-        jwplayer('mediaplayer').setup({
-        'flashplayer': 'assets/player.swf',
-        'id': 'playerID',
-        'width': 'auto',
-        'height': '270',
-        'file': 'GzOdeqD0WhE',
-        'provider': 'youtube',
-        'plugins': {
-        'hd-2': {}
-        }
-        });
-        </script>
-
-  -if user_signed_in?
-    .col-lg-5
       .row
-        .col-lg-12
-          %h1 Verjaardagen
-          %ul{:class=>'nav nav-pills nav-stacked'}
-            -@birthdays.sort().each do |user|
-              %li
-                %a{:href=>user_url(user)}
-                  - if user.days_until_birthday == 0
-                    %span{:class=>"label label-success pull-right"} 
-                      vandaag
-                  - else
-                    %span{:class=>"label label-default pull-right"} 
-                      = l user.birthdate, :format => :only_date                    
-                  = user.name
+        .col-md-3.text-right
+          = link_to (image_tag newsitem.articlephoto.url(:normal)), newsitem, :class => "thumbnail"
+          .btn-group-vertical.btn-group-sm
+            %a{:class => 'btn btn-default' , :onclick => "KRNS.fbshare('#{newsitem_url(newsitem)}')"}
+              =raw("<span class='glyphicon glyphicon-share'></span> Deel")
+            = link_to raw("<span class='glyphicon glyphicon-edit'></span> Edit"), edit_newsitem_path(newsitem),:class => 'btn btn-warning' if can? :update, newsitem
+            = link_to raw("<span class='glyphicon glyphicon-remove'></span> Delete"), newsitem,:class => 'btn btn-danger', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
+
+        .col-md-9
+          %h2= link_to newsitem.title, newsitem, {:name => newsitem.title, :class => "newslink"}
+          %p
+            %small.text-muted= time_tag newsitem.created_at       
+          = markdown newsitem.news.split( /\r?\n/ ).first
+          = link_to 'lees verder', newsitem
+        .col-md-12
+          %span &nbsp;
+ 
+    .span{:class=>'text-center'}
+      %p
+        .btn-group
+          = link_to "Meer nieuws", newsitems_path, :class => 'btn btn-default'
+          = link_to raw("<span class='glyphicon glyphicon-pencil'></span> Maak aan"), new_newsitem_path,:class => 'btn btn-default' if can? :create, Newsitem 
+
+  .col-md-4 
+    .panel.panel-default
+      .panel-heading Agenda
+      %ul{:class=>'list-group'}
+      - @agendaitems.each do |agendaitem|
+        %li{:class=>'list-group-item'}
+          = link_to agendaitem do
+            = agendaitem.name
+          %span{:class=>"label label-default pull-right"} 
+            = l agendaitem.date, :format => :only_date
+  
+  -if user_signed_in?
+    .col-md-4 
+      .panel.panel-default
+        .panel-heading Verjaardagen
+        %ul{:class=>'nav nav-pills nav-stacked'}
+          -@birthdays.each do |user|
+            %li
+              %a{:href=>user_url(user)}
+                - if user.days_until_birthday == 0
+                  %span{:class=>"label label-success pull-right"} 
+                    vandaag
+                - else
+                  %span{:class=>"label label-default pull-right"} 
+                    = l user.birthdate, :format => :only_date                    
+                = user.name
 
 
           
