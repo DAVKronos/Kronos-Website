@@ -80,6 +80,9 @@ en:
         reset_password_token: 
         sex: 
         xtracardnumber: 
+        aanvang: 
+        instelling: 
+        studie: 
     errors:
       full_messages:
         format: 
@@ -407,6 +410,9 @@ en:
         remember_me: 
         sex: 
         xtracardnumber: 
+        aanvang: 
+        instelling: 
+        studie: 
     select:
       prompt: 
     submit:
@@ -590,3 +596,7 @@ en:
     page_gap: 
     previous_label: 
   xtracardnumber: 
+  aanvang: 
+  created_at: 
+  instelling: 
+  studie: 

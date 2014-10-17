@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140610071423) do
+ActiveRecord::Schema.define(:version => 20141017203920) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
     t.boolean  "subscribe"
     t.datetime "subscriptiondeadline"
     t.integer  "commission_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "category"
     t.boolean  "intern"
     t.integer  "agendaitemtype_id"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
   create_table "chatmessages", :force => true do |t|
     t.string   "by"
     t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "email"
     t.integer  "user_id"
     t.string   "user_ip"
@@ -74,16 +74,16 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
     t.boolean  "installed",     :default => false
     t.integer  "user_id",                          :null => false
     t.integer  "commission_id",                    :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "commissions", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "role"
   end
 
@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
     t.datetime "locked_at"
     t.datetime "failed_at"
     t.string   "locked_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "queue"
   end
 
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
 
   create_table "events", :force => true do |t|
     t.time     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "eventtype_id"
     t.integer  "agendaitem_id"
     t.float    "distance"
@@ -117,8 +117,8 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
     t.string   "formula"
     t.string   "shortname"
     t.string   "measuringunit"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "calculated_unit"
     t.boolean  "show_wind",       :default => false
     t.string   "female_formula"
@@ -139,8 +139,8 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
     t.string   "title"
     t.text     "news"
     t.boolean  "agreed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "user_id"
     t.integer  "agreed_by"
     t.string   "articlephoto_file_name"
@@ -149,68 +149,24 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
     t.datetime "articlephoto_updated_at"
   end
 
-  create_table "old_photoalbums", :id => false, :force => true do |t|
-    t.integer "FotoAlbumID",                :null => false
-    t.string  "Naam",        :limit => 150
-    t.date    "Datum"
-  end
-
-  create_table "old_photos", :id => false, :force => true do |t|
-    t.integer "FotoID",       :null => false
-    t.integer "FotoAlbumID"
-    t.text    "Omschrijving"
-    t.integer "LidID"
-  end
-
-  create_table "old_users", :id => false, :force => true do |t|
-    t.integer "LidID",                              :null => false
-    t.string  "Voorletters",         :limit => 12
-    t.string  "Voornaam",            :limit => 50
-    t.string  "Achternaam",          :limit => 60
-    t.string  "Naam",                :limit => 70
-    t.date    "GeboorteDatum"
-    t.string  "Email",               :limit => 100
-    t.string  "Adres",               :limit => 100
-    t.string  "Postcode",            :limit => 10
-    t.string  "Woonplaats",          :limit => 80
-    t.string  "Wijk",                :limit => 20
-    t.string  "UIN",                 :limit => 20
-    t.string  "Telefoon",            :limit => 30
-    t.string  "MobieleTelefoon",     :limit => 30
-    t.text    "Opmerking"
-    t.integer "Geslacht"
-    t.string  "Wachtwoord",          :limit => 15
-    t.string  "LicentieNummer",      :limit => 25
-    t.integer "LidTypeID"
-    t.integer "Privacy"
-    t.integer "Incasso"
-    t.integer "Jurylid"
-    t.string  "Campuskaart",         :limit => 20
-    t.string  "Rekeningnummer",      :limit => 20
-    t.string  "WedstrijdVereniging", :limit => 80
-    t.string  "Nickname",            :limit => 100
-    t.integer "OVKaart"
-    t.integer "KMeterPapier"
-  end
-
   create_table "pages", :force => true do |t|
     t.text     "information"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "pagetag"
   end
 
   create_table "photoalbums", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "agendaitem_id"
   end
 
   create_table "photos", :force => true do |t|
     t.string   "caption"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -224,8 +180,8 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
   create_table "results", :force => true do |t|
     t.string   "username"
     t.string   "result"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "event_id"
     t.integer  "user_id"
     t.decimal  "wind"
@@ -235,8 +191,8 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
   create_table "subscriptions", :force => true do |t|
     t.text     "comment"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "user_id"
     t.integer  "agendaitem_id"
   end
@@ -248,13 +204,13 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
     t.integer  "ypos"
     t.integer  "width"
     t.integer  "heigth"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_sessions", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_types", :force => true do |t|
@@ -276,8 +232,8 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
     t.string   "sex"
     t.string   "licensenumber"
     t.boolean  "papieren_kronometer",    :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -296,6 +252,9 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
     t.string   "bank_account_number"
     t.string   "xtracard"
     t.string   "iban"
+    t.string   "studie"
+    t.string   "instelling"
+    t.integer  "aanvang"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
