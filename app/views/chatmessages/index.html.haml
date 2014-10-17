@@ -20,9 +20,9 @@
                 = mail_to chatmessage.email, chatmessage.by
             %p= markdown chatmessage.message
             - if can? :update, chatmessage
-              = link_to raw("<i class='icon-edit'></i>"), edit_chatmessage_path(chatmessage)
+              = link_to raw("<span class='glyphicon glyphicon-edit'></span>"), edit_chatmessage_path(chatmessage)
             - if can? :destroy, chatmessage
-              = link_to raw("<i class='icon-remove'></i>"), chatmessage, confirm: 'Are you sure?', method: :delete
+              = link_to raw("<span class='glyphicon glyphicon-remove'></span>"), chatmessage, confirm: 'Are you sure?', method: :delete
             %p
               %small
                 - if chatmessage.created_at > 1.day.ago
