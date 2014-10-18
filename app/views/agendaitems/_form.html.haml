@@ -53,7 +53,7 @@
                 .row
                   .col-lg-12
                     = event_field.label "Type", :class => "span1"
-                    = select_tag(:eventtype_id, "", class: "prototypeselect", data: @selects)
+                    = event_field.select(:eventtype_id, "", {}, {class: "prototypeselect", data: @selects})
                 .row
                   .col-lg-12
                     = event_field.label "Afstand", :class => "span1"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140610071423) do
+ActiveRecord::Schema.define(:version => 20141017203920) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -252,6 +252,9 @@ ActiveRecord::Schema.define(:version => 20140610071423) do
     t.string   "bank_account_number"
     t.string   "xtracard"
     t.string   "iban"
+    t.string   "studie"
+    t.string   "instelling"
+    t.integer  "aanvang"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
