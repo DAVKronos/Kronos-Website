@@ -43,7 +43,6 @@ class Ability
       can :create, Result
       can :manage, Subscription
       cannot :destroy, Subscription
-      can :manage, Kronobox
       can :destroy, user.subscriptions
       can :update, user
       can :destroy, user.chatmessages

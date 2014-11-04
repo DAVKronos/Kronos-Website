@@ -1,13 +1,29 @@
 class KronoboxController < ApplicationController
   load_and_authorize_resource
   
-#  def appshome
-#	key = Google::APIClient::PKCS12.load_key('C:\Users\Leon\Downloads\9040e86c549f6d390f6320313ce87b87f8e349ad-privatekey.p12', 'notasecret')
-#	service_account = Google::APIClient::JWTAsserter.new('971459186596-qb3ge4rqatff6tsjv4ccmcsvl9r65osi@developer.gserviceaccount.com', \
-#	['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/youtube'] \
-#	, key)
-#	@token = service_account.authorize
-#  end
+  def appshome
+	key = Google::APIClient::PKCS12.load_key('D:\Work\Kronos\585f297d7b8f.p12', 'notasecret')
+	
+    asserter = Google::APIClient::JWTAsserter.new('971459186596-qb3ge4rqatff6tsjv4ccmcsvl9r65osi@developer.gserviceaccount.com', 'https://www.googleapis.com/auth/admin.directory.group', key)
+    @client = Google::APIClient.new
+    @client.authorization = asserter.authorize('webmaster@kronos.nl')
+
+    @client.authorization.fetch_access_token!
+	
+	@group = @client.discovered_api("admin", "directory_v1")
+	
+	@disv = @group.members.list.parameters
+	
+	result = @client.execute(api_method: @group.groups.list, parameters: {"domain" => "kronos.nl"}).body
+	@hash = JSON.parse(result)
+	
+	@hash2 = Hash.new
+	
+	@hash['groups'].each do |g|
+		result = @client.execute(api_method: @group.members.list, parameters: {"groupKey" => g['id']}).body
+		@hash2[g['id']] = JSON.parse(result)
+	end
+  end
   
   def elfinder
 

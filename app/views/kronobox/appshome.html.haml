@@ -1,0 +1,7 @@
+%h1.push-down-for-logo Apps home
+- @hash['groups'].each do |h|
+  %h3= h['name']
+  -if @hash2[h['id']]['members']
+    %ul
+      - @hash2[h['id']]['members'].each do |m|
+        %li= m['email']
