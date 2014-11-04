@@ -4,8 +4,8 @@ KronosWebsite::Application.routes.draw do
 
   resources :agendaitemtypes
 
-  match '/kronobox' => 'kronobox#index'
-  match '/elfinder' => 'kronobox#elfinder'
+#  match '/kronobox' => 'kronobox#index'
+#  match '/elfinder' => 'kronobox#elfinder'
 #  match '/apps' => 'kronobox#appshome'
   
   devise_for :users
@@ -47,6 +47,9 @@ KronosWebsite::Application.routes.draw do
   match '/agendaitems/dag/:day', :to => 'agendaitems#perdag', :as => :perdag
   match '/wedstrijden', :to => 'agendaitems#wedstrijden'
   match '/uitslagen', :to => 'results#frontpage'
+  match '/agendaitems/new_result', :to => 'agendaitems#new_result'
+  match '/agendaitems/create_result', :to => 'agendaitems#create_result', via: [:post]
+  
   resources :agendaitems do
     resources :events
     resources :results

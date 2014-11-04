@@ -33,7 +33,7 @@ class AgendaitemsController < ApplicationController
   end
   
   def perdag
-    days = Agendaitem.where("date >= ?", Time.now).order("date ASC");
+    days = Agendaitem.where("date >= ?", Time.now.midnight).order("date ASC");
 	@dates = Hash.new;
 	@cals = Hash.new;
     days.each do |d|
@@ -102,7 +102,7 @@ class AgendaitemsController < ApplicationController
   def create
     @agendaitem = Agendaitem.new(params[:agendaitem])
 	@agendaitem.user = current_user
-    
+	
     respond_to do |format|
       if @agendaitem.save
         format.html { redirect_to @agendaitem, notice: 'Agendaitem was successfully created.' }
@@ -110,6 +110,25 @@ class AgendaitemsController < ApplicationController
       else
         format.html { render action: "index" }
         format.json { render json: @agendaitem.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  def new_result
+    @agendaitem = Agendaitem.new
+	@agendaitemtypes = Agendaitemtype.all
+    @agendaitem.date = Time.now
+  end
+  
+  def create_result
+    @agendaitem = Agendaitem.new(params[:agendaitem])
+	@agendaitem.user = current_user
+	
+    respond_to do |format|
+      if @agendaitem.save
+        format.html { redirect_to agendaitem_events_path(@agendaitem), notice: 'Agendaitem was successfully created.' }
+      else
+        format.html { render action: "new" }
       end
     end
   end

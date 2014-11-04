@@ -1,7 +1,8 @@
 .panel.panel-default
   .panel-heading
     %h3{:class=>'panel-title'}
-      = event.eventtype.name
+      - if event.eventtype
+        = event.eventtype.name
       = ' - ' + event.distance.to_s  + 'm'  unless (event.distance.nil?||event.distance==0)       
   %table{:class=>'table'}
     %tbody
@@ -12,7 +13,7 @@
             = result.result
             - if result.place
               = '(' + result.place.to_s + 'e)'
-            = number_to_human result.calculatedResult, :precision => 2, :significant => false
+            = number_to_human result.calculatedResult, :format => "%n", :precision => 2, :significant => false
             = result.event.eventtype.calculated_unit
           %td
             = link_to "verwijder", result, :class => 'btn btn-danger btn-xs', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, result
