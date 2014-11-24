@@ -2,7 +2,7 @@ class KronoboxController < ApplicationController
   load_and_authorize_resource
   
   def appshome
-	key = Google::APIClient::PKCS12.load_key('D:\Work\Kronos\585f297d7b8f.p12', 'notasecret')
+	key = Google::APIClient::PKCS12.load_key('/home/kronos/APIProject-c34ed1b047c8.p12', 'notasecret')
 	
     asserter = Google::APIClient::JWTAsserter.new('971459186596-qb3ge4rqatff6tsjv4ccmcsvl9r65osi@developer.gserviceaccount.com', 'https://www.googleapis.com/auth/admin.directory.group', key)
     @client = Google::APIClient.new
@@ -100,7 +100,7 @@ class KronoboxController < ApplicationController
   end
   
   def groupadd
-  	key = Google::APIClient::PKCS12.load_key('D:\Work\Kronos\585f297d7b8f.p12', 'notasecret')
+  	key = Google::APIClient::PKCS12.load_key('/home/kronos/APIProject-c34ed1b047c8.p12', 'notasecret')
 	
     asserter = Google::APIClient::JWTAsserter.new('971459186596-qb3ge4rqatff6tsjv4ccmcsvl9r65osi@developer.gserviceaccount.com', 'https://www.googleapis.com/auth/admin.directory.group', key)
     @client = Google::APIClient.new
@@ -110,14 +110,14 @@ class KronoboxController < ApplicationController
 	
 	@group = @client.discovered_api("admin", "directory_v1")
 	
-	@client.execute(api_method: @group.members.insert, parameters: {"groupKey" => params['group'], "memberKey" => params['mail']})
+	@client.execute(api_method: @group.members.insert, parameters: {"groupKey" => params['group']}, body_object: {"email" => params['mail']})
 
 	redirect_to url_for :controller => 'kronobox', :action => 'appshome'
 	return
 	end
   
   def groupremove
-  	key = Google::APIClient::PKCS12.load_key('D:\Work\Kronos\585f297d7b8f.p12', 'notasecret')
+  	key = Google::APIClient::PKCS12.load_key('/home/kronos/APIProject-c34ed1b047c8.p12', 'notasecret')
 	
     asserter = Google::APIClient::JWTAsserter.new('971459186596-qb3ge4rqatff6tsjv4ccmcsvl9r65osi@developer.gserviceaccount.com', 'https://www.googleapis.com/auth/admin.directory.group', key)
     @client = Google::APIClient.new
