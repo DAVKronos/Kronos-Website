@@ -5,11 +5,11 @@
 // the compiled file.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require jquery-ui-timepicker-addon
-//= require bootstrap.min
 //= require tmpl
 //= require load-image
 //= require canvas-to-blob
