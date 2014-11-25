@@ -32,7 +32,10 @@
             = f.label :subscribe
             = f.check_box :subscribe, :placeholder => "Inschrijven?"
             = f.label :subscriptiondeadline
-            = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "datumtijdprikker", :value => @agendaitem.subscriptiondeadline.strftime("%Y-%m-%d %H:%M")}
+            -if @agendaitem.subscriptiondeadline
+              = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "datumtijdprikker", :value => @agendaitem.subscriptiondeadline.strftime("%Y-%m-%d %H:%M")}
+            -else
+              = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "datumtijdprikker"}
             %hr
       .row
         .col-lg-12

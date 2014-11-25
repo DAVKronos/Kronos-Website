@@ -34,6 +34,8 @@ class Ability
       cannot :destroy, Photoalbum
       can :create, Photo
       can :create, Newsitem
+      can :new_result, Agendaitem
+      can :create_result, Agendaitem
       can :create, Agendaitem
       can :update, user.agendaitems
       can :create, Event

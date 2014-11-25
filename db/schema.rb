@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141017203920) do
+ActiveRecord::Schema.define(:version => 20141124125207) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(:version => 20141017203920) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.boolean  "is_match"
+  end
+
+  create_table "apps_exceptions", :force => true do |t|
+    t.string   "email"
+    t.boolean  "way"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "group_email"
   end
 
   create_table "chatmessages", :force => true do |t|
