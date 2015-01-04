@@ -32,6 +32,7 @@ gem 'thin'
 gem 'less-rails'
 gem 'sass-rails', '>= 3.2'
 gem 'bootstrap-sass', '~> 3.3.0'
+gem 'execjs', '~> 2.0.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,7 +43,6 @@ group :assets do
 	# For development under Linux you also need to install
 	# an javascript runtime
 	platform :ruby do
-		gem 'execjs', '~> 2.0.2'
 		gem 'therubyracer'
 	end
 end
