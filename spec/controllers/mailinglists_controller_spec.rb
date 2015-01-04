@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MailinglistController do
+describe MailinglistsController do
 
   describe "GET 'index'" do
     it "returns http success" do
