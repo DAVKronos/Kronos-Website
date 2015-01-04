@@ -1,5 +1,17 @@
 KronosWebsite::Application.routes.draw do
 
+  get "mailinglist/index"
+
+  get "mailinglist/show"
+
+  get "mailinglist/new"
+
+  get "mailinglist/create"
+
+  get "mailinglist/destroy"
+
+  get "mailinglist/update"
+
   resources :apps_exceptions
 
 

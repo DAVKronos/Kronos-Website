@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20141017203920) do
-=======
-ActiveRecord::Schema.define(:version => 20141124125207) do
->>>>>>> master
+ActiveRecord::Schema.define(:version => 20150104190157) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -145,6 +141,23 @@ ActiveRecord::Schema.define(:version => 20141124125207) do
     t.datetime "file_updated_at"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "mailinglist_memberships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "mailinglist_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "mailinglist_memberships", ["mailinglist_id"], :name => "index_mailinglist_memberships_on_mailinglist_id"
+  add_index "mailinglist_memberships", ["user_id"], :name => "index_mailinglist_memberships_on_user_id"
+
+  create_table "mailinglists", :force => true do |t|
+    t.text     "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "newsitems", :force => true do |t|

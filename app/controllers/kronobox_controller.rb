@@ -1,8 +1,9 @@
 class KronoboxController < ApplicationController
   #load_and_authorize_resource
+  skip_authorization_check
 
   def appshome
-    key = Google::APIClient::PKCS12.load_key('/home/kronos/APIProject-c34ed1b047c8.p12', 'notasecret')
+    key = Google::APIClient::PKCS12.load_key('/Users/woutertimmermans/Desktop/API Project-b9df7b3ac23f.p12', 'notasecret')
 
     asserter = Google::APIClient::JWTAsserter.new('971459186596-qb3ge4rqatff6tsjv4ccmcsvl9r65osi@developer.gserviceaccount.com', 'https://www.googleapis.com/auth/admin.directory.group', key)
     @client = Google::APIClient.new
