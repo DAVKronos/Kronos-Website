@@ -16,7 +16,7 @@
         %li
           %span.glyphicon.glyphicon-map-marker
           = @agendaitem.location
-      -unless @agendaitem.url.empty?
+      -if @agendaitem.url
         %li
           %span.glyphicon.glyphicon-globe
           = link_to @agendaitem.get_url_name, @agendaitem.get_url

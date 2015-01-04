@@ -1,12 +1,17 @@
 KronosWebsite::Application.routes.draw do
 
+  resources :apps_exceptions
+
+
   resources :agendaitemtype_eventtypes
 
   resources :agendaitemtypes
 
-  match '/kronobox' => 'kronobox#index'
-  match '/elfinder' => 'kronobox#elfinder'
-#  match '/apps' => 'kronobox#appshome'
+#  match '/kronobox' => 'kronobox#index'
+#  match '/elfinder' => 'kronobox#elfinder'
+  match '/apps' => 'kronobox#appshome'
+  match '/apps/group/add' => 'kronobox#groupadd'
+  match '/apps/group/remove' => 'kronobox#groupremove'
   
   devise_for :users
   match '/users/xtracard', :to => 'users#xtracard'
@@ -47,6 +52,9 @@ KronosWebsite::Application.routes.draw do
   match '/agendaitems/dag/:day', :to => 'agendaitems#perdag', :as => :perdag
   match '/wedstrijden', :to => 'agendaitems#wedstrijden'
   match '/uitslagen', :to => 'results#frontpage'
+  match '/agendaitems/new_result', :to => 'agendaitems#new_result'
+  match '/agendaitems/create_result', :to => 'agendaitems#create_result', via: [:post]
+  
   resources :agendaitems do
     resources :events
     resources :results

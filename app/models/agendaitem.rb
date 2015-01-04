@@ -80,23 +80,31 @@ class Agendaitem < ActiveRecord::Base
   end
 
   def get_url_name()
-    if self.url.length > 40
-      return self.url[0..37] + "..."
-	else
-	  return self.url
-	end
+    if self.url
+      if self.url.length > 40
+        return self.url[0..37] + "..."
+	  else
+	    return self.url
+	  end
+    else
+      return ""
+    end
   end
   
   def get_url()
-    if self.url.index("/") == 0
+    if self.url
+      if self.url.index("/") == 0
+	  	return self.url
+      elsif self.url["http://"]
 		return self.url
-    elsif self.url["http://"]
+	  elsif self.url["https://"]
 		return self.url
-	elsif self.url["https://"]
-		return self.url
-	else
+	  else
 	    return "http://" + self.url
-	end
+	  end
+    else
+      return "#"
+    end
   end
 
   def deadline_passed?()

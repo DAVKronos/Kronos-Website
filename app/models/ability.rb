@@ -14,7 +14,6 @@ class Ability
     cannot :read, User
     cannot :read, Photoalbum
     cannot :read, Photo
-    cannot :read, Kronobox
     cannot :see_email, Commission
 
 # geen member
@@ -35,13 +34,14 @@ class Ability
       cannot :destroy, Photoalbum
       can :create, Photo
       can :create, Newsitem
+      can :new_result, Agendaitem
+      can :create_result, Agendaitem
       can :create, Agendaitem
       can :update, user.agendaitems
       can :create, Event
       can :create, Result
       can :manage, Subscription
       cannot :destroy, Subscription
-      can :manage, Kronobox
       can :destroy, user.subscriptions
       can :update, user
       can :destroy, user.chatmessages

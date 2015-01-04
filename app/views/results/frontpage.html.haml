@@ -27,7 +27,7 @@
     .col-lg-12
       %h5
         Ik wil een uitslag toevoegen maar mijn wedstrijd staat er niet tussen!!1!!1
-      = link_to "Wedstrijd toevoegen", new_agendaitem_path, :class => "btn btn-primary"
+      = link_to "Wedstrijd toevoegen", url_for(:controller => "agendaitems", :action => "new_result"), :class => "btn btn-primary"
 
 :css
   .resulttable{
