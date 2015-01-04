@@ -57,6 +57,7 @@ en:
         place: 
         result: 
         username: 
+        wind: 
       subscription:
         opmerking: 
       user:
@@ -83,6 +84,10 @@ en:
         aanvang: 
         instelling: 
         studie: 
+      apps_exception:
+        email: 
+        group_email: 
+        way: 
     errors:
       full_messages:
         format: 
@@ -174,6 +179,7 @@ en:
       result: 
       subscription: 
       user: 
+      apps_exception: 
   address: 
   agendaitem:
     Kronos Activiteit: 
@@ -390,6 +396,7 @@ en:
         place: 
         result: 
         username: 
+        wind: 
       subscription:
         opmerking: 
       user:
@@ -413,6 +420,10 @@ en:
         aanvang: 
         instelling: 
         studie: 
+      apps_exception:
+        email: 
+        group_email: 
+        way: 
     select:
       prompt: 
     submit:
@@ -455,6 +466,8 @@ en:
       subscription:
         create: 
       update: 
+      apps_exception:
+        create: 
   iban: 
   initials: 
   licensenumber: 
@@ -566,6 +579,8 @@ en:
       remember_me: 
       signed_in: 
       signed_out: 
+    agendaitem:
+      location: 
   user:
     address: 
     bankaccountnumber: 
