@@ -127,7 +127,7 @@ class KronoboxController < ApplicationController
 	
 	@group = @client.discovered_api("admin", "directory_v1")
 	
-	@client.execute(api_method: @group.members.delete, parameters: {"groupKey" => params['group']}, body_object: {"email" => params['mail']})
+	@client.execute(api_method: @group.members.delete, parameters: {"groupKey" => params['group'], "memberKey" => params['mail']})
 	redirect_to url_for :controller => 'kronobox', :action => 'appshome'
 	return
   end
