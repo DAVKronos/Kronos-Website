@@ -29,11 +29,13 @@ gem 'google-api-client'
 gem 'selectize-rails', '~> 0.8.5' 
 gem 'twitter-typeahead-rails', '~> 0.10.2'
 gem 'thin'
+gem 'less-rails'
+gem 'sass-rails', '>= 3.2'
+gem 'bootstrap-sass', '~> 3.3.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.7'
 	

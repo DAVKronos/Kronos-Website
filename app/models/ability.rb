@@ -14,7 +14,6 @@ class Ability
     cannot :read, User
     cannot :read, Photoalbum
     cannot :read, Photo
-    cannot :read, Kronobox
     cannot :see_email, Commission
 
 # geen member

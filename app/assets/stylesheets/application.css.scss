@@ -2,28 +2,127 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require bootstrap.min
  *= require bootstrap-image-gallery
  *= require jquery.fileupload-ui
  *= require style
  *= require markdowncss
- *= require_self
  *= require selectize
  *= require selectize.default
  *= require typeaheadjs
+ *= require_self
  *= require_tree .
  *= require menu
 */
 
 @import "variables";
+@import "bootstrap-sprockets";
+@import "bootstrap-custom";
 
 /**** ALGEMEEN ****/
-body{
-	background-color: $grey;
-}
 
 .container {
-	background:#FFF;
+	background:$pallete-broken-white;
+}
+
+ul.user {
+	list-style-type: none;
+}
+
+ul.users {
+	list-style-type: none;
+}
+
+img.floatleft {
+	float: left;
+	margin: 0 10px 10px 0;
+	padding-top: 5px;
+}
+
+a.floatleft {
+    float: left;
+    margin: 0 10px 10px 0;
+    padding-top: 5px;
+}
+
+section h1 {
+	font-size: 200%;
+}
+
+#404_image {
+	text-align: center;
+}
+
+hr.no-margin {
+	margin: 0px;
+}
+
+h2 a {
+	text-decoration: none;
+	color: #333333;
+}
+
+h2 a:hover {
+	text-decoration: none;
+	color: #666666;
+}
+
+h2.kronosactiviteit a {
+	color: #7dbc53;
+}
+
+h2.acties {
+	color: #990000;
+}
+
+legend {
+	color: #333333;
+	font-weight: bold;
+	margin: 0px;
+	/*width: 380px; Fix for <hr> width*/
+}
+
+fieldset hr {
+	position: relative;
+	width: 380px;
+	text-align:left
+}
+
+.login-form {
+	width:320px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 13px;
+	padding: 20px;
+}
+
+.login-form a{
+	padding : 0px;
+	margin-top : 5px;
+}
+
+h2.head {
+	background-color: #7dbc53;
+	color: #fff;
+}
+
+.no-space {
+	margin-left:-15px;
+	margin-right:-15px;
+}
+
+/* waar zijn deze voor? */
+.start {
+	margin-left:0!important;
+}
+.end {
+	margin-right:0!important;
+}
+
+/* facebook icon */
+.icon-fb {
+	background-image: url(asset_path('fb-icon.png', image));
+	background-position: 12px center;
+	background-size: 14px 14px;
+	background-repeat: no-repeat;
 }
 
 /* Nog nodig??
@@ -94,25 +193,21 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font:36px Arial;
+//  font:36px Arial;
   font-weight:normal;
   line-height:36px;
 }
 
 h2 {
-  font:24px Arial;
+//  font:24px Arial;
   font-weight:bold;
   line-height:24px;
 }
 
 h3 {
-  font:16px Arial;
+//  font:16px Arial;
   font-weight:normal;
   line-height:16px;
-}
-
-h4 {
-	font-size:$medium;
 }
 
 p {
@@ -121,7 +216,7 @@ p {
 
 .emphasis {
 	font-weight:bold;
-	color:$green;	
+	//color:$green;	
 }
 
 /**** IMAGES & RELATED ****/
@@ -141,15 +236,15 @@ ul.thumbnails {
 }
 
 /**** GLYPHS ****/
-@font-face {
-  font-family: 'Glyphicons Halflings';
-  src: font-url('glyphicons-halflings-regular.eot');
-  src: font-url('glyphicons-halflings-regular.eot?#iefix') format('embedded- opentype'), font-url('glyphicons-halflings-regular.woff') format('woff'), font-url('glyphicons-halflings-regular.ttf') format('truetype'), font-url('glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
-}
+//@font-face {
+//  font-family: 'Glyphicons Halflings';
+//  src: font-url('glyphicons-halflings-regular.eot');
+//  src: font-url('glyphicons-halflings-regular.eot?#iefix') format('embedded- opentype'), font-url('glyphicons-halflings-regular.woff') format('woff'), font-url('glyphicons-halflings-regular.ttf') format('truetype'), font-url('glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+//}
 
-.glyphicon {
-  top:2px; /* betere uitlijning */
-}
+//.glyphicon {
+//  top:2px; /* betere uitlijning */
+//}
 
 .bs-callout {
   margin: 20px 0px;
