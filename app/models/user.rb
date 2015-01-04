@@ -39,9 +39,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  before_save :purge_member_from_group, :update_group_membership,
-              :update_commission_email
+  before_save :purge_member_from_group, :update_commission_email
+
   after_destroy :remove_member_from_group
+
+  after_save :add_member_to_group
 
   attr_accessible :name, :initials, :birthdate,
                   :sex, :licensenumber, :user_type_id,
@@ -76,38 +78,8 @@ class User < ActiveRecord::Base
   validates :city, :presence => true
   validates :sex, :presence => true
   validates :address, :presence => true
-
-  def update_group_membership
-    gapps = Gapps.new
-    gapps.add_group_member('leden', self.email, self.name.split[1], self.name.split[0]) if (self.email_changed? || self.user_type_id_changed?) && !self.email.empty? && (self.user_type_id == 1 || self.user_type_id == 2 || self.user_type == UserType.find_by_name("Proeflid"))
-    gapps.add_group_member('alleleden', self.email, self.name.split[1], self.name.split[0]) if self.email_changed? && !self.email.empty? && (self.user_type != UserType.find_by_name("Oudlid"))
-  end
-
-  def purge_member_from_group
-    gapps = Gapps.new
-    gapps.destroy_group_member('leden', self.email_was) if (self.email_changed? || self.user_type_id_changed?) && !self.new_record? && (self.user_type_id_was == 1 || self.user_type_id_was == 2 || self.user_type == UserType.find_by_name("Proeflid"))
-    gapps.destroy_group_member('alleleden', self.email_was) if self.email_changed? && !self.new_record? && (self.user_type_was != UserType.find_by_name("Oudlid"))
-  end
-
-  def add_member_to_group
-    gapps = Gapps.new
-    gapps.add_group_member('leden', self.email, self.name.split[1], self.name.split[0]) if !self.email.empty? && (self.user_type_id == 1 || self.user_type_id == 2 || self.user_type == UserType.find_by_name('Proeflid'))
-    gapps.add_group_member('alleleden', self.email, self.name.split[1], self.name.split[0]) if !self.email.empty? && (self.user_type != UserType.find_by_name("Oudlid"))
-  end
-
-  def remove_member_from_group
-    gapps = Gapps.new
-    gapps.destroy_group_member('leden', self.email) if (self.user_type_id == 1 || self.user_type_id == 2 || self.user_type == UserType.find_by_name("Proeflid"))
-    gapps.destroy_group_member('alleleden', self.email) if (self.user_type != UserType.find_by_name('Oudlid'))
-  end
-
-  def update_commission_email
-    if self.email_changed?
-      self.commission_memberships.each do |commem|
-        commem.update_commission_email(self.email_was, self.email)
-      end
-    end
-  end
+  # Dit vereenvoudigt de callback functies voor de maillijst
+  validates :email, :presence => true
 
   def admin?
     self.commissions.each do |com|
@@ -154,5 +126,79 @@ class User < ActiveRecord::Base
     bday += 1.year if Date.today >= bday
     (bday - Date.today).to_i
   end
+
+  def first_name
+    self.name.split[0]
+  end
+
+  def last_name
+    self.name.split[1]
+  end
+
+  private
+
+    # Alleen wedstrijd, recreant en proefleden krijgen alle mailtjes
+
+    def receive_all_mail?
+
+
+      self.user_type_id == 1 || self.user_type_id == 2 || self.user_type == UserType.find_by_name("Proeflid")
+
+    end
+
+    # Overige leden ontvangen alleen belangrijke mail (wedstrijd, recreant
+    # en proefleden ontvangen dit ook)
+    # Alle leden behalve oudleden staan op deze lijst
+
+    def receive_important_mail?
+
+      self.user_type != UserType.find_by_name('Oudlid')
+
+    end
+
+    def need_maillist_update?
+      self.email_changed? || self.user_type_id_changed?
+    end
+
+    def purge_member_from_group
+      destroy_group_member('leden') if need_maillist_update? && (self.user_type_id_was == 1 || self.user_type_id_was == 2 || self.user_type == UserType.find_by_name("Proeflid"))
+      destroy_group_member('alleleden') if self.email_changed? && !self.new_record? && (self.user_type_was != UserType.find_by_name("Oudlid"))
+    end
+
+    def add_member_to_group
+      add_group_member('leden') if need_maillist_update? && receive_all_mail?
+      add_group_member('alleleden') if need_maillist_update? && receive_important_mail?
+    end
+
+
+    # Verwijder het mailadres van een lid van de maillijsten voordat het lid
+    # verwijderd wordt uit de database
+    def remove_member_from_group
+      destroy_group_member('leden') if receive_all_mail?
+      destroy_group_member('alleleden') if receive_important_mail?
+    end
+
+    def update_commission_email
+      if self.email_changed?
+        self.commission_memberships.each do |commem|
+          commem.update_commission_email(self.email_was, self.email)
+        end
+      end
+    end
+
+    def add_group_member(list)
+      gapps = Gapps.new
+      gapps.add_group_member(list, self.email, last_name, first_name)
+    end
+
+    def destroy_group_member(list)
+      gapps = Gapps.new
+      gapps.destroy_group_member('leden', self.email_was)
+    end
+
+    def update_maillists
+      remove_member_from_groups(self.changes)
+      add_member_to_groups(self.changes)
+    end
 
 end
