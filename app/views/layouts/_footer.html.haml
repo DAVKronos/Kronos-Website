@@ -1,10 +1,11 @@
-.row#footer
-  .col-lg-8.sponsors
-    = link_to image_tag("RC_Enschede-PMS.jpg", height: '100'), "http://www.runenschede.nl/"
-    = link_to image_tag("sportkoepel.jpg", height: '100'), "http://www.sportkoepelut.nl/"
-  .col-lg-4.adresgegevens
-    %p 
-      %span.emphasis Drienerlose Atletiek Vereniging Kronos<br />
-      Postbus 217<br />
-      7500 AE Enschede<br />
-      info@kronos.nl 
+%footer.app
+  .container
+    .row
+      .col-lg-8.sponsors
+      .col-lg-4.adresgegevens
+        %p
+          %address
+            %b Drienerlose Atletiek Vereniging Kronos<br />
+            Postbus 217<br />
+            7500 AE Enschede<br />
+            = mail_to 'info@kronos.nl'

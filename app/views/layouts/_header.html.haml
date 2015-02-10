@@ -1,69 +1,114 @@
-.row
-  -if !user_signed_in?
-    .hidden-xs.hidden-s
-      = link_to image_tag('banner_lid.png'), new_user_path
-%header
-  %div{:class => "navbar", "id" => "navbar-kronos",  :role => "navigation"}
-    %div{:class => "navbar-header"}
-      %button{:type => "button", :class => "navbar-toggle", :"data-toggle" => "collapse", :"data-target" => "#navbar-collapse-kronos"}
-        %span{:class => "sr-only"}Toggle menu
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to image_tag("Logo_site.png"), root_path, :class => "kronos-logo"
+%header.app
+  .container.logo-top.text-center= image_tag '/assets/logo.png', :alt => 'brand'
+
+  %nav.navbar.navbar-default.navbar-static-top{'role'=>'navigation'}
+    .container
+      #navbar.collapse.navbar-collapse
+        #ul.nav.navbar-nav
+          %li= link_to 'Home', home_path
+          %li.dropdown
+            %a{ :href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=>'button', 'aria-expanded'=>'false' }
+              Informatie
+              %span.caret
+              %ul.dropdown-menu{:role=>'menu'}
+                - getPages.each do |page|
+                  %li= link_to page.pagetag, '/#{page.pagetag}'
+                %li= link_to 'Commissies', '/commissions'
+          %li= link_to 'Agenda', agendaitems_path
+          %li= link_to 'Uitslagen', '/uitslagen'
+          - if can? :read, Photoalbum
+            %li= link_to "Foto's", photoalbums_path
+          %li= link_to 'Kronometer', kronometers_path
+          %li= link_to 'Chatbox', chatmessages_path
+          %ul.nav.navbar-nav.navbar-right
+            - if !current_user
+              %li.dropdown.login-menu
+                %a{ :href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+                  Log in
+                  %b.caret
+                %ul.dropdown-menu
+                  .login-form
+                    = form_tag user_session_path do
+                      .form-group
+                        = text_field_tag 'user[email]', '', 'placeholder' => 'emailadres', class: 'form-control'
+                      .form-group
+                        = password_field_tag 'user[password]', '', 'placeholder' => 'wachtwoord',  class: 'form-control'
+                      .form-group
+                        = label_tag 'user[remember_me]', :class => 'checkbox' do
+                          = t :remember_me
+                          = check_box_tag 'user[remember_me]'
+                      .form-group
+                        %button.btn.btn-primary=t :sign_in
+                      .form-group
+                        = link_to 'Wachtwoord vergeten?', new_password_path('user')
+            - else
+              %li= link_to current_user.name.split[0] + "'s stek", current_user
+              %li= link_to 'Leden', users_path
+              - if current_user && current_user.admin?
+                %li= link_to 'Beheer', admin_path
+              %li= link_to 'Log uit', destroy_user_session_path, :method => :delete
+              
+  -# %div{:class => 'navbar', 'id' => 'navbar-kronos',  :role => 'navigation'}
+  -#   %div{:class => 'navbar-header'}
+  -#     %button{:type => 'button', :class => 'navbar-toggle', :'data-toggle' => 'collapse', :'data-target' => '#navbar-collapse-kronos'}
+  -#       %span{:class => 'sr-only'}Toggle menu
+  -#       %span.icon-bar
+  -#       %span.icon-bar
+  -#       %span.icon-bar
+  -#     = link_to image_tag('Logo_site.png'), root_path, :class => 'kronos-logo'
     
-    %div{:class => "collapse navbar-collapse", "id" => "navbar-collapse-kronos"}
-      %ul{:class => "nav navbar-nav"}
-        %li
-          = link_to "Home", home_path
-        %li.dropdown
-          %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
-            Informatie
-            %b.caret
-            %ul.dropdown-menu
-              - getPages.each do |page|
-                %li
-                  = link_to page.pagetag, "/#{page.pagetag}"
-              %li
-                = link_to "Commissies", '/commissions'
-        %li
-          = link_to "Agenda", agendaitems_path
-        %li
-          = link_to "Uitslagen", '/uitslagen'
-        - if can? :read, Photoalbum
-          %li
-            = link_to "Foto's", photoalbums_path
-        %li
-          = link_to "Kronometer", kronometers_path
-        %li
-          = link_to "Chatbox", chatmessages_path
-        - if !current_user
-          %li.dropdown.login-menu
-            %a{ :href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
-              Log in
-              %b.caret
-              %ul.dropdown-menu
-                .login-form
-                  = form_tag user_session_path do
-                    .form-group
-                      = text_field_tag 'user[email]', "", "placeholder" => "emailadres", class: 'form-control'
-                    .form-group
-                      = password_field_tag 'user[password]', "", "placeholder" => "wachtwoord",  class: 'form-control'
-                    .form-group
-                      = label_tag 'user[remember_me]', :class => "checkbox" do
-                        = t :remember_me
-                        = check_box_tag 'user[remember_me]'
-                    .form-group
-                      %button.btn.btn-primary=t :sign_in
-                    .form-group
-                      = link_to "Wachtwoord vergeten?", new_password_path('user')
-        - else
-          %li
-            = link_to current_user.name.split[0] + "'s stek", current_user
-          %li
-            = link_to "Leden", users_path
-          - if current_user && current_user.admin?
-            %li
-              = link_to "Beheer", admin_path
-          %li
-            = link_to "Log uit", destroy_user_session_path, :method => :delete
+  -#   %div{:class => 'collapse navbar-collapse', 'id' => 'navbar-collapse-kronos'}
+  -#     %ul{:class => 'nav navbar-nav'}
+  -#       %li
+  -#         = link_to 'Home', home_path
+  -#       %li.dropdown
+  -#         %a{ :href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+  -#           Informatie
+  -#           %b.caret
+  -#           %ul.dropdown-menu
+  -#             - getPages.each do |page|
+  -#               %li
+  -#                 = link_to page.pagetag, '/#{page.pagetag}'
+  -#             %li
+  -#               = link_to 'Commissies', '/commissions'
+  -#       %li
+  -#         = link_to 'Agenda', agendaitems_path
+  -#       %li
+  -#         = link_to 'Uitslagen', '/uitslagen'
+  -#       - if can? :read, Photoalbum
+  -#         %li
+  -#           = link_to 'Foto's', photoalbums_path
+  -#       %li
+  -#         = link_to 'Kronometer', kronometers_path
+  -#       %li
+  -#         = link_to 'Chatbox', chatmessages_path
+  -#       - if !current_user
+  -#         %li.dropdown.login-menu
+  -#           %a{ :href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown'}
+  -#             Log in
+  -#             %b.caret
+  -#             %ul.dropdown-menu
+  -#               .login-form
+  -#                 = form_tag user_session_path do
+  -#                   .form-group
+  -#                     = text_field_tag 'user[email]', '', 'placeholder' => 'emailadres', class: 'form-control'
+  -#                   .form-group
+  -#                     = password_field_tag 'user[password]', '', 'placeholder' => 'wachtwoord',  class: 'form-control'
+  -#                   .form-group
+  -#                     = label_tag 'user[remember_me]', :class => 'checkbox' do
+  -#                       = t :remember_me
+  -#                       = check_box_tag 'user[remember_me]'
+  -#                   .form-group
+  -#                     %button.btn.btn-primary=t :sign_in
+  -#                   .form-group
+  -#                     = link_to 'Wachtwoord vergeten?', new_password_path('user')
+  -#       - else
+  -#         %li
+  -#           = link_to current_user.name.split[0] + ''s stek', current_user
+  -#         %li
+  -#           = link_to 'Leden', users_path
+  -#         - if current_user && current_user.admin?
+  -#           %li
+  -#             = link_to 'Beheer', admin_path
+  -#         %li
+  -#           = link_to 'Log uit', destroy_user_session_path, :method => :delete

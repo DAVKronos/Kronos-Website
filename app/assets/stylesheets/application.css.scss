@@ -24,6 +24,41 @@
 	background:$pallete-broken-white;
 }
 
+footer.app{
+  padding-top: 50px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  margin: 0;
+  padding: 0;
+}
+
+footer.app .container{
+  background-color:$brand-primary;
+  height:120px;
+  color: #fff;
+}
+
+footer.app .container a{
+  color: #fff;
+}
+header.app{
+  margin: 0;
+  padding: 0;
+}
+header.app .logo-top{
+  background-color:$brand-primary;
+}
+
+header.app .navbar-default .container{
+  background-color:$brand-primary;
+}
+
+h1{
+  color: $brand-primary;
+}
+
 ul.user {
 	list-style-type: none;
 }
