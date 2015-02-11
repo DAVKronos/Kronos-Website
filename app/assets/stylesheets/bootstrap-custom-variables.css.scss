@@ -13,13 +13,17 @@ $font-family-monospace : Menlo, Monaco, Consolas, "Courier New", monospace;
 
 $headings-font-family: $font-family-serif;
 
-$navbar-default-bg:     transparent;
-$navbar-default-color:  white; 
-$navbar-default-link-color: white;
-$navbar-default-link-hover-color: darken($navbar-default-link-color,15%);
-$navbar-default-link-active-color: darken($navbar-default-link-color,15%);
-$navbar-default-link-active-bg: $brand-primary;
-$navbar-default-link-hover-bg: lighten($brand-primary,5%);
-$navbar-default-toggle-hover-bg: transparent;
-
-
+$navbar-default-bg:                 transparent;
+$navbar-default-color:              #fff;
+$navbar-default-link-color:         #fff;
+$navbar-default-link-hover-color:   darken($navbar-default-link-color,15%);
+$navbar-default-link-active-color:  darken($navbar-default-link-color,15%);
+$navbar-default-link-active-bg:     $brand-primary;
+$navbar-default-link-hover-bg:      lighten($brand-primary,5%);
+$navbar-default-toggle-hover-bg:    transparent;
+$navbar-default-border:             none;
+$navbar-default-link-color:         #fff;
+$navbar-default-brand-color:        #fff;
+$navbar-default-brand-hover-color:  darken($navbar-default-brand-color, 15%);
+$navbar-default-link-hover-color:   #fff;
+$navbar-default-toggle-icon-bar-bg: #fff;

@@ -1,7 +1,10 @@
 /*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
+ * This is a manifest file that'll automatically include all the stylesheets
+ * available in this directory and any sub-directories. You're free to add
+ * application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style
+ * scope.
+ *
  *= require bootstrap-image-gallery
  *= require jquery.fileupload-ui
  *= require style
@@ -14,18 +17,31 @@
  *= require menu
 */
 
+// Imports
 @import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap-custom";
 
-/**** ALGEMEEN ****/
+/* Sticky Footer 
+ * see example used:
+ * http://getbootstrap.com/examples/sticky-footer-navbar/ 
+ * */
+html {
+  position: relative;
+  min-height: 100%;
+}
 
-.container {
-	background:$pallete-broken-white;
+body{
+  margin-bottom: 120px;
+}
+
+/* added bottom padding of all immidiate container childs of body */
+
+body > .container {
+  padding: 0 0 120px 0;
 }
 
 footer.app{
-  padding-top: 50px;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -43,12 +59,37 @@ footer.app .container{
 footer.app .container a{
   color: #fff;
 }
+
+// end sticky footer
+
+// header 
+
 header.app{
   margin: 0;
   padding: 0;
 }
-header.app .logo-top{
+header.app .container{
   background-color:$brand-primary;
+}
+header.app .logo-top{
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+header.app .logo-top.visible-lg-block{
+  background-image:url(/assets/logo-lg.png);
+  height: 150px;
+}
+
+header.app .logo-top.visible-md-block{
+  background-image:url(/assets/logo-md.png);
+  height: 90px;
+}
+
+header.app .logo-top.visible-sm-block{
+  background-image:url(/assets/logo-md.png);
+  height: 80px;
 }
 
 header.app .navbar-default .container{
@@ -159,14 +200,6 @@ h2.head {
 	background-size: 14px 14px;
 	background-repeat: no-repeat;
 }
-
-/* Nog nodig??
-.container.round{
-	background: none repeat scroll 0 0 #ffffff;
-	padding: 1em;
-	background:#FFF;
-}*/
-
 /**** UTILITY ****/
 .no-bottom-margin {
 	margin-bottom: 0px;
@@ -174,14 +207,6 @@ h2.head {
 
 .push-down-for-logo {
 	margin-top:10px;
-}
-
-/* TODO: aanpassen aan bootstrap 3 */
-.newscontent .span6{
-	padding-right: 2em;
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;
 }
 
 .field_with_errors {
