@@ -18,9 +18,11 @@
 */
 
 // Imports
-@import "variables";
+// @import "variables";
+@import "bootstrap-custom-variables";
 @import "bootstrap-sprockets";
-@import "bootstrap-custom";
+@import "bootstrap";
+
 
 /* Sticky Footer 
  * see example used:
@@ -38,7 +40,7 @@ body{
 /* added bottom padding of all immidiate container childs of body */
 
 body > .container {
-  padding: 0 0 120px 0;
+  padding-bottom: 120px;
 }
 
 footer.app{
@@ -96,204 +98,200 @@ header.app .navbar-default .container{
   background-color:$brand-primary;
 }
 
-h1{
-  color: $brand-primary;
-}
+// ul.user {
+// 	list-style-type: none;
+// }
 
-ul.user {
-	list-style-type: none;
-}
+// ul.users {
+// 	list-style-type: none;
+// }
 
-ul.users {
-	list-style-type: none;
-}
+// img.floatleft {
+// 	float: left;
+// 	margin: 0 10px 10px 0;
+// 	padding-top: 5px;
+// }
 
-img.floatleft {
-	float: left;
-	margin: 0 10px 10px 0;
-	padding-top: 5px;
-}
+// a.floatleft {
+//     float: left;
+//     margin: 0 10px 10px 0;
+//     padding-top: 5px;
+// }
 
-a.floatleft {
-    float: left;
-    margin: 0 10px 10px 0;
-    padding-top: 5px;
-}
+// section h1 {
+// 	font-size: 200%;
+// }
 
-section h1 {
-	font-size: 200%;
-}
+// #404_image {
+// 	text-align: center;
+// }
 
-#404_image {
-	text-align: center;
-}
+// hr.no-margin {
+// 	margin: 0px;
+// }
 
-hr.no-margin {
-	margin: 0px;
-}
+// h2 a {
+// 	text-decoration: none;
+// 	color: #333333;
+// }
 
-h2 a {
-	text-decoration: none;
-	color: #333333;
-}
+// h2 a:hover {
+// 	text-decoration: none;
+// 	color: #666666;
+// }
 
-h2 a:hover {
-	text-decoration: none;
-	color: #666666;
-}
+// h2.kronosactiviteit a {
+// 	color: #7dbc53;
+// }
 
-h2.kronosactiviteit a {
-	color: #7dbc53;
-}
+// h2.acties {
+// 	color: #990000;
+// }
 
-h2.acties {
-	color: #990000;
-}
+// legend {
+// 	color: #333333;
+// 	font-weight: bold;
+// 	margin: 0px;
+// 	/*width: 380px; Fix for <hr> width*/
+// }
 
-legend {
-	color: #333333;
-	font-weight: bold;
-	margin: 0px;
-	/*width: 380px; Fix for <hr> width*/
-}
+// fieldset hr {
+// 	position: relative;
+// 	width: 380px;
+// 	text-align:left
+// }
 
-fieldset hr {
-	position: relative;
-	width: 380px;
-	text-align:left
-}
+// .login-form {
+// 	width:320px;
+// 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+// 	font-size: 13px;
+// 	padding: 20px;
+// }
 
-.login-form {
-	width:320px;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 13px;
-	padding: 20px;
-}
+// .login-form a{
+// 	padding : 0px;
+// 	margin-top : 5px;
+// }
 
-.login-form a{
-	padding : 0px;
-	margin-top : 5px;
-}
+// h2.head {
+// 	background-color: #7dbc53;
+// 	color: #fff;
+// }
 
-h2.head {
-	background-color: #7dbc53;
-	color: #fff;
-}
+// .no-space {
+// 	margin-left:-15px;
+// 	margin-right:-15px;
+// }
 
-.no-space {
-	margin-left:-15px;
-	margin-right:-15px;
-}
+// /* waar zijn deze voor? */
+// .start {
+// 	margin-left:0!important;
+// }
+// .end {
+// 	margin-right:0!important;
+// }
 
-/* waar zijn deze voor? */
-.start {
-	margin-left:0!important;
-}
-.end {
-	margin-right:0!important;
-}
+// /* facebook icon */
+// .icon-fb {
+// 	background-image: url(asset_path('fb-icon.png', image));
+// 	background-position: 12px center;
+// 	background-size: 14px 14px;
+// 	background-repeat: no-repeat;
+// }
+// /**** UTILITY ****/
+// .no-bottom-margin {
+// 	margin-bottom: 0px;
+// }
 
-/* facebook icon */
-.icon-fb {
-	background-image: url(asset_path('fb-icon.png', image));
-	background-position: 12px center;
-	background-size: 14px 14px;
-	background-repeat: no-repeat;
-}
-/**** UTILITY ****/
-.no-bottom-margin {
-	margin-bottom: 0px;
-}
+// .push-down-for-logo {
+// 	margin-top:10px;
+// }
 
-.push-down-for-logo {
-	margin-top:10px;
-}
+// .field_with_errors {
+// 	position: relative;
+// }
 
-.field_with_errors {
-	position: relative;
-}
+// .field_with_errors input {
+// 	border: 1px solid #DD0000 !important;
+// 	box-shadow: 0 0 8px #FF7777;
+// }
 
-.field_with_errors input {
-	border: 1px solid #DD0000 !important;
-	box-shadow: 0 0 8px #FF7777;
-}
+// .field_with_errors .message {
+// 	color: #DD0000;
+// 	font-size: 12px;
+// 	left: auto;
+// 	position: absolute;
+// 	left: 230px;top: 4px;
+// }
 
-.field_with_errors .message {
-	color: #DD0000;
-	font-size: 12px;
-	left: auto;
-	position: absolute;
-	left: 230px;top: 4px;
-}
+// .input-prepend .add-on,
+// .input-append input {
+//   float: left;
+// }
 
-.input-prepend .add-on,
-.input-append input {
-  float: left;
-}
+// /* FORMS */
+// label {
+// 	display:block;
+// }
 
-/* FORMS */
-label {
-	display:block;
-}
+// /**** FOOTER ****/
+// #footer {
+// 	padding:15px 0;
+// 	background:#39423F;
+// 	color:#FFF;
+// }
 
-/**** FOOTER ****/
-#footer {
-	padding:15px 0;
-	background:#39423F;
-	color:#FFF;
-}
+// #footer .adresgegevens {
+// 	text-align:right;
+// }
 
-#footer .adresgegevens {
-	text-align:right;
-}
+// /**** TYPOGRAFIE ****/
+// h1, h2, h3, h4 { 
+// 	margin-top:0;
+// }
 
-/**** TYPOGRAFIE ****/
-h1, h2, h3, h4 { 
-	margin-top:0;
-}
+// h1 {
+// //  font:36px Arial;
+//   font-weight:normal;
+//   line-height:36px;
+// }
 
-h1 {
-//  font:36px Arial;
-  font-weight:normal;
-  line-height:36px;
-}
+// h2 {
+// //  font:24px Arial;
+//   font-weight:bold;
+//   line-height:24px;
+// }
 
-h2 {
-//  font:24px Arial;
-  font-weight:bold;
-  line-height:24px;
-}
+// h3 {
+// //  font:16px Arial;
+//   font-weight:normal;
+//   line-height:16px;
+// }
 
-h3 {
-//  font:16px Arial;
-  font-weight:normal;
-  line-height:16px;
-}
+// p {
+//   margin:10px 0;
+// }
 
-p {
-  margin:10px 0;
-}
+// .emphasis {
+// 	font-weight:bold;
+// 	//color:$green;	
+// }
 
-.emphasis {
-	font-weight:bold;
-	//color:$green;	
-}
+// /**** IMAGES & RELATED ****/
+// ul.thumbnails {
+//   padding:0;
+// }
+// .thumbnails li {
+//   list-style: none;
+// }
 
-/**** IMAGES & RELATED ****/
-ul.thumbnails {
-  padding:0;
-}
-.thumbnails li {
-  list-style: none;
-}
+// .thumbnail {
+//   text-align: center;
+// }
 
-.thumbnail {
-  text-align: center;
-}
-
-.thumbnail .caption {
-  text-align: left;
-}
+// .thumbnail .caption {
+//   text-align: left;
+// }
 
 /**** GLYPHS ****/
 //@font-face {
@@ -306,9 +304,9 @@ ul.thumbnails {
 //  top:2px; /* betere uitlijning */
 //}
 
-.bs-callout {
-  margin: 20px 0px;
-  padding: 20px;
-  border-left: 3px solid #EEE;
-  background-color: #F5F5F5; 
-}
+// .bs-callout {
+//   margin: 20px 0px;
+//   padding: 20px;
+//   border-left: 3px solid #EEE;
+//   background-color: #F5F5F5; 
+// }

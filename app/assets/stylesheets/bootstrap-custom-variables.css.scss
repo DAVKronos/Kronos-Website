@@ -1,18 +1,38 @@
-// Colors Bootstrap
-// @import "variables";
+/* boostrap custom variables 
+ *
+ * See http://getbootstrap.com/customize/#typography for all variables
+ */
 
+// Colors
 $brand-primary:         #369866;
+
+// Scaffolding
+$body-bg:               #f5f5f5;
 $link-color:            $brand-primary;
 $link-hover-color:      darken($link-color, 15%);
 $link-hover-decoration: underline;
-$body-bg:               #f5f5f5;
 
-$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-serif: lusitana, Georgia, "Times New Roman", Times, serif;
-$font-family-monospace : Menlo, Monaco, Consolas, "Courier New", monospace;
+// Typography
+$font-family-sans-serif:  "Roboto", Helvetica, Arial, sans-serif;
+$font-family-serif:       "Droid Serif", Georgia, "Times New Roman", Times, serif;
+$font-family-monospace :  Menlo, Monaco, Consolas, "Courier New", monospace;
+$headings-font-family:    $font-family-serif;
 
-$headings-font-family: $font-family-serif;
+// Iconography
+$icon-font-path:        '../fonts/';
 
+// Components
+$border-radius-base: 2px;
+
+// Tables
+// Buttons
+// Forms
+// Dropdowns
+// Media queries breakpoints
+// Grid system
+// Container sizes
+
+// Navbar
 $navbar-default-bg:                 transparent;
 $navbar-default-color:              #fff;
 $navbar-default-link-color:         #fff;
@@ -27,3 +47,16 @@ $navbar-default-brand-color:        #fff;
 $navbar-default-brand-hover-color:  darken($navbar-default-brand-color, 15%);
 $navbar-default-link-hover-color:   #fff;
 $navbar-default-toggle-icon-bar-bg: #fff;
+
+// Navs
+// Tabs
+// Pills
+// Pagination
+// Pager
+// Jumbotron
+// Form states and alerts
+// Tooltips
+// Popovers
+// Labels
+// Modals
+// Alerts
