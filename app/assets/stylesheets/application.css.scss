@@ -1,7 +1,10 @@
 /*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
+ * This is a manifest file that'll automatically include all the stylesheets
+ * available in this directory and any sub-directories. You're free to add
+ * application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style
+ * scope.
+ *
  *= require bootstrap-image-gallery
  *= require jquery.fileupload-ui
  *= require style
@@ -14,226 +17,281 @@
  *= require menu
 */
 
-@import "variables";
+// Imports
+// @import "variables";
+@import "bootstrap-custom-variables";
 @import "bootstrap-sprockets";
-@import "bootstrap-custom";
+@import "bootstrap";
 
-/**** ALGEMEEN ****/
 
-.container {
-	background:$pallete-broken-white;
+/* Sticky Footer 
+ * see example used:
+ * http://getbootstrap.com/examples/sticky-footer-navbar/ 
+ * */
+html {
+  position: relative;
+  min-height: 100%;
 }
 
-ul.user {
-	list-style-type: none;
+body{
+  margin-bottom: 120px;
 }
 
-ul.users {
-	list-style-type: none;
+/* added bottom padding of all immidiate container childs of body */
+
+body > .container {
+  padding-bottom: 120px;
 }
 
-img.floatleft {
-	float: left;
-	margin: 0 10px 10px 0;
-	padding-top: 5px;
+footer.app{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  margin: 0;
+  padding: 0;
 }
 
-a.floatleft {
-    float: left;
-    margin: 0 10px 10px 0;
-    padding-top: 5px;
+footer.app .container{
+  background-color:$brand-primary;
+  height:120px;
+  color: #fff;
 }
 
-section h1 {
-	font-size: 200%;
+footer.app .container a{
+  color: #fff;
 }
 
-#404_image {
-	text-align: center;
+// end sticky footer
+
+// header 
+
+header.app{
+  margin: 0;
+  padding: 0;
+}
+header.app .container{
+  background-color:$brand-primary;
+}
+header.app .logo-top{
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
 }
 
-hr.no-margin {
-	margin: 0px;
+header.app .logo-top.visible-lg-block{
+  background-image:url(/assets/logo-lg.png);
+  height: 150px;
 }
 
-h2 a {
-	text-decoration: none;
-	color: #333333;
+header.app .logo-top.visible-md-block{
+  background-image:url(/assets/logo-md.png);
+  height: 90px;
 }
 
-h2 a:hover {
-	text-decoration: none;
-	color: #666666;
+header.app .logo-top.visible-sm-block{
+  background-image:url(/assets/logo-md.png);
+  height: 80px;
 }
 
-h2.kronosactiviteit a {
-	color: #7dbc53;
+header.app .navbar-default .container{
+  background-color:$brand-primary;
 }
 
-h2.acties {
-	color: #990000;
-}
+// ul.user {
+// 	list-style-type: none;
+// }
 
-legend {
-	color: #333333;
-	font-weight: bold;
-	margin: 0px;
-	/*width: 380px; Fix for <hr> width*/
-}
+// ul.users {
+// 	list-style-type: none;
+// }
 
-fieldset hr {
-	position: relative;
-	width: 380px;
-	text-align:left
-}
+// img.floatleft {
+// 	float: left;
+// 	margin: 0 10px 10px 0;
+// 	padding-top: 5px;
+// }
 
-.login-form {
-	width:320px;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 13px;
-	padding: 20px;
-}
+// a.floatleft {
+//     float: left;
+//     margin: 0 10px 10px 0;
+//     padding-top: 5px;
+// }
 
-.login-form a{
-	padding : 0px;
-	margin-top : 5px;
-}
+// section h1 {
+// 	font-size: 200%;
+// }
 
-h2.head {
-	background-color: #7dbc53;
-	color: #fff;
-}
+// #404_image {
+// 	text-align: center;
+// }
 
-.no-space {
-	margin-left:-15px;
-	margin-right:-15px;
-}
+// hr.no-margin {
+// 	margin: 0px;
+// }
 
-/* waar zijn deze voor? */
-.start {
-	margin-left:0!important;
-}
-.end {
-	margin-right:0!important;
-}
+// h2 a {
+// 	text-decoration: none;
+// 	color: #333333;
+// }
 
-/* facebook icon */
-.icon-fb {
-	background-image: url(asset_path('fb-icon.png', image));
-	background-position: 12px center;
-	background-size: 14px 14px;
-	background-repeat: no-repeat;
-}
+// h2 a:hover {
+// 	text-decoration: none;
+// 	color: #666666;
+// }
 
-/* Nog nodig??
-.container.round{
-	background: none repeat scroll 0 0 #ffffff;
-	padding: 1em;
-	background:#FFF;
-}*/
+// h2.kronosactiviteit a {
+// 	color: #7dbc53;
+// }
 
-/**** UTILITY ****/
-.no-bottom-margin {
-	margin-bottom: 0px;
-}
+// h2.acties {
+// 	color: #990000;
+// }
 
-.push-down-for-logo {
-	margin-top:10px;
-}
+// legend {
+// 	color: #333333;
+// 	font-weight: bold;
+// 	margin: 0px;
+// 	/*width: 380px; Fix for <hr> width*/
+// }
 
-/* TODO: aanpassen aan bootstrap 3 */
-.newscontent .span6{
-	padding-right: 2em;
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;
-}
+// fieldset hr {
+// 	position: relative;
+// 	width: 380px;
+// 	text-align:left
+// }
 
-.field_with_errors {
-	position: relative;
-}
+// .login-form {
+// 	width:320px;
+// 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+// 	font-size: 13px;
+// 	padding: 20px;
+// }
 
-.field_with_errors input {
-	border: 1px solid #DD0000 !important;
-	box-shadow: 0 0 8px #FF7777;
-}
+// .login-form a{
+// 	padding : 0px;
+// 	margin-top : 5px;
+// }
 
-.field_with_errors .message {
-	color: #DD0000;
-	font-size: 12px;
-	left: auto;
-	position: absolute;
-	left: 230px;top: 4px;
-}
+// h2.head {
+// 	background-color: #7dbc53;
+// 	color: #fff;
+// }
 
-.input-prepend .add-on,
-.input-append input {
-  float: left;
-}
+// .no-space {
+// 	margin-left:-15px;
+// 	margin-right:-15px;
+// }
 
-/* FORMS */
-label {
-	display:block;
-}
+// /* waar zijn deze voor? */
+// .start {
+// 	margin-left:0!important;
+// }
+// .end {
+// 	margin-right:0!important;
+// }
 
-/**** FOOTER ****/
-#footer {
-	padding:15px 0;
-	background:#39423F;
-	color:#FFF;
-}
+// /* facebook icon */
+// .icon-fb {
+// 	background-image: url(asset_path('fb-icon.png', image));
+// 	background-position: 12px center;
+// 	background-size: 14px 14px;
+// 	background-repeat: no-repeat;
+// }
+// /**** UTILITY ****/
+// .no-bottom-margin {
+// 	margin-bottom: 0px;
+// }
 
-#footer .adresgegevens {
-	text-align:right;
-}
+// .push-down-for-logo {
+// 	margin-top:10px;
+// }
 
-/**** TYPOGRAFIE ****/
-h1, h2, h3, h4 { 
-	margin-top:0;
-}
+// .field_with_errors {
+// 	position: relative;
+// }
 
-h1 {
-//  font:36px Arial;
-  font-weight:normal;
-  line-height:36px;
-}
+// .field_with_errors input {
+// 	border: 1px solid #DD0000 !important;
+// 	box-shadow: 0 0 8px #FF7777;
+// }
 
-h2 {
-//  font:24px Arial;
-  font-weight:bold;
-  line-height:24px;
-}
+// .field_with_errors .message {
+// 	color: #DD0000;
+// 	font-size: 12px;
+// 	left: auto;
+// 	position: absolute;
+// 	left: 230px;top: 4px;
+// }
 
-h3 {
-//  font:16px Arial;
-  font-weight:normal;
-  line-height:16px;
-}
+// .input-prepend .add-on,
+// .input-append input {
+//   float: left;
+// }
 
-p {
-  margin:10px 0;
-}
+// /* FORMS */
+// label {
+// 	display:block;
+// }
 
-.emphasis {
-	font-weight:bold;
-	//color:$green;	
-}
+// /**** FOOTER ****/
+// #footer {
+// 	padding:15px 0;
+// 	background:#39423F;
+// 	color:#FFF;
+// }
 
-/**** IMAGES & RELATED ****/
-ul.thumbnails {
-  padding:0;
-}
-.thumbnails li {
-  list-style: none;
-}
+// #footer .adresgegevens {
+// 	text-align:right;
+// }
 
-.thumbnail {
-  text-align: center;
-}
+// /**** TYPOGRAFIE ****/
+// h1, h2, h3, h4 { 
+// 	margin-top:0;
+// }
 
-.thumbnail .caption {
-  text-align: left;
-}
+// h1 {
+// //  font:36px Arial;
+//   font-weight:normal;
+//   line-height:36px;
+// }
+
+// h2 {
+// //  font:24px Arial;
+//   font-weight:bold;
+//   line-height:24px;
+// }
+
+// h3 {
+// //  font:16px Arial;
+//   font-weight:normal;
+//   line-height:16px;
+// }
+
+// p {
+//   margin:10px 0;
+// }
+
+// .emphasis {
+// 	font-weight:bold;
+// 	//color:$green;	
+// }
+
+// /**** IMAGES & RELATED ****/
+// ul.thumbnails {
+//   padding:0;
+// }
+// .thumbnails li {
+//   list-style: none;
+// }
+
+// .thumbnail {
+//   text-align: center;
+// }
+
+// .thumbnail .caption {
+//   text-align: left;
+// }
 
 /**** GLYPHS ****/
 //@font-face {
@@ -246,9 +304,9 @@ ul.thumbnails {
 //  top:2px; /* betere uitlijning */
 //}
 
-.bs-callout {
-  margin: 20px 0px;
-  padding: 20px;
-  border-left: 3px solid #EEE;
-  background-color: #F5F5F5; 
-}
+// .bs-callout {
+//   margin: 20px 0px;
+//   padding: 20px;
+//   border-left: 3px solid #EEE;
+//   background-color: #F5F5F5; 
+// }
