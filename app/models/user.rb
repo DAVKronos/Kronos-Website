@@ -77,6 +77,8 @@ class User < ActiveRecord::Base
   validates :sex, :presence => true
   validates :address, :presence => true
   
+  has_paper_trail :ignore => [:created_at, :updated_at, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip]
+  
   def update_group_membership
     gapps = Gapps.new
     gapps.add_group_member("leden", self.email, self.name.split[1], self.name.split[0]) if (self.email_changed? || self.user_type_id_changed?) && !self.email.empty? && (self.user_type_id == 1 || self.user_type_id == 2 || self.user_type == UserType.find_by_name("Proeflid"))

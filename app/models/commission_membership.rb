@@ -20,6 +20,8 @@ class CommissionMembership < ActiveRecord::Base
   validates :user_id,       :presence => true
   validates :function,      :presence => true
   
+  has_paper_trail
+  
   def add_member_to_group
     gapps = Gapps.new
     gapps.add_group_member(self.commission.email.split("@").first, self.user.email, self.user.name.split[1], self.user.name.split[0])
