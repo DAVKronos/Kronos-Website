@@ -2,7 +2,6 @@ KronosWebsite::Application.routes.draw do
 
   resources :apps_exceptions
 
-
   resources :agendaitemtype_eventtypes
 
   resources :agendaitemtypes
@@ -72,8 +71,13 @@ KronosWebsite::Application.routes.draw do
   match '/nieuw', :to => 'pages#nieuw'
   match '/test', :to => 'pages#test'
   match '/admin', :to => 'pages#admin'
+  
+  match '/hidebanner', :to => 'pages#hide_banner'
+
   resources :pages
   match '/:pt', :to => 'pages#titleshow'
   
   root :to => 'pages#home'
+
+
 end
