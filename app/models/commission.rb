@@ -17,4 +17,6 @@ class Commission < ActiveRecord::Base
   has_many :agendaitems
   
   accepts_nested_attributes_for :commission_memberships, :allow_destroy => true
+  
+  has_paper_trail
 end
