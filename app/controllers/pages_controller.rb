@@ -73,4 +73,10 @@ class PagesController < ApplicationController
       redirect_to :root
     end
   end
+
+  def hide_banner
+    cookies['banner'] = 'false'  
+    render :text => 'success'
+  end
+
 end

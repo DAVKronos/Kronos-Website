@@ -51,3 +51,11 @@ $(document).ready(function () {
   $('.monthpicker .head').click(function (e){$('.monthpicker .collapser').filter(':visible').hide("slide", function(){$($(e.target).data("toggle")).show("slide");});});
   $("form").live("nested:fieldAdded", function(event){$(event.field).find('.tijdprikker').removeClass('hasDatepicker').timepicker({});});
 });
+
+$(function(){
+  $("#hide-banner").click(function(){
+    $.post('/hidebanner');
+    $('#banner').collapse();
+  })
+});
+

@@ -81,6 +81,9 @@ class User < ActiveRecord::Base
   # Dit vereenvoudigt de callback functies voor de maillijst
   validates :email, :presence => true
 
+  
+  has_paper_trail :ignore => [:created_at, :updated_at, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip]
+  
   def admin?
     self.commissions.each do |com|
       if com.role == 'ADMIN'

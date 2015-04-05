@@ -31,8 +31,9 @@ gem 'twitter-typeahead-rails', '~> 0.10.2'
 gem 'thin'
 gem 'less-rails'
 gem 'sass-rails', '>= 3.2'
-gem 'bootstrap-sass', '~> 3.3.0'
+gem 'bootstrap-sass', '~> 3.3.3'
 gem 'execjs', '~> 2.0.2'
+gem 'paper_trail', '~> 4.0.0.beta'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -40,11 +41,11 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.7'
 	
-	# For development under Linux you also need to install
-	# an javascript runtime
-	platform :ruby do
-		gem 'therubyracer'
-	end
+  if RUBY_PLATFORM =~ /mingw/
+    gem 'therubyracer', '0.11.0beta1', :platform  => [:mswin, :mingw]
+  else
+    gem 'therubyracer', :platform  => [:ruby]
+  end
 end
 
 group :production do

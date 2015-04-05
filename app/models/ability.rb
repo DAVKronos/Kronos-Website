@@ -11,6 +11,7 @@ class Ability
     can :frontpage, Result
     can :create, Chatmessage
     can :titleshow, Page
+    can :hide_banner, Page
     cannot :read, User
     cannot :read, Photoalbum
     cannot :read, Photo
