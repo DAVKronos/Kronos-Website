@@ -39,12 +39,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  before_save :purge_member_from_group, :update_commission_email
-
-  after_destroy :remove_member_from_group
-
-  after_save :add_member_to_group
-
   attr_accessible :name, :initials, :birthdate,
                   :sex, :licensenumber, :user_type_id,
                   :xtracard, :bank_account_number, :iban, :as => :bestuur

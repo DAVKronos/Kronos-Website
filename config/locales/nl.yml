@@ -88,6 +88,10 @@ nl:
         email: Email
         group_email: Group email
         way: Way
+      kronometer:
+        date: Date
+        file: File
+        name: Name
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -182,6 +186,7 @@ nl:
       subscription: Subscription
       user: Lid
       apps_exception: Apps exception
+      kronometer: Kronometer
   address: adres
   agendaitem:
     Kronos Activiteit: 
@@ -499,6 +504,10 @@ nl:
         email: 
         group_email: 
         way: 
+      kronometer:
+        date: 
+        file: 
+        name: 
     select:
       prompt: Selecteer
     submit:
@@ -543,6 +552,8 @@ nl:
       update: ! '%{model} bewaren'
       apps_exception:
         create: Create Apps exception
+      kronometer:
+        create: Create Kronometer
   iban: IBAN
   initials: initialen
   licensenumber: licentienummer

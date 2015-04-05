@@ -88,6 +88,10 @@ en:
         email: 
         group_email: 
         way: 
+      kronometer:
+        date: 
+        file: 
+        name: 
     errors:
       full_messages:
         format: 
@@ -180,6 +184,7 @@ en:
       subscription: 
       user: 
       apps_exception: 
+      kronometer: 
   address: 
   agendaitem:
     Kronos Activiteit: 
@@ -424,6 +429,10 @@ en:
         email: 
         group_email: 
         way: 
+      kronometer:
+        date: 
+        file: 
+        name: 
     select:
       prompt: 
     submit:
@@ -467,6 +476,8 @@ en:
         create: 
       update: 
       apps_exception:
+        create: 
+      kronometer:
         create: 
   iban: 
   initials: 

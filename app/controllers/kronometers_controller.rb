@@ -1,7 +1,7 @@
 class KronometersController < ApplicationController
   authorize_resource
   def index
-    @kms = Kronometer.all
+    @kms = Kronometer.order('date DESC')
     @users = User.where(:papieren_kronometer => true)
   end
   
