@@ -82,6 +82,9 @@ class AgendaitemsController < ApplicationController
     end
     
     earliest = Agendaitem.first(:order => 'date asc').date.to_date
+    if earliest.year < 1964 then
+      earliest = Date.new(1964, 1)
+    end	
     latest = Agendaitem.last(:order=>'date asc').date.to_date
     range = Array.new
  
@@ -96,7 +99,7 @@ class AgendaitemsController < ApplicationController
     before, after = range.partition {|e| (Date.new(e.first,e.second) < date.beginning_of_month ) }
     after = after.drop(1)
     
-    @agendaitems = Agendaitem.where(:date => date.beginning_of_month..date.next_month)
+    @agendaitems = Agendaitem.where(:date => date.beginning_of_month..date.next_month).order("date ASC")
     @current = date
     @years = range.map{|e| e.first}.uniq
 
