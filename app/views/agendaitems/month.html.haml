@@ -1,0 +1,57 @@
+.row
+  .col-md-12
+    %h1 
+      =t('.agenda').capitalize
+      %small= l @current, format: '%b %Y'
+.row
+  .col-md-12
+    %ul.nav.nav-tabs
+      %li.dropdown{:role => "presentation"}
+        %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"} 
+          = @current.strftime('%Y')
+          %span.caret
+        %ul.dropdown-menu{:role => "menu"}
+          - @years.each do |y|
+            %li= link_to y,'/agenda/'+y.to_s+'/'+@current.strftime('%m');
+      %li.dropdown{:role => "presentation"}
+        %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"} 
+          = l @current, format: '%b'
+          %span.caret
+        %ul.dropdown-menu{:role => "menu"}
+          - t(:month_names, :scope => :date).drop(1).each do |m|
+            %li= link_to m.capitalize, '/agenda/'+@current.strftime('%Y/')+( t(:month_names, :scope => :date).drop(1).index(m)+1).to_s
+      - @past.reverse.take(2).reverse.each do |d|
+        %li{:role=> 'presentation'}= link_to (l d, format: '%b %Y'), '/agenda/'+d.strftime('%Y/%m')
+      %li.active{:role => 'presentation'}= link_to @current.strftime('%b %Y'),'#'
+      - @present.take(2).each do |d|
+        %li{:role=> 'presentation'}= link_to (l d, format: '%b %Y'), '/agenda/'+d.strftime('%Y/%m') 
+
+.row 
+  &nbsp;
+.row 
+  .col-md-12
+    .list-group.panel-group
+      - @agendaitems.each do |agendaitem| 
+        .panel.list-group-item
+          .list-group-item-heading
+            %a{:href=>agendaitem_url(agendaitem)}
+              .row 
+                .col-xs-1
+                  %h4
+                    = l agendaitem.date, format: '%d' 
+                    = content_tag(:small, (l agendaitem.date, format: '%a'))
+                .col-xs-1 
+                  %h4 
+                    %small= l agendaitem.date, format: '%H:%M'
+                .col-xs-9
+                  %h4
+                    = agendaitem.name 
+                    = content_tag :small, (agendaitem.agendaitemtype.name )
+                .col-xs-1.text-right
+                  - if agendaitem.subscriptions.count > 0
+                    %h4 
+                      %small
+                        %span.glyphicon.glyphicon-user
+                        = agendaitem.subscriptions.count 
+      - if @agendaitems.empty? 
+        %p{:class=>'text-center text-info'}=t '.no_agendaitems_found' 

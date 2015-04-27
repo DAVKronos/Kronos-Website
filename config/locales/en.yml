@@ -83,6 +83,10 @@ en:
         aanvang: 
         instelling: 
         studie: 
+      kronometer:
+        date: 
+        file: 
+        name: 
     errors:
       full_messages:
         format: 
@@ -174,8 +178,12 @@ en:
       result: 
       subscription: 
       user: 
+      kronometer: 
   address: 
-  agendaitem:
+  agendaitems:
+    month:
+      agenda: agenda 
+      no_agendaitems_found: 'no agendaitems this month' 
     Kronos Activiteit: 
     agendaitemtype: 
     commission: 
@@ -413,6 +421,10 @@ en:
         aanvang: 
         instelling: 
         studie: 
+      kronometer:
+        date: 
+        file: 
+        name: 
     select:
       prompt: 
     submit:
@@ -455,6 +467,8 @@ en:
       subscription:
         create: 
       update: 
+      kronometer:
+        create: 
   iban: 
   initials: 
   licensenumber: 

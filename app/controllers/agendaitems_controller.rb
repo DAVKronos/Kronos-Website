@@ -69,6 +69,41 @@ class AgendaitemsController < ApplicationController
     @agendaitems = Agendaitem.paginate(:page => params[:page], :order => 'date DESC', :per_page => 10)
   end
 
+  def month
+    if (params[:year].nil? || params[:month].nil?) then
+      date = Date.today
+    else
+      begin
+        date = DateTime.new(params[:year].to_i,params[:month].to_i)
+      rescue ArgumentError
+        date = Date.today
+        redirect_to '/agenda/'
+      end
+    end
+    
+    earliest = Agendaitem.first(:order => 'date asc').date.to_date
+    latest = Agendaitem.last(:order=>'date asc').date.to_date
+    range = Array.new
+ 
+    (earliest.year..latest.year).each do |y|
+      mo_start = (earliest.year == y) ? earliest.month : 1
+      mo_end = (latest.year == y) ? latest.month : 12
+      (mo_start..mo_end).each do |m|  
+        range << [y,m]         
+      end
+    end 
+    
+    before, after = range.partition {|e| (Date.new(e.first,e.second) < date.beginning_of_month ) }
+    after = after.drop(1)
+    
+    @agendaitems = Agendaitem.where(:date => date.beginning_of_month..date.next_month)
+    @current = date
+    @years = range.map{|e| e.first}.uniq
+
+    @past = before.map{|e| Date.new(e.first,e.second)}
+    @present = after.map{|e| Date.new(e.first,e.second)}
+  end
+
   def new
     @agendaitem = Agendaitem.new
     @agendaitem.date = Time.now

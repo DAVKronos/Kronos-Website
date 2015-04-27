@@ -28,34 +28,6 @@ nl:
         role: Rol
       commission_membership:
         function: Functie
-        user_id: Lid
-      event:
-        Afstand: Afstand
-        Tijd: Tijd
-        Type: Type
-      eventtype:
-        agendaitemtypes: Agendaitemtypes
-        calculated_unit: Berekende eenheid
-        female_formula: Formule voor vrouwen
-        formula: Formule
-        measuringunit: Gemeten eenheid
-        name: Naam
-        shortname: Korte naam
-        show_wind: Geef wind weer
-      newsitem:
-        articlephoto: Artikelfoto
-        nieuwsbericht: Nieuwsbericht
-        profielfoto: Profielfoto
-        titel: Titel
-      page:
-        information: Informatie
-        title: Titel
-      photoalbum:
-        agendaitem: Agendapunt
-        name: Name
-      result:
-        place: Place
-        result: Result
         username: Username
       subscription:
         opmerking: Opmerking
@@ -83,6 +55,10 @@ nl:
         aanvang: Aanvang
         instelling: Instelling
         studie: Studie
+      kronometer:
+        date: Date
+        file: File
+        name: Name
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -176,8 +152,12 @@ nl:
       result: Uitslag
       subscription: Subscription
       user: Lid
+      kronometer: Kronometer
   address: adres
-  agendaitem:
+  agendaitems:
+    month:
+      no_agendaitems_found: 'geen agendaitems deze maand' 
+      agenda: agenda
     Kronos Activiteit: 
     agendaitemtype: 
     commission: comissie
@@ -488,6 +468,10 @@ nl:
         aanvang: aanvang
         instelling: 
         studie: studie
+      kronometer:
+        date: 
+        file: 
+        name: 
     select:
       prompt: Selecteer
     submit:
@@ -530,6 +514,8 @@ nl:
       subscription:
         create: Create Subscription
       update: ! '%{model} bewaren'
+      kronometer:
+        create: Create Kronometer
   iban: IBAN
   initials: initialen
   licensenumber: licentienummer
