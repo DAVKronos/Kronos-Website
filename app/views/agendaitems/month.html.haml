@@ -11,7 +11,7 @@
           = @current.strftime('%Y')
           %span.caret
         %ul.dropdown-menu{:role => "menu"}
-          - @years.each do |y|
+          - @years.reverse.each do |y|
             %li= link_to y,'/agenda/'+y.to_s+'/'+@current.strftime('%m');
       %li.dropdown{:role => "presentation"}
         %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"} 
