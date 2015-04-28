@@ -52,11 +52,11 @@ nl:
         title: Titel
       photoalbum:
         agendaitem: Agendapunt
-        name: Name
+        name: Naam
       result:
         place: Place
         result: Result
-        username: Username
+        username: Gebruikersnaam
         wind: Wind
       subscription:
         opmerking: Opmerking
@@ -91,10 +91,10 @@ nl:
       kronometer:
         date: Date
         file: File
-        name: Name
+        name: Naam
       mailinglist:
-        description: Description
-        name: Name
+        description: Beschrijving
+        name: Naam
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -196,7 +196,7 @@ nl:
     agendaitemtype: 
     commission: comissie
     date: datum
-    description: beschrijving
+    description: Beschrijving
     events:
       Afstand: Afstand
       Tijd: 
@@ -319,7 +319,7 @@ nl:
       month: maand
       second: seconde
       year: jaar
-  description: beschrijving
+  description: Beschrijving
   devise:
     confirmations:
       confirmed: Je account is bevestigd.
@@ -425,8 +425,8 @@ nl:
     female_formula: 
     formula: 
     measuringunit: 
-    name: 
-    shortname: 
+    name: Naam
+    shortname: Korte naam
     show_wind: 
   function: functie
   hello: 
@@ -437,13 +437,13 @@ nl:
         agendaitemtype: 
         commission: 
         date: 
-        description: 
+        description: Beschrijving
         events:
           Afstand: 
           Tijd: 
           Type: 
         location: 
-        name: 
+        name: Naam
         subscribe: 
         subscriptiondeadline: 
         url: 
@@ -456,9 +456,9 @@ nl:
       commission:
         commission_memberships:
           function: 
-        description: 
+        description: Beschrijving
         email: 
-        name: 
+        name: Naam
         role: 
       commission[commission_memberships_attributes][new_commission_memberships]:
         function: 
@@ -718,4 +718,5 @@ nl:
     month:
       agenda: 
       no_agendaitems_found: 
-  new_mailinglist: 
+  new_mailinglist: nieuwe maillijst
+  mailinglist_destroy_success: 
