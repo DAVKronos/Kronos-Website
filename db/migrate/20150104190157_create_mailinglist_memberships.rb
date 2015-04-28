@@ -2,7 +2,7 @@ class CreateMailinglistMemberships < ActiveRecord::Migration
   def change
     create_table :mailinglist_memberships do |t|
       t.references :user
-      t.references :mailinglists
+      t.references :mailinglist
 
       t.timestamps
     end

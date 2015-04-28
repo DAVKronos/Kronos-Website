@@ -33,6 +33,9 @@
 #  bank_account_number    :string(255)
 #  xtracard               :string(255)
 #  iban                   :string(255)
+#  studie                 :string(255)
+#  instelling             :string(255)
+#  aanvang                :integer
 #
 
 class User < ActiveRecord::Base
