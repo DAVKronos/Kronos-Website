@@ -92,6 +92,9 @@ nl:
         date: Date
         file: File
         name: Name
+      mailinglist:
+        description: Description
+        name: Name
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -409,6 +412,7 @@ nl:
       too_long: is te lang (maximaal %{count} tekens)
       too_short: is te kort (minimaal %{count} tekens)
       wrong_length: heeft onjuiste lengte (moet %{count} tekens lang zijn)
+      no_el_found: 
     template:
       body: ! 'Controleer de volgende velden:'
       header:
@@ -507,6 +511,9 @@ nl:
       kronometer:
         date: 
         file: 
+        name: 
+      mailinglist:
+        description: 
         name: 
     select:
       prompt: Selecteer
@@ -703,3 +710,12 @@ nl:
   created_at: 
   instelling: 
   studie: studie
+  agenda: 
+  Agenda: 
+  agendaitems_agenda: 
+  agendaitems:
+    agenda: 
+    month:
+      agenda: 
+      no_agendaitems_found: 
+  new_mailinglist: 

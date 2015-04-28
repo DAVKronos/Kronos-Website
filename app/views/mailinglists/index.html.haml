@@ -1,2 +1,3 @@
-%h1 Mailinglist#index
-%p  Find me in app/views/mailinglist/index.html.erb
+- @mailinglists.each do |mailinglist|
+
+  = render "mailinglist", :mailinglist => mailinglist

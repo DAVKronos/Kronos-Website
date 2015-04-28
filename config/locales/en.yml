@@ -92,6 +92,9 @@ en:
         date: 
         file: 
         name: 
+      mailinglist:
+        description: 
+        name: 
     errors:
       full_messages:
         format: 
@@ -336,6 +339,7 @@ en:
       too_long: 
       too_short: 
       wrong_length: 
+      no_el_found: 
     template:
       body: 
       header: 
@@ -432,6 +436,9 @@ en:
       kronometer:
         date: 
         file: 
+        name: 
+      mailinglist:
+        description: 
         name: 
     select:
       prompt: 
@@ -626,3 +633,12 @@ en:
   created_at: 
   instelling: 
   studie: 
+  agenda: 
+  Agenda: 
+  agendaitems_agenda: 
+  agendaitems:
+    agenda: 
+    month:
+      agenda: 
+      no_agendaitems_found: 
+  new_mailinglist: 
