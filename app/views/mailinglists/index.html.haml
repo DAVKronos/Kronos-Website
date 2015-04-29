@@ -5,3 +5,5 @@
   = render "mailinglist", :mailinglist => mailinglist
   = link_to raw("<span class='glyphicon glyphicon-remove'></span> Delete"), mailinglist ,:class => 'btn btn-mini',
    confirm: 'Weet je het zeker?', method: :delete if can? :destroy, mailinglist
+
+  = link_to t(:edit), edit_mailinglist_path(mailinglist)

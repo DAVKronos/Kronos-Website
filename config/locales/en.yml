@@ -96,6 +96,8 @@ en:
         description: 
         name: 
         local_part_form_description: 
+      mailinglist_membership:
+        name: 
     errors:
       full_messages:
         format: 
@@ -443,6 +445,12 @@ en:
         description: 
         name: 
         local_part_form_description: 
+        mailinglist_memberships:
+          name: 
+      mailinglist[mailinglist_memberships]:
+        Leon Schenk: 
+      mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
+        name: 
     select:
       prompt: 
     submit:
@@ -649,3 +657,4 @@ en:
   edit_mailinglist: 
   all_mailinglists: 
   mailinglist: 
+  mailinglist_memberships: 

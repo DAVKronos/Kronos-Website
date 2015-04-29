@@ -28,7 +28,6 @@ gem 'el_finder', '~> 1.1.10'
 gem 'google-api-client'
 gem 'selectize-rails', '~> 0.8.5' 
 gem 'twitter-typeahead-rails', '~> 0.10.2'
-gem 'thin'
 gem 'less-rails'
 gem 'sass-rails', '>= 3.2'
 gem 'bootstrap-sass', '~> 3.3.3'
@@ -71,6 +70,7 @@ group :development do
 	gem 'guard-rspec', '~> 2.5.4'
 	gem 'guard-spork', '~> 1.5.1'
   gem 'sqlite3', '~> 1.3.8'
+  gem 'thin'
 end
 
 group :test, :development do

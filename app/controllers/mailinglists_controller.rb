@@ -15,6 +15,7 @@ class MailinglistsController < ApplicationController
 
   def edit
     @mailinglist = Mailinglist.find(params[:id])
+    @users = User.order(:name)
   end
 
   def create

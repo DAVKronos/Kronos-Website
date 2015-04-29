@@ -10,3 +10,12 @@
   = f.label :description
   = f.text_field :description, :class => 'form-control'
 
+%h3= t :mailinglist_memberships
+
+=f.fields_for :mailinglist_memberships do |member_form|
+
+  = member_form.label :name
+  = member_form.collection_select(:user_id, @users, :id, :name, :prompt => true)
+  = member_form.link_to_remove 'Remove this member'
+
+%p= f.link_to_add "Add a member", :mailinglist_memberships

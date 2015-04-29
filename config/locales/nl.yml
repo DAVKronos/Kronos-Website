@@ -97,6 +97,8 @@ nl:
         name: Naam
         local_part: Local part
         local_part_form_description: Local part form description
+      mailinglist_membership:
+        name: Name
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -519,6 +521,12 @@ nl:
         description: 
         name: 
         local_part_form_description: 
+        mailinglist_memberships:
+          name: 
+      mailinglist[mailinglist_memberships]:
+        Leon Schenk: 
+      mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
+        name: 
     select:
       prompt: Selecteer
     submit:
@@ -727,3 +735,4 @@ nl:
   edit_mailinglist: 
   all_mailinglists: 
   mailinglist: 
+  mailinglist_memberships: 
