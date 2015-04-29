@@ -13,6 +13,10 @@ class MailinglistsController < ApplicationController
     @mailinglist = Mailinglist.new
   end
 
+  def edit
+    @mailinglist = Mailinglist.find(params[:id])
+  end
+
   def create
     mailinglist = Mailinglist.new(params[:mailinglist])
     if mailinglist.save
@@ -34,5 +38,12 @@ class MailinglistsController < ApplicationController
   end
 
   def update
+    @mailinglist = Mailinglist.find(params[:id])
+    if @mailinglist.update_attributes(params[:mailinglist])
+      flash[:success] = t(:mailinglist_update_success)
+      redirect_to Mailinglist
+    else
+      render 'edit'
+    end
   end
 end

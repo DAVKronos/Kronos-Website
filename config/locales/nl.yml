@@ -95,6 +95,8 @@ nl:
       mailinglist:
         description: Beschrijving
         name: Naam
+        local_part: Local part
+        local_part_form_description: Local part form description
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -190,6 +192,7 @@ nl:
       user: Lid
       apps_exception: Apps exception
       kronometer: Kronometer
+      mailinglist: Mailinglist
   address: adres
   agendaitem:
     Kronos Activiteit: 
@@ -515,6 +518,7 @@ nl:
       mailinglist:
         description: 
         name: 
+        local_part_form_description: 
     select:
       prompt: Selecteer
     submit:
@@ -720,3 +724,6 @@ nl:
       no_agendaitems_found: 
   new_mailinglist: nieuwe maillijst
   mailinglist_destroy_success: 
+  edit_mailinglist: 
+  all_mailinglists: 
+  mailinglist: 

@@ -1,0 +1,14 @@
+.row
+  .col-lg-12
+    %h1= t(:edit_mailinglist).capitalize
+
+.row
+  .col-lg-6
+
+    = form_for @mailinglist, :validate => true, :html => { :multipart => true }  do |f|
+
+      = render 'fields', :f => f
+
+
+      #actions
+        =f.submit :aanpassen, :class => 'btn btn-default'
