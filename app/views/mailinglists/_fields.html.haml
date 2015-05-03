@@ -15,7 +15,13 @@
 =f.fields_for :mailinglist_memberships do |member_form|
 
   = member_form.label :name
-  = member_form.collection_select(:user_id, @users, :id, :name, :prompt => true)
-  = member_form.link_to_remove 'Remove this member'
+  = member_form.object.user_name
+  = member_form.label :destroy
+  = member_form.check_box 'destroy', {}, 'true', 'false'
 
-%p= f.link_to_add "Add a member", :mailinglist_memberships
+
+= form_for @patient do |f|
+  = hidden_field_tag "patient[refill_medication_ids][]"
+  - @patient.medications.each do |medication|
+    = check_box_tag "patient[refill_medication_ids][]", medication.id, @patient.refill_medications.include?(medication)
+    = medication.name

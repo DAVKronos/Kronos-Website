@@ -15,7 +15,12 @@ class MailinglistsController < ApplicationController
 
   def edit
     @mailinglist = Mailinglist.find(params[:id])
-    @users = User.order(:name)
+    User.all.each do |user|
+      unless @mailinglist.mailinglist_memberships.find_by_user_id(user.id)
+        membership = @mailinglist.mailinglist_memberships.new
+        membership.user = user
+      end
+    end
   end
 
   def create
@@ -23,7 +28,7 @@ class MailinglistsController < ApplicationController
     if mailinglist.save
       redirect_to mailinglist
     else
-      @mailinglists = mailinglist
+      @mailinglist = mailinglist
       render 'new'
     end
   end

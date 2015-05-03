@@ -13,6 +13,8 @@
 class Mailinglist < ActiveRecord::Base
   has_many :mailinglist_memberships
 
+  has_many :users, :through => :mailinglist_memberships
+
   attr_accessible :description, :name, :local_part, :mailinglist_memberships_attributes
 
   accepts_nested_attributes_for :mailinglist_memberships, :allow_destroy => true

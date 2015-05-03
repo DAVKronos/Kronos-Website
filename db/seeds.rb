@@ -38,6 +38,19 @@ user = User.create({:name => "Leon Schenk",
                   :password => "Foobar",
                   :password_confirmation => "Foobar"}, 
                   :as => :bestuur)
+
+kegel = User.create({:name => "Kegel de Egel",
+                    :initials => "K",
+                    :email => "kegel@kronos.nl",
+                    :birthdate => "01-01-2002",
+                    :address => "Campuslaan 1",
+                    :postalcode => "1337 MF",
+                    :city => "Enschede",
+                    :sex => "Man",
+                    :licensenumber => "123456",
+                    :password => "Foobar",
+                    :password_confirmation => "Foobar"},
+                   :as => :bestuur)
                   
                   
 com = Commission.create({:name => "Bestuur",
