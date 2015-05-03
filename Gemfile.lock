@@ -126,7 +126,6 @@ GEM
     ffi (1.9.3)
     ffi (1.9.3-x86-mingw32)
     formatador (0.2.5)
-    gdata_19 (1.1.5)
     gli (2.12.1)
     google-api-client (0.7.1)
       addressable (>= 2.3.2)
@@ -378,7 +377,6 @@ DEPENDENCIES
   exifr (~> 1.1.3)
   factory_girl_rails (~> 4.0.0)
   faker (~> 1.2.0)
-  gdata_19
   google-api-client
   guard (~> 1.8.3)
   guard-rspec (~> 2.5.4)
