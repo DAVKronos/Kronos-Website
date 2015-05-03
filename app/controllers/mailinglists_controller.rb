@@ -11,16 +11,12 @@ class MailinglistsController < ApplicationController
 
   def new
     @mailinglist = Mailinglist.new
+    @users = User.all
   end
 
   def edit
     @mailinglist = Mailinglist.find(params[:id])
-    User.all.each do |user|
-      unless @mailinglist.mailinglist_memberships.find_by_user_id(user.id)
-        membership = @mailinglist.mailinglist_memberships.new
-        membership.user = user
-      end
-    end
+    @users = User.all
   end
 
   def create
@@ -29,6 +25,7 @@ class MailinglistsController < ApplicationController
       redirect_to mailinglist
     else
       @mailinglist = mailinglist
+      @users = User.all
       render 'new'
     end
   end
@@ -49,6 +46,7 @@ class MailinglistsController < ApplicationController
       flash[:success] = t(:mailinglist_update_success)
       redirect_to Mailinglist
     else
+      @users = User.all
       render 'edit'
     end
   end

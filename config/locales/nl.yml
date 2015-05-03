@@ -96,9 +96,12 @@ nl:
         description: Beschrijving
         name: Naam
         local_part: Local part
-        local_part_form_description: Local part form description
+        local_part_form_description: Deel van het adres voor de @
       mailinglist_membership:
         name: Name
+        subscribe: Subscribe
+        subscribe?: Subscribe?
+        destroy: Destroy
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -523,6 +526,9 @@ nl:
         local_part_form_description: 
         mailinglist_memberships:
           name: 
+          destroy: 
+          subscribe: 
+          subscribe?: 
       mailinglist[mailinglist_memberships]:
         Leon Schenk: 
       mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
@@ -732,7 +738,7 @@ nl:
       no_agendaitems_found: 
   new_mailinglist: nieuwe maillijst
   mailinglist_destroy_success: 
-  edit_mailinglist: 
+  edit_mailinglist: E-maillijst aanpassen
   all_mailinglists: 
   mailinglist: 
-  mailinglist_memberships: 
+  mailinglist_memberships: Abonnees

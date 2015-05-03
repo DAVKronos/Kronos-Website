@@ -12,16 +12,10 @@
 
 %h3= t :mailinglist_memberships
 
-=f.fields_for :mailinglist_memberships do |member_form|
+= hidden_field_tag "mailinglist[user_ids][]"
 
-  = member_form.label :name
-  = member_form.object.user_name
-  = member_form.label :destroy
-  = member_form.check_box 'destroy', {}, 'true', 'false'
+- @users.each do |user|
 
-
-= form_for @patient do |f|
-  = hidden_field_tag "patient[refill_medication_ids][]"
-  - @patient.medications.each do |medication|
-    = check_box_tag "patient[refill_medication_ids][]", medication.id, @patient.refill_medications.include?(medication)
-    = medication.name
+  .check-box
+    = check_box_tag "mailinglist[user_ids][]", user.id, @mailinglist.users.include?(user)
+    = user.name

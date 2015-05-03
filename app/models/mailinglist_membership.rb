@@ -12,8 +12,4 @@
 class MailinglistMembership < ActiveRecord::Base
   belongs_to :user
   belongs_to :mailinglist
-
-  def user_name
-    user ? user.name : ''
-  end
 end
