@@ -28,36 +28,7 @@ nl:
         role: Rol
       commission_membership:
         function: Functie
-        user_id: Lid
-      event:
-        Afstand: Afstand
-        Tijd: Tijd
-        Type: Type
-      eventtype:
-        agendaitemtypes: Agendaitemtypes
-        calculated_unit: Berekende eenheid
-        female_formula: Formule voor vrouwen
-        formula: Formule
-        measuringunit: Gemeten eenheid
-        name: Naam
-        shortname: Korte naam
-        show_wind: Geef wind weer
-      newsitem:
-        articlephoto: Artikelfoto
-        nieuwsbericht: Nieuwsbericht
-        profielfoto: Profielfoto
-        titel: Titel
-      page:
-        information: Informatie
-        title: Titel
-      photoalbum:
-        agendaitem: Agendapunt
-        name: Naam
-      result:
-        place: Place
-        result: Result
-        username: Gebruikersnaam
-        wind: Wind
+        username: Username
       subscription:
         opmerking: Opmerking
       user:
@@ -84,24 +55,10 @@ nl:
         aanvang: Aanvang
         instelling: Instelling
         studie: Studie
-      apps_exception:
-        email: Email
-        group_email: Group email
-        way: Way
       kronometer:
         date: Date
         file: File
-        name: Naam
-      mailinglist:
-        description: Beschrijving
-        name: Naam
-        local_part: Local part
-        local_part_form_description: Deel van het adres voor de @
-      mailinglist_membership:
         name: Name
-        subscribe: Subscribe
-        subscribe?: Subscribe?
-        destroy: Destroy
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -195,16 +152,17 @@ nl:
       result: Uitslag
       subscription: Subscription
       user: Lid
-      apps_exception: Apps exception
       kronometer: Kronometer
-      mailinglist: Mailinglist
   address: adres
-  agendaitem:
+  agendaitems:
+    month:
+      no_agendaitems_found: geen agendaitems deze maand
+      agenda: agenda
     Kronos Activiteit: 
     agendaitemtype: 
     commission: comissie
     date: datum
-    description: Beschrijving
+    description: beschrijving
     events:
       Afstand: Afstand
       Tijd: 
@@ -327,7 +285,7 @@ nl:
       month: maand
       second: seconde
       year: jaar
-  description: Beschrijving
+  description: beschrijving
   devise:
     confirmations:
       confirmed: Je account is bevestigd.
@@ -420,7 +378,6 @@ nl:
       too_long: is te lang (maximaal %{count} tekens)
       too_short: is te kort (minimaal %{count} tekens)
       wrong_length: heeft onjuiste lengte (moet %{count} tekens lang zijn)
-      no_el_found: 
     template:
       body: ! 'Controleer de volgende velden:'
       header:
@@ -433,8 +390,8 @@ nl:
     female_formula: 
     formula: 
     measuringunit: 
-    name: Naam
-    shortname: Korte naam
+    name: 
+    shortname: 
     show_wind: 
   function: functie
   hello: 
@@ -445,13 +402,13 @@ nl:
         agendaitemtype: 
         commission: 
         date: 
-        description: Beschrijving
+        description: 
         events:
           Afstand: 
           Tijd: 
           Type: 
         location: 
-        name: Naam
+        name: 
         subscribe: 
         subscriptiondeadline: 
         url: 
@@ -464,9 +421,9 @@ nl:
       commission:
         commission_memberships:
           function: 
-        description: Beschrijving
+        description: 
         email: 
-        name: Naam
+        name: 
         role: 
       commission[commission_memberships_attributes][new_commission_memberships]:
         function: 
@@ -488,7 +445,6 @@ nl:
         place: 
         result: 
         username: 
-        wind: 
       subscription:
         opmerking: 
       user:
@@ -512,26 +468,9 @@ nl:
         aanvang: aanvang
         instelling: 
         studie: studie
-      apps_exception:
-        email: 
-        group_email: 
-        way: 
       kronometer:
         date: 
         file: 
-        name: 
-      mailinglist:
-        description: 
-        name: 
-        local_part_form_description: 
-        mailinglist_memberships:
-          name: 
-          destroy: 
-          subscribe: 
-          subscribe?: 
-      mailinglist[mailinglist_memberships]:
-        Leon Schenk: 
-      mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
         name: 
     select:
       prompt: Selecteer
@@ -575,8 +514,6 @@ nl:
       subscription:
         create: Create Subscription
       update: ! '%{model} bewaren'
-      apps_exception:
-        create: Create Apps exception
       kronometer:
         create: Create Kronometer
   iban: IBAN
@@ -692,8 +629,6 @@ nl:
       remember_me: 
       signed_in: 
       signed_out: 
-    agendaitem:
-      location: 
   user:
     address: 
     bankaccountnumber: 
@@ -728,17 +663,3 @@ nl:
   created_at: 
   instelling: 
   studie: studie
-  agenda: 
-  Agenda: 
-  agendaitems_agenda: 
-  agendaitems:
-    agenda: 
-    month:
-      agenda: 
-      no_agendaitems_found: 
-  new_mailinglist: nieuwe maillijst
-  mailinglist_destroy_success: 
-  edit_mailinglist: E-maillijst aanpassen
-  all_mailinglists: 
-  mailinglist: 
-  mailinglist_memberships: Abonnees

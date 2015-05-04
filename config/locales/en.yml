@@ -57,7 +57,6 @@ en:
         place: 
         result: 
         username: 
-        wind: 
       subscription:
         opmerking: 
       user:
@@ -84,22 +83,10 @@ en:
         aanvang: 
         instelling: 
         studie: 
-      apps_exception:
-        email: 
-        group_email: 
-        way: 
       kronometer:
         date: 
         file: 
         name: 
-      mailinglist:
-        description: 
-        name: 
-        local_part_form_description: 
-      mailinglist_membership:
-        name: 
-        subscribe: 
-        subscribe?: 
     errors:
       full_messages:
         format: 
@@ -191,11 +178,12 @@ en:
       result: 
       subscription: 
       user: 
-      apps_exception: 
       kronometer: 
-      mailinglist: 
   address: 
-  agendaitem:
+  agendaitems:
+    month:
+      agenda: agenda
+      no_agendaitems_found: no agendaitems this month
     Kronos Activiteit: 
     agendaitemtype: 
     commission: 
@@ -345,7 +333,6 @@ en:
       too_long: 
       too_short: 
       wrong_length: 
-      no_el_found: 
     template:
       body: 
       header: 
@@ -411,7 +398,6 @@ en:
         place: 
         result: 
         username: 
-        wind: 
       subscription:
         opmerking: 
       user:
@@ -435,26 +421,9 @@ en:
         aanvang: 
         instelling: 
         studie: 
-      apps_exception:
-        email: 
-        group_email: 
-        way: 
       kronometer:
         date: 
         file: 
-        name: 
-      mailinglist:
-        description: 
-        name: 
-        local_part_form_description: 
-        mailinglist_memberships:
-          name: 
-          destroy: 
-          subscribe: 
-          subscribe?: 
-      mailinglist[mailinglist_memberships]:
-        Leon Schenk: 
-      mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
         name: 
     select:
       prompt: 
@@ -498,8 +467,6 @@ en:
       subscription:
         create: 
       update: 
-      apps_exception:
-        create: 
       kronometer:
         create: 
   iban: 
@@ -613,8 +580,6 @@ en:
       remember_me: 
       signed_in: 
       signed_out: 
-    agendaitem:
-      location: 
   user:
     address: 
     bankaccountnumber: 
@@ -649,17 +614,3 @@ en:
   created_at: 
   instelling: 
   studie: 
-  agenda: 
-  Agenda: 
-  agendaitems_agenda: 
-  agendaitems:
-    agenda: 
-    month:
-      agenda: 
-      no_agendaitems_found: 
-  new_mailinglist: 
-  mailinglist_destroy_success: 
-  edit_mailinglist: 
-  all_mailinglists: 
-  mailinglist: 
-  mailinglist_memberships: 

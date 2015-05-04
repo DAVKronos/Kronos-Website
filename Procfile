@@ -4,3 +4,4 @@ dev:     bundle exec rails server
 worker:  bundle exec rake jobs:work
 test:    bundle exec guard
 win_dev: rails s
+console: bundle exec rails c

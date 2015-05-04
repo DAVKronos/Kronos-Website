@@ -24,4 +24,3 @@ unicorn.conf.rb
 *~
 .localeapp
 .env
-client_secrets.json
