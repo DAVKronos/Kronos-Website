@@ -59,6 +59,14 @@ nl:
         date: Date
         file: File
         name: Name
+      mailinglist:
+        description: Description
+        local_part: Local part
+        local_part_form_description: Local part form description
+        name: Name
+      photoalbum:
+        agendaitem: Agendaitem
+        name: Name
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -153,6 +161,7 @@ nl:
       subscription: Subscription
       user: Lid
       kronometer: Kronometer
+      mailinglist: Mailinglist
   address: adres
   agendaitems:
     month:
@@ -471,6 +480,10 @@ nl:
       kronometer:
         date: 
         file: 
+        name: 
+      mailinglist:
+        description: 
+        local_part_form_description: 
         name: 
     select:
       prompt: Selecteer

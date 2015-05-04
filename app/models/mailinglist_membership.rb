@@ -10,6 +10,21 @@
 #
 
 class MailinglistMembership < ActiveRecord::Base
+  after_save :subscribe_to_mailinglist
+  after_destroy :unsubscribe_from_mailinglist
   belongs_to :user
   belongs_to :mailinglist
+
+  def subscribe_to_mailinglist
+    api_client = KronosGoogleAPIClient.new
+    api_client.add_member_to_group(self.user, self.mailinglist.full_email)
+  end
+
+  handle_asynchronously :subscribe_to_mailinglist
+
+  def unsubscribe_from_mailinglist
+    api_client = KronosGoogleAPIClient.new
+    api_client.remove_member_from_group(self.user, self.mailinglist.full_email)
+  end
+
 end
