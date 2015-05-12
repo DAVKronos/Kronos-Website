@@ -11,12 +11,12 @@ class MailinglistsController < ApplicationController
 
   def new
     @mailinglist = Mailinglist.new
-    @users = User.all
+    @users = User.order(:name)
   end
 
   def edit
     @mailinglist = Mailinglist.find(params[:id])
-    @users = User.all
+    @users = User.order(:name)
   end
 
   def create
@@ -25,7 +25,7 @@ class MailinglistsController < ApplicationController
       redirect_to mailinglist
     else
       @mailinglist = mailinglist
-      @users = User.all
+      @users = User.order(:name)
       render 'new'
     end
   end
@@ -46,7 +46,7 @@ class MailinglistsController < ApplicationController
       flash[:success] = t(:mailinglist_update_success)
       redirect_to Mailinglist
     else
-      @users = User.all
+      @users = User.order(:name)
       render 'edit'
     end
   end
