@@ -1,0 +1,16 @@
+= link_to raw("<span class='glyphicon glyphicon-arrow-left'></span> #{t(:index)}"), mailinglists_path,
+ :class => 'btn btn-default'
+.row
+  .col-lg-12
+    %h1= t(:new_mailinglist).capitalize
+
+.row
+  .col-lg-6
+
+    = nested_form_for @mailinglist, :validate => true, :html => { :multipart => true }  do |f|
+
+      = render 'fields', :f => f
+
+
+      #actions
+        =f.submit t(:add_mailinglist), :class => 'btn btn-success'

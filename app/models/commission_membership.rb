@@ -12,10 +12,11 @@
 #
 
 class CommissionMembership < ActiveRecord::Base
+  after_save :add_member_to_group
+  before_destroy :remove_member_from_group
+
   belongs_to :user
   belongs_to :commission
-  before_save :add_member_to_group
-  after_destroy :remove_member_from_group
   
   validates :user_id,       :presence => true
   validates :function,      :presence => true
@@ -23,19 +24,19 @@ class CommissionMembership < ActiveRecord::Base
   has_paper_trail
   
   def add_member_to_group
-    gapps = Gapps.new
-    gapps.add_group_member(self.commission.email.split("@").first, self.user.email, self.user.name.split[1], self.user.name.split[0])
+    gapps = KronosGoogleAPIClient.new
+    gapps.add_member_to_group(self.user, self.commission.email)
   end
   
   def remove_member_from_group
-    gapps = Gapps.new
-    gapps.destroy_group_member(self.commission.email.split("@").first, self.user.email)
+    gapps = KronosGoogleAPIClient.new
+    gapps.remove_member_from_group(self.user, self.commission.email)
   end
   
-  def update_commission_email(oldEmail, email)
-    gapps = Gapps.new
-    gapps.destroy_group_member(self.commission.email.split("@").first, oldEmail)
-    gapps.add_group_member(self.commission.email.split("@").first, email, self.user.name.split[1], self.user.name.split[0])
+  def update_commission_email(old_email)
+    gapps = KronosGoogleAPIClient.new
+    gapps.remove_member_from_group(self.commission.email, User.new(:email => old_email))
+    gapps.add_member_to_group(self.commission.email, self.user)
   end
     
   

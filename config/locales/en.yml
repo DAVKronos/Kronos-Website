@@ -193,8 +193,8 @@ en:
   address: 
   agendaitems:
     month:
-      agenda: 
-      no_agendaitems_found: 
+      agenda: agenda
+      no_agendaitems_found: no agendaitems this month
     Kronos Activiteit: 
     agendaitemtype: 
     commission: 
@@ -660,4 +660,5 @@ en:
   results:
     frontpage:
       uitslagen: 
+      results: 
   May: 

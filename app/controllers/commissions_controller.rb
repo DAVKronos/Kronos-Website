@@ -1,4 +1,3 @@
-require File.join(Rails.root, 'lib','gapps')
 class CommissionsController < ApplicationController
   load_and_authorize_resource
   
@@ -9,8 +8,6 @@ class CommissionsController < ApplicationController
   def create
     @commission = Commission.new(params[:commission])
     if @commission.save
-      gapps = Gapps.new
-      gapps.create_group(@commission.email.split('@').first, @commission.name, @commission.description)
       redirect_to @commission
     else
       render 'new'
@@ -42,8 +39,6 @@ class CommissionsController < ApplicationController
   
   def destroy
      commission = Commission.find(params[:id])
-     gapps = Gapps.new
-     gapps.destroy_group(commission.email.split('@').first)
       commission.destroy
       flash[:success] = "Commissie Verwijderd"
       redirect_to commissions_path

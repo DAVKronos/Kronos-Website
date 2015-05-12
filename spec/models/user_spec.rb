@@ -33,15 +33,18 @@
 #  bank_account_number    :string(255)
 #  xtracard               :string(255)
 #  iban                   :string(255)
+#  studie                 :string(255)
+#  instelling             :string(255)
+#  aanvang                :integer
 #
 
 require 'spec_helper'
 
 describe User do
-  
-  let(:attr) {   {:name => "Kegel Kronos", 
+
+  let(:attr) {   {:name => "Kegel Kronos",
                   :initials => "H.J.K.",
-                  :email => "kegel@kronos.nl", 
+                  :email => "kegel@kronos.nl",
                   :birthdate => "01-01-2002",
                   :address => "Campuslaan 1",
                   :postalcode => "1337 MF",
@@ -95,47 +98,47 @@ describe User do
     no_name_user = User.new(attr.merge(:name => ""), :as => :bestuur)
     no_name_user.should_not be_valid
   end
-  
+
   it "should require initials" do
     no_initials_user = User.new(attr.merge(:initials => ""), :as => :bestuur)
     no_initials_user.should_not be_valid
   end
-  
+
   it "should require an address" do
     no_address_user = User.new(attr.merge(:address => ""), :as => :bestuur)
     no_address_user.should_not be_valid
   end
-  
+
   it "should require an email address" do
     no_email_user = User.new(attr.merge(:email => ""), :as => :bestuur)
     no_email_user.should_not be_valid
   end
-  
+
   it "should require a birthdate" do
     no_birthdate_user = User.new(attr.merge(:birthdate => ""), :as => :bestuur)
     no_birthdate_user.should_not be_valid
   end
-  
+
   it "should require a postalcode" do
     no_postalcode_user = User.new(attr.merge(:postalcode => ""), :as => :bestuur)
     no_postalcode_user.should_not be_valid
   end
-  
+
   it "should require a city" do
     no_city_user = User.new(attr.merge(:city => ""), :as => :bestuur)
     no_city_user.should_not be_valid
   end
-  
+
   it "should require a password" do
     no_password_user = User.new(attr.merge(:password => ""), :as => :bestuur)
     no_password_user.should_not be_valid
   end
-  
+
   it "should require a password confirmation" do
     no_passwordcon_user = User.new(attr.merge(:password_confirmation => ""), :as => :bestuur)
     no_passwordcon_user.should_not be_valid
   end
-  
+
   it "should accept valid names" do
     names = ["Kegel Kronos", "Wouter Timmermans",
              "Leipe Harry", "Henk de Vries",
@@ -146,7 +149,7 @@ describe User do
       valid_name_user.should be_valid
     end
   end
-  
+
   it "should reject invalid names" do
     names = ["Henk de Vries-timmermans", "Willem-Frits van Oranje-nassau",
     "indiana jones"]
@@ -155,7 +158,7 @@ describe User do
       invalid_name_user.should_not be_valid
     end
   end
-  
+
   it "should accept valid email addresses" do
     addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
     addresses.each do |address|
@@ -171,34 +174,52 @@ describe User do
       invalid_email_user.should_not be_valid
     end
   end
-  
+
+  describe "mailinglists" do
+
+    before(:each) { @user = FactoryGirl.build(:user) }
+
+    it "should add a new user to the alleleden maillist" do
+      Gapps.any_instance.should_receive(:add_group_member).with("alleleden", @user.email, @user.last_name, @user.first_name)
+      @user.save!
+    end
+
+    it "should delete an destroyed user from the alleleden maillist" do
+      @user.save!
+      Gapps.any_instance.should_receive(:destroy_group_member).with("alleleden", @user.email)
+      @user.destroy
+    end
+
+    it "should update the email in the maillinglist" do
+    end
+
+  end
+
   describe "commission associations" do
-		
+
 	  before(:each) do
 	    @commis = FactoryGirl.create(:commission)
 	    @user = User.new(attr, :as => :bestuur)
 	    @user2 = FactoryGirl.create(:user)
 	  end
-   
-    
+
+
     before do
        @user2.commission_memberships.build(:commission => @commis,:function => "Voorzitter").save!
     end
-      
-    
+
+
     it "should have a commission attribute" do
       @user.should respond_to(:commissions)
     end
-    
+
     it "should return the associated commissions" do
       @user2.commissions.should == [@commis]
     end
-    
+
     it "should work the other way around too" do
       @commis.users.should == [@user2]
     end
-    
+
   end
 end
-
-

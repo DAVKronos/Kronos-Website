@@ -78,6 +78,23 @@ nl:
         name: Name
       result:
         username: Gebruikersnaam
+      mailinglist:
+        description: Beschrijving
+        local_part: Lokaal deel
+        local_part_form_description: Lokaal deel (voor de @)
+        name: Naam
+      photoalbum:
+        agendaitem: Agendaitem
+        name: Name
+      event:
+        Afstand: Afstand
+        Tijd: Tijd
+        Type: Type
+      mailinglist_membership:
+        destroy: Vernietig
+        name: Naam
+        subscribe: Abonneer
+        subscribe?: Abonneer?
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -176,8 +193,8 @@ nl:
   address: adres
   agendaitems:
     month:
-      no_agendaitems_found: 
-      agenda: 
+      no_agendaitems_found: geen agendaitems deze maand
+      agenda: agenda
     Kronos Activiteit: 
     agendaitemtype: 
     commission: comissie
@@ -500,6 +517,7 @@ nl:
       mailinglist:
         description: Beschrijving
         local_part_form_description: Lokaal deel (voor de @)
+        name: Naam
         mailinglist_memberships:
           destroy: Vernietig
           name: Naam
@@ -700,6 +718,7 @@ nl:
   created_at: Toegevoegd op
   instelling: Instelling
   studie: studie
+<<<<<<< HEAD
   agenda: 
   Agenda: 
   agendaitem:
@@ -720,4 +739,5 @@ nl:
   results:
     frontpage:
       uitslagen: 
+      results: 
   May: 

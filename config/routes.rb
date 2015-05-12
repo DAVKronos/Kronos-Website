@@ -1,6 +1,6 @@
 KronosWebsite::Application.routes.draw do
 
-  resources :apps_exceptions
+  resources :mailinglists
 
   resources :agendaitemtype_eventtypes
 

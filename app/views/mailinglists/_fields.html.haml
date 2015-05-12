@@ -1,0 +1,21 @@
+.form-group
+  = f.label :name
+  = f.text_field :name, :class => 'form-control'
+
+.form-group
+  = f.label :local_part_form_description
+  = f.text_field :local_part, :class => 'form-control'
+
+.form-group
+  = f.label :description
+  = f.text_field :description, :class => 'form-control'
+
+%h3= t(:mailinglist_memberships)
+
+= hidden_field_tag "mailinglist[user_ids][]"
+
+- @users.each do |user|
+
+  .check-box
+    = check_box_tag "mailinglist[user_ids][]", user.id, @mailinglist.users.include?(user)
+    = user.name
