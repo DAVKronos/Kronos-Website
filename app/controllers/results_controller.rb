@@ -3,37 +3,44 @@ class ResultsController < ApplicationController
   # GET /results
   # GET /results.json
   def frontpage
-    #@results = Result.all
-    if request.xhr?
-      ajaxladen = params[:ajaxladen]
-      if ajaxladen == 'Laatste'
-        @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(40)
-		@results.delete_if {|re| re.count_results() == 0}
-      elsif ajaxladen == 'Toevoegen'
-        @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(40)
-		@results.delete_if {|re| re.count_results() != 0}
-	  else
-        @results = Agendaitem.joins(:agendaitemtype).where(:date => (DateTime.new(Integer(ajaxladen))..(DateTime.new(Integer(ajaxladen))+1.year))).order("date DESC")
-		@results.delete_if {|re| re.count_results() == 0}
-      end
+    if (params[:year].nil? || params[:month].nil?) then
+      date = Date.today
     else
-      @results = Agendaitem.joins(:agendaitemtype).where("date <= ?", DateTime.now).order("date DESC").limit(40)
-      @results.delete_if {|re| re.count_results() == 0}
-      @tabs = []
-      counter = 0
-      5.times do
-        @tabs << counter.year.ago.year
-        counter += 1
+      begin
+        date = DateTime.new(params[:year].to_i,params[:month].to_i)
+      rescue ArgumentError
+        date = Date.today
+        redirect_to '/uitslagen/'
       end
     end
-	    
-    respond_to do |format|
-      format.html do
-        if request.xhr?
-          render 'results/_tabtable', :layout => false
-        end
-      end
+    
+    earliest = Agendaitem.first(:order => 'date asc').date.to_date
+    if earliest.year < 1964 then
+      earliest = Date.new(1964, 1)
     end
+    latest = Agendaitem.last(:order=>'date asc').date.to_date
+    if latest < date
+        date = latest
+    end
+    range = Array.new
+ 
+    (earliest.year..latest.year).each do |y|
+      mo_start = (earliest.year == y) ? earliest.month : 1
+      mo_end = (latest.year == y) ? latest.month : 12
+      (mo_start..mo_end).each do |m|  
+        range << [y,m]
+      end
+    end 
+    
+    before, after = range.partition {|e| (Date.new(e.first,e.second) < date.beginning_of_month ) }
+    after = after.drop(1)
+    
+    @agendaitems = Agendaitem.where(:date => date.beginning_of_month..date.next_month).order("date ASC")
+    @years = range.map{|e| e.first}.uniq
+
+    @past = before.map{|e| Date.new(e.first,e.second)}
+    @present = after.map{|e| Date.new(e.first,e.second)}
+    @current = date.beginning_of_month
   end
   
   def index

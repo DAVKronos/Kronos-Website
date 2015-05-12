@@ -58,7 +58,26 @@ nl:
       kronometer:
         date: Date
         file: File
+        name: Naam
+      event:
+        Afstand: Afstand
+        Tijd: Tijd
+        Type: Type
+      mailinglist:
+        description: Beschrijving
+        local_part: Lokaal deel
+        local_part_form_description: Lokaal deel (voor de @)
+        name: Naam
+      mailinglist_membership:
+        destroy: Vernietig
+        name: Naam
+        subscribe: Abonneer
+        subscribe?: Abonneer?
+      photoalbum:
+        agendaitem: Agendaitem
         name: Name
+      result:
+        username: Gebruikersnaam
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -146,18 +165,19 @@ nl:
       comment: Comment
       commission: Commission
       event: Onderdeel
-      newsitem: Newsitem
+      newsitem: Nieuwsitem
       page: Page
       photoalbum: Fotoalbum
       result: Uitslag
       subscription: Subscription
       user: Lid
       kronometer: Kronometer
+      mailinglist: Maillijst
   address: adres
   agendaitems:
     month:
-      no_agendaitems_found: 'geen agendaitems deze maand' 
-      agenda: agenda
+      no_agendaitems_found: 
+      agenda: 
     Kronos Activiteit: 
     agendaitemtype: 
     commission: comissie
@@ -171,10 +191,14 @@ nl:
     name: 
     subscribe: 
     subscriptiondeadline: 
+    agenda: 
+    index:
+      agenda: 
+      no_agendaitems_found: 
   agendaitem[events_attributes][new_events]:
     Afstand: Afstand
-    Tijd: 
-    Type: 
+    Tijd: Tijd
+    Type: Type
   agendaitemtype_eventtype: Agendaitemtype eventtype
   bankaccountnumber: Bankrekeningnummber
   birthdate: geboortedatum
@@ -285,7 +309,7 @@ nl:
       month: maand
       second: seconde
       year: jaar
-  description: beschrijving
+  description: Beschrijving
   devise:
     confirmations:
       confirmed: Je account is bevestigd.
@@ -378,6 +402,7 @@ nl:
       too_long: is te lang (maximaal %{count} tekens)
       too_short: is te kort (minimaal %{count} tekens)
       wrong_length: heeft onjuiste lengte (moet %{count} tekens lang zijn)
+      no_el_found: 
     template:
       body: ! 'Controleer de volgende velden:'
       header:
@@ -390,8 +415,8 @@ nl:
     female_formula: 
     formula: 
     measuringunit: 
-    name: 
-    shortname: 
+    name: Naam
+    shortname: Korte naam
     show_wind: 
   function: functie
   hello: 
@@ -472,6 +497,17 @@ nl:
         date: 
         file: 
         name: 
+      mailinglist:
+        description: Beschrijving
+        local_part_form_description: Lokaal deel (voor de @)
+        mailinglist_memberships:
+          destroy: Vernietig
+          name: Naam
+          subscribe: Abonneer
+          subscribe?: Abonneer?
+        name: Naam
+      mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
+        name: Naam
     select:
       prompt: Selecteer
     submit:
@@ -516,6 +552,7 @@ nl:
       update: ! '%{model} bewaren'
       kronometer:
         create: Create Kronometer
+        update: Update Kronometer
   iban: IBAN
   initials: initialen
   licensenumber: licentienummer
@@ -660,6 +697,27 @@ nl:
     previous_label: ← vorige
   xtracardnumber: xtracardnummer
   aanvang: aanvang
-  created_at: 
-  instelling: 
+  created_at: Toegevoegd op
+  instelling: Instelling
   studie: studie
+  agenda: 
+  Agenda: 
+  agendaitem:
+    description: Beschrijving
+  agendaitems_agenda: 
+  all_mailinglists: Alle maillijsten
+  edit_mailinglist: Maillijst aanpassen
+  mailinglist: Maillijst
+  mailinglist_destroy_success: 
+  mailinglist_memberships: Abonnees
+  mailinglist_update_success: 
+  new_mailinglist: Nieuwe maillijst
+  mailinglists: 
+  add: Toevoegen
+  add_mailinglist: Maillijst toevoegen
+  index: 
+  save_mailinglist: Maillijst opslaan
+  results:
+    frontpage:
+      uitslagen: 
+  May: 

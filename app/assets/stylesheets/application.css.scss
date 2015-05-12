@@ -144,6 +144,16 @@ display: inline;
   cursor: pointer;
 }
 
+.list-group-heading .accordion-toggle .icon:after {
+  /* symbol for "opening" panels */
+  font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+  content: "\e113";    /* adjust as needed, taken from bootstrap.css */
+}
+.list-group-heading .accordion-toggle.collapsed .icon:after {
+  /* symbol for "collapsed" panels */
+  content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+}
+
 // ul.user {
 //  list-style-type: none;
 // }

@@ -48,13 +48,16 @@ KronosWebsite::Application.routes.draw do
   match '/agendaitems/archief', :to => 'agendaitems#archief'
   match '/agendaitems/dag/:day', :to => 'agendaitems#perdag', :as => :perdag
   match '/wedstrijden', :to => 'agendaitems#wedstrijden'
-  match '/uitslagen', :to => 'results#frontpage'
+#  match '/uitslagen', :to => 'results#frontpage'
   match '/agendaitems/new_result', :to => 'agendaitems#new_result'
   match '/agendaitems/create_result', :to => 'agendaitems#create_result', via: [:post]
 
   #TODO: Restrict numbers only
   match '/agenda/:year/:month', :to => 'agendaitems#month' ,constraints: { year: /\d{4}/, month: /\d{1,2}/}
   match '/agenda/', :to => 'agendaitems#month'
+  
+  match '/uitslagen/:year/:month', :to => 'results#frontpage', constraints: { year: /\d{4}/, month: /\d{1,2}/}
+  match '/uitslagen', :to => 'results#frontpage'
   
   resources :agendaitems do
     resources :events

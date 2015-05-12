@@ -81,12 +81,22 @@ en:
         sex: 
         xtracardnumber: 
         aanvang: 
-        instelling: 
+        instelling: Institution
         studie: 
       kronometer:
         date: 
         file: 
         name: 
+      mailinglist:
+        description: 
+        local_part: 
+        local_part_form_description: 
+        name: 
+      mailinglist_membership:
+        destroy: 
+        name: 
+        subscribe: 
+        subscribe?: 
     errors:
       full_messages:
         format: 
@@ -172,18 +182,19 @@ en:
       comment: 
       commission: 
       event: 
-      newsitem: 
+      newsitem: Newsitem
       page: 
       photoalbum: 
       result: 
       subscription: 
       user: 
       kronometer: 
+      mailinglist: 
   address: 
   agendaitems:
     month:
-      agenda: agenda 
-      no_agendaitems_found: 'no agendaitems this month' 
+      agenda: 
+      no_agendaitems_found: 
     Kronos Activiteit: 
     agendaitemtype: 
     commission: 
@@ -197,10 +208,14 @@ en:
     name: 
     subscribe: 
     subscriptiondeadline: 
+    agenda: 
+    index:
+      agenda: 
+      no_agendaitems_found: 
   agendaitem[events_attributes][new_events]:
-    Afstand: 
-    Tijd: 
-    Type: 
+    Afstand: Distance
+    Tijd: Time
+    Type: Type
   agendaitemtype_eventtype: 
   bankaccountnumber: 
   birthdate: 
@@ -333,6 +348,7 @@ en:
       too_long: 
       too_short: 
       wrong_length: 
+      no_el_found: 
     template:
       body: 
       header: 
@@ -419,12 +435,23 @@ en:
         sex: 
         xtracardnumber: 
         aanvang: 
-        instelling: 
+        instelling: Institution
         studie: 
       kronometer:
         date: 
         file: 
         name: 
+      mailinglist:
+        description: 
+        local_part_form_description: 
+        mailinglist_memberships:
+          destroy: 
+          name: 
+          subscribe: 
+          subscribe?: 
+        name: 
+      mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
+        name: Name
     select:
       prompt: 
     submit:
@@ -469,6 +496,7 @@ en:
       update: 
       kronometer:
         create: 
+        update: 
   iban: 
   initials: 
   licensenumber: 
@@ -611,6 +639,25 @@ en:
     previous_label: 
   xtracardnumber: 
   aanvang: 
-  created_at: 
-  instelling: 
+  created_at: Created at
+  instelling: Institution
   studie: 
+  agenda: 
+  Agenda: 
+  agendaitems_agenda: 
+  all_mailinglists: 
+  edit_mailinglist: Edit mailinglist
+  mailinglist: 
+  mailinglist_destroy_success: 
+  mailinglist_memberships: Memberships
+  mailinglist_update_success: 
+  new_mailinglist: New mailinglist
+  mailinglists: 
+  add: Add
+  add_mailinglist: Add mailinglist
+  index: 
+  save_mailinglist: Save mailinglist
+  results:
+    frontpage:
+      uitslagen: 
+  May: 
