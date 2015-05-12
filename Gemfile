@@ -48,6 +48,7 @@ end
 
 group :production do
   gem 'daemons', '~> 1.1.9'
+  gem 'newrelic_rpm'
 	platform :ruby do
 		gem 'unicorn', '~> 4.6.3'
 	end
