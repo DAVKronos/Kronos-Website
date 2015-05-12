@@ -58,26 +58,7 @@ nl:
       kronometer:
         date: Date
         file: File
-        name: Naam
-      event:
-        Afstand: Afstand
-        Tijd: Tijd
-        Type: Type
-      mailinglist:
-        description: Beschrijving
-        local_part: Lokaal deel
-        local_part_form_description: Lokaal deel (voor de @)
-        name: Naam
-      mailinglist_membership:
-        destroy: Vernietig
-        name: Naam
-        subscribe: Abonneer
-        subscribe?: Abonneer?
-      photoalbum:
-        agendaitem: Agendaitem
         name: Name
-      result:
-        username: Gebruikersnaam
       mailinglist:
         description: Beschrijving
         local_part: Lokaal deel
@@ -208,7 +189,6 @@ nl:
     name: 
     subscribe: 
     subscriptiondeadline: 
-    agenda: 
     index:
       agenda: 
       no_agendaitems_found: 
@@ -326,7 +306,7 @@ nl:
       month: maand
       second: seconde
       year: jaar
-  description: Beschrijving
+  description: beschrijving
   devise:
     confirmations:
       confirmed: Je account is bevestigd.
@@ -419,7 +399,6 @@ nl:
       too_long: is te lang (maximaal %{count} tekens)
       too_short: is te kort (minimaal %{count} tekens)
       wrong_length: heeft onjuiste lengte (moet %{count} tekens lang zijn)
-      no_el_found: 
     template:
       body: ! 'Controleer de volgende velden:'
       header:
@@ -432,8 +411,8 @@ nl:
     female_formula: 
     formula: 
     measuringunit: 
-    name: Naam
-    shortname: Korte naam
+    name: 
+    shortname: 
     show_wind: 
   function: functie
   hello: 
@@ -523,7 +502,6 @@ nl:
           name: Naam
           subscribe: Abonneer
           subscribe?: Abonneer?
-        name: Naam
       mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
         name: Naam
     select:
@@ -718,21 +696,12 @@ nl:
   created_at: Toegevoegd op
   instelling: Instelling
   studie: studie
-<<<<<<< HEAD
-  agenda: 
-  Agenda: 
-  agendaitem:
-    description: Beschrijving
-  agendaitems_agenda: 
   all_mailinglists: Alle maillijsten
-  edit_mailinglist: Maillijst aanpassen
   mailinglist: Maillijst
-  mailinglist_destroy_success: 
-  mailinglist_memberships: Abonnees
-  mailinglist_update_success: 
-  new_mailinglist: Nieuwe maillijst
   mailinglists: 
+  new_mailinglist: Nieuwe maillijst
   add: Toevoegen
+  edit_mailinglist: Maillijst aanpassen
   add_mailinglist: Maillijst toevoegen
   index: 
   save_mailinglist: Maillijst opslaan
