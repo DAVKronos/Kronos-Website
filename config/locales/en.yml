@@ -1,4 +1,7 @@
 en:
+  Agenda: 
+  May: 
+  aanvang: 
   activerecord:
     attributes:
       agendaitem:
@@ -14,6 +17,10 @@ en:
         url: Url
       agendaitemtype_eventtype:
         eventtype_id: Event type
+      apps_exception:
+        email: 
+        group_email: 
+        way: 
       chatmessage:
         bericht: Message
         by: By
@@ -42,6 +49,20 @@ en:
         name: Name
         shortname: Short name
         show_wind: Show wind
+      kronometer:
+        date: 
+        file: 
+        name: 
+      mailinglist:
+        description: 
+        local_part: 
+        local_part_form_description: 
+        name: 
+      mailinglist_membership:
+        destroy: 
+        name: 
+        subscribe: 
+        subscribe?: 
       newsitem:
         articlephoto: Article photo
         nieuwsbericht: Newsmessage
@@ -57,9 +78,11 @@ en:
         place: 
         result: 
         username: 
+        wind: 
       subscription:
         opmerking: 
       user:
+        aanvang: 
         address: 
         avatar: 
         bankaccountnumber: 
@@ -68,6 +91,7 @@ en:
         email: 
         iban: 
         initials: 
+        instelling: Institution
         licensenumber: 
         lidtype: 
         name: 
@@ -79,24 +103,8 @@ en:
         remember_me: 
         reset_password_token: 
         sex: 
-        xtracardnumber: 
-        aanvang: 
-        instelling: Institution
         studie: 
-      kronometer:
-        date: 
-        file: 
-        name: 
-      mailinglist:
-        description: 
-        local_part: 
-        local_part_form_description: 
-        name: 
-      mailinglist_membership:
-        destroy: 
-        name: 
-        subscribe: 
-        subscribe?: 
+        xtracardnumber: 
     errors:
       full_messages:
         format: 
@@ -178,23 +186,24 @@ en:
         header: 
     models:
       agendaitem: 
+      apps_exception: 
       chatmessage: 
       comment: 
       commission: 
       event: 
+      kronometer: 
+      mailinglist: 
       newsitem: Newsitem
       page: 
       photoalbum: 
       result: 
       subscription: 
       user: 
-      kronometer: 
-      mailinglist: 
+  add: Add
+  add_mailinglist: Add mailinglist
   address: 
-  agendaitems:
-    month:
-      agenda: agenda
-      no_agendaitems_found: no agendaitems this month
+  agenda: 
+  agendaitem:
     Kronos Activiteit: 
     agendaitemtype: 
     commission: 
@@ -208,15 +217,21 @@ en:
     name: 
     subscribe: 
     subscriptiondeadline: 
-    agenda: 
-    index:
-      agenda: 
-      no_agendaitems_found: 
   agendaitem[events_attributes][new_events]:
     Afstand: Distance
     Tijd: Time
     Type: Type
+  agendaitems:
+    agenda: 
+    index:
+      agenda: 
+      no_agendaitems_found: 
+    month:
+      agenda: 
+      no_agendaitems_found: 
+  agendaitems_agenda: 
   agendaitemtype_eventtype: 
+  all_mailinglists: 
   bankaccountnumber: 
   birthdate: 
   chatmessage:
@@ -227,6 +242,7 @@ en:
     commenttext: 
   commission: 
   commission_membership: 
+  created_at: Created at
   date:
     abbr_day_names: 
     abbr_month_names: 
@@ -314,6 +330,7 @@ en:
     unit: 
   edit: 
   edit_commission: Edit commission
+  edit_mailinglist: Edit mailinglist
   email: e-mail
   error: 
   errorpl: 
@@ -335,6 +352,7 @@ en:
       invalid: 
       less_than: 
       less_than_or_equal_to: 
+      no_el_found: 
       not_a_number: 
       not_an_integer: 
       not_found: not found
@@ -348,7 +366,6 @@ en:
       too_long: 
       too_short: 
       wrong_length: 
-      no_el_found: 
     template:
       body: 
       header: 
@@ -385,6 +402,10 @@ en:
         Afstand: 
         Tijd: 
         Type: 
+      apps_exception:
+        email: 
+        group_email: 
+        way: 
       comment:
         commenttext: 
       commission:
@@ -400,43 +421,6 @@ en:
         Afstand: 
         Tijd: 
         Type: 
-      newsitem:
-        nieuwsbericht: 
-        profielfoto: 
-        titel: 
-      page:
-        information: 
-        title: 
-      photoalbum:
-        agendaitem: 
-        name: 
-      result:
-        place: 
-        result: 
-        username: 
-      subscription:
-        opmerking: 
-      user:
-        address: 
-        bankaccountnumber: 
-        birthdate: 
-        city: 
-        email: 
-        iban: 
-        initials: 
-        licensenumber: 
-        lidtype: 
-        name: 
-        password: 
-        phonenumber: 
-        postalcode: 
-        profielfoto: 
-        remember_me: 
-        sex: 
-        xtracardnumber: 
-        aanvang: 
-        instelling: Institution
-        studie: 
       kronometer:
         date: 
         file: 
@@ -452,6 +436,44 @@ en:
         name: 
       mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
         name: Name
+      newsitem:
+        nieuwsbericht: 
+        profielfoto: 
+        titel: 
+      page:
+        information: 
+        title: 
+      photoalbum:
+        agendaitem: 
+        name: 
+      result:
+        place: 
+        result: 
+        username: 
+        wind: 
+      subscription:
+        opmerking: 
+      user:
+        aanvang: 
+        address: 
+        bankaccountnumber: 
+        birthdate: 
+        city: 
+        email: 
+        iban: 
+        initials: 
+        instelling: Institution
+        licensenumber: 
+        lidtype: 
+        name: 
+        password: 
+        phonenumber: 
+        postalcode: 
+        profielfoto: 
+        remember_me: 
+        sex: 
+        studie: 
+        xtracardnumber: 
     select:
       prompt: 
     submit:
@@ -465,6 +487,8 @@ en:
         update: 
       agendaitem[comments_attributes][2]:
         create: 
+      apps_exception:
+        create: 
       chatmessage:
         create: 
       comment:
@@ -477,6 +501,9 @@ en:
         create: 
         update: 
       eventtype:
+        create: 
+        update: 
+      kronometer:
         create: 
         update: 
       newsitem:
@@ -494,14 +521,19 @@ en:
       subscription:
         create: 
       update: 
-      kronometer:
-        create: 
-        update: 
   iban: 
+  index: 
   initials: 
+  instelling: Institution
   licensenumber: 
+  mailinglist: 
+  mailinglist_destroy_success: 
+  mailinglist_memberships: Memberships
+  mailinglist_update_success: 
+  mailinglists: 
   name: 
   new_commission: 
+  new_mailinglist: New mailinglist
   newsitem:
     nieuwsbericht: 
     profielfoto: 
@@ -571,9 +603,15 @@ en:
       incorrect-captcha-sol: 
   remember_me: 
   result: 
+  results:
+    frontpage:
+      results: 
+      uitslagen: 
+  save_mailinglist: Save mailinglist
   sex: 
   sign_in: 
   sign_up: 
+  studie: 
   subscription: 
   support:
     array:
@@ -594,6 +632,8 @@ en:
       time: 
     pm: 
   unauthorized:
+    agendaitem:
+      location: 
     agendaitem[events_attributes][new_events]:
       Afstand: 
     commission[commission_memberships_attributes][new_commission_memberships]:
@@ -638,27 +678,3 @@ en:
     page_gap: 
     previous_label: 
   xtracardnumber: 
-  aanvang: 
-  created_at: Created at
-  instelling: Institution
-  studie: 
-  agenda: 
-  Agenda: 
-  agendaitems_agenda: 
-  all_mailinglists: 
-  edit_mailinglist: Edit mailinglist
-  mailinglist: 
-  mailinglist_destroy_success: 
-  mailinglist_memberships: Memberships
-  mailinglist_update_success: 
-  new_mailinglist: New mailinglist
-  mailinglists: 
-  add: Add
-  add_mailinglist: Add mailinglist
-  index: 
-  save_mailinglist: Save mailinglist
-  results:
-    frontpage:
-      uitslagen: 
-      results: 
-  May: 

@@ -1,4 +1,7 @@
 nl:
+  Agenda: 
+  May: 
+  aanvang: aanvang
   activerecord:
     attributes:
       agendaitem:
@@ -14,6 +17,10 @@ nl:
         url: Url
       agendaitemtype_eventtype:
         eventtype_id: Evenementtype
+      apps_exception:
+        email: Email
+        group_email: Group email
+        way: Way
       chatmessage:
         bericht: Bericht
         by: Van
@@ -28,10 +35,54 @@ nl:
         role: Rol
       commission_membership:
         function: Functie
-        username: Username
+        user_id: Lid
+      event:
+        Afstand: Afstand
+        Tijd: Tijd
+        Type: Type
+      eventtype:
+        agendaitemtypes: Agendaitemtypes
+        calculated_unit: Berekende eenheid
+        female_formula: Formule voor vrouwen
+        formula: Formule
+        measuringunit: Gemeten eenheid
+        name: Naam
+        shortname: Korte naam
+        show_wind: Geef wind weer
+      kronometer:
+        date: Date
+        file: File
+        name: Naam
+      mailinglist:
+        description: Beschrijving
+        local_part: Lokaal deel
+        local_part_form_description: Lokaal deel (voor de @)
+        name: Naam
+      mailinglist_membership:
+        destroy: Vernietig
+        name: Naam
+        subscribe: Abonneer
+        subscribe?: Abonneer?
+      newsitem:
+        articlephoto: Artikelfoto
+        nieuwsbericht: Nieuwsbericht
+        profielfoto: Profielfoto
+        titel: Titel
+      page:
+        information: Informatie
+        title: Titel
+      photoalbum:
+        agendaitem: Agendaitem
+        name: Name
+      result:
+        place: Place
+        result: Result
+        username: Gebruikersnaam
+        wind: Wind
       subscription:
         opmerking: Opmerking
       user:
+        aanvang: Aanvang
         address: Adres
         avatar: Avatar
         bankaccountnumber: Bankaccountnumber
@@ -40,6 +91,7 @@ nl:
         email: Email
         iban: Iban
         initials: Initialen
+        instelling: Instelling
         licensenumber: Licentienummer
         lidtype: Lidtype
         name: Naam
@@ -51,31 +103,8 @@ nl:
         remember_me: Remember me
         reset_password_token: Reset password token
         sex: Geslacht
-        xtracardnumber: Xtracardnumber
-        aanvang: Aanvang
-        instelling: Instelling
         studie: Studie
-      kronometer:
-        date: Date
-        file: File
-        name: Name
-      mailinglist:
-        description: Beschrijving
-        local_part: Lokaal deel
-        local_part_form_description: Lokaal deel (voor de @)
-        name: Naam
-      photoalbum:
-        agendaitem: Agendaitem
-        name: Name
-      event:
-        Afstand: Afstand
-        Tijd: Tijd
-        Type: Type
-      mailinglist_membership:
-        destroy: Vernietig
-        name: Naam
-        subscribe: Abonneer
-        subscribe?: Abonneer?
+        xtracardnumber: Xtracardnumber
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -159,28 +188,29 @@ nl:
           other: ! '%{model} niet opgeslagen: %{count} fouten gevonden'
     models:
       agendaitem: Agendaitem
+      apps_exception: Apps exception
       chatmessage: Chatmessage
       comment: Comment
       commission: Commission
       event: Onderdeel
+      kronometer: Kronometer
+      mailinglist: Maillijst
       newsitem: Nieuwsitem
       page: Page
       photoalbum: Fotoalbum
       result: Uitslag
       subscription: Subscription
       user: Lid
-      kronometer: Kronometer
-      mailinglist: Maillijst
+  add: Toevoegen
+  add_mailinglist: Maillijst toevoegen
   address: adres
-  agendaitems:
-    month:
-      no_agendaitems_found: geen agendaitems deze maand
-      agenda: agenda
+  agenda: 
+  agendaitem:
     Kronos Activiteit: 
     agendaitemtype: 
     commission: comissie
     date: datum
-    description: beschrijving
+    description: Beschrijving
     events:
       Afstand: Afstand
       Tijd: 
@@ -189,14 +219,21 @@ nl:
     name: 
     subscribe: 
     subscriptiondeadline: 
-    index:
-      agenda: 
-      no_agendaitems_found: 
   agendaitem[events_attributes][new_events]:
     Afstand: Afstand
     Tijd: Tijd
     Type: Type
+  agendaitems:
+    agenda: 
+    index:
+      agenda: 
+      no_agendaitems_found: 
+    month:
+      agenda: 
+      no_agendaitems_found: 
+  agendaitems_agenda: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
+  all_mailinglists: Alle maillijsten
   bankaccountnumber: Bankrekeningnummber
   birthdate: geboortedatum
   chatmessage:
@@ -207,6 +244,7 @@ nl:
     commenttext: 
   commission: commissie
   commission_membership: Commission membership
+  created_at: Toegevoegd op
   date:
     abbr_day_names:
     - zon
@@ -306,7 +344,7 @@ nl:
       month: maand
       second: seconde
       year: jaar
-  description: beschrijving
+  description: Beschrijving
   devise:
     confirmations:
       confirmed: Je account is bevestigd.
@@ -365,6 +403,7 @@ nl:
       other: meter
   edit: aanpassen
   edit_commission: Commissie aanpassen
+  edit_mailinglist: Maillijst aanpassen
   email: e-mail
   error: fout weerhield
   errorpl: fouten weerhielden
@@ -386,6 +425,7 @@ nl:
       invalid: is ongeldig
       less_than: moet minder zijn dan %{count}
       less_than_or_equal_to: moet minder dan of gelijk zijn aan %{count}
+      no_el_found: 
       not_a_number: is geen getal
       not_an_integer: moet een geheel getal zijn
       not_found: niet gevonden
@@ -411,8 +451,8 @@ nl:
     female_formula: 
     formula: 
     measuringunit: 
-    name: 
-    shortname: 
+    name: Naam
+    shortname: Korte naam
     show_wind: 
   function: functie
   hello: 
@@ -437,6 +477,10 @@ nl:
         Afstand: 
         Tijd: 
         Type: 
+      apps_exception:
+        email: 
+        group_email: 
+        way: 
       comment:
         commenttext: 
       commission:
@@ -452,6 +496,21 @@ nl:
         Afstand: 
         Tijd: 
         Type: 
+      kronometer:
+        date: 
+        file: 
+        name: 
+      mailinglist:
+        description: Beschrijving
+        local_part_form_description: Lokaal deel (voor de @)
+        mailinglist_memberships:
+          destroy: Vernietig
+          name: Naam
+          subscribe: Abonneer
+          subscribe?: Abonneer?
+        name: Naam
+      mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
+        name: Naam
       newsitem:
         nieuwsbericht: 
         profielfoto: 
@@ -466,9 +525,11 @@ nl:
         place: 
         result: 
         username: 
+        wind: 
       subscription:
         opmerking: 
       user:
+        aanvang: aanvang
         address: 
         bankaccountnumber: 
         birthdate: 
@@ -476,6 +537,7 @@ nl:
         email: 
         iban: 
         initials: 
+        instelling: 
         licensenumber: 
         lidtype: 
         name: 
@@ -485,25 +547,8 @@ nl:
         profielfoto: 
         remember_me: 
         sex: 
-        xtracardnumber: 
-        aanvang: aanvang
-        instelling: 
         studie: studie
-      kronometer:
-        date: 
-        file: 
-        name: 
-      mailinglist:
-        description: Beschrijving
-        local_part_form_description: Lokaal deel (voor de @)
-        name: Naam
-        mailinglist_memberships:
-          destroy: Vernietig
-          name: Naam
-          subscribe: Abonneer
-          subscribe?: Abonneer?
-      mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
-        name: Naam
+        xtracardnumber: 
     select:
       prompt: Selecteer
     submit:
@@ -517,6 +562,8 @@ nl:
         update: Update Comment
       agendaitem[comments_attributes][2]:
         create: Create Comment
+      apps_exception:
+        create: Create Apps exception
       chatmessage:
         create: Bericht toevoegen
       comment:
@@ -531,6 +578,9 @@ nl:
       eventtype:
         create: Eventtype toevoegen
         update: Eventtype bewaren
+      kronometer:
+        create: Create Kronometer
+        update: Update Kronometer
       newsitem:
         create: Newsitem toevoegen
         update: Newsitem bewaren
@@ -546,14 +596,19 @@ nl:
       subscription:
         create: Create Subscription
       update: ! '%{model} bewaren'
-      kronometer:
-        create: Create Kronometer
-        update: Update Kronometer
   iban: IBAN
+  index: 
   initials: initialen
+  instelling: Instelling
   licensenumber: licentienummer
+  mailinglist: Maillijst
+  mailinglist_destroy_success: 
+  mailinglist_memberships: Abonnees
+  mailinglist_update_success: 
+  mailinglists: 
   name: naam
   new_commission: nieuwe commissie
+  new_mailinglist: Nieuwe maillijst
   newsitem:
     nieuwsbericht: 
     profielfoto: 
@@ -625,9 +680,15 @@ nl:
       incorrect-captcha-sol: Vul a.u.b. de captcha goed in
   remember_me: onthoud mij
   result: Onderdeel
+  results:
+    frontpage:
+      results: Uitslagen
+      uitslagen: 
+  save_mailinglist: Maillijst opslaan
   sex: geslacht
   sign_in: Inloggen
   sign_up: inschrijven
+  studie: studie
   subscription: Subscription
   support:
     array:
@@ -648,6 +709,8 @@ nl:
       time: ! '%H:%M'
     pm: ! '''s middags'
   unauthorized:
+    agendaitem:
+      location: 
     agendaitem[events_attributes][new_events]:
       Afstand: 
     commission[commission_memberships_attributes][new_commission_memberships]:
@@ -692,21 +755,3 @@ nl:
     page_gap: ! '&hellip;'
     previous_label: ← vorige
   xtracardnumber: xtracardnummer
-  aanvang: aanvang
-  created_at: Toegevoegd op
-  instelling: Instelling
-  studie: studie
-  all_mailinglists: Alle maillijsten
-  mailinglist: Maillijst
-  mailinglists: 
-  new_mailinglist: Nieuwe maillijst
-  add: Toevoegen
-  edit_mailinglist: Maillijst aanpassen
-  add_mailinglist: Maillijst toevoegen
-  index: 
-  save_mailinglist: Maillijst opslaan
-  results:
-    frontpage:
-      uitslagen: 
-      results: 
-  May: 
