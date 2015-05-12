@@ -1,3 +1,5 @@
+= link_to raw("<span class='glyphicon glyphicon-arrow-left'></span> #{t(:index)}"), mailinglists_path,
+ :class => 'btn btn-default'
 .row
   .col-lg-12
     %h1= t(:edit_mailinglist).capitalize
@@ -11,4 +13,4 @@
 
 
       #actions
-        =f.submit :aanpassen, :class => 'btn btn-default'
+        =f.submit t(:save_mailinglist), :class => 'btn btn-success'

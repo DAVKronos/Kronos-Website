@@ -111,14 +111,6 @@ class UsersController < ApplicationController
       redirect_to users_path
   end
   
-  def update_mailinglists
-    User.all.each do |user|
-      user.add_member_to_group
-    end
-    redirect_to :root
-    flash[:success] = "Ik ben de mailinglijst aan het herbouwen, een ogenblik"
-  end
-  
   def xtracard
     @users = User.where(:user_type_id => [1,2])
   end

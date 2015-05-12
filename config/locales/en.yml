@@ -172,7 +172,7 @@ en:
       comment: 
       commission: 
       event: 
-      newsitem: 
+      newsitem: Newsitem
       page: 
       photoalbum: 
       result: 
@@ -198,9 +198,9 @@ en:
     subscribe: 
     subscriptiondeadline: 
   agendaitem[events_attributes][new_events]:
-    Afstand: 
-    Tijd: 
-    Type: 
+    Afstand: Distance
+    Tijd: Time
+    Type: Type
   agendaitemtype_eventtype: 
   bankaccountnumber: 
   birthdate: 
@@ -425,6 +425,8 @@ en:
         date: 
         file: 
         name: 
+      mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
+        name: Name
     select:
       prompt: 
     submit:
@@ -614,3 +616,11 @@ en:
   created_at: 
   instelling: 
   studie: 
+  mailinglists: 
+  new_mailinglist: New mailinglist
+  add: Add
+  edit_mailinglist: Edit mailinglist
+  add_mailinglist: Add mailinglist
+  index: 
+  save_mailinglist: Save mailinglist
+  mailinglist_memberships: Memberships

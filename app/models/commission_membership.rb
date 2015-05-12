@@ -12,7 +12,7 @@
 #
 
 class CommissionMembership < ActiveRecord::Base
-  before_save :add_member_to_group
+  after_save :add_member_to_group
   before_destroy :remove_member_from_group
 
   belongs_to :user
@@ -25,12 +25,12 @@ class CommissionMembership < ActiveRecord::Base
   
   def add_member_to_group
     gapps = KronosGoogleAPIClient.new
-    gapps.add_member_to_group(self.commission.email, self.user)
+    gapps.add_member_to_group(self.user, self.commission.email)
   end
   
   def remove_member_from_group
     gapps = KronosGoogleAPIClient.new
-    gapps.remove_member_from_group(self.commission.email, self.user)
+    gapps.remove_member_from_group(self.user, self.commission.email)
   end
   
   def update_commission_email(old_email)

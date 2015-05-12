@@ -60,13 +60,22 @@ nl:
         file: File
         name: Name
       mailinglist:
-        description: Description
-        local_part: Local part
-        local_part_form_description: Local part form description
-        name: Name
+        description: Beschrijving
+        local_part: Lokaal deel
+        local_part_form_description: Lokaal deel (voor de @)
+        name: Naam
       photoalbum:
         agendaitem: Agendaitem
         name: Name
+      event:
+        Afstand: Afstand
+        Tijd: Tijd
+        Type: Type
+      mailinglist_membership:
+        destroy: Vernietig
+        name: Naam
+        subscribe: Abonneer
+        subscribe?: Abonneer?
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -154,14 +163,14 @@ nl:
       comment: Comment
       commission: Commission
       event: Onderdeel
-      newsitem: Newsitem
+      newsitem: Nieuwsitem
       page: Page
       photoalbum: Fotoalbum
       result: Uitslag
       subscription: Subscription
       user: Lid
       kronometer: Kronometer
-      mailinglist: Mailinglist
+      mailinglist: Maillijst
   address: adres
   agendaitems:
     month:
@@ -182,8 +191,8 @@ nl:
     subscriptiondeadline: 
   agendaitem[events_attributes][new_events]:
     Afstand: Afstand
-    Tijd: 
-    Type: 
+    Tijd: Tijd
+    Type: Type
   agendaitemtype_eventtype: Agendaitemtype eventtype
   bankaccountnumber: Bankrekeningnummber
   birthdate: geboortedatum
@@ -482,9 +491,16 @@ nl:
         file: 
         name: 
       mailinglist:
-        description: 
-        local_part_form_description: 
-        name: 
+        description: Beschrijving
+        local_part_form_description: Lokaal deel (voor de @)
+        name: Naam
+        mailinglist_memberships:
+          destroy: Vernietig
+          name: Naam
+          subscribe: Abonneer
+          subscribe?: Abonneer?
+      mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
+        name: Naam
     select:
       prompt: Selecteer
     submit:
@@ -676,3 +692,12 @@ nl:
   created_at: 
   instelling: 
   studie: studie
+  all_mailinglists: Alle maillijsten
+  mailinglist: Maillijst
+  mailinglists: 
+  new_mailinglist: Nieuwe maillijst
+  add: Toevoegen
+  edit_mailinglist: Maillijst aanpassen
+  add_mailinglist: Maillijst toevoegen
+  index: 
+  save_mailinglist: Maillijst opslaan

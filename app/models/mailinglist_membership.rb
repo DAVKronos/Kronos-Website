@@ -20,7 +20,6 @@ class MailinglistMembership < ActiveRecord::Base
     api_client.add_member_to_group(self.user, self.mailinglist.full_email)
   end
 
-  handle_asynchronously :subscribe_to_mailinglist
 
   def unsubscribe_from_mailinglist
     api_client = KronosGoogleAPIClient.new

@@ -27,6 +27,25 @@ class KronosGoogleAPIClient
     result.data
   end
 
+  def create_email_group(email, name, description)
+    result = @client.execute(
+                        :api_method => @admin_api.groups.insert,
+                        :parameters => {},
+                        :body_object => {:email => email, :name => name,
+                        :description => description}
+    )
+    result
+  end
+
+  def destroy_email_group(email)
+    result = @client.execute(
+                        :api_method => @admin_api.groups.delete,
+                        :parameters => {:groupKey => email}
+    )
+    result.success?
+
+  end
+
   def add_member_to_group(user, group_email)
     result = @client.execute(
                :api_method => @admin_api.members.insert,

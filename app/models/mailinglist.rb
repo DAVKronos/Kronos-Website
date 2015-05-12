@@ -11,6 +11,10 @@
 #
 
 class Mailinglist < ActiveRecord::Base
+  before_save :add_mailinglist
+  after_destroy :delete_mailinglist
+
+
   has_many :mailinglist_memberships, :dependent => :destroy
 
   has_many :users, :through => :mailinglist_memberships,
@@ -30,12 +34,20 @@ class Mailinglist < ActiveRecord::Base
 
   private
 
+  def add_mailinglist
+    api_client = KronosGoogleAPIClient.new
+    api_client.create_email_group(self.full_email, self.name, self.description)
+  end
+
+  def delete_mailinglist
+    api_client = KronosGoogleAPIClient.new
+    api_client.destroy_email_group(self.full_email)
+  end
+
   def unsubscribe_from_mailinglist(user)
     api_client = KronosGoogleAPIClient.new
     api_client.remove_member_from_group(user, self.full_email)
   end
-
-  handle_asynchronously :unsubscribe_from_mailinglist
 
 
 

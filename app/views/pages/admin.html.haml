@@ -1,5 +1,11 @@
-%h1 admin pagina
+%h1 Admin pagina
 
-=link_to "Commissies", commissions_path
-=link_to "Nieuwsberichten goedkeuren", newsitems_agree_path
-=link_to "Apps", '/apps'
+%p
+  =link_to "Commissies", commissions_path, :class => 'btn btn-default'
+%p
+  =link_to "Nieuwsberichten goedkeuren", newsitems_agree_path, :class => 'btn btn-default'
+%p
+  =link_to raw("<span class='glyphicon glyphicon-envelope'></span> #{t(:mailinglists)}"),
+   mailinglists_path, :class => 'btn btn-default'
+%p
+  =link_to "Apps", '/apps', :class => 'btn btn-default'

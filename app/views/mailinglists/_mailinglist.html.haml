@@ -1,13 +1,14 @@
-.row
-  .col-lg-6
-    %dl.dl-horizontal
-      %dt= t(:name)
-      %dd= mailinglist.name
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title= mailinglist.name
 
-      %dt= t(:email)
-      %dd= mailinglist.local_part + '@kronos.nl'
+  .panel-body
+    %p= mailinglist.full_email
+    %p= mailinglist.description
 
-      %dt= t(:description)
-      %dd= mailinglist.description
+    = link_to t(:edit), edit_mailinglist_path(mailinglist), :class => 'btn btn-default'
+
+    = link_to raw("<span class='glyphicon glyphicon-remove'></span> Delete"), mailinglist ,:class => 'btn btn-danger',
+     confirm: 'Weet je het zeker?', method: :delete if can? :destroy, mailinglist
 
 
