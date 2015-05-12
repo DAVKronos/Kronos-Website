@@ -81,7 +81,7 @@ en:
         sex: 
         xtracardnumber: 
         aanvang: 
-        instelling: 
+        instelling: Institution
         studie: 
       kronometer:
         date: 
@@ -197,6 +197,9 @@ en:
     name: 
     subscribe: 
     subscriptiondeadline: 
+    index:
+      agenda: 
+      no_agendaitems_found: 
   agendaitem[events_attributes][new_events]:
     Afstand: Distance
     Tijd: Time
@@ -419,7 +422,7 @@ en:
         sex: 
         xtracardnumber: 
         aanvang: 
-        instelling: 
+        instelling: Institution
         studie: 
       kronometer:
         date: 
@@ -471,6 +474,7 @@ en:
       update: 
       kronometer:
         create: 
+        update: 
   iban: 
   initials: 
   licensenumber: 
@@ -613,8 +617,8 @@ en:
     previous_label: 
   xtracardnumber: 
   aanvang: 
-  created_at: 
-  instelling: 
+  created_at: Created at
+  instelling: Institution
   studie: 
   mailinglists: 
   new_mailinglist: New mailinglist
@@ -624,3 +628,6 @@ en:
   index: 
   save_mailinglist: Save mailinglist
   mailinglist_memberships: Memberships
+  results:
+    frontpage:
+      uitslagen: 

@@ -3,16 +3,19 @@
     %h1.push-down-for-logo Kronometers
 
 .row
-
-  %ul.thumbnails
-    - @kms.each do |km|
-      %li.col-lg-3
-        .thumbnail
+  - @kms.each do |km|
+    .col-md-3.col-xs-6
+      .panel.panel-default
+        .panel-heading
+          %h4= km.name
+          %h6= km.date
+        .panel-body
           = link_to image_tag(km.file.url(:thumb)), km.file.url
-          .caption
-            %h5= km.date
-            - if can? :destroy, km
-              = link_to 'verwijder', km, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{km.name}", :class => 'btn'
+          - if can? :destroy, km
+            = link_to 'verwijder', km, :method => :delete, :confirm => "Weet je het zeker?",
+            :title => "Verwijder #{km.name}", :class => 'btn btn-defaul'
+          - if can? :edit, km
+            = link_to 'aanpassen', edit_kronometer_path(km)
 
 .row
   .col-lg-12
