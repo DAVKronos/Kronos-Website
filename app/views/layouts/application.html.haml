@@ -31,8 +31,8 @@
           %a{:class => :close, 'data-dismiss' => 'alert'} x
       
       -# Render banner
-      - if ((cookies[:banner] != 'false') && (!user_signed_in?))
-        = render 'layouts/banner'
+      -# - if ((cookies[:banner] != 'false') && (!user_signed_in?))
+      -#   = render 'layouts/banner'
       
       = yield
     = render 'layouts/footer'

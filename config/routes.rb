@@ -6,8 +6,6 @@ KronosWebsite::Application.routes.draw do
 
   resources :agendaitemtypes
 
-#  match '/kronobox' => 'kronobox#index'
-#  match '/elfinder' => 'kronobox#elfinder'
   match '/apps' => 'kronobox#appshome'
   match '/apps/group/add' => 'kronobox#groupadd'
   match '/apps/group/remove' => 'kronobox#groupremove'
@@ -53,6 +51,10 @@ KronosWebsite::Application.routes.draw do
   match '/uitslagen', :to => 'results#frontpage'
   match '/agendaitems/new_result', :to => 'agendaitems#new_result'
   match '/agendaitems/create_result', :to => 'agendaitems#create_result', via: [:post]
+
+  #TODO: Restrict numbers only
+  match '/agenda/:year/:month', :to => 'agendaitems#month' ,constraints: { year: /\d{4}/, month: /\d{1,2}/}
+  match '/agenda/', :to => 'agendaitems#month'
   
   resources :agendaitems do
     resources :events
