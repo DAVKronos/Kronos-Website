@@ -10,15 +10,15 @@ class ResultsController < ApplicationController
         date = DateTime.new(params[:year].to_i,params[:month].to_i)
       rescue ArgumentError
         date = Date.today
-        redirect_to '/uitslagen/'
+        redirect_to result_frontpage_path
       end
     end
     
-    earliest = Agendaitem.first(:order => 'date asc').date.to_date
+    earliest = Agendaitem.joins("LEFT OUTER JOIN events ON events.agendaitem_id = agendaitems.id").joins("LEFT OUTER JOIN results ON results.event_id = events.id").where("results.id IS NOT NULL").first(:order => 'date asc').date.to_date
     if earliest.year < 1964 then
       earliest = Date.new(1964, 1)
     end
-    latest = Agendaitem.last(:order=>'date asc').date.to_date
+    latest = Agendaitem.joins("LEFT OUTER JOIN events ON events.agendaitem_id = agendaitems.id").joins("LEFT OUTER JOIN results ON results.event_id = events.id").where("results.id IS NOT NULL").last(:order=>'date asc').date.to_date
     if latest < date
         date = latest
     end
@@ -27,20 +27,26 @@ class ResultsController < ApplicationController
     (earliest.year..latest.year).each do |y|
       mo_start = (earliest.year == y) ? earliest.month : 1
       mo_end = (latest.year == y) ? latest.month : 12
-      (mo_start..mo_end).each do |m|  
+      (mo_start..mo_end).each do |m|
         range << [y,m]
       end
-    end 
+    end
     
     before, after = range.partition {|e| (Date.new(e.first,e.second) < date.beginning_of_month ) }
     after = after.drop(1)
     
-    @agendaitems = Agendaitem.where(:date => date.beginning_of_month..date.next_month).order("date ASC")
+    @agendaitems = Agendaitem.joins("LEFT OUTER JOIN events ON events.agendaitem_id = agendaitems.id").joins("LEFT OUTER JOIN results ON results.event_id = events.id").where(:date => date.beginning_of_month..date.end_of_month).where("results.id IS NOT NULL").group('agendaitems.id').order("date ASC")
     @years = range.map{|e| e.first}.uniq
 
     @past = before.map{|e| Date.new(e.first,e.second)}
     @present = after.map{|e| Date.new(e.first,e.second)}
     @current = date.beginning_of_month
+  end
+  
+  def records
+    frontpage
+	
+	@eventtypes = Eventtype.all
   end
   
   def index

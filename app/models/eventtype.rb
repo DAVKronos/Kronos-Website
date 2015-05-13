@@ -18,6 +18,7 @@ class Eventtype < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   has_many :agendaitemtype_eventtypes
   has_many :agendaitemtypes, :through => :agendaitemtype_eventtypes
+  has_many :results, :through => :events
   
   accepts_nested_attributes_for :agendaitemtype_eventtypes, :allow_destroy => true
 

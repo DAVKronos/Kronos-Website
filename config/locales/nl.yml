@@ -684,6 +684,8 @@ nl:
     frontpage:
       results: Uitslagen
       uitslagen: 
+    records:
+      results: Reutelbijbel
   save_mailinglist: Maillijst opslaan
   sex: geslacht
   sign_in: Inloggen

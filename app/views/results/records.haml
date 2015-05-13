@@ -1,0 +1,69 @@
+.row
+  .col-md-12
+    %h1 
+      =t('.results').capitalize
+      %small overzicht
+.row
+  .col-md-12
+    %ul.nav.nav-tabs
+      - @present.take(2).reverse.each do |d|
+        %li{:role => 'presentatino'}= link_to (l d, format: '%b %Y'), result_frontpage_month_path(d.strftime('%Y'), d.strftime('%m'))
+      %li{:role => 'presentation'}= link_to (l @current, format: '%b %Y'), result_frontpage_month_path(@current.strftime('%Y'), @current.strftime('%m'))
+      - @past.reverse.take(2).each do |d|
+        %li{:role => 'presentation'}= link_to (l d, format: '%b %Y'), result_frontpage_month_path(d.strftime('%Y'), d.strftime('%m'))
+      %li.dropdown{:role => "presentation"}
+        %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          = l(@current, :format => '%b')
+          %span.caret
+        %ul.dropdown-menu{:role => "menu"}
+          - t(:month_names, :scope => :date).drop(1).each_with_index do |m, ind|
+            %li= link_to m, result_frontpage_month_path(@current.strftime('%Y'), (ind+1).to_s.rjust(2, '0'))
+      %li.dropdown{:role => "presentation"}
+        %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          = @current.strftime('%Y')
+          %span.caret
+        %ul.dropdown-menu{:role => "menu"}
+          - @years.reverse.each do |y|
+            %li= link_to y, result_frontpage_month_path(y, @current.strftime('%m'));
+      %li.active{:role => 'presentation'}= link_to 'Clubrecords', '#'
+.row
+  &nbsp;
+.row
+  .col-md-12
+    #toptien.panel-group.list-group
+      -@eventtypes.each_with_index do |eventtype, ntime|
+        .panel.list-group-item
+          .list-group-heading
+            %a.accordion-toggle.collapsed{"data-parent" => "#toptien", "data-toggle" => "collapse", :href => "#toptien-collapse-"+ntime.to_s}
+              .row
+                .col-xs-11
+                  %h4
+                    =eventtype.name
+                .col-xs-1.text-right
+                  %h4
+                    %small
+                      .icon
+          .collapse{:id=>'toptien-collapse-'+ntime.to_s, :class => (ntime == 0) ? 'in' : ''}
+            .panel-body
+              .table-responsive
+                %table.table.table-condensed.table-striped
+                  %thead
+                    %tr
+                      %th #
+                      %th Naam
+                      %th Result
+                      %th Datum
+                      %th Wedstrijd
+                  %tbody
+                    -eventtype.results.take(10).each_with_index do |result, n_uit|
+                      %tr
+                        %th.row.col-xs-1
+                          =(1+n_uit).to_s
+                        %td.col-xs-3
+                          = result.username
+                        %td.col-xs-2
+                          = result.result
+                        %td.col-xs-2
+                          = (l result.event.agendaitem.date, format: '%b %Y') if result.event and result.event.agendaitem
+                        %td.col-xs-5
+                          = (link_to result.event.agendaitem.name + ' (' + result.event.agendaitem.location + ')', agendaitem_path(result.event.agendaitem)) if result.event and result.event.agendaitem

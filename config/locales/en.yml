@@ -607,6 +607,8 @@ en:
     frontpage:
       results: 
       uitslagen: 
+    records:
+      results: 
   save_mailinglist: Save mailinglist
   sex: 
   sign_in: 
