@@ -51,11 +51,12 @@
                     %tr
                       %th #
                       %th Naam
-                      %th Result
+                      %th Uitslag
+                      %th= eventtype.calculated_unit
                       %th Datum
                       %th Wedstrijd
                   %tbody
-                    -eventtype.results.take(10).each_with_index do |result, n_uit|
+                    -eventtype.results.sort_by{|res| -res.calculatedResult}.take(10).each_with_index do |result, n_uit|
                       %tr
                         %th.row.col-xs-1
                           =(1+n_uit).to_s
@@ -63,7 +64,9 @@
                           = result.username
                         %td.col-xs-2
                           = result.result
-                        %td.col-xs-2
+                        %td.col-xs-1
+                          = number_to_human result.calculatedResult, :format => "%n", :precision => 2, :significant => false
+                        %td.col-xs-1
                           = (l result.event.agendaitem.date, format: '%b %Y') if result.event and result.event.agendaitem
                         %td.col-xs-5
                           = (link_to result.event.agendaitem.name + ' (' + result.event.agendaitem.location + ')', agendaitem_path(result.event.agendaitem)) if result.event and result.event.agendaitem
