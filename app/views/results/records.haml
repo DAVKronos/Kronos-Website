@@ -56,7 +56,7 @@
                       %th Datum
                       %th Wedstrijd
                   %tbody
-                    -eventtype.results.order(calculated: :desc).limit(10).each_with_index do |result, n_uit|
+                    -eventtype.results.order("calculated DESC").where("calculated IS NOT NULL").limit(10).each_with_index do |result, n_uit|
                       %tr
                         %th.row.col-xs-1
                           =(1+n_uit).to_s
