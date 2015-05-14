@@ -28,13 +28,16 @@ class Eventtype < ActiveRecord::Base
 	if gender != "Man" && self.female_formula
 		formula = self.female_formula
 	end
-	if formula
-        formula = formula.gsub(/\$distance/, distance.to_s ) if (distance and formula)
-        return engine.evaluate(formula.gsub(/\$result/, result.to_s)) if (formula)              # Evaluate the expression and output the result
+	if formula && (result.to_i.to_s == result)
+        formula = formula.gsub(/\$distance/, distance.to_s ) if distance
+        retval = engine.evaluate(formula.gsub(/\$result/, result.to_s)) 	              # Evaluate the expression and output the result
+		return retval
 	else
 		return 0
 	end
+	rescue Exception
+		return 0
     rescue MathEngine::MathEngine::ParseError
-      0
+        return 0
   end
 end
