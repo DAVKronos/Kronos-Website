@@ -25,15 +25,12 @@ class Eventtype < ActiveRecord::Base
   def calculate_result(result, distance, gender)
     engine = MathEngine::MathEngine.new
 	formula = self.formula
-	if !formula
-		formula = '$result'
-	end
 	if gender != "Man" && self.female_formula
 		formula = self.female_formula
 	end
 	if formula
         formula = formula.gsub(/\$distance/, distance.to_s ) if (distance and formula)
-        engine.evaluate(formula.gsub(/\$result/, result.to_s)) if (formula)              # Evaluate the expression and output the result
+        return engine.evaluate(formula.gsub(/\$result/, result.to_s)) if (formula)              # Evaluate the expression and output the result
 	else
 		return 0
 	end
