@@ -201,6 +201,7 @@ nl:
       result: Uitslag
       subscription: Subscription
       user: Lid
+      eventtype: Eventtype
   add: Toevoegen
   add_mailinglist: Maillijst toevoegen
   address: adres
@@ -549,6 +550,15 @@ nl:
         sex: 
         studie: studie
         xtracardnumber: 
+      eventtype:
+        female_formula: 
+        name: 
+        shortname: 
+        measuringunit: 
+        show_wind: 
+        agendaitemtypes: 
+        calculated_unit: 
+        formula: 
     select:
       prompt: Selecteer
     submit:
@@ -639,7 +649,7 @@ nl:
           quadrillion: biljard
           thousand: duizend
           trillion: biljoen
-          unit: 
+          unit: Eenheid
       format:
         delimiter: 
         precision: 3
@@ -728,21 +738,21 @@ nl:
       signed_in: 
       signed_out: 
   user:
-    address: 
-    bankaccountnumber: 
-    birthdate: 
-    city: 
-    email: 
-    iban: 
-    initials: 
+    address: adres
+    bankaccountnumber: rekeningnummer
+    birthdate: geboortedatum
+    city: plaats
+    email: email
+    iban: IBAN
+    initials: initialen
     invalid: Ongeldig e-mail of wachtwoord.
-    licensenumber: 
-    lidtype: 
-    name: 
-    password: 
-    password_confirmation: 
-    phonenumber: 
-    postalcode: 
+    licensenumber: licentienummer
+    lidtype: lidtype
+    name: naam
+    password: wachtwoord
+    password_confirmation: wachtwoord voor bevestiging
+    phonenumber: telefoonnummer
+    postalcode: postcode
     profielfoto: profielfoto
     remember_me: onthoud mij
     send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet resetten.

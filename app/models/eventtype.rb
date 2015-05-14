@@ -28,7 +28,7 @@ class Eventtype < ActiveRecord::Base
 	if gender != "Man" && self.female_formula
 		formula = self.female_formula
 	end
-	if formula && (result.to_i.to_s == result)
+	if formula
         formula = formula.gsub(/\$distance/, distance.to_s ) if distance
         retval = engine.evaluate(formula.gsub(/\$result/, result.to_s)) 	              # Evaluate the expression and output the result
 		return retval

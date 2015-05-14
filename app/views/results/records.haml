@@ -56,7 +56,7 @@
                       %th Datum
                       %th Wedstrijd
                   %tbody
-                    -eventtype.results.sort_by{|res| -res.calculatedResult}.take(10).each_with_index do |result, n_uit|
+                    -eventtype.results.order(calculated: :desc).limit(10).each_with_index do |result, n_uit|
                       %tr
                         %th.row.col-xs-1
                           =(1+n_uit).to_s
@@ -65,7 +65,7 @@
                         %td.col-xs-2
                           = result.result
                         %td.col-xs-1
-                          = number_to_human result.calculatedResult, :format => "%n", :precision => 2, :significant => false
+                          = number_to_human result.calculated, :format => "%n", :precision => 2, :significant => false
                         %td.col-xs-1
                           = (l result.event.agendaitem.date, format: '%b %Y') if result.event and result.event.agendaitem
                         %td.col-xs-5

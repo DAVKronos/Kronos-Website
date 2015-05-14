@@ -21,6 +21,9 @@ class Result < ActiveRecord::Base
   validates_presence_of :result
   
   def calculatedResult
+    if self.calculated
+      return self.calculated
+	end
     if self[:result]
       result = self[:result].gsub(/,/, ".")
       if self.event.eventtype.measuringunit =~ /sec/
@@ -36,10 +39,11 @@ class Result < ActiveRecord::Base
         if calculation < 0 
           calculation = 0;
         end
-        calculation.to_i
-      else
-        calculation
+        calculation = calculation.to_i
       end
+	  self.calculated = calculation
+	  self.save
+	  return calculation
     end
   end
   

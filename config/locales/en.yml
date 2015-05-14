@@ -199,6 +199,7 @@ en:
       result: 
       subscription: 
       user: 
+      eventtype: 
   add: Add
   add_mailinglist: Add mailinglist
   address: 
@@ -474,6 +475,13 @@ en:
         sex: 
         studie: 
         xtracardnumber: 
+      eventtype:
+        female_formula: 
+        name: 
+        shortname: 
+        measuringunit: 
+        agendaitemtypes: 
+        formula: 
     select:
       prompt: 
     submit:
