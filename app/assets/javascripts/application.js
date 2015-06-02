@@ -24,6 +24,7 @@
 //= require jwplayer
 //= require selectize
 //= require twitter/typeahead.min
+//= require bootstrap-datepicker
 //= require_tree .
 
 KRNS = {

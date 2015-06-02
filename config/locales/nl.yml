@@ -225,13 +225,10 @@ nl:
     Tijd: Tijd
     Type: Type
   agendaitems:
-    agenda: 
+    agenda: Agenda
     index:
-      agenda: 
-      no_agendaitems_found: 
-    month:
-      agenda: 
-      no_agendaitems_found: 
+      agenda: Agenda
+      no_agendaitems_found: Geen agendapunten gevonden
   agendaitems_agenda: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
   all_mailinglists: Alle maillijsten
@@ -695,7 +692,7 @@ nl:
       results: Uitslagen
       uitslagen: 
     records:
-      results: Reutelbijbel
+      results: 
   save_mailinglist: Maillijst opslaan
   sex: geslacht
   sign_in: Inloggen

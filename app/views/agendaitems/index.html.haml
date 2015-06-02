@@ -1,121 +1,43 @@
 .row
-  .col-lg-12
-    %h1.push-down-for-logo
-      Kronos Agenda - 
-      - if @agendaitems.first
-        = I18n.localize(@agendaitems.first.date.to_date)
+  .col-md-12
+    %h1 
+      = t('.agenda').capitalize
+      %small= l @date, format: '%b %Y'
 .row
-  .col-lg-8
-    - @agendaitems.each do |agendaitem|
-      .row.activityoverview
-        .col-lg-12
-          .row
-            %div{:class => (agendaitem.subscribe? ? 'col-lg-8' : 'col-lg-12')}
-              .row
-                .col-lg-12
-                  %h2.head.no-space.start
-                    = agendaitem.name
-              .row
-                .col-lg-6
-                  Wat:
-                  = if agendaitem.intern; 'Kronos ' else 'Externe ' end
-                  = agendaitem.agendaitemtype.name if agendaitem.agendaitemtype
-                .col-lg-6
-                  Wanneer:
-                  = I18n.localize(agendaitem.date, :format => "%d %B %H:%M")
-              .row
-                .col-lg-6
-                  Waar:
-                  = agendaitem.location
-                .col-lg-6
-                  = link_to agendaitem.get_url_name, agendaitem.get_url
-              .row
-                .col-lg-12
-                  .description
-                    = simple_format(agendaitem.description)
-                
-            - if agendaitem.subscribe
-              .col-lg-4
-                .row
-                  .col-lg-12
-                    %h2.head.no-space.end
-                      %span{:class => "glyphicon white glyphicon-play"}
-                      Subscriptions
-                .row
-                  .col-lg-12
-                    - if current_user
-                      - agendaitem.subscriptions.each do |subscription|
-                        .row
-                          .col-lg-12
-                            - if subscription.user
-                              = link_to subscription.user.name, subscription.user, :class => "subscriptionrow"
-                            - else
-                              %a{:class => "subscriptionrow"}
-                                = subscription.name
-                            
-          .row
-            %div{:class => (agendaitem.subscribe? ? 'col-lg-8' : 'col-lg-12')}
-              .foot.no-space.start
-                = link_to 'Lees meer', agendaitem_path(agendaitem)
-            - if agendaitem.subscribe
-              .col-lg-4
-                .foot.no-space.end
-                  = link_to 'Subscribe', agendaitem_path(agendaitem), :class => "subscribebutton"
-      
-  .col-lg-4
-    .row
-      - if @agendaitems.first
-        - fdat = @agendaitems.first.date.strftime("%Y-%m")
-      - else
-        - fdat = '0000-00'
-      .monthpicker{"data-selected" => fdat}
-        - @cals.each_with_index do |cal, index|
-          %a{:class => "head", "data-toggle" => "#collapse"+index.to_s}
-            = I18n.localize(cal.second.to_date, :format => "%B")
-        - @cals.each_with_index do |cal, index|
-          %div{:class => "collapser", :id => "collapse"+index.to_s, "data-date" => cal.second.strftime("%Y-%m")}
-            = calendar(:year => cal.second.year, :month => cal.second.month, :first_day_of_week => 1) do |d|
-              - if @dates.keys.include?(d.strftime("%F"))
-                - link_to d.strftime("%d"), perdag_url(d.strftime("%F")), {:class => @dates[d.strftime("%F")]["htmlclass"], "data-toggle" => "tooltip", "title" => @dates[d.strftime("%F")]["tooltips"]}
-              - else
-                - '<div>' + d.strftime("%e") + '</div>'
-.row
-  .col-lg-12
-    = link_to 'Nieuw agendapunt', new_agendaitem_path
-
-:css
-  .activityoverview h2 {
-    line-height:31px;
-    padding-left: 10px;
-  }
-  .activityoverview .description {
-    border-top: 1px #7dbc53 solid;
-  }
-  .activityoverview .foot {
-    border-bottom: 1px #7dbc53 solid;
-    margin-bottom: 10px;
-  }
-  .activityoverview .foot {
-    text-align: right;
-  }
-  .activityoverview .foot a {
-    color: #7dbc53;
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  .activityoverview .foot a.subscribebutton {
-    color: #fff;
-    display: block;
-    background-color: #7dbc53;
-    text-align: center;
-    font-weight: bold;
-    margin-right: 0px;
-  }
-  .activityoverview a.subscriptionrow {
-    display: block;
-    color: #000;
-    background-color: #ddd;
-    padding-left: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
+  .col-md-12
+    %ul.nav.nav-tabs
+      - 2.downto(1).each.map{|n| @date - n.months }.each do |d|
+        %li{role: 'presentation'}
+          = link_to (l d, format: '%b %Y'), 
+              controller: 'agendaitems', 
+              action: 'index', 
+              date: {year: d.year, month: d.month}  
+      %li.active{:role => 'presentation'}
+        = link_to (l @date, format: '%b %Y'),'#'
+      - (1..2).each.map{|n| @date + n.months }.each do |d|
+        %li{:role=> 'presentation'}
+          = link_to (l d, format: '%b %Y'), 
+            controller: 'agendaitems', 
+            action: 'index', 
+            date: {year: d.year, month: d.month}  
+      = form_tag({controller: 'agendaitems', action: 'index'}, method: 'get', class: 'navbar-form navbar-left') do
+        .form-group
+          = text_field :date, :month, :class => 'form-control', :size=>'2',
+            'data-date-min-view-mode' =>'1', 'data-date-max-view-mode' => '1', 
+            'data-provide'=>'datepicker', 'data-date-format'=>'mm',
+            value: @date.month
+          = text_field :date, :year, :class => 'form-control', :size=>'4',
+            'data-date-min-view-mode' =>'2', 'data-date-max-view-mode' => '2', 
+            'data-provide'=>'datepicker', 'data-date-format'=>'yyyy', value: @date.year
+          = button_tag 'zoek', class: 'btn btn-default'
+.row 
+  &nbsp;
+.row 
+  .col-md-12
+    .list-group.panel-group
+      = render partial: 'agendaitems/agendaitem_panel', collection: @agendaitems, as: :agendaitem
+      - if @agendaitems.empty? 
+        %p{:class=>'text-center text-info'}=t '.no_agendaitems_found' 
+-if can? :create, Agendaitem
+  .col-md-12.text-center
+    = icon_button new_agendaitem_path, 'plus', t('add').capitalize 

@@ -1,0 +1,20 @@
+.panel.list-group-item.list-group-item-heading
+  %a{:href=>agendaitem_url(agendaitem)}
+    .row
+      .col-xs-1
+        %h4
+          = l agendaitem.date, format: '%d'
+          = content_tag(:small, (l agendaitem.date, format: '%a'))
+      .col-xs-1
+        %h4
+          %small= l agendaitem.date, format: '%H:%M'
+      .col-xs-9
+        %h4
+          = agendaitem.name
+          = content_tag :small, (agendaitem.agendaitemtype.name )
+      .col-xs-1.text-right
+        - if agendaitem.subscriptions.count > 0
+          %h4 
+            %small
+              %span.glyphicon.glyphicon-user
+              = agendaitem.subscriptions.count

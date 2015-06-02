@@ -8,7 +8,7 @@
         = f.label "Kronos Activiteit"
         = f.check_box :intern, :placeholder => "Van Kronos?"
         = f.label :agendaitemtype
-        = f.collection_select(:agendaitemtype_id, @agendaitemtypes, :id, :name, {}, {:class => "prototypetarget"})
+        = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name, {}, {:class => "prototypetarget"})
         = f.label :date
         = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
         = f.label :description
@@ -42,7 +42,7 @@
           %fieldset
             %legend Programma
             - @selects = {}
-            - @agendaitemtypes.each do |item|
+            - Agendaitemtype.all.each do |item|
               - @selects[item.id] = "'"+options_for_select(item.eventtypes.collect { |p| [p.name, p.id] })+"'"
             = f.fields_for :events do |event_field|
               %div{:class => "well col-lg-12"}

@@ -30,6 +30,7 @@ gem 'twitter-typeahead-rails', '~> 0.10.2'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'execjs', '~> 2.0.2'
 gem 'paper_trail', '~> 4.0.0.beta'
+gem 'bootstrap-datepicker-rails' 
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -71,6 +72,7 @@ group :development do
 	gem 'guard-spork', '~> 1.5.1'
   gem 'sqlite3', '~> 1.3.8'
   gem 'thin'
+  gem 'rubocop' , require: false
 end
 
 group :test, :development do

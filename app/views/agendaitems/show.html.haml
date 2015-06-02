@@ -12,15 +12,15 @@
       %li
         %span.glyphicon.glyphicon-calendar 
         = @agendaitem.date.strftime("%d %B %H:%M")
-      -unless @agendaitem.location.empty?
+      - unless @agendaitem.location.empty?
         %li
           %span.glyphicon.glyphicon-map-marker
           = @agendaitem.location
-      -if @agendaitem.url
+      - if @agendaitem.url
         %li
           %span.glyphicon.glyphicon-globe
           = link_to @agendaitem.get_url_name, @agendaitem.get_url
-      -if @agendaitem.commission
+      - if @agendaitem.commission
         %li
           %span.glyphicon.glyphicon-book 
           = link_to @agendaitem.commission.name, @agendaitem.commission
@@ -33,7 +33,7 @@
 
     - if current_user
       .bs-callout
-        - @comments.each do |comment|
+        - @agendaitem.comments.each do |comment|
           .row
             -if comment.user
               .col-lg-1
@@ -80,7 +80,7 @@
           .panel-heading 
             Inschrijflijst
             .small
-              -if !@agendaitem.deadline_passed?
+              - unless @agendaitem.deadline_passed?
                 nog
                 = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
                 open
@@ -95,7 +95,7 @@
                 - if can? :destroy, subscription
                   = link_to 'Uitschrijven', subscription, confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
           .panel-footer
-            - if !@agendaitem.deadline_passed?
+            - unless @agendaitem.deadline_passed?
               - if defined?(@subscription)
                 = render 'subscription_form'
               - else # al ingeschreven

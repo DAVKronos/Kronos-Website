@@ -482,6 +482,8 @@ en:
         measuringunit: 
         agendaitemtypes: 
         formula: 
+        calculated_unit: 
+        show_wind: 
     select:
       prompt: 
     submit:

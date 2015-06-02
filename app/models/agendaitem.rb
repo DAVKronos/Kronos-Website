@@ -79,6 +79,10 @@ class Agendaitem < ActiveRecord::Base
 
   end
 
+  def self.rangeMonth(date)
+    where(date: date.beginning_of_month..date.end_of_month)
+  end
+
   def get_url_name()
     if self.url
       if self.url.length > 40

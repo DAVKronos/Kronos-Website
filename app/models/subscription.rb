@@ -14,6 +14,11 @@
 class Subscription < ActiveRecord::Base
   belongs_to :user
   belongs_to :agendaitem
+  attr_reader :user, :agendaitem
+
+  def initialize(user, agendaitem)
+    @user, @agendaitem = user, agendaitem
+  end
   
   def detectUser(val)
     user = User.find_by_name(val)

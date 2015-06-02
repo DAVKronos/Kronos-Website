@@ -51,9 +51,9 @@ KronosWebsite::Application.routes.draw do
   match '/agendaitems/new_result', :to => 'agendaitems#new_result'
   match '/agendaitems/create_result', :to => 'agendaitems#create_result', via: [:post]
 
-  #TODO: Restrict numbers only
-  match '/agenda/:year/:month', :to => 'agendaitems#month' ,constraints: { year: /\d{4}/, month: /\d{1,2}/}
-  match '/agenda/', :to => 'agendaitems#month'
+  # #TODO: Restrict numbers only
+  match '/agenda/', :to => 'agendaitems#index'
+  # match '/agenda/:year/:month', :to => 'agendaitems#index' ,constraints: { year: /\d{4}/, month: /\d{1,2}/}
   
   match '/uitslagen/:year/:month', :to => 'results#frontpage', constraints: { year: /\d{4}/, month: /\d{1,2}/}, :as => 'result_frontpage_month'
   match '/uitslagen/records', :to => 'results#records', :as => 'result_frontpage_records'
