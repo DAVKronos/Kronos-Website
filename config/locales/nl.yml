@@ -602,6 +602,7 @@ nl:
       submit: ! '%{model} opslaan'
       subscription:
         create: Create Subscription
+        submit: Submit Subscription
       update: ! '%{model} bewaren'
   iban: IBAN
   index: 
@@ -764,3 +765,5 @@ nl:
     page_gap: ! '&hellip;'
     previous_label: ← vorige
   xtracardnumber: xtracardnummer
+  create: 
+  new: 

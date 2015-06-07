@@ -3,39 +3,15 @@ class AgendaitemsController < ApplicationController
   respond_to :html, :json
 
   def index
-    if params[:date].nil? || params[:date][:year].nil? || params[:date][:year].nil?
-      date = Date.today
+    if params[:date] && params[:date][:year] && params[:date][:year]
+      @date = DateTime.new(params[:date][:year].to_i, params[:date][:month].to_i)
     else
-      date = DateTime.new(params[:date][:year].to_i, params[:date][:month].to_i)
+      @date = Date.today
     end
 
-    earliest = Agendaitem.first(order: 'date asc').date.to_date
-    earliest = Date.new(1964, 1) if earliest.year < 1964
-
-    latest = Agendaitem.last(order: 'date asc').date.to_date
-    range = []
-
-    (earliest.year..latest.year).each do |y|
-      mo_start = (earliest.year == y) ? earliest.month : 1
-      mo_end = (latest.year == y) ? latest.month : 12
-      (mo_start..mo_end).each { |m| range << [y, m] }
-    end
-
-    before, after = range.partition do |e|
-      Date.new(e.first, e.second) < date.beginning_of_month
-    end
-
-    after = after.drop(1)
-
-    @agendaitems = Agendaitem.where(date: date.beginning_of_month..date.end_of_month)
+    @agendaitems = Agendaitem.where(date: @date.beginning_of_month..@date.end_of_month)
     @agendaitems.order('date ASC')
-
-    @date = date
-    @years = range.map(&:first).uniq
-
-    @past = before.map { |e| Date.new(e.first, e.second) }
-    @present = after.map { |e| Date.new(e.first, e.second) }
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: Agendaitem.search(params[:q], 10) }
@@ -61,11 +37,9 @@ class AgendaitemsController < ApplicationController
   def show
     @agendaitem = Agendaitem.find(params[:id])
     return unless current_user
-    @agendaitem.subscriptions.each do |subscr|
-      @subscriptionbestaand = subscr if subscr.user == current_user
-    end
-    return unless defined?(@subscriptionbestaand).nil?
-    @subscription = Subscription.new(current_user.name, @agendaitem)
+    @subscription = Subscription.where(agendaitem_id: @agendaitem.id, user_id:current_user.id).first
+    return if @subscription
+    @subscription = Subscription.new(user: current_user, agendaitem: @agendaitem,name:current_user.name)
   end
 
   def create

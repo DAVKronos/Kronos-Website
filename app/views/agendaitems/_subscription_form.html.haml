@@ -1,4 +1,4 @@
-= form_for(@subscription, :url => "#{@subscription.agendaitem.id}/subscriptions") do |f|     
+=form_for [@agendaitem,@subscription]  do |f|
   = f.hidden_field :name, :placeholder => "naam"
   = f.label :opmerking
   = f.hidden_field :agendaitem_id
@@ -6,3 +6,4 @@
   %br
   = f.submit :class => "btn btn-success btn-lg", :value => "Inschrijven"
 
+-# = form_for(@subscription ) do |f|     

@@ -90,16 +90,16 @@
                 %p.text-info Geen inschrijvingen
             - @agendaitem.subscriptions.each do |subscription|
               .list-group-item
-                = subscription.name
+                =subscription.name
                 .small= subscription.comment
                 - if can? :destroy, subscription
-                  = link_to 'Uitschrijven', subscription, confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
+                  = link_to 'Uitschrijven', [@agendaitem, subscription], confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
           .panel-footer
             - unless @agendaitem.deadline_passed?
-              - if defined?(@subscription)
-                = render 'subscription_form'
+              - if @subscription.new_record?
+                = render 'subscription_form', object: @subscription
               - else # al ingeschreven
-                = link_to 'Uitschrijven', @subscriptionbestaand , confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete, class: 'btn btn-danger'
+                = link_to 'Uitschrijven', [@agendaitem, @subscription] , confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete, class: 'btn btn-danger'
             - else # buiten inschrijfdeadline
               Gesloten
       - else # Niet ingelogd      
