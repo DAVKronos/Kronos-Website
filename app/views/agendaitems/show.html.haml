@@ -48,16 +48,18 @@
                     = time_tag(comment.created_at)
                 %p= comment.commenttext
         = render 'comments_form'
-
+    
   .col-lg-4
     - if can? :update, @agendaitem
       .btn-group.btn-group-sm
         = link_to 'Bewerk', edit_agendaitem_path(@agendaitem), class: 'btn btn-default'
         -if can? :destroy, @agendaitem
           = link_to 'Verwijder', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete, class: 'btn btn-default'
-        = link_to 'Inschrijvingen aanpassen', "#{@agendaitem.id}/subscriptions", class: 'btn btn-default'
+        -if can? :edit, @agendaitem.events
+          = link_to 'Resultaten aanpassen', agendaitem_events_path(@agendaitem), class: 'btn btn-default'
       %br
       %br
+
 
     .panel.panel-default
       .panel-heading Programma
@@ -106,3 +108,6 @@
         .panel.panel-info
           .panel-heading Inschrijflijst
           .panel-body Je moet inloggen om inschrijvingen te zien of aan te vullen. 
+    -if can? :update, @agendaitem.subscriptions
+      = link_to 'Inschrijvingen aanpassen', agendaitem_subscriptions_path(@agendaitem) , class: 'btn btn-sm btn-default'
+    

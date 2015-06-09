@@ -1,0 +1,44 @@
+.panel.list-group-item
+  .list-group-heading
+    %a.accordion-toggle.collapsed{"data-parent" => "#laatste", "data-toggle" => "collapse", :href => "#laatste-collapse-"+agendaitem_counter.to_s}
+      .row
+        .col-xs-1
+          %h4
+            = agendaitem.date.strftime('%d') 
+            = content_tag(:small, agendaitem.date.strftime('%a'))
+        .col-xs-10
+          %h4
+            = agendaitem.name
+            = content_tag :small, (agendaitem.agendaitemtype.name if agendaitem.agendaitemtype)
+        .col-xs-1.text-right
+          %h4
+            %small
+              .icon
+  %div{:id=>'laatste-collapse-'+agendaitem_counter.to_s, :class => (agendaitem_counter == 0)? 'collapse in' : 'collapse'}
+    .panel-body
+      -agendaitem.events.each do |event|
+        .table-responsive
+          %table.table.table-condensed.table-striped
+            %thead
+              %tr
+                %th{:colspan=>'3'}
+                  = event.eventtype.name if event.eventtype
+                  = number_to_human event.distance, :units => :distance
+            %tbody
+              - event.results.order('place ASC').each do |result|
+                %tr
+                  %td.row.col-xs-1
+                    = result.result
+                    = result.event.eventtype.measuringunit
+                    - if result.place
+                      = '(' + result.place.to_s + ')'
+                  %td.col-xs-5
+                    = result.username
+                  %td.col-xs-6
+                    = number_to_human result.calculatedResult, :format => "%n", :precision => 2, :significant => false
+                    = result.event.eventtype.calculated_unit
+    .row
+      .col-xs-12.text-center
+        = link_to 'Evenementenpagina', agendaitem_path(agendaitem), :class=>'btn btn-primary'
+        - if can? :create, Event
+          = icon_button agendaitem_events_path(agendaitem.id),'pencil', 'Aanpassen' 

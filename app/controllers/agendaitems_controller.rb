@@ -3,10 +3,11 @@ class AgendaitemsController < ApplicationController
   respond_to :html, :json
 
   def index
-    if params[:date] && params[:date][:year] && params[:date][:year]
-      @date = DateTime.new(params[:date][:year].to_i, params[:date][:month].to_i)
-    else
-      @date = Date.today
+    if date_param_is_set?
+      @date = Date.new(params[:date][:year].to_i, 
+                       params[:date][:month].to_i)
+    else 
+      @date = Date.today 
     end
 
     @agendaitems = Agendaitem.where(date: @date.beginning_of_month..@date.end_of_month)
@@ -56,10 +57,7 @@ class AgendaitemsController < ApplicationController
   end
 
   def create_result
-    @agendaitem = Agendaitem.new(params[:agendaitem])
-    @agendaitem.user = current_user
-    flash[:notice] = 'Agendaitem was successfully created.' if @agendaitem.save
-    respond_with(@agendaitem)
+    create
   end
 
   def destroy
@@ -85,4 +83,11 @@ class AgendaitemsController < ApplicationController
     flash[:notice] = 'Agendaitem was successfully updated.' if @agendaitem.save
     respond_with(@agendaitem)
   end
+
+private
+
+  def date_param_is_set?
+    return params[:date].present? && params[:date][:year].present? && params[:date][:month].present?
+  end
+
 end

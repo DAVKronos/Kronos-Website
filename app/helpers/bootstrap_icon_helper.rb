@@ -20,6 +20,6 @@ module BootstrapIconHelper
   def icon_button(path, icon, str, link_opts = {})
     link_opts[:class] = "btn btn-default" if link_opts[:class].nil?
     link_to icon(icon) << " " << str, path, link_opts  
-	end
+  end
 
 end

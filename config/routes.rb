@@ -29,7 +29,7 @@ KronosWebsite::Application.routes.draw do
     end
   end
   resources :news_items
-  resources :subscriptions
+  # resources :subscriptions
 
   match '/rebuildmailinglists', :to => 'users#update_mailinglists'
   resources :commissions
@@ -51,19 +51,16 @@ KronosWebsite::Application.routes.draw do
   match '/agendaitems/new_result', :to => 'agendaitems#new_result'
   match '/agendaitems/create_result', :to => 'agendaitems#create_result', via: [:post]
 
-  # #TODO: Restrict numbers only
   match '/agenda/', :to => 'agendaitems#index'
-  # match '/agenda/:year/:month', :to => 'agendaitems#index' ,constraints: { year: /\d{4}/, month: /\d{1,2}/}
-  
-  match '/uitslagen/:year/:month', :to => 'results#frontpage', constraints: { year: /\d{4}/, month: /\d{1,2}/}, :as => 'result_frontpage_month'
+
+  match '/uitslagen/', to: 'results#index' 
   match '/uitslagen/records', :to => 'results#records', :as => 'result_frontpage_records'
-  match '/uitslagen', :to => 'results#frontpage', :as => 'result_frontpage'
   
   resources :agendaitems do
     resources :events
     resources :results
     resources :comments
-	resources :subscriptions
+    resources :subscriptions
   end
   
   resources :events do

@@ -1,33 +1,42 @@
-.span12
-  .row
-    %h1
-      = 'Uitslagen > ' + @agendaitem.name
-  .row
-    .span9
-      .row
-        %ul{:class => "nav nav-tabs"}
-          - @agendaitem.events.each do |event|
-            %li
-              %a{:href => '#event' + event.id.to_s, "data-toggle" => 'tab'}
-                = event.eventtype.name
-        .tab-content
-          - @agendaitem.events.each do |event|
-            %div{:class => "tab-pane", :id => 'event' + event.id.to_s}
-              %table{:class => "resulttable"}
-                %thead
-                  %tr
-                    %th Naam ⇕
-                    %th Uitslag ⇕
-                %tbody
-                  - event.results.each do |result|
-                    %tr
-                      %td
-                        - if result.user
-                          = link_to result.user.name, result.user
-                        - else
-                          = result.username
-                      %td
-                        = result.result
-    .span3
-      .row
-        Plaatjes
+.row
+  .col-md-12
+    %h1 
+      =t('.results').capitalize
+      %small= l @date, format: '%b %Y'
+.row
+  .col-md-12
+    %ul.nav.nav-tabs
+      - 1.downto(1).each.map{|m| @date + m.months}.each do |d|
+        %li{role: 'presentation'}
+          = link_to (l d, format: '%b %Y'), 
+              controller: 'results', 
+              action: 'index',
+              date: {year: d.year, month: d.month}
+      %li{:role => 'presentation',:class=>'active'}  
+        = link_to (l @date, format: '%b %Y'),'#'
+      - (1..2).each.map{|m| @date- m.months}.each do |d|
+        %li{role: 'presentation'}
+          = link_to (l d, format: '%b %Y'), 
+              controller: 'results', 
+              action: 'index',
+              date: {year: d.year, month: d.month}
+      %li{:role => 'presentation'}= link_to 'Clubrecords', result_frontpage_records_path
+      = form_tag({controller: 'results', action: 'index'}, method: 'get', class: 'navbar-form navbar-left') do
+        .form-group
+          = text_field :date, :month, :class => 'form-control', :size=>'2',
+            'data-date-min-view-mode' =>'1', 'data-date-max-view-mode' => '1', 
+            'data-provide'=>'datepicker', 'data-date-format'=>'mm',
+            value: @date.month
+          = text_field :date, :year, :class => 'form-control', :size=>'4',
+            'data-date-min-view-mode' =>'2', 'data-date-max-view-mode' => '2', 
+            'data-provide'=>'datepicker', 'data-date-format'=>'yyyy', value: @date.year
+          = button_tag 'zoek', class: 'btn btn-default'
+.row
+  &nbsp;
+.row
+  .col-md-12
+    #laatste.panel-group.list-group
+      = render partial: 'results/resultitem_panel', collection: @agendaitems, as: :agendaitem
+-if can? :create, Result
+  .col-md-12.text-center
+    = icon_button url_for(controller:'agendaitems',action:'new_result') , 'plus', t('add').capitalize 
