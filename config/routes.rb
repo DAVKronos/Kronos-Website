@@ -48,7 +48,7 @@ KronosWebsite::Application.routes.draw do
   match '/agendaitems/archief', :to => 'agendaitems#archief'
   match '/agendaitems/dag/:day', :to => 'agendaitems#perdag', :as => :perdag
   match '/wedstrijden', :to => 'agendaitems#wedstrijden'
-  match '/agendaitems/new_result', :to => 'agendaitems#new_result'
+  match '/agendaitems/new_result', :to => 'agendaitems#new_result', :as => 'agendaitem_new_result'
   match '/agendaitems/create_result', :to => 'agendaitems#create_result', via: [:post]
 
   match '/agenda/', :to => 'agendaitems#index'

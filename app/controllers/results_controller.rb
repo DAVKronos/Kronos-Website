@@ -1,8 +1,8 @@
 class ResultsController < ApplicationController
   load_and_authorize_resource
   
-	def index
-		if date_params_set?
+  def index
+    if date_params_set?
       @date = Date.new(params[:date][:year].to_i, 
                        params[:date][:month].to_i)
     else 
@@ -20,9 +20,9 @@ class ResultsController < ApplicationController
   def records
     index
 	
-		@eventtypes = Eventtype.all
+    @eventtypes = Eventtype.all
   end
- 
+  
   def new
     @agendaitems = Agendaitem.joins(:agendaitemtype).where(:agendaitemtypes => {:is_match => true}).order('date DESC')
   end
