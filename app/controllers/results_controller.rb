@@ -10,11 +10,11 @@ class ResultsController < ApplicationController
     end
  
     @agendaitems = Agendaitem.joins("LEFT OUTER JOIN events ON events.agendaitem_id = agendaitems.id")
-    @agendaitems.joins("LEFT OUTER JOIN results ON results.event_id = events.id")
-    @agendaitems.where(:date => @date.beginning_of_month..@date.end_of_month)
-    @agendaitems.where("results.id IS NOT NULL")
-    @agendaitems.group('agendaitems.id')
-    @agendaitems.order("date ASC")
+      .joins("LEFT OUTER JOIN results ON results.event_id = events.id")
+      .where(:date => @date.beginning_of_month..@date.end_of_month)
+      .where("results.id IS NOT NULL")
+      .group('agendaitems.id')
+      .order("date ASC")
   end
   
   def records
