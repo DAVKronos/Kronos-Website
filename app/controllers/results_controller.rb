@@ -50,15 +50,7 @@ class ResultsController < ApplicationController
   end
   
   def index
-    @agendaitem = Agendaitem.find(params[:agendaitem_id])
-    
-    respond_to do |format|
-      format.html do
-        if request.xhr?
-          render 'results/indextab', :layout => false
-        end
-      end
-    end
+    @results = Result.all
   end
   
   def new

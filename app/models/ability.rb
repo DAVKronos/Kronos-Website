@@ -10,6 +10,7 @@ class Ability
     can :perdag, Agendaitem
     can :month, Agendaitem
     can :frontpage, Result
+    can :records, Result
     can :create, Chatmessage
     can :titleshow, Page
     can :hide_banner, Page

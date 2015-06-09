@@ -1,33 +1,39 @@
-.span12
-  .row
-    %h1
-      = 'Uitslagen > ' + @agendaitem.name
-  .row
-    .span9
-      .row
-        %ul{:class => "nav nav-tabs"}
-          - @agendaitem.events.each do |event|
-            %li
-              %a{:href => '#event' + event.id.to_s, "data-toggle" => 'tab'}
-                = event.eventtype.name
-        .tab-content
-          - @agendaitem.events.each do |event|
-            %div{:class => "tab-pane", :id => 'event' + event.id.to_s}
-              %table{:class => "resulttable"}
-                %thead
-                  %tr
-                    %th Naam ⇕
-                    %th Uitslag ⇕
-                %tbody
-                  - event.results.each do |result|
-                    %tr
-                      %td
-                        - if result.user
-                          = link_to result.user.name, result.user
-                        - else
-                          = result.username
-                      %td
-                        = result.result
-    .span3
-      .row
-        Plaatjes
+.row
+  .col-md-12
+    %h1 
+      =t('.results').capitalize
+      %small overzicht
+.row
+  .col-md-12
+    .table-responsive
+      %table.table.table-condensed.table-striped
+        %thead
+          %tr
+            %th Username
+            %th Result
+            %th Event
+            %th Wind
+            %th Place
+            %th Calculated
+            %th Actions
+        %tbody
+          - @results.each do |result|
+            %tr
+              %td
+                - if result.user
+                  = link_to result.username, user_path(result.user)
+                - else
+                  = result.username
+              %td= result.result
+              %td
+                - if result.event
+                  = result.event.agendaitem.name
+                - else
+                  Geen event
+              %td= result.event_id
+              %td= result.wind
+              %td= result.place
+              %td= result.calculated
+              %td
+                = link_to 'recalculate', '#', :class => 'btn btn-default'
+                = link_to 'change event', '#', :class => 'btn btn-default'
