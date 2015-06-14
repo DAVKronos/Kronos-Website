@@ -2,11 +2,12 @@
 - User.all.each do |user|
   - nameArray << user.name
 
-= form_for(@subscription, :url => "subscriptions") do |f|
-  = f.text_field :name, :class => 'typeahead form-control', :placeholder => t(:name).capitalize, :size=>'40'
+= form_for(@subscription, :url => 'subscriptions') do |f|
+  = f.text_field :name, class: 'typeahead form-control', 
+      placeholder: t(:name).capitalize, size: '40'
   = f.label :opmerking
-  = f.text_area(:comment, :rows => "5", :class => "input-xlarge")
-  = f.submit :class => "btn btn-success", :value => "Inschrijven"
+  = f.text_area :comment, rows: '5', class: 'input-xlarge'
+  = f.submit class: 'btn btn-success', value: 'Inschrijven'
 
   :javascript
     var substringMatcher = function(strs) {

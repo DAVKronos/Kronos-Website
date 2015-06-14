@@ -44,15 +44,15 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions.json
   def create
     @agendaitem = Agendaitem.find(params[:agendaitem_id])
-	@subscription = @agendaitem.subscriptions.build(params[:subscription])
-	@subscription.detectUser(@subscription.name)
+    @subscription = @agendaitem.subscriptions.build(params[:subscription])
+    @subscription.detectUser(@subscription.name)
 
     respond_to do |format|
       if @subscription.save
-	  	# send a mail
-		CommissionMailer.subscription_email(@subscription.agendaitem, @subscription.name, current_user).deliver
+	# send a mail
+	CommissionMailer.subscription_email(@agendaitem, @subscription.name, current_user).deliver
 
-        format.html { redirect_to agendaitem_path(@subscription.agendaitem), notice: 'Subscription was successfully created.' }
+        format.html { redirect_to agendaitem_path(@agendaitem), notice: 'Subscription was successfully created.' }
         format.json { render json: @subscription, status: :created, location: @subscription }
       else
         format.html { render action: "new" }
@@ -81,11 +81,10 @@ class SubscriptionsController < ApplicationController
   # DELETE /subscriptions/1.json
   def destroy
     @subscription = Subscription.find(params[:id])
-    agendaitem = @subscription.agendaitem
     @subscription.destroy
 
     respond_to do |format|
-      format.html { redirect_to agendaitem }
+      format.html { redirect_to :back }
       format.json { head :ok }
     end
   end
