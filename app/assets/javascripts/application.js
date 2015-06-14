@@ -24,7 +24,8 @@
 //= require jwplayer
 //= require selectize
 //= require twitter/typeahead.min
-//= require bootstrap-datepicker
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
 
 KRNS = {
@@ -44,9 +45,11 @@ $(document).ready(function () {
   setTimeout("$('.alert').fadeOut('slow');", 3000);
   $('.carousel').carousel();
   $('.dropdown-menu').find('form').click(function (e){e.stopPropagation();});
-  $('.datumtijdprikker').datetimepicker({dateFormat: 'yy-mm-dd'});
-  $('.datumprikker').datepicker({dateFormat: 'yy-mm-dd'});
-  $('.tijdprikker').timepicker({});
+  $('.datumtijdprikker').datetimepicker({format: 'YYYY-MM-DD hh:mm'}); 
+  $('.maandprikker').datetimepicker({format: 'MM'}); 
+  $('.jaarprikker').datetimepicker({format: 'YYYY'}); 
+  $('.datumprikker').datepicker({format: 'YY-MM-DD'});
+  $('.tijdprikker').timepicker({format: 'hh:mm'});
   $('.monthpicker .collapser').hide();
   $('.monthpicker .collapser[data-date='+$('.monthpicker').data("selected")+']').show();
   $('.monthpicker .head').click(function (e){$('.monthpicker .collapser').filter(':visible').hide("slide", function(){$($(e.target).data("toggle")).show("slide");});});

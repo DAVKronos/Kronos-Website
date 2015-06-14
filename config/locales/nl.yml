@@ -193,6 +193,7 @@ nl:
       comment: Comment
       commission: Commission
       event: Onderdeel
+      eventtype: Eventtype
       kronometer: Kronometer
       mailinglist: Maillijst
       newsitem: Nieuwsitem
@@ -201,7 +202,6 @@ nl:
       result: Uitslag
       subscription: Subscription
       user: Lid
-      eventtype: Eventtype
   add: Toevoegen
   add_mailinglist: Maillijst toevoegen
   address: adres
@@ -225,10 +225,10 @@ nl:
     Tijd: Tijd
     Type: Type
   agendaitems:
-    agenda: Agenda
+    agenda: 
     index:
       agenda: Agenda
-      no_agendaitems_found: Geen agendapunten gevonden
+      no_agendaitems_found: Geen agendaitems gevonden
   agendaitems_agenda: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
   all_mailinglists: Alle maillijsten
@@ -242,6 +242,7 @@ nl:
     commenttext: 
   commission: commissie
   commission_membership: Commission membership
+  create: 
   created_at: Toegevoegd op
   date:
     abbr_day_names:
@@ -494,6 +495,15 @@ nl:
         Afstand: 
         Tijd: 
         Type: 
+      eventtype:
+        agendaitemtypes: 
+        calculated_unit: 
+        female_formula: 
+        formula: 
+        measuringunit: 
+        name: 
+        shortname: 
+        show_wind: 
       kronometer:
         date: 
         file: 
@@ -547,15 +557,6 @@ nl:
         sex: 
         studie: studie
         xtracardnumber: 
-      eventtype:
-        female_formula: 
-        name: 
-        shortname: 
-        measuringunit: 
-        show_wind: 
-        agendaitemtypes: 
-        calculated_unit: 
-        formula: 
     select:
       prompt: Selecteer
     submit:
@@ -615,6 +616,7 @@ nl:
   mailinglist_update_success: 
   mailinglists: 
   name: naam
+  new: 
   new_commission: nieuwe commissie
   new_mailinglist: Nieuwe maillijst
   newsitem:
@@ -647,7 +649,7 @@ nl:
           quadrillion: biljard
           thousand: duizend
           trillion: biljoen
-          unit: Eenheid
+          unit: 
       format:
         delimiter: 
         precision: 3
@@ -689,11 +691,11 @@ nl:
   remember_me: onthoud mij
   result: Onderdeel
   results:
-    frontpage:
+    index:
       results: Uitslagen
-      uitslagen: 
+      no_agendaitems_found: Geen uitslagen gevonden.
     records:
-      results: 
+      results: Records
   save_mailinglist: Maillijst opslaan
   sex: geslacht
   sign_in: Inloggen
@@ -736,21 +738,21 @@ nl:
       signed_in: 
       signed_out: 
   user:
-    address: adres
-    bankaccountnumber: rekeningnummer
-    birthdate: geboortedatum
-    city: plaats
-    email: email
-    iban: IBAN
-    initials: initialen
+    address: 
+    bankaccountnumber: 
+    birthdate: 
+    city: 
+    email: 
+    iban: 
+    initials: 
     invalid: Ongeldig e-mail of wachtwoord.
-    licensenumber: licentienummer
-    lidtype: lidtype
-    name: naam
-    password: wachtwoord
-    password_confirmation: wachtwoord voor bevestiging
-    phonenumber: telefoonnummer
-    postalcode: postcode
+    licensenumber: 
+    lidtype: 
+    name: 
+    password: 
+    password_confirmation: 
+    phonenumber: 
+    postalcode: 
     profielfoto: profielfoto
     remember_me: onthoud mij
     send_instructions: Je ontvangt via e-mail instructies hoe je je wachtwoord moet resetten.
@@ -765,5 +767,3 @@ nl:
     page_gap: ! '&hellip;'
     previous_label: ← vorige
   xtracardnumber: xtracardnummer
-  create: 
-  new: 

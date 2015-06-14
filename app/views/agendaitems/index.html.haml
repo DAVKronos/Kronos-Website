@@ -22,13 +22,8 @@
             date: {year: d.year, month: d.month}  
       = form_tag({controller: 'agendaitems', action: 'index'}, method: 'get', class: 'navbar-form navbar-left') do
         .form-group
-          = text_field :date, :month, :class => 'form-control', :size=>'2',
-            'data-date-min-view-mode' =>'1', 'data-date-max-view-mode' => '1', 
-            'data-provide'=>'datepicker', 'data-date-format'=>'mm',
-            value: @date.month
-          = text_field :date, :year, :class => 'form-control', :size=>'4',
-            'data-date-min-view-mode' =>'2', 'data-date-max-view-mode' => '2', 
-            'data-provide'=>'datepicker', 'data-date-format'=>'yyyy', value: @date.year
+          = text_field :date, :month, :class => 'form-control maandprikker', :size=>'2', value: @date.month
+          = text_field :date, :year, :class => 'form-control jaarprikker', :size=>'4', value: @date.year
           = button_tag 'zoek', class: 'btn btn-default'
 .row 
   &nbsp;

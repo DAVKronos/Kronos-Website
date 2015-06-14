@@ -30,7 +30,9 @@ gem 'twitter-typeahead-rails', '~> 0.10.2'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'execjs', '~> 2.0.2'
 gem 'paper_trail', '~> 4.0.0.beta'
-gem 'bootstrap-datepicker-rails' 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
+
 
 # Gems used only for assets and not required
 # in production environments by default.

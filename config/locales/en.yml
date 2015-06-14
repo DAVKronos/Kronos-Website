@@ -1,7 +1,7 @@
 en:
   Agenda: 
   May: 
-  aanvang: 
+  aanvang: start
   activerecord:
     attributes:
       agendaitem:
@@ -18,9 +18,9 @@ en:
       agendaitemtype_eventtype:
         eventtype_id: Event type
       apps_exception:
-        email: 
-        group_email: 
-        way: 
+        email: Email
+        group_email: Group email
+        way: Way
       chatmessage:
         bericht: Message
         by: By
@@ -50,19 +50,19 @@ en:
         shortname: Short name
         show_wind: Show wind
       kronometer:
-        date: 
-        file: 
-        name: 
+        date: Date
+        file: File
+        name: Name
       mailinglist:
-        description: 
-        local_part: 
-        local_part_form_description: 
-        name: 
+        description: Description
+        local_part: Locale part
+        local_part_form_description: Locale part (before @)
+        name: Name
       mailinglist_membership:
-        destroy: 
-        name: 
-        subscribe: 
-        subscribe?: 
+        destroy: Destroy
+        name: Name
+        subscribe: Suscribe
+        subscribe?: Suscribe?
       newsitem:
         articlephoto: Article photo
         nieuwsbericht: Newsmessage
@@ -73,60 +73,60 @@ en:
         title: Title
       photoalbum:
         agendaitem: Calendar item
-        name: 
+        name: Name
       result:
-        place: 
-        result: 
-        username: 
-        wind: 
+        place: Place
+        result: Result
+        username: Username
+        wind: Wind
       subscription:
-        opmerking: 
+        opmerking: Comment
       user:
-        aanvang: 
-        address: 
-        avatar: 
-        bankaccountnumber: 
-        birthdate: 
-        city: 
-        email: 
-        iban: 
-        initials: 
+        aanvang: Start
+        address: Address
+        avatar: Avatar
+        bankaccountnumber: Bank-account Number
+        birthdate: Birthday
+        city: City
+        email: Email
+        iban: iban
+        initials: initials
         instelling: Institution
-        licensenumber: 
-        lidtype: 
-        name: 
-        password: 
-        password_confirmation: 
-        phonenumber: 
-        postalcode: 
-        profielfoto: 
-        remember_me: 
-        reset_password_token: 
-        sex: 
-        studie: 
-        xtracardnumber: 
+        licensenumber: licencenumber
+        lidtype: member type
+        name: name
+        password: password
+        password_confirmation: password confirmation
+        phonenumber: phone-number
+        postalcode: postal-code
+        profielfoto: avatar
+        remember_me: remember me
+        reset_password_token: reset password token
+        sex: sex
+        studie: study
+        xtracardnumber: xtracard number
     errors:
       full_messages:
         format: 
       messages:
-        accepted: 
-        blank: 
-        confirmation: 
-        empty: 
-        equal_to: 
-        even: 
-        exclusion: 
-        greater_than: 
+        accepted: must be accepted
+        blank: must be provided
+        confirmation: does not match with confirmation
+        empty: must be provided
+        equal_to: should be equal to %{count}
+        even: should be equal
+        exclusion: is not available
+        greater_than: must be greater than %{count}
         greater_than_or_equal_to: 
-        inclusion: 
-        invalid: 
+        inclusion: is not included in the list
+        invalid: is invalid
         less_than: 
         less_than_or_equal_to: 
-        not_a_number: 
-        not_an_integer: 
-        odd: 
-        record_invalid: 
-        taken: 
+        not_a_number: Is not a number
+        not_an_integer: must be an integer
+        odd: Should be odd
+        record_invalid: ! 'Validation failed: %{errors}'
+        taken: already taken
         too_long: 
         too_short: 
         wrong_length: 
@@ -134,84 +134,84 @@ en:
         agendaitemtype_eventtype:
           attributes:
             eventtype_id:
-              blank: 
+              blank: should be provided
         chatmessage:
           attributes:
             by:
-              blank: 
+              blank: should be provided
             email:
-              blank: 
+              blank: should be provided
             message:
-              blank: 
+              blank: should be provided
         commission_membership:
           attributes:
             function:
-              blank: 
+              blank: should be provided
             user_id:
-              blank: 
+              blank: should be provided
         result:
           attributes:
             result:
-              blank: 
+              blank: should be provided
         user:
           attributes:
             address:
-              blank: 
+              blank: should be provided
             avatar:
-              block: 
+              block: block
             birthdate:
-              blank: 
+              blank: should be provided
             city:
-              blank: 
+              blank: should be provided
             email:
-              blank: 
-              invalid: 
-              taken: 
+              blank: should be povided
+              invalid: is invalid
+              taken: is already taken
             initials:
-              blank: 
+              blank: should be provided
             name:
-              blank: 
-              invalid: 
+              blank: should be provided
+              invalid: is invalid
             password:
-              blank: 
-              confirmation: 
-              too_long: 
-              too_short: 
+              blank: should be provided
+              confirmation: does not match with the confirmation
+              too_long: is to long (max 128 chars)
+              too_short: is to short (at least 6 chars)
             postalcode:
-              blank: 
+              blank: should be provided
             sex:
-              blank: 
+              blank: should be provided
       template:
-        body: 
+        body: ! 'please look at the following fields: '
         header: 
     models:
-      agendaitem: 
-      apps_exception: 
-      chatmessage: 
-      comment: 
-      commission: 
-      event: 
-      kronometer: 
-      mailinglist: 
+      agendaitem: Agendaitem
+      apps_exception: Apps exception
+      chatmessage: Chatmessage
+      comment: Comment
+      commission: commission
+      event: event
+      eventtype: event type
+      kronometer: Kronometer
+      mailinglist: mailing list
       newsitem: Newsitem
-      page: 
-      photoalbum: 
-      result: 
-      subscription: 
-      user: 
-      eventtype: 
+      page: pag
+      photoalbum: photo album
+      result: result
+      subscription: subscription
+      user: member
   add: Add
   add_mailinglist: Add mailinglist
-  address: 
+  address: address
   agenda: 
   agendaitem:
     Kronos Activiteit: 
     agendaitemtype: 
-    commission: 
-    date: 
-    description: 
+    commission: commission
+    date: date
+    description: description
     events:
-      Afstand: 
+      Afstand: distance
       Tijd: 
       Type: 
     location: 
@@ -225,36 +225,41 @@ en:
   agendaitems:
     agenda: 
     index:
-      agenda: 
-      no_agendaitems_found: 
-    month:
-      agenda: 
-      no_agendaitems_found: 
+      agenda: Agenda
+      no_agendaitems_found: No agendaitems found
   agendaitems_agenda: 
-  agendaitemtype_eventtype: 
-  all_mailinglists: 
-  bankaccountnumber: 
-  birthdate: 
+  agendaitemtype_eventtype: agenda item type event type
+  all_mailinglists: all maillinglists
+  bankaccountnumber: bank-account number
+  birthdate: ! 'birthday '
   chatmessage:
     bericht: 
-    page_title: 
-  city: 
+    page_title: Kronos chatbox
+  city: city
   comment:
     commenttext: 
-  commission: 
-  commission_membership: 
+  commission: commision
+  commission_membership: commission membership
+  create: 
   created_at: Created at
   date:
-    abbr_day_names: 
+    abbr_day_names:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thr
+    - fri
+    - sat
     abbr_month_names: 
     day_names: 
     formats:
-      default: 
-      long: 
-      medium: 
-      only_date: 
-      only_day: 
-      short: 
+      default: ! '%m/%d/%Y'
+      long: ! '%e %B %Y'
+      medium: ! '%e %B'
+      only_date: ! '%e %B'
+      only_day: ! '%e'
+      short: ! '%e %b'
     month_names: 
     order: 
   datetime:
@@ -263,7 +268,7 @@ en:
       about_x_months: 
       about_x_years: 
       almost_x_years: 
-      half_a_minute: 
+      half_a_minute: half a minute
       less_than_x_minutes: 
       less_than_x_seconds: 
       over_x_years: 
@@ -272,13 +277,13 @@ en:
       x_months: 
       x_seconds: 
     prompts:
-      day: 
-      hour: 
-      minute: 
-      month: 
-      second: 
-      year: 
-  description: 
+      day: day
+      hour: hour
+      minute: minute
+      month: month
+      second: second
+      year: year
+  description: description
   devise:
     confirmations:
       confirmed: Your account was successfully confirmed. You are now signed in.
@@ -326,61 +331,67 @@ en:
       send_paranoid_instructions: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
       unlocked: Your account has been unlocked successfully. Please sign in to continue.
   distance:
-    centi: 
-    thousand: 
-    unit: 
-  edit: 
+    centi:
+      one: centimeter
+      other: centimeters
+    thousand:
+      one: kilometer
+      other: kilometers
+    unit:
+      one: meter
+      other: meters
+  edit: edit
   edit_commission: Edit commission
   edit_mailinglist: Edit mailinglist
   email: e-mail
-  error: 
-  errorpl: 
+  error: error
+  errorpl: error
   errors:
     format: 
     messages:
-      accepted: 
+      accepted: should be accepted
       already_confirmed: was already confirmed, please try signing in
-      blank: 
-      confirmation: 
-      empty: 
+      blank: should be provided
+      confirmation: should confirm
+      empty: must be provided
       equal_to: 
-      even: 
-      exclusion: 
+      even: should be even
+      exclusion: is not an option
       expired: has expired, please request a new one
       greater_than: 
       greater_than_or_equal_to: 
-      inclusion: 
-      invalid: 
+      inclusion: is not an element in the list
+      invalid: Is invalid
       less_than: 
       less_than_or_equal_to: 
       no_el_found: 
-      not_a_number: 
-      not_an_integer: 
+      not_a_number: is not a number
+      not_an_integer: should be an integer
       not_found: not found
       not_locked: was not locked
       not_saved:
         one: ! '1 error prohibited this %{resource} from being saved:'
         other: ! '%{count} errors prohibited this %{resource} from being saved:'
-      odd: 
-      record_invalid: 
-      taken: 
+      odd: should be odd
+      record_invalid: ! 'validation failed: %{errors}'
+      taken: already take
       too_long: 
       too_short: 
       wrong_length: 
     template:
-      body: 
+      body: ! 'please look at the following fields:'
       header: 
-  event: 
+  event: event
   eventtype:
     agendaitemtypes: 
     calculated_unit: 
     female_formula: 
     formula: 
     measuringunit: 
-    name: 
-    shortname: 
+    name: name
+    shortname: short name
     show_wind: 
-  function: 
+  function: function
   hello: Hello world
   helpers:
     label:
@@ -422,19 +433,28 @@ en:
         Afstand: 
         Tijd: 
         Type: 
+      eventtype:
+        agendaitemtypes: 
+        calculated_unit: 
+        female_formula: 
+        formula: 
+        measuringunit: 
+        name: 
+        shortname: 
+        show_wind: 
       kronometer:
         date: 
         file: 
         name: 
       mailinglist:
-        description: 
-        local_part_form_description: 
+        description: description
+        local_part_form_description: locale part (before the @)
         mailinglist_memberships:
-          destroy: 
-          name: 
-          subscribe: 
-          subscribe?: 
-        name: 
+          destroy: destroy
+          name: name
+          subscribe: suscribe
+          subscribe?: suscribe?
+        name: name
       mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
         name: Name
       newsitem:
@@ -455,7 +475,7 @@ en:
       subscription:
         opmerking: 
       user:
-        aanvang: 
+        aanvang: start
         address: 
         bankaccountnumber: 
         birthdate: 
@@ -473,122 +493,116 @@ en:
         profielfoto: 
         remember_me: 
         sex: 
-        studie: 
+        studie: study
         xtracardnumber: 
-      eventtype:
-        female_formula: 
-        name: 
-        shortname: 
-        measuringunit: 
-        agendaitemtypes: 
-        formula: 
-        calculated_unit: 
-        show_wind: 
     select:
-      prompt: 
+      prompt: select
     submit:
       agendaitem:
-        create: 
-        update: 
+        create: create agendaitem
+        update: save agendaitem
       agendaitem[comments_attributes][0]:
-        create: 
-        update: 
+        create: create comment
+        update: update comment
       agendaitem[comments_attributes][1]:
-        update: 
+        update: update comment
       agendaitem[comments_attributes][2]:
-        create: 
+        create: create comment
       apps_exception:
-        create: 
+        create: create apps exception
       chatmessage:
-        create: 
+        create: add message
       comment:
-        create: 
+        create: add comment
       commission:
-        create: 
-        update: 
-      create: 
+        create: create commision
+        update: Update commission
+      create: create %{model}
       event:
-        create: 
-        update: 
+        create: create event
+        update: update event-type
       eventtype:
-        create: 
-        update: 
+        create: create event-type
+        update: update event-type
       kronometer:
-        create: 
-        update: 
+        create: create Kronometer
+        update: update Kronometer
       newsitem:
-        create: 
-        update: 
+        create: create newsitem
+        update: update newsitem
       page:
-        create: 
-        update: 
+        create: create page
+        update: update page
       photoalbum:
-        create: 
-        update: 
+        create: create photo-album
+        update: ! 'update photo-album '
       result:
-        create: 
-      submit: 
+        create: create result
+      submit: submit %{model}
       subscription:
-        create: 
-        submit: 
-      update: 
-  iban: 
+        create: create subscription
+        submit: submit subscription
+      update: update %{model}
+  iban: IBAN
   index: 
-  initials: 
+  initials: initials
   instelling: Institution
-  licensenumber: 
-  mailinglist: 
+  licensenumber: licencenumber
+  mailinglist: mailinglist
   mailinglist_destroy_success: 
   mailinglist_memberships: Memberships
   mailinglist_update_success: 
   mailinglists: 
-  name: 
-  new_commission: 
+  name: name
+  new: 
+  new_commission: new commision
   new_mailinglist: New mailinglist
   newsitem:
     nieuwsbericht: 
     profielfoto: 
     titel: 
-  next_label: 
+  next_label: next
   number:
     currency:
       format:
         delimiter: 
-        format: 
-        precision: 
+        format: ! '%u%n'
+        precision: 2
         separator: 
-        significant: 
-        strip_insignificant_zeros: 
+        significant: false
+        strip_insignificant_zeros: false
         unit: 
     format:
       delimiter: 
-      precision: 
+      precision: 2
       separator: 
-      significant: 
-      strip_insignificant_zeros: 
+      significant: false
+      strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: 
+        format: ! '%n %u'
         units:
-          billion: 
-          million: 
-          quadrillion: 
-          thousand: 
-          trillion: 
+          billion: billion
+          million: million
+          quadrillion: quadrillion
+          thousand: thousand
+          trillion: trillion
           unit: 
       format:
         delimiter: 
-        precision: 
-        significant: 
-        strip_insignificant_zeros: 
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
       storage_units:
-        format: 
+        format: ! '%n %u'
         units:
-          byte: 
-          gb: 
-          kb: 
-          mb: 
-          tb: 
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
     percentage:
       format:
         delimiter: 
@@ -599,51 +613,51 @@ en:
     information: 
     title: 
   page_gap: 
-  page_title: 
-  papieren_kronometer: 
-  phonenumber: 
+  page_title: page title
+  papieren_kronometer: paper kronometer
+  phonenumber: telephone number
   photoalbum:
     agendaitem: 
     name: 
   photos:
-    title: 
-  postalcode: 
-  previous_label: 
+    title: pictures
+  postalcode: postal code
+  previous_label: previous
   recaptcha:
     errors:
-      incorrect-captcha-sol: 
-  remember_me: 
-  result: 
+      incorrect-captcha-sol: Please fill in the captcha correctly.
+  remember_me: Remember me
+  result: Result
   results:
-    frontpage:
-      results: 
-      uitslagen: 
+    index:
+      results: Results
+      no_agendaitems_found: no agendaitems found
     records:
-      results: 
+      results: Results
   save_mailinglist: Save mailinglist
-  sex: 
-  sign_in: 
-  sign_up: 
-  studie: 
-  subscription: 
+  sex: Sex
+  sign_in: Sign in
+  sign_up: Sign up
+  studie: study
+  subscription: subscription
   support:
     array:
-      last_word_connector: 
-      two_words_connector: 
+      last_word_connector: and
+      two_words_connector: and
       words_connector: 
     select:
-      prompt: 
+      prompt: select
   time:
-    am: 
+    am: in the morning
     formats:
-      default: 
-      long: 
-      medium: 
-      only_date: 
-      only_second: 
-      short: 
-      time: 
-    pm: 
+      default: ! '%a %d %b %Y %H:%M:%S %Z'
+      long: ! '%d %B %Y %H:%M'
+      medium: ! '%e %B %H:%M'
+      only_date: ! '%e %B'
+      only_second: ! '%S'
+      short: ! '%d %b %H:%M'
+      time: ! '%H:%M'
+    pm: in afternoon
   unauthorized:
     agendaitem:
       location: 
@@ -651,7 +665,7 @@ en:
       Afstand: 
     commission[commission_memberships_attributes][new_commission_memberships]:
       function: 
-    default: 
+    default: Your are not authorized to access this page.
     event:
       Afstand: 
     subscription:
@@ -669,7 +683,7 @@ en:
     email: 
     iban: 
     initials: 
-    invalid: 
+    invalid: Invalid email or password.
     licensenumber: 
     lidtype: 
     name: 
@@ -677,19 +691,17 @@ en:
     password_confirmation: 
     phonenumber: 
     postalcode: 
-    profielfoto: 
-    remember_me: 
-    send_instructions: 
-    sex: 
-    signed_in: 
-    signed_out: 
+    profielfoto: avatar
+    remember_me: remember me
+    send_instructions: Instructions on resetting your email are sent.
+    sex: sex
+    signed_in: you are successfully signed in
+    signed_out: you are successfully signed out
     xtracardnumber: 
-  user_subject: 
-  usertype: 
+  user_subject: Reset password instructions
+  usertype: member type
   will_paginate:
-    next_label: 
-    page_gap: 
-    previous_label: 
-  xtracardnumber: 
-  create: 
-  new: 
+    next_label: next→
+    page_gap: ! '&hellip;'
+    previous_label: ← previous
+  xtracardnumber: xtracard number
