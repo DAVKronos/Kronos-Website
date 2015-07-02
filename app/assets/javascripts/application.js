@@ -45,11 +45,11 @@ $(document).ready(function () {
   setTimeout("$('.alert').fadeOut('slow');", 3000);
   $('.carousel').carousel();
   $('.dropdown-menu').find('form').click(function (e){e.stopPropagation();});
-  $('.datumtijdprikker').datetimepicker({format: 'YYYY-MM-DD hh:mm'}); 
+  $('.datumtijdprikker').datetimepicker({format: 'YYYY-MM-DD HH:mm'}); 
   $('.maandprikker').datetimepicker({format: 'MM'}); 
   $('.jaarprikker').datetimepicker({format: 'YYYY'}); 
   $('.datumprikker').datepicker({format: 'YY-MM-DD'});
-  $('.tijdprikker').timepicker({format: 'hh:mm'});
+  $('.tijdprikker').timepicker({format: 'HH:mm'});
   $('.monthpicker .collapser').hide();
   $('.monthpicker .collapser[data-date='+$('.monthpicker').data("selected")+']').show();
   $('.monthpicker .head').click(function (e){$('.monthpicker .collapser').filter(':visible').hide("slide", function(){$($(e.target).data("toggle")).show("slide");});});
