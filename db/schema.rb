@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150429184940) do
+ActiveRecord::Schema.define(:version => 20150514134034) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -256,6 +256,7 @@ ActiveRecord::Schema.define(:version => 20150429184940) do
     t.integer  "user_id"
     t.decimal  "wind"
     t.integer  "place"
+    t.decimal  "calculated"
   end
 
   create_table "subscriptions", :force => true do |t|
