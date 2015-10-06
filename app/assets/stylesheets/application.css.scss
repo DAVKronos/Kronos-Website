@@ -102,16 +102,17 @@ header.app .navbar-default .container{
 // Banner 
 
 #banner{
-  background: #fff url(/assets/banner/banner.png) no-repeat right top;
+  background: #fff url(/assets/banner/banner-opening.png) no-repeat right top;
+  background-size:cover
 }
 
 #banner p>span{
-  background-color: rgba(10,10,10,0.4);
+  //background-color: rgba(10,10,10,0.4);
   color: #fff;
   padding: 7px;
 }
 #banner h1 span {
-  background-color: rgba(10,10,10,0.4);
+  //background-color: rgba(10,10,10,0.4);
   color: #fff;
   padding: 10px;
 }

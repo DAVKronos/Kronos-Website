@@ -24,3 +24,5 @@ unicorn.conf.rb
 *~
 .localeapp
 .env
+
+google-api-credentials.json
