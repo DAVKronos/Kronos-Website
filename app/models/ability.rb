@@ -20,7 +20,7 @@ class Ability
     cannot :see_email, Commission
 
 # geen member
-	if user.new_record?
+    if user.new_record?
       can :create, User
     end
 

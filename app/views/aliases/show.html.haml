@@ -1,0 +1,9 @@
+.row
+  .col-lg-11.col-lg-offset-1
+    %p= @alias.name
+    %p= @alias.emailaddress
+    %p= @alias.description
+    =link_to "Terug", aliases_path
+    =link_to "Edit", edit_alias_path(@alias)
+    =link_to "verwijder", alias_path(@alias), :method => :delete
+

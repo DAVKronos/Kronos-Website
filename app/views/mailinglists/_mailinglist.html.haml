@@ -5,7 +5,7 @@
   .panel-body
     %p= mailinglist.full_email
     %p= mailinglist.description
-
+    %p= if mailinglist.commission.nil?; 'Geen' else mailinglist.commission.name end
     = link_to t(:edit), edit_mailinglist_path(mailinglist), :class => 'btn btn-default'
 
     = link_to raw("<span class='glyphicon glyphicon-remove'></span> Delete"), mailinglist ,:class => 'btn btn-danger',

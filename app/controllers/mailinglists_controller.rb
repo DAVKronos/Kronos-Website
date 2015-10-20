@@ -12,11 +12,13 @@ class MailinglistsController < ApplicationController
   def new
     @mailinglist = Mailinglist.new
     @users = User.order(:name)
+    @aliases = Alias.order(:name)
   end
 
   def edit
     @mailinglist = Mailinglist.find(params[:id])
-    @users = User.order(:name)
+    @users = @mailinglist.get_possible_users
+    @aliases = Alias.order(:name)
   end
 
   def create
@@ -26,6 +28,7 @@ class MailinglistsController < ApplicationController
     else
       @mailinglist = mailinglist
       @users = User.order(:name)
+      @aliases = Alias.order(:name)
       render 'new'
     end
   end

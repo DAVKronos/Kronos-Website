@@ -1,6 +1,7 @@
 KronosWebsite::Application.routes.draw do
 
   resources :mailinglists
+  resources :aliases
 
   resources :agendaitemtype_eventtypes
 

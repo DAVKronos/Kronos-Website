@@ -58,6 +58,7 @@ en:
         local_part: Locale part
         local_part_form_description: Locale part (before @)
         name: Name
+        commission: 
       mailinglist_membership:
         destroy: Destroy
         name: Name
@@ -105,6 +106,10 @@ en:
         sex: sex
         studie: study
         xtracardnumber: xtracard number
+      alias:
+        description: 
+        emailaddress: 
+        name: 
     errors:
       full_messages:
         format: 
@@ -200,6 +205,7 @@ en:
       result: result
       subscription: subscription
       user: member
+      alias: 
   add: Add
   add_mailinglist: Add mailinglist
   address: address
@@ -455,6 +461,7 @@ en:
           subscribe: suscribe
           subscribe?: suscribe?
         name: name
+        commission: 
       mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
         name: Name
       newsitem:
@@ -495,6 +502,10 @@ en:
         sex: 
         studie: study
         xtracardnumber: 
+      alias:
+        description: 
+        emailaddress: 
+        name: 
     select:
       prompt: select
     submit:
@@ -543,6 +554,9 @@ en:
         create: create subscription
         submit: submit subscription
       update: update %{model}
+      alias:
+        create: 
+        update: 
   iban: IBAN
   index: 
   initials: initials
@@ -675,6 +689,13 @@ en:
       remember_me: 
       signed_in: 
       signed_out: 
+    activerecord:
+      errors:
+        models:
+          mailinglist:
+            attributes:
+              local_part:
+                invalid: 
   user:
     address: 
     bankaccountnumber: 
@@ -705,3 +726,4 @@ en:
     page_gap: ! '&hellip;'
     previous_label: ← previous
   xtracardnumber: xtracard number
+  aliases: 

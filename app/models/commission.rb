@@ -15,10 +15,10 @@ class Commission < ActiveRecord::Base
   before_save :add_commission_email
   after_destroy :destroy_commission_email
 
-
   has_many :commission_memberships, :dependent => :destroy
   has_many :users, :through => :commission_memberships
   has_many :agendaitems
+  has_many :mailinglists
   
   accepts_nested_attributes_for :commission_memberships, :allow_destroy => true
   

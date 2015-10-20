@@ -58,6 +58,7 @@ nl:
         local_part: Lokaal deel
         local_part_form_description: Lokaal deel (voor de @)
         name: Naam
+        commission: Commission
       mailinglist_membership:
         destroy: Vernietig
         name: Naam
@@ -105,6 +106,10 @@ nl:
         sex: Geslacht
         studie: Studie
         xtracardnumber: Xtracardnumber
+      alias:
+        description: Description
+        emailaddress: Emailaddress
+        name: Name
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -202,6 +207,7 @@ nl:
       result: Uitslag
       subscription: Subscription
       user: Lid
+      alias: Alias
   add: Toevoegen
   add_mailinglist: Maillijst toevoegen
   address: adres
@@ -517,6 +523,7 @@ nl:
           subscribe: Abonneer
           subscribe?: Abonneer?
         name: Naam
+        commission: 
       mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
         name: Naam
       newsitem:
@@ -557,6 +564,10 @@ nl:
         sex: 
         studie: studie
         xtracardnumber: 
+      alias:
+        description: 
+        emailaddress: 
+        name: 
     select:
       prompt: Selecteer
     submit:
@@ -605,6 +616,9 @@ nl:
         create: Create Subscription
         submit: Submit Subscription
       update: ! '%{model} bewaren'
+      alias:
+        create: Create Alias
+        update: Update Alias
   iban: IBAN
   index: 
   initials: initialen
@@ -737,6 +751,13 @@ nl:
       remember_me: 
       signed_in: 
       signed_out: 
+    activerecord:
+      errors:
+        models:
+          mailinglist:
+            attributes:
+              local_part:
+                invalid: 
   user:
     address: 
     bankaccountnumber: 
@@ -767,3 +788,4 @@ nl:
     page_gap: ! '&hellip;'
     previous_label: ← vorige
   xtracardnumber: xtracardnummer
+  aliases: 
