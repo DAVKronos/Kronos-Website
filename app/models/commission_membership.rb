@@ -24,19 +24,19 @@ class CommissionMembership < ActiveRecord::Base
   has_paper_trail
   
   def add_member_to_group
-    gapps = KronosGoogleAPIClient.new
-    gapps.add_member_to_group(self.user, self.commission.email)
+#    gapps = KronosGoogleAPIClient.new
+#    gapps.add_member_to_group(self.user, self.commission.email)
   end
   
   def remove_member_from_group
-    gapps = KronosGoogleAPIClient.new
-    gapps.remove_member_from_group(self.user, self.commission.email)
+#    gapps = KronosGoogleAPIClient.new
+#    gapps.remove_member_from_group(self.user, self.commission.email)
   end
   
   def update_commission_email(old_email)
-    gapps = KronosGoogleAPIClient.new
-    gapps.remove_member_from_group(self.commission.email, User.new(:email => old_email))
-    gapps.add_member_to_group(self.commission.email, self.user)
+#    gapps = KronosGoogleAPIClient.new
+#    gapps.remove_member_from_group(self.commission.email, User.new(:email => old_email))
+#    gapps.add_member_to_group(self.commission.email, self.user)
   end
     
   

@@ -15,11 +15,16 @@ class Mailinglist < ActiveRecord::Base
   after_destroy :delete_mailinglist
 
   has_many :mailinglist_memberships, :dependent => :destroy
+  has_many :mailinglists,
+           :before_add => :subscribe_mailinglist_to_mailinglist,
+           :before_remove => :unsubscribe_mailinglist_from_mailinglist
 
   has_many :users, :through => :mailinglist_memberships,
            :before_remove => :unsubscribe_from_mailinglist
 
-  has_and_belongs_to_many :aliases, :before_add => :subscribe_alias_to_mailinglist, :before_remove => :unsubscribe_alias_from_mailinglist
+  has_and_belongs_to_many :aliases, 
+                          :before_add => :subscribe_alias_to_mailinglist,
+                          :before_remove => :unsubscribe_alias_from_mailinglist
 
   belongs_to :commission
 
@@ -52,6 +57,16 @@ class Mailinglist < ActiveRecord::Base
   def delete_mailinglist
     api_client = KronosGoogleAPIClient.new
     api_client.destroy_email_group(self.full_email)
+  end
+
+  def subscribe_maillinglist_to_mailinglist(mailinglis)
+    api_client = KronosGoogleAPIClient.new
+    api_client.add_group_to_group(mailinglis, self.full_email)
+  end
+
+  def unsubscribe_mailinglist_from_mailinglist(mailinglis)
+    api_client = KronosGoogleAPIClient.new
+    api_client.remove_group_from_group(mailinglis, self.full_email)
   end
 
   def subscribe_alias_to_mailinglist(alia)

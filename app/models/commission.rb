@@ -25,12 +25,12 @@ class Commission < ActiveRecord::Base
   has_paper_trail
 
   def add_commission_email
-    gapps = KronosGoogleAPIClient.new
-    gapps.create_email_group(self.email, self.name, self.description)
+#    gapps = KronosGoogleAPIClient.new
+#    gapps.create_email_group(self.email, self.name, self.description)
   end
 
   def destroy_commission_email
-    gapps = KronosGoogleAPIClient.new
-    gapps.destroy_email_group(self.email)
+#    gapps = KronosGoogleAPIClient.new
+#    gapps.destroy_email_group(self.email)
   end
 end

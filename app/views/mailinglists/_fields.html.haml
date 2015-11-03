@@ -19,12 +19,14 @@
 = hidden_field_tag "mailinglist[user_ids][]"
 = hidden_field_tag "mailinglist[alias_ids][]"
 
+%h4 Users
 - @users.each do |user|
   .check-box
     = check_box_tag "mailinglist[user_ids][]", user.id, @mailinglist.users.include?(user)
     = user.name
     = user.user_type.name
 
+%h4 Aliases
 - @aliases.each do |alia|
   .check-box
     = check_box_tag "mailinglist[alias_ids][]", alia.id, @mailinglist.aliases.include?(alia)
@@ -32,3 +34,10 @@
     = alia.emailaddress
     = alia.description
 
+%h4 Mailinglists
+- @mailinglists.each do |mailinglis|
+  .check-box
+    = check_box_tag "mailinglist[mailinglist_ids][]", mailinglis.id, @mailinglist.mailinglists.include?(mailinglis)
+    = mailinglis.name
+    = mailinglis.full_email
+    = mailinglis.description

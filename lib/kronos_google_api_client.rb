@@ -91,4 +91,24 @@ class KronosGoogleAPIClient
 
     result.success?
   end
+
+  def add_group_to_group(mailinglis, group_email)
+    result = @client.execute(
+               :api_method => @admin_api.members.insert,
+               :parameters => {:groupKey => group_email},
+               :body_object => {:email => mailinglis.full_email, :name => mailinglis.name}
+    )
+
+    result.success?
+  end
+
+  def remove_group_from_group(mailinglis, group_email)
+    result = @client.execute(
+        :api_method => @admin_api.members.delete,
+        :parameters => {:groupKey => group_email, :memberKey => mailinglis.full_email}
+    )
+
+    result.success?
+  end
+
 end
