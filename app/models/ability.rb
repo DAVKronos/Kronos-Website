@@ -72,6 +72,7 @@ class Ability
     end
     if user.admin?
       can :manage, :all
+      cannot :destroy, User
       cannot :update, Chatmessage
       user.chatmessages.each do |chatmessage|
         can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
