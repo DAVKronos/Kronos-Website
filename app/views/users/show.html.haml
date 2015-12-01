@@ -54,12 +54,20 @@
         %dd= @user.iban
         %dt= t(:created_at).capitalize
         %dd= l @user.created_at.to_date, :format => :default
+
+      %dt= t(:commissions).capitalize
+      %dd= @user.commissions.collect{|c| c.name}.join(', ')
   .col-lg-6
     %section.polaroid
       %figure
         = image_tag @user.avatar.url(:medium)
         %figcaption
           = @user.name
+.row
+  .col-lg-12
+    %dt commissions
+    - @user.commissions.each do |commission|
+      %dd= commission.name
 
 - if can? :update, @user
   = link_to 'pas je gegevens aan', edit_user_path(@user)
