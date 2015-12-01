@@ -124,7 +124,7 @@ class User < ActiveRecord::Base
   def days_until_birthday
     bday = Date.new(Date.today.year, birthdate.month, birthdate.day)
     bday += 1.year if Date.today >= bday
-    (bday - Date.today).to_i
+    return (bday - Date.today).to_i
   end
 
   def first_name

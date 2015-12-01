@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @agendaitems = Agendaitem.where("date >= ?", Time.now).order('date ASC').limit(10)
     
     @birthdays = User.where('user_type_id not in (?)', [9])
-    @birthdays.keep_if {|bd| bd.days_until_birthday.between?(0,30)}
+    @birthdays.keep_if {|bd| bd.days_until_birthday.between?(-1,30)}
     @birthdays.sort_by!{|e| e.days_until_birthday}
     
   end
