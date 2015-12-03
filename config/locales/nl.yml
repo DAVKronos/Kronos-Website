@@ -1,6 +1,6 @@
 nl:
-  Agenda: 
-  May: 
+  Agenda: agenda
+  May: mei
   aanvang: aanvang
   activerecord:
     attributes:
@@ -86,7 +86,7 @@ nl:
         aanvang: Aanvang
         address: Adres
         avatar: Avatar
-        bankaccountnumber: Bankaccountnumber
+        bankaccountnumber: Bankrekeningnummer
         birthdate: Geboortedatum
         city: Stad
         email: Email
@@ -101,7 +101,7 @@ nl:
         phonenumber: Phonenumber
         postalcode: Postcode
         profielfoto: Profielfoto
-        remember_me: Remember me
+        remember_me: herinner me
         reset_password_token: Reset password token
         sex: Geslacht
         studie: Studie
@@ -466,7 +466,7 @@ nl:
       agendaitem:
         Kronos Activiteit: 
         agendaitemtype: 
-        commission: 
+        commission: comissie
         date: 
         description: 
         events:
@@ -523,7 +523,7 @@ nl:
           subscribe: Abonneer
           subscribe?: Abonneer?
         name: Naam
-        commission: 
+        commission: comissie
       mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
         name: Naam
       newsitem:
@@ -788,8 +788,8 @@ nl:
     page_gap: ! '&hellip;'
     previous_label: ← vorige
   xtracardnumber: xtracardnummer
-  aliases: 
-  commissions: 
+  aliases: aliassen 
+  commissions: commissies
   delete: verwijder
   photoalbums:
     index:
