@@ -790,3 +790,7 @@ nl:
   xtracardnumber: xtracardnummer
   aliases: 
   commissions: 
+  delete: verwijder
+  photoalbums:
+    index:
+      photoalbums: fotoalbum

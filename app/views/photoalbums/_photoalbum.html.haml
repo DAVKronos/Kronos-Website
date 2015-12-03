@@ -1,4 +1,4 @@
-%li.col-lg-3
+.col-sm-6.col-md-4
   .thumbnail
     = link_to image_tag(photoalbum.photos.order('RANDOM()').first.photo.url :thumb), photoalbum unless photoalbum.photos.empty?
     .caption
@@ -14,7 +14,9 @@
           %small
             aangemaakt op:
             = time_tag photoalbum.created_at
-      - if can? :update, photoalbum
-        = link_to 'aanpassen', edit_photoalbum_path(photoalbum), :class => 'btn'
-      - if can? :destroy, photoalbum
-        = link_to 'verwijder', photoalbum, :method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{photoalbum.name}", :class => 'btn'
+      .row.text-center
+        .btn-group.btn-group-sm
+          - if can? :update, photoalbum
+            = icon_button edit_photoalbum_path(photoalbum), 'edit' , t('edit'), :class => 'btn btn-warning'
+          - if can? :destroy, photoalbum
+            = icon_button  photoalbum, 'remove' , t('delete'), {:method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{photoalbum.name}", :class => 'btn btn-danger'}

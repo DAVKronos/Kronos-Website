@@ -58,7 +58,7 @@ en:
         local_part: Locale part
         local_part_form_description: Locale part (before @)
         name: Name
-        commission: 
+        commission: commission
       mailinglist_membership:
         destroy: Destroy
         name: Name
@@ -107,12 +107,12 @@ en:
         studie: study
         xtracardnumber: xtracard number
       alias:
-        description: 
-        emailaddress: 
-        name: 
+        description: Description
+        emailaddress: email
+        name: name
     errors:
       full_messages:
-        format: 
+        format: ! '%{attribute} %{message}'
       messages:
         accepted: must be accepted
         blank: must be provided
@@ -122,19 +122,19 @@ en:
         even: should be equal
         exclusion: is not available
         greater_than: must be greater than %{count}
-        greater_than_or_equal_to: 
+        greater_than_or_equal_to: should be greater or equal to %{count}
         inclusion: is not included in the list
         invalid: is invalid
-        less_than: 
-        less_than_or_equal_to: 
+        less_than: should be less than %{count}
+        less_than_or_equal_to: should be less or equal to %{count}
         not_a_number: Is not a number
         not_an_integer: must be an integer
         odd: Should be odd
         record_invalid: ! 'Validation failed: %{errors}'
         taken: already taken
-        too_long: 
-        too_short: 
-        wrong_length: 
+        too_long: is to long (max %{count} characters)
+        too_short: is to short (minimal %{count} characters)
+        wrong_length: wrong length (should be %{count} characters)
       models:
         agendaitemtype_eventtype:
           attributes:
@@ -188,7 +188,9 @@ en:
               blank: should be provided
       template:
         body: ! 'please look at the following fields: '
-        header: 
+        header:
+          one: ! '%{model} not saved: 1 error found'
+          other: ! '%{model} not saved: %{count} errors found'
     models:
       agendaitem: Agendaitem
       apps_exception: Apps exception
@@ -205,7 +207,7 @@ en:
       result: result
       subscription: subscription
       user: member
-      alias: 
+      alias: alias
   add: Add
   add_mailinglist: Add mailinglist
   address: address
@@ -257,8 +259,28 @@ en:
     - thr
     - fri
     - sat
-    abbr_month_names: 
-    day_names: 
+    abbr_month_names:
+    - 
+    - jan
+    - feb
+    - mar
+    - apr
+    - may
+    - jun
+    - jul
+    - aug
+    - sep
+    - oct
+    - nov
+    - dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
     formats:
       default: ! '%m/%d/%Y'
       long: ! '%e %B %Y'
@@ -266,22 +288,59 @@ en:
       only_date: ! '%e %B'
       only_day: ! '%e'
       short: ! '%e %b'
-    month_names: 
-    order: 
+    month_names:
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :day
+    - :month
+    - :year
   datetime:
     distance_in_words:
-      about_x_hours: 
-      about_x_months: 
-      about_x_years: 
-      almost_x_years: 
+      about_x_hours:
+        one: about one hour
+        other: about %{count} hours
+      about_x_months:
+        one: about one month
+        other: about %{count} months
+      about_x_years:
+        one: about one year
+        other: about %{count} year
+      almost_x_years:
+        one: almost one year
+        other: almost %{count} years
       half_a_minute: half a minute
-      less_than_x_minutes: 
-      less_than_x_seconds: 
-      over_x_years: 
-      x_days: 
-      x_minutes: 
-      x_months: 
-      x_seconds: 
+      less_than_x_minutes:
+        one: less then one minute
+        other: less than%{count} minutes
+      less_than_x_seconds:
+        one: less than one second
+        other: less than %{count} seconds
+      over_x_years:
+        one: over one year
+        other: over %{count} years
+      x_days:
+        one: one day
+        other: ! '%{count} days'
+      x_minutes:
+        one: one minute
+        other: ! '%{count} minutes'
+      x_months:
+        one: a month
+        other: ! '%{count} months'
+      x_seconds:
+        one: a second
+        other: ! '%{count} seconds'
     prompts:
       day: day
       hour: hour
@@ -353,24 +412,24 @@ en:
   error: error
   errorpl: error
   errors:
-    format: 
+    format: ! '%{attribute} %{message}'
     messages:
       accepted: should be accepted
       already_confirmed: was already confirmed, please try signing in
       blank: should be provided
       confirmation: should confirm
       empty: must be provided
-      equal_to: 
+      equal_to: should be equal to %{count}
       even: should be even
       exclusion: is not an option
       expired: has expired, please request a new one
-      greater_than: 
-      greater_than_or_equal_to: 
+      greater_than: shout be greater than %{count}
+      greater_than_or_equal_to: should be greater or equal to %{count}
       inclusion: is not an element in the list
       invalid: Is invalid
-      less_than: 
-      less_than_or_equal_to: 
-      no_el_found: 
+      less_than: should be less than %{count}
+      less_than_or_equal_to: should be less or equal to %{count}
+      no_el_found: No element found
       not_a_number: is not a number
       not_an_integer: should be an integer
       not_found: not found
@@ -380,13 +439,15 @@ en:
         other: ! '%{count} errors prohibited this %{resource} from being saved:'
       odd: should be odd
       record_invalid: ! 'validation failed: %{errors}'
-      taken: already take
-      too_long: 
-      too_short: 
-      wrong_length: 
+      taken: already taken
+      too_long: is to long (max %{count} characters)
+      too_short: is to short (minimal %{count} characters)
+      wrong_length: Incorrect length (must be %{count} characters)
     template:
       body: ! 'please look at the following fields:'
-      header: 
+      header:
+        one: ! '%{model} not saved: 1 error found'
+        other: ! '%{model} not saved: %{count} errors found'
   event: event
   eventtype:
     agendaitemtypes: 
@@ -555,8 +616,8 @@ en:
         submit: submit subscription
       update: update %{model}
       alias:
-        create: 
-        update: 
+        create: Create Alias
+        update: Update Alias
   iban: IBAN
   index: 
   initials: initials
@@ -728,3 +789,8 @@ en:
   xtracardnumber: xtracard number
   aliases: 
   commissions: 
+  delete: 
+  photoalbums:
+    index:
+      photoalbum: photoalbum
+      photoalbums: photoalbums
