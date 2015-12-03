@@ -36,11 +36,11 @@
       .modal-footer
 .row
   #gallery
-    %ul.thumbnails
+    .thumbnails
       - @photos.each do |photo|
-        %li.col-lg-3
+        .col-sm-6.col-md-4
           .thumbnail{"data-toggle" => "modal", "data-target" => "#myModal", "data-index" => @allphotos.index(photo)}
-            = image_tag(photo.photo.url(:thumb))
+            = image_tag(photo.photo.url(:thumb), :class=>'img-responsive', :style=>'cursor: pointer;')
             .caption
               = photo.caption
 .row

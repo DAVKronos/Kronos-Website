@@ -1,6 +1,6 @@
 .col-sm-6.col-md-4
   .thumbnail
-    = link_to image_tag(photoalbum.photos.order('RANDOM()').first.photo.url :thumb), photoalbum unless photoalbum.photos.empty?
+    = link_to image_tag(photoalbum.photos.order('RANDOM()').first.photo.url :thumb, :class=>'img-responsive'), photoalbum unless photoalbum.photos.empty?
     .caption
       %h5
         = link_to photoalbum.name, photoalbum
