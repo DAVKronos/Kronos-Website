@@ -10,8 +10,9 @@ class AgendaitemsController < ApplicationController
       @date = Date.today 
     end
 
-    @agendaitems = Agendaitem.where(date: @date.beginning_of_month..@date.end_of_month)
-    @agendaitems.order('date ASC')
+    @agendaitems = Agendaitem
+				.where(date: @date.beginning_of_month..@date.end_of_month)
+				.order('date ASC')
     
     respond_to do |format|
       format.html # index.html.erb
@@ -21,9 +22,9 @@ class AgendaitemsController < ApplicationController
 
   def wedstrijden
     @agendaitems = Agendaitem.joins(:agendaitemtype)
-    @agendaitems.where(agendaitemtypes: { is_match: true })
-    @agendaitems.where('date >= ?', Time.now)
-    @agendaitems.paginate(page: params[:page], per_page: 10)
+			.where(agendaitemtypes: { is_match: true })
+			.where('date >= ?', Time.now)
+			.paginate(page: params[:page], per_page: 10)
     render action: 'archief'
   end
 
