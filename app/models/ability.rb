@@ -13,11 +13,12 @@ class Ability
     can :records, Result
     can :create, Chatmessage
     can :titleshow, Page
-    can :hide_banner, Page
+    can :hide, Announcement
     cannot :read, User
     cannot :read, Photoalbum
     cannot :read, Photo
     cannot :see_email, Commission
+    cannot :read, Announcement
 
 # geen member
     if user.new_record?
@@ -78,6 +79,7 @@ class Ability
         can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
       end
       can :update_mailinglists, User
+      can :update_announcements, User
     end
   end
 end

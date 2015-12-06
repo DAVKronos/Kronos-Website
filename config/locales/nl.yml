@@ -110,6 +110,13 @@ nl:
         description: Description
         emailaddress: Emailaddress
         name: Name
+      announcement:
+        ends_at: Ends at
+        message: Message
+        starts_at: Starts at
+        background: Background
+        title: Title
+        url: Url
     errors:
       full_messages:
         format: ! '%{attribute} %{message}'
@@ -208,6 +215,7 @@ nl:
       subscription: Subscription
       user: Lid
       alias: Alias
+      announcement: Announcement
   add: Toevoegen
   add_mailinglist: Maillijst toevoegen
   address: adres
@@ -568,6 +576,13 @@ nl:
         description: 
         emailaddress: 
         name: 
+      announcement:
+        ends_at: 
+        message: 
+        starts_at: 
+        background: 
+        title: 
+        url: 
     select:
       prompt: Selecteer
     submit:
@@ -619,6 +634,9 @@ nl:
       alias:
         create: Create Alias
         update: Update Alias
+      announcement:
+        create: Create Announcement
+        update: Update Announcement
   iban: IBAN
   index: 
   initials: initialen
@@ -690,6 +708,14 @@ nl:
     title: 
   page_gap: ! '......'
   page_title: paginatitel
+  pages:
+    admin:
+      accept_news: goedkeuren nieuws
+      aliases: aliassen
+      announcements: banners
+      commissions: commissies
+      mailinglists: mailinglijsten
+      results: resultaten
   papieren_kronometer: papieren kronometer
   phonenumber: telefoonnummer
   photoalbum:
@@ -788,9 +814,17 @@ nl:
     page_gap: ! '&hellip;'
     previous_label: ← vorige
   xtracardnumber: xtracardnummer
-  aliases: aliassen 
+  aliases: aliassen
   commissions: commissies
   delete: verwijder
   photoalbums:
     index:
       photoalbums: fotoalbum
+  remove: verwijder
+  destroy: verwijder
+  show: laat zien
+  back: terug
+  announcements:
+    announcement:
+      hide: verberg
+      more: meer

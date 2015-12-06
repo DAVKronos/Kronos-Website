@@ -1,0 +1,11 @@
+%h1 Editing announcement
+
+%h2 Preview
+
+= render @announcement
+
+%h2 Edit 
+= render 'form' 
+
+= link_to 'Show', @announcement |
+= link_to 'Back', announcements_path 

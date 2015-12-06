@@ -1,0 +1,33 @@
+= form_for(@announcement, :html=>{:multipart=> true}) do |f|
+  - if @announcement.errors.any?
+    #error_explanation
+      %h2= pluralize(@announcement.errors.count, "error") << "prohibited this announcement from being saved:"
+      %ul
+      = @announcement.errors.full_messages.each do |msg|
+        %li= msg
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :message
+    = f.text_area :message, class: 'form-control', rows: 3
+  .form-group
+    = f.label :starts_at
+    = f.text_field :starts_at, 
+        class: 'form-control datumtijdprikker', 
+        value: @announcement.starts_at.strftime('%Y-%m-%d %H:%M')
+  .form-group
+    = f.label :ends_at
+    = f.text_field :ends_at, 
+        class: 'form-control datumtijdprikker', 
+        value: @announcement.ends_at.strftime('%Y-%m-%d %H:%M')
+  .form-group
+    = f.label :url
+    = f.text_field :url, class: 'form-control'
+  .form-group
+    = f.label :background
+    = f.file_field :background
+    %p{class: 'help_block'}
+      Kies een donkere afbeelding voor het beste effect minimaal 1170px breed
+  .form-group
+    = f.submit class: 'btn btn-default'

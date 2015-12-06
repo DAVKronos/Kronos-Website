@@ -1,0 +1,16 @@
+%h1 Listing announcements
+.row
+  -@announcements.each do |announcement|
+    .col-xs-12
+      .well
+        = render announcement 
+        .text-center
+          .btn-group
+            = icon_button edit_announcement_path(announcement), 'edit', 
+                t(:edit), class: 'btn btn-warning'
+            = icon_button announcement, 'remove', 
+                t(:delete), method: :delete, data: {confirm: 'Are you sure?'}, 
+                class: 'btn btn-danger'
+.row
+  .text-center
+    = icon_button new_announcement_path, 'plus', t(:new) 

@@ -1,0 +1,8 @@
+%h1 Preview
+.well
+  = render @announcement
+.text-center
+  .btn-group
+    = icon_button edit_announcement_path(@announcement), 'edit', 
+        t(:edit), class: 'btn btn-warning'
+    = link_to t(:back), announcements_path, class: 'btn btn-default'

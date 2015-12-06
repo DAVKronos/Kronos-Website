@@ -101,30 +101,31 @@ header.app .navbar-default .container{
 
 // Banner 
 
-#banner{
-  background: #fff url(/assets/banner/banner-opening.png) no-repeat right top;
+.announcement{
   background-size:cover
 }
 
-#banner p>span{
-  //background-color: rgba(10,10,10,0.4);
+.announcement p>span{
+  // background-color: rgba(10,10,10,0.4);
   color: #fff;
   padding: 7px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
 }
-#banner h1 span {
-  //background-color: rgba(10,10,10,0.4);
+.announcement h1 {
+  // background-color: rgba(10,10,10,0.4);
   color: #fff;
   padding: 10px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
-#banner form{
+.announcement form{
   display: inline;
 }
 
-#banner form div{
+.announcement form div{
 display: inline;
 }
 
-#banner .hide-banner{
+.announcement .hide-banner{
   text-align: right;
   float: right;
   font-size: 25px;
@@ -137,7 +138,7 @@ display: inline;
   text-decoration: none;
 }
 
-#banner .hide-banner:hover {
+.announcement .hide-banner:hover {
   color: #841b2d;
   text-decoration: none;
   opacity: 0.8;

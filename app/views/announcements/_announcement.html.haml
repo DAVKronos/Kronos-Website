@@ -1,0 +1,9 @@
+%div{class: 'announcement jumbotron collapse in' , 
+    style: "background: #fff url('#{announcement.background.url(:back)}') no-repeat right top;"}
+  %h1= announcement.title
+  %p
+    %span= announcement.message
+  %p
+    = link_to t('.more'), announcement.url, class: "btn btn-primary btn-lg"
+    = link_to t('.hide'), hide_announcement_path(announcement), 
+      remote: true, class: "btn btn-default btn-lg"

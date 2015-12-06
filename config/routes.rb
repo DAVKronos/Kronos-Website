@@ -1,5 +1,8 @@
 KronosWebsite::Application.routes.draw do
 
+  resources :announcements
+
+
   resources :mailinglists
   resources :aliases
 
@@ -75,7 +78,7 @@ KronosWebsite::Application.routes.draw do
   match '/test', :to => 'pages#test'
   match '/admin', :to => 'pages#admin'
   
-  match '/hidebanner', :to => 'pages#hide_banner'
+  match 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
 
   resources :pages
   match '/:pt', :to => 'pages#titleshow'
