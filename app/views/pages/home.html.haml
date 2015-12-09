@@ -60,7 +60,7 @@
               .row 
                 .col-xs-2
                   %h5
-                    = agendaitem.date.strftime('%d')
+                    = user.birthdate.strftime('%d')
                     %small= user.birthdate.strftime('%b')
                 .col-xs-10
                   = user.name
