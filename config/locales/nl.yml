@@ -1,5 +1,5 @@
 nl:
-  Agenda: agenda
+  agenda: agenda
   May: mei
   aanvang: aanvang
   activerecord:
@@ -219,7 +219,6 @@ nl:
   add: Toevoegen
   add_mailinglist: Maillijst toevoegen
   address: adres
-  agenda: 
   agendaitem:
     Kronos Activiteit: 
     agendaitemtype: 
@@ -638,23 +637,23 @@ nl:
         create: Create Announcement
         update: Update Announcement
   iban: IBAN
-  index: 
+  index: index
   initials: initialen
   instelling: Instelling
   licensenumber: licentienummer
   mailinglist: Maillijst
-  mailinglist_destroy_success: 
+  mailinglist_destroy_success: maillijst verwijderd
   mailinglist_memberships: Abonnees
-  mailinglist_update_success: 
-  mailinglists: 
+  mailinglist_update_success: maillijst geupdate
+  mailinglists: mailing-lijsten
   name: naam
-  new: 
+  new: nieuw
   new_commission: nieuwe commissie
   new_mailinglist: Nieuwe maillijst
   newsitem:
-    nieuwsbericht: 
-    profielfoto: 
-    titel: 
+    nieuwsbericht: nieuwsbericht
+    profielfoto: profielfoto
+    titel: titel
   next_label: volgende
   number:
     currency:
@@ -704,8 +703,8 @@ nl:
       format:
         delimiter: 
   page:
-    information: 
-    title: 
+    information: informatie
+    title: titel
   page_gap: ! '......'
   page_title: paginatitel
   pages:
@@ -719,8 +718,8 @@ nl:
   papieren_kronometer: papieren kronometer
   phonenumber: telefoonnummer
   photoalbum:
-    agendaitem: 
-    name: 
+    agendaitem: agendaitem
+    name: naam
   photos:
     title: Foto's
   postalcode: postcode
@@ -828,3 +827,8 @@ nl:
     announcement:
       hide: verberg
       more: meer
+  news: nieuws
+  birthdays: verjaardagen
+  newsitems:
+    index:
+      kronos-news: kronos nieuws

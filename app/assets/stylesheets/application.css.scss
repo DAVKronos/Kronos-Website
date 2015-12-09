@@ -24,6 +24,11 @@
 @import "bootstrap";
 @import "bootstrap-datetimepicker";
 
+
+h1 {
+  color: $brand-primary;
+}
+
 /* Sticky Footer 
  * see example used:
  * http://getbootstrap.com/examples/sticky-footer-navbar/ 

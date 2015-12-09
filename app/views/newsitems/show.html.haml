@@ -1,20 +1,33 @@
-.row
-  .col-lg-8
-    %h1.push-down-for-logo
-      = @newsitem.title
-    = image_tag @newsitem.articlephoto.url(:normal), :class => "floatleft thumbnail"
-    %p.muted
+%article
+  %header
+    .row
+      .col-md-8.col-md-offset-2
+        %h1= @newsitem.title
+        %p= time_tag @newsitem.created_at 
+  .row
+    .col-md-8.col-md-offset-2
+      = image_tag @newsitem.articlephoto.url(:normal), 
+          { class:'img-responsive img-thumbnail',
+            style: 'float:right,margin:10px', align:'right'}
       = markdown @newsitem.news
 
-    %a{:class => 'btn btn-mini fb-share icon-fb' , :href => '#'}
-      %span.glyphicon
-      Share
 
-    - if can? :edit, @newsitem
-      %p Geaccepteerd
-      = @newsitem.agreed
+      - @newsitem.comments.each do |comment|
+        %p comment.reactiontext
 
-    -@newsitem.comments.each do |comment|
-      %p comment.reactiontext
+      = render 'reactions_form'
+    .col-md-2
+      - if can? :edit, @newsitem
+        .panel.panel-default
+          .panel-heading
+            =t(:admin)
+          .panel-body
+            %p Geaccepteerd:
+            = @newsitem.agreed
+            .btn-group-vertical
+              = icon_button edit_newsitem_path(@newsitem), 'edit', 
+                  t(:edit), class: 'btn btn-warning'
+              = icon_button @newsitem, 'remove', 
+                  t(:delete), method: :delete, data: {confirm: 'Are you sure?'}, 
+                  class: 'btn btn-danger'
 
-    = render 'reactions_form'

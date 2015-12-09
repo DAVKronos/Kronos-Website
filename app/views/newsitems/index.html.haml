@@ -1,8 +1,6 @@
 .row
   .col-lg-12
-    %h1.push-down-for-logo Kronos Nieuws
-    %p
-      = link_to raw("<i class='icon-plus'></i> Maak aan"), new_newsitem_path,:class => 'btn btn-mini' if can? :create, Newsitem
+    %h1= t('.kronos-news') 
 
 .row
   .col-lg-8
@@ -17,14 +15,11 @@
               = markdown newsitem.news
             .btn-toolbar
               .btn-group
-                %a{:class => 'btn btn-mini icon-fb' , :onclick => "KRNS.fbshare('#{newsitem_url(newsitem)}')"}
-                  %span.glyphicon
-                  Share
                 = link_to raw("<span class='glyphicon glpyhicon-edit'></span> Edit"), edit_newsitem_path(newsitem),:class => 'btn btn-mini' if can? :update, newsitem
                 = link_to raw("<span class='glyphicon glyphicon-remove'></span> Delete"), newsitem,:class => 'btn btn-mini', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, newsitem
-        .row
-          .col-lg-12
-            = will_paginate @newsitems, :previous_label => '<', :next_label => '>'
-        .row
-          .col-lg-12
-            = link_to 'New Newsitem', new_newsitem_path if can? :create, Newsitem
+.row
+  .col-lg-12
+    = will_paginate @newsitems, :previous_label => '<', :next_label => '>'
+.row
+  .col-lg-12.text-center
+    = icon_button new_newsitem_path, 'plus', t(:new) if can? :create, Newsitem
