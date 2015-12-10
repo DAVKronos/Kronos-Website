@@ -33,9 +33,8 @@
       .col-xs-1.text-right
         %span.glyphicon.glyphicon-align-left
       .col-xs-11
-        - Faker::Lorem.paragraphs.each do |par|
-          %p.text-left 
-            = simple_format(@agendaitem.description)
+        %p.text-left 
+          = simple_format(@agendaitem.description)
     - if @agendaitem.events.present?
       .row
         .col-xs-12

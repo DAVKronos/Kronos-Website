@@ -11,7 +11,7 @@
             .col-md-offset-3.col-md-9
               %header
                 %h2= link_to newsitem.title, newsitem, 
-                    {name: newsitem.title, class: "newslink"}
+                    {name: newsitem.title}
                 %p= time_tag newsitem.created_at 
           .row
             .col-md-3
