@@ -1,0 +1,21 @@
+.table-responsive
+  %table.table.table-condensed.table-striped
+    %thead
+      %tr
+        %th{:colspan=>'3'}
+          = event.eventtype.name if event.eventtype
+          = number_to_human event.distance, :units => :distance
+    %tbody
+      - event.results.order('place ASC').each do |result|
+        %tr
+          %td.row.col-xs-1
+            = result.result
+            = result.event.eventtype.measuringunit
+            - if result.place
+              = '(' + result.place.to_s + ')'
+          %td.col-xs-5
+            = result.username
+          %td.col-xs-6
+            = number_to_human result.calculatedResult, :format => "%n", 
+                :precision => 2, :significant => false
+            = result.event.eventtype.calculated_unit

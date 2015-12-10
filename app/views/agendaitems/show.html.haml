@@ -1,54 +1,66 @@
 .row
   .col-lg-12
-    %h1.push-down-for-logo
-      =@agendaitem.name
+    %h1
+      = @agendaitem.name
+      %small= @agendaitem.agendaitemtype.name if @agendaitem.agendaitemtype
 .row
   .col-lg-8
-    %ul.list-inline.small
-      %li
-        %span.glyphicon.glyphicon-tag        
-        = if @agendaitem.intern; 'Kronos ' else 'Externe ' end
-        = @agendaitem.agendaitemtype.name if @agendaitem.agendaitemtype    
-      %li
-        %span.glyphicon.glyphicon-calendar 
-        = @agendaitem.date.strftime("%d %B %H:%M")
-      - unless @agendaitem.location.empty?
-        %li
+    .row 
+      .col-xs-1.text-right
+        = icon 'time'
+      .col-xs-11
+        = l @agendaitem.date, format: :date 
+        = l @agendaitem.date, format: :time
+    - if @agendaitem.location.present?
+      .row 
+        .col-xs-1.text-right
           %span.glyphicon.glyphicon-map-marker
-          = @agendaitem.location
-      - if @agendaitem.url
-        %li
+        .col-xs-11
+          %p= @agendaitem.location
+    - if @agendaitem.url.present?
+      .row
+        .col-xs-1.text-right
           %span.glyphicon.glyphicon-globe
-          = link_to @agendaitem.get_url_name, @agendaitem.get_url
-      - if @agendaitem.commission
-        %li
-          %span.glyphicon.glyphicon-book 
-          = link_to @agendaitem.commission.name, @agendaitem.commission
-      %li 
-        %a{:class => 'btn btn-mini fb-share icon-fb'}
-          %span.glyphicon
-          Share
-
-    %p= simple_format(@agendaitem.description)
-
-    - if current_user
-      .bs-callout
-        - @agendaitem.comments.each do |comment|
-          .row
-            -if comment.user
-              .col-lg-1
-                = link_to image_tag(comment.user.avatar.url(:thumb),:class=>'img-rounded'), comment.user
-              .col-lg-11
-                = link_to comment.user.name, comment.user
-                %span.small
-                  - if comment.created_at > 1.day.ago
-                    = h time_ago_in_words comment.created_at
-                    geleden
-                  - else
-                    = time_tag(comment.created_at)
-                %p= comment.commenttext
-        = render 'comments_form'
-    
+        .col-xs-11
+          %p= link_to @agendaitem.get_url_name, @agendaitem.get_url
+    - if @agendaitem.commission.present?
+      .row
+        .col-xs-1.text-right
+          %span.glyphicon.glyphicon-book
+        .col-xs-11
+          %p= link_to @agendaitem.commission.name, @agendaitem.commission
+    .row
+      .col-xs-1.text-right
+        %span.glyphicon.glyphicon-align-left
+      .col-xs-11
+        - Faker::Lorem.paragraphs.each do |par|
+          %p.text-left 
+            = simple_format(@agendaitem.description)
+    - if @agendaitem.events.present?
+      .row
+        .col-xs-12
+          %h3{id: 'results'}
+            = t('.results')
+      .row
+        .col-xs-12
+          = render partial: 'results/result_event', collection: @agendaitem.events, as: :event
+    -# - if current_user
+    -#   .bs-callout
+    -#     - @agendaitem.comments.each do |comment|
+    -#       .row
+    -#         -if comment.user
+    -#           .col-lg-1
+    -#             = link_to image_tag(comment.user.avatar.url(:thumb),:class=>'img-rounded'), comment.user
+    -#           .col-lg-11
+    -#             = link_to comment.user.name, comment.user
+    -#             %span.small
+    -#               - if comment.created_at > 1.day.ago
+    -#                 = h time_ago_in_words comment.created_at
+    -#                 geleden
+    -#               - else
+    -#                 = time_tag(comment.created_at)
+    -#             %p= comment.commenttext
+    -#     = render 'comments_form'
   .col-lg-4
     - if can? :update, @agendaitem
       .btn-group.btn-group-sm
@@ -59,8 +71,6 @@
           = link_to 'Resultaten aanpassen', agendaitem_events_path(@agendaitem), class: 'btn btn-default'
       %br
       %br
-
-
     .panel.panel-default
       .panel-heading Programma
       -if @agendaitem.events.empty?
@@ -110,4 +120,3 @@
           .panel-body Je moet inloggen om inschrijvingen te zien of aan te vullen. 
     -if can? :update, @agendaitem.subscriptions
       = link_to 'Inschrijvingen aanpassen', agendaitem_subscriptions_path(@agendaitem) , class: 'btn btn-sm btn-default'
-    

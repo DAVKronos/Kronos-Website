@@ -242,6 +242,8 @@ nl:
     index:
       agenda: Agenda
       no_agendaitems_found: Geen agendaitems gevonden
+    show:
+      results: 
   agendaitems_agenda: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
   all_mailinglists: Alle maillijsten
@@ -755,6 +757,7 @@ nl:
       long: ! '%d %B %Y %H:%M'
       medium: ! '%e %B %H:%M'
       only_date: ! '%e %B'
+      date: ! '%d-%B-%Y'
       only_second: ! '%S'
       short: ! '%d %b %H:%M'
       time: ! '%H:%M'
