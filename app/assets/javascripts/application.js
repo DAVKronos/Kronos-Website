@@ -26,6 +26,7 @@
 //= require twitter/typeahead.min
 //= require moment
 //= require bootstrap-datetimepicker
+//= require cookies_eu
 //= require_tree .
 
 KRNS = {

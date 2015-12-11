@@ -32,6 +32,7 @@ gem 'execjs', '~> 2.0.2'
 gem 'paper_trail', '~> 4.0.0.beta'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
+gem 'cookies_eu'
 
 
 # Gems used only for assets and not required
