@@ -53,26 +53,26 @@ end
 group :production do
   gem 'daemons', '~> 1.1.9'
   gem 'newrelic_rpm'
-	platform :ruby do
-		gem 'unicorn', '~> 4.6.3'
-	end
+  platform :ruby do
+    gem 'unicorn', '~> 4.6.3'
+  end
 end
 
 group :test do
   gem "capybara", "~> 1.1"
   gem 'factory_girl_rails', '~> 4.0.0'
-	gem 'rake', '~> 10.1.0'
+  gem 'rake', '~> 10.1.0'
 end
 
 group :development do
   gem 'annotate', '~> 2.5.0'
   gem 'populator', '~> 1.0.0'
   gem 'faker', '~> 1.2.0'
-	gem 'guard', '~> 1.8.3'
-	gem 'spork', '~> 1.0.0.rc3'
-	gem 'rb-fsevent', '~> 0.9.1'
-	gem 'guard-rspec', '~> 2.5.4'
-	gem 'guard-spork', '~> 1.5.1'
+  gem 'guard', '~> 1.8.3'
+  gem 'spork', '~> 1.0.0.rc3'
+  gem 'rb-fsevent', '~> 0.9.1'
+  gem 'guard-rspec', '~> 2.5.4'
+  gem 'guard-spork', '~> 1.5.1'
   gem 'sqlite3', '~> 1.3.8'
   gem 'thin'
   gem 'rubocop' , require: false

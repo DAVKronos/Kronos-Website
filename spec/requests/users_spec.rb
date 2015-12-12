@@ -8,10 +8,10 @@ describe "The login form" do
 	end
 	
 	def login_user
-    visit root_path 
+    visit home_path
     fill_in "user_email", :with => @user.email
 		fill_in "user_password", :with => @password
-    click_button "Inloggen"
+    click_button "Inloggen" 
 	end
 	
 	it "logins the user" do
