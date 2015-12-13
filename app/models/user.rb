@@ -134,4 +134,29 @@ class User < ActiveRecord::Base
   def last_name
     self.name.split[1]
   end
+
+  def allowed_user_types
+    if (self.admin?)
+      return UserType.all
+    elsif ([1,2,8].include? self.user_type_id)
+      return UserType.where(:id => [1,2,8])
+    else
+      return UserType.where(:id => self.user_type_id)
+    end
+  end
+
+  def allowed_users(user_type_id)
+    allowed_ids = self.allowed_user_types.map(&:id)
+    print allowed_ids
+    print user_type_id.present? && allowed_ids.include?(user_type_id)
+    print "howdyhi test shizzle" 
+    if (user_type_id.present? && allowed_ids.include?(user_type_id))
+      return User.where(:user_type_id => user_type_id)
+    elsif self.admin?
+      return User.all
+    else 
+      return User.where(:user_type_id => allowed_ids)
+    end
+  end
+
 end

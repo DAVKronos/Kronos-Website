@@ -1,36 +1,32 @@
 .row
   .col-lg-12
-    %h1.push-down-for-logo Alle Leden
-
+    %h1= t(:users).capitalize
+- unless @usertypes.nil?
+  .row
+    .col-lg-12
+      %ul{class: 'nav nav-pills'}
+        - if params[:user_type_id].blank?
+          %li{class: 'active'}= link_to 'Alle leden', users_path
+        - else
+          %li= link_to 'Alle leden', users_path
+        - @usertypes.each do |usertype|
+          - if usertype.id == params[:user_type_id].to_f
+            %li{class: 'active'}
+              = link_to usertype.name, users_path(user_type_id: usertype.id)
+          - else
+            %li
+              = link_to usertype.name, users_path(user_type_id: usertype.id)
+.row
+  #pagination_table
+    %br
+    - if @users.blank?
+      %p.text-info.text-center
+        Geen gebruikers met deze letter of in deze categorie.
+    - else
+      .col-sm-6.col-md-3
+        = render @users
 .row
   .col-lg-12
-    %ul{:class => "nav nav-pills"}
-      %li{:class => "active"}
-        = link_to "Alle leden", users_path 
-      - @usertypes.each do |usertype|
-        %li 
-          = link_to usertype.name, overview_users_path(:user_type_id => usertype.id)
-.row
-  .col-lg-12
-    #pagination_table
-      %ul{:class => "thumbnails"}
-        - if @users.nil? || @users.empty?
-          %p.text-info.text-center Geen gebruikers met deze letter of in deze categorie.
-        - else  
-          - @users.each do |user|
-            %li.col-lg-3
-              .thumbnail
-                = link_to image_tag(user.avatar.url(:pass)), user
-                .caption
-                  %h5= user.name
-                  - if can? :update, user
-                    = link_to 'edit', edit_user_path(user), :class => 'btn'
-                  - if can? :destroy, user
-                    = link_to 'verwijder', user, :method => :delete, :title => "Verwijder #{user.name}", :class => 'btn', :data => { :confirm => 'Weet je het zeker?' }
-
-.row
-  .col-lg-12
-    = alphabetical_paginate @alphaParams
-
+    = alphabetical_paginate @alpha_params
   - if can? :create, User
-    = link_to "Lid Toevoegen", new_user_path
+    = link_to 'Lid Toevoegen', new_user_path

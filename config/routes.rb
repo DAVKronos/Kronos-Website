@@ -18,7 +18,6 @@ KronosWebsite::Application.routes.draw do
   match '/users/xtracard', :to => 'users#xtracard'
   resources :users do
     get 'editpassword', :on => :member
-    get 'overview', on: :collection
   end
 
   resources :photos
