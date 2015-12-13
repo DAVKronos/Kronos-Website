@@ -36,7 +36,6 @@ class UsersController < ApplicationController
         @users, @alpha_params = @users.alpha_paginate(
           params[:letter],
           include_all: false,
-	  params: {user_type_id: params[:user_type_id]},
           js: true,
           bootstrap3: true) { |user| user.name }
         @usertypes = current_user.allowed_user_types
