@@ -4,9 +4,11 @@ class PagesController < ApplicationController
     @newsitems = Newsitem.where(:agreed => true).order('created_at DESC').limit(6)
     @agendaitems = Agendaitem.where("date >= ?", Time.now).order('date ASC').limit(10)
     
-    @birthdays = User.where('user_type_id not in (?)', [9])
-        .keep_if {|bd| bd.days_until_birthday.between?(-1,30)}
-        .sort_by!{|e| e.days_until_birthday}
+    @birthdays = User.where('(extract(month from birthdate) = ? AND extract(day from birthdate) >= ?) OR
+                             (extract(month from birthdate) = ? AND extract(day from birthdate) <= ?)', 
+                             Date.today.strftime("%m"), Date.today.strftime("%d"),
+                             Date.today.next_month.strftime("%m"), Date.today.next_month.strftime("%d"))
+                     .order('extract(month from birthdate) ASC, extract(day from birthdate) ASC')
   end
 
   def titleshow
