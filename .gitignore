@@ -19,6 +19,8 @@ vendor/bundle
 public/system/articlephotos/
 public/system/kronometers/
 public/system/elfinder
+public/system/backgrounds
+public/system/system/
 shared/
 unicorn.conf.rb
 *~
