@@ -63,12 +63,6 @@
         = image_tag @user.avatar.url(:medium)
         %figcaption
           = @user.name
-.row
-  .col-lg-12
-    %dt commissions
-    - @user.commissions.each do |commission|
-      %dd= commission.name
-
 - if can? :update, @user
   = link_to 'pas je gegevens aan', edit_user_path(@user)
   %br
