@@ -18,8 +18,7 @@
               = link_to (image_tag newsitem.articlephoto.url(:normal)), 
                 newsitem, class: "img-responsive img-thumbnail"
             .col-md-9
-              %p
-                = markdown newsitem.news.split( /\r?\n/ ).first
+              = markdown newsitem.news.split( /\r?\n/ ).first
               = link_to 'lees verder', newsitem
     .span{:class=>'text-center'}
       %p
