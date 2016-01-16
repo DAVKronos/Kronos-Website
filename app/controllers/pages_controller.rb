@@ -15,6 +15,14 @@ class PagesController < ApplicationController
     @page = Page.find_by_pagetag(params[:pt])
     render 'show'
   end
+
+  def index
+    @pages = Page.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
   
   def show
     @page = Page.find(params[:id])
