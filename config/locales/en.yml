@@ -72,6 +72,8 @@ en:
       page:
         information: Information
         title: Title
+        highlight: Highlight
+        menu: Menu
       photoalbum:
         agendaitem: Calendar item
         name: Name
@@ -541,6 +543,8 @@ en:
       page:
         information: 
         title: 
+        highlight: 
+        menu: 
       photoalbum:
         agendaitem: 
         name: 

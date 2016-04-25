@@ -15,8 +15,12 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
   
-  def getPages
-      Page.all
+  def getPages(menu_item)
+      Page.where('menu = ?', menu_item)
+  end
+
+  def getHighlight
+      Page.where(highlight: true).first
   end
     
 end

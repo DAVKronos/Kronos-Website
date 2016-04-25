@@ -2,6 +2,12 @@
   
   = f.label :title
   = f.text_field(:pagetag)
+
+  = f.label :menu
+  = f.text_field(:menu)
+
+  = f.label :highlight
+  = f.check_box(:highlight)
   
   = f.label :information
   = f.text_area(:information, :class =>"input-xlarge markItUp")

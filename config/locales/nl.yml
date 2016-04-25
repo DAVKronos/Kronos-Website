@@ -72,6 +72,8 @@ nl:
       page:
         information: Informatie
         title: Titel
+        highlight: Highlight
+        menu: Menu
       photoalbum:
         agendaitem: Agendaitem
         name: Name
@@ -542,6 +544,8 @@ nl:
       page:
         information: 
         title: 
+        highlight: 
+        menu: 
       photoalbum:
         agendaitem: 
         name: 
