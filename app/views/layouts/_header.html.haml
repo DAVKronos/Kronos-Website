@@ -25,6 +25,7 @@
               - getPages('Vereniging').each do |page|
                 %li= link_to page.pagetag, '/' << page.pagetag
               %li= link_to 'Commissies', commissions_path
+              %li= link_to 'Kronometers', kronometers_path
           %li.dropdown
             %a{:href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false'}
               Trainingen
