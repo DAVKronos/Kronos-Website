@@ -56,20 +56,17 @@ group :development do
   gem 'populator', '~> 1.0.0'
   gem 'faker', '~> 1.2.0'
   gem 'guard'
-  gem 'spork', '~> 1.0.0.rc3'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'guard-rspec'
-  gem 'guard-spork'
   gem 'sqlite3', '~> 1.3.8'
   gem 'thin'
   gem 'rubocop' , require: false
 end
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.99.0"
+  gem "rspec-rails", "~> 3.5.1"
   gem 'test-unit', '~> 3.0'
   gem "capybara", ">= 2.2.0"
-  gem 'capybara-screenshot'
   gem 'factory_girl_rails', '~> 4.0.0'
   gem 'rake', '~> 10.1.0'
 end
