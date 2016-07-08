@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "The login form" do
+describe "The login form", screenshot: true do
 	before(:each) do
 		@password = Devise.friendly_token.first(10)
 		@user = FactoryGirl.create(:user, password: @password, password_confirmation: @password)
@@ -9,8 +9,8 @@ describe "The login form" do
 	
 	def login_user
     visit home_path
-    fill_in "user_email", :with => @user.email
-		fill_in "user_password", :with => @password
+    fill_in 'user_email', :with => @user.email
+		fill_in 'user_password', :with => @password
     click_button "Inloggen" 
 	end
 	

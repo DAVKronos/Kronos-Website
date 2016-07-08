@@ -15,6 +15,9 @@ RUN bundle install
 # Add the app code
 ADD . $HOME
 
+#Copy docker database.yml
+COPY database_docker.yml /home/rails/webapp/config/database.yml
+
 # Create supervisor log directory
 RUN mkdir -p /var/log/supervisor
 
