@@ -43,7 +43,7 @@ GEM
       multi_json (>= 1.0.0)
     bcrypt (3.1.11)
     bcrypt (3.1.11-x86-mingw32)
-    bootstrap-sass (3.1.1.1)
+    bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
       will_paginate
@@ -384,7 +384,7 @@ DEPENDENCIES
   alphabetical_paginate (~> 2.1.0)
   annotate (~> 2.5.0)
   auto_html (~> 1.6.0)
-  bootstrap-sass (~> 3.1.1.0)
+  bootstrap-sass (~> 3.2.0.2)
   bootstrap-will_paginate (~> 0.0.6)
   bootstrap3-datetimepicker-rails (~> 4.7.14)
   calendar_helper (~> 0.2.6)
