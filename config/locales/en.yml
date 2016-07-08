@@ -121,7 +121,7 @@ en:
         url: 
     errors:
       full_messages:
-        format: ! '%{attribute} %{message}'
+        format: "%{attribute} %{message}"
       messages:
         accepted: must be accepted
         blank: must be provided
@@ -139,7 +139,7 @@ en:
         not_a_number: Is not a number
         not_an_integer: must be an integer
         odd: Should be odd
-        record_invalid: ! 'Validation failed: %{errors}'
+        record_invalid: 'Validation failed: %{errors}'
         taken: already taken
         too_long: is to long (max %{count} characters)
         too_short: is to short (minimal %{count} characters)
@@ -196,10 +196,10 @@ en:
             sex:
               blank: should be provided
       template:
-        body: ! 'please look at the following fields: '
+        body: 'please look at the following fields: '
         header:
-          one: ! '%{model} not saved: 1 error found'
-          other: ! '%{model} not saved: %{count} errors found'
+          one: "%{model} not saved: 1 error found"
+          other: "%{model} not saved: %{count} errors found"
     models:
       agendaitem: Agendaitem
       apps_exception: Apps exception
@@ -250,7 +250,7 @@ en:
   agendaitemtype_eventtype: agenda item type event type
   all_mailinglists: all maillinglists
   bankaccountnumber: bank-account number
-  birthdate: ! 'birthday '
+  birthdate: 'birthday '
   chatmessage:
     bericht: 
     page_title: Kronos chatbox
@@ -293,12 +293,12 @@ en:
     - Friday
     - Saturday
     formats:
-      default: ! '%m/%d/%Y'
-      long: ! '%e %B %Y'
-      medium: ! '%e %B'
-      only_date: ! '%e %B'
-      only_day: ! '%e'
-      short: ! '%e %b'
+      default: "%m/%d/%Y"
+      long: "%e %B %Y"
+      medium: "%e %B"
+      only_date: "%e %B"
+      only_day: "%e"
+      short: "%e %b"
     month_names:
     - January
     - February
@@ -342,16 +342,16 @@ en:
         other: over %{count} years
       x_days:
         one: one day
-        other: ! '%{count} days'
+        other: "%{count} days"
       x_minutes:
         one: one minute
-        other: ! '%{count} minutes'
+        other: "%{count} minutes"
       x_months:
         one: a month
-        other: ! '%{count} months'
+        other: "%{count} months"
       x_seconds:
         one: a second
-        other: ! '%{count} seconds'
+        other: "%{count} seconds"
     prompts:
       day: day
       hour: hour
@@ -423,7 +423,7 @@ en:
   error: error
   errorpl: error
   errors:
-    format: ! '%{attribute} %{message}'
+    format: "%{attribute} %{message}"
     messages:
       accepted: should be accepted
       already_confirmed: was already confirmed, please try signing in
@@ -446,19 +446,19 @@ en:
       not_found: not found
       not_locked: was not locked
       not_saved:
-        one: ! '1 error prohibited this %{resource} from being saved:'
-        other: ! '%{count} errors prohibited this %{resource} from being saved:'
+        one: '1 error prohibited this %{resource} from being saved:'
+        other: "%{count} errors prohibited this %{resource} from being saved:"
       odd: should be odd
-      record_invalid: ! 'validation failed: %{errors}'
+      record_invalid: 'validation failed: %{errors}'
       taken: already taken
       too_long: is to long (max %{count} characters)
       too_short: is to short (minimal %{count} characters)
       wrong_length: Incorrect length (must be %{count} characters)
     template:
-      body: ! 'please look at the following fields:'
+      body: 'please look at the following fields:'
       header:
-        one: ! '%{model} not saved: 1 error found'
-        other: ! '%{model} not saved: %{count} errors found'
+        one: "%{model} not saved: 1 error found"
+        other: "%{model} not saved: %{count} errors found"
   event: event
   eventtype:
     agendaitemtypes: 
@@ -627,7 +627,7 @@ en:
         update: update page
       photoalbum:
         create: create photo-album
-        update: ! 'update photo-album '
+        update: 'update photo-album '
       result:
         create: create result
       submit: submit %{model}
@@ -664,7 +664,7 @@ en:
     currency:
       format:
         delimiter: 
-        format: ! '%u%n'
+        format: "%u%n"
         precision: 2
         separator: 
         significant: false
@@ -678,7 +678,7 @@ en:
       strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: ! '%n %u'
+        format: "%n %u"
         units:
           billion: billion
           million: million
@@ -692,7 +692,7 @@ en:
         significant: true
         strip_insignificant_zeros: true
       storage_units:
-        format: ! '%n %u'
+        format: "%n %u"
         units:
           byte:
             one: Byte
@@ -748,13 +748,13 @@ en:
   time:
     am: in the morning
     formats:
-      default: ! '%a %d %b %Y %H:%M:%S %Z'
-      long: ! '%d %B %Y %H:%M'
-      medium: ! '%e %B %H:%M'
-      only_date: ! '%e %B'
-      only_second: ! '%S'
-      short: ! '%d %b %H:%M'
-      time: ! '%H:%M'
+      default: "%a %d %b %Y %H:%M:%S %Z"
+      long: "%d %B %Y %H:%M"
+      medium: "%e %B %H:%M"
+      only_date: "%e %B"
+      only_second: "%S"
+      short: "%d %b %H:%M"
+      time: "%H:%M"
     pm: in afternoon
   unauthorized:
     agendaitem:
@@ -807,8 +807,8 @@ en:
   usertype: member type
   will_paginate:
     next_label: next→
-    page_gap: ! '&hellip;'
-    previous_label: ← previous
+    page_gap: "&hellip;"
+    previous_label: "← previous"
   xtracardnumber: xtracard number
   aliases: 
   commissions: 

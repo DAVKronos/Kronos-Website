@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.8'
+gem 'rails', '~> 3.2.22'
 gem 'haml', '~> 4.0.5'
 gem 'devise', '~> 3.1.0'
 gem 'cancan', '~> 1.6.10'
@@ -38,16 +38,9 @@ gem 'cookies_eu'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'less-rails'
   gem 'sass-rails', '>= 3.2'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.7'
-	
-  if RUBY_PLATFORM =~ /mingw/
-    gem 'therubyracer', '0.11.0beta1', :platform  => [:mswin, :mingw]
-  else
-    gem 'therubyracer', :platform  => [:ruby]
-  end
 end
 
 group :production do

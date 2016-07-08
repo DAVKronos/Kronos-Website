@@ -2,7 +2,7 @@ language: ruby
 cache: bundler
 bundler_args: --without development production assets
 rvm:
-  - 1.9.3
+  - 2.3.1
 script:
   - bundle exec rspec spec/
 before_script:
