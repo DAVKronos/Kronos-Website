@@ -1,12 +1,15 @@
 language: ruby
 cache: bundler
-bundler_args: --without development production assets
+bundler_args: "--without development production assets"
 rvm:
-  - 2.3.1
+- 2.3.1
 script:
-  - bundle exec rspec spec/
+- bundle exec rspec spec/
 before_script:
-  - cp config/database.yml.example config/database.yml
-  - psql -c 'create database kronos_test;' -U postgres
-  - RAILS_ENV=test bundle exec rake db:schema:load
-  - bundle exec rake db:test:prepare
+- cp config/database.yml.example config/database.yml
+- psql -c 'create database kronos_test;' -U postgres
+- RAILS_ENV=test bundle exec rake db:schema:load
+- bundle exec rake db:test:prepare
+notifications:
+  slack:
+    secure: Xx6m1BZF2gNgpyhLPJ+K54T7ql6wi+JgTs1tMR6wtxKeREj4zCKhCstGwxMjg20Xxu0PR2fkKZftN3ADyBftAIxKDN1emweOXMQcymY2Up4Ug/+PgEGqq72C4etVLMYv5mPBxIp5I5keZeolH+Outyc8PCzvOPHOXE97RBsU9SY=
