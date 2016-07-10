@@ -9,11 +9,11 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs su
 WORKDIR $HOME
 
 # Install gems
-ADD Gemfile* $HOME/
+COPY Gemfile* $HOME/
 RUN bundle install
 
 # Add the app code
-ADD . $HOME
+COPY . $HOME
 
 #Copy docker database.yml
 COPY database_assets_docker.yml /home/rails/webapp/config/database.yml
@@ -29,4 +29,8 @@ RUN mkdir -p /var/log/supervisor
 
 # Copy supervisor config file
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+ENTRYPOINT ["bundle", "exec", "unicorn_rails"]
+
+CMD ["-c","unicorn.conf.rb","-E","production"]
 

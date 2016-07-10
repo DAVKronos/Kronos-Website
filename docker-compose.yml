@@ -2,9 +2,8 @@ version: '2'
 services:
   db:
     image: postgres:9.3
-  web:
+  app:
     build: .
-    command: /usr/bin/supervisord
     ports:
       - "3000:3000"
     depends_on:
