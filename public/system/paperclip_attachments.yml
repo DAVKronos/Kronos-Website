@@ -1,9 +1,0 @@
----
-:Photo:
-  :photo:
-  - :normal
-  - :thumb
-:User:
-  :avatar:
-  - :medium
-  - :pass

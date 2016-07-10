@@ -46,9 +46,7 @@ end
 group :production do
   gem 'daemons', '~> 1.1.9'
   gem 'newrelic_rpm'
-  platform :ruby do
-    gem 'unicorn', '~> 5.1.0'
-  end
+  gem 'passenger'
 end
 
 group :development do
@@ -59,7 +57,6 @@ group :development do
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'guard-rspec'
   gem 'sqlite3', '~> 1.3.8'
-  gem 'thin'
   gem 'rubocop' , require: false
 end
 
