@@ -1,7 +1,7 @@
 version: '2'
 services:
   db:
-    image: postgres:9.3
+    image: postgres:9.1.22
   app:
     build: .
     ports:
@@ -16,3 +16,9 @@ services:
       - db
     env_file: .env
     command: bundle exec rake jobs:work
+  owncloud:
+    image: owncloud:9-apache
+    depends_on:
+      - db
+    ports:
+      - "1337:80"
