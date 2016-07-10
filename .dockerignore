@@ -1,0 +1,9 @@
+.ruby-version
+.ruby-gemset
+.travis.yml
+docker-compose.yml
+DockerFile
+doc/
+log/
+public/system/
+tmp/
