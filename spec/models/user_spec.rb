@@ -59,35 +59,35 @@ describe User do
 
 		  subject { @user }
 
-		  it { should respond_to(:name) }
-		  it { should respond_to(:initials) }
-			it { should respond_to(:email) }
-			it { should respond_to(:birthdate) }
-			it { should respond_to(:address) }
-			it { should respond_to(:postalcode) }
-			it { should respond_to(:city) }
-			it { should respond_to(:sex) }
-			it { should respond_to(:licensenumber) }
-			it { should respond_to(:papieren_kronometer) }
-			it { should respond_to(:created_at) }
-			it { should respond_to(:updated_at) }
-			it { should respond_to(:avatar_file_name) }
-			it { should respond_to(:avatar_content_type) }
-			it { should respond_to(:avatar_file_size) }
-			it { should respond_to(:avatar_updated_at) }
-			it { should respond_to(:encrypted_password) }
-			it { should respond_to(:reset_password_token) }
-			it { should respond_to(:reset_password_sent_at) }
-			it { should respond_to(:remember_created_at) }
-			it { should respond_to(:sign_in_count) }
-			it { should respond_to(:current_sign_in_at) }
-			it { should respond_to(:last_sign_in_at) }
-			it { should respond_to(:current_sign_in_ip) }
-			it { should respond_to(:last_sign_in_ip) }
-			it { should respond_to(:phonenumber) }
-			it { should respond_to(:user_type_id) }
-			it { should respond_to(:bank_account_number) }
-			it { should respond_to(:xtracard) }
+		  it { is_expected.to respond_to(:name) }
+		  it { is_expected.to respond_to(:initials) }
+			it { is_expected.to respond_to(:email) }
+			it { is_expected.to respond_to(:birthdate) }
+			it { is_expected.to respond_to(:address) }
+			it { is_expected.to respond_to(:postalcode) }
+			it { is_expected.to respond_to(:city) }
+			it { is_expected.to respond_to(:sex) }
+			it { is_expected.to respond_to(:licensenumber) }
+			it { is_expected.to respond_to(:papieren_kronometer) }
+			it { is_expected.to respond_to(:created_at) }
+			it { is_expected.to respond_to(:updated_at) }
+			it { is_expected.to respond_to(:avatar_file_name) }
+			it { is_expected.to respond_to(:avatar_content_type) }
+			it { is_expected.to respond_to(:avatar_file_size) }
+			it { is_expected.to respond_to(:avatar_updated_at) }
+			it { is_expected.to respond_to(:encrypted_password) }
+			it { is_expected.to respond_to(:reset_password_token) }
+			it { is_expected.to respond_to(:reset_password_sent_at) }
+			it { is_expected.to respond_to(:remember_created_at) }
+			it { is_expected.to respond_to(:sign_in_count) }
+			it { is_expected.to respond_to(:current_sign_in_at) }
+			it { is_expected.to respond_to(:last_sign_in_at) }
+			it { is_expected.to respond_to(:current_sign_in_ip) }
+			it { is_expected.to respond_to(:last_sign_in_ip) }
+			it { is_expected.to respond_to(:phonenumber) }
+			it { is_expected.to respond_to(:user_type_id) }
+			it { is_expected.to respond_to(:bank_account_number) }
+			it { is_expected.to respond_to(:xtracard) }
 	end
 
   it "should create a new instance given valid attributes" do
@@ -96,47 +96,47 @@ describe User do
 
   it "should require a name" do
     no_name_user = User.new(attr.merge(:name => ""), :as => :bestuur)
-    no_name_user.should_not be_valid
+    expect(no_name_user).not_to be_valid
   end
 
   it "should require initials" do
     no_initials_user = User.new(attr.merge(:initials => ""), :as => :bestuur)
-    no_initials_user.should_not be_valid
+    expect(no_initials_user).not_to be_valid
   end
 
   it "should require an address" do
     no_address_user = User.new(attr.merge(:address => ""), :as => :bestuur)
-    no_address_user.should_not be_valid
+    expect(no_address_user).not_to be_valid
   end
 
   it "should require an email address" do
     no_email_user = User.new(attr.merge(:email => ""), :as => :bestuur)
-    no_email_user.should_not be_valid
+    expect(no_email_user).not_to be_valid
   end
 
   it "should require a birthdate" do
     no_birthdate_user = User.new(attr.merge(:birthdate => ""), :as => :bestuur)
-    no_birthdate_user.should_not be_valid
+    expect(no_birthdate_user).not_to be_valid
   end
 
   it "should require a postalcode" do
     no_postalcode_user = User.new(attr.merge(:postalcode => ""), :as => :bestuur)
-    no_postalcode_user.should_not be_valid
+    expect(no_postalcode_user).not_to be_valid
   end
 
   it "should require a city" do
     no_city_user = User.new(attr.merge(:city => ""), :as => :bestuur)
-    no_city_user.should_not be_valid
+    expect(no_city_user).not_to be_valid
   end
 
   it "should require a password" do
     no_password_user = User.new(attr.merge(:password => ""), :as => :bestuur)
-    no_password_user.should_not be_valid
+    expect(no_password_user).not_to be_valid
   end
 
   it "should require a password confirmation" do
     no_passwordcon_user = User.new(attr.merge(:password_confirmation => ""), :as => :bestuur)
-    no_passwordcon_user.should_not be_valid
+    expect(no_passwordcon_user).not_to be_valid
   end
 
   it "should accept valid names" do
@@ -146,7 +146,7 @@ describe User do
              "Willem-Frits van Oranje-Nassau"]
     names.each do |name|
       valid_name_user = User.new(attr.merge(:name => name), :as => :bestuur)
-      valid_name_user.should be_valid
+      expect(valid_name_user).to be_valid
     end
   end
 
@@ -155,7 +155,7 @@ describe User do
     "indiana jones"]
     names.each do |name|
       invalid_name_user = User.new(attr.merge(:name => name), :as => :bestuur)
-      invalid_name_user.should_not be_valid
+      expect(invalid_name_user).not_to be_valid
     end
   end
 
@@ -163,7 +163,7 @@ describe User do
     addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
     addresses.each do |address|
       valid_email_user = User.new(attr.merge(:email => address), :as => :bestuur)
-      valid_email_user.should be_valid
+      expect(valid_email_user).to be_valid
     end
   end
 
@@ -171,7 +171,7 @@ describe User do
     addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
     addresses.each do |address|
       invalid_email_user = User.new(attr.merge(:email => address), :as => :bestuur)
-      invalid_email_user.should_not be_valid
+      expect(invalid_email_user).not_to be_valid
     end
   end
 
@@ -213,15 +213,15 @@ describe User do
 
 
     it "should have a commission attribute" do
-      @user.should respond_to(:commissions)
+      expect(@user).to respond_to(:commissions)
     end
 
     it "should return the associated commissions" do
-      @user2.commissions.should == [@commis]
+      expect(@user2.commissions).to eq([@commis])
     end
 
     it "should work the other way around too" do
-      @commis.users.should == [@user2]
+      expect(@commis.users).to eq([@user2])
     end
 
   end

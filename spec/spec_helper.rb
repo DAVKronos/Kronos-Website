@@ -2,11 +2,6 @@ require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 require 'rubygems'
 
-if defined?(Spork)
-  Spork.prefork  { }
-  Spork.each_run { }
-end
-
 
 
 
@@ -16,7 +11,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
-require "devise/test_helpers"
+
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -50,8 +45,6 @@ RSpec.configure do |config|
 	# the seed, which is printed after each run.
 	#     --seed 1234
 	config.order = "random"
-	
-	#Load Devise test helpers in controller tests
-	config.include Devise::TestHelpers, :type => :controller
-	config.extend ControllerMacros, :type => :controller
+  
+  config.infer_spec_type_from_file_location!
 end

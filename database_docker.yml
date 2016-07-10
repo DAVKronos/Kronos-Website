@@ -1,0 +1,20 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  database: postgres
+  pool: 5
+  username: kronos
+  password:
+  host: db
+
+development:
+  <<: *common
+  database: kronos_development
+
+test:
+  <<: *common
+  database: kronos_test
+
+production:
+  <<: *common
+  database: kronos_production

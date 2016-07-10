@@ -30,7 +30,7 @@ describe Commission do
                 it "should save the associations" do
                   test_commission = Commission.create!(commis)
                   user.commission_memberships.build(:commission => test_commission,:function => "Voorzitter").save!
-                  test_commission.users.should == [user]
+                  expect(test_commission.users).to eq([user])
                 end
                   
 end
