@@ -3,7 +3,7 @@ common: &common
   encoding: unicode
   database: postgres
   pool: 5
-  username: kronos
+  username: postgres
   password:
   host: db
 

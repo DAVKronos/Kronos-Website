@@ -1,14 +1,33 @@
 # Kronos-Website
-[![Build Status](https://secure.travis-ci.org/DAVKronos/Kronos-Website.png)](http://travis-ci.org/DAVKronos/Kronos-Website)
-[![Dependency Status](https://gemnasium.com/DAVKronos/Kronos-Website.png)](https://gemnasium.com/DAVKronos/Kronos-Website)
-[![Code Climate](https://codeclimate.com/github/DAVKronos/Kronos-Website/badges/gpa.svg)](https://codeclimate.com/github/DAVKronos/Kronos-Website)
+This is the repository of the Kronos Website.
 
-A ruby translation project managed on [Locale](http://www.localeapp.com/) that's open to all!
+### Requirements
+For developing on the Kronos Website you need the following software installed.
 
-## Translating Kronos Website
+* Docker
 
-- Edit the translations directly on the [Kronos Website](http://www.localeapp.com/projects/public?search=Kronos Website) project on Locale.
-- **That's it!**
-- The maintainer will then pull translations from the Locale project and push to Github.
 
-Happy translating!
+### Installation
+To use all the functionality you need to create a .env file in the root directory of the project. This needs to contain at least
+an entry for the localeapp api key. It looks like this:
+    
+    LOCALEAPP_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    
+
+### Running
+Currently the website always runs in production, this has the effect that you need to redo these steps after every change.
+
+    $ docker-compose build
+    $ docker-compose up
+
+Now you have created the docker images and they start running. If this is the first time you run this or you are using a new database image you will notice that the site does not start. The site does not start because the database is not created yet. Keep the instances running and execute the following commands to create the database:
+
+    $ docker exec kronoswebsite_app_1 bundle exec rake db:create
+    $ docker exec kronoswebsite_app_1 bundle exec rake db:schema:load
+
+Now restart the instances running with docker compose:
+
+    Ctrl-c
+    $ docker-compose up
+
+At this time the website should run properly on port 3000 (depends on your docker installation if this is at localhost or a different ip).
