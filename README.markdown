@@ -5,6 +5,9 @@ This is the repository of the Kronos Website.
 For developing on the Kronos Website you need the following software installed.
 
 * Docker
+* Docker Compose
+
+If you install docker toolbox or docker for Mac/Windows this is also fine because this contains these components.
 
 
 ### Installation
