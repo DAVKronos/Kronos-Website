@@ -42,3 +42,4 @@ RUN bundle exec rake assets:precompile
 COPY database_docker.yml /home/rails/webapp/config/database.yml
 
 USER root
+

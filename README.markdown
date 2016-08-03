@@ -5,7 +5,7 @@ This is the repository of the Kronos Website.
 For developing on the Kronos Website you need the following software installed.
 
 * Docker
-* Docker Compose
+* Docker Compose (version > 1.6)
 
 If you install docker toolbox or docker for Mac/Windows this is also fine because this contains these components.
 
@@ -15,7 +15,7 @@ To use all the functionality you need to create a .env file in the root director
 an entry for the localeapp api key. It looks like this:
     
     LOCALEAPP_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    
+    RAILS_ENV=development
 
 ### Running
 Currently the website always runs in production, this has the effect that you need to redo these steps after every change.
@@ -27,6 +27,7 @@ Now you have created the docker images and they start running. If this is the fi
 
     $ docker exec kronoswebsite_app_1 bundle exec rake db:create
     $ docker exec kronoswebsite_app_1 bundle exec rake db:schema:load
+    $ docker exec kronoswebsite_app_1 bundle exec rake db:seed
 
 Now restart the instances running with docker compose:
 

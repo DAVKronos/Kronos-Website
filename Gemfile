@@ -19,11 +19,11 @@ gem 'client_side_validations', '~> 3.2.0.beta.6'
 gem 'localeapp'
 gem 'redcarpet', '~> 2.3.0'
 gem 'rakismet', '~> 1.4.0'
-gem 'wicked_pdf', '~> 0.9.7'
+#gem 'wicked_pdf', '~> 0.9.7'
 gem 'auto_html', '~> 1.6.0'
 gem 'memcache-client', '~> 1.8.5'
 gem 'calendar_helper', '~> 0.2.6'
-gem 'el_finder', '~> 1.1.10'
+#gem 'el_finder', '~> 1.1.10'
 gem 'google-api-client', '~> 0.8.6'
 gem 'selectize-rails', '~> 0.8.5' 
 gem 'twitter-typeahead-rails', '~> 0.10.2'
@@ -33,7 +33,7 @@ gem 'paper_trail', '~> 4.0.0.beta'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'cookies_eu'
-
+gem 'prawn-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
