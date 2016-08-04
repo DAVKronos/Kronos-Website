@@ -77,7 +77,7 @@ class PhotoalbumsController < ApplicationController
     @photoalbum = Photoalbum.find(params[:id])
 
     respond_to do |format|
-      if @photoalbum.update_attributes(params[:photoalbum])
+      if @photoalbum.update_attributes(params[:photoalbum], :as => (current_user.admin? ? :admin : :default))
         format.html { redirect_to @photoalbum, notice: 'Photoalbum was successfully updated.' }
         format.json { head :ok }
       else
@@ -85,6 +85,17 @@ class PhotoalbumsController < ApplicationController
         format.json { render json: @photoalbum.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /photoalbums/1/publish
+  def publish
+    @photoalbum = Photoalbum.find(params[:id])
+
+    @photoalbum.public = !@photoalbum.public
+
+    @photoalbum.save
+
+    redirect_to @photoalbum, notice: 'Photoalbum was successfully published.'
   end
 
   # DELETE /photoalbums/1

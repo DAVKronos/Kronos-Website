@@ -17,6 +17,8 @@
               = time_tag photoalbum.created_at
         .row.text-center
           .btn-group.btn-group-sm
+            - if can? :publish, photoalbum
+              = icon_button publish_photoalbum_path(photoalbum), 'publish', 'publish', :class => 'btn btn-info'
             - if can? :update, photoalbum
               = icon_button edit_photoalbum_path(photoalbum), 'edit' , t('edit'), :class => 'btn btn-warning'
             - if can? :destroy, photoalbum

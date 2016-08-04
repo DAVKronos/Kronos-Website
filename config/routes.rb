@@ -10,12 +10,12 @@ KronosWebsite::Application.routes.draw do
 
   resources :agendaitemtypes
 
-  match '/apps' => 'kronobox#appshome'
-  match '/apps/group/add' => 'kronobox#groupadd'
-  match '/apps/group/remove' => 'kronobox#groupremove'
+#  match '/apps' => 'kronobox#appshome'
+#  match '/apps/group/add' => 'kronobox#groupadd'
+#  match '/apps/group/remove' => 'kronobox#groupremove'
   
   devise_for :users
-  match '/users/xtracard', :to => 'users#xtracard'
+#  match '/users/xtracard', :to => 'users#xtracard'
   resources :users do
     get 'editpassword', :on => :member
   end
@@ -23,7 +23,11 @@ KronosWebsite::Application.routes.draw do
   resources :photos
   resources :comments
   resources :tags
+#  match '/photoalbums/:id/publish', :to => 'photoalbums#publish'
   resources :photoalbums do
+    member do
+      get 'publish'
+    end
     resources :photos
   end
   resources :kronometers do

@@ -9,8 +9,6 @@ module Abilities
       can [:frontpage, :records], Result
       can :hide, Announcement
       can :create, [Chatmessage, User]
-#      cannot :read, Photoalbum, :public => false
-#      cannot :read, Photoalbum, :public => false
       cannot :read, Photoalbum
       can :read, Photoalbum, :public => true
       cannot :read, [User, Photo, Announcement]
