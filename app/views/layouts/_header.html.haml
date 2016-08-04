@@ -48,8 +48,8 @@
             %li= link_to "Foto's", photoalbums_path
           -# %li= link_to 'Kronometer', kronometers_path
           %li= link_to 'Chatbox', chatmessages_path
-          - if getHighlight
-            %li.highlighting= link_to getHighlight.pagetag, '/' << getHighlight.pagetag
+          - getHighlights.each do |highlight|
+            %li.highlighting= link_to highlight.pagetag, '/' << highlight.pagetag
         %ul.nav.navbar-nav.navbar-right
           - if !current_user
             %li.dropdown.login-menu
@@ -84,5 +84,7 @@
                     %p= image_tag(current_user.avatar.url(:thumb),:class=>'img-circle')
                     %h4= current_user.name.split[0]
                 %li= link_to icon('user') << " " << current_user.name.split[0] << '\'s stek',current_user
+                %li= link_to icon('cloud') << " Kronos cloud", "https://cloud.kronos.nl"
                 %li= link_to icon('cog') << ' Beheer',admin_path if current_user && current_user.admin?
                 %li= link_to icon('log-out') << ' Log uit', destroy_user_session_path, {:method => :delete }
+

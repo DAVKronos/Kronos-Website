@@ -22,5 +22,8 @@ module ApplicationHelper
   def getHighlight
       Page.where(highlight: true).first
   end
-    
+
+  def getHighlights
+    Page.where(highlight: true).all
+  end
 end
