@@ -16,6 +16,7 @@ an entry for the localeapp api key. It looks like this:
     
     LOCALEAPP_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     RAILS_ENV=development
+    GMAIL_SMTP_PASSWORD=xxxxxxxxxxxxx
 
 ### Running
 Currently the website always runs in production, this has the effect that you need to redo these steps after every change.
