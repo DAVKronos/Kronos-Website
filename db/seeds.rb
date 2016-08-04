@@ -26,22 +26,10 @@ usertype_proeflid = UserType.create({	:name => "Proeflid",
 usertype_oudlid = UserType.create({		:name => "Oudlid",
 										:donor => false})
 
-user = User.create({:name => "Leon Schenk", 
-                  :initials => "H.J.K.",
-                  :email => "leon_schenk@kronos.nl", 
-                  :birthdate => "01-01-2002",
-                  :address => "Campuslaan 1",
-                  :postalcode => "1337 MF",
-                  :city => "Enschede",
-                  :sex => "Man",
-                  :licensenumber => "123456",
-                  :password => "Foobar",
-                  :password_confirmation => "Foobar"}, 
-                  :as => :bestuur)
-
-kegel = User.create({:name => "Kegel de Egel",
-                    :initials => "K",
-                    :email => "kegel@kronos.nl",
+user = User.create({
+                    :name => "Leon Schenk", 
+                    :initials => "H.J.K.",
+                    :email => "leon_schenk@kronos.nl", 
                     :birthdate => "01-01-2002",
                     :address => "Campuslaan 1",
                     :postalcode => "1337 MF",
@@ -49,10 +37,30 @@ kegel = User.create({:name => "Kegel de Egel",
                     :sex => "Man",
                     :licensenumber => "123456",
                     :password => "Foobar",
-                    :password_confirmation => "Foobar"},
+                    :password_confirmation => "Foobar"
+                   }, 
+                  :as => :bestuur, )
+
+kegel = User.create({
+                     :name => "Kegel de Egel",
+                     :initials => "K",
+                     :email => "kegel@kronos.nl",
+                     :birthdate => "01-01-2002",
+                     :address => "Campuslaan 1",
+                     :postalcode => "1337 MF",
+                     :city => "Enschede",
+                     :sex => "Man",
+                     :licensenumber => "123456",
+                     :password => "Foobar",
+                     :password_confirmation => "Foobar"
+                    },
                    :as => :bestuur)
-                  
-                  
+
+user.user_type_id = usertype_proeflid.id
+kegel.user_type_id = usertype_proeflid.id
+user.save!
+kegel.save!
+
 com = Commission.create({:name => "Bestuur",
                    :email => "bestuur@kronos.nl",
                    :description => "Het bestuur van Kronos"})
