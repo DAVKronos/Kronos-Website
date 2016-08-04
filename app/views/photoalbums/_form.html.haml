@@ -1,15 +1,15 @@
 = form_for(@photoalbum) do |f|
-  = f.label :name
-  = f.text_field :name
+  .input-group
+    = f.label :name
+    = f.text_field(:name, {:class => "form-control"})
+  .input-group
+    = f.label :public
+    = f.check_box(:public, {:class => "form-control"})
 
   = f.label :agendaitem
-
-  -# = f.collection_select(:agendaitem_id, Agendaitem.order("date DESC").limit("10"), :id, :select_name, :prompt => true) 
-
   = f.select(:agendaitem_id, [[]])
 
   :javascript
-
     $('#photoalbum_agendaitem_id').selectize({
         valueField: 'id',
         labelField: 'name',

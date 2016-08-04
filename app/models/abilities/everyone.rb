@@ -9,7 +9,11 @@ module Abilities
       can [:frontpage, :records], Result
       can :hide, Announcement
       can :create, [Chatmessage, User]
-      cannot :read, [User, Photoalbum, Photo, Announcement]
+#      cannot :read, Photoalbum, :public => false
+#      cannot :read, Photoalbum, :public => false
+      cannot :read, Photoalbum
+      can :read, Photoalbum, :public => true
+      cannot :read, [User, Photo, Announcement]
       cannot :see_email, Commission
     end
   end

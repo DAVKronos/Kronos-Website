@@ -1,22 +1,23 @@
-.col-sm-6.col-md-4
-  .thumbnail
-    = link_to image_tag(photoalbum.photos.order('RANDOM()').first.photo.url :thumb, :class=>'img-responsive'), photoalbum unless photoalbum.photos.empty?
-    .caption
-      %h5
-        = link_to photoalbum.name, photoalbum
-      - unless photoalbum.agendaitem.nil?
-        %p
-          %small
-            evenement op:
-            = time_tag photoalbum.agendaitem.date
-      - else
-        %p
-          %small
-            aangemaakt op:
-            = time_tag photoalbum.created_at
-      .row.text-center
-        .btn-group.btn-group-sm
-          - if can? :update, photoalbum
-            = icon_button edit_photoalbum_path(photoalbum), 'edit' , t('edit'), :class => 'btn btn-warning'
-          - if can? :destroy, photoalbum
-            = icon_button  photoalbum, 'remove' , t('delete'), {:method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{photoalbum.name}", :class => 'btn btn-danger'}
+- if can? :read, photoalbum
+  .col-sm-6.col-md-4
+    .thumbnail
+      = link_to image_tag(photoalbum.photos.order('RANDOM()').first.photo.url :thumb, :class=>'img-responsive'), photoalbum unless photoalbum.photos.empty?
+      .caption
+        %h5
+          = link_to photoalbum.name, photoalbum
+        - unless photoalbum.agendaitem.nil?
+          %p
+            %small
+              evenement op:
+              = time_tag photoalbum.agendaitem.date
+        - else
+          %p
+            %small
+              aangemaakt op:
+              = time_tag photoalbum.created_at
+        .row.text-center
+          .btn-group.btn-group-sm
+            - if can? :update, photoalbum
+              = icon_button edit_photoalbum_path(photoalbum), 'edit' , t('edit'), :class => 'btn btn-warning'
+            - if can? :destroy, photoalbum
+              = icon_button  photoalbum, 'remove' , t('delete'), {:method => :delete, :confirm => "Weet je het zeker?", :title => "Verwijder #{photoalbum.name}", :class => 'btn btn-danger'}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160425141720) do
+ActiveRecord::Schema.define(:version => 20160804092711) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -264,6 +264,7 @@ ActiveRecord::Schema.define(:version => 20160425141720) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "agendaitem_id"
+    t.boolean  "public"
   end
 
   create_table "photos", :force => true do |t|
