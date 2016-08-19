@@ -28,11 +28,11 @@ class ResultsController < ApplicationController
   end
   
   def create
-    event = Event.find(params[:event_id])
+    event = Event.find(params[:result][:event_id])
     result = event.results.build(params[:result])
     result.save
     if request.xhr?
-      render 'results/_show', :layout => false, :locals => {:event => Event.find(event.id)}
+      render 'results/_show', :layout => false, :locals => {:event => result.event}
     else
       redirect_to agendaitem_events_path(event.agendaitem)
     end

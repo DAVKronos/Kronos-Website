@@ -20,7 +20,7 @@
               controller: 'results', 
               action: 'index',
               date: {year: d.year, month: d.month}
-      %li{:role => 'presentation'}= link_to 'Clubrecords', result_frontpage_records_path
+      %li{:role => 'presentation'}= link_to 'Clubrecords', records_results_path
       = form_tag({controller: 'results', action: 'index'}, method: 'get', class: 'navbar-form navbar-left') do
         .form-group
           = text_field :date, :month, :class => 'form-control maandprikker', :size=>'2', value: @date.month
@@ -35,7 +35,7 @@
       - if @agendaitems.empty? 
         %p{:class=>'text-center text-info'}=t '.no_agendaitems_found' 
 
--if can? :create, Result
-  .col-md-12.text-center
-    = icon_button url_for(controller:'agendaitems',action:'new_result') , 'plus', t('add').capitalize 
+  -if can? :create, Result
+    .col-md-12.text-center
+      = icon_button url_for(controller:'agendaitems',action:'new_result') , 'plus', t('add').capitalize 
 

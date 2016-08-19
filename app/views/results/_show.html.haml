@@ -19,7 +19,7 @@
             = link_to "verwijder", result, :class => 'btn btn-danger btn-xs', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, result
   .panel-body
     = render :partial => "events/form", :locals => { :event => event }
-    
   -if can? :destroy, event
     .panel-footer
-      =link_to 'Evenement verwijderen', event, confirm: 'Weet je het zeker?', method: :delete,:class => 'btn btn-danger'
+      =link_to 'Evenement verwijderen', agendaitem_event_path(@agendaitem, event), confirm: 'Weet je het zeker?', method: :delete,:class => 'btn btn-danger'
+

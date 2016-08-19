@@ -3,20 +3,21 @@
 - User.all.each do |user|
   - nameArray << user.name
 
-= form_for eventResult, :url => event_results_path(event), :remote => false, :html => { :id => "event_result_#{event.id}", :autocomplete => "off", :class => 'form-inline', :role=>'form'} do |f|
+= form_for eventResult, :remote => false, :html => { :id => "event_result_#{event.id}", :autocomplete => "off", :class => 'form-inline', :role=>'form'} do |f|
+  = f.hidden_field :event_id
   .form-group.col-md-2
     = f.label :username, :class=>'sr-only' 
-    = f.text_field :username, :class => 'typeahead form-control', :placeholder => t(:name).capitalize, :size=>'40'
+    = f.text_field :username, :class => 'typeahead form-control', :placeholder => t(:name).capitalize
   .form-group.col-md-2
     = f.label :result, :class=>'sr-only'
-    = f.text_field :result, :class=>'form-control', :placeholder => "Prestatie", :size=>'40'
+    = f.text_field :result, :class=>'form-control', :placeholder => "Prestatie"
   - if event.eventtype.show_wind
     .form-group.col-md-2
       = f.label :wind, :class=>'sr-only'
-      = f.text_field :wind, :class=>'form-control', :placeholder => "m/s", :size=>'40'
+      = f.text_field :wind, :class=>'form-control', :placeholder => "m/s"
   .form-group.col-md-2
     = f.label :place, :class=>'sr-only'
-    = f.text_field :place, :class=>'form-control', :placeholder => "Plaats", :size=>'40'
+    = f.text_field :place, :class=>'form-control', :placeholder => "Plaats"
   .col-md-2
     = f.submit :class => "btn btn-default"
   :javascript

@@ -5,13 +5,12 @@
   .col-lg-12.events
     -@events.each do |event|
       = render :partial => "results/show", :locals => { :event => event }
-      
 
 .row
   .col-lg-12
     %h2.push-down-for-logo Voeg een onderdeel toe
 
-    = form_for @event, :html=>{:class => "form-horizontal"} do |f|
+    = form_for(@event, url: agendaitem_events_path(@agendaitem), :html=>{:class => "form-horizontal"}) do |f|
       .form-group
         = f.label "Tijd", :class => "col-sm-2 control-label"
         .col-sm-10
@@ -23,7 +22,7 @@
         = f.label "Type", :class => "col-sm-2 control-label"
         .col-sm-10
           = f.select(:eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect{ |p| [p.name, p.id] }, {}, {:class=>"form-control"})
-      .form-group 
+      .form-group
         = f.label "Afstand", :class => "col-sm-2 control-label"
         .col-sm-10
           = f.text_field :distance, :class => "form-control"
@@ -31,6 +30,5 @@
       .col-sm-offset-2.col-sm-10
         = f.submit :class => "btn btn-success"
 %br
-    
-    
+
 			

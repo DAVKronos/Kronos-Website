@@ -1,17 +1,18 @@
 = form_for(@agendaitem, :url => url_for(:action => 'create_result')) do |f|
-  .row
-    .col-lg-12
-      %fieldset
-        %legend Wedstrijdinformatie
-        = f.label :name
-        = f.text_field :name, :placeholder => "Naam"
-        = f.label :agendaitemtype
-        = f.collection_select(:agendaitemtype_id, @agendaitemtypes, :id, :name)
-        = f.label :date
-        = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
-        = f.label :location
-        = f.text_field :location, :placeholder => "Locatie"
-        %hr
-  .row
+  %fieldset.form-group.row
+    %legend Wedstrijdinformatie
+    = f.label(:name, {:class => "col-lg-2 col-form-label"})
+    .col-lg-10
+      = f.text_field(:name, {:placeholder => "Naam", :class => "form-control"})
+    = f.label(:agendaitemtype, {:class => "col-lg-2 col-form-label"})
+    .col-lg-10
+      = f.collection_select(:agendaitemtype_id, @agendaitemtypes, :id, :name, {}, {:class => "form-control"})
+    = f.label(:date, {:class => "col-lg-2 col-form-label"})
+    .col-lg-10
+      = f.text_field :date, {:placeholder => "Datum", :class => "form-control datumtijdprikker", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
+    = f.label(:location, {:class => "col-lg-2 col-form-label"})
+    .col-lg-10
+      = f.text_field(:location, {:placeholder => "Locatie", :class => "form-control"})
     .col-lg-12
       = f.submit :class => "btn", :value => "Verder"
+

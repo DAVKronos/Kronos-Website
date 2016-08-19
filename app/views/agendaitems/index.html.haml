@@ -33,6 +33,6 @@
       = render partial: 'agendaitems/agendaitem_panel', collection: @agendaitems, as: :agendaitem
       - if @agendaitems.empty? 
         %p{:class=>'text-center text-info'}=t '.no_agendaitems_found' 
--if can? :create, Agendaitem
-  .col-md-12.text-center
-    = icon_button new_agendaitem_path, 'plus', t('add').capitalize 
+  -if can? :create, Agendaitem
+    .col-md-12.text-center
+      = icon_button new_agendaitem_path, 'plus', t('add').capitalize 

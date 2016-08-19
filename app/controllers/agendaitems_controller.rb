@@ -45,9 +45,7 @@ class AgendaitemsController < ApplicationController
   end
 
   def create
-    @agendaitem = Agendaitem.new(params[:agendaitem])
-    @agendaitem.user = current_user
-    flash[:notice] = 'Agendaitem was successfully created.' if @agendaitem.save
+    create_without_respond
     respond_with(@agendaitem)
   end
 
@@ -58,7 +56,8 @@ class AgendaitemsController < ApplicationController
   end
 
   def create_result
-    create
+    create_without_respond
+    respond_with(@agendaitem, :location => agendaitem_events_path(@agendaitem))
   end
 
   def destroy
@@ -86,6 +85,11 @@ class AgendaitemsController < ApplicationController
   end
 
 private
+  def create_without_respond
+    @agendaitem = Agendaitem.new(params[:agendaitem])
+    @agendaitem.user = current_user
+    flash[:notice] = 'Agendaitem was successfully created.' if @agendaitem.save
+  end
 
   def date_param_is_set?
     return params[:date].present? && params[:date][:year].present? && params[:date][:month].present?
