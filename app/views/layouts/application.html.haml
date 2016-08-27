@@ -33,6 +33,6 @@
       -# Render banner
       -# - if ((cookies[:banner] != 'false') && (!user_signed_in?))
       -# = unless current_announcements.empty?
-      = render Announcement.current(cookies.signed[:hidden_announcement_ids])
+      = render(partial: 'announcements/announcement', collection: Announcement.current(cookies.signed[:hidden_announcement_ids]))
       = yield
     = render 'layouts/footer'
