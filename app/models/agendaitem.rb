@@ -32,36 +32,6 @@ class Agendaitem < ActiveRecord::Base
   accepts_nested_attributes_for :comments, :reject_if => :all_blank
   validates_associated :events
   
-  def allow_edit?(user)
-    if user
-      user.commissions.each do |commission|
-        if (commission.id == self.commission_id)
-          return true
-        end
-      end
-	  if self.user == user
-        return true
-      end
-    else
-      return false
-    end
-  end
-  
-  def allow_destroy?(user)
-    if user
-      user.commissions.each do |commission|
-        if (commission.id == self.commission_id)
-          return true
-        end
-      end
-      if self.user == user
-        return true
-      end
-    else
-      return false
-    end
-  end
-  
   def count_results()
     counter = 0
     self.events.each do |ev|
@@ -87,9 +57,9 @@ class Agendaitem < ActiveRecord::Base
     if self.url
       if self.url.length > 40
         return self.url[0..37] + "..."
-	  else
-	    return self.url
-	  end
+      else
+        return self.url
+      end
     else
       return ""
     end
@@ -98,14 +68,14 @@ class Agendaitem < ActiveRecord::Base
   def get_url()
     if self.url
       if self.url.index("/") == 0
-	  	return self.url
+        return self.url
       elsif self.url["http://"]
-		return self.url
-	  elsif self.url["https://"]
-		return self.url
-	  else
-	    return "http://" + self.url
-	  end
+        return self.url
+      elsif self.url["https://"]
+        return self.url
+      else
+        return "http://" + self.url
+      end
     else
       return "#"
     end

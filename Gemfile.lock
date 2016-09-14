@@ -52,7 +52,7 @@ GEM
     builder (3.0.4)
     calendar_helper (0.2.6)
       open4
-    cancan (1.6.10)
+    cancancan (1.15.0)
     capybara (2.7.1)
       addressable
       mime-types (>= 1.16)
@@ -385,7 +385,7 @@ DEPENDENCIES
   bootstrap-will_paginate (~> 0.0.6)
   bootstrap3-datetimepicker-rails (~> 4.7.14)
   calendar_helper (~> 0.2.6)
-  cancan (~> 1.6.10)
+  cancancan
   capybara (>= 2.2.0)
   chronic_duration (~> 0.9.6)
   client_side_validations (~> 3.2.0.beta.6)

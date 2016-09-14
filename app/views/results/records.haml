@@ -19,7 +19,7 @@
               action: 'index',
               date: {year: d.year, month: d.month}
       %li{:role => 'presentation', class:'active'}
-        = link_to 'Clubrecords', result_frontpage_records_path
+        %a= 'Clubrecords'
       = form_tag({controller: 'results', action: 'index'}, method: 'get', class: 'navbar-form navbar-left') do
         .form-group
           = text_field :date, :month, :class => 'form-control', :size=>'2',
