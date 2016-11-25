@@ -46,6 +46,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def kronometer_list
+    user_type_id = params[:user_type_id].to_f if params[:user_type_id].present?
+    @users = current_user.allowed_users(user_type_id)
+
+    respond_to do |format|
+      format.pdf do
+        render pdf: "kronometerlijst #{Time.now}"
+      end
+    end
+  end
+
   def edit
     @user = User.find_by_id(params[:id])
   end

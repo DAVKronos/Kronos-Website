@@ -24,6 +24,7 @@ module Abilities
         end
       end
 
+      can :kronometer_list, User if user.kronometer_admin?
       can :manage, Kronometer if user.kronometer_admin?
       can :manage, Result if user.uitslagen_admin?
     end
