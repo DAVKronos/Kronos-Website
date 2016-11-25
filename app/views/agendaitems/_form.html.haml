@@ -4,19 +4,19 @@
       %fieldset
         %legend Algemene informatie
         = f.label :name
-        = f.text_field :name, :placeholder => "Naam"
+        = f.text_field :name, {:class => "form-control", :placeholder => "Naam"}
         = f.label "Kronos Activiteit"
-        = f.check_box :intern, :placeholder => "Van Kronos?"
+        = f.check_box :intern, {:class => "form-control", :placeholder => "Van Kronos?"}
         = f.label :agendaitemtype
-        = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name, {}, {:class => "prototypetarget"})
+        = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name, {}, {:class => "prototypetarget form-control"})
         = f.label :date
-        = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
+        = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker form-control", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
         = f.label :description
-        = f.text_area(:description, :rows => "10", :class => "input-xlarge")
+        = f.text_area(:description, :rows => "10", :class => "form-control input-xlarge")
         = f.label :location
-        = f.text_field :location, :placeholder => "Locatie"
+        = f.text_field :location, {:class => "form-control", :placeholder => "Locatie"}
         = f.label :url
-        = f.text_field :url, :placeholder => "Url"
+        = f.text_field :url, {:placeholder => "Url", :class => "form-control"}
         %hr
     .col-lg-6
       .row
@@ -24,18 +24,18 @@
           %fieldset
             %legend Optionele argumenten
             = f.label :commission
-            = f.collection_select(:commission_id, @commissions, :id, :name, {:include_blank => 'Geen'})
+            = f.collection_select(:commission_id, @commissions, :id, :name, {:include_blank => 'Geen'}, {:class => "form-control"})
       .row
         .col-lg-12
           %fieldset
             %legend Inschrijven
             = f.label :subscribe
-            = f.check_box :subscribe, :placeholder => "Inschrijven?"
+            = f.check_box :subscribe, {:class => "form-control", :placeholder => "Inschrijven?"}
             = f.label :subscriptiondeadline
             -if @agendaitem.subscriptiondeadline
-              = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "datumtijdprikker", :value => @agendaitem.subscriptiondeadline.strftime("%Y-%m-%d %H:%M")}
+              = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "form-control datumtijdprikker", :value => @agendaitem.subscriptiondeadline.strftime("%Y-%m-%d %H:%M")}
             -else
-              = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "datumtijdprikker"}
+              = f.text_field :subscriptiondeadline, {:placeholder => "Deadline", :class => "form-control datumtijdprikker"}
             %hr
       .row
         .col-lg-12
@@ -50,17 +50,17 @@
                   .col-lg-12
                     = event_field.label "Tijd", :class => "span1"
                     - if event_field.object.date.respond_to?(:strftime)
-                      = event_field.text_field :date, {:class => "tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}
+                      = event_field.text_field :date, {:class => "form-control tijdprikker span1", :value => event_field.object.date.strftime('%H:%M')}
                     - else
-                      = event_field.text_field :date, {:class => "tijdprikker span1", :value => Time.now.strftime('%H:%M')}
+                      = event_field.text_field :date, {:class => "form-control tijdprikker span1", :value => Time.now.strftime('%H:%M')}
                 .row
                   .col-lg-12
                     = event_field.label "Type", :class => "span1"
-                    = event_field.select(:eventtype_id, "", {}, {class: "prototypeselect", data: @selects})
+                    = event_field.select(:eventtype_id, "", {}, {class: "form-control prototypeselect", data: @selects})
                 .row
                   .col-lg-12
                     = event_field.label "Afstand", :class => "span1"
-                    = event_field.text_field :distance, :class => "span1"
+                    = event_field.text_field :distance, :class => "span1 form-control"
                 .row
                   .col-lg-12
                     = event_field.link_to_remove "Verwijder dit programmaonderdeel"
