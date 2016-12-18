@@ -22,3 +22,12 @@ services:
       - db
     ports:
       - "1337:80"
+  db_backup:
+    image: protowouter/kronos-backup
+    depends_on:
+      - db
+  db_backupserver:
+    image: protowouter/kronos-backupserver
+    env_file: .backupserver.env
+    ports:
+      - "1022:22"
