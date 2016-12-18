@@ -26,7 +26,11 @@
         - if can? :create, Newsitem
           = link_to raw("<span class='glyphicon glyphicon-pencil'></span> Maak aan"), 
             new_newsitem_path,:class => 'btn btn-default' 
-  .col-md-4 
+  .col-md-4
+    .panel.panel-primary
+      .panel-heading= (t :main_sponsor).capitalize
+      .sponsor
+        = image_tag('sponsors/sponsor-rc-color.jpg')
     .panel.panel-primary
       .panel-heading= t(:agenda).capitalize
       .list-group
