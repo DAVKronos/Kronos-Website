@@ -21,8 +21,7 @@ WORKDIR $HOME
 
 # Install gems
 COPY Gemfile* $HOME/
-RUN bundle install --without=development test
-RUN gem install foreman
+RUN bundle install --without=development test && gem install foreman
 
 # Add the app code
 COPY . $HOME

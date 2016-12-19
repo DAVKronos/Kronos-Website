@@ -41,6 +41,7 @@ group :assets do
   gem 'sass-rails', '>= 3.2'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.7'
+  gem 'sqlite3', '~> 1.3.8'
 end
 
 group :production do
@@ -56,7 +57,6 @@ group :development do
   gem 'guard'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'guard-rspec'
-  gem 'sqlite3', '~> 1.3.8'
   gem 'rubocop' , require: false
 end
 
