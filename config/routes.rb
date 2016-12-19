@@ -17,6 +17,9 @@ KronosWebsite::Application.routes.draw do
 #    resources :results
 #  end
 
+  match '/contact',     to: 'contacts#new',             via: 'get'
+  resources :contacts, only: [:new, :create]
+
   resources :mailinglists
   resources :aliases
 
@@ -53,12 +56,6 @@ KronosWebsite::Application.routes.draw do
   resources :eventtypes do
     member do
       get 'copy'
-    end
-  end
-
-  resources :chatmessages do
-    collection do
-      get 'archief'
     end
   end
 

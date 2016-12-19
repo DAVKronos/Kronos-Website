@@ -1,0 +1,19 @@
+= form_for @contact, :html => {:class => 'form-horizontal col-xs-8' } do |f|
+
+  %h3.help-block Stuur ons een bericht
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, :class => 'form-control', :placeholder => 'Name', :required => true
+  .form-group
+    = f.label :email
+    = f.email_field :email, :class => 'form-control', :placeholder => 'Email', :required => true
+  .form-group
+    = f.label :message
+    = f.text_area :message, :class => 'form-control', :as => :text, :required => true
+  .hidden
+    = f.label :nickname, :hint => 'Leave this field blank!'
+  %br
+  = f.button :submit, :class=> 'btn btn-primary'
+
+

@@ -8,7 +8,7 @@ module Abilities
       can [:perdag, :month], Agendaitem
       can [:frontpage, :records], Result
       can :hide, Announcement
-      can :create, [Chatmessage, User]
+      can :create, [User, Contact]
       cannot :read, Photoalbum
       can :read, Photoalbum, :public => true
       cannot :read, [User, Photo, Announcement]

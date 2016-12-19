@@ -47,7 +47,7 @@
           - if can? :read, Photoalbum
             %li= link_to "Foto's", photoalbums_path
           -# %li= link_to 'Kronometer', kronometers_path
-          %li= link_to 'Chatbox', chatmessages_path
+          %li= link_to 'Contact', contact_path
           - getHighlights.each do |highlight|
             %li.highlighting= link_to highlight.pagetag, '/' << highlight.pagetag
         %ul.nav.navbar-nav.navbar-right

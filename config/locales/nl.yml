@@ -591,6 +591,11 @@ nl:
         background: 
         title: 
         url: 
+      contact:
+        name: 
+        email: 
+        message: 
+        nickname: 
     select:
       prompt: Selecteer
     submit:
@@ -848,3 +853,35 @@ nl:
       kronos-news: kronos nieuws
   users: kronauten
   main_sponsor: hoofdsponsor
+  mail_form:
+    attributes:
+      contact:
+        email: Email
+        message: Message
+        name: Name
+        nickname: Nickname
+  simple_form:
+    hints:
+      contact:
+        new:
+          email: 
+          message: 
+          name: 
+    labels:
+      contact:
+        new:
+          email: 
+          message: 
+          name: 
+          nickname: 
+    placeholders:
+      contact:
+        new:
+          email: 
+          message: 
+          name: 
+          nickname: 
+    required:
+      html: <abbr title="required">*</abbr>
+      mark: "*"
+      text: required

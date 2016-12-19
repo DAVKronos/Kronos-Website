@@ -590,6 +590,11 @@ en:
         background: 
         title: 
         url: 
+      contact:
+        name: 
+        email: 
+        message: 
+        nickname: 
     select:
       prompt: select
     submit:
@@ -847,3 +852,35 @@ en:
       kronos-news: 
   users: 
   main_sponsor: main sponsor
+  mail_form:
+    attributes:
+      contact:
+        email: 
+        message: 
+        name: 
+        nickname: 
+  simple_form:
+    hints:
+      contact:
+        new:
+          email: 
+          message: 
+          name: 
+    labels:
+      contact:
+        new:
+          email: 
+          message: 
+          name: 
+          nickname: 
+    placeholders:
+      contact:
+        new:
+          email: 
+          message: 
+          name: 
+          nickname: 
+    required:
+      html: 
+      mark: 
+      text: 
