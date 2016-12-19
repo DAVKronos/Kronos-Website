@@ -8,14 +8,10 @@ module Abilities
       can [:archief, :wedstrijden, :new_result, :create_result], Agendaitem
       can [:read, :create, :update], [Photoalbum, Subscription]
       can :update, user.agendaitems
-      can :destroy, [user.subscriptions, user.chatmessages]
+      can :destroy, [user.subscriptions]
       can [:update, :editpassword], user
 
       cannot :create, User
-
-      user.chatmessages.each do |chatmessage|
-        can :update, chatmessage if chatmessage.created_at > 5.minutes.ago
-      end
 
       if user.active?
         can :manage, user.agendaitems
