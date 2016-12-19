@@ -591,10 +591,10 @@ en:
         title: 
         url: 
       contact:
-        name: 
-        email: 
-        message: 
-        nickname: 
+        name: Name
+        email: Email
+        message: Message
+        nickname: Nickname
     select:
       prompt: select
     submit:
@@ -859,6 +859,7 @@ en:
         message: 
         name: 
         nickname: 
+        naam: 
   simple_form:
     hints:
       contact:

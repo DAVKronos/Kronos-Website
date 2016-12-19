@@ -592,10 +592,10 @@ nl:
         title: 
         url: 
       contact:
-        name: 
-        email: 
-        message: 
-        nickname: 
+        name: Naam
+        email: E-mail
+        message: Bericht
+        nickname: Nickname
     select:
       prompt: Selecteer
     submit:
@@ -860,6 +860,7 @@ nl:
         message: Message
         name: Name
         nickname: Nickname
+        naam: Naam
   simple_form:
     hints:
       contact:
