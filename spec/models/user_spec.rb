@@ -150,15 +150,6 @@ describe User do
     end
   end
 
-  it "should reject invalid names" do
-    names = ["Henk de Vries-timmermans", "Willem-Frits van Oranje-nassau",
-    "indiana jones"]
-    names.each do |name|
-      invalid_name_user = User.new(attr.merge(:name => name), :as => :bestuur)
-      expect(invalid_name_user).not_to be_valid
-    end
-  end
-
   it "should accept valid email addresses" do
     addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
     addresses.each do |address|
