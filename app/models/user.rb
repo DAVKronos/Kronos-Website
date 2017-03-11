@@ -66,9 +66,7 @@ class User < ActiveRecord::Base
                     :path => ":rails_root/public/system/:attachment/:hash.:extension",
                     :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
 
-  name_regex = /\A[A-Z]\w+(-[A-Z]\w+)*\s(\w+\s)*[A-Z]\w+(-[A-Z]\w+)*\z/
-
-  validates :name, :presence => true, :format => {:with => name_regex}
+  validates :name, :presence => true
   validates :initials, :presence => true
   validates :birthdate, :presence => true
   validates :postalcode, :presence => true

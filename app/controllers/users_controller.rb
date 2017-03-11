@@ -69,6 +69,7 @@ class UsersController < ApplicationController
       sign_in user, bypass: true unless current_user.admin?
       redirect_to user
     else
+	  flash[:danger] = 'Update failed.'
       render 'edit'
     end
   end
