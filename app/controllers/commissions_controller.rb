@@ -20,7 +20,7 @@ class CommissionsController < ApplicationController
   end
   
   def index
-    @commissions = Commission.all
+    @commissions = Commission.order("name").all
   end
   
   def edit
