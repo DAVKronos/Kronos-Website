@@ -60,7 +60,6 @@ footer.app{
 
 footer.app .container{
   background-color:$brand-primary;
-  height:120px;
   color: #fff;
 }
 
@@ -163,6 +162,12 @@ display: inline;
 .list-group-heading .accordion-toggle.collapsed .icon:after {
   /* symbol for "collapsed" panels */
   content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+}
+
+// Sponsor images
+
+.sponsor-white {
+  background-color: white;
 }
 
 // ul.user {
@@ -299,17 +304,6 @@ display: inline;
 // /* FORMS */
 // label {
 //  display:block;
-// }
-
-// /**** FOOTER ****/
-// #footer {
-//  padding:15px 0;
-//  background:#39423F;
-//  color:#FFF;
-// }
-
-// #footer .adresgegevens {
-//  text-align:right;
 // }
 
 // /**** TYPOGRAFIE ****/
