@@ -23,6 +23,9 @@ services:
       - db
     env_file: .env
     command: bundle exec rake jobs:work
+    volumes:
+      # Path on the host, relative to the Compose file
+      - ./:/home/rails/webapp/
   owncloud:
     image: owncloud:9-apache
     depends_on:
