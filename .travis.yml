@@ -4,7 +4,7 @@ bundler_args: "--without development production assets"
 rvm:
 - 2.3.1
 script:
-- bundle exec rspec spec/
+- bundle exec rspec spec/ && bundle exec codeclimate-test-reporter
 before_script:
 - cp config/database.yml.example config/database.yml
 - psql -c 'create database kronos_test;' -U postgres
