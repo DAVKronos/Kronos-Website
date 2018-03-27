@@ -3,15 +3,22 @@ services:
   db:
     image: postgres:9.1.22
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile-development
     ports:
       - "3000:3000"
     depends_on:
       - db
     env_file: .env
     command: bundle exec passenger start
+    volumes:
+      # Path on the host, relative to the Compose file
+      - ./:/home/rails/webapp/
   worker:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile-development
     depends_on:
       - db
     env_file: .env
