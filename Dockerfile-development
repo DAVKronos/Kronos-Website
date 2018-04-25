@@ -19,13 +19,14 @@ RUN useradd kronos
 
 WORKDIR $HOME
 
+COPY Gemfile* $HOME/
+
 # Make the app user owner of the app folder
 RUN chown -R kronos $HOME
 
 USER kronos
 
 # Install gems
-COPY Gemfile* $HOME/
 RUN bundle install && gem install foreman
 
 USER root
