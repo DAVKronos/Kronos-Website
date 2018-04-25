@@ -56,7 +56,7 @@
         %dd= l @user.created_at.to_date, :format => :default
 
       %dt= t(:commissions).capitalize
-      %dd= @user.commissions.collect{|c| c.name}.join(', ')
+      %dd= @commissions.collect{|appelflap| appelflap.name}.join(', ')
   .col-lg-6
     %section.polaroid
       %figure

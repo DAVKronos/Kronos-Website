@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+	@commissions = @user.commissions.order("name").all
   end
 
   def index
