@@ -17,6 +17,16 @@
             %li
               = link_to usertype.name, users_path(user_type_id: usertype.id)
 .row
+  .col-lg-12
+    %ul.pagination
+      = alphabetical_paginate @alpha_params
+      - if params[:user_type_id].present?
+        :javascript
+          $("ul.pagination").find("a").each(function() {
+             var _href = $(this).attr("href"); 
+           $(this).attr("href", _href + '&user_type_id=#{params[:user_type_id].to_i}');
+        });
+.row
   #pagination_table
     .col-sm-12
       %br
@@ -26,14 +36,5 @@
       - else
         .row
           = render @users
-.row
-  .col-lg-12
-    = alphabetical_paginate @alpha_params
-    - if params[:user_type_id].present?
-      :javascript
-        $("ul.pagination").find("a").each(function() {
-           var _href = $(this).attr("href"); 
-           $(this).attr("href", _href + '&user_type_id=#{params[:user_type_id].to_i}');
-        });
   - if can? :create, User
     = link_to 'Lid Toevoegen', new_user_path
