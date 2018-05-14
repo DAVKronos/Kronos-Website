@@ -24,6 +24,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datetimepicker";
+@import "variables";
 
 
 h1 {
@@ -168,6 +169,17 @@ display: inline;
 
 .sponsor-white {
   background-color: white;
+}
+
+.sponsor-text {
+  color : $dark-green;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+
 }
 
 // ul.user {
