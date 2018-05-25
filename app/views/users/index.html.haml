@@ -16,15 +16,21 @@
           - else
             %li
               = link_to usertype.name, users_path(user_type_id: usertype.id)
-.row
-  .col-lg-12
-    %ul.pagination
-      = alphabetical_paginate @alpha_params
-      - if params[:user_type_id].present?
-        :javascript
-          $("ul.pagination").find("a").each(function() {
-             var _href = $(this).attr("href"); 
-           $(this).attr("href", _href + '&user_type_id=#{params[:user_type_id].to_i}');
+.row	
+  .col-lg-12	
+    = alphabetical_paginate @alpha_params
+    = form_tag users_path, method: :get, class: 'form-inline' do
+      .form-group
+        = search_field_tag :query, params[:query],
+          placeholder: 'Search by name',
+          size: 40,
+          class: 'form-control'
+        = submit_tag 'Search', name: nil, class: 'btn btn-default'
+    - if params[:user_type_id].present?	
+      :javascript	
+        $("ul.pagination").find("a").each(function() {	
+           var _href = $(this).attr("href"); 	
+           $(this).attr("href", _href + '&user_type_id=#{params[:user_type_id].to_i}');	
         });
 .row
   #pagination_table
