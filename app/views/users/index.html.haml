@@ -21,11 +21,6 @@
     = alphabetical_paginate @alpha_params
     = form_tag users_path, method: :get, class: 'form-inline' do
       .form-group
-        = search_field_tag :query, params[:query],
-          placeholder: 'Search by name',
-          size: 40,
-          class: 'form-control'
-        = submit_tag 'Search', name: nil, class: 'btn btn-default'
     - if params[:user_type_id].present?	
       :javascript	
         $("ul.pagination").find("a").each(function() {	
