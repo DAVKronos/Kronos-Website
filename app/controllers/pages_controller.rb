@@ -17,8 +17,8 @@ class PagesController < ApplicationController
 
   def titleshow
     @page = Page.find_by_pagetag(params[:pt])
-    render 'show'
-  end
+    if @page then render 'show' else page_not_found end
+    end
 
   def index
     @pages = Page.all
@@ -91,5 +91,10 @@ class PagesController < ApplicationController
     cookies['banner'] = 'false'  
     render :text => 'success'
   end
+
+  private
+    def page_not_found
+      raise ActionController::RoutingError.new('Page Not Found')
+    end
 
 end
