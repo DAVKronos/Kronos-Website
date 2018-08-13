@@ -3,11 +3,7 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums
   # GET /photoalbums.json
   def index
-    if current_user.nil?
-      @photoalbums = Photoalbum.includes('agendaitem').where(public: true).order("case when agendaitems is null then photoalbums.created_at else agendaitems.date end DESC").paginate(:page => params[:page], :per_page => 12)
-    else
-      @photoalbums = Photoalbum.includes('agendaitem').order("case when agendaitems is null then photoalbums.created_at else agendaitems.date end DESC").paginate(:page => params[:page], :per_page => 12)
-    end
+    @photoalbums = Photoalbum.includes('agendaitem').where(public: current_user.nil?).order(created_at: :desc).paginate(:page => params[:page], :per_page => 12)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @photoalbums }

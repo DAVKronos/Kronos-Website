@@ -38,7 +38,7 @@
 #  aanvang                :integer
 #
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe User do
 
@@ -208,11 +208,11 @@ describe User do
     end
 
     it "should return the associated commissions" do
-      expect(@user2.commissions).to eq([@commis])
+      expect(@user2.commissions.to_a).to eq([@commis])
     end
 
     it "should work the other way around too" do
-      expect(@commis.users).to eq([@user2])
+      expect(@commis.users.to_a).to eq([@user2])
     end
 
   end

@@ -1,23 +1,5 @@
-KronosWebsite::Application.routes.draw do
-  #match '/uitslagen/', to: 'results#index' 
-  #match '/uitslagen/records', :to => 'results#records', :as => 'result_frontpage_records'
-  #match '/rebuildmailinglists', :to => 'users#update_mailinglists'
-  #match '/eventtypes/:id/copy', :to => 'eventtypes#copy'
-  #match '/agendaitems/archief', :to => 'agendaitems#archief'
-  #match '/agendaitems/dag/:day', :to => 'agendaitems#perdag', :as => :perdag
-  #match '/wedstrijden', :to => 'agendaitems#wedstrijden'
-  #match '/agendaitems/new_result', :to => 'agendaitems#new_result', :as => 'agendaitem_new_result'
-  #match '/agendaitems/create_result', :to => 'agendaitems#create_result', via: [:post]
-  #match '/agenda', :to => 'agendaitems#index'
-  #match '/chatmessages/archief', :to => 'chatmessages#archief'
-  #match '/newsitems/agree', :to => 'newsitems#agree'
-  #match '/newsitems/agreed/:id', :to => 'newsitems#agreed'
-#    resources :results
-#  resources :events, only: [:index, :show, :destroy] do
-#    resources :results
-#  end
-
-  match '/contact',     to: 'contacts#new',             via: 'get'
+Rails.application.routes.draw do
+  get '/contact',     to: 'contacts#new'
   resources :contacts, only: [:new, :create]
 
   resources :mailinglists
@@ -86,14 +68,14 @@ KronosWebsite::Application.routes.draw do
   end
   
   resources :announcements
-  match 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
+  get 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
 
   resources :pages
-  match '/home', :to => 'pages#home'
-  match '/nieuw', :to => 'pages#nieuw'
-  match '/test', :to => 'pages#test'
-  match '/admin', :to => 'pages#admin'
-  match '/:pt', :to => 'pages#titleshow'
+  get '/home', :to => 'pages#home'
+  get '/nieuw', :to => 'pages#nieuw'
+  get '/test', :to => 'pages#test'
+  get '/admin', :to => 'pages#admin'
+  get '/:pt', :to => 'pages#titleshow'
   
   root :to => 'pages#home'
 end

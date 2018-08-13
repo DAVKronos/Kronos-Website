@@ -6,12 +6,9 @@ require 'rails/all'
 
 GC::Profiler.enable
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require *Rails.groups(:assets => %w(development test))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-end
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
 
 module KronosWebsite
   class Application < Rails::Application
@@ -39,7 +36,8 @@ module KronosWebsite
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :nl
     
-
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -56,7 +54,7 @@ module KronosWebsite
     # String escaping simple_format for enters in chatmessages
     #config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
     
-    config.cache_store = :mem_cache_store
+    config.cache_store = :memory_store, { size: 64.megabytes }
 
   end
 end

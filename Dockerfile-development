@@ -22,7 +22,9 @@ RUN chown -R kronos $HOME
 
 USER kronos
 
-# Install gems
-RUN bundle install
+# Gems will be installed later
+ENV BUNDLE_PATH /bundler-cache
+
+RUN gem install bundler
 
 USER root

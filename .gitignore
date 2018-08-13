@@ -26,5 +26,8 @@ unicorn.conf.rb
 *~
 .localeapp
 .env
+*.pid
+.bash-history
+*.pid.lock
 
 google-api-credentials.json

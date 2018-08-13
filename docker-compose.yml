@@ -11,10 +11,12 @@ services:
     depends_on:
       - db
     env_file: .env
-    command: bundle exec passenger start
+    command: ./script/start_app
     volumes:
       # Path on the host, relative to the Compose file
       - ./:/home/rails/webapp/
+    volumes_from:
+      - bundler-box
   worker:
     build:
       context: .
@@ -22,10 +24,12 @@ services:
     depends_on:
       - db
     env_file: .env
-    command: bundle exec rake jobs:work
+    command: ./script/start_worker
     volumes:
       # Path on the host, relative to the Compose file
       - ./:/home/rails/webapp/
+    volumes_from:
+      - bundler-box
   owncloud:
     image: owncloud:9-apache
     depends_on:
@@ -41,3 +45,7 @@ services:
     env_file: .backupserver.env
     ports:
       - "1022:22"
+  bundler-box:
+    image: busybox
+    volumes:
+    - /bundler-cache
