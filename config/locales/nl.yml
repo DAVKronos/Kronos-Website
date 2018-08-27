@@ -232,7 +232,7 @@ nl:
       Afstand: Afstand
       Tijd: 
       Type: 
-    location: 
+    location: Locatie
     name: 
     subscribe: 
     subscriptiondeadline: 
@@ -909,3 +909,16 @@ nl:
   manage: beheer
   signout: Log uit
   allmem: alle leden
+  nouser: Geen gebruikers met deze letter of in deze categorie.
+  addmem: Lid toevoegen
+  editdet: Pas je gegevens aan
+  changepas: Verander je wachtwoord
+  newag: Nieuw agendapunt
+  alginf: Algemene informatie
+  location: Locatie
+  optarg: Optional argumenten
+  none: Geen
+  subscribe: Inschrijven
+  programme: programma
+  addprog: Voeg een programmaonderdeel toe
+  save: Opslaan

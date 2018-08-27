@@ -231,7 +231,7 @@ en:
       Afstand: distance
       Tijd: 
       Type: 
-    location: 
+    location: location
     name: 
     subscribe: 
     subscriptiondeadline: 
@@ -830,7 +830,7 @@ en:
   remove: 
   destroy: 
   show: 
-  back: 
+  back: back
   announcements:
     announcement:
       hide: 
@@ -907,3 +907,16 @@ en:
   manage: manage
   signout: sign out
   allmem: all members
+  nouser: No users match your search query.
+  addmem: Add member
+  editdet: Change your details
+  changepass: Change your password
+  newag: New agenda item
+  alginf: General information
+  location: Location
+  optarg: Optional arguments
+  none: none
+  subscribe: subscribe
+  programme: programme
+  addprog: Add a new part to the program
+  save: Save

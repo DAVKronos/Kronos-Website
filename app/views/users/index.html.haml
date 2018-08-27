@@ -33,9 +33,9 @@
       %br
       - if @users.blank?
         %p.text-info.text-center
-          Geen gebruikers met deze letter of in deze categorie.
+          =t(:nouser).capitalize
       - else
         .row
           = render @users
   - if can? :create, User
-    = link_to 'Lid Toevoegen', new_user_path
+    = link_to t(:addmem).capitalize, new_user_path
