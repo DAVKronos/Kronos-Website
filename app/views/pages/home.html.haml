@@ -19,12 +19,12 @@
                 newsitem, class: "img-responsive img-thumbnail"
             .col-md-9
               = markdown newsitem.news.split( /\r?\n/ ).first
-              = link_to 'lees verder', newsitem
+              = link_to t(:leesverder).capitalize, newsitem
     .span{:class=>'text-center'}
       .btn-group
-        = link_to "Meer nieuws", newsitems_path, :class => 'btn btn-default'
+        = link_to t(:meernieuws).capitalize, newsitems_path, :class => 'btn btn-default'
         - if can? :create, Newsitem
-          = link_to raw("<span class='glyphicon glyphicon-pencil'></span> Maak aan"), 
+          = link_to raw("<span class='glyphicon glyphicon-pencil'></span> "+t(:maakaan).capitalize), 
             new_newsitem_path,:class => 'btn btn-default' 
   .col-md-4
     .panel.panel-primary

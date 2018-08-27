@@ -1,5 +1,5 @@
 en:
-  Agenda: 
+  agenda: agenda
   May: 
   aanvang: start
   activerecord:
@@ -221,7 +221,6 @@ en:
   add: Add
   add_mailinglist: Add mailinglist
   address: address
-  agenda: 
   agendaitem:
     Kronos Activiteit: 
     agendaitemtype: 
@@ -660,7 +659,7 @@ en:
   mailinglist_update_success: 
   mailinglists: 
   name: name
-  new: 
+  new: new
   new_commission: new commision
   new_mailinglist: New mailinglist
   newsitem:
@@ -822,7 +821,7 @@ en:
     previous_label: "← previous"
   xtracardnumber: xtracard number
   aliases: 
-  commissions: 
+  commissions: commissions
   delete: 
   photoalbums:
     index:
@@ -838,19 +837,19 @@ en:
       more: 
   pages:
     admin:
-      accept_news: 
-      aliases: 
-      announcements: 
-      commissions: 
-      mailinglists: 
-      results: 
-      pages: 
-  news: 
-  birthdays: 
+      accept_news: accept news
+      aliases: aliases
+      announcements: banners
+      commissions: commissions
+      mailinglists: mailing lists
+      results: results
+      pages: information pages
+  news: news
+  birthdays: birthdays
   newsitems:
     index:
       kronos-news: 
-  users: 
+  users: Kronauts
   main_sponsor: main sponsor
   mail_form:
     attributes:
@@ -885,3 +884,26 @@ en:
       html: 
       mark: 
       text: 
+  association: association
+  training: training
+  matches: matches
+  resultaten: results
+  foto: photos
+  meernieuws: more news
+  maakaan: make new
+  leesverder: read more
+  kronoscommissions: committees of Kronos
+  comover: below you can find a overview of the current committees of kronos
+  naam: name
+  rol: role
+  nieuw: new
+  zoek: search
+  sendmessage: Send us a message
+  send: send
+  emailadres: e-mail address
+  passwor: password
+  wachtverg: Forgot password?
+  members: members
+  manage: manage
+  signout: sign out
+  allmem: all members

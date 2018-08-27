@@ -1,11 +1,15 @@
-%h1 Commissies der DAV Kronos
-%p.lead Onderstaand treft u een overzicht van de huidige commissies der DAV Kronos.
+%h1 
+  =t(:kronoscommissions).capitalize
+%p.lead
+  =t(:comover).capitalize
 %table.table.table-striped
   %thead
     %tr 
-      %th Naam
+      %th 
+        =t(:naam).capitalize
       - if can? :update, Commission
-        %th Rol
+        %th
+          =t(:rol).capitalize
   %tbody
     - @commissions.each do |commission|
       %tr
@@ -21,4 +25,5 @@
             = link_to "delete", commission, :method => :delete, :confirm => "Weet je zeker dat je #{commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{commission.name}"
 - if can? :create, Commission
   = link_to new_commission_path, :class => 'btn btn-small' do
-    <i class="icon-file"></i> nieuw
+    <i class="icon-file"></i>
+    =t(:nieuw).capitalize

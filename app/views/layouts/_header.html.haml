@@ -19,34 +19,33 @@
           %li= link_to 'Home', home_path
           %li.dropdown
             %a{ :href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role'=>'button', 'aria-expanded'=>'false' }
-              Vereniging
+              =t(:association).capitalize
               %span.caret
             %ul.dropdown-menu{:role=>'menu'}
               - getPages('Vereniging').each do |page|
                 %li= link_to page.pagetag, '/' << page.pagetag
-              %li= link_to 'Commissies', commissions_path
+              %li= link_to t(:commissions).capitalize, commissions_path
               %li= link_to 'Kronometers', kronometers_path
           %li.dropdown
             %a{:href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false'}
-              Trainingen
+              =t(:training).capitalize
               %span.caret
             %ul.dropdown-menu{:role=>'menu'}
               - getPages('Trainingen').each do |page|
                 %li= link_to page.pagetag, '/' << page.pagetag
           %li.dropdown
             %a{:href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false'}
-              Wedstrijden
+              =t(:matches).capitalize
               %span.caret
             %ul.dropdown-menu{:role=>'menu'}
               %li= link_to 'Campusloop', 'http://www.campusloop.nl'
               %li= link_to 'Johan Knaap Games', 'http://jkg.kronos.nl'
-              %li= link_to 'NSK Ekiden', 'https://nsk.kronos.nl'
               - getPages('Wedstrijden').each do |page|
                 %li= link_to page.pagetag, '/' << page.pagetag
           %li= link_to 'Agenda', agendaitems_path
-          %li= link_to 'Uitslagen', results_path
+          %li= link_to t(:resultaten).capitalize, results_path
           - if can? :read, Photoalbum
-            %li= link_to "Foto's", photoalbums_path
+            %li= link_to t(:foto).capitalize, photoalbums_path
           -# %li= link_to 'Kronometer', kronometers_path
           %li= link_to 'Contact', contact_path
           - getHighlights.each do |highlight|
@@ -62,9 +61,9 @@
                   .login-form{:style=>'padding:7px'}
                     = form_tag user_session_path do
                       .form-group
-                        = text_field_tag 'user[email]', '', 'placeholder' => 'emailadres', class: 'form-control'
+                        = text_field_tag 'user[email]', '', 'placeholder' => t(:emailadres).capitalize, class: 'form-control'
                       .form-group
-                        = password_field_tag 'user[password]', '', 'placeholder' => 'wachtwoord',  class: 'form-control'
+                        = password_field_tag 'user[password]', '', 'placeholder' => t(:passwor).capitalize,  class: 'form-control'
                       .checkbox
                         = label_tag 'user[remember_me]', :class => 'checkbox' do
                           = check_box_tag 'user[remember_me]'
@@ -72,9 +71,9 @@
                       .form-group
                         %button.btn.btn-primary=t :sign_in
                       .form-group
-                        = link_to 'Wachtwoord vergeten?', new_password_path('user')
+                        = link_to t(:wachtverg).capitalize, new_password_path('user')
           - else
-            %li= link_to 'Leden', users_path
+            %li= link_to t(:members).capitalize, users_path
             %li.dropdown
               %a{ :href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown'}
                 = icon('user') << ' ' << current_user.name.split[0] 
@@ -86,6 +85,6 @@
                     %h4= current_user.name.split[0]
                 %li= link_to icon('user') << " " << current_user.name.split[0] << '\'s stek',current_user
                 %li= link_to icon('cloud') << " Kronos cloud", "https://cloud.kronos.nl"
-                %li= link_to icon('cog') << ' Beheer',admin_path if current_user && current_user.admin?
-                %li= link_to icon('log-out') << ' Log uit', destroy_user_session_path, {:method => :delete }
+                %li= link_to icon('cog') << ' '+t(:manage).capitalize, admin_path if current_user && current_user.admin?
+                %li= link_to icon('log-out') << ' '+t(:signout).capitalize, destroy_user_session_path, {:method => :delete }
 

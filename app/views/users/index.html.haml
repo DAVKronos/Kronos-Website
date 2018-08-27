@@ -6,9 +6,9 @@
     .col-lg-12
       %ul{class: 'nav nav-pills'}
         - if params[:user_type_id].blank?
-          %li{class: 'active'}= link_to 'Alle leden', users_path
+          %li{class: 'active'}= link_to t(:allmem).capitalize, users_path
         - else
-          %li= link_to 'Alle leden', users_path
+          %li= link_to t(:allmem).capitalize, users_path
         - @usertypes.each do |usertype|
           - if usertype.id == params[:user_type_id].to_f
             %li{class: 'active'}

@@ -25,7 +25,7 @@
         .form-group
           = text_field :date, :month, :class => 'form-control maandprikker', :size=>'2', value: @date.month
           = text_field :date, :year, :class => 'form-control jaarprikker', :size=>'4', value: @date.year
-          = button_tag 'zoek', class: 'btn btn-default'
+          = button_tag t(:zoek).capitalize, class: 'btn btn-default'
 .row
   &nbsp;
 .row

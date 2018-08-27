@@ -886,3 +886,26 @@ nl:
       html: <abbr title="required">*</abbr>
       mark: "*"
       text: required
+  association: vereniging
+  training: trainingen
+  matches: wedstrijden
+  resultaten: uitslagen
+  foto: foto's
+  meernieuws: meer nieuws
+  maakaan: maak aan
+  leesverder: lees verder
+  kronoscommissions: comissies van kronos
+  comover: Onderstaand treft u een overzicht aan van de huidige commissies van kronos.
+  naam: naam
+  rol: rol
+  nieuw: nieuw
+  zoek: zoek
+  sendmessage: stuur ons een bericht
+  send: verstuur
+  emailadres: e-mailadres
+  passwor: wachtwoord
+  wachtverg: Wachtwoord vergeten?
+  members: leden
+  manage: beheer
+  signout: Log uit
+  allmem: alle leden
