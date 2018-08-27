@@ -12,12 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :titel %>
+    <%= f.label t(:titnl).capitalize %>
     <%= f.text_field :title %>
+	<%= f.label t(:titen).capitalize %>
+    <%= f.text_field :title_en %>	
   </div>
   <div class="field">
-    <%= f.label :nieuwsbericht %>
+    <%= f.label t(:berichtnl).capitalize %>
     <%= f.text_area :news, :class => "markItUp" %>
+    <%= f.label t(:berichten).capitalize %>
+    <%= f.text_area :news_en, :class => "markItUp" %>
   </div>
   <div class="field">
 	  <%= f.label :profielfoto %>

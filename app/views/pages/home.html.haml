@@ -10,16 +10,24 @@
           .row
             .col-md-offset-3.col-md-9
               %header
-                %h2= link_to newsitem.title, newsitem, 
-                    {name: newsitem.title}
+                -if I18n.locale == :nl
+                  %h2= link_to newsitem.title, newsitem, 
+                      {name: newsitem.title}
+                -if I18n.locale == :en
+                  %h2= link_to newsitem.title_en, newsitem, 
+                      {name: newsitem.title_en}
                 %p= time_tag newsitem.created_at 
           .row
             .col-md-3
               = link_to (image_tag newsitem.articlephoto.url(:normal)), 
                 newsitem, class: "img-responsive img-thumbnail"
             .col-md-9
-              = markdown newsitem.news.split( /\r?\n/ ).first
-              = link_to t(:leesverder).capitalize, newsitem
+              -if I18n.locale == :nl
+                = markdown newsitem.news.split( /\r?\n/ ).first
+                = link_to t(:leesverder).capitalize, newsitem
+              -if I18n.locale == :en
+                = markdown newsitem.news_en.split( /\r?\n/ ).first
+                = link_to t(:leesverder).capitalize, newsitem
     .span{:class=>'text-center'}
       .btn-group
         = link_to t(:meernieuws).capitalize, newsitems_path, :class => 'btn btn-default'
@@ -42,7 +50,10 @@
                   = agendaitem.date.strftime('%d')
                   %small= agendaitem.date.strftime('%b')
               .col-xs-8
-                %h5= agendaitem.name
+                -if I18n.locale == :nl
+                  %h5= agendaitem.name
+                -if I18n.locale == :en
+                  %h5= agendaitem.name_en
               .col-xs-2
                 %h5
                   %small

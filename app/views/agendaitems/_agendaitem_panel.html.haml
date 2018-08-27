@@ -10,7 +10,10 @@
           %small= l agendaitem.date, format: '%H:%M'
       .col-xs-9
         %h4
-          = agendaitem.name
+          -if I18n.locale == :nl
+            = agendaitem.name
+          -if I18n.locale == :en
+            = agendaitem.name_en
           = content_tag :small, (agendaitem.agendaitemtype.name )
       .col-xs-1.text-right
         - if agendaitem.subscriptions.count > 0

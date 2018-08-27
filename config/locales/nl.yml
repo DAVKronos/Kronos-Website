@@ -15,6 +15,9 @@ nl:
         subscribe: Abonneer
         subscriptiondeadline: inschrijfdeadline
         url: Url
+        English name: 
+        Dutch description: 
+        English description: 
       agendaitemtype_eventtype:
         eventtype_id: Evenementtype
       apps_exception:
@@ -69,6 +72,12 @@ nl:
         nieuwsbericht: Nieuwsbericht
         profielfoto: Profielfoto
         titel: Titel
+        Nederlands bericht: Nederlands bericht
+        Engels bericht: Engels bericht
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       page:
         information: Informatie
         title: Titel
@@ -490,6 +499,9 @@ nl:
         subscribe: 
         subscriptiondeadline: 
         url: 
+        English name: 
+        Dutch description: 
+        English description: 
       agendaitem[events_attributes][new_events]:
         Afstand: 
         Tijd: 
@@ -542,6 +554,12 @@ nl:
         nieuwsbericht: 
         profielfoto: 
         titel: 
+        Nederlands bericht: 
+        Engels bericht: 
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       page:
         information: 
         title: 
@@ -838,7 +856,7 @@ nl:
   photoalbums:
     index:
       photoalbums: fotoalbum
-  remove: verwijder
+  remove: Verwijderen
   destroy: verwijder
   show: laat zien
   back: terug
@@ -922,3 +940,14 @@ nl:
   programme: programma
   addprog: Voeg een programmaonderdeel toe
   save: Opslaan
+  titnl: Nederlandse titel
+  titen: Engelse titel
+  berichtnl: Nederlands bericht
+  berichten: Engels bericht
+  namenl: Nederlandse naam
+  nameen: Engelse naam
+  descriptionnl: Nederlandse beschrijving
+  descriptionen: Engelse beschrijving
+  edres: Resultaten aanpassen
+  noprog: Geen programma
+  edsub: Inschrijvingen aanpassen

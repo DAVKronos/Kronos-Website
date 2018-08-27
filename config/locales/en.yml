@@ -69,6 +69,12 @@ en:
         nieuwsbericht: Newsmessage
         profielfoto: Profile picture
         titel: Title
+        Nederlands bericht: 
+        Engels bericht: 
+        Dutch text: Dutch text
+        Dutch title: Dutch title
+        English text: English text
+        English title: English title
       page:
         information: Information
         title: Title
@@ -300,6 +306,7 @@ en:
       only_day: "%e"
       short: "%e %b"
     month_names:
+    - 
     - January
     - February
     - March
@@ -540,6 +547,12 @@ en:
         nieuwsbericht: 
         profielfoto: 
         titel: 
+        Nederlands bericht: 
+        Engels bericht: 
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       page:
         information: 
         title: 
@@ -759,6 +772,7 @@ en:
       long: "%d %B %Y %H:%M"
       medium: "%e %B %H:%M"
       only_date: "%e %B"
+      date: "%d-%B-%Y"
       only_second: "%S"
       short: "%d %b %H:%M"
       time: "%H:%M"
@@ -827,7 +841,7 @@ en:
     index:
       photoalbum: photoalbum
       photoalbums: photoalbums
-  remove: 
+  remove: remove
   destroy: 
   show: 
   back: back
@@ -920,3 +934,14 @@ en:
   programme: programme
   addprog: Add a new part to the program
   save: Save
+  titnl: Dutch title
+  titen: English title
+  berichtnl: Dutch text
+  berichten: English text
+  namenl: Dutch name
+  nameen: English name
+  descriptionnl: Dutch description
+  descriptionen: English description
+  edres: Edit results
+  noprog: No program
+  edsub: Edit subscriptions

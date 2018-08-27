@@ -2,14 +2,20 @@
   %header
     .row
       .col-md-8.col-md-offset-2
-        %h1= @newsitem.title
+        -if I18n.locale == :nl
+          %h1= @newsitem.title
+        -if I18n.locale == :en
+          %h1= @newsitem.title_en
         %p= time_tag @newsitem.created_at 
   .row
     .col-md-8.col-md-offset-2
       = image_tag @newsitem.articlephoto.url(:normal), 
           { class:'img-responsive img-thumbnail',
             style: 'float:right,margin:10px', align:'right'}
-      = markdown @newsitem.news
+      -if I18n.locale == :nl
+        = markdown @newsitem.news
+      -if I18n.locale == :en
+        = markdown @newsitem.news_en
 
 
       - @newsitem.comments.each do |comment|

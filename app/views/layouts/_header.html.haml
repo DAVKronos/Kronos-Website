@@ -52,6 +52,13 @@
             %li.highlighting= link_to highlight.pagetag, '/' << highlight.pagetag
         %ul.nav.navbar-nav.navbar-right
           - if !current_user
+            %li
+              -if I18n.locale == :nl
+                =link_to url_for(locale: :en) do
+                  =image_tag 'Site_EN.png'
+              -else
+                = link_to url_for(locale: :nl) do
+                  =image_tag 'Site_NL.png'
             %li.dropdown.login-menu
               %a{ :href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown'}
                 Log in
@@ -73,6 +80,13 @@
                       .form-group
                         = link_to t(:wachtverg).capitalize, new_password_path('user')
           - else
+            %li
+              -if I18n.locale == :nl
+                =link_to url_for(locale: :en) do
+                  =image_tag 'Site_EN.png'
+              -else
+                = link_to url_for(locale: :nl) do
+                  =image_tag 'Site_NL.png'
             %li= link_to t(:members).capitalize, users_path
             %li.dropdown
               %a{ :href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown'}
