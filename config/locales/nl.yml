@@ -83,6 +83,18 @@ nl:
         title: Titel
         highlight: Highlight
         menu: Menu
+        title_en: Title en
+        title_nl: Title nl
+        berichten: Berichten
+        berichtnl: Berichtnl
+        Engels bericht: Engels bericht
+        Nederlands bericht: Nederlands bericht
+        Engelse titel: Engelse titel
+        Nederlandse titel: Nederlandse titel
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       photoalbum:
         agendaitem: Agendaitem
         name: Name
@@ -129,6 +141,11 @@ nl:
         background: Background
         title: Title
         url: Url
+      'page/<span class="translation_missing localeapp" title="translation missing: nl':
+        title_en">title en</span>: Title en">title en</span>
+        title_nl">title nl</span>: Title nl">title nl</span>
+        titleen">titleen</span>: Titleen">titleen</span>
+        titlenl">titlenl</span>: Titlenl">titlenl</span>
     errors:
       full_messages:
         format: "%{attribute} %{message}"
@@ -565,6 +582,23 @@ nl:
         title: 
         highlight: 
         menu: 
+        title_en: 
+        title_nl: 
+        berichten: 
+        berichtnl: 
+        Engels bericht: 
+        Nederlands bericht: 
+        '<span class="translation_missing localeapp" title="translation missing: nl':
+          title_en">title en</span>: 
+          title_nl">title nl</span>: 
+          titleen">titleen</span>: 
+          titlenl">titlenl</span>: 
+        Engelse titel: 
+        Nederlandse titel: 
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       photoalbum:
         agendaitem: 
         name: 
@@ -650,8 +684,8 @@ nl:
         create: Newsitem toevoegen
         update: Newsitem bewaren
       page:
-        create: Page toevoegen
-        update: Update Page
+        create: Pagina toevoegen
+        update: Update Pagina
       photoalbum:
         create: Fotoalbum toevoegen
         update: Fotoalbum bewaren
@@ -734,9 +768,7 @@ nl:
     precision:
       format:
         delimiter: 
-  page:
-    information: informatie
-    title: titel
+  page: pagina
   page_gap: "......"
   page_title: paginatitel
   pages:
@@ -955,5 +987,8 @@ nl:
   raceinfo: Wedstrijdinformatie
   further: verder
   paglist: Lijst van paginas
-  page: pagina
   newpag: nieuwe pagina
+  title_en: 
+  title_nl: 
+  titleen: 
+  titlenl: 

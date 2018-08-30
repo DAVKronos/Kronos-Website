@@ -80,6 +80,18 @@ en:
         title: Title
         highlight: Highlight
         menu: Menu
+        title_en: 
+        title_nl: 
+        berichten: 
+        berichtnl: 
+        Engels bericht: 
+        Nederlands bericht: 
+        Engelse titel: 
+        Nederlandse titel: 
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       photoalbum:
         agendaitem: Calendar item
         name: Name
@@ -126,6 +138,11 @@ en:
         background: 
         title: 
         url: 
+      'page/<span class="translation_missing localeapp" title="translation missing: nl':
+        title_en">title en</span>: 
+        title_nl">title nl</span>: 
+        titleen">titleen</span>: 
+        titlenl">titlenl</span>: 
     errors:
       full_messages:
         format: "%{attribute} %{message}"
@@ -558,6 +575,23 @@ en:
         title: 
         highlight: 
         menu: 
+        title_en: 
+        title_nl: 
+        berichten: 
+        berichtnl: 
+        Engels bericht: 
+        Nederlands bericht: 
+        '<span class="translation_missing localeapp" title="translation missing: nl':
+          title_en">title en</span>: 
+          title_nl">title nl</span>: 
+          titleen">titleen</span>: 
+          titlenl">titlenl</span>: 
+        Engelse titel: 
+        Nederlandse titel: 
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       photoalbum:
         agendaitem: 
         name: 
@@ -727,9 +761,7 @@ en:
     precision:
       format:
         delimiter: 
-  page:
-    information: 
-    title: 
+  page: page
   page_gap: 
   page_title: page title
   papieren_kronometer: paper kronometer
@@ -836,7 +868,7 @@ en:
   xtracardnumber: xtracard number
   aliases: 
   commissions: commissions
-  delete: 
+  delete: delete
   photoalbums:
     index:
       photoalbum: photoalbum
@@ -949,5 +981,8 @@ en:
   raceinfo: Information
   further: further
   paglist: list of pages
-  page: page
   newpag: new page
+  title_en: 
+  title_nl: 
+  titleen: 
+  titlenl: 
