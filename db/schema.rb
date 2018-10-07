@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180830141635) do
+ActiveRecord::Schema.define(:version => 20180906105932) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -261,8 +261,8 @@ ActiveRecord::Schema.define(:version => 20180830141635) do
     t.string   "pagetag"
     t.string   "menu"
     t.boolean  "highlight"
-    t.text     "information_en"
     t.string   "pagetag_en"
+    t.text     "information_en"
   end
 
   create_table "photoalbums", :force => true do |t|
