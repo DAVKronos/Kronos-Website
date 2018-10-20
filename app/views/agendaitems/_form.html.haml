@@ -11,7 +11,10 @@
         = f.label "Kronos Activiteit"
         = f.check_box :intern, {:class => "form-control", :placeholder => "Van Kronos?"}
         = f.label :agendaitemtype
-        = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name, {}, {:class => "prototypetarget form-control"})
+        -if I18n.locale == :nl
+          = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name, {}, {:class => "prototypetarget form-control"})
+        -else
+          = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name_en, {}, {:class => "prototypetarget form-control"})
         = f.label :date
         = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker form-control", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
         = f.label t(:descriptionnl).capitalize

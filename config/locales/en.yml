@@ -15,6 +15,10 @@ en:
         subscribe: Subscribe
         subscriptiondeadline: subscription deadline
         url: Url
+        Engelse beschrijving: 
+        Engelse naam: 
+        Nederlandse beschrijving: 
+        Nederlandse naam: 
       agendaitemtype_eventtype:
         eventtype_id: Event type
       apps_exception:
@@ -143,6 +147,14 @@ en:
         title_nl">title nl</span>: 
         titleen">titleen</span>: 
         titlenl">titlenl</span>: 
+      agendaitemtype:
+        name: 
+        nameen: 
+        namenl: 
+        Dutch name: 
+        English name: 
+        Nederlandse naam: 
+        Engelse naam: 
     errors:
       full_messages:
         format: "%{attribute} %{message}"
@@ -241,6 +253,7 @@ en:
       subscription: subscription
       user: member
       alias: alias
+      agendaitemtype: 
   add: Add
   add_mailinglist: Add mailinglist
   address: address
@@ -512,6 +525,10 @@ en:
         subscribe: 
         subscriptiondeadline: 
         url: 
+        Engelse beschrijving: 
+        Engelse naam: 
+        Nederlandse beschrijving: 
+        Nederlandse naam: 
       agendaitem[events_attributes][new_events]:
         Afstand: 
         Tijd: 
@@ -641,6 +658,14 @@ en:
         email: Email
         message: Message
         nickname: Nickname
+      agendaitemtype:
+        name: 
+        nameen: 
+        namenl: 
+        Dutch name: 
+        Engelse naam: 
+        English name: 
+        Nederlandse naam: 
     select:
       prompt: select
     submit:
@@ -693,6 +718,9 @@ en:
         create: Create Alias
         update: Update Alias
       announcement:
+        create: 
+        update: 
+      agendaitemtype:
         create: 
         update: 
   iban: IBAN
@@ -956,7 +984,7 @@ en:
   nouser: No users match your search query.
   addmem: Add member
   editdet: Change your details
-  changepass: Change your password
+  changepass: 
   newag: New agenda item
   alginf: General information
   location: Location
@@ -986,3 +1014,7 @@ en:
   title_nl: 
   titleen: 
   titlenl: 
+  agendaitemtype: calenderitemtype
+  listagendaitemtypes: Listing calenderitemtypes
+  newagendaitemtype: New calenderitemtype
+  editagendaitemtype: Edit calenderitemtype
