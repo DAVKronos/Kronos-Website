@@ -992,3 +992,8 @@ nl:
   title_nl: 
   titleen: 
   titlenl: 
+  agendaitemtype: agendaitemtype
+  listagendaitemtypes: Lijst van agendaitemtypes
+  newagendaitemtype: Niewe agendaitemtype
+  editagendaitemtype: Pas agendaitemtype aan
+  newnewsitem: Nieuw nieuwsitem

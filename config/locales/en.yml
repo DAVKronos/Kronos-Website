@@ -1015,6 +1015,7 @@ en:
   titleen: 
   titlenl: 
   agendaitemtype: calenderitemtype
-  listagendaitemtypes: Listing calenderitemtypes
-  newagendaitemtype: New calenderitemtype
+  listagendaitemtypes: List calenderitemtypes
+  newagendaitemtype: New calenderitemtypes
   editagendaitemtype: Edit calenderitemtype
+  newnewsitem: New newsitem

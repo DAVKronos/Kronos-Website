@@ -6,7 +6,7 @@
         %small= @agendaitem.agendaitemtype.name if @agendaitem.agendaitemtype
       -if I18n.locale == :en
         = @agendaitem.name_en
-        %small= @agendaitem.agendaitemtype.name if @agendaitem.agendaitemtype
+        %small= @agendaitem.agendaitemtype.name_en if @agendaitem.agendaitemtype
 .row
   .col-lg-8
     .row 
