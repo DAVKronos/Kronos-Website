@@ -14,7 +14,10 @@
     - @commissions.each do |commission|
       %tr
         %td 
-          = link_to commission.name, commission
+          -if I18n.locale == :nl
+            = link_to commission.name, commission
+          -else
+            = link_to commission.name_en, commission
         - if can? :update, commission
           %td
             = commission.role

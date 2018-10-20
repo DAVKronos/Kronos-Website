@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20181020133752) do
+ActiveRecord::Schema.define(:version => 20181020212853) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -125,6 +125,8 @@ ActiveRecord::Schema.define(:version => 20181020133752) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.string   "name_en"
+    t.text     "description_en"
   end
 
   create_table "delayed_jobs", :force => true do |t|

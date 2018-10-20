@@ -36,6 +36,15 @@ nl:
         email: E-mail
         name: Naam
         role: Rol
+        namenl: Namenl
+        Nederlandse naam: Nederlandse naam
+        Engelse naam: Engelse naam
+        Dutch name: 
+        English name: 
+        Dutch description: 
+        English description: 
+        Engelse beschrijving: Engelse beschrijving
+        Nederlandse beschrijving: Nederlandse beschrijving
       commission_membership:
         function: Functie
         user_id: Lid
@@ -536,6 +545,15 @@ nl:
         email: 
         name: 
         role: 
+        namenl: 
+        Nederlandse naam: 
+        Engelse naam: 
+        Dutch name: 
+        English name: 
+        Dutch description: 
+        English description: 
+        Engelse beschrijving: 
+        Nederlandse beschrijving: 
       commission[commission_memberships_attributes][new_commission_memberships]:
         function: 
       event:
@@ -997,3 +1015,4 @@ nl:
   newagendaitemtype: Niewe agendaitemtype
   editagendaitemtype: Pas agendaitemtype aan
   newnewsitem: Nieuw nieuwsitem
+  role: 
