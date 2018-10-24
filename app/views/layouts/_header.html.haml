@@ -23,7 +23,10 @@
               %span.caret
             %ul.dropdown-menu{:role=>'menu'}
               - getPages('Vereniging').each do |page|
-                %li= link_to page.pagetag, '/' << page.pagetag
+                -if I18n.locale == :nl
+                  %li= link_to page.pagetag, '/' << page.pagetag << '?locale=nl'
+                -else
+                  %li= link_to page.pagetag_en, '/' << page.pagetag << '?locale=en'
               %li= link_to t(:commissions).capitalize, commissions_path
               %li= link_to 'Kronometers', kronometers_path
           %li.dropdown
@@ -32,7 +35,10 @@
               %span.caret
             %ul.dropdown-menu{:role=>'menu'}
               - getPages('Trainingen').each do |page|
-                %li= link_to page.pagetag, '/' << page.pagetag
+                -if I18n.locale == :nl
+                  %li= link_to page.pagetag, '/' << page.pagetag << '?locale=nl'
+                -else
+                  %li= link_to page.pagetag_en, '/' << page.pagetag << '?locale=en'
           %li.dropdown
             %a{:href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false'}
               =t(:matches).capitalize
@@ -42,7 +48,10 @@
               %li= link_to 'Johan Knaap Games', 'http://jkg.kronos.nl'
               %li= link_to 'NSK Indoor','http://nsk.kronos.nl'
               - getPages('Wedstrijden').each do |page|
-                %li= link_to page.pagetag, '/' << page.pagetag
+                -if I18n.locale == :nl
+                  %li= link_to page.pagetag, '/' << page.pagetag << '?locale=nl'
+                -else
+                  %li= link_to page.pagetag_en, '/' << page.pagetag << '?locale=en'
           %li= link_to 'Agenda', agendaitems_path
           %li= link_to t(:resultaten).capitalize, results_path
           - if can? :read, Photoalbum
