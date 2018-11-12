@@ -32,7 +32,10 @@
         .col-xs-1.text-right
           %span.glyphicon.glyphicon-book
         .col-xs-11
-          %p= link_to @agendaitem.commission.name, @agendaitem.commission
+          -if I18n.locale == :nl
+            %p= link_to @agendaitem.commission.name, @agendaitem.commission
+          -if I18n.locale == :en
+            %p= link_to @agendaitem.commission.name_en, @agendaitem.commission
     .row
       .col-xs-1.text-right
         %span.glyphicon.glyphicon-align-left

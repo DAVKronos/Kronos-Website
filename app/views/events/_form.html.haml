@@ -11,7 +11,7 @@
   .form-group.col-md-2
     = f.label :result, :class=>'sr-only'
     = f.text_field :result, :class=>'form-control', :placeholder => "Prestatie"
-  - if event.eventtype.show_wind
+  - if event.eventtype && event.eventtype.show_wind
     .form-group.col-md-2
       = f.label :wind, :class=>'sr-only'
       = f.text_field :wind, :class=>'form-control', :placeholder => "m/s"

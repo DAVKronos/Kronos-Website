@@ -14,7 +14,10 @@
             = agendaitem.name
           -if I18n.locale == :en
             = agendaitem.name_en
-          = content_tag :small, (agendaitem.agendaitemtype.name )
+          -if I18n.locale == :nl
+            = content_tag :small, (agendaitem.agendaitemtype.name )
+          -if I18n.locale == :en
+            = content_tag :small, (agendaitem.agendaitemtype.name_en )
       .col-xs-1.text-right
         - if agendaitem.subscriptions.count > 0
           %h4 
