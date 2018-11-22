@@ -6,7 +6,7 @@ gem 'devise', '~> 3.5.10'
 gem 'cancancan', '~> 1.15.0'
 gem 'will_paginate', '~> 3.0.3'
 gem 'alphabetical_paginate', '~> 2.1.0'
-gem 'paperclip', '~> 3.2'
+gem 'paperclip', '~> 4'
 gem 'exifr', '~> 1.1.3'
 gem 'delayed_job', '~> 4.0.0'
 gem 'delayed_job_active_record', '~> 4.0.0'
@@ -24,8 +24,8 @@ gem 'auto_html', '~> 1.6.0'
 gem 'memcache-client', '~> 1.8.5'
 gem 'calendar_helper', '~> 0.2.6'
 gem 'google-api-client', '~> 0.8.6'
-gem 'selectize-rails', '~> 0.8.5' 
-gem 'twitter-typeahead-rails', '~> 0.10.2'
+gem 'selectize-rails', '~> 0.8.5'
+gem 'twitter-typeahead-rails', '~> 0.11'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'execjs', '~> 2.0.2'
 gem 'paper_trail', '~> 4.0.0.beta'
@@ -33,15 +33,10 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'cookies_eu'
 gem 'prawn-rails'
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails', '>= 3.2'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'uglifier', '>= 1.2.7'
-  gem 'sqlite3', '~> 1.3.8'
-end
+gem 'sass-rails', '>= 3.2'
+gem 'coffee-rails', '~> 3.2.2'
+gem 'uglifier', '>= 1.2.7'
+gem 'sqlite3', '~> 1.3.8'
 
 group :production do
   gem 'daemons', '~> 1.1.9'
@@ -56,7 +51,7 @@ group :development do
   gem 'guard'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'guard-rspec'
-  gem 'rubocop' , require: false
+  gem 'rubocop', require: false
 end
 
 group :test, :development do
