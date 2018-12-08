@@ -4,15 +4,20 @@ class PagesController < ApplicationController
     @newsitems = Newsitem.where(:agreed => true).order('created_at DESC').limit(6)
     @agendaitems = Agendaitem.where("date >= ?", Time.now).order('date ASC').limit(10)
     
-    @birthdays = User.where( '(user_type_id not in (?)) AND 
-                              (
-                               (extract(month from birthdate) = ? AND extract(day from birthdate) >= ?) OR
-                               (extract(month from birthdate) = ? AND extract(day from birthdate) <= ?)
-                              )', 
+    @birthdays = {}
+    @birthdays['current_month'] = User.where( '(user_type_id not in (?)) AND
+                               (extract(month from birthdate) = ? AND extract(day from birthdate) >= ?)
+                              ',
                               [9], 
-                              Date.today.strftime("%m"), Date.today.strftime("%d"),
-                              Date.today.next_month.strftime("%m"), Date.today.next_month.strftime("%d"))
-                     .order('extract(year from birthdate) ASC, extract(month from birthdate) ASC, extract(day from birthdate) ASC')
+                              Date.today.strftime("%m"), Date.today.strftime("%d"))
+                     .order('extract(month from birthdate) ASC, extract(day from birthdate) ASC')
+
+    @birthdays['next_month'] = User.where( '(user_type_id not in (?)) AND
+                               (extract(month from birthdate) = ? AND extract(day from birthdate) <= ?)
+                              ',
+                             [9],
+                             Date.today.next_month.strftime("%m"), Date.today.next_month.strftime("%d"))
+                     .order('extract(month from birthdate) ASC, extract(day from birthdate) ASC')
   end
 
   def titleshow

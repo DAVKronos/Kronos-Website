@@ -68,9 +68,18 @@
       .panel.panel-primary
         .panel-heading= t(:birthdays).capitalize
         .list-group
-          -@birthdays.each do |user|
+          -@birthdays['current_month'].each do |user|
             = link_to user, class: 'list-group-item' do
               .row 
+                .col-xs-2
+                  %h5
+                    = user.birthdate.strftime('%d')
+                    %small= user.birthdate.strftime('%b')
+                .col-xs-10
+                  = user.name
+          -@birthdays['next_month'].each do |user|
+            = link_to user, class: 'list-group-item' do
+              .row
                 .col-xs-2
                   %h5
                     = user.birthdate.strftime('%d')
