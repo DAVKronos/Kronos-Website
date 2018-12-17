@@ -28,7 +28,8 @@
                 -else
                   %li= link_to page.pagetag_en, '/' << page.pagetag << '?locale=en'
               %li= link_to t(:commissions).capitalize, commissions_path
-              %li= link_to 'Kronometers', kronometers_path
+              - if can? :read, Kronometer
+                %li= link_to 'Kronometers', kronometers_path
           %li.dropdown
             %a{:href => '#', :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false'}
               =t(:training).capitalize
