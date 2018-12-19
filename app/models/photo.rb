@@ -20,6 +20,7 @@ class Photo < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   has_attached_file :photo, :styles => { :thumb => "260x180#", :normal => "1680x1050>"}, :path => ":rails_root/public/system/:attachment/:hash.:extension",
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
+  validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   belongs_to :photoalbum
   has_many :tags, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
