@@ -31,7 +31,7 @@ papieren kronometer
 = f.file_field :avatar
 
 = f.label :sex
-= f.text_field :sex
+= f.select :sex, options_for_select([['Male'],['Female'],['Other']])
 
 = f.label :lidtype
 = collection_select(:user, :user_type_id, UserType.all, :id, :name, :prompt => true)
