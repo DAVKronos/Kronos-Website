@@ -37,6 +37,7 @@ gem 'sass-rails', '>= 3.2'
 gem 'coffee-rails', '~> 3.2.2'
 gem 'uglifier', '>= 1.2.7'
 gem 'sqlite3', '~> 1.3.8'
+gem 'test-unit', '~> 3.0'
 
 group :production do
   gem 'daemons', '~> 1.1.9'

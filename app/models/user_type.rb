@@ -11,6 +11,6 @@
 #
 
 class UserType < ActiveRecord::Base
-  attr_accessible :donor, :name, :recreational
+  attr_accessible :donor, :name, :competition
   has_many :users
 end
