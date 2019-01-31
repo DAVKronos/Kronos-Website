@@ -57,7 +57,6 @@ end
 
 group :test, :development do
   gem "rspec-rails", "~> 3.5.1"
-  gem 'test-unit', '~> 3.0'
   gem "capybara", ">= 2.2.0"
   gem 'factory_girl_rails', '~> 4.0.0'
   gem 'rake', '~> 10.1.0'
