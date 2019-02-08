@@ -11,7 +11,7 @@ services:
     depends_on:
       - db
     env_file: .env
-    command: ./script/start_app
+    command: sh ./script/start_app.sh
     volumes:
       # Path on the host, relative to the Compose file
       - ./:/home/rails/webapp/
@@ -24,7 +24,7 @@ services:
     depends_on:
       - db
     env_file: .env
-    command: ./script/start_worker
+    command: sh ./script/start_worker.sh
     volumes:
       # Path on the host, relative to the Compose file
       - ./:/home/rails/webapp/
