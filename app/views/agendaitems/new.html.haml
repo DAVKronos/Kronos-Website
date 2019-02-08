@@ -1,7 +1,8 @@
 .row
   .col-lg-12
-    %h1.push-down-for-logo Nieuw agendapunt
+    %h1.push-down-for-logo
+      =t(:newag).capitalize
 .row
   .col-lg-12
     = render 'form'
-    = link_to 'Terug', agendaitems_path
+    = link_to t(:back).capitalize, agendaitems_path

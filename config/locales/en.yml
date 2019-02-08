@@ -1,5 +1,5 @@
 en:
-  Agenda: 
+  agenda: agenda
   May: 
   aanvang: start
   activerecord:
@@ -15,6 +15,10 @@ en:
         subscribe: Subscribe
         subscriptiondeadline: subscription deadline
         url: Url
+        Engelse beschrijving: 
+        Engelse naam: 
+        Nederlandse beschrijving: 
+        Nederlandse naam: 
       agendaitemtype_eventtype:
         eventtype_id: Event type
       apps_exception:
@@ -33,6 +37,15 @@ en:
         email: E-mail
         name: Name
         role: Role
+        namenl: 
+        Nederlandse naam: 
+        Engelse naam: 
+        Dutch name: 
+        English name: 
+        Dutch description: 
+        English description: 
+        Engelse beschrijving: 
+        Nederlandse beschrijving: 
       commission_membership:
         function: Function
         user_id: Member
@@ -69,11 +82,29 @@ en:
         nieuwsbericht: Newsmessage
         profielfoto: Profile picture
         titel: Title
+        Nederlands bericht: 
+        Engels bericht: 
+        Dutch text: Dutch text
+        Dutch title: Dutch title
+        English text: English text
+        English title: English title
       page:
         information: Information
         title: Title
         highlight: Highlight
         menu: Menu
+        title_en: 
+        title_nl: 
+        berichten: 
+        berichtnl: 
+        Engels bericht: 
+        Nederlands bericht: 
+        Engelse titel: 
+        Nederlandse titel: 
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       photoalbum:
         agendaitem: Calendar item
         name: Name
@@ -120,6 +151,19 @@ en:
         background: 
         title: 
         url: 
+      'page/<span class="translation_missing localeapp" title="translation missing: nl':
+        title_en">title en</span>: 
+        title_nl">title nl</span>: 
+        titleen">titleen</span>: 
+        titlenl">titlenl</span>: 
+      agendaitemtype:
+        name: 
+        nameen: 
+        namenl: 
+        Dutch name: 
+        English name: 
+        Nederlandse naam: 
+        Engelse naam: 
     errors:
       full_messages:
         format: "%{attribute} %{message}"
@@ -218,10 +262,10 @@ en:
       subscription: subscription
       user: member
       alias: alias
+      agendaitemtype: 
   add: Add
   add_mailinglist: Add mailinglist
   address: address
-  agenda: 
   agendaitem:
     Kronos Activiteit: 
     agendaitemtype: 
@@ -232,7 +276,7 @@ en:
       Afstand: distance
       Tijd: 
       Type: 
-    location: 
+    location: location
     name: 
     subscribe: 
     subscriptiondeadline: 
@@ -301,6 +345,7 @@ en:
       only_day: "%e"
       short: "%e %b"
     month_names:
+    - 
     - January
     - February
     - March
@@ -489,6 +534,10 @@ en:
         subscribe: 
         subscriptiondeadline: 
         url: 
+        Engelse beschrijving: 
+        Engelse naam: 
+        Nederlandse beschrijving: 
+        Nederlandse naam: 
       agendaitem[events_attributes][new_events]:
         Afstand: 
         Tijd: 
@@ -506,6 +555,15 @@ en:
         email: 
         name: 
         role: 
+        namenl: 
+        Nederlandse naam: 
+        Engelse naam: 
+        Dutch name: 
+        English name: 
+        Dutch description: 
+        English description: 
+        Engelse beschrijving: 
+        Nederlandse beschrijving: 
       commission[commission_memberships_attributes][new_commission_memberships]:
         function: 
       event:
@@ -541,11 +599,34 @@ en:
         nieuwsbericht: 
         profielfoto: 
         titel: 
+        Nederlands bericht: 
+        Engels bericht: 
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       page:
         information: 
         title: 
         highlight: 
         menu: 
+        title_en: 
+        title_nl: 
+        berichten: 
+        berichtnl: 
+        Engels bericht: 
+        Nederlands bericht: 
+        '<span class="translation_missing localeapp" title="translation missing: nl':
+          title_en">title en</span>: 
+          title_nl">title nl</span>: 
+          titleen">titleen</span>: 
+          titlenl">titlenl</span>: 
+        Engelse titel: 
+        Nederlandse titel: 
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       photoalbum:
         agendaitem: 
         name: 
@@ -595,6 +676,14 @@ en:
         email: Email
         message: Message
         nickname: Nickname
+      agendaitemtype:
+        name: 
+        nameen: 
+        namenl: 
+        Dutch name: 
+        Engelse naam: 
+        English name: 
+        Nederlandse naam: 
     select:
       prompt: select
     submit:
@@ -649,6 +738,9 @@ en:
       announcement:
         create: 
         update: 
+      agendaitemtype:
+        create: 
+        update: 
   iban: IBAN
   index: 
   initials: initials
@@ -660,7 +752,7 @@ en:
   mailinglist_update_success: 
   mailinglists: 
   name: name
-  new: 
+  new: new
   new_commission: new commision
   new_mailinglist: New mailinglist
   newsitem:
@@ -671,17 +763,17 @@ en:
   number:
     currency:
       format:
-        delimiter: 
+        delimiter: "."
         format: "%u%n"
         precision: 2
-        separator: 
+        separator: ","
         significant: false
         strip_insignificant_zeros: false
         unit: 
     format:
-      delimiter: 
+      delimiter: "."
       precision: 2
-      separator: 
+      separator: ","
       significant: false
       strip_insignificant_zeros: false
     human:
@@ -715,9 +807,7 @@ en:
     precision:
       format:
         delimiter: 
-  page:
-    information: 
-    title: 
+  page: page
   page_gap: 
   page_title: page title
   papieren_kronometer: paper kronometer
@@ -760,6 +850,7 @@ en:
       long: "%d %B %Y %H:%M"
       medium: "%e %B %H:%M"
       only_date: "%e %B"
+      date: "%d-%B-%Y"
       only_second: "%S"
       short: "%d %b %H:%M"
       time: "%H:%M"
@@ -822,35 +913,35 @@ en:
     previous_label: "← previous"
   xtracardnumber: xtracard number
   aliases: 
-  commissions: 
-  delete: 
+  commissions: commissions
+  delete: delete
   photoalbums:
     index:
       photoalbum: photoalbum
       photoalbums: photoalbums
-  remove: 
+  remove: remove
   destroy: 
   show: 
-  back: 
+  back: back
   announcements:
     announcement:
       hide: 
       more: 
   pages:
     admin:
-      accept_news: 
-      aliases: 
-      announcements: 
-      commissions: 
-      mailinglists: 
-      results: 
-      pages: 
-  news: 
-  birthdays: 
+      accept_news: accept news
+      aliases: aliases
+      announcements: banners
+      commissions: commissions
+      mailinglists: mailing lists
+      results: results
+      pages: information pages
+  news: news
+  birthdays: birthdays
   newsitems:
     index:
       kronos-news: 
-  users: 
+  users: Kronauts
   main_sponsor: main sponsor
   mail_form:
     attributes:
@@ -885,3 +976,65 @@ en:
       html: 
       mark: 
       text: 
+  association: association
+  training: training
+  matches: matches
+  resultaten: results
+  foto: photos
+  meernieuws: more news
+  maakaan: make new
+  leesverder: read more
+  kronoscommissions: committees of Kronos
+  comover: below you can find a overview of the current committees of kronos
+  naam: name
+  rol: role
+  nieuw: new
+  zoek: search
+  sendmessage: Send us a message
+  send: send
+  emailadres: e-mail address
+  passwor: password
+  wachtverg: Forgot password?
+  members: members
+  manage: manage
+  signout: sign out
+  allmem: all members
+  nouser: No users match your search query.
+  addmem: Add member
+  editdet: Change your details
+  changepass: Change your password
+  newag: New agenda item
+  alginf: General information
+  location: Location
+  optarg: Optional arguments
+  none: none
+  subscribe: subscribe
+  programme: programme
+  addprog: Add a new part to the program
+  save: Save
+  titnl: Dutch title
+  titen: English title
+  berichtnl: Dutch text
+  berichten: English text
+  namenl: Dutch name
+  nameen: English name
+  descriptionnl: Dutch description
+  descriptionen: English description
+  edres: Edit results
+  noprog: No program
+  edsub: Edit subscriptions
+  addresu: Add a result
+  raceinfo: Information
+  further: further
+  paglist: list of pages
+  newpag: new page
+  title_en: 
+  title_nl: 
+  titleen: 
+  titlenl: 
+  agendaitemtype: calenderitemtype
+  listagendaitemtypes: List calenderitemtypes
+  newagendaitemtype: New calenderitemtypes
+  editagendaitemtype: Edit calenderitemtype
+  newnewsitem: New newsitem
+  role: 

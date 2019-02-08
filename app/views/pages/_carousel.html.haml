@@ -6,8 +6,11 @@
     -@newsitems[0..2].each do |n|   
       %div{:class=>(@newsitems.index(n) == 0) ? 'item active' : 'item' }      
         = image_tag(n.articlephoto.url(:carrousel), :class=>'img-responsive')
-        .carousel-caption 
-          =n.title
+        .carousel-caption
+          -if I18n.locale == :nl		
+            =n.title
+          -if I18n.locale == :en		
+            =n.title_en
   %a{:class=>'left carousel-control',:href=>'#kronos-carousel', :data => {:slide => 'prev'}}
     %span{:class=>"glyphicon glyphicon-chevron-left"}
   %a{:class=>'right carousel-control',:href=>'#kronos-carousel', :data=>{:slide => 'next'}}

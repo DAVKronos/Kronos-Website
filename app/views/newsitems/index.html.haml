@@ -9,10 +9,16 @@
         .row.newscontent
           .col-lg-12
             = image_tag newsitem.articlephoto.url(:normal), :class => "floatleft thumbnail"
-            %h2= link_to newsitem.title, newsitem, {:name => newsitem.title, :class => "newslink"}
+            -if I18n.locale == :nl
+              %h2= link_to newsitem.title, newsitem, {:name => newsitem.title, :class => "newslink"}
+            -if I18n.locale == :en
+              %h2= link_to newsitem.title_en, newsitem, {:name => newsitem.title_en, :class => "newslink"}
             %p.muted
               = time_tag newsitem.created_at
-              = markdown newsitem.news
+              -if I18n.locale == :nl
+                = markdown newsitem.news
+              -if I18n.locale == :en
+                = markdown newsitem.news_en
             .btn-toolbar
               .btn-group
                 = link_to raw("<span class='glyphicon glpyhicon-edit'></span> Edit"), edit_newsitem_path(newsitem),:class => 'btn btn-mini' if can? :update, newsitem

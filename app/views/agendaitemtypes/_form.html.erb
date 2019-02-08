@@ -1,8 +1,12 @@
 <%= nested_form_for(@agendaitemtype) do |f| %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label t(:namenl) %><br />
     <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label t(:nameen) %><br />
+    <%= f.text_field :name_en %>
   </div>
   <div class="actions">
     <%= f.submit %>

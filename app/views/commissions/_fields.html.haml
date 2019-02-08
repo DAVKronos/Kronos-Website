@@ -7,11 +7,17 @@
       -@commission.errors.full_messages.each do |msg|
         %li= msg
 
-= f.label :name
+= f.label t(:namenl)
 = f.text_field :name
 
-= f.label :description
+= f.label t(:nameen)
+= f.text_field :name_en
+
+= f.label t(:descriptionnl)
 = f.text_area :description
+
+= f.label t(:descriptionen)
+= f.text_area :description_en
 
 = f.label :email
 = f.email_field :email

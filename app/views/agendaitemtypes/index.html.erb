@@ -1,8 +1,8 @@
-<h1>Listing agendaitemtypes</h1>
+<h1><%=t(:listagendaitemtypes).capitalize %></h1>
 
 <table>
   <tr>
-    <th>Name</th>
+    <th><%=t(:agendaitemtype).capitalize %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,14 +10,18 @@
 
 <% @agendaitemtypes.each do |agendaitemtype| %>
   <tr>
-    <td><%= agendaitemtype.name if agendaitemtype.name %></td>
-    <td><%= link_to 'Show', agendaitemtype %></td>
-    <td><%= link_to 'Edit', edit_agendaitemtype_path(agendaitemtype) %></td>
-    <td><%= link_to 'Destroy', agendaitemtype, confirm: 'Are you sure?', method: :delete %></td>
+    <% if I18n.locale == :nl %>
+      <td><%= agendaitemtype.name if agendaitemtype.name %></td>
+    <% else %>
+      <td><%= agendaitemtype.name_en if agendaitemtype.name_en %></td>
+    <% end %>
+    <td><%= link_to t(:show), agendaitemtype %></td>
+    <td><%= link_to t(:edit), edit_agendaitemtype_path(agendaitemtype) %></td>
+    <td><%= link_to t(:destroy), agendaitemtype, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Agendaitemtype', new_agendaitemtype_path %>
+<%= link_to t(:newagendaitemtype), new_agendaitemtype_path %>

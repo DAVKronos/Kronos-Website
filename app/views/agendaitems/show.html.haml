@@ -1,8 +1,12 @@
 .row
   .col-lg-12
     %h1
-      = @agendaitem.name
-      %small= @agendaitem.agendaitemtype.name if @agendaitem.agendaitemtype
+      -if I18n.locale == :nl
+        = @agendaitem.name
+        %small= @agendaitem.agendaitemtype.name if @agendaitem.agendaitemtype
+      -if I18n.locale == :en
+        = @agendaitem.name_en
+        %small= @agendaitem.agendaitemtype.name_en if @agendaitem.agendaitemtype
 .row
   .col-lg-8
     .row 
@@ -28,13 +32,19 @@
         .col-xs-1.text-right
           %span.glyphicon.glyphicon-book
         .col-xs-11
-          %p= link_to @agendaitem.commission.name, @agendaitem.commission
+          -if I18n.locale == :nl
+            %p= link_to @agendaitem.commission.name, @agendaitem.commission
+          -if I18n.locale == :en
+            %p= link_to @agendaitem.commission.name_en, @agendaitem.commission
     .row
       .col-xs-1.text-right
         %span.glyphicon.glyphicon-align-left
       .col-xs-11
-        %p.text-left 
-          = simple_format(@agendaitem.description)
+        %p.text-left
+          -if I18n.locale == :nl		
+            = simple_format(@agendaitem.description)
+          -if I18n.locale == :en		
+            = simple_format(@agendaitem.description_en)
     - if @agendaitem.events.present?
       .row
         .col-xs-12
@@ -64,18 +74,20 @@
     - if can?(:update, @agendaitem) || can?(:destroy, @agendaitem) || can?(:create, Result)
       .btn-group.btn-group-sm
         -if can? :update, @agendaitem
-          = link_to 'Bewerk', edit_agendaitem_path(@agendaitem), class: 'btn btn-default'
+          = link_to t(:edit).capitalize, edit_agendaitem_path(@agendaitem), class: 'btn btn-default'
         -if can? :destroy, @agendaitem
-          = link_to 'Verwijder', @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete, class: 'btn btn-default'
+          = link_to t(:remove).capitalize, @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete, class: 'btn btn-default'
         -if can? :create, Result
-          = link_to 'Resultaten aanpassen', agendaitem_events_path(@agendaitem), class: 'btn btn-default'
+          = link_to t(:edres).capitalize, agendaitem_events_path(@agendaitem), class: 'btn btn-default'
       %br
       %br
     .panel.panel-default
-      .panel-heading Programma
+      .panel-heading
+        =t(:programme).capitalize
       -if @agendaitem.events.empty?
         .panel-body
-          %p.text-info Geen programma
+          %p.text-info
+            =t(:noprog).capitalize
       %table{:class=>'table'}
         %tbody
           -@agendaitem.events.each do |event|
@@ -119,4 +131,4 @@
           .panel-heading Inschrijflijst
           .panel-body Je moet inloggen om inschrijvingen te zien of aan te vullen. 
     -if can? :update, @agendaitem.subscriptions
-      = link_to 'Inschrijvingen aanpassen', agendaitem_subscriptions_path(@agendaitem) , class: 'btn btn-sm btn-default'
+      = link_to t(:edsub).capitalize, agendaitem_subscriptions_path(@agendaitem) , class: 'btn btn-sm btn-default'

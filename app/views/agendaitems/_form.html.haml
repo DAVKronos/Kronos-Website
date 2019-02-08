@@ -2,19 +2,27 @@
   .row
     .col-lg-6
       %fieldset
-        %legend Algemene informatie
-        = f.label :name
-        = f.text_field :name, {:class => "form-control", :placeholder => "Naam"}
+        %legend 
+          =t(:alginf).capitalize
+        = f.label t(:namenl).capitalize
+        = f.text_field :name, {:class => "form-control", :placeholder => t(:name).capitalize}
+        = f.label t(:nameen).capitalize
+        = f.text_field :name_en, {:class => "form-control", :placeholder => t(:name).capitalize}
         = f.label "Kronos Activiteit"
         = f.check_box :intern, {:class => "form-control", :placeholder => "Van Kronos?"}
         = f.label :agendaitemtype
-        = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name, {}, {:class => "prototypetarget form-control"})
+        -if I18n.locale == :nl
+          = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name, {}, {:class => "prototypetarget form-control"})
+        -else
+          = f.collection_select(:agendaitemtype_id, Agendaitemtype.all, :id, :name_en, {}, {:class => "prototypetarget form-control"})
         = f.label :date
         = f.text_field :date, {:placeholder => "Datum", :class => "datumtijdprikker form-control", :value => @agendaitem.date.strftime("%Y-%m-%d %H:%M")}
-        = f.label :description
+        = f.label t(:descriptionnl).capitalize
         = f.text_area(:description, :rows => "10", :class => "form-control input-xlarge")
+        = f.label t(:descriptionen).capitalize
+        = f.text_area(:description_en, :rows => "10", :class => "form-control input-xlarge")
         = f.label :location
-        = f.text_field :location, {:class => "form-control", :placeholder => "Locatie"}
+        = f.text_field :location, {:class => "form-control", :placeholder => t(:location).capitalize}
         = f.label :url
         = f.text_field :url, {:placeholder => "Url", :class => "form-control"}
         %hr
@@ -22,13 +30,15 @@
       .row
         .col-lg-12
           %fieldset
-            %legend Optionele argumenten
+            %legend
+              =t(:optarg).capitalize
             = f.label :commission
-            = f.collection_select(:commission_id, @commissions, :id, :name, {:include_blank => 'Geen'}, {:class => "form-control"})
+            = f.collection_select(:commission_id, @commissions, :id, :name, {:include_blank => t(:none).capitalize}, {:class => "form-control"})
       .row
         .col-lg-12
           %fieldset
-            %legend Inschrijven
+            %legend
+              =t(:subscribe).capitalize
             = f.label :subscribe
             = f.check_box :subscribe, {:class => "form-control", :placeholder => "Inschrijven?"}
             = f.label :subscriptiondeadline
@@ -40,7 +50,8 @@
       .row
         .col-lg-12
           %fieldset
-            %legend Programma
+            %legend
+              =t(:programme).capitalize
             - @selects = {}
             - Agendaitemtype.all.each do |item|
               - @selects[item.id] = "'"+options_for_select(item.eventtypes.collect { |p| [p.name, p.id] })+"'"
@@ -66,11 +77,11 @@
                     = event_field.link_to_remove "Verwijder dit programmaonderdeel"
       .row
         .col-lg-12
-          = f.link_to_add "Voeg een programmaonderdeel toe", :events
+          = f.link_to_add t(:addprog).capitalize, :events
           %hr
   .row
     .col-lg-12
-      = f.submit :class => "btn", :value => "Opslaan"
+      = f.submit :class => "btn", :value => t(:save).capitalize
 
 :javascript
   $(document).on('nested:fieldAdded', function(event){

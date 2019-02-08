@@ -8,10 +8,10 @@ module Abilities
       can [:perdag, :month], Agendaitem
       can [:frontpage, :records], Result
       can :hide, Announcement
-      can :create, [User, Contact]
+      can :create, [Contact]
       cannot :read, Photoalbum
       can :read, Photoalbum, :public => true
-      cannot :read, [User, Photo, Announcement]
+      cannot :read, [User, Photo, Announcement, Kronometer]
       cannot :see_email, Commission
     end
   end

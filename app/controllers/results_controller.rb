@@ -20,7 +20,7 @@ class ResultsController < ApplicationController
   def records
     index
 	
-    @eventtypes = Eventtype.all
+    @eventtypes = Eventtype.where(:important=>true)
   end
   
   def new
