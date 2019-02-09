@@ -14,7 +14,7 @@
 require 'rails_helper'
 
 describe Commission do
-  let(:user){ FactoryGirl.create(:user) }
+  let(:user){ FactoryBot.create(:user) }
   let(:commis){ {:name => "test",
                  :description => "test commissie",
                  :email => "test@kronos.nl"} }

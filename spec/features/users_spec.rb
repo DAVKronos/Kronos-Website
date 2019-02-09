@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "The login form" do
 	before(:each) do
 		@password = Devise.friendly_token.first(10)
-		@user = FactoryGirl.create(:user, password: @password, password_confirmation: @password)
+		@user = FactoryBot.create(:user, password: @password, password_confirmation: @password)
 		login_user
 	end
 	

@@ -1,6 +1,6 @@
 # By using the symbol ':user', we get Factory Girl to simulate the User model.
 
-FactoryGirl.define do
+FactoryBot.define do
 	factory :user do
 	  name                  "Wouter Timmermans"
 	  email                 "wouter@example.com"
@@ -17,8 +17,8 @@ FactoryGirl.define do
 		factory :admin do
 			email	"woutertimmermans@kronos.nl"
 			after(:create) do |admin|
-				commission = FactoryGirl.create(:bestuur)
-				FactoryGirl.create(:commission_membership, user: admin, commission: commission)
+				commission = FactoryBot.create(:bestuur)
+				FactoryBot.create(:commission_membership, user: admin, commission: commission)
 			end
 		end
 	end

@@ -66,7 +66,7 @@ group :test, :development do
   gem "rspec-rails"
   gem 'test-unit'
   gem "capybara"
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rake'
 end
 

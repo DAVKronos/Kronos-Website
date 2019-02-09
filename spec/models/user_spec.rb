@@ -55,7 +55,7 @@ describe User do
                   :password_confirmation => "Foobar"}
             }
 	describe "attributes" do
-		before { @user = FactoryGirl.build(:user) }
+		before { @user = FactoryBot.build(:user) }
 
 		  subject { @user }
 
@@ -169,7 +169,7 @@ describe User do
   # describe "mailinglists" do
 
   #   before(:each) { 
-  #     @user = FactoryGirl.build(:user)  
+  #     @user = FactoryBot.build(:user)
   #     gapps = KronosGoogleAPIClient.new 
   #   }
 
@@ -192,9 +192,9 @@ describe User do
   describe "commission associations" do
 
 	  before(:each) do
-	    @commis = FactoryGirl.create(:commission)
+	    @commis = FactoryBot.create(:commission)
 	    @user = User.new(attr, :as => :bestuur)
-	    @user2 = FactoryGirl.create(:user)
+	    @user2 = FactoryBot.create(:user)
 	  end
 
 
