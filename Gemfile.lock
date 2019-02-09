@@ -204,6 +204,7 @@ GEM
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2018.0812)
+    mimemagic (0.3.0)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
@@ -230,11 +231,12 @@ GEM
       activerecord (>= 3.0, < 6.0)
       activesupport (>= 3.0, < 6.0)
       request_store (~> 1.1)
-    paperclip (3.5.4)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
+    paperclip (4.3.7)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
       mime-types
+      mimemagic (= 0.3.0)
     parallel (1.13.0)
     parser (2.6.0.0)
       ast (~> 2.4.0)
@@ -441,7 +443,7 @@ DEPENDENCIES
   nested_form (~> 0.3.2)
   newrelic_rpm
   paper_trail (~> 4.0.0.beta)
-  paperclip (~> 3.2)
+  paperclip (~> 4)
   passenger
   pg (~> 0.21)
   populator
