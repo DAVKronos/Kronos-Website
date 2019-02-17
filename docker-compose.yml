@@ -17,19 +17,6 @@ services:
       - ./:/home/rails/webapp/
     volumes_from:
       - bundler-box
-  worker:
-    build:
-      context: .
-      dockerfile: Dockerfile-development
-    depends_on:
-      - db
-    env_file: .env
-    command: sh ./script/start_worker.sh
-    volumes:
-      # Path on the host, relative to the Compose file
-      - ./:/home/rails/webapp/
-    volumes_from:
-      - bundler-box
   owncloud:
     image: owncloud:9-apache
     depends_on:
