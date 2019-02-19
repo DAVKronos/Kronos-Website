@@ -28,10 +28,6 @@
             new_newsitem_path,:class => 'btn btn-default' 
   .col-md-4
     .panel.panel-primary
-      .panel-heading= (t :main_sponsor).capitalize
-      .sponsor
-        = link_to image_tag('sponsors/sponsor-rc-color.png'), 'http://www.runenschede.nl/'
-    .panel.panel-primary
       .panel-heading= t(:agenda).capitalize
       .list-group
         - @agendaitems.each do |agendaitem|
