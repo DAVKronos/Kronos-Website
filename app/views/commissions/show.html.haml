@@ -1,18 +1,24 @@
-%h1= @commission.name
+-if I18n.locale == :nl
+  %h1= @commission.name
+-else
+  %h1= @commission.name_en
 %p.lead
-  = @commission.description
+  -if I18n.locale == :nl
+    = @commission.description
+  -else
+    = @commission.description_en
 - if can? :see_email, @commission
   %strong Email
   = mail_to @commission.email
 - if can? :update, @commission
   %p
-    %strong Rol
+    %strong=:role.capitalize
     = @commission.role
 %table.table.table-striped
   %thead
     %tr 
-      %th Naam
-      %th Functie
+      %th=t(:name).capitalize
+      %th=t(:function).capitalize
   %tbody    
     - @commission_memberships.each do |commem|
       %tr

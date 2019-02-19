@@ -1,6 +1,7 @@
 = form_for @contact, :html => {:class => 'col-xs-8' } do |f|
 
-  %h3 Stuur ons een bericht
+  %h3
+    =t(:sendmessage).capitalize
 
   .form-group
     = f.label :name
@@ -14,6 +15,6 @@
   .hidden
     = f.label :nickname, :hint => 'Leave this field blank!'
   %br
-  = f.button 'Verstuur', :class=> 'btn btn-primary'
+  = f.button t(:send).capitalize, :class=> 'btn btn-primary'
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160804092711) do
+ActiveRecord::Schema.define(:version => 20181020212853) do
 
   create_table "agendaitems", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20160804092711) do
     t.integer  "agendaitemtype_id"
     t.string   "url"
     t.integer  "user_id"
+    t.string   "name_en",              :default => "Agenda item"
+    t.text     "description_en",       :default => "English description not yet available"
   end
 
   create_table "agendaitemtype_eventtypes", :force => true do |t|
@@ -42,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20160804092711) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.boolean  "is_match"
+    t.string   "name_en"
   end
 
   create_table "aliases", :force => true do |t|
@@ -122,6 +125,8 @@ ActiveRecord::Schema.define(:version => 20160804092711) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.string   "name_en"
+    t.text     "description_en"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -204,6 +209,8 @@ ActiveRecord::Schema.define(:version => 20160804092711) do
     t.string   "articlephoto_content_type"
     t.integer  "articlephoto_file_size"
     t.datetime "articlephoto_updated_at"
+    t.string   "title_en",                  :default => "News item"
+    t.text     "news_en",                   :default => "English text not yet available"
   end
 
   create_table "old_photoalbums", :id => false, :force => true do |t|
@@ -257,6 +264,8 @@ ActiveRecord::Schema.define(:version => 20160804092711) do
     t.string   "pagetag"
     t.string   "menu"
     t.boolean  "highlight"
+    t.string   "pagetag_en"
+    t.text     "information_en"
   end
 
   create_table "photoalbums", :force => true do |t|

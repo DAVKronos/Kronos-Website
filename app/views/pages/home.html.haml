@@ -10,21 +10,29 @@
           .row
             .col-md-offset-3.col-md-9
               %header
-                %h2= link_to newsitem.title, newsitem, 
-                    {name: newsitem.title}
+                -if I18n.locale == :nl
+                  %h2= link_to newsitem.title, newsitem, 
+                      {name: newsitem.title}
+                -if I18n.locale == :en
+                  %h2= link_to newsitem.title_en, newsitem, 
+                      {name: newsitem.title_en}
                 %p= time_tag newsitem.created_at 
           .row
             .col-md-3
               = link_to (image_tag newsitem.articlephoto.url(:normal)), 
                 newsitem, class: "img-responsive img-thumbnail"
             .col-md-9
-              = markdown newsitem.news.split( /\r?\n/ ).first
-              = link_to 'lees verder', newsitem
+              -if I18n.locale == :nl
+                = markdown newsitem.news.split( /\r?\n/ ).first
+                = link_to t(:leesverder).capitalize, newsitem
+              -if I18n.locale == :en
+                = markdown newsitem.news_en.split( /\r?\n/ ).first
+                = link_to t(:leesverder).capitalize, newsitem
     .span{:class=>'text-center'}
       .btn-group
-        = link_to "Meer nieuws", newsitems_path, :class => 'btn btn-default'
+        = link_to t(:meernieuws).capitalize, newsitems_path, :class => 'btn btn-default'
         - if can? :create, Newsitem
-          = link_to raw("<span class='glyphicon glyphicon-pencil'></span> Maak aan"), 
+          = link_to raw("<span class='glyphicon glyphicon-pencil'></span> "+t(:maakaan).capitalize), 
             new_newsitem_path,:class => 'btn btn-default' 
   .col-md-4
     .panel.panel-primary
@@ -38,7 +46,10 @@
                   = agendaitem.date.strftime('%d')
                   %small= agendaitem.date.strftime('%b')
               .col-xs-8
-                %h5= agendaitem.name
+                -if I18n.locale == :nl
+                  %h5= agendaitem.name
+                -if I18n.locale == :en
+                  %h5= agendaitem.name_en
               .col-xs-2
                 %h5
                   %small
@@ -53,9 +64,18 @@
       .panel.panel-primary
         .panel-heading= t(:birthdays).capitalize
         .list-group
-          -@birthdays.each do |user|
+          -@birthdays['current_month'].each do |user|
             = link_to user, class: 'list-group-item' do
               .row 
+                .col-xs-2
+                  %h5
+                    = user.birthdate.strftime('%d')
+                    %small= user.birthdate.strftime('%b')
+                .col-xs-10
+                  = user.name
+          -@birthdays['next_month'].each do |user|
+            = link_to user, class: 'list-group-item' do
+              .row
                 .col-xs-2
                   %h5
                     = user.birthdate.strftime('%d')

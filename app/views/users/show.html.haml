@@ -64,7 +64,7 @@
         %figcaption
           = @user.name
 - if can? :update, @user
-  = link_to 'pas je gegevens aan', edit_user_path(@user)
+  = link_to t(:editdet).capitalize, edit_user_path(@user)
   %br
-  = link_to 'verander je wachtwoord', editpassword_user_path
+  = link_to t(:changepass).capitalize, editpassword_user_path
   

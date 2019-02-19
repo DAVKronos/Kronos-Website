@@ -1,15 +1,21 @@
 = form_for @page do |f|
   
-  = f.label :title
+  = f.label t(:titnl).capitalize
   = f.text_field(:pagetag)
-
+  
+  = f.label t(:titen).capitalize
+  = f.text_field(:pagetag_en)
+  <br>
   = f.label :menu
   = f.text_field(:menu)
 
   = f.label :highlight
   = f.check_box(:highlight)
-  
-  = f.label :information
+  <br>
+  = f.label t(:berichtnl).capitalize
   = f.text_area(:information, :class =>"input-xlarge markItUp")
+  
+  = f.label t(:berichten).capitalize
+  = f.text_area(:information_en, :class =>"input-xlarge markItUp")
   .actions
     = f.submit :class => "btn"

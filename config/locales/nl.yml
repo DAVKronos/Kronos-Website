@@ -15,6 +15,9 @@ nl:
         subscribe: Abonneer
         subscriptiondeadline: inschrijfdeadline
         url: Url
+        English name: 
+        Dutch description: 
+        English description: 
       agendaitemtype_eventtype:
         eventtype_id: Evenementtype
       apps_exception:
@@ -33,6 +36,15 @@ nl:
         email: E-mail
         name: Naam
         role: Rol
+        namenl: Namenl
+        Nederlandse naam: Nederlandse naam
+        Engelse naam: Engelse naam
+        Dutch name: 
+        English name: 
+        Dutch description: 
+        English description: 
+        Engelse beschrijving: Engelse beschrijving
+        Nederlandse beschrijving: Nederlandse beschrijving
       commission_membership:
         function: Functie
         user_id: Lid
@@ -69,11 +81,29 @@ nl:
         nieuwsbericht: Nieuwsbericht
         profielfoto: Profielfoto
         titel: Titel
+        Nederlands bericht: Nederlands bericht
+        Engels bericht: Engels bericht
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       page:
         information: Informatie
         title: Titel
         highlight: Highlight
         menu: Menu
+        title_en: Title en
+        title_nl: Title nl
+        berichten: Berichten
+        berichtnl: Berichtnl
+        Engels bericht: Engels bericht
+        Nederlands bericht: Nederlands bericht
+        Engelse titel: Engelse titel
+        Nederlandse titel: Nederlandse titel
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       photoalbum:
         agendaitem: Agendaitem
         name: Name
@@ -120,6 +150,11 @@ nl:
         background: Background
         title: Title
         url: Url
+      'page/<span class="translation_missing localeapp" title="translation missing: nl':
+        title_en">title en</span>: Title en">title en</span>
+        title_nl">title nl</span>: Title nl">title nl</span>
+        titleen">titleen</span>: Titleen">titleen</span>
+        titlenl">titlenl</span>: Titlenl">titlenl</span>
     errors:
       full_messages:
         format: "%{attribute} %{message}"
@@ -232,7 +267,7 @@ nl:
       Afstand: Afstand
       Tijd: 
       Type: 
-    location: 
+    location: Locatie
     name: 
     subscribe: 
     subscriptiondeadline: 
@@ -490,6 +525,9 @@ nl:
         subscribe: 
         subscriptiondeadline: 
         url: 
+        English name: 
+        Dutch description: 
+        English description: 
       agendaitem[events_attributes][new_events]:
         Afstand: 
         Tijd: 
@@ -507,6 +545,15 @@ nl:
         email: 
         name: 
         role: 
+        namenl: 
+        Nederlandse naam: 
+        Engelse naam: 
+        Dutch name: 
+        English name: 
+        Dutch description: 
+        English description: 
+        Engelse beschrijving: 
+        Nederlandse beschrijving: 
       commission[commission_memberships_attributes][new_commission_memberships]:
         function: 
       event:
@@ -542,11 +589,34 @@ nl:
         nieuwsbericht: 
         profielfoto: 
         titel: 
+        Nederlands bericht: 
+        Engels bericht: 
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       page:
         information: 
         title: 
         highlight: 
         menu: 
+        title_en: 
+        title_nl: 
+        berichten: 
+        berichtnl: 
+        Engels bericht: 
+        Nederlands bericht: 
+        '<span class="translation_missing localeapp" title="translation missing: nl':
+          title_en">title en</span>: 
+          title_nl">title nl</span>: 
+          titleen">titleen</span>: 
+          titlenl">titlenl</span>: 
+        Engelse titel: 
+        Nederlandse titel: 
+        Dutch text: 
+        Dutch title: 
+        English text: 
+        English title: 
       photoalbum:
         agendaitem: 
         name: 
@@ -632,8 +702,8 @@ nl:
         create: Newsitem toevoegen
         update: Newsitem bewaren
       page:
-        create: Page toevoegen
-        update: Update Page
+        create: Pagina toevoegen
+        update: Update Pagina
       photoalbum:
         create: Fotoalbum toevoegen
         update: Fotoalbum bewaren
@@ -716,9 +786,7 @@ nl:
     precision:
       format:
         delimiter: 
-  page:
-    information: informatie
-    title: titel
+  page: pagina
   page_gap: "......"
   page_title: paginatitel
   pages:
@@ -838,7 +906,7 @@ nl:
   photoalbums:
     index:
       photoalbums: fotoalbum
-  remove: verwijder
+  remove: Verwijderen
   destroy: verwijder
   show: laat zien
   back: terug
@@ -886,3 +954,65 @@ nl:
       html: <abbr title="required">*</abbr>
       mark: "*"
       text: required
+  association: vereniging
+  training: trainingen
+  matches: wedstrijden
+  resultaten: uitslagen
+  foto: foto's
+  meernieuws: meer nieuws
+  maakaan: maak aan
+  leesverder: lees verder
+  kronoscommissions: comissies van kronos
+  comover: Onderstaand treft u een overzicht aan van de huidige commissies van kronos.
+  naam: naam
+  rol: rol
+  nieuw: nieuw
+  zoek: zoek
+  sendmessage: stuur ons een bericht
+  send: verstuur
+  emailadres: e-mailadres
+  passwor: wachtwoord
+  wachtverg: Wachtwoord vergeten?
+  members: leden
+  manage: beheer
+  signout: Log uit
+  allmem: alle leden
+  nouser: Geen gebruikers met deze letter of in deze categorie.
+  addmem: Lid toevoegen
+  editdet: Pas je gegevens aan
+  changepass: Verander je wachtwoord
+  newag: Nieuw agendapunt
+  alginf: Algemene informatie
+  location: Locatie
+  optarg: Optional argumenten
+  none: Geen
+  subscribe: Inschrijven
+  programme: programma
+  addprog: Voeg een programmaonderdeel toe
+  save: Opslaan
+  titnl: Nederlandse titel
+  titen: Engelse titel
+  berichtnl: Nederlands bericht
+  berichten: Engels bericht
+  namenl: Nederlandse naam
+  nameen: Engelse naam
+  descriptionnl: Nederlandse beschrijving
+  descriptionen: Engelse beschrijving
+  edres: Resultaten aanpassen
+  noprog: Geen programma
+  edsub: Inschrijvingen aanpassen
+  addresu: Voeg een uitslag toe
+  raceinfo: Wedstrijdinformatie
+  further: verder
+  paglist: Lijst van paginas
+  newpag: nieuwe pagina
+  title_en: 
+  title_nl: 
+  titleen: 
+  titlenl: 
+  agendaitemtype: agendaitemtype
+  listagendaitemtypes: Lijst van agendaitemtypes
+  newagendaitemtype: Niewe agendaitemtype
+  editagendaitemtype: Pas agendaitemtype aan
+  newnewsitem: Nieuw nieuwsitem
+  role: 
