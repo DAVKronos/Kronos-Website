@@ -1,16 +1,17 @@
 # Base image
-FROM ruby:2.3.1
+FROM ruby:2.3.8-jessie
 
 ENV HOME /home/rails/webapp
 ENV RAILS_ENV production
 
-# Allow APT to communicate over HTTPS
-RUN apt-get update -qq && apt-get install -y apt-transport-https ca-certificates
+# Install our PGP key and add HTTPS support for APT
+RUN apt-get update -qq
+RUN apt-get install -y dirmngr gnupg
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
+RUN apt-get install -y apt-transport-https ca-certificates
 
-#Add passenger repo to sources
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7 \
-  && echo deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main > /etc/apt/sources.list.d/passenger.list
-
+# Add our APT repository
+RUN sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main > /etc/apt/sources.list.d/passenger.list'
 
 # Install PGsql dependencies,js engine and passenger
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ghostscript nginx-extras passenger
