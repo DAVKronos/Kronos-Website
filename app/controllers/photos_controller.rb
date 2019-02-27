@@ -8,12 +8,12 @@ class PhotosController < ApplicationController
     end
 
     def create
-      @photo = Photoalbum.find(params[:photoalbum_id]).photos.build(params[:photo])
+      @photo = Photoalbum.find(params[:photoalbum_id]).photos.build(photo_params)
 	  
-	  if @photo.photo.content_type == "image/jpeg"
-		exif = EXIFR::JPEG.new(params[:photo][:photo].path)
-		@photo.exif_date = exif.date_time
-	  end
+      if @photo.photo.content_type == "image/jpeg"
+        exif = EXIFR::JPEG.new(params[:photo][:photo].path)
+        @photo.exif_date = exif.date_time
+      end
 	  
       if @photo.save
         respond_to do |format|
@@ -21,7 +21,7 @@ class PhotosController < ApplicationController
             render :json => [@photo.to_jq_upload].to_json
           }
           format.json {
-            render :json => [@photo.to_jq_upload].to_json
+            render :json => {files: [@photo.to_jq_upload]}.to_json
           }
         end
       else 
@@ -35,8 +35,14 @@ class PhotosController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @photo.photoalbum }
         format.json {
-          render :json => true
+          render :json => {}.to_json
         }
       end
     end
+
+    private
+      def photo_params
+        # TODO controller now permits all models attributes, try to be more specific
+        params.require(:photo).permit!
+      end
   end
