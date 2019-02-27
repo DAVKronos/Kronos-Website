@@ -31,7 +31,9 @@ class Agendaitem < ActiveRecord::Base
   accepts_nested_attributes_for :subscriptions, :allow_destroy => true
   accepts_nested_attributes_for :comments, :reject_if => :all_blank
   validates_associated :events
-  
+  # TODO change to strong_parameter
+  attr_accessible :name, :name_en,:intern, :agendaitemtype_id, :date, :description, :description_en, :location,:url, :commission, :subscribe, :subscriptiondeadline, :events,
+
   def count_results()
     counter = 0
     self.events.each do |ev|
@@ -42,11 +44,10 @@ class Agendaitem < ActiveRecord::Base
 
   def self.search(search,limit)
     if search
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"],:order => "date(date) DESC",:limit=>limit,:select => "id, name, date")
+      where(['name LIKE ?', "%#{search}%"]).order("date(date) DESC").limit(limit).select("id, name, date")
     else
-      find(:all,:limit=>limit,:select => "id, name, date",:order => "date(date) DESC")
+      order("date(date) DESC").limit(limit).select("id, name, date")
     end
-
   end
 
   def self.rangeMonth(date)

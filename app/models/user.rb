@@ -65,6 +65,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => {:medium => "300x300", :pass => "260x180#", :thumb => "50x50#"},
                     :path => ":rails_root/public/system/:attachment/:hash.:extension",
                     :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   validates :name, :presence => true
   validates :initials, :presence => true
