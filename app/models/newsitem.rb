@@ -21,6 +21,6 @@ class Newsitem < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_attached_file :articlephoto, :styles => { :normal => "x150>" , :slider => "480x260#", :carrousel => "750x260#"}, :path => ":rails_root/public/system/:attachment/:hash.:extension",
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "ci74eFweHJz1SuFRxcWK5gOQvZMrbHhThljgLz1JeCHVnYi9M8w29TBxuf696mE"
-  do_not_validate_attachment_file_type :articlephoto
+  validates_attachment_content_type :articlephoto, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   
 end
