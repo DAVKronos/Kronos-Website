@@ -164,6 +164,8 @@ en:
         English name: 
         Nederlandse naam: 
         Engelse naam: 
+      photo:
+        photo: 
     errors:
       full_messages:
         format: "%{attribute} %{message}"
@@ -218,6 +220,7 @@ en:
               blank: should be provided
             avatar:
               block: block
+              attachment_content_type: 
             birthdate:
               blank: should be provided
             city:
@@ -263,6 +266,7 @@ en:
       user: member
       alias: alias
       agendaitemtype: 
+      photo: 
   add: Add
   add_mailinglist: Add mailinglist
   address: address
@@ -703,6 +707,7 @@ en:
         create: add message
       comment:
         create: add comment
+        update: 
       commission:
         create: create commision
         update: Update commission
@@ -882,6 +887,8 @@ en:
                 invalid: 
     photoalbum:
       agendaitem: 
+    destroy:
+      photo: 
   user:
     address: 
     bankaccountnumber: 
@@ -951,6 +958,7 @@ en:
         name: 
         nickname: 
         naam: 
+        destination: 
   simple_form:
     hints:
       contact:

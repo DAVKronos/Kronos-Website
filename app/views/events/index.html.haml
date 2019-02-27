@@ -21,7 +21,9 @@
       .form-group
         = f.label "Type", :class => "col-sm-2 control-label"
         .col-sm-10
-          = f.select(:eventtype_id, Eventtype.all.delete_if{|x| !x.agendaitemtypes.include?(@agendaitem.agendaitemtype) }.collect{ |p| [p.name, p.id] }, {}, {:class=>"form-control"})
+
+          -#TODO select not all types
+          = f.select(:eventtype_id, Eventtype.all.collect{ |p| [p.name, p.id] }, {}, {:class=>"form-control"})
       .form-group
         = f.label "Afstand", :class => "col-sm-2 control-label"
         .col-sm-10
