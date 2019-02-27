@@ -5,6 +5,7 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery-migrate-min
 //= require bootstrap-sprockets
 //= require jquery-ui
 //= require jquery_ujs
@@ -12,12 +13,8 @@
 //= require jquery-ui-timepicker-addon
 //= require tmpl
 //= require load-image
-//= require canvas-to-blob
 //= require bootstrap-image-gallery
-//= require jquery.iframe-transport
-//= require jquery.fileupload
-//= require jquery.fileupload-ip
-//= require jquery.fileupload-ui
+//= require jquery-fileupload
 //= require jquery.tablesorter
 //= require jquery.markitup
 //= require rails.validations
@@ -38,7 +35,7 @@ KRNS = {
     }
 };
 
-$(document).ready(function () {
+jQuery(function($) {
   $(".fb-share").click(function(){KRNS.fbshare(location.href);});
   $(".markItUp").markItUp(myMarkdownSettings);
   $(".alert-message").alert();
@@ -54,7 +51,7 @@ $(document).ready(function () {
   $('.monthpicker .collapser').hide();
   $('.monthpicker .collapser[data-date='+$('.monthpicker').data("selected")+']').show();
   $('.monthpicker .head').click(function (e){$('.monthpicker .collapser').filter(':visible').hide("slide", function(){$($(e.target).data("toggle")).show("slide");});});
-  $("form").live("nested:fieldAdded", function(event){$(event.field).find('.tijdprikker').removeClass('hasDatepicker').timepicker({});});
+  $(document).on("nested:fieldAdded","form", function(event){$(event.field).find('.tijdprikker').removeClass('hasDatepicker').timepicker({});});
 });
 
 $(function(){
