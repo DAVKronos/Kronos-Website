@@ -54,7 +54,7 @@ class AnnouncementsController < ApplicationController
   # POST /announcements
   # POST /announcements.json
   def create
-    @announcement = Announcement.new(params[:announcement])
+    @announcement = Announcement.new(announcement_params)
 
     respond_to do |format|
       if @announcement.save
@@ -73,7 +73,7 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.find(params[:id])
 
     respond_to do |format|
-      if @announcement.update_attributes(params[:announcement])
+      if @announcement.update_attributes(announcement_params)
         format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
         format.json { head :no_content }
       else
@@ -93,5 +93,12 @@ class AnnouncementsController < ApplicationController
       format.html { redirect_to announcements_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def announcement_params
+    # TODO controller now permits all models attributes, try to be more specific
+    params.require(:announcement).permit!
   end
 end

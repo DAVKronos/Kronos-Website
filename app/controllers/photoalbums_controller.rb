@@ -1,9 +1,14 @@
+# TODO change attr_accessible in model to strong parameter
 class PhotoalbumsController < ApplicationController
   load_and_authorize_resource
   # GET /photoalbums
   # GET /photoalbums.json
   def index
-    @photoalbums = Photoalbum.includes('agendaitem').where(public: current_user.nil?).order(created_at: :desc).paginate(:page => params[:page], :per_page => 12)
+    if current_user.nil?
+      @photoalbums = Photoalbum.includes('agendaitem').where(public: true).order(created_at: :desc).paginate(:page => params[:page], :per_page => 12)
+    else
+      @photoalbums = Photoalbum.includes('agendaitem').order(created_at: :desc).paginate(:page => params[:page], :per_page => 12)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @photoalbums }
@@ -27,8 +32,8 @@ class PhotoalbumsController < ApplicationController
       end
     end
 
-    @allphotos = @photoalbum.photos.all(:order => 'exif_date DESC, photo_file_name DESC, created_at DESC')
-    @photos = @photoalbum.photos.paginate(:page => params[:page], :order => 'exif_date DESC, photo_file_name DESC, created_at DESC', :per_page => 12)
+    @allphotos = @photoalbum.photos.all.order('exif_date DESC, photo_file_name DESC, created_at DESC')
+    @photos = @photoalbum.photos.order('exif_date DESC, photo_file_name DESC, created_at DESC').paginate(:page => params[:page], :per_page => 12)
 	
     respond_to do |format|
       format.html # show.html.erb

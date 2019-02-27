@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.commentable = find_commentable
 
@@ -62,7 +62,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
-      if @comment.update_attributes(params[:comment])
+      if @comment.update_attributes(comment_params)
         format.html { redirect_to @comment, notice: 'comment was successfully updated.' }
         format.json { head :ok }
       else
@@ -84,7 +84,7 @@ class CommentsController < ApplicationController
     end
   end
   
-  def private
+  private
     def find_commentable
       params.each do |name, value|
         if name =~ /(.+)_id$/
@@ -93,5 +93,7 @@ class CommentsController < ApplicationController
       end
       nil
     end    
-  end
+    def comment_params
+      params.require(:comment).permit!
+    end
 end

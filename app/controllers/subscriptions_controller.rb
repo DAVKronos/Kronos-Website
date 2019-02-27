@@ -44,13 +44,13 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions.json
   def create
     @agendaitem = Agendaitem.find(params[:agendaitem_id])
-    @subscription = @agendaitem.subscriptions.build(params[:subscription])
+    @subscription = @agendaitem.subscriptions.build(subscription_params)
     @subscription.detectUser(@subscription.name)
 
     respond_to do |format|
       if @subscription.save
-	# send a mail
-	CommissionMailer.subscription_email(@agendaitem, @subscription.name, current_user).deliver
+	      # send a mail
+	      CommissionMailer.subscription_email(@agendaitem, @subscription.name, current_user).deliver
 
         format.html { redirect_to agendaitem_path(@agendaitem), notice: 'Subscription was successfully created.' }
         format.json { render json: @subscription, status: :created, location: @subscription }
@@ -67,7 +67,7 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.find(params[:id])
 
     respond_to do |format|
-      if @subscription.update_attributes(params[:subscription])
+      if @subscription.update_attributes(subscription_params)
         format.html { redirect_to @subscription, notice: 'Subscription was successfully updated.' }
         format.json { head :ok }
       else
@@ -88,4 +88,10 @@ class SubscriptionsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+    def subscription_params
+      # TODO controller now permits all models attributes, try to be more specific
+      params.require(:subscription).permit!
+    end
 end

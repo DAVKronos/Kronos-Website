@@ -29,7 +29,7 @@ class ResultsController < ApplicationController
   
   def create
     event = Event.find(params[:result][:event_id])
-    result = event.results.build(params[:result])
+    result = event.results.build(result_params)
     result.save
     if request.xhr?
       render 'results/_show', :layout => false, :locals => {:event => result.event}
@@ -50,6 +50,11 @@ class ResultsController < ApplicationController
   end
 
 private
+
+  def result_params
+    # TODO controller now permits all models attributes, try to be more specific
+    params.require(:result).permit!
+  end
 
   def date_params_set?
 		return params[:date].present? && params[:date][:year].present? && params[:date][:month].present?

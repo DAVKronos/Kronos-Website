@@ -72,7 +72,7 @@ class NewsitemsController < ApplicationController
   # POST /newsitems
   # POST /newsitems.json
   def create
-    @newsitem = Newsitem.new(params[:newsitem])
+    @newsitem = Newsitem.new(newsitem_params)
     
     @newsitem = current_user.newsitems.build(params[:newsitem])
     @newsitem.agreed = false
@@ -94,7 +94,7 @@ class NewsitemsController < ApplicationController
     @newsitem = Newsitem.find(params[:id])
 
     respond_to do |format|
-      if @newsitem.update_attributes(params[:newsitem])
+      if @newsitem.update_attributes(newsitem_params)
         format.html { redirect_to @newsitem, notice: 'Newsitem was successfully updated.' }
         format.json { head :ok }
       else
@@ -115,4 +115,10 @@ class NewsitemsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+    def newsitem_params
+      # TODO controller now permits all models attributes, try to be more specific
+      params.require(:newsitem).permit!
+    end
 end

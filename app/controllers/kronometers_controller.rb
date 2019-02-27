@@ -1,3 +1,4 @@
+# TODO change attr_accessible in model to strong parameter
 class KronometersController < ApplicationController
   authorize_resource
   def index

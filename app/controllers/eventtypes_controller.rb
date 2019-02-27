@@ -57,7 +57,7 @@ class EventtypesController < ApplicationController
   # POST /eventtypes
   # POST /eventtypes.json
   def create
-    @eventtype = Eventtype.new(params[:eventtype])
+    @eventtype = Eventtype.new(eventtype_params)
 
     respond_to do |format|
       if @eventtype.save
@@ -76,7 +76,7 @@ class EventtypesController < ApplicationController
     @eventtype = Eventtype.find(params[:id])
 
     respond_to do |format|
-      if @eventtype.update_attributes(params[:eventtype])
+      if @eventtype.update_attributes(eventtype_params)
         format.html { redirect_to @eventtype, notice: 'Eventtype was successfully updated.' }
         format.json { head :ok }
       else
@@ -96,5 +96,11 @@ class EventtypesController < ApplicationController
       format.html { redirect_to eventtypes_url }
       format.json { head :ok }
     end
+  end
+
+  private
+  def eventtype_params
+    # TODO controller now permits all models attributes, try to be more specific
+    params.require(:eventtype).permit!
   end
 end

@@ -6,7 +6,7 @@ class CommissionsController < ApplicationController
   end
   
   def create
-    @commission = Commission.new(params[:commission])
+    @commission = Commission.new(commission_params)
     if @commission.save
       redirect_to @commission
     else
@@ -29,7 +29,7 @@ class CommissionsController < ApplicationController
   
   def update
     @commission = Commission.find_by_id(params[:id])
-    if @commission.update_attributes(params[:commission])
+    if @commission.update_attributes(commission_params)
       flash[:success] = "Commission updated."
       redirect_to @commission
     else
@@ -42,5 +42,12 @@ class CommissionsController < ApplicationController
       commission.destroy
       flash[:success] = "Commissie Verwijderd"
       redirect_to commissions_path
+  end
+
+  private
+
+  def commission_params
+    # TODO controller now permits all models attributes, try to be more specific
+    params.require(:commission).permit!
   end
 end

@@ -45,7 +45,7 @@ class PagesController < ApplicationController
   end
   
   def create
-    @page = Page.new(params[:page])
+    @page = Page.new(page_params)
     if @page.save
       redirect_to @page
     else
@@ -61,7 +61,7 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
 
     respond_to do |format|
-      if @page.update_attributes(params[:page])
+      if @page.update_attributes(page_params)
         format.html { redirect_to '/'+@page.pagetag, notice: 'Page was successfully updated.' }
         format.json { head :ok }
       else
@@ -100,6 +100,11 @@ class PagesController < ApplicationController
   private
     def page_not_found
       raise ActionController::RoutingError.new('Page Not Found')
+    end
+
+    def page_params
+      # TODO controller now permits all models attributes, try to be more specific
+      params.require(:page).permit!
     end
 
 end

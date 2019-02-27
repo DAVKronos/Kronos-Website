@@ -41,7 +41,7 @@ class AgendaitemtypesController < ApplicationController
   # POST /agendaitemtypes
   # POST /agendaitemtypes.json
   def create
-    @agendaitemtype = Agendaitemtype.new(params[:agendaitemtype])
+    @agendaitemtype = Agendaitemtype.new(agendaitemtype_params)
 
     respond_to do |format|
       if @agendaitemtype.save
@@ -60,7 +60,7 @@ class AgendaitemtypesController < ApplicationController
     @agendaitemtype = Agendaitemtype.find(params[:id])
 
     respond_to do |format|
-      if @agendaitemtype.update_attributes(params[:agendaitemtype])
+      if @agendaitemtype.update_attributes(agendaitemtype_params)
         format.html { redirect_to @agendaitemtype, notice: 'Agendaitemtype was successfully updated.' }
         format.json { head :no_content }
       else
@@ -80,5 +80,11 @@ class AgendaitemtypesController < ApplicationController
       format.html { redirect_to agendaitemtypes_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def agendaitemtype_params
+    # TODO controller now permits all models attributes, try to be more specific
+    params.require(:agendaitemtype).permit!
   end
 end

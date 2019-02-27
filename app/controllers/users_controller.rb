@@ -1,3 +1,4 @@
+# TODO change attr_accessible in model to strong parameter
 class UsersController < ApplicationController
   load_and_authorize_resource
   skip_load_resource only: :create

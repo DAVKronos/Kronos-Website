@@ -45,7 +45,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(params[:event])
+    @event = Event.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -107,5 +107,12 @@ class EventsController < ApplicationController
         format.json { head :ok }
       end
     end
+  end
+
+  private
+
+  def event_params
+    # TODO controller now permits all models attributes, try to be more specific
+    params.require(:event).permit!
   end
 end
