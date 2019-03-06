@@ -17,4 +17,5 @@ class Kronometer < ActiveRecord::Base
   attr_accessible :date, :file, :name
   
   has_attached_file :file, :styles => { :thumb => ["260", :png] }
+  do_not_validate_attachment_file_type :file
 end
