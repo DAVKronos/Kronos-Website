@@ -822,6 +822,7 @@ en:
   recaptcha:
     errors:
       incorrect-captcha-sol: Please fill in the captcha correctly.
+      verification_failed: 
   remember_me: Remember me
   result: Result
   results:

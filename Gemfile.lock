@@ -274,6 +274,8 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     rdoc (3.9.5)
+    recaptcha (4.13.1)
+      json
     redcarpet (2.3.0)
     request_store (1.4.1)
       rack (>= 1.4)
@@ -425,6 +427,7 @@ DEPENDENCIES
   rake (~> 10.1.0)
   rakismet (~> 1.4.0)
   rb-fsevent (~> 0.9.1)
+  recaptcha
   redcarpet (~> 2.3.0)
   rspec-rails (~> 3.5.1)
   rubocop
@@ -437,4 +440,4 @@ DEPENDENCIES
   will_paginate (~> 3.0.3)
 
 BUNDLED WITH
-   1.17.1
+   1.17.3

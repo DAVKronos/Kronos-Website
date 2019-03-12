@@ -810,6 +810,7 @@ nl:
   recaptcha:
     errors:
       incorrect-captcha-sol: Vul a.u.b. de captcha goed in
+      verification_failed: reCAPTCHA verification failed, please try again.
   remember_me: onthoud mij
   result: Onderdeel
   results:
