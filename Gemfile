@@ -35,6 +35,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'cookies_eu'
 gem 'prawn-rails'
 gem 'pg', '~> 0.21'
+gem "recaptcha"
 
 # Gems used only for assets
 gem 'sass-rails'

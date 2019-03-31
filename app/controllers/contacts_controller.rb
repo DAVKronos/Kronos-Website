@@ -22,7 +22,7 @@ class ContactsController < ApplicationController
     
     
     @contact.request = request
-    if @contact_chair.deliver
+    if verify_recaptcha(model: @contact) && @contact_chair.deliver
       @contact.deliver
       @contact_sec.deliver
       flash.now[:notice] = 'Thank you for your message. We will contact you soon!'

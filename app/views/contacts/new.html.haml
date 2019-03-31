@@ -14,6 +14,7 @@
     = f.text_area :message, :class => 'form-control', :as => :text, :required => true
   .hidden
     = f.label :nickname, :hint => 'Leave this field blank!'
+  = recaptcha_tags
   %br
   = f.button t(:send).capitalize, :class=> 'btn btn-primary'
 
