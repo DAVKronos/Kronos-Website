@@ -1,6 +1,8 @@
 # Base image
 FROM ruby:2.3.8-jessie
 
+RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
+
 ENV HOME /home/rails/webapp
 ENV RAILS_ENV development
 

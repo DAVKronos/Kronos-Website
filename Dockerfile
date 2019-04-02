@@ -1,6 +1,9 @@
 # Base image
 FROM ruby:2.3.8-jessie
 
+#TODO See if Passenger docker images can be used
+RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
+
 ENV HOME /home/rails/webapp
 ENV RAILS_ENV production
 
