@@ -41,7 +41,7 @@ gem "recaptcha"
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.6'
 
 # Gem included as upgrade path towards strong parameters, remove when all controllers are migrated.
 gem 'protected_attributes'
