@@ -25,7 +25,7 @@ class Eventtype < ActiveRecord::Base
   def calculate_result(result, distance, gender)
     engine = MathEngine::MathEngine.new
 	formula = self.formula
-	if gender != "Man" && self.female_formula
+	if gender != "Male" && self.female_formula
 		formula = self.female_formula
 	end
 	if formula
