@@ -824,6 +824,10 @@ nl:
       no_agendaitems_found: Geen uitslagen gevonden.
     records:
       results: Records
+    female:
+      results: 
+    male:
+      results: 
   save_mailinglist: Maillijst opslaan
   sex: geslacht
   sign_in: Inloggen
@@ -1025,3 +1029,4 @@ nl:
   editagendaitemtype: Pas agendaitemtype aan
   newnewsitem: Nieuw nieuwsitem
   role: 
+  records: 

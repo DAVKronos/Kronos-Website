@@ -1,5 +1,6 @@
 require 'google/apis/admin_directory_v1'
 require 'google/api_client/client_secrets'
+require 'googleauth'
 
 class KronosGoogleAPIClient
   def get_config
@@ -12,12 +13,12 @@ class KronosGoogleAPIClient
 
   def initialize
     # Initialize the client.
-    Google::Apis::ClientOptions.default.application_name = 'Kronos-Website'
-    Google::Apis::ClientOptions.default.application_version = '1.0.0'
+    authorization = Google::Auth.get_application_default(self.get_config)
     @admin_api = Google::Apis::AdminDirectoryV1::DirectoryService.new
-    client_secrets = Google::APIClient::ClientSecrets.load(:google_app_default)
-    authorization = client_secrets.to_authorization
-    authorization.scope = self.get_config
+    @admin_api.client_options.application_name ='Kronos-Website'
+    @admin_api.client_options.application_version ='1.0.0'
+    some_headers = {"person": "webmaster@kronos.nl"}
+    authorization.apply(some_headers)
     authorization.fetch_access_token!
     @admin_api.authorization = authorization
 
@@ -31,9 +32,9 @@ class KronosGoogleAPIClient
   end
 
   def create_email_group(email, name, description)
-
-    @admin_api.insert_group( {:email => email, :name => name,
-                                              :description => description})
+    group = Google::Apis::AdminDirectoryV1::Group.new(:email => email, :name => name,
+                                                       :description => description)
+    @admin_api.insert_group(group)
     result
   end
 
@@ -45,7 +46,8 @@ class KronosGoogleAPIClient
   end
 
   def add_member_to_group(user, group_email)
-    result = @admin_api.insert_member(group_email, {:email => user.email, :name => user.name})
+    member = Google::Apis::AdminDirectoryV1::Member.new(:email => user.email, :name => user.name)
+    result = @admin_api.insert_member(group_email, member)
 
     result.success?
   end
@@ -57,7 +59,9 @@ class KronosGoogleAPIClient
   end
 
   def add_alias_to_group(alia, group_email)
-    result = @admin_api.insert_member(group_email, {:email => alia.emailaddress, :name => alia.name})
+
+    member = Google::Apis::AdminDirectoryV1::Member.new(:email => alia.emailaddress, :name => alia.name)
+    result = @admin_api.insert_member(group_email, member)
 
     result.success?
   end
@@ -69,7 +73,8 @@ class KronosGoogleAPIClient
   end
 
   def add_group_to_group(mailinglis, group_email)
-    result = @admin_api.insert_member(group_email, {:email => mailinglis.full_email, :name => mailinglis.name})
+    member = Google::Apis::AdminDirectoryV1::Member.new(:email => mailinglis.full_email, :name => mailinglis.name)
+    result = @admin_api.insert_member(group_email, member)
 
     result.success?
   end

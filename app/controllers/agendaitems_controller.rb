@@ -5,10 +5,10 @@ class AgendaitemsController < ApplicationController
 
   def index
     if date_param_is_set?
-      @date = Date.new(params[:date][:year].to_i, 
+      @date = Time.new(params[:date][:year].to_i,
                        params[:date][:month].to_i)
     else 
-      @date = Date.today 
+      @date = Time.now
     end
 
     @agendaitems = Agendaitem

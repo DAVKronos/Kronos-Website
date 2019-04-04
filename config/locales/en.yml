@@ -836,6 +836,10 @@ en:
       no_agendaitems_found: no agendaitems found
     records:
       results: Results
+    female:
+      results: 
+    male:
+      results: 
   save_mailinglist: Save mailinglist
   sex: Sex
   sign_in: Sign in
@@ -1047,3 +1051,4 @@ en:
   editagendaitemtype: Edit calenderitemtype
   newnewsitem: New newsitem
   role: 
+  records: 
