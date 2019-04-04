@@ -8,14 +8,14 @@
     %tbody
       - event.results.order('place ASC').each do |result|
         %tr
-          %td.row.col-xs-1
+          %td.row.col-xs-3
             = result.result
             = result.event.eventtype.measuringunit
             - if result.place
               = '(' + result.place.to_s + ')'
           %td.col-xs-5
             = result.username
-          %td.col-xs-6
+          %td.col-xs-4
             = number_to_human result.calculatedResult, :format => "%n", 
                 :precision => 2, :significant => false
             = result.event.eventtype.calculated_unit
