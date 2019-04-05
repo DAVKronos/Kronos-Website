@@ -1,0 +1,299 @@
+.row
+  .col-md-12
+    %h1 
+      =t(:records).capitalize
+      %small overzicht
+.row
+  .col-md-12
+    %ul.nav.nav-tabs
+      - 1.downto(0).each.map{|m| @date + m.months}.each do |d|
+        %li{role: 'presentation'}
+          = link_to (l d, format: '%b %Y'), 
+              controller: 'results', 
+              action: 'index',
+              date: {year: d.year, month: d.month}
+      - (1..2).each.map{|m| @date- m.months}.each do |d|
+        %li{role: 'presentation'}
+          = link_to (l d, format: '%b %Y'), 
+              controller: 'results', 
+              action: 'index',
+              date: {year: d.year, month: d.month}
+      %li{:role => 'presentation', class:'active'}
+        %a= 'Clubrecords'
+      = form_tag({controller: 'results', action: 'index'}, method: 'get', class: 'navbar-form navbar-left')
+.row
+  &nbsp;
+.row
+  .col-md-12
+    %ul.nav.nav-tabs
+      = link_to 'Men Outdoor',records_results_path(:sex=>"male",:loc=>"out"), class: 'btn btn-default'
+      = link_to 'Women Outdoor',records_results_path(:sex=>"female",:loc=>"out"), class: 'btn btn-default'
+  .col-md-12
+    %ul.nav.nav-tabs
+      = link_to 'Men Indoor',records_results_path(:sex=>"male",:loc=>"in"), class: 'btn btn-default'
+      = link_to 'Women Indoor',records_results_path(:sex=>"female",:loc=>"in"), class: 'btn btn-default'
+.row
+  %table.table.table-striped
+    %thead
+      %tr 
+        %th 
+          Onderdeel
+        %th
+          Prestatie
+        %th
+          Recordhouder
+        %th
+          Datum
+    %tbody
+      %tr
+        %td
+          %b Looponderdelen
+      %tr
+        %td 
+          100m
+        %td
+          10.81
+        %td
+          Guus van den Boom
+        %td
+          07-09-1997
+      %tr
+        %td 
+          200m
+        %td
+          21.67
+        %td
+          Rogier Janssen
+        %td
+          20-07-2013
+      %tr
+        %td 
+          400m
+        %td
+          49.48
+        %td
+          Maarten ten Ham
+        %td
+          20-05-1993
+      %tr
+        %td 
+          800m
+        %td
+          1:52,44
+        %td
+          Pieter van Langen
+        %td
+          22-08-2003
+      %tr
+        %td 
+          1500m
+        %td
+          3:55,43
+        %td
+          Harmen Hoek
+        %td
+          07-07-2017
+      %tr
+        %td 
+          3000m
+        %td
+          8:31,6
+        %td
+          Henk Janssen
+        %td
+          29-06-1988
+      %tr
+        %td 
+          5000m
+        %td
+          14:26,9
+        %td
+          Henk Janssen
+        %td
+          07-09-1988
+      %tr
+        %td 
+          10.000m
+        %td
+          30:20,1
+        %td
+          Henk Janssen
+        %td
+          05-09-1986
+      %tr
+        %td
+          %b Speciale looponderdelen
+      %tr
+        %td 
+          110m Horden
+        %td
+          15,1
+        %td
+          Ruud Smit
+        %td
+          30-06-1973
+      %tr
+        %td 
+          400m Horden
+        %td
+          54,77
+        %td
+          Arend-Jan Spierenburg
+        %td
+          26-07-2014
+      %tr
+        %td 
+          3000m Steeplechase
+        %td
+          9:23,0
+        %td
+          Luuk Steenbergen
+        %td
+          03-09-1988
+      %tr
+        %td
+          %b Technische onderdelen
+      %tr
+        %td 
+          Hoogspringen
+        %td
+          2,01
+        %td
+          Ruud Smit
+        %td
+          03-06-1971
+      %tr
+        %td 
+          Polsstokhoogspringen
+        %td
+          4,20
+        %td
+          Koen Joosse
+        %td
+          16-05-1990
+      %tr
+        %td 
+          Verspringen
+        %td
+          6,71
+        %td
+          Ruud Smit
+        %td
+          14-08-1976
+      %tr
+        %td 
+          Hinkstapspringen
+        %td
+          14,32
+        %td
+          Roy van Zijl
+        %td
+          23-06-2018
+      %tr
+        %td 
+          Kogelstoten
+        %td
+          13,22
+        %td
+          Oscar Noordman
+        %td
+          03-09-1995
+      %tr
+        %td 
+          Discuswerpen
+        %td
+          45,00
+        %td
+          Oscar Noordman
+        %td
+          10-07-1996
+      %tr
+        %td 
+          Kogelslingeren
+        %td
+          32,95
+        %td
+          Hille Groendijk
+        %td
+          01-06-2011
+      %tr
+        %td 
+          Speerwerpen
+        %td
+          60,01
+        %td
+          Hille Groendijk
+        %td
+          29-06-2013
+      %tr
+        %td 
+          Tienkamp
+        %td
+          5969
+        %td
+          Koen Joosse
+        %td
+          30-05-1993
+      %tr
+        %td
+          %b Estafettes
+      %tr
+        %td 
+          4x100m
+        %td
+          43,24
+        %td
+          Martijn de Lange
+          %br
+          Gertjan Rijk
+          %br
+          Daniël Hofman
+          %br
+          Arjan Pathmamanoharan
+        %td
+          26-09-1999
+      %tr
+        %td 
+          4x400m
+        %td
+          3:27,43
+        %td
+          Gertjan Rijk
+          %br
+          Arjan Pathmamanoharan
+          %br
+          Demian Pot
+          %br
+          Daniël Hofman
+        %td
+          19-06-1998
+      %tr
+        %td 
+          Zweedse estafette
+        %td
+          2:02,5
+        %td
+          Daniël Hofman
+          %br
+          Gertjan Rijk
+          %br
+          Demian Pot
+          %br
+          Niels van der Aar
+        %td
+          03-10-1998
+      %tr
+        %td 
+          Olympische estafette
+        %td
+          3:40,4
+        %td
+          Arjen Eggink
+          %br
+          Ruben van Moppes
+          %br
+          Daniël Hofman
+          %br
+          Arjan Pathmamanoharan
+        %td
+          05-07-2000		  

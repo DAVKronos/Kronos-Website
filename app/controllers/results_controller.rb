@@ -20,7 +20,15 @@ class ResultsController < ApplicationController
   def records
     index
 	
-    @eventtypes = Eventtype.where(:important=>true)
+	if params[:sex] ==="male" and params[:loc] === "out"
+      render 'results/male-out'
+	elsif params[:sex] ==="female" and params[:loc] === "out"
+      render 'results/female-out'
+	elsif params[:sex] ==="male" and params[:loc] === "in"
+      render 'results/male-in'
+	elsif params[:sex] ==="female" and params[:loc] === "in"
+      render 'results/female-in'
+	end
   end
   
   def new

@@ -20,7 +20,7 @@
               controller: 'results', 
               action: 'index',
               date: {year: d.year, month: d.month}
-      %li{:role => 'presentation'}= link_to 'Clubrecords', records_results_path
+      %li{:role => 'presentation'}= link_to 'Clubrecords', records_results_path(:sex=>"male", :loc=>"out")
       = form_tag({controller: 'results', action: 'index'}, method: 'get', class: 'navbar-form navbar-left') do
         .form-group
           = text_field :date, :month, :class => 'form-control maandprikker', :size=>'2', value: @date.month
