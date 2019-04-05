@@ -11,8 +11,8 @@
 
 <% @agendaitemtype_eventtypes.each do |agendaitemtype_eventtype| %>
   <tr>
-    <td><%= agendaitemtype_eventtype.agendaitemtype_id %></td>
-    <td><%= agendaitemtype_eventtype.eventtype_id %></td>
+    <td><%= Agendaitemtype.find(agendaitemtype_eventtype.agendaitemtype_id).name %></td>
+    <td><%= Eventtype.find(agendaitemtype_eventtype.eventtype_id).name %></td>
     <td><%= link_to 'Show', agendaitemtype_eventtype %></td>
     <td><%= link_to 'Edit', edit_agendaitemtype_eventtype_path(agendaitemtype_eventtype) %></td>
     <td><%= link_to 'Destroy', agendaitemtype_eventtype, confirm: 'Are you sure?', method: :delete %></td>
