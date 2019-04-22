@@ -20,57 +20,17 @@
               date: {year: d.year, month: d.month}
       %li{:role => 'presentation', class:'active'}
         %a= 'Clubrecords'
-      = form_tag({controller: 'results', action: 'index'}, method: 'get', class: 'navbar-form navbar-left') do
-        .form-group
-          = text_field :date, :month, :class => 'form-control', :size=>'2',
-            'data-date-min-view-mode' =>'1', 'data-date-max-view-mode' => '1', 
-            'data-provide'=>'datepicker', 'data-date-format'=>'mm',
-            value: @date.month
-          = text_field :date, :year, :class => 'form-control', :size=>'4',
-            'data-date-min-view-mode' =>'2', 'data-date-max-view-mode' => '2', 
-            'data-provide'=>'datepicker', 'data-date-format'=>'yyyy', value: @date.year
-          = button_tag 'zoek', class: 'btn btn-default'
+      = form_tag({controller: 'results', action: 'index'}, method: 'get', class: 'navbar-form navbar-left')
 .row
   &nbsp;
 .row
   .col-md-12
-    #toptien.panel-group.list-group
-      -@eventtypes.each_with_index do |eventtype, ntime|
-        .panel.list-group-item
-          .list-group-heading
-            %a.accordion-toggle.collapsed{"data-parent" => "#toptien", "data-toggle" => "collapse", :href => "#toptien-collapse-"+ntime.to_s}
-              .row
-                .col-xs-11
-                  %h4
-                    =eventtype.name
-                .col-xs-1.text-right
-                  %h4
-                    %small
-                      .icon
-          .collapse{:id=>'toptien-collapse-'+ntime.to_s, :class => (ntime == 0) ? 'in' : ''}
-            .panel-body
-              .table-responsive
-                %table.table.table-condensed.table-striped
-                  %thead
-                    %tr
-                      %th #
-                      %th Naam
-                      %th Uitslag
-                      %th= eventtype.calculated_unit
-                      %th Datum
-                      %th Wedstrijd
-                  %tbody
-                    -eventtype.results.order("calculated DESC").where("calculated IS NOT NULL").limit(10).each_with_index do |result, n_uit|
-                      %tr
-                        %th.row.col-xs-1
-                          =(1+n_uit).to_s
-                        %td.col-xs-3
-                          = result.username
-                        %td.col-xs-2
-                          = result.result
-                        %td.col-xs-1
-                          = number_to_human result.calculated, :format => "%n", :precision => 2, :significant => false
-                        %td.col-xs-1
-                          = (l result.event.agendaitem.date, format: '%b %Y') if result.event and result.event.agendaitem
-                        %td.col-xs-5
-                          = (link_to result.event.agendaitem.name + ' (' + result.event.agendaitem.location + ')', agendaitem_path(result.event.agendaitem)) if result.event and result.event.agendaitem
+    %ul.nav.nav-tabs
+      = link_to 'Men Outdoor',records_results_path(:sex=>"male",:loc=>"out"), class: 'btn btn-default'
+      = link_to 'Women Outdoor',records_results_path(:sex=>"female",:loc=>"out"), class: 'btn btn-default'
+  .col-md-12
+    %ul.nav.nav-tabs
+      = link_to 'Men Indoor',records_results_path(:sex=>"male",:loc=>"in"), class: 'btn btn-default'
+      = link_to 'Women Indoor',records_results_path(:sex=>"female",:loc=>"in"), class: 'btn btn-default'
+.row
+  Please select a category

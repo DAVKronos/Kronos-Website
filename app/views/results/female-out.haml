@@ -1,0 +1,303 @@
+.row
+  .col-md-12
+    %h1 
+      =t(:records).capitalize
+      %small overzicht
+.row
+  .col-md-12
+    %ul.nav.nav-tabs
+      - 1.downto(0).each.map{|m| @date + m.months}.each do |d|
+        %li{role: 'presentation'}
+          = link_to (l d, format: '%b %Y'), 
+              controller: 'results', 
+              action: 'index',
+              date: {year: d.year, month: d.month}
+      - (1..2).each.map{|m| @date- m.months}.each do |d|
+        %li{role: 'presentation'}
+          = link_to (l d, format: '%b %Y'), 
+              controller: 'results', 
+              action: 'index',
+              date: {year: d.year, month: d.month}
+      %li{:role => 'presentation', class:'active'}
+        %a= 'Clubrecords'
+      = form_tag({controller: 'results', action: 'index'}, method: 'get', class: 'navbar-form navbar-left')
+.row
+  &nbsp;
+.row
+  .col-md-12
+    %ul.nav.nav-tabs
+      = link_to 'Men Outdoor',records_results_path(:sex=>"male",:loc=>"out"), class: 'btn btn-default'
+      = link_to 'Women Outdoor',records_results_path(:sex=>"female",:loc=>"out"), class: 'btn btn-default'
+  .col-md-12
+    %ul.nav.nav-tabs
+      = link_to 'Men Indoor',records_results_path(:sex=>"male",:loc=>"in"), class: 'btn btn-default'
+      = link_to 'Women Indoor',records_results_path(:sex=>"female",:loc=>"in"), class: 'btn btn-default'
+.row
+  %table.table.table-striped
+    %thead
+      %tr 
+        %th 
+          Onderdeel
+        %th
+          Prestatie
+        %th
+          Recordhouder
+        %th
+          Datum
+    %tbody
+      %tr
+        %td
+          %b Looponderdelen
+      %tr
+        %td 
+          100m
+        %td
+          12.8
+        %td
+          Ingrid Stam
+        %td
+          30-06-1993
+      %tr
+        %td 
+          200m
+        %td
+          27.0
+        %td
+          Bieneke Bauling
+          %br
+          Agnes Mewe
+        %td
+          14-06-1989
+          %br
+          15-06-2003
+      %tr
+        %td 
+          400m
+        %td
+          1:00,36
+        %td
+          Chantal van der Krogt
+        %td
+          06-06-2004
+      %tr
+        %td 
+          800m
+        %td
+          2:17,33
+        %td
+          Karin Gorter
+        %td
+          27-06-2008
+      %tr
+        %td 
+          1500m
+        %td
+          4:38,07
+        %td
+          Karin Gorter
+        %td
+          30-05-2008
+      %tr
+        %td 
+          3000m
+        %td
+          10:21,9
+        %td
+          Nicole Philippens
+        %td
+          21-05-1995
+      %tr
+        %td 
+          5000m
+        %td
+          18:59,4
+        %td
+          Sophie Crommelinck
+        %td
+          23-06-2016
+      %tr
+        %td 
+          10.000m
+        %td
+          40:51,3
+        %td
+          Anneleen van Beek
+        %td
+          17-06-1995
+      %tr
+        %td
+          %b Speciale looponderdelen
+      %tr
+        %td 
+          100m Horden
+        %td
+          14,59
+        %td
+          Marjolein Bolten
+        %td
+          07-07-2018
+      %tr
+        %td 
+          400m Horden
+        %td
+          1:07,38
+        %td
+          Marjolein Bolten
+        %td
+          15-07-2018
+      %tr
+        %td 
+          3000m Steeplechase
+        %td
+          11:28,67
+        %td
+          Martien Schaub
+        %td
+          05-07-2003
+      %tr
+        %td
+          %b Technische onderdelen
+      %tr
+        %td 
+          Hoogspringen
+        %td
+          1,70
+        %td
+          Marjolein Bolten
+        %td
+          27-05-2018
+      %tr
+        %td 
+          Polsstokhoogspringen
+        %td
+          2,80
+        %td
+          Ingrid Stam
+        %td
+          18-06-1995
+      %tr
+        %td 
+          Verspringen
+        %td
+          5,67
+        %td
+          Marjolein Bolten
+        %td
+          16-06-2018
+      %tr
+        %td 
+          Hinkstapspringen
+        %td
+          11,21
+        %td
+          Marjolein Bolten
+        %td
+          27-05-2018
+      %tr
+        %td 
+          Kogelstoten
+        %td
+          12,86
+        %td
+          Brenda Pouw
+        %td
+          20-05-2007
+      %tr
+        %td 
+          Discuswerpen
+        %td
+          37,54
+        %td
+          Brenda Pouw
+        %td
+          24-06-2003
+      %tr
+        %td 
+          Kogelslingeren
+        %td
+          30,64
+        %td
+          Nadia Lachkar
+        %td
+          13-06-2007
+      %tr
+        %td 
+          Speerwerpen
+        %td
+          41,84
+        %td
+          Brenda Pouw
+        %td
+          15-09-2002
+      %tr
+        %td 
+          Zevenkamp
+        %td
+          5115
+        %td
+          Marjolein Bolten
+        %td
+          07-07-2018
+      %tr
+        %td
+          %b Estafettes
+      %tr
+        %td 
+          4x100m
+        %td
+          52,6
+        %td
+          Esther Schrier
+          %br
+          Bieneke Bauling
+          %br
+          Ingrid Stam
+          %br
+          Hilde Poodt
+        %td
+          25-06-1989
+      %tr
+        %td 
+          4x400m
+        %td
+          4:21,4
+        %td
+          Agnes Mewe
+          %br
+          Karin Gorter
+          %br
+          Annelies Braat
+          %br
+          Trienke Ijmker
+        %td
+          10-05-2006
+      %tr
+        %td 
+          Zweedse estafette
+        %td
+          2:29,8
+        %td
+          Agnes Mewe
+          %br
+          Maaike Konter
+          %br
+          Monique Hoogers
+          %br
+          Annelies Braat
+        %td
+          15-09-2002
+      %tr
+        %td 
+          Olympische estafette
+        %td
+          4:36,88
+        %td
+          Martien Schaub
+          %br
+          Agnes Mewe
+          %br
+          Monique Hoogers
+          %br
+          Maaike Konter
+        %td
+          27-06-2002		  

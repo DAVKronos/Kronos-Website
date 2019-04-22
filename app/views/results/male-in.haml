@@ -1,0 +1,227 @@
+.row
+  .col-md-12
+    %h1 
+      =t(:records).capitalize
+      %small overzicht
+.row
+  .col-md-12
+    %ul.nav.nav-tabs
+      - 1.downto(0).each.map{|m| @date + m.months}.each do |d|
+        %li{role: 'presentation'}
+          = link_to (l d, format: '%b %Y'), 
+              controller: 'results', 
+              action: 'index',
+              date: {year: d.year, month: d.month}
+      - (1..2).each.map{|m| @date- m.months}.each do |d|
+        %li{role: 'presentation'}
+          = link_to (l d, format: '%b %Y'), 
+              controller: 'results', 
+              action: 'index',
+              date: {year: d.year, month: d.month}
+      %li{:role => 'presentation', class:'active'}
+        %a= 'Clubrecords'
+      = form_tag({controller: 'results', action: 'index'}, method: 'get', class: 'navbar-form navbar-left')
+.row
+  &nbsp;
+.row
+  .col-md-12
+    %ul.nav.nav-tabs
+      = link_to 'Men Outdoor',records_results_path(:sex=>"male",:loc=>"out"), class: 'btn btn-default'
+      = link_to 'Women Outdoor',records_results_path(:sex=>"female",:loc=>"out"), class: 'btn btn-default'
+  .col-md-12
+    %ul.nav.nav-tabs
+      = link_to 'Men Indoor',records_results_path(:sex=>"male",:loc=>"in"), class: 'btn btn-default'
+      = link_to 'Women Indoor',records_results_path(:sex=>"female",:loc=>"in"), class: 'btn btn-default'
+.row
+  %table.table.table-striped
+    %thead
+      %tr 
+        %th 
+          Onderdeel
+        %th
+          Prestatie
+        %th
+          Recordhouder
+        %th
+          Datum
+    %tbody
+      %tr
+        %td
+          %b Looponderdelen
+      %tr
+        %td 
+          60m
+        %td
+          6,8
+        %td
+          Guus van den Boom
+        %td
+          25-02-1996
+      %tr
+        %td 
+          200m
+        %td
+          21,90
+        %td
+          Rogier Janssen
+        %td
+          15-12-2013
+      %tr
+        %td 
+          400m
+        %td
+          50,78
+        %td
+          Ronald Kuin
+        %td
+          28-02-2009
+      %tr
+        %td 
+          800m
+        %td
+          1:56,92
+        %td
+          Arjen Eggink
+        %td
+          06-02-2000
+      %tr
+        %td 
+          1500m
+        %td
+          4:06,1
+        %td
+          Reijer Klopman
+        %td
+          16-1-1988
+      %tr
+        %td 
+          3000m
+        %td
+          8:51,45
+        %td
+          Boike Kropman
+        %td
+          02-03-2019
+      %tr
+        %td
+          %b Speciale looponderdelen
+      %tr
+        %td 
+          60m Horden
+        %td
+          8,4
+        %td
+          Ton van den Boogaard
+        %td
+          20-1-1985
+      %tr
+        %td
+          %b Technische onderdelen
+      %tr
+        %td 
+          Hoogspringen
+        %td
+          2,00
+        %td
+          Ruud Smit
+        %td
+          19-12-1971
+      %tr
+        %td 
+          Polsstokhoogspringen
+        %td
+          4,10
+        %td
+          Ton van den Boogaard
+        %td
+          27-01-1985
+      %tr
+        %td 
+          Verspringen
+        %td
+          6,63
+        %td
+          Ton van den Boogaard
+        %td
+          19-01-1985
+      %tr
+        %td 
+          Hinkstapspringen
+        %td
+          14,13
+        %td
+          Roy van Zijl
+        %td
+          18-02-2017
+      %tr
+        %td 
+          Kogelstoten
+        %td
+          13,64
+        %td
+          Oscar Noordman
+        %td
+          21-01-1996
+      %tr
+        %td 
+          Zevenkamp
+        %td
+          3653
+        %td
+          Frans Vercraeye
+        %td
+          26-01-1974
+      %tr
+        %td
+          %b Estafettes
+      %tr
+        %td 
+          4x200m
+        %td
+          1:37,11
+        %td
+          Daniël Krant
+          %br
+          Arco Krijgsman
+          %br
+          Sjoerd Pater
+          %br
+          Frede Schotanus
+        %td
+          24-04-2004
+      %tr
+        %td 
+          4x400m
+        %td
+          3:44,15
+        %td
+          Jeroen de Groot
+          %br
+          Rink Hallmann
+          %br
+          Marcel Fekkes
+          %br
+          Fredo Schotanus
+        %td
+          22-01-2005
+      %tr
+        %td 
+          4x800m
+        %td
+          8:27,00
+        %td
+          Erik Droog
+          %br
+          Rink Hallmann
+          %br
+          Arjen Eggink
+          %br
+          Marcel Fekkes
+        %td
+          22-01-2000
+      %tr
+        %td 
+          Zweedse estafette
+        %td
+          Vacant
+        %td		  
