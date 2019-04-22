@@ -17,10 +17,11 @@ class KronosGoogleAPIClient
     @admin_api = Google::Apis::AdminDirectoryV1::DirectoryService.new
     @admin_api.client_options.application_name ='Kronos-Website'
     @admin_api.client_options.application_version ='1.0.0'
-    some_headers = {"person": "webmaster@kronos.nl"}
-    authorization.apply(some_headers)
-    authorization.fetch_access_token!
-    @admin_api.authorization = authorization
+
+    auth_client = authorization.dup
+    auth_client.sub = '"webmaster@kronos.nl"'
+    auth_client.fetch_access_token!
+    @admin_api.authorization = auth_client
 
   end
 
