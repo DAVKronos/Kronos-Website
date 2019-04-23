@@ -20,6 +20,7 @@ nl:
         English description: 
       agendaitemtype_eventtype:
         eventtype_id: Evenementtype
+        agendaitemtype_id: Agendaitemtype
       apps_exception:
         email: Email
         group_email: Group email
@@ -258,6 +259,7 @@ nl:
       alias: Alias
       announcement: Announcement
       photo: Photo
+      agendaitemtype_eventtype: Agendaitemtype eventtype
   add: Toevoegen
   add_mailinglist: Maillijst toevoegen
   address: adres
@@ -670,6 +672,9 @@ nl:
         email: E-mail
         message: Bericht
         nickname: Nickname
+      agendaitemtype_eventtype:
+        agendaitemtype_id: 
+        eventtype_id: 
     select:
       prompt: Selecteer
     submit:
@@ -725,6 +730,9 @@ nl:
       announcement:
         create: Create Announcement
         update: Update Announcement
+      agendaitemtype_eventtype:
+        create: Create Agendaitemtype eventtype
+        update: Update Agendaitemtype eventtype
   iban: IBAN
   index: index
   initials: initialen

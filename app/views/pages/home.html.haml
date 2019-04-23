@@ -59,6 +59,11 @@
                           %span.glyphicon.glyphicon-user
                           = agendaitem.subscriptions.count
 
+    .panel.panel-primary
+      .panel-heading= "Strava"
+      .list-group
+        %iframe{ :allowtransparency=>true, :frameborder=>'0', :height=>'454', :scrolling=>'no', :src=>'https://www.strava.com/clubs/37924/latest-rides/962ac0041c05503286c8e79fb39538c4577229a0?show_rides=true', :style=>'width: 100%;'}
+
   -if user_signed_in?
     .col-md-4 
       .panel.panel-primary

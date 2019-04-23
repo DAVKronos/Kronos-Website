@@ -21,6 +21,7 @@ en:
         Nederlandse naam: 
       agendaitemtype_eventtype:
         eventtype_id: Event type
+        agendaitemtype_id: 
       apps_exception:
         email: Email
         group_email: Group email
@@ -267,6 +268,7 @@ en:
       alias: alias
       agendaitemtype: 
       photo: 
+      agendaitemtype_eventtype: 
   add: Add
   add_mailinglist: Add mailinglist
   address: address
@@ -688,6 +690,9 @@ en:
         Engelse naam: 
         English name: 
         Nederlandse naam: 
+      agendaitemtype_eventtype:
+        agendaitemtype_id: 
+        eventtype_id: 
     select:
       prompt: select
     submit:
@@ -744,6 +749,9 @@ en:
         create: 
         update: 
       agendaitemtype:
+        create: 
+        update: 
+      agendaitemtype_eventtype:
         create: 
         update: 
   iban: IBAN
