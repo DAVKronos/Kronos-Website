@@ -15,4 +15,5 @@ class AgendaitemtypeEventtype < ActiveRecord::Base
   
   validates :agendaitemtype_id, :presence => true
   validates :eventtype_id, :presence => true
+  attr_accessible :agendaitemtype_id, :eventtype_id
 end
