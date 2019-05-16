@@ -3,7 +3,7 @@ class AgendaitemtypeEventtypesController < ApplicationController
   # GET /agendaitemtype_eventtypes
   # GET /agendaitemtype_eventtypes.json
   def index
-    @agendaitemtype_eventtypes = AgendaitemtypeEventtype.all
+    @agendaitemtype_eventtypes = AgendaitemtypeEventtype.order(:agendaitemtype_id)
 
     respond_to do |format|
       format.html # index.html.erb
