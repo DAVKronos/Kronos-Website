@@ -19,7 +19,7 @@ class KronosGoogleAPIClient
     @admin_api.client_options.application_version ='1.0.0'
 
     auth_client = authorization.dup
-    auth_client.sub = '"webmaster@kronos.nl"'
+    auth_client.sub = 'webmaster@kronos.nl'
     auth_client.fetch_access_token!
     @admin_api.authorization = auth_client
 
