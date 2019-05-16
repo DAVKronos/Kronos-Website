@@ -36,54 +36,38 @@ class KronosGoogleAPIClient
     group = Google::Apis::AdminDirectoryV1::Group.new(:email => email, :name => name,
                                                        :description => description)
     @admin_api.insert_group(group)
-    result
   end
 
   def destroy_email_group(email)
-
-    result = @admin_api.delete_group(:groupKey => email)
-    result.success?
-
+   @admin_api.delete_group(:groupKey => email)
   end
 
   def add_member_to_group(user, group_email)
     member = Google::Apis::AdminDirectoryV1::Member.new(:email => user.email, :name => user.name)
-    result = @admin_api.insert_member(group_email, member)
-
-    result.success?
+    @admin_api.insert_member(group_email, member)
   end
 
   def remove_member_from_group(user, group_email)
-    result = @admin_api.delete_member(group_email, user.email)
-
-    result.success?
+    @admin_api.delete_member(group_email, user.email)
   end
 
   def add_alias_to_group(alia, group_email)
 
     member = Google::Apis::AdminDirectoryV1::Member.new(:email => alia.emailaddress, :name => alia.name)
-    result = @admin_api.insert_member(group_email, member)
-
-    result.success?
+    @admin_api.insert_member(group_email, member)
   end
 
   def remove_alias_from_group(alia, group_email)
-    result = @admin_api.delete_member(group_email, alia.emailaddress)
-
-    result.success?
+    @admin_api.delete_member(group_email, alia.emailaddress)
   end
 
   def add_group_to_group(mailinglis, group_email)
     member = Google::Apis::AdminDirectoryV1::Member.new(:email => mailinglis.full_email, :name => mailinglis.name)
-    result = @admin_api.insert_member(group_email, member)
-
-    result.success?
+    @admin_api.insert_member(group_email, member)
   end
 
   def remove_group_from_group(mailinglis, group_email)
-    result = @admin_api.delete_member(group_email, mailinglis.full_email)
-
-    result.success?
+    @admin_api.delete_member(group_email, mailinglis.full_email)
   end
 
 end
