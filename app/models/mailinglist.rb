@@ -11,7 +11,7 @@
 #
 
 class Mailinglist < ActiveRecord::Base
-  before_save :add_mailinglist
+  before_create :add_mailinglist
   after_destroy :delete_mailinglist
 
   has_many :mailinglist_memberships, :dependent => :destroy

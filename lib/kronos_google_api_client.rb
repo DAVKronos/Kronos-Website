@@ -27,7 +27,7 @@ class KronosGoogleAPIClient
 
 
   def members_of_group(email)
-    result = @admin_api.list_members(:groupKey => email)
+    result = @admin_api.list_members(email)
 
     result.data
   end
@@ -39,7 +39,7 @@ class KronosGoogleAPIClient
   end
 
   def destroy_email_group(email)
-   @admin_api.delete_group(:groupKey => email)
+   @admin_api.delete_group(email)
   end
 
   def add_member_to_group(user, group_email)
