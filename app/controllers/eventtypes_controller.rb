@@ -3,7 +3,7 @@ class EventtypesController < ApplicationController
   # GET /eventtypes
   # GET /eventtypes.json
   def index
-    @eventtypes = Eventtype.all
+    @eventtypes = Eventtype.order(:name)
 
     respond_to do |format|
       format.html # index.html.erb
