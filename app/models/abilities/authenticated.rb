@@ -6,9 +6,11 @@ module Abilities
       can :see_email, Commission
       can :create, [Photo, Newsitem, Agendaitem, Event, Result]
       can [:archief, :wedstrijden, :new_result, :create_result], Agendaitem
-      can [:read, :create, :update], [Photoalbum, Subscription]
+      can [:read, :create, :update], [Photoalbum]
+      can [:create, :update], [Subscription]
+	  cannot :read, Subscription
       can :update, user.agendaitems
-      can :destroy, [user.subscriptions]
+      can :destroy, Subscription.where(:user => user)
       can [:update, :editpassword], user
 
       cannot :create, User
