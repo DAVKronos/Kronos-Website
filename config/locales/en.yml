@@ -902,6 +902,12 @@ en:
       agendaitem: 
     destroy:
       photo: 
+      subscription: 
+    create:
+      subscription: 
+    index:
+      subscription: 
+      user: 
   user:
     address: 
     bankaccountnumber: 
@@ -1031,6 +1037,7 @@ en:
   none: none
   subscribe: subscribe
   programme: programme
+  commission_members: commission members
   addprog: Add a new part to the program
   save: Save
   titnl: Dutch title

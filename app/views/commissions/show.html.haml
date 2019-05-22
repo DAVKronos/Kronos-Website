@@ -14,22 +14,36 @@
   %p
     %strong=:role.capitalize
     = @commission.role
-%table.table.table-striped
-  %thead
-    %tr 
-      %th=t(:name).capitalize
-      %th=t(:function).capitalize
-  %tbody    
-    - @commission_memberships.each do |commem|
+- if current_user.nil?
+  %table.table.table-striped
+    %thead
       %tr
-        %td
-          = commem.user.name
-        %td
-          = commem.function
-          - if can? :destroy, commem
-            = link_to 'Lid uit commissie verwijderen', commem, :method => :delete, :confirm => "Weet je zeker dat je #{commem.user.name} uit de commissie wilt verwijderen?", :title => "Verwijder #{commem.user.name}"
+        %th=t(:name).capitalize
+        %th=t(:function).capitalize
+    %tbody
+      - @commission_memberships.each do |commem|
+        %tr
+          %td
+            = commem.user.name
+          %td
+            = commem.function
+            - if can? :destroy, commem
+              = link_to 'Lid uit commissie verwijderen', commem, :method => :delete, :confirm => "Weet je zeker dat je #{commem.user.name} uit de commissie wilt verwijderen?", :title => "Verwijder #{commem.user.name}"
+- if not current_user.nil?
+  %hr
+  %h2
+    = t(:commission_members).capitalize
+  - @commission_memberships.each_with_index do |commem, index|
+    %div.commission-member{:class => ( "reverse" if index % 2 == 1)}
+      %div.member-avatar
+        = image_tag(commem.user.avatar.url(:pass), class: "media-object img-rounded")
+      %div.member-name
+        %h3
+          = commem.user.name + " - " + commem.function
+        - if can? :destroy, commem
+          = link_to 'Lid uit commissie verwijderen', commem, :method => :delete, :confirm => "Weet je zeker dat je #{commem.user.name} uit de commissie wilt verwijderen?", :title => "Verwijder #{commem.user.name}"
+
 - if can? :update, @commission
-  = link_to 'Commissie aanpassen', edit_commission_path(@commission)
+  = icon_button edit_commission_path(@commission), 'edit', 'Commissie aanpassen'
 - if can? :destroy, @commission
-  %li
-  = link_to 'Commissie verwijderen', @commission, :method => :delete, :confirm => "Weet je zeker dat je #{@commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{@commission.name}"
+  = icon_button @commission, 'remove', 'Commissie verwijderen',  :method => :delete, :confirm => "Weet je zeker dat je #{@commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{@commission.name}"

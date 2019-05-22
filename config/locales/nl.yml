@@ -890,6 +890,12 @@ nl:
       agendaitem: 
     destroy:
       photo: 
+      subscription: 
+    create:
+      subscription: 
+    index:
+      subscription: 
+      user: 
   user:
     address: 
     bankaccountnumber: 
@@ -1009,6 +1015,7 @@ nl:
   none: Geen
   subscribe: Inschrijven
   programme: programma
+  commission_members: Commissieleden
   addprog: Voeg een programmaonderdeel toe
   save: Opslaan
   titnl: Nederlandse titel

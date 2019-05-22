@@ -187,6 +187,33 @@ display: inline;
 
 }
 
+.commission-member {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  &.reverse {
+    flex-direction: row-reverse;
+
+    .member-name {
+      text-align: right;
+    }
+
+    .member-avatar {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.member-avatar {
+  flex: 0 0 300px;
+}
+
+.member-name {
+  flex: 1 1 auto;
+}
+
 // ul.user {
 //  list-style-type: none;
 // }
