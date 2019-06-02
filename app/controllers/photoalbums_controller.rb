@@ -32,8 +32,8 @@ class PhotoalbumsController < ApplicationController
       end
     end
 
-    @allphotos = @photoalbum.photos.all.order('exif_date DESC, photo_file_name DESC, created_at DESC')
-    @photos = @photoalbum.photos.order('exif_date DESC, photo_file_name DESC, created_at DESC').paginate(:page => params[:page], :per_page => 12)
+    @allphotos = @photoalbum.photos.all.order('exif_date ASC, photo_file_name ASC, created_at ASC')
+    @photos = @photoalbum.photos.order('exif_date ASC, photo_file_name ASC, created_at ASC').paginate(:page => params[:page], :per_page => 12)
 	
     respond_to do |format|
       format.html # show.html.erb
