@@ -5,6 +5,8 @@ module Abilities
     def initialize(_)
       can :read, :all
       can [:home, :titleshow], Page
+      cannot [:read], Page
+      can [:read], Page, :public => true
       can [:perdag, :month], Agendaitem
       can [:frontpage, :records], Result
       can :hide, Announcement

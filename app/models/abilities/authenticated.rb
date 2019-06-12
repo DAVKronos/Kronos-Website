@@ -3,6 +3,7 @@ module Abilities
     include CanCan::Ability
     def initialize(user)
       can :read, :all
+      can :read, Page
       can :see_email, Commission
       can :create, [Photo, Newsitem, Agendaitem, Event, Result]
       can [:archief, :wedstrijden, :new_result, :create_result], Agendaitem

@@ -11,6 +11,9 @@
 
   = f.label :highlight
   = f.check_box(:highlight)
+
+  = f.label :public
+  = f.check_box(:public)
   <br>
   = f.label t(:berichtnl).capitalize
   = f.text_area(:information, :class =>"input-xlarge markItUp")

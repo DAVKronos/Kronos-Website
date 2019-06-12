@@ -106,6 +106,7 @@ en:
         Dutch title: 
         English text: 
         English title: 
+        public: Public
       photoalbum:
         agendaitem: Calendar item
         name: Name
@@ -633,6 +634,7 @@ en:
         Dutch title: 
         English text: 
         English title: 
+        public: 
       photoalbum:
         agendaitem: 
         name: 
@@ -908,6 +910,8 @@ en:
     index:
       subscription: 
       user: 
+    show:
+      page: 
   user:
     address: 
     bankaccountnumber: 
