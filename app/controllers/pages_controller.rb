@@ -22,6 +22,7 @@ class PagesController < ApplicationController
 
   def titleshow
     @page = Page.find_by_pagetag(params[:pt])
+    authorize! :show, @page
     if @page then render 'show' else page_not_found end
     end
 
