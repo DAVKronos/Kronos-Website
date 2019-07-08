@@ -40,6 +40,48 @@ class PagesController < ApplicationController
     
   def test
   end
+
+  def lustrum_signup
+    has_password = session[:lustrum_password]
+    if has_password
+      page = Page.find_by_pagetag('Lustrum Alumnidag')
+      if page.nil?
+        redirect_to :root and return
+      end
+      if page.information.nil?
+        @people = []
+      else
+        @people = page.information.split(',')
+      end
+      render
+    else
+      render 'lustrum_password'
+    end
+  end
+
+  def lustrum_enter_password
+    password = Digest::SHA2.new << params[:password]
+    env_pass = Digest::SHA2.new << ENV["LUSTRUM_PASSWORD"]
+    if password.to_s == env_pass.to_s
+      session[:lustrum_password] = true
+    end
+    redirect_to lustrum_signup_url
+  end
+
+  def lustrum_signup_new
+    name = ActionController::Base.helpers.strip_tags(params[:name])
+    if session[:lustrum_password] and name and name.length > 0
+      page = Page.find_by_pagetag('Lustrum Alumnidag')
+      page_information = page.information
+      if page_information.nil? or page_information.length == 0
+        page_information = name
+      else
+        page_information += "," + name
+      end
+      page.update_attributes(:information => page_information)
+    end
+    redirect_to lustrum_signup_url
+  end
   
   def new
     @page = Page.new

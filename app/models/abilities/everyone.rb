@@ -5,6 +5,7 @@ module Abilities
     def initialize(_)
       can :read, :all
       can [:home, :titleshow], Page
+      can [:lustrum_signup, :lustrum_signup_new, :lustrum_enter_password], Page
       cannot [:read], Page
       can [:read], Page, :public => true
       can [:perdag, :month], Agendaitem
