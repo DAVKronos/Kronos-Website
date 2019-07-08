@@ -1,0 +1,81 @@
+<h1>Lustrum Alumnidag</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Aanwezig</h3>
+    <ul id="list">
+      <% @people.each do |person| %>
+        <li><%= person %></li>
+      <% end %>
+    </ul>
+    <p>Aanmelding aanpassen? Stuur een mail</p>
+  </div>
+  <div class="col-md-6">
+    <h3>Laten weten dat je komt</h3>
+      <%= form_tag(new_lustrum_signup_path) do %>
+      <div id="name-input-group" class="form-group">
+        <label for="name-input">Naam</label> :
+        <input class="form-control" type="text" id="name-input" name="name" />
+      </div>
+      <input class="btn btn-primary" type="submit"/>
+      <% end %>
+  </div>
+</div>
+
+
+<script>
+    let onClick = function(event) {
+        let text = document.getElementById("name-input").value;
+        let list = document.getElementById("list");
+        var node = document.createElement("LI"); // Create a <li> node
+        var textnode = document.createTextNode(text); // Create a text node
+        node.appendChild(textnode);
+        list.appendChild(node);
+        document.getElementById("name-input").value = "";
+        event.preventDefault();
+    };
+
+    let onSuccess = function(data) {
+        let name = data.name;
+        let list = document.getElementById("list");
+        let node = document.createElement("LI"); // Create a <li> node
+        let textnode = document.createTextNode(name); // Create a text node
+        node.appendChild(textnode);
+        list.appendChild(node);
+        document.getElementById("name-input").value = "";
+    };
+
+    let onError = function(error) {
+        let group = document.getElementById("name-input-group");
+        let node = document.createElement("span"); // Create a <li> node
+        node.classList.add('help-block');
+        let textnode = document.createTextNode(error); // Create a text node
+        node.appendChild(textnode);
+        group.appendChild(node)
+    };
+
+    let onSubmit = function() {
+        let text = document.getElementById("name-input").value;
+        if (text && text.length > 0) {
+            var request = new XMLHttpRequest();
+            request.open('POST', '<%= new_lustrum_signup_path %>', true);
+            request.onload = function () {
+                if (this.status >= 200 && this.status < 400) {
+                    // Success!
+                    onSuccess(JSON.parse(this.response));
+                    var data = JSON.parse(this.response);
+                } else {
+                    // We reached our target server, but it returned an error
+                    onError("Something went wrong, please contact the administrator")
+                }
+            };
+
+            request.onerror = function () {
+                // There was a connection error of some sort
+                onError("Something went wrong, please contact the administrator")
+            };
+
+            request.send();
+        }
+    }
+</script>
