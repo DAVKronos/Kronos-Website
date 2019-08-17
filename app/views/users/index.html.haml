@@ -2,20 +2,36 @@
   .col-lg-12
     %h1= t(:users).capitalize
 - unless @usertypes.nil?
-  .row
-    .col-lg-12
-      %ul{class: 'nav nav-pills'}
-        - if params[:user_type_id].blank?
-          %li{class: 'active'}= link_to t(:allmem).capitalize, users_path
-        - else
-          %li= link_to t(:allmem).capitalize, users_path
-        - @usertypes.each do |usertype|
-          - if usertype.id == params[:user_type_id].to_f
-            %li{class: 'active'}
-              = link_to usertype.name, users_path(user_type_id: usertype.id)
+  -if I18n.locale == :nl
+    .row
+      .col-lg-12
+        %ul{class: 'nav nav-pills'}
+          - if params[:user_type_id].blank?
+            %li{class: 'active'}= link_to t(:allmem).capitalize, users_path
           - else
-            %li
-              = link_to usertype.name, users_path(user_type_id: usertype.id)
+            %li= link_to t(:allmem).capitalize, users_path
+          - @usertypes.each do |usertype|
+            - if usertype.id == params[:user_type_id].to_f
+              %li{class: 'active'}
+                = link_to usertype.name, users_path(user_type_id: usertype.id)
+            - else
+              %li
+                = link_to usertype.name, users_path(user_type_id: usertype.id)
+  -else
+    .row
+      .col-lg-12
+        %ul{class: 'nav nav-pills'}
+          - if params[:user_type_id].blank?
+            %li{class: 'active'}= link_to t(:allmem).capitalize, users_path
+          - else
+            %li= link_to t(:allmem).capitalize, users_path
+          - @usertypes.each do |usertype|
+            - if usertype.id == params[:user_type_id].to_f
+              %li{class: 'active'}
+                = link_to usertype.name_en, users_path(user_type_id: usertype.id)
+            - else
+              %li
+                = link_to usertype.name_en, users_path(user_type_id: usertype.id)
 .row	
   .col-lg-12	
     = alphabetical_paginate @alpha_params
