@@ -31,8 +31,6 @@ class Agendaitem < ActiveRecord::Base
   accepts_nested_attributes_for :subscriptions, :allow_destroy => true
   accepts_nested_attributes_for :comments, :reject_if => :all_blank
   validates_associated :events
-  # TODO change to strong_parameter
-  attr_accessible :name, :name_en,:intern, :agendaitemtype_id, :date, :description, :description_en, :location,:url, :commission_id, :subscribe, :subscriptiondeadline, :events,
 
   def count_results()
     counter = 0
