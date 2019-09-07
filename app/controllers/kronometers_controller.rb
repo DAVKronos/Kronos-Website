@@ -1,4 +1,3 @@
-# TODO change attr_accessible in model to strong parameter
 class KronometersController < ApplicationController
   authorize_resource
   def index
@@ -11,7 +10,7 @@ class KronometersController < ApplicationController
   end
   
   def create
-    km = Kronometer.new(params[:kronometer])
+    km = Kronometer.new(kronometer_params)
     if km.save
       redirect_to kronometers_path
       flash[:success] = "Kronometer succesvol geupload."
@@ -26,7 +25,7 @@ class KronometersController < ApplicationController
   
   def update
     km = Kronometer.find(params[:id])
-    km.update_attributes(params[:kronometer])
+    km.update_attributes(kronometer_params)
     if km.save
       redirect_to kronometers_path
       flash[:success] = "Kronometer succesvol aangepast"
@@ -50,5 +49,11 @@ class KronometersController < ApplicationController
         render :pdf => "kronometer stickers #{Time.now}"
       end
     end
+  end
+
+  private
+
+  def kronometer_params
+    params.require(:kronometer).permit(:date, :file, :name)
   end
 end

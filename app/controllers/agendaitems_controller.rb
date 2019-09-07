@@ -1,4 +1,3 @@
-# TODO change attr_accessible in model to strong parameter
 class AgendaitemsController < ApplicationController
   load_and_authorize_resource
   respond_to :html, :json
