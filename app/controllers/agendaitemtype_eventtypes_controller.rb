@@ -81,4 +81,11 @@ class AgendaitemtypeEventtypesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+
+  def agendaitemtype_eventtype_params
+    params.require(:agendaitemtype_eventtype).permit(:agendaitemtype_id, :eventtype_id)
+  end
 end

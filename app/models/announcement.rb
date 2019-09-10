@@ -1,6 +1,5 @@
 class Announcement < ActiveRecord::Base
-  attr_accessible :title, :message, :ends_at, :starts_at, :url, :background
-  has_attached_file :background, 
+  has_attached_file :background,
 	  	    :styles      => {:back => "1170x"},
           :path        => ":rails_root/public/system/:attachment/:hash.:extension",
           :url         => "/system/:attachment/:hash.:extension", 

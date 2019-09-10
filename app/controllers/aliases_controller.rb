@@ -42,7 +42,7 @@ class AliasesController < ApplicationController
   # POST /aliases
   # POST /aliases.json
   def create
-    @alias = Alias.new(params[:alias])
+    @alias = Alias.new(alias_params)
 
     respond_to do |format|
       if @alias.save
@@ -61,7 +61,7 @@ class AliasesController < ApplicationController
     @alias = Alias.find(params[:id])
 
     respond_to do |format|
-      if @alias.update_attributes(params[:alias])
+      if @alias.update_attributes(alias_params)
         format.html { redirect_to @alias, notice: 'Alias was successfully updated.' }
         format.json { head :no_content }
       else
@@ -81,5 +81,12 @@ class AliasesController < ApplicationController
       format.html { redirect_to aliases_url }
       format.json { head :no_content }
     end
+  end
+
+
+  private
+
+  def alias_params
+    params.require(:alias).permit(:name, :emailaddress, :description)
   end
 end

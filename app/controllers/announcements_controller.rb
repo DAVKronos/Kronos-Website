@@ -98,7 +98,6 @@ class AnnouncementsController < ApplicationController
   private
 
   def announcement_params
-    # TODO controller now permits all models attributes, try to be more specific
-    params.require(:announcement).permit!
+    params.require(:announcement).permit(:title, :message, :ends_at, :starts_at, :url, :background)
   end
 end
