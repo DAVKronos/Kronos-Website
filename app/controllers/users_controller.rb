@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(params[:user], as: :bestuur)
+    user = User.new(user_params)
     password = Devise.friendly_token.first(10)
     user.password = password
     user.password_confirmation = password
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-	@commissions = @user.commissions.order("name").all
+    @commissions = @user.commissions.order("name").all
   end
 
   def index
@@ -36,10 +36,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html do
         @users, @alpha_params = @users.alpha_paginate(
-          params[:letter],
-          include_all: false,
-          js: true,
-          bootstrap3: true) { |user| user.name }
+            params[:letter],
+            include_all: false,
+            js: true,
+            bootstrap3: true) { |user| user.name }
         @usertypes = current_user.allowed_user_types
       end
       format.pdf do
@@ -65,13 +65,12 @@ class UsersController < ApplicationController
 
   def update
     user = User.find_by_id(params[:id])
-    role = (current_user.admin? ? :bestuur : :default)
-    if user.update_attributes(params[:user], as: role)
+    if user.update_attributes(user_params)
       flash[:success] = 'Profile updated.'
       sign_in user, bypass: true unless current_user.admin?
       redirect_to user
     else
-	  flash[:danger] = 'Update failed.'
+      flash[:danger] = 'Update failed.'
       render 'edit'
     end
   end
@@ -92,5 +91,21 @@ class UsersController < ApplicationController
   def user_current_user?
     @user = User.find(params[:id])
     current_user?(@user)
+  end
+
+  def user_params
+    permitted_params = [:email, :address, :postalcode, :studie, :aanvang,
+                        :instelling, :city, :phonenumber, :password,
+                        :password_confirmation, :papieren_kronometer, :avatar,
+                        :avatar_file_name, :remember_me]
+
+    if current_user.admin?
+      permitted_params.concat([:name, :initials, :birthdate,
+                               :sex, :licensenumber, :user_type_id,
+                               :xtracard, :bank_account_number, :iban])
+    end
+    params.require(:user).permit(permitted_params)
+
+
   end
 end

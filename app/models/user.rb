@@ -42,17 +42,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :name, :initials, :birthdate,
-                  :sex, :licensenumber, :user_type_id,
-                  :xtracard, :bank_account_number, :iban, :as => :bestuur
 
-
-  attr_accessible :email, :address, :postalcode, :studie, :aanvang,
-                  :instelling, :city, :phonenumber, :password,
-                  :password_confirmation, :papieren_kronometer, :avatar,
-                  :avatar_file_name, :remember_me, :as => [:default, :bestuur]
-                  
-  
   has_many :commission_memberships, :dependent => :destroy
   has_many :commissions, :through => :commission_memberships
   has_many :chatmessages
