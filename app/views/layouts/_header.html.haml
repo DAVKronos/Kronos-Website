@@ -60,7 +60,10 @@
           -# %li= link_to 'Kronometer', kronometers_path
           %li= link_to 'Contact', contact_path
           - getHighlights.each do |highlight|
-            %li.highlighting= link_to highlight.pagetag, '/' << highlight.pagetag
+            -if I18n.locale == :nl
+              %li.highlighting= link_to highlight.pagetag, '/' << highlight.pagetag << '?locale=nl'
+            -else
+              %li.highlighting= link_to highlight.pagetag_en, '/' << highlight.pagetag << '?locale=en'
         %ul.nav.navbar-nav.navbar-right
           - if !current_user
             %li
