@@ -1,4 +1,4 @@
-class CreateCommissions < ActiveRecord::Migration
+class CreateCommissions < ActiveRecord::Migration[4.2]
   def self.up
     create_table :commissions do |t|
       t.string :name

@@ -1,4 +1,4 @@
-class CreateAgendaitemtypeEventtypes < ActiveRecord::Migration
+class CreateAgendaitemtypeEventtypes < ActiveRecord::Migration[4.2]
   def change
     create_table :agendaitemtype_eventtypes do |t|
       t.integer :agendaitemtype_id

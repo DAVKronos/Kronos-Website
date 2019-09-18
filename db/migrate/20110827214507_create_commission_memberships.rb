@@ -1,4 +1,4 @@
-class CreateCommissionMemberships < ActiveRecord::Migration
+class CreateCommissionMemberships < ActiveRecord::Migration[4.2]
   def self.up
     create_table :commission_memberships do |t|
       t.string :function

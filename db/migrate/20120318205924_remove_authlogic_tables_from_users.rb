@@ -1,4 +1,4 @@
-class RemoveAuthlogicTablesFromUsers < ActiveRecord::Migration
+class RemoveAuthlogicTablesFromUsers < ActiveRecord::Migration[4.2]
   def change
     remove_column :users,:login
     remove_column :users,:persistence_token

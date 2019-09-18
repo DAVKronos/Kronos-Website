@@ -1,4 +1,4 @@
-class AddWindToResults < ActiveRecord::Migration
+class AddWindToResults < ActiveRecord::Migration[4.2]
   def change
     add_column :results, :wind, :decimal
 	add_column :results, :place, :integer

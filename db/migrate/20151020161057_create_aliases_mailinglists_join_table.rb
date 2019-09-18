@@ -1,4 +1,4 @@
-class CreateAliasesMailinglistsJoinTable < ActiveRecord::Migration
+class CreateAliasesMailinglistsJoinTable < ActiveRecord::Migration[4.2]
   def change
     create_table :aliases_mailinglists, :id => false do |t|
       t.integer :alias_id

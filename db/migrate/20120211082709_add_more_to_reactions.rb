@@ -1,4 +1,4 @@
-class AddMoreToReactions < ActiveRecord::Migration
+class AddMoreToReactions < ActiveRecord::Migration[4.2]
   def change
     add_column :reactions, :user_id, :integer
     add_column :reactions, :agendaitem_id, :integer

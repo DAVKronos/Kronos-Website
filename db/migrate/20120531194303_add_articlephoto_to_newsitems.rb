@@ -1,4 +1,4 @@
-class AddArticlephotoToNewsitems < ActiveRecord::Migration
+class AddArticlephotoToNewsitems < ActiveRecord::Migration[4.2]
   def change
     add_column :newsitems, :articlephoto_file_name, :string
     add_column :newsitems, :articlephoto_content_type, :string

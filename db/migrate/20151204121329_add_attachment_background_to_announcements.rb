@@ -1,4 +1,4 @@
-class AddAttachmentBackgroundToAnnouncements < ActiveRecord::Migration
+class AddAttachmentBackgroundToAnnouncements < ActiveRecord::Migration[4.2]
   def self.up
     change_table :announcements do |t|
       t.attachment :background

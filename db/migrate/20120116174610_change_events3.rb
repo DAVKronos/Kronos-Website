@@ -1,4 +1,4 @@
-class ChangeEvents3 < ActiveRecord::Migration
+class ChangeEvents3 < ActiveRecord::Migration[4.2]
   def change
     remove_column :eventtypes, :display_weg
     remove_column :eventtypes, :display_cross

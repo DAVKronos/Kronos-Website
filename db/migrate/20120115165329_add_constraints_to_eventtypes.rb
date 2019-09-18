@@ -1,4 +1,4 @@
-class AddConstraintsToEventtypes < ActiveRecord::Migration
+class AddConstraintsToEventtypes < ActiveRecord::Migration[4.2]
   def change
     add_column :eventtypes, :display_weg, :boolean
     add_column :eventtypes, :display_cross, :boolean

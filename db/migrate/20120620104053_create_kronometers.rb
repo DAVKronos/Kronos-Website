@@ -1,4 +1,4 @@
-class CreateKronometers < ActiveRecord::Migration
+class CreateKronometers < ActiveRecord::Migration[4.2]
   def change
     create_table :kronometers do |t|
       t.string :name

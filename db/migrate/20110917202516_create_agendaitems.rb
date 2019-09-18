@@ -1,4 +1,4 @@
-class CreateAgendaitems < ActiveRecord::Migration
+class CreateAgendaitems < ActiveRecord::Migration[4.2]
   def change
     create_table :agendaitems do |t|
       t.string :name

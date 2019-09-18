@@ -1,4 +1,4 @@
-class AddXtracardToUsers < ActiveRecord::Migration
+class AddXtracardToUsers < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :xtracard, :string
   end
