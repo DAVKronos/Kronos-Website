@@ -14,7 +14,7 @@
     <%= f.label :commenttext %><br />
     <%= f.text_area :commenttext %>
   </div>
-  <%= f.hidden_field :newsitem_id %>
+  <%= f.hidden_field :newsitem_id , value: @newsitem.id %>
   <div class="actions">
     <%= f.submit %>
   </div>
