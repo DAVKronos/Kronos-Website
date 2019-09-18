@@ -9,7 +9,7 @@
 #  updated_at        :datetime         not null
 #
 
-class AgendaitemtypeEventtype < ActiveRecord::Base
+class AgendaitemtypeEventtype < ApplicationRecord
   belongs_to :agendaitemtype
   belongs_to :eventtype
   

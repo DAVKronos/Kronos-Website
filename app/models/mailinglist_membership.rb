@@ -9,7 +9,7 @@
 #  updated_at     :datetime         not null
 #
 
-class MailinglistMembership < ActiveRecord::Base
+class MailinglistMembership < ApplicationRecord
   after_save :subscribe_to_mailinglist
   after_destroy :unsubscribe_from_mailinglist
   belongs_to :user

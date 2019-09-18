@@ -13,7 +13,7 @@
 #  updated_at        :datetime         not null
 #
 
-class Kronometer < ActiveRecord::Base
+class Kronometer < ApplicationRecord
 
   has_attached_file :file, :styles => { :thumb => ["260", :png] }
   do_not_validate_attachment_file_type :file

@@ -1,4 +1,4 @@
-class Announcement < ActiveRecord::Base
+class Announcement < ApplicationRecord
   has_attached_file :background,
 	  	    :styles      => {:back => "1170x"},
           :path        => ":rails_root/public/system/:attachment/:hash.:extension",

@@ -11,7 +11,7 @@
 #  distance      :float
 #
 
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   belongs_to :eventtype
   belongs_to :agendaitem
   has_many :results, :dependent => :destroy

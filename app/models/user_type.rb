@@ -10,6 +10,6 @@
 #  updated_at  :datetime         not null
 #
 
-class UserType < ActiveRecord::Base
+class UserType < ApplicationRecord
   has_many :users
 end

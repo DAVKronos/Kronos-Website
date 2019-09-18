@@ -9,5 +9,5 @@
 #  pagetag     :string(255)
 #
 
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
 end

@@ -11,7 +11,7 @@
 #  role        :string(255)
 #
 
-class Commission < ActiveRecord::Base
+class Commission < ApplicationRecord
   before_save :add_commission_email
   after_destroy :destroy_commission_email
 

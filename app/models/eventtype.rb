@@ -14,7 +14,7 @@
 #  female_formula  :string(255)
 #
 
-class Eventtype < ActiveRecord::Base
+class Eventtype < ApplicationRecord
   has_many :events, :dependent => :destroy
   has_many :agendaitemtype_eventtypes
   has_many :agendaitemtypes, :through => :agendaitemtype_eventtypes

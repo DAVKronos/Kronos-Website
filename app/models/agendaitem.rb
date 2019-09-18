@@ -19,7 +19,7 @@
 #  user_id              :integer
 #
 
-class Agendaitem < ActiveRecord::Base
+class Agendaitem < ApplicationRecord
   belongs_to :commission
   has_many :photoalbums
   has_many :events, :dependent => :destroy

@@ -9,7 +9,7 @@
 #  agendaitem_id :integer
 #
 
-class Photoalbum < ActiveRecord::Base
+class Photoalbum < ApplicationRecord
   belongs_to :agendaitem
 
   has_many :photos, :dependent => :destroy

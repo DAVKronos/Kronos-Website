@@ -16,7 +16,7 @@
 #  articlephoto_updated_at   :datetime
 #
 
-class Newsitem < ActiveRecord::Base
+class Newsitem < ApplicationRecord
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_attached_file :articlephoto, :styles => { :normal => "x150>" , :slider => "480x260#", :carrousel => "750x260#"}, :path => ":rails_root/public/system/:attachment/:hash.:extension",

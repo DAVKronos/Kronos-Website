@@ -10,7 +10,7 @@
 #  local_part  :string(255)
 #
 
-class Mailinglist < ActiveRecord::Base
+class Mailinglist < ApplicationRecord
   before_create :add_mailinglist
   after_destroy :delete_mailinglist
 

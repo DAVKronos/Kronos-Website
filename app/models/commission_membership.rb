@@ -11,7 +11,7 @@
 #  updated_at    :datetime         not null
 #
 
-class CommissionMembership < ActiveRecord::Base
+class CommissionMembership < ApplicationRecord
   after_save :add_member_to_group
   before_destroy :remove_member_from_group
 

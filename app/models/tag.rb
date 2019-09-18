@@ -13,7 +13,7 @@
 #  updated_at :datetime         not null
 #
 
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   belongs_to :photo
   belongs_to :user
 end

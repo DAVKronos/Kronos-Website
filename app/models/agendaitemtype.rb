@@ -9,7 +9,7 @@
 #  is_match   :boolean
 #
 
-class Agendaitemtype < ActiveRecord::Base
+class Agendaitemtype < ApplicationRecord
   has_many :agendaitems
   has_many :agendaitemtype_eventtypes
   has_many :eventtypes, :through => :agendaitemtype_eventtypes

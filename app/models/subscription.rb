@@ -11,7 +11,7 @@
 #  agendaitem_id :integer
 #
 
-class Subscription < ActiveRecord::Base
+class Subscription < ApplicationRecord
   belongs_to :user
   belongs_to :agendaitem
   attr_reader :user, :agendaitem

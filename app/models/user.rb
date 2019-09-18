@@ -38,7 +38,7 @@
 #  aanvang                :integer
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 

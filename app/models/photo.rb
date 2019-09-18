@@ -16,7 +16,7 @@
 #  exif_date          :datetime
 #
 
-class Photo < ActiveRecord::Base
+class Photo < ApplicationRecord
   include Rails.application.routes.url_helpers
   has_attached_file :photo, :styles => { :thumb => "260x180#", :normal => "1680x1050>"}, :path => ":rails_root/public/system/:attachment/:hash.:extension",
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
