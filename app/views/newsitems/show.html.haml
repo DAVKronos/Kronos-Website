@@ -6,7 +6,7 @@
           %h1= @newsitem.title
         -if I18n.locale == :en
           %h1= @newsitem.title_en
-        %p= time_tag @newsitem.created_at 
+        %p= time_tag(@newsitem.created_at)+" | "+@newsitem.user.name
   .row
     .col-md-8.col-md-offset-2
       = image_tag @newsitem.articlephoto.url(:normal), 

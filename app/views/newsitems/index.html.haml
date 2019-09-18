@@ -14,7 +14,7 @@
             -if I18n.locale == :en
               %h2= link_to newsitem.title_en, newsitem, {:name => newsitem.title_en, :class => "newslink"}
             %p.muted
-              = time_tag newsitem.created_at
+              =time_tag(newsitem.created_at)+" | "+newsitem.user.name
               -if I18n.locale == :nl
                 = markdown newsitem.news
               -if I18n.locale == :en
