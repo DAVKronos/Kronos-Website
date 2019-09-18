@@ -19,7 +19,11 @@
 
 
       - @newsitem.comments.each do |comment|
-        %p comment.reactiontext
+        %p
+          = comment.commenttext
+          = " - "
+          = comment.user.name
+
 
       = render 'reactions_form'
     .col-md-2

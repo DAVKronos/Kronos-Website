@@ -27,7 +27,7 @@ class NewsitemsController < ApplicationController
     @newsitem.agreed_by = current_user.id
 
     respond_to do |format|
-      if @newsitem.update_attributes(params[:newsitem])
+      if @newsitem.update_attributes(params.permit(:id))
         format.html { redirect_to :controller => "newsitems", :action => "agree", notice: 'Newsitem was successfully updated.' }
         format.json { head :ok }
       end
@@ -39,7 +39,7 @@ class NewsitemsController < ApplicationController
   def show
     @newsitem = Newsitem.find(params[:id])
     
-    @comment = Comment.new;
+    @comment = Comment.new(:commentable_id => params[:id], :commentable_type => Newsitem)
     
     if current_user
       @comment.user = current_user
@@ -74,7 +74,7 @@ class NewsitemsController < ApplicationController
   def create
     @newsitem = Newsitem.new(newsitem_params)
     
-    @newsitem = current_user.newsitems.build(params[:newsitem])
+    @newsitem = current_user.newsitems.build(newsitem_params)
     @newsitem.agreed = false
 
     respond_to do |format|
