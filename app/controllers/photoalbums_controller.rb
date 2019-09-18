@@ -61,7 +61,7 @@ class PhotoalbumsController < ApplicationController
   # POST /photoalbums
   # POST /photoalbums.json
   def create
-    @photoalbum = Photoalbum.new(params[:photoalbum])
+    @photoalbum = Photoalbum.new(photoalbum_params)
 
     respond_to do |format|
       if @photoalbum.save
@@ -80,7 +80,7 @@ class PhotoalbumsController < ApplicationController
     @photoalbum = Photoalbum.find(params[:id])
 
     respond_to do |format|
-      if @photoalbum.update_attributes(params[:photoalbum], :as => (current_user.admin? ? :admin : :default))
+      if @photoalbum.update_attributes(photoalbum_params)
         format.html { redirect_to @photoalbum, notice: 'Photoalbum was successfully updated.' }
         format.json { head :ok }
       else
@@ -111,5 +111,16 @@ class PhotoalbumsController < ApplicationController
       format.html { redirect_to photoalbums_url }
       format.json { head :ok }
     end
+  end
+
+  private
+
+  def photoalbum_params
+    if current_user.admin?
+      params.require(:photoalbum).permit(:name, :agendaitem_id, :public)
+    else
+      params.require(:photoalbum).permit(:name, :agendaitem_id)
+    end
+
   end
 end
