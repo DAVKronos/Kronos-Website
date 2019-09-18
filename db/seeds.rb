@@ -38,8 +38,7 @@ user = User.create({
                     :licensenumber => "123456",
                     :password => "Foobar",
                     :password_confirmation => "Foobar"
-                   }, 
-                  :as => :bestuur, )
+                   })
 
 kegel = User.create({
                      :name => "Kegel de Egel",
@@ -53,8 +52,7 @@ kegel = User.create({
                      :licensenumber => "123456",
                      :password => "Foobar",
                      :password_confirmation => "Foobar"
-                    },
-                   :as => :bestuur)
+                    })
 
 user.user_type_id = usertype_proeflid.id
 kegel.user_type_id = usertype_proeflid.id
