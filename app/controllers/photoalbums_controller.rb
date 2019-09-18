@@ -1,4 +1,3 @@
-# TODO change attr_accessible in model to strong parameter
 class PhotoalbumsController < ApplicationController
   load_and_authorize_resource
   # GET /photoalbums
