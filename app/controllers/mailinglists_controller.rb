@@ -24,7 +24,7 @@ class MailinglistsController < ApplicationController
   end
 
   def create
-    mailinglist = Mailinglist.new(params[:mailinglist])
+    mailinglist = Mailinglist.new(mailinglist_params)
     if mailinglist.save
       redirect_to mailinglist
     else
@@ -48,12 +48,18 @@ class MailinglistsController < ApplicationController
 
   def update
     @mailinglist = Mailinglist.find(params[:id])
-    if @mailinglist.update_attributes(params[:mailinglist])
+    if @mailinglist.update_attributes(mailinglist_params)
       flash[:success] = t(:mailinglist_update_success)
       redirect_to Mailinglist
     else
       @users = User.order(:name)
       render 'edit'
     end
+  end
+
+  private
+
+  def mailinglist_params
+    params.require(:mailinglist).permit(:description, :name, :local_part, :mailinglist_memberships_attributes, :commission_id, user_ids: [], alias_ids: [], )
   end
 end

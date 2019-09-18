@@ -28,8 +28,6 @@ class Mailinglist < ActiveRecord::Base
 
   belongs_to :commission
 
-  attr_accessible :description, :name, :local_part, :mailinglist_memberships_attributes, :user_ids, :alias_ids, :commission_id
-
   accepts_nested_attributes_for :mailinglist_memberships, :allow_destroy => true
 
   validates :name, :presence => true
