@@ -771,9 +771,10 @@ en:
   new_commission: new commision
   new_mailinglist: New mailinglist
   newsitem:
-    nieuwsbericht: 
-    profielfoto: 
-    titel: 
+    nieuwsbericht: News item
+    profielfoto: Profile picture
+    titel: Title
+    comments: Comments
   next_label: next
   number:
     currency:

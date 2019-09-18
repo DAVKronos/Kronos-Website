@@ -753,6 +753,7 @@ nl:
     nieuwsbericht: nieuwsbericht
     profielfoto: profielfoto
     titel: titel
+    comments: Reacties
   next_label: volgende
   number:
     currency:

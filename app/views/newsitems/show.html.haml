@@ -17,7 +17,9 @@
       -if I18n.locale == :en
         = markdown @newsitem.news_en
 
-
+      %hr
+      %h3
+        =t('newsitem.comments')
       - @newsitem.comments.each do |comment|
         %p
           = comment.commenttext
