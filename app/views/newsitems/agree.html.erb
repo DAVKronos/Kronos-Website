@@ -1,6 +1,6 @@
 <h1>De volgende newsitems wachten op goedkeuring</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Title</th>
     <th>News</th>
@@ -15,13 +15,13 @@
     <td><%= newsitem.title %></td>
     <td><%= newsitem.news %></td>
     <td><%= newsitem.user.name %></td>
-    <td><%= link_to 'Preview', newsitem %></td>
-    <td><%= link_to 'Keur goed', :controller => "newsitems", :action => "agreed", :id => newsitem.id %></td>
-    <td><%= link_to 'Destroy', newsitem, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= icon_button newsitem, 'show', 'Preview' %></td>
+    <td><%= icon_button({:controller => "newsitems", :action => "agreed", :id => newsitem.id}, 'check', 'Keur goed', :class => 'btn btn-success') %></td>
+    <td><%= icon_button newsitem, 'remove', 'Destroy', :class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Newsitem', new_newsitem_path %>
+<%= icon_button new_news_item_path, 'add',  t('helpers.submit.newsitem.create'), :class => 'btn btn-success' %>
