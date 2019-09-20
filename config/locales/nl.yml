@@ -695,8 +695,8 @@ nl:
       chatmessage:
         create: Bericht toevoegen
       comment:
-        create: Comment toevoegen
-        update: Update Comment
+        create: Reactie toevoegen
+        update: Reactie updaten
       commission:
         create: Create Commission
         update: Update Commission

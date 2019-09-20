@@ -713,8 +713,8 @@ en:
       chatmessage:
         create: add message
       comment:
-        create: add comment
-        update: 
+        create: Add comment
+        update: Update comment
       commission:
         create: create commision
         update: Update commission

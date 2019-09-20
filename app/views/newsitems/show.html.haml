@@ -17,17 +17,19 @@
       -if I18n.locale == :en
         = markdown @newsitem.news_en
 
-      %hr
-      %h3
-        =t('newsitem.comments')
-      - @newsitem.comments.each do |comment|
-        %p
-          = comment.commenttext
-          = " - "
-          = comment.user.name
+      - if can? :read, Comment
+        %hr
+        %h3
+          =t('newsitem.comments')
+        - @newsitem.comments.each do |comment|
+          %p
+            = comment.commenttext
+            = " - "
+            = comment.user.name
 
 
-      = render 'reactions_form'
+      - if can? :create, Comment
+        = render 'reactions_form'
     .col-md-2
       - if can? :edit, @newsitem
         .panel.panel-default

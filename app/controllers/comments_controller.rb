@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'comment was successfully created.' }
+        format.html { redirect_to :back, notice: 'comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
@@ -85,6 +85,6 @@ class CommentsController < ApplicationController
   
   private
     def comment_params
-      params.require(:comment).permit!
+      params.require(:comment).permit(:commenttext, :commentable_id, :commentable_type, :user_id)
     end
 end

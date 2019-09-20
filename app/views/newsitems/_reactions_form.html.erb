@@ -10,13 +10,13 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :commenttext %><br />
-    <%= f.text_area :commenttext %>
+    <%= f.text_area :commenttext, :class => 'form-control' %>
   </div>
   <%= f.hidden_field :commentable_type %>
   <%= f.hidden_field :commentable_id %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn' %>
   </div>
 <% end %>
