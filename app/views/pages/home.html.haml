@@ -16,8 +16,10 @@
                 -if I18n.locale == :en
                   %h2= link_to newsitem.title_en, newsitem, 
                       {name: newsitem.title_en}
-                %p= time_tag(newsitem.created_at)+" | "+newsitem.user.name
-
+                -if newsitem.comments.exists?
+                  %p= time_tag(newsitem.created_at)+" | "+newsitem.user.name+ " | " + image_tag('Comment.png')+ " "+newsitem.comments.all.count.to_s
+                -else
+                  %p= time_tag(newsitem.created_at)+" | "+newsitem.user.name
           .row
             .col-md-3
               = link_to (image_tag newsitem.articlephoto.url(:normal)), 
