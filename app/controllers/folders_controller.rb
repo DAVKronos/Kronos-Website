@@ -1,7 +1,7 @@
 class FoldersController < ApplicationController
   load_and_authorize_resource
   def index
-    @folders = Folder.all
+    @folders = Folder.where(folder_id: [nil, ""])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,10 +10,12 @@ class FoldersController < ApplicationController
   
   def show
     @folder = Folder.find(params[:id])
+    @folders = Folder.where(folder_id: params[:id])
   end
     
   def new
     @folder = Folder.new
+    @folders = Folder.all
   end
   
   def create
