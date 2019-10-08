@@ -3,6 +3,6 @@
   = f.label t(:titnl).capitalize
   = f.text_field(:name)
   = f.label "Parent folder"
-  = f.collection_select(:folder_id, @folders, :id, :name, {:include_blank => t(:none).capitalize}, {:class => "form-control"})
+  = f.collection_select(:folder_id, @folders, :id, :name, {:include_blank => "Main folder"}, {:class => "form-control"})
   .actions
     = f.submit :class => "btn"

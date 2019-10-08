@@ -12,4 +12,9 @@
 <td><%= folder.name %></td>
 </tr>
 <% end %>
+<% @kms.each do |km| %>
+<tr>
+<td><%= km.name %></td>
+</tr>
+<% end %>
 </table>

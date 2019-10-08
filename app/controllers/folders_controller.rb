@@ -11,6 +11,7 @@ class FoldersController < ApplicationController
   def show
     @folder = Folder.find(params[:id])
     @folders = Folder.where(folder_id: params[:id])
+	@kms = Kronometer.where(folder_id: params[:id])
   end
     
   def new

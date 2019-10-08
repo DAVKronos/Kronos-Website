@@ -11,4 +11,6 @@
   = f.label :file
   = f.file_field :file
   
+  = f.label "Folder name"
+  = f.collection_select(:folder_id, @folders, :id, :name, {:include_blank => "Main folder"}, {:class => "form-control"}) 
   = f.submit
