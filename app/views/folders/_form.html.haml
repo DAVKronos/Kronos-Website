@@ -1,0 +1,6 @@
+= form_for @folder do |f|
+  
+  = f.label t(:titnl).capitalize
+  = f.text_field(:name)
+  .actions
+    = f.submit :class => "btn"
