@@ -2,7 +2,7 @@ class FoldersController < ApplicationController
   load_and_authorize_resource
   def index
     @folders = Folder.where(folder_id: [nil, ""])
-
+    @kms = Kronometer.where(folder_id: [nil, ""])
     respond_to do |format|
       format.html # index.html.erb
     end
