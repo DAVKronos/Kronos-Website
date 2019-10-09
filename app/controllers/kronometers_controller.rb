@@ -7,6 +7,7 @@ class KronometersController < ApplicationController
   
   def new
     @km = Kronometer.new
+	@folders = Folder.all
   end
   
   def create
@@ -21,6 +22,7 @@ class KronometersController < ApplicationController
   
   def edit
     @km = Kronometer.find(params[:id])
+    @folders = Folder.all
   end
   
   def update
@@ -54,6 +56,6 @@ class KronometersController < ApplicationController
   private
 
   def kronometer_params
-    params.require(:kronometer).permit(:date, :file, :name)
+    params.require(:kronometer).permit(:date, :file, :name, :folder_id)
   end
 end

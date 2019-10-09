@@ -11,7 +11,11 @@ module Abilities
       can [:create, :update], [Subscription]
 	  cannot :read, Subscription
       can :update, user.agendaitems
-      can :destroy, Subscription.where(:user => user)
+	  Subscription.all.where(user: user).each do |subs|
+        if !(Agendaitem.find(subs.agendaitem_id).deadline_passed?)
+          can :destroy, subs
+		end
+      end
       can [:update, :editpassword], user
 
       cannot :create, User

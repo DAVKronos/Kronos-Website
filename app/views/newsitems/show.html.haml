@@ -26,6 +26,11 @@
             = comment.commenttext
             = " - "
             = comment.user.name
+      -else
+        %hr
+        %h3
+          =t('newsitem.comments')
+        Je moet ingelogd zijn om te reageren of reacties te bekijken.
 
 
       - if can? :create, Comment
