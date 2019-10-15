@@ -30,6 +30,7 @@ class FoldersController < ApplicationController
   
   def edit
     @folder = Folder.find(params[:id])
+    @folders = Folder.all
   end
   
   def destroy
@@ -37,6 +38,20 @@ class FoldersController < ApplicationController
     folder.destroy
     flash[:success] = "Pagina verwijderd"
     redirect_to :root
+  end
+  
+  def update
+    @folder = Folder.find(params[:id])
+
+    respond_to do |format|
+      if @folder.update_attributes(folder_params)
+        format.html { redirect_to '/folders/'+@folder.id.to_s, notice: 'Page was successfully updated.' }
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @folder.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   def folder_params
