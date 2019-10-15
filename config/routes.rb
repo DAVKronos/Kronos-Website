@@ -67,6 +67,7 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :folders
   resources :announcements
   get 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
 
