@@ -46,6 +46,7 @@
             .row
               .col-xs-2
                 %h5
+                  %small= agendaitem.date.strftime('%a')
                   = agendaitem.date.strftime('%d')
                   %small= agendaitem.date.strftime('%b')
               .col-xs-8
