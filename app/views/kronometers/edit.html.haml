@@ -1,6 +1,6 @@
 %h1 bewerk Kronometer
 
-= form_for @km do |f|
+= form_for @km, html: { multipart: true } do |f|
     
   = f.label :name
   = f.text_field :name
