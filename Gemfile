@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '~> 5.0'
-gem 'haml', '~> 4.0.5'
+gem 'haml', '~> 5.0.0'
 gem 'devise', '~> 4.0'
 gem 'cancancan', '~> 2.0'
 gem 'will_paginate', '~> 3.0.3'
