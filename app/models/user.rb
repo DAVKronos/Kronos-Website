@@ -77,7 +77,8 @@ class User < ApplicationRecord
         return true
       end
     end
-    false
+    # voor backwards compatibility
+    self.commissions.exists?(Commission.find_by_name('Bestuur')) or self.commissions.exists?(Commission.find_by_name('Webcie'))
   end
 
   def uitslagen_admin?

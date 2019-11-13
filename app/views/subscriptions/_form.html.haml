@@ -1,6 +1,6 @@
 - nameArray = []
 - User.all.each do |user|
-  - nameArray = raw User.all.map{|x|x["name"]}
+  - nameArray << user.name
 
 = form_for(@subscription, :url => 'subscriptions') do |f|
   = f.text_field :name, class: 'typeahead form-control', 
