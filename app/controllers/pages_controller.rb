@@ -58,6 +58,10 @@ class PagesController < ApplicationController
       render 'lustrum_password'
     end
   end
+  
+  def game
+    render 'game'
+  end
 
   def lustrum_enter_password
     password = Digest::SHA2.new << params[:password]

@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   get '/test', :to => 'pages#test'
   get '/admin', :to => 'pages#admin'
   get '/Lustrum Alumnidag', :to => 'pages#lustrum_signup', as: 'lustrum_signup'
+  get '/Game', :to => 'pages#game', as: 'game'
   post '/lustrum_alumnidag', :to => 'pages#lustrum_signup_new', as: "new_lustrum_signup"
   post '/lustrum_alumnidag_pass', :to => 'pages#lustrum_enter_password', as: "lustrum_password"
   get '/:pt', :to => 'pages#titleshow'
