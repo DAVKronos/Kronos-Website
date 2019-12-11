@@ -1,4 +1,4 @@
-<script src = "/assets/helpers.js"></script>
+<%= javascript_include_tag "helpers" %>
 <style>
 
 canvas {
@@ -30,11 +30,11 @@ function main () {
 	
 	//create kegel sprite
 	var imgt = new Image();
-	imgt.src = "/assets/kegel.png";
+	imgt.src = '<%= asset_path 'kegel.png' %>';
 	taSprite = new Sprite(imgt,0,0,30,17);
 	
 	var imgb = new Image();
-	imgb.src = "/assets/bier.png"
+	imgb.src = '<%= asset_path 'bier.png' %>';
 	beSprite = new Sprite(imgb,0,0,13,14);
 	init();
 	run();
