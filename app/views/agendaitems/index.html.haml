@@ -37,6 +37,10 @@
       - Agendaitemtype.all.each do |agendaitemtype |
         - if agendaitemtype.id == params[:agendaitemtype].to_f
           %li{class: 'active'}
+            -if I18n.locale == :nl
+              = link_to agendaitemtype.name, agendaitems_path(agendaitemtype: agendaitemtype.id)
+            -else
+              = link_to agendaitemtype.name_en, agendaitems_path(agendaitemtype: agendaitemtype.id)
         -else
           %li
             -if I18n.locale == :nl
