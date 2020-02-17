@@ -10,9 +10,15 @@ class AgendaitemsController < ApplicationController
       @date = Time.now
     end
 
-    @agendaitems = Agendaitem
+    agendaitems = Agendaitem
                        .where(date: @date.beginning_of_month..@date.end_of_month)
                        .order('date ASC')
+
+    if params[:agendaitemtype].present?
+      agendaitems = agendaitems.where(agendaitemtype_id: params[:agendaitemtype].to_f)
+    end
+
+    @agendaitems = agendaitems
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -61,9 +60,8 @@ ActiveRecord::Schema.define(version: 20191008124402) do
   create_table "aliases_mailinglists", id: false, force: :cascade do |t|
     t.integer "alias_id"
     t.integer "mailinglist_id"
+    t.index ["alias_id", "mailinglist_id"], name: "index_aliases_mailinglists_on_alias_id_and_mailinglist_id", using: :btree
   end
-
-  add_index "aliases_mailinglists", ["alias_id", "mailinglist_id"], name: "index_aliases_mailinglists_on_alias_id_and_mailinglist_id", using: :btree
 
   create_table "announcements", force: :cascade do |t|
     t.text     "message"
@@ -144,9 +142,8 @@ ActiveRecord::Schema.define(version: 20191008124402) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "queue"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.time     "date"
@@ -192,10 +189,9 @@ ActiveRecord::Schema.define(version: 20191008124402) do
     t.integer  "mailinglist_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["mailinglist_id"], name: "index_mailinglist_memberships_on_mailinglist_id", using: :btree
+    t.index ["user_id"], name: "index_mailinglist_memberships_on_user_id", using: :btree
   end
-
-  add_index "mailinglist_memberships", ["mailinglist_id"], name: "index_mailinglist_memberships_on_mailinglist_id", using: :btree
-  add_index "mailinglist_memberships", ["user_id"], name: "index_mailinglist_memberships_on_user_id", using: :btree
 
   create_table "mailinglists", force: :cascade do |t|
     t.text     "name"
@@ -381,10 +377,9 @@ ActiveRecord::Schema.define(version: 20191008124402) do
     t.string   "studie"
     t.string   "instelling"
     t.integer  "aanvang"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "versions", force: :cascade do |t|
     t.string   "item_type",  null: false
@@ -393,8 +388,7 @@ ActiveRecord::Schema.define(version: 20191008124402) do
     t.string   "whodunnit"
     t.text     "object"
     t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
-
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
 end
