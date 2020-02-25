@@ -1,6 +1,10 @@
 # Kronos-Website
 This is the repository of the Kronos Website.
 
+![Docker Build Status](https://img.shields.io/docker/build/davkronos/kronos-website)
+
+![Docker Automated build](https://img.shields.io/docker/automated/davkronos/kronos-website)
+
 ### Requirements
 For developing on the Kronos Website you need the following software installed.
 
