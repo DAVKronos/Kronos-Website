@@ -51,6 +51,9 @@ Rails.application.routes.draw do
   end
 
   resources :agendaitems do
+    member do
+      get 'icalendar'
+    end
     resources :events
     resources :comments
     resources :subscriptions

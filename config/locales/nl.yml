@@ -13,7 +13,7 @@ nl:
         location: Locatie
         name: Naam
         subscribe: Abonneer
-        subscriptiondeadline: inschrijfdeadline
+        subscriptiondeadline: Inschrijfdeadline
         url: Url
         English name: 
         Dutch description: 
@@ -267,7 +267,7 @@ nl:
   agendaitem:
     Kronos Activiteit: 
     agendaitemtype: 
-    commission: comissie
+    commission: Commissie
     date: datum
     description: Beschrijving
     events:
@@ -520,7 +520,7 @@ nl:
       agendaitem:
         Kronos Activiteit: 
         agendaitemtype: 
-        commission: comissie
+        commission: Commissie
         date: 
         description: 
         events:
@@ -589,7 +589,7 @@ nl:
           subscribe: Abonneer
           subscribe?: Abonneer?
         name: Naam
-        commission: comissie
+        commission: Commissie
       mailinglist[mailinglist_memberships_attributes][new_mailinglist_memberships]:
         name: Naam
       newsitem:
@@ -1000,7 +1000,7 @@ nl:
   meernieuws: meer nieuws
   maakaan: maak aan
   leesverder: lees verder
-  kronoscommissions: comissies van kronos
+  kronoscommissions: Commissies van kronos
   comover: Onderstaand treft u een overzicht aan van de huidige commissies van kronos.
   naam: naam
   rol: rol
@@ -1022,7 +1022,7 @@ nl:
   newag: Nieuw agendapunt
   alginf: Algemene informatie
   location: Locatie
-  optarg: Optional argumenten
+  optarg: Optionele instellingen
   none: Geen
   subscribe: Inschrijven
   programme: programma
@@ -1057,3 +1057,4 @@ nl:
   role: 
   records: Clubrecords
   all_agendaitemtypes: Alles
+  addtocalendar: Aan Agenda toevoegen

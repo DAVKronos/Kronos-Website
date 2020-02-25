@@ -1,3 +1,5 @@
+require 'icalendar'
+
 class AgendaitemsController < ApplicationController
   load_and_authorize_resource
   respond_to :html, :json
@@ -88,6 +90,24 @@ class AgendaitemsController < ApplicationController
     end
     flash[:notice] = 'Agendaitem was successfully updated.' if @agendaitem.save
     respond_with(@agendaitem)
+  end
+
+  def icalendar
+    @agendaitem = Agendaitem.find(params[:id])
+
+    end_date = @agendaitem.date.advance(:hours => 1)
+    cal = Icalendar::Calendar.new
+    cal.event do |e|
+      e.dtstart     = Icalendar::Values::DateOrDateTime.new(@agendaitem.date)
+      e.dtend       = Icalendar::Values::DateOrDateTime.new(end_date)
+      e.summary     = @agendaitem.name
+      e.location    = @agendaitem.location
+    end
+
+    cal.publish
+    cal_string = cal.to_ical
+    filename = 'kronos_agenda_item_' + params[:id] + ".ics"
+    send_data(cal_string, :filename => filename, :type => 'text/calendar')
   end
 
   private

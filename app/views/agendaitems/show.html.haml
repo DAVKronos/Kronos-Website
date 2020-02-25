@@ -12,9 +12,10 @@
     .row 
       .col-xs-1.text-right
         = icon 'time'
-      .col-xs-11
+      .col-xs-4
         = l @agendaitem.date, format: :date 
         = l @agendaitem.date, format: :time
+        = icon_button ({:controller => :agendaitems, :action => "icalendar"}), 'calendar', t(:addtocalendar), :class => 'btn btn-sm btn-primary'
     - if @agendaitem.location.present?
       .row 
         .col-xs-1.text-right

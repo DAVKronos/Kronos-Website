@@ -35,6 +35,7 @@ gem 'cookies_eu'
 gem 'prawn-rails'
 gem 'pg', '~> 0.21'
 gem "recaptcha"
+gem 'icalendar', '~> 2.0'
 
 # Gems used only for assets
 gem 'sass-rails'
