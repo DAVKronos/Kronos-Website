@@ -6,7 +6,7 @@ module Abilities
       can :read, Page
       can :see_email, Commission
       can :create, [Photo, Newsitem, Agendaitem, Event, Result, Comment]
-      can [:archief, :wedstrijden, :new_result, :create_result], Agendaitem
+      can [:archief, :wedstrijden, :new_result, :create_result, :icalendar], Agendaitem
       can [:read, :create, :update], [Photoalbum]
       can [:create, :update], [Subscription]
 	  cannot :read, Subscription
