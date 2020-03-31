@@ -16,6 +16,9 @@ module Abilities
           can :destroy, subs
 		end
       end
+      Result.all.where(event_id:  Event.find_by(agendaitem_id: Agendaitem.find_by(name: 'Pilscie Games').id).id).where(user_id: user.id).each do |res|
+        can :destroy, res
+      end
       can [:update, :editpassword], user
 
       cannot :create, User

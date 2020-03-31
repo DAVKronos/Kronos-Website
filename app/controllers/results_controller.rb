@@ -36,13 +36,20 @@ class ResultsController < ApplicationController
   end
   
   def create
-    event = Event.find(params[:result][:event_id])
-    result = event.results.build(result_params)
-    result.save
-    if request.xhr?
-      render 'results/_show', :layout => false, :locals => {:event => result.event}
+    if (params[:result][:event_id].present?)
+      event = Event.find(params[:result][:event_id])
+      result = event.results.build(result_params)
+      result.save
+      if request.xhr?
+        render 'results/_show', :layout => false, :locals => {:event => result.event}
+      else
+        redirect_to agendaitem_events_path(event.agendaitem)
+      end
     else
-      redirect_to agendaitem_events_path(event.agendaitem)
+      require 'json'
+	  agendaitem = Agendaitem.find_by(name: 'Pilscie Games')
+	  event = Event.find_by(agendaitem_id: agendaitem.id)
+	  Result.create(result: params[:result][:result],username: params[:result][:username],event_id: event.id)
     end
   end
   

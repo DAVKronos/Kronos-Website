@@ -3,9 +3,20 @@ function Bullet(x,y,vely) {
 	this.y = y;
 	this.vely = vely;
 };
+function Enemy(x,y,velx,vely)  {
+	this.x = x;
+	this.y = y;
+	this.velx = velx;
+	this.vely = vely;
+}
 
 Bullet.prototype.update = function() {
 	this.y += this.vely;
+};
+
+Enemy.prototype.update = function() {
+	this.x+= this.velx;
+	this.y+= this.vely;
 };
 
 function getPos(el) {
@@ -31,6 +42,21 @@ Screen.prototype.drawSprite = function(sp,x,y){
 	this.ctx.drawImage(sp.img,sp.x, sp.y, sp.w, sp.h, x, y, sp.w, sp.h);
 };
 
+Screen.prototype.drawText = function(fill,font,tex,x,y) {
+	this.ctx.fillStyle = fill;
+	this.ctx.font = font;
+	this.ctx.fillText(tex,x,y);
+}
+
+Screen.prototype.drawRect = function(fillcolor,bordercolor,borderwidth,x,y,width,height){
+	this.ctx.fillStyle = fillcolor;
+	this.ctx.strokeStyle = bordercolor;
+	this.ctx.lineWidth = borderwidth;
+	this.ctx.rect(x,y,width,height);
+	this.ctx.fill();
+	this.ctx.stroke();
+}
+
 function Sprite(img,x,y,w,h) {
 	this.img = img;
 	this.x = x;
@@ -42,14 +68,22 @@ function Sprite(img,x,y,w,h) {
 function InputHandler() {
 	this.down = {};
 	this.pressed = {};
+	this.clickx = 0;
+	this.clicky = 0;
 	
 	var _this = this;
 	document.addEventListener("keydown",function(evt) {
 		_this.down[evt.keyCode] = true;
 	});
+	
 	document.addEventListener("keyup", function(evt) {
 		delete _this.down[evt.keyCode];
 		delete _this.pressed[evt.keyCode];
+	});
+	
+	document.addEventListener("click",function(evt) {
+		_this.clickx = evt.clientX;
+		_this.clicky = evt.clientY;
 	});
 };
 

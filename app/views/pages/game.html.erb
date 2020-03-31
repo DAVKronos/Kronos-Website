@@ -1,6 +1,5 @@
 <%= javascript_include_tag "helpers" %>
 <style>
-
 canvas {
 	background-color: #000;
 	display: block;
@@ -15,12 +14,38 @@ canvas {
 <script>
 var left = 10;
 var display, input, frames,sp,lvFrame;
-var taSprite,beSprite;
-var dir,tank,bullets;
-
-
-
+var taSprite,beSprite,haSprite,woSprite;
+var dir,tank,bullets,enemies,wortels;
+var nEnemies = 0;
+var maxEnemies = 11;
+var canbullet = true;
+var enemyTimer = 1800;
+var wortelTimer = 3000;
+var lives = 3;
+var points = 0;
+var enemyspeed = 1;
+var startgame = false;
+var highscore = 0;
+var ind = 0;
+var scores = "<%= @results.find_by(user_id: current_user.try(:id)).try(:result)%>";
+var records2 = JSON.parse("<%= @results.first(10).map(&:result)%>".replace(/&quot;/g,'"'));
+var holders2 = JSON.parse("<%= @results.first(10).map(&:username)%>".replace(/&quot;/g,'"'));
 function main () {
+	records = [];
+	holders = [];
+	for(i=0; i<records2.length; i++){
+		records[i] = parseInt(records2[i]);
+	}
+	records2 = records.slice(0);
+	records.sort().reverse();
+	
+	for(i=0; i<records.length; i++) {
+	holders[i] = holders2[records2.indexOf(records[i])];
+	}
+	if (scores!== "") {
+		highscore=parseInt(scores);
+	}
+	ScoreCarrousel();
 	//Disable the page from scrolling
 	document.documentElement.style.overflow = "hidden";
 	
@@ -28,7 +53,7 @@ function main () {
 	display = new Screen();
 	input = new InputHandler();
 	
-	//create kegel sprite
+	//create Sprites
 	var imgt = new Image();
 	imgt.src = '<%= asset_path 'kegel.png' %>';
 	taSprite = new Sprite(imgt,0,0,30,17);
@@ -36,63 +61,336 @@ function main () {
 	var imgb = new Image();
 	imgb.src = '<%= asset_path 'bier.png' %>';
 	beSprite = new Sprite(imgb,0,0,13,14);
-	init();
-	run();
+	
+	var imgh = new Image();
+	imgh.src = '<%= asset_path 'haas.png' %>';
+	haSprite = new Sprite(imgh,0,0,23,23);
+	
+	var imgw = new Image();
+	imgw.src = '<%= asset_path 'wortel.png' %>';
+	woSprite = new Sprite(imgw,0,0,9,14);
+	
+	startScreen();
 };
+
+function ScoreCarrousel() {
+	var indmax = holders.length;
+	ind = (ind+1)%indmax;
+	setTimeout(ScoreCarrousel,1000);
+}
+function startScreen() {
+	var loop = function() {
+		renderStart();
+		updateStart();
+		if (startgame == false) {
+			window.requestAnimationFrame(loop,display.canvas);
+		}
+		else {
+			init();
+			run();
+		}
+	};
+	window.requestAnimationFrame(loop,display.canvas);
+}
+
+function renderStart() {
+	display.canvas.height = 400;
+	display.canvas.width = 400;
+	display.drawText("Green","40px Arial","Pilscie Invaders",65,50);
+	display.drawText("Green","25px Arial","Highscore: "+String(highscore),120,80);
+	display.drawRect("CadetBlue","Coral",2,65,100,275,45);
+	display.drawRect("CadetBlue","Coral",2,65,160,275,45);
+	display.drawRect("CadetBlue","Coral",2,370,0,30,30);
+	display.drawRect("CadetBlue","Coral",2,65,220,275,60);
+	display.drawText("Black","20px Arial","Normal Mode",140,130);
+	display.drawText("Black","20px Arial","Expert Mode",140,190);
+	display.drawText("Black","20px Arial","?",380,23);
+	display.drawText("Black","20px Arial",String(ind+1)+": "+holders[ind],70,240);
+	display.drawText("Black","20px Arial","Highscore: "+records[ind],70,265);
+}
+
+function updateStart() {
+	if (input.clickx-display.canvas.getBoundingClientRect().left>65 && input.clickx-display.canvas.getBoundingClientRect().left<340 && input.clicky-display.canvas.getBoundingClientRect().top>100 && input.clicky-display.canvas.getBoundingClientRect().top<145) {
+	startgame = true;
+	}
+	if (input.clickx-display.canvas.getBoundingClientRect().left>65 && input.clickx-display.canvas.getBoundingClientRect().left<340 && input.clicky-display.canvas.getBoundingClientRect().top>160 && input.clicky-display.canvas.getBoundingClientRect().top<205) {
+	input.clickx = 0;
+	input.clicky = 0;
+	if(highscore <100) {
+	alert("you need to score at least 100 points in normal mode to unlock this!");
+	}
+	else {
+	window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+	}
+	}
+	if (input.clickx-display.canvas.getBoundingClientRect().left>370 && input.clickx-display.canvas.getBoundingClientRect().left<400 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top<30) {
+	alert("Play as Kegel and save Kronos from the evil rabbits. We'll let you figure out how to play the game by yourself. (hint: use spacebar)");
+	input.clickx = 0;
+	input.clicky = 0;
+	}
+	
+}
 
 function init() {
 	frames = 0;
 	//create the kegel
 	tank = {
 			sprite: taSprite,
-			x: (display.canvas.width-taSprite.w)/2,
-			y: display.canvas.height-32
+			x: (400-taSprite.w)/2,
+			y: 368
 	};
 	
 	//initiate bullet array
 	bullets = [];
+	//initiate enemy array
+	enemies = [];
+	//initiate wortel array
+	wortels = [];
+	enemyTimer = 1800;
+	wortelTimer = 3000;
+	nEnemies = 0;
+	enemyspeed = 1;
+	lives = 3;
+	points = 0;
+	createEnemies();
 };
+
+function createEnemies() {
+	if (startgame == true) {
+	nEnemies++;
+	if (nEnemies<maxEnemies) {
+		enemies.push(new Enemy(3+30*nEnemies,30,enemyspeed,0));
+		setTimeout(createEnemies,500);
+	}
+	else if (nEnemies==maxEnemies) {
+		enemies.push(new Enemy(3+30*nEnemies,30,enemyspeed,0));
+		setTimeout(createWortels,wortelTimer*Math.random());
+		setTimeout(createEnemies,enemyTimer);
+	}
+	else {       
+		enemies.push(new Enemy(3,30,enemyspeed,0)); 
+		setTimeout(createEnemies,enemyTimer);
+		enemyTimer*=0.99;
+	}
+	}
+};
+
+function createWortels() {
+	if (enemies.length!==0 && startgame == true){
+	var i = Math.round((enemies.length-1)*Math.random());
+	wortels.push(new Bullet(enemies[i].x,enemies[i].y+23,1));
+	setTimeout(createWortels,wortelTimer*Math.random());
+	}
+}
+
+function CanBullet() {
+	canbullet = true;
+}
+
+function checkCollisions() {
+	for (var i=0,lenb = bullets.length; i<lenb; i++) {
+		for (var j=0, lene = enemies.length; j<lene; j++) {
+			if (bullets[i].y<enemies[j].y+23 && bullets[i].x<enemies[j].x+23 && bullets[i].x>enemies[j].x-13) {
+				points++;
+				if (points % 10 == 0) {
+				wortelTimer*=0.9;
+				}
+				if (points % 20 == 0) {
+					enemyspeed*=1.1;
+					for (var k=0, lenk = enemies.length; k<lenk; k++) {
+					enemies[k].velx=Math.sign(enemies[k].velx)*enemyspeed;
+					}
+				}
+				bullets.splice(i,1);
+				enemies.splice(j,1);
+				i--;
+				lenb--;
+				j--;
+				lene--; 
+				break;
+			}
+		}
+	}
+	
+	for (var k=0, lenw = wortels.length; k<lenw; k++) {
+		if(wortels[k].y>354 && wortels[k].x<tank.x+30 && wortels[k].x>tank.x-9) {
+		lives-=1;
+		wortels = [];  
+		for (var l=0, lenl = enemies.length; l<lenl; l++) {
+			if(enemies[l].y>200) {
+			enemies.splice(l,1);
+			l--;
+			lenl--;
+			continue;
+			}
+		}
+		break;
+		}
+		if (lives==0) {
+		alert("Game Over")
+		if(points > highscore){
+		SubmitScore();
+		}
+		clearTimeout(createEnemies);
+		clearTimeout(createWortels);
+		input.clickx = 0;
+		input.clicky = 0;
+		startgame = false;
+		break;
+		}
+	}
+	for (var j=0, lene = enemies.length; j<lene; j++) {
+		if(enemies[j].y>345 && enemies[j].x<tank.x+30 && enemies[j].x>tank.x-23) {
+		lives-=1;
+		wortels = [];
+		for (var l=0, lenl = enemies.length; l<lenl; l++) {
+			if(enemies[l].y>200) {
+			enemies.splice(l,1);
+			l--;
+			lenl--;
+			continue;
+			}
+		}
+		break;
+		}
+		if (lives==0) {
+		alert("Game Over")
+		if(points > highscore){
+		SubmitScore();
+		}
+		clearTimeout(createEnemies);
+		clearTimeout(createWortels);
+		input.clickx = 0;
+		input.clicky = 0;
+		startgame = false;
+		break;
+		}
+	}
+}
+
+function SubmitScore(){
+	var ding = "<%= @results.find_by(user_id: current_user.try(:id)).try(:id)%>"
+	if (ding !== "") {
+	$.ajax({
+		url: window.location.origin+"/results/"+ding,
+		type: 'delete',
+		data: {
+			id: parseInt(ding),
+		},
+		dataType: "JSON",
+		success: function(data) {
+        }
+     });
+	}
+	if ("<%= current_user.try(:name)%>" !== ""){
+	$.ajax({
+		url: window.location.origin+"/results",
+		type: 'POST',
+		data: {
+			result: {
+				username: "<%= current_user.try(:name)%>",
+				result: String(points),
+				user_id: "<%= current_user.try(:id)%>",
+			}
+		},
+		dataType: "JSON",
+		success: function(data) {
+        }
+     });
+	 }
+	 highscore = points;
+}
+
+function drawStats() {
+	display.drawRect("AliceBlue","AliceBlue",0,0,0,400,30);
+	display.drawRect("AliceBlue","black",2,0,0,60,30);
+	display.drawText("red","20px Arial","Lives: ",155,20);
+	display.drawText("red","20px Arial",String(lives),210,20);
+	display.drawText("red","20px Arial","Points: ",290,20);
+	display.drawText("red","20px Arial",String(points),355,20);
+	display.drawText("black","20px Arial","Quit",9,22);
+}
 
 function run () {
 	var loop = function() {
 		update();
 		render();
-		
-		window.requestAnimationFrame(loop,display.canvas);
-		};
-		window.requestAnimationFrame(loop,display.canvas);
+		if (startgame == true) {
+			window.requestAnimationFrame(loop,display.canvas);
+		}
+		else {
+			startScreen();
+		}
+	};
+	window.requestAnimationFrame(loop,display.canvas);
 };
 
 function update() {
 	frames++;
-
-	if (input.isDown(37)) {
-		tank.x -=4;
+	//check quit button
+	if (input.clickx-display.canvas.getBoundingClientRect().left>0 && input.clickx-display.canvas.getBoundingClientRect().left<60 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top <30) {
+		clearTimeout(createEnemies);
+		clearTimeout(createWortels);
+		startgame = false;
 	}
-	if (input.isDown(39)) {
-		tank.x +=4;
+if (nEnemies>=maxEnemies) {
+	if (input.isDown(37)|| input.isDown(65)) {
+		tank.x -=1;
+	}
+	if (input.isDown(39) || input.isDown(68)) {
+		tank.x +=1;
 	}
 	
 	tank.x = Math.max(Math.min(tank.x,display.canvas.width -taSprite.w),10);
 	tank.y = display.canvas.height-32
 	
 	//create a new bullet when space is pressed
-	if (input.isPressed(32)) {
+	if (input.isPressed(32) && canbullet == true) {
 		bullets.push(new Bullet(tank.x + 10,tank.y,-2));
+		setTimeout(CanBullet,1000);
+		canbullet = false;
 	}
 	
+		
 	//update bullet positions
 	for (var i=0, len = bullets.length; i <len; i++) {
 		var b = bullets[i];
 		b.update();
 		//remove bullets outside of the screen
-		if(b.y+14<0) {
+		if(b.y<30) {
 			bullets.splice(i,1);
 			i--;
 			len--;
 			continue;
 		}
 	}
+	
+	//update rabbit positions
+	for (var j=0, len = enemies.length; j<len; j++) {
+		var e = enemies[j];
+		e.update();
+		//shift enemies
+		if (e.x>380 || e.x<0) {
+		e.y+=30;
+		e.velx*=-1;
+		}
+	}
+	
+	//update wortel positions
+	for (var k=0, len=wortels.length; k<len; k++) {
+		var w = wortels[k];
+		w.update();
+		//remove wortels outside of the screen
+		if(w.y>400) {
+		wortels.splice(k,1);
+		k--;
+		len--;
+		continue;
+		}
+	}
+	checkCollisions();
+}
+
 };
 
 function render() {
@@ -103,6 +401,15 @@ function render() {
 		b = bullets[i];
 		display.drawSprite(beSprite,b.x,b.y);
 	}
+	for (var j=0, len=enemies.length; j<len; j++){
+		e = enemies[j];
+		display.drawSprite(haSprite,e.x,e.y);
+	}
+	for (var k=0, len=wortels.length; k<len; k++){
+		w = wortels[k];
+		display.drawSprite(woSprite,w.x,w.y);
+	}
+	drawStats();
 };
 main();
 </script>

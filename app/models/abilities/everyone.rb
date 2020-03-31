@@ -6,6 +6,7 @@ module Abilities
       can :read, :all
       can [:home, :titleshow], Page
       can [:lustrum_signup, :lustrum_signup_new, :lustrum_enter_password], Page
+	  can [:game], Page
       cannot [:read], Page
       can [:read], Page, :public => true
       can [:perdag, :month], Agendaitem
