@@ -28,8 +28,8 @@ var startgame = false;
 var highscore = 0;
 var ind = 0;
 var scores = "<%= @results.find_by(user_id: current_user.try(:id)).try(:result)%>";
-var records2 = JSON.parse("<%= @results.first(10).map(&:result)%>".replace(/&quot;/g,'"'));
-var holders2 = JSON.parse("<%= @results.first(10).map(&:username)%>".replace(/&quot;/g,'"'));
+var records2 = JSON.parse("<%= @results.sort_by(&:result).reverse.first(10).map(&:result)%>".replace(/&quot;/g,'"'));
+var holders2 = JSON.parse("<%= @results.sort_by(&:result).reverse.first(10).map(&:username)%>".replace(/&quot;/g,'"'));
 function main () {
 	records = [];
 	holders = [];
@@ -37,7 +37,7 @@ function main () {
 		records[i] = parseInt(records2[i]);
 	}
 	records2 = records.slice(0);
-	records.sort().reverse();
+	records.sort(function(a, b){return a-b}).reverse();
 	
 	for(i=0; i<records.length; i++) {
 	holders[i] = holders2[records2.indexOf(records[i])];
