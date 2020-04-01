@@ -28,8 +28,8 @@ var startgame = false;
 var highscore = 0;
 var ind = 0;
 var scores = "<%= @results.find_by(user_id: current_user.try(:id)).try(:result)%>";
-var records2 = JSON.parse("<%= @results.sort_by(&:result).reverse.first(10).map(&:result)%>".replace(/&quot;/g,'"'));
-var holders2 = JSON.parse("<%= @results.sort_by(&:result).reverse.first(10).map(&:username)%>".replace(/&quot;/g,'"'));
+var records2 = JSON.parse("<%= @results.sort_by(&:result).reverse.first(50).map(&:result)%>".replace(/&quot;/g,'"'));
+var holders2 = JSON.parse("<%= @results.sort_by(&:result).reverse.first(50).map(&:username)%>".replace(/&quot;/g,'"'));
 function main () {
 	records = [];
 	holders = [];
@@ -41,6 +41,8 @@ function main () {
 	
 	for(i=0; i<records.length; i++) {
 	holders[i] = holders2[records2.indexOf(records[i])];
+	holders2.splice(records2.indexOf(records[i]),1);
+	records2.splice(records2.indexOf(records[i]),1);
 	}
 	if (scores!== "") {
 		highscore=parseInt(scores);
@@ -124,7 +126,7 @@ function updateStart() {
 	}
 	}
 	if (input.clickx-display.canvas.getBoundingClientRect().left>370 && input.clickx-display.canvas.getBoundingClientRect().left<400 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top<30) {
-	alert("Play as Kegel and save Kronos from the evil rabbits. We'll let you figure out how to play the game by yourself. (hint: use spacebar)");
+	alert("Play as Kegel and save Kronos from the evil rabbits. We'll let you figure out how to play the game by yourself. (hint: use spacebar or just try to click somewhere)");
 	input.clickx = 0;
 	input.clicky = 0;
 	}
@@ -340,15 +342,25 @@ if (nEnemies>=maxEnemies) {
 	if (input.isDown(39) || input.isDown(68)) {
 		tank.x +=1;
 	}
+	if(input.clicked == true) {
+	if(input.mousey-display.canvas.getBoundingClientRect().top>300 && input.mousex-display.canvas.getBoundingClientRect().left<150) {
+		tank.x -=1;
+	}
+	else if(input.mousey-display.canvas.getBoundingClientRect().top>300 && input.mousex-display.canvas.getBoundingClientRect().left>250) {
+		tank.x +=1;
+	}
+	}
 	
 	tank.x = Math.max(Math.min(tank.x,display.canvas.width -taSprite.w),10);
 	tank.y = display.canvas.height-32
 	
 	//create a new bullet when space is pressed
-	if (input.isPressed(32) && canbullet == true) {
+	if ((input.isPressed(32) || (input.clicky-display.canvas.getBoundingClientRect().top>300 && input.clickx-display.canvas.getBoundingClientRect().left>150 && input.clickx-display.canvas.getBoundingClientRect().left<250)) && canbullet == true) {
 		bullets.push(new Bullet(tank.x + 10,tank.y,-2));
 		setTimeout(CanBullet,1000);
 		canbullet = false;
+		input.clickx = 10000;
+		input.clicky = 10000;
 	}
 	
 		

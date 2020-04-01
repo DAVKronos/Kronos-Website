@@ -70,6 +70,9 @@ function InputHandler() {
 	this.pressed = {};
 	this.clickx = 0;
 	this.clicky = 0;
+	this.clicked = false;
+	this.mousex = 0;
+	this.mousey = 0;
 	
 	var _this = this;
 	document.addEventListener("keydown",function(evt) {
@@ -84,6 +87,16 @@ function InputHandler() {
 	document.addEventListener("click",function(evt) {
 		_this.clickx = evt.clientX;
 		_this.clicky = evt.clientY;
+	});
+	document.addEventListener("mousedown", function(evt) {
+		_this.clicked = true;
+	});
+	document.addEventListener("mouseup", function(evt) {
+		_this.clicked = false;
+	});
+	document.addEventListener("mousemove", function(evt) {
+		_this.mousex = evt.clientX;
+		_this.mousey = evt.clientY;
 	});
 };
 
