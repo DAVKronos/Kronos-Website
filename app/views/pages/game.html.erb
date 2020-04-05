@@ -228,7 +228,7 @@ function checkCollisions() {
 		}
 		break;
 		}
-		if (lives==0) {
+		if (lives==0 && startgame == true) {
 		alert("Game Over")
 		if(points > highscore){
 		SubmitScore();
@@ -238,6 +238,7 @@ function checkCollisions() {
 		input.clickx = 0;
 		input.clicky = 0;
 		startgame = false;
+		window.location.href = window.location.origin+"/Game";
 		break;
 		}
 	}
@@ -255,7 +256,7 @@ function checkCollisions() {
 		}
 		break;
 		}
-		if (lives==0) {
+		if (lives==0 && startgame == true) {
 		alert("Game Over")
 		if(points > highscore){
 		SubmitScore();
@@ -265,6 +266,7 @@ function checkCollisions() {
 		input.clickx = 0;
 		input.clicky = 0;
 		startgame = false;
+		window.location.href = window.location.origin+"/Game";
 		break;
 		}
 	}

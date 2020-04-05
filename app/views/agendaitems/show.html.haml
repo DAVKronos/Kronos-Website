@@ -105,10 +105,16 @@
           .panel-heading 
             Inschrijflijst
             .small
-              - unless @agendaitem.deadline_passed?
+              - unless @agendaitem.deadline_passed? || (@agendaitem.maxsubscription.present? && @agendaitem.subscriptions.count >= @agendaitem.maxsubscription)
                 nog
+                -@agendaitem.subscriptions.count
                 = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
-                open
+                open. 
+                %br
+                -if @agendaitem.maxsubscription.present?
+                  nog
+                  = @agendaitem.maxsubscription-@agendaitem.subscriptions.count
+                  plekken.
           .list-group
             - if @agendaitem.subscriptions.empty?  
               .list-group-item
@@ -120,7 +126,7 @@
                 - if can? :destroy, subscription
                   = link_to 'Uitschrijven', [@agendaitem, subscription], confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
           .panel-footer
-            - unless @agendaitem.deadline_passed?
+            - unless @agendaitem.deadline_passed? || (@agendaitem.maxsubscription.present? && @agendaitem.subscriptions.count >= @agendaitem.maxsubscription)
               - if @subscription.new_record?
                 = render 'subscription_form', object: @subscription
               - else # al ingeschreven

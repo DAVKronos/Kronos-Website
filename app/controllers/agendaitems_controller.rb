@@ -123,7 +123,7 @@ class AgendaitemsController < ApplicationController
   end
 
   def agendaitem_params
-    params.require(:agendaitem).permit(:name, :name_en, :intern, :agendaitemtype_id, :date, :description, :description_en, :location, :url, :commission_id, :subscribe, :subscriptiondeadline, :events)
+    params.require(:agendaitem).permit(:name, :name_en, :intern, :agendaitemtype_id, :date, :description, :description_en, :location, :url, :commission_id, :subscribe, :subscriptiondeadline, :events, :maxsubscription)
   end
 
 end
