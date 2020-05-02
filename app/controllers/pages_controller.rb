@@ -27,10 +27,23 @@ class PagesController < ApplicationController
     end
 
   def index
-    @pages = Page.all
+    if params[:agreed].present?
+      @pages = Page.where(:agreed => true)
+    else
+      @pages = Page.all
+    end
+
+    if params[:order_by].present?
+      @pages = @pages.o
+    end
+
+    if params[:limit].present?
+      @pages = @pages.limit(params[:limit])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @pages}
     end
   end
   

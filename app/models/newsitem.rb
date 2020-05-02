@@ -22,5 +22,12 @@ class Newsitem < ApplicationRecord
   has_attached_file :articlephoto, :styles => { :normal => "x150>" , :slider => "480x260#", :carrousel => "750x260#"}, :path => ":rails_root/public/system/:attachment/:hash.:extension",
   :url => "/system/:attachment/:hash.:extension", :hash_secret => "ci74eFweHJz1SuFRxcWK5gOQvZMrbHhThljgLz1JeCHVnYi9M8w29TBxuf696mE"
   validates_attachment_content_type :articlephoto, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-  
+
+  def articlephoto_url_normal
+    articlephoto.url(:normal)
+  end
+
+  def articlephoto_url_carrousel
+    articlephoto.url(:carrousel)
+  end
 end

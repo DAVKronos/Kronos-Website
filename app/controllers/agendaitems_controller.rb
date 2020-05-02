@@ -24,7 +24,7 @@ class AgendaitemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: Agendaitem.search(params[:q], 10) }
+      format.json { render json: @agendaitems.map{|agendaitem| agendaitem.as_json({include: {subscriptions: :count }})} }
     end
   end
 
