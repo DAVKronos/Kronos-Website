@@ -36,5 +36,13 @@ class Photo < ApplicationRecord
         "delete_url" => photo_path(:id => id),
         "delete_type" => "DELETE" 
       }
-    end
+  end
+
+  def photo_url_normal
+    photo.url(:normal)
+  end
+
+  def photo_url_thumb
+    photo.url(:thumb)
+  end
 end
