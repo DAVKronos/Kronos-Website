@@ -24,7 +24,7 @@ class AgendaitemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @agendaitems.map{|agendaitem| agendaitem.as_json({include: {subscriptions: :count }})} }
+      format.json { render json: @agendaitems.map{|agendaitem| agendaitem.as_json(include: {subscriptions: {only: :id}})} }
     end
   end
 
@@ -46,10 +46,17 @@ class AgendaitemsController < ApplicationController
 
   def show
     @agendaitem = Agendaitem.find(params[:id])
-    return unless current_user
-    @subscription = Subscription.where(agendaitem_id: @agendaitem.id, user_id: current_user.id).first
-    return if @subscription
-    @subscription = Subscription.new(user: current_user, agendaitem: @agendaitem, name: current_user.name)
+    if current_user
+      @subscription = Subscription.where(agendaitem_id: @agendaitem.id, user_id: current_user.id).first
+      unless @subscription
+        @subscription = Subscription.new(user: current_user, agendaitem: @agendaitem, name: current_user.name)
+      end
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @agendaitem }
+    end
   end
 
   def create

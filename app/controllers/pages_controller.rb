@@ -49,6 +49,11 @@ class PagesController < ApplicationController
   
   def show
     @page = Page.find(params[:id])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @page}
+    end
   end
     
   def test
