@@ -14,6 +14,7 @@ en:
         name: Name
         subscribe: Subscribe
         subscriptiondeadline: subscription deadline
+        maxsubscription: Maximum subscriptions
         url: Url
         Engelse beschrijving: 
         Engelse naam: 
@@ -285,8 +286,13 @@ en:
       Type: 
     location: location
     name: 
-    subscribe: 
-    subscriptiondeadline: 
+    subscribe: subscribe
+    unsubscribe: unsubscribe
+    subscription_time_remaining: "%{time} remaining"
+    subscription_subscriptions_remaining: "%{subscriptions} remaining subscriptions"
+    subscriptiondeadline: subscription deadline
+    subscriptions: subscriptions
+    subscriptions_full: The event has the maximum amount of subscriptions, you will be put on the reserve list.
   agendaitem[events_attributes][new_events]:
     Afstand: Distance
     Tijd: Time
@@ -645,7 +651,8 @@ en:
         username: 
         wind: 
       subscription:
-        opmerking: 
+        opmerking: Remark
+        reserve: Reserve
       user:
         aanvang: start
         address: 
@@ -856,7 +863,9 @@ en:
   sign_in: Sign in
   sign_up: Sign up
   studie: study
-  subscription: subscription
+  subscription:
+    opmerking: remark
+    reserve: reserve
   support:
     array:
       last_word_connector: and

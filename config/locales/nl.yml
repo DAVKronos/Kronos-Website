@@ -12,8 +12,10 @@ nl:
         description: Beschrijving
         location: Locatie
         name: Naam
-        subscribe: Abonneer
+        subscribe: Inschrijven
+        subscriptions: Inschrijvingen
         subscriptiondeadline: Inschrijfdeadline
+        maxsubscription: Maximale inschrijvingen
         url: Url
         English name: 
         Dutch description: 
@@ -117,6 +119,7 @@ nl:
         wind: Wind
       subscription:
         opmerking: Opmerking
+        reserve: reserve
       user:
         aanvang: Aanvang
         address: Adres
@@ -276,8 +279,13 @@ nl:
       Type: 
     location: Locatie
     name: 
-    subscribe: 
-    subscriptiondeadline: 
+    subscribe: inschrijven
+    unsubscribe: uitschrijven
+    subscriptiondeadline: inschrijfdeadline
+    subscription_time_remaining: "nog %{time} open"
+    subscription_subscriptions_remaining: "nog %{subscriptions} plekken vrij"
+    subscriptions: inschrijflijst
+    subscriptions_full: De inschrijflijst is vol, je komt op de reservelijst.
   agendaitem[events_attributes][new_events]:
     Afstand: Afstand
     Tijd: Tijd
@@ -635,7 +643,8 @@ nl:
         username: 
         wind: 
       subscription:
-        opmerking: 
+        opmerking: Opmerking
+        reserve: Reserve
       user:
         aanvang: aanvang
         address: 
@@ -844,7 +853,9 @@ nl:
   sign_in: Inloggen
   sign_up: inschrijven
   studie: studie
-  subscription: Subscription
+  subscription:
+    opmerking: opmerking
+    reserve: reserve
   support:
     array:
       last_word_connector: " en "
