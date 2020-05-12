@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       get 'labels'
     end
   end
+  get '/kronometers/:id/display/:style', to: "kronometers#display", as: "secure_kronometers_display"
+
   resources :news_items
 
   resources :commissions
