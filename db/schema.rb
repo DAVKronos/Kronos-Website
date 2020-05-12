@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200404125732) do
+ActiveRecord::Schema.define(version: 20200512082456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -317,6 +317,7 @@ ActiveRecord::Schema.define(version: 20200404125732) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "agendaitem_id"
+    t.boolean  "reserve",       default: false
   end
 
   create_table "tags", force: :cascade do |t|
