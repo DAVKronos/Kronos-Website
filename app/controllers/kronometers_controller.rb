@@ -53,6 +53,11 @@ class KronometersController < ApplicationController
     end
   end
 
+  def display
+    @kronometer = Kronometer.find(params[:id])
+    send_file @kronometer.file.path(params[:style])
+  end
+
   private
 
   def kronometer_params
