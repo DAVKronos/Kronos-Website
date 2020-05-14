@@ -2,15 +2,19 @@
 
 = form_for @km, html: { multipart: true } do |f|
     
-  = f.label :name
-  = f.text_field :name
-    
-  = f.label :date
-  = f.text_field :date, {:placeholder => "Datum", :class => "datumprikker"}
-    
-  = f.label :file
-  = f.file_field :file
-  
-  = f.label "Folder name"
-  = f.collection_select(:folder_id, @folders, :id, :name, {:include_blank => "Main folder"}, {:class => "form-control"}) 
-  = f.submit
+    = f.label :name
+    = f.text_field :name
+    %br
+    = f.label :public
+    = f.check_box :public
+    %br
+    = f.label :date
+    = f.text_field :date, {:placeholder => "Datum", :class => "datumprikker"}
+    %br
+    = f.label :file
+    = f.file_field :file
+    %br
+    = f.label :folder
+    = f.collection_select(:folder_id, @folders, :id, :name, {:include_blank => t('folder.main_folder')}, {:class => "form-control"})
+    %br
+    = f.submit :class => "btn"

@@ -10,7 +10,7 @@
           %h4= km.name
           %h6= km.date
         .panel-body
-          = link_to image_tag(km.file.url(:thumb)), km.file.url
+          = link_to image_tag(km.file.url(:thumb)), km.file.url, :target => :blank
           - if can? :destroy, km
             = link_to 'verwijder', km, :method => :delete, :confirm => "Weet je het zeker?",
             :title => "Verwijder #{km.name}", :class => 'btn btn-defaul'

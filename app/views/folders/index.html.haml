@@ -1,9 +1,11 @@
 .row
   .col-lg-12
-    %h1.push-down-for-logo Main Folder
+    %h1.push-down-for-logo
+      = t('folder.main_folder')
 .row
   .col-lg-12
-    %h2.push-down-for-logo Subfolders
+    %h2.push-down-for-logo
+      = t('folder.sub_folders')
 .row
   - @folders.each do |folder|
     .col-md-3.col-xs-6
@@ -16,7 +18,8 @@
               =link_to 'Edit folder', edit_folder_path(folder)
 .row
   .col-lg-12
-    %h2.push-down-for-logo Documents
+    %h2.push-down-for-logo
+      = t('folder.documents')
 .row
   - @kms.each do |km|
     .col-md-3.col-xs-6

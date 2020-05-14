@@ -15,6 +15,7 @@ module Abilities
       cannot :read, Photoalbum
       can :read, Photoalbum, :public => true
       cannot :read, [User,Photo, Announcement, Kronometer, Subscription, Comment]
+      can :display, Kronometer, :public => true
       cannot :see_email, Commission
     end
   end

@@ -64,10 +64,15 @@ nl:
         name: Naam
         shortname: Korte naam
         show_wind: Geef wind weer
+      folder:
+        title: Nederlandse titel
+        folder: Bovenliggende map
       kronometer:
-        date: Date
-        file: File
+        date: Datum
+        file: Bestand
         name: Naam
+        public: Publiek
+        folder: Map
       mailinglist:
         description: Beschrijving
         local_part: Lokaal deel
@@ -748,6 +753,10 @@ nl:
   index: index
   initials: initialen
   instelling: Instelling
+  folder:
+    main_folder: Hoofdmap
+    sub_folders: Submappen
+    documents: Documenten
   licensenumber: licentienummer
   mailinglist: Maillijst
   mailinglist_destroy_success: maillijst verwijderd

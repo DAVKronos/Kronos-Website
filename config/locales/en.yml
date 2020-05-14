@@ -64,10 +64,15 @@ en:
         name: Name
         shortname: Short name
         show_wind: Show wind
+      folder:
+        title: Dutch title
+        folder: Parent folder
       kronometer:
         date: Date
         file: File
         name: Name
+        public: Public
+        folder: Folder
       mailinglist:
         description: Description
         local_part: Locale part
@@ -767,6 +772,10 @@ en:
   index: 
   initials: initials
   instelling: Institution
+  folder:
+    main_folder: Main folder
+    sub_folders: Sub folders
+    documents: Documents
   licensenumber: licencenumber
   mailinglist: mailinglist
   mailinglist_destroy_success: 
