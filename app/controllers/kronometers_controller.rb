@@ -55,7 +55,7 @@ class KronometersController < ApplicationController
 
   def display
     @kronometer = Kronometer.find(params[:id])
-    send_file @kronometer.file.path(params[:style])
+    send_file @kronometer.file.path(params[:style]), :disposition => 'inline'
   end
 
   private

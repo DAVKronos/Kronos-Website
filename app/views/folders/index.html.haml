@@ -28,12 +28,12 @@
           %h4= km.name
           %h6= km.date
         .panel-body
-          = link_to image_tag(km.file.url(:thumb)), km.file.url
+          = link_to image_tag(km.file.url(:thumb)), km.file.url, target: "_blank"
           - if can? :destroy, km
             = link_to 'verwijder', km, :method => :delete, :confirm => "Weet je het zeker?",
-            :title => "Verwijder #{km.name}", :class => 'btn btn-defaul'
+            :title => "Verwijder #{km.name}", :class => 'btn btn-danger'
           - if can? :edit, km
-            = link_to 'aanpassen', edit_kronometer_path(km)
+            = link_to 'aanpassen', edit_kronometer_path(km), class: 'btn btn-default'
 .row
   .col-lg-12
     - if can? :create, Folder
