@@ -80,6 +80,8 @@
           = link_to t(:remove).capitalize, @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete, class: 'btn btn-default'
         -if can? :create, Result
           = link_to t(:edres).capitalize, agendaitem_events_path(@agendaitem), class: 'btn btn-default'
+        -if can? :duplicate, @agendaitem
+          = link_to t('agendaitem.duplicate').capitalize, duplicate_agendaitem_path(@agendaitem), class: 'btn btn-default'
       %br
       %br
     .panel.panel-default

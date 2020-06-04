@@ -298,6 +298,7 @@ en:
     subscriptiondeadline: subscription deadline
     subscriptions: subscriptions
     subscriptions_full: The event has the maximum amount of subscriptions, you will be put on the reserve list.
+    duplicate: Duplicate
   agendaitem[events_attributes][new_events]:
     Afstand: Distance
     Tijd: Time
