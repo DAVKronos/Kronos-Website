@@ -9,6 +9,7 @@ module Abilities
       can [:archief, :wedstrijden, :new_result, :create_result, :icalendar], Agendaitem
       can [:read, :create, :update], [Photoalbum]
       can [:create, :update], [Subscription]
+      can :display, Kronometer
 	  cannot :read, Subscription
       can :update, user.agendaitems
 	  Subscription.all.where(user: user).each do |subs|
