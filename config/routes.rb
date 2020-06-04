@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   resources :agendaitems do
     member do
       get 'icalendar'
+      get 'duplicate'
     end
     resources :events
     resources :comments

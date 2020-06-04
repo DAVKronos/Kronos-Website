@@ -291,6 +291,7 @@ nl:
     subscription_subscriptions_remaining: "nog %{subscriptions} plekken vrij"
     subscriptions: inschrijflijst
     subscriptions_full: De inschrijflijst is vol, je komt op de reservelijst.
+    duplicate: Dupliceren
   agendaitem[events_attributes][new_events]:
     Afstand: Afstand
     Tijd: Tijd
