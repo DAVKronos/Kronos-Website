@@ -20,7 +20,7 @@ class CommissionsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @commission }
+      format.json { render json: @commission.as_json(include: {commission_memberships: {include: {user: {only: :name}}}})}
     end
   end
   
