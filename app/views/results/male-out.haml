@@ -26,12 +26,16 @@
 .row
   .col-md-12
     %ul.nav.nav-tabs
-      = link_to 'Men Outdoor',records_results_path(:sex=>"male",:loc=>"out"), class: 'btn btn-default'
-      = link_to 'Women Outdoor',records_results_path(:sex=>"female",:loc=>"out"), class: 'btn btn-default'
-  .col-md-12
-    %ul.nav.nav-tabs
-      = link_to 'Men Indoor',records_results_path(:sex=>"male",:loc=>"in"), class: 'btn btn-default'
-      = link_to 'Women Indoor',records_results_path(:sex=>"female",:loc=>"in"), class: 'btn btn-default'
+      %li{role: 'presentation', class: 'active'}
+        = link_to 'Men Outdoor',records_results_path(:sex=>"male",:loc=>"out")
+      %li{role: 'presentation'}		
+        = link_to 'Women Outdoor',records_results_path(:sex=>"female",:loc=>"out")
+      %li{role: 'presentation'}		
+        = link_to 'Men Indoor',records_results_path(:sex=>"male",:loc=>"in")
+      %li{role: 'presentation'}		
+        = link_to 'Women Indoor',records_results_path(:sex=>"female",:loc=>"in")
+.row
+  &nbsp;
 .row
   %table.table.table-striped
     %thead
@@ -48,6 +52,9 @@
       %tr
         %td
           %b Looponderdelen
+        %td
+        %td
+        %td
       %tr
         %td 
           100m
@@ -123,6 +130,9 @@
       %tr
         %td
           %b Speciale looponderdelen
+        %td
+        %td
+        %td
       %tr
         %td 
           110m Horden
@@ -153,6 +163,9 @@
       %tr
         %td
           %b Technische onderdelen
+        %td
+        %td
+        %td
       %tr
         %td 
           Hoogspringen
@@ -237,6 +250,9 @@
       %tr
         %td
           %b Estafettes
+        %td
+        %td
+        %td
       %tr
         %td 
           4x100m
