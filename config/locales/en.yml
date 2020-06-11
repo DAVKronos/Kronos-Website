@@ -147,7 +147,7 @@ en:
         reset_password_token: reset password token
         sex: sex
         studie: study
-        xtracardnumber: xtracard number
+        xtracardnumber: UnionCardnumber
       alias:
         description: Description
         emailaddress: email
@@ -967,7 +967,7 @@ en:
     next_label: next→
     page_gap: "&hellip;"
     previous_label: "← previous"
-  xtracardnumber: xtracard number
+  xtracardnumber: UnionCardnumber
   aliases: 
   commissions: commissions
   delete: delete
