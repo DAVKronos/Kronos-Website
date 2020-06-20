@@ -148,7 +148,7 @@ nl:
         reset_password_token: Reset password token
         sex: Geslacht
         studie: Studie
-        xtracardnumber: Xtracardnumber
+        xtracardnumber: UnionCardnummer
       alias:
         description: Description
         emailaddress: Emailaddress
@@ -291,6 +291,7 @@ nl:
     subscription_subscriptions_remaining: "nog %{subscriptions} plekken vrij"
     subscriptions: inschrijflijst
     subscriptions_full: De inschrijflijst is vol, je komt op de reservelijst.
+    duplicate: Dupliceren
   agendaitem[events_attributes][new_events]:
     Afstand: Afstand
     Tijd: Tijd
@@ -305,7 +306,7 @@ nl:
   agendaitems_agenda: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
   all_mailinglists: Alle maillijsten
-  bankaccountnumber: Bankrekeningnummber
+  bankaccountnumber: Bankrekeningnummer
   birthdate: geboortedatum
   chatmessage:
     bericht: 
@@ -657,7 +658,7 @@ nl:
         birthdate: 
         city: 
         email: 
-        iban: 
+        iban: IBAN
         initials: 
         instelling: 
         licensenumber: 
@@ -670,7 +671,7 @@ nl:
         remember_me: 
         sex: 
         studie: studie
-        xtracardnumber: 
+        xtracardnumber: UnionCardnummer
         password_confirmation: 
       alias:
         description: 
@@ -949,14 +950,14 @@ nl:
     sex: geslacht
     signed_in: Je bent succesvol ingelogd.
     signed_out: Je bent succesvol uitgelogd.
-    xtracardnumber: 
+    xtracardnumber: UnionCardnummer
   user_subject: Reset password instructions
   usertype: Lidtype
   will_paginate:
     next_label: volgende →
     page_gap: "&hellip;"
     previous_label: "← vorige"
-  xtracardnumber: xtracardnummer
+  xtracardnumber: UnionCardnummer
   aliases: aliassen
   commissions: commissies
   delete: verwijder

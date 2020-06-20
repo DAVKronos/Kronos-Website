@@ -147,7 +147,7 @@ en:
         reset_password_token: reset password token
         sex: sex
         studie: study
-        xtracardnumber: xtracard number
+        xtracardnumber: UnionCardnumber
       alias:
         description: Description
         emailaddress: email
@@ -298,6 +298,7 @@ en:
     subscriptiondeadline: subscription deadline
     subscriptions: subscriptions
     subscriptions_full: The event has the maximum amount of subscriptions, you will be put on the reserve list.
+    duplicate: Duplicate
   agendaitem[events_attributes][new_events]:
     Afstand: Distance
     Tijd: Time
@@ -966,7 +967,7 @@ en:
     next_label: next→
     page_gap: "&hellip;"
     previous_label: "← previous"
-  xtracardnumber: xtracard number
+  xtracardnumber: UnionCardnumber
   aliases: 
   commissions: commissions
   delete: delete
