@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 5.0'
-gem 'haml', '~> 5.0.0'
-gem 'devise', '~> 4.0'
+gem 'rails', '~> 5.2'
+gem 'haml', '~> 5.0.4'
+gem 'devise', '~> 4.4'
 gem 'cancancan', '~> 2.0'
 gem 'will_paginate', '~> 3.0.3'
 gem 'alphabetical_paginate', '~> 2.1.0'
@@ -17,7 +17,7 @@ gem 'mail_form'
 gem 'bootstrap-will_paginate', '~> 0.0.6'
 gem 'chronic_duration', '~> 0.9.6'
 gem 'math_engine', '~> 0.6.4'
-gem 'client_side_validations', '~> 6.0'
+gem 'client_side_validations', '~> 11.0'
 gem 'redcarpet', '~> 2.3.0'
 gem 'rakismet', '~> 1.4.0'
 gem 'auto_html', '~> 1.6.0'
@@ -28,7 +28,7 @@ gem 'selectize-rails', '~> 0.8.5'
 gem 'twitter-typeahead-rails', '~> 0.10.2'
 gem 'bootstrap-sass'
 gem 'execjs', '~> 2.0.2'
-gem 'paper_trail', '~> 4.0.0.beta'
+gem 'paper_trail', '~> 4.0'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'cookies_eu'
@@ -36,6 +36,7 @@ gem 'prawn-rails'
 gem 'pg', '~> 0.21'
 gem "recaptcha"
 gem 'icalendar', '~> 2.0'
+gem 'passenger'
 
 # Gems used only for assets
 gem 'sass-rails'
@@ -47,7 +48,6 @@ gem 'sqlite3', '~> 1.3.6'
 group :production do
   gem 'daemons', '~> 1.1.9'
   gem 'newrelic_rpm'
-  gem 'passenger'
 end
 
 group :development do
