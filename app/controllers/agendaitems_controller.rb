@@ -6,8 +6,8 @@ class AgendaitemsController < ApplicationController
 
   def index
     if date_param_is_set?
-      @date = Time.new(params[:date][:year].to_i,
-                       params[:date][:month].to_i)
+      @date = Time.new(params.permit![:date][:year].to_i,
+                       params.permit![:date][:month].to_i)
     else
       @date = Time.now
     end
@@ -16,8 +16,8 @@ class AgendaitemsController < ApplicationController
                        .where(date: @date.beginning_of_month..@date.end_of_month)
                        .order('date ASC')
 
-    if params[:agendaitemtype].present?
-      agendaitems = agendaitems.where(agendaitemtype_id: params[:agendaitemtype].to_f)
+    if params.permit(:agendaitemtype)[:agendaitemtype].present?
+      agendaitems = agendaitems.where(agendaitemtype_id: params.permit(:agendaitemtype)[:agendaitemtype].to_f)
     end
 
     @agendaitems = agendaitems
