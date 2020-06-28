@@ -78,7 +78,7 @@ class User < ApplicationRecord
       end
     end
     # voor backwards compatibility
-    self.commissions.exists?(Commission.find_by_name('Bestuur')) or self.commissions.exists?(Commission.find_by_name('Webcie'))
+    self.commissions.exists?(Commission.find_by_name('Bestuur')&.id) or self.commissions.exists?(Commission.find_by_name('Webcie')&.id)
   end
 
   def uitslagen_admin?

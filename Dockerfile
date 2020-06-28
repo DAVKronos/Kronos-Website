@@ -17,7 +17,7 @@ RUN apt-get install -y apt-transport-https ca-certificates
 #RUN sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main > /etc/apt/sources.list.d/passenger.list'
 
 # Install PGsql dependencies,js engine and passenger
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ghostscript nginx-extras tzdata
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ghostscript nginx-extras tzdata imagemagick
 
 RUN useradd kronos
 
