@@ -82,23 +82,21 @@ header.app .container{
 header.app .logo-top{
   background-position: center;
   background-repeat: no-repeat;
+  margin: 10px;
+  background-size: contain;
   display: block;
 }
 
 header.app .logo-top.visible-lg-block{
-  background-image:url(<%=asset_path "logo-lg.png"%>);
-  height: 150px;
+  background-image:url(<%=asset_path "logonormal.png"%>);
+  height: 160px;
 }
 
 header.app .logo-top.visible-md-block{
-  background-image:url(<%=asset_path "logo-md.png"%>);
+  background-image:url(<%=asset_path "logowide.png"%>);
   height: 90px;
 }
 
-header.app .logo-top.visible-sm-block{
-  background-image:url(<%=asset_path "logo-md.png"%>);
-  height: 80px;
-}
 
 header.app .navbar-default .container{
   background-color:$brand-primary;

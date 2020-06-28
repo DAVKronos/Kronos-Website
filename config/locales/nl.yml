@@ -12,8 +12,10 @@ nl:
         description: Beschrijving
         location: Locatie
         name: Naam
-        subscribe: Abonneer
+        subscribe: Inschrijven
+        subscriptions: Inschrijvingen
         subscriptiondeadline: Inschrijfdeadline
+        maxsubscription: Maximale inschrijvingen
         url: Url
         English name: 
         Dutch description: 
@@ -62,10 +64,15 @@ nl:
         name: Naam
         shortname: Korte naam
         show_wind: Geef wind weer
+      folder:
+        title: Nederlandse titel
+        folder: Bovenliggende map
       kronometer:
-        date: Date
-        file: File
+        date: Datum
+        file: Bestand
         name: Naam
+        public: Publiek
+        folder: Map
       mailinglist:
         description: Beschrijving
         local_part: Lokaal deel
@@ -117,6 +124,7 @@ nl:
         wind: Wind
       subscription:
         opmerking: Opmerking
+        reserve: reserve
       user:
         aanvang: Aanvang
         address: Adres
@@ -140,7 +148,7 @@ nl:
         reset_password_token: Reset password token
         sex: Geslacht
         studie: Studie
-        xtracardnumber: Xtracardnumber
+        xtracardnumber: UnionCardnummer
       alias:
         description: Description
         emailaddress: Emailaddress
@@ -276,8 +284,14 @@ nl:
       Type: 
     location: Locatie
     name: 
-    subscribe: 
-    subscriptiondeadline: 
+    subscribe: inschrijven
+    unsubscribe: uitschrijven
+    subscriptiondeadline: inschrijfdeadline
+    subscription_time_remaining: "nog %{time} open"
+    subscription_subscriptions_remaining: "nog %{subscriptions} plekken vrij"
+    subscriptions: inschrijflijst
+    subscriptions_full: De inschrijflijst is vol, je komt op de reservelijst.
+    duplicate: Dupliceren
   agendaitem[events_attributes][new_events]:
     Afstand: Afstand
     Tijd: Tijd
@@ -292,7 +306,7 @@ nl:
   agendaitems_agenda: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
   all_mailinglists: Alle maillijsten
-  bankaccountnumber: Bankrekeningnummber
+  bankaccountnumber: Bankrekeningnummer
   birthdate: geboortedatum
   chatmessage:
     bericht: 
@@ -635,7 +649,8 @@ nl:
         username: 
         wind: 
       subscription:
-        opmerking: 
+        opmerking: Opmerking
+        reserve: Reserve
       user:
         aanvang: aanvang
         address: 
@@ -643,7 +658,7 @@ nl:
         birthdate: 
         city: 
         email: 
-        iban: 
+        iban: IBAN
         initials: 
         instelling: 
         licensenumber: 
@@ -656,7 +671,7 @@ nl:
         remember_me: 
         sex: 
         studie: studie
-        xtracardnumber: 
+        xtracardnumber: UnionCardnummer
         password_confirmation: 
       alias:
         description: 
@@ -739,6 +754,10 @@ nl:
   index: index
   initials: initialen
   instelling: Instelling
+  folder:
+    main_folder: Hoofdmap
+    sub_folders: Submappen
+    documents: Documenten
   licensenumber: licentienummer
   mailinglist: Maillijst
   mailinglist_destroy_success: maillijst verwijderd
@@ -844,7 +863,9 @@ nl:
   sign_in: Inloggen
   sign_up: inschrijven
   studie: studie
-  subscription: Subscription
+  subscription:
+    opmerking: opmerking
+    reserve: reserve
   support:
     array:
       last_word_connector: " en "
@@ -929,14 +950,14 @@ nl:
     sex: geslacht
     signed_in: Je bent succesvol ingelogd.
     signed_out: Je bent succesvol uitgelogd.
-    xtracardnumber: 
+    xtracardnumber: UnionCardnummer
   user_subject: Reset password instructions
   usertype: Lidtype
   will_paginate:
     next_label: volgende →
     page_gap: "&hellip;"
     previous_label: "← vorige"
-  xtracardnumber: xtracardnummer
+  xtracardnumber: UnionCardnummer
   aliases: aliassen
   commissions: commissies
   delete: verwijder

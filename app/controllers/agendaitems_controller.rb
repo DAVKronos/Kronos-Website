@@ -99,6 +99,15 @@ class AgendaitemsController < ApplicationController
     respond_with(@agendaitem)
   end
 
+  def duplicate
+    agendaitem = Agendaitem.find(params[:id])
+    @agendaitem = Agendaitem.new(agendaitem.attributes)
+    @commissions = current_user.commissions
+    @commissions = Commission.all if current_user.admin?
+    render :new
+
+  end
+
   def icalendar
     @agendaitem = Agendaitem.find(params[:id])
 

@@ -6,10 +6,11 @@ module Abilities
       can :read, Page
       can :see_email, Commission
       can :create, [Photo, Newsitem, Agendaitem, Event, Result, Comment]
-      can [:archief, :wedstrijden, :new_result, :create_result, :icalendar], Agendaitem
+      can [:archief, :wedstrijden, :new_result, :create_result, :icalendar, :duplicate], Agendaitem
       can [:read, :create, :update], [Photoalbum]
       can [:create, :update], [Subscription]
-	  cannot :read, Subscription
+      can :display, Kronometer
+	    cannot :read, Subscription
       can :update, user.agendaitems
 	  Subscription.all.where(user: user).each do |subs|
         if !(Agendaitem.find(subs.agendaitem_id).deadline_passed?)

@@ -1,9 +1,11 @@
 .row
   .col-lg-12
-    %h1.push-down-for-logo Main Folder
+    %h1.push-down-for-logo
+      = t('folder.main_folder')
 .row
   .col-lg-12
-    %h2.push-down-for-logo Subfolders
+    %h2.push-down-for-logo
+      = t('folder.sub_folders')
 .row
   - @folders.each do |folder|
     .col-md-3.col-xs-6
@@ -16,7 +18,8 @@
               =link_to 'Edit folder', edit_folder_path(folder)
 .row
   .col-lg-12
-    %h2.push-down-for-logo Documents
+    %h2.push-down-for-logo
+      = t('folder.documents')
 .row
   - @kms.each do |km|
     .col-md-3.col-xs-6
@@ -25,12 +28,12 @@
           %h4= km.name
           %h6= km.date
         .panel-body
-          = link_to image_tag(km.file.url(:thumb)), km.file.url
+          = link_to image_tag(km.file.url(:thumb)), km.file.url, target: "_blank"
           - if can? :destroy, km
             = link_to 'verwijder', km, :method => :delete, :confirm => "Weet je het zeker?",
-            :title => "Verwijder #{km.name}", :class => 'btn btn-defaul'
+            :title => "Verwijder #{km.name}", :class => 'btn btn-danger'
           - if can? :edit, km
-            = link_to 'aanpassen', edit_kronometer_path(km)
+            = link_to 'aanpassen', edit_kronometer_path(km), class: 'btn btn-default'
 .row
   .col-lg-12
     - if can? :create, Folder

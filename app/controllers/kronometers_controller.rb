@@ -1,5 +1,5 @@
 class KronometersController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
   def index
     @kms = Kronometer.order('date DESC')
     @users = User.where(:papieren_kronometer => true)
@@ -53,9 +53,14 @@ class KronometersController < ApplicationController
     end
   end
 
+  def display
+    @kronometer = Kronometer.find(params[:id])
+    send_file @kronometer.file.path(params[:style]), :disposition => 'inline'
+  end
+
   private
 
   def kronometer_params
-    params.require(:kronometer).permit(:date, :file, :name, :folder_id)
+    params.require(:kronometer).permit(:date, :file, :name, :folder_id, :public)
   end
 end

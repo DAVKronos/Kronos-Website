@@ -14,6 +14,7 @@ en:
         name: Name
         subscribe: Subscribe
         subscriptiondeadline: subscription deadline
+        maxsubscription: Maximum subscriptions
         url: Url
         Engelse beschrijving: 
         Engelse naam: 
@@ -63,10 +64,15 @@ en:
         name: Name
         shortname: Short name
         show_wind: Show wind
+      folder:
+        title: Dutch title
+        folder: Parent folder
       kronometer:
         date: Date
         file: File
         name: Name
+        public: Public
+        folder: Folder
       mailinglist:
         description: Description
         local_part: Locale part
@@ -141,7 +147,7 @@ en:
         reset_password_token: reset password token
         sex: sex
         studie: study
-        xtracardnumber: xtracard number
+        xtracardnumber: UnionCardnumber
       alias:
         description: Description
         emailaddress: email
@@ -285,8 +291,14 @@ en:
       Type: 
     location: location
     name: 
-    subscribe: 
-    subscriptiondeadline: 
+    subscribe: subscribe
+    unsubscribe: unsubscribe
+    subscription_time_remaining: "%{time} remaining"
+    subscription_subscriptions_remaining: "%{subscriptions} remaining subscriptions"
+    subscriptiondeadline: subscription deadline
+    subscriptions: subscriptions
+    subscriptions_full: The event has the maximum amount of subscriptions, you will be put on the reserve list.
+    duplicate: Duplicate
   agendaitem[events_attributes][new_events]:
     Afstand: Distance
     Tijd: Time
@@ -645,7 +657,8 @@ en:
         username: 
         wind: 
       subscription:
-        opmerking: 
+        opmerking: Remark
+        reserve: Reserve
       user:
         aanvang: start
         address: 
@@ -760,6 +773,10 @@ en:
   index: 
   initials: initials
   instelling: Institution
+  folder:
+    main_folder: Main folder
+    sub_folders: Sub folders
+    documents: Documents
   licensenumber: licencenumber
   mailinglist: mailinglist
   mailinglist_destroy_success: 
@@ -856,7 +873,9 @@ en:
   sign_in: Sign in
   sign_up: Sign up
   studie: study
-  subscription: subscription
+  subscription:
+    opmerking: remark
+    reserve: reserve
   support:
     array:
       last_word_connector: and
@@ -948,7 +967,7 @@ en:
     next_label: next→
     page_gap: "&hellip;"
     previous_label: "← previous"
-  xtracardnumber: xtracard number
+  xtracardnumber: UnionCardnumber
   aliases: 
   commissions: commissions
   delete: delete

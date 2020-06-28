@@ -10,14 +10,14 @@ class PagesController < ApplicationController
                               ',
                               [9], 
                               Date.today.strftime("%m"), Date.today.strftime("%d"))
-                     .order('extract(month from birthdate) ASC, extract(day from birthdate) ASC')
+                     .order(Arel.sql('extract(month from birthdate) ASC, extract(day from birthdate) ASC'))
 
     @birthdays['next_month'] = User.where( '(user_type_id not in (?)) AND
                                (extract(month from birthdate) = ? AND extract(day from birthdate) <= ?)
                               ',
                              [9],
                              Date.today.next_month.strftime("%m"), Date.today.next_month.strftime("%d"))
-                     .order('extract(month from birthdate) ASC, extract(day from birthdate) ASC')
+                     .order(Arel.sql('extract(month from birthdate) ASC, extract(day from birthdate) ASC'))
   end
 
   def titleshow

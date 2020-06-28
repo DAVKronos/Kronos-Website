@@ -1,63 +1,106 @@
 %h1.push-down-for-logo
   = @user.name
 .row
-  .col-lg-6
-    %dl{:class => "dl-horizontal"}
-      %dt= t(:initials).capitalize 
-      %dd= @user.initials
-
-      %dt= t(:birthdate).capitalize
-      %dd= l @user.birthdate, :format => :default
-
-      %dt= t(:email).capitalize 
-      %dd= @user.email
-
-      %dt= t(:usertype).capitalize
-      %dd= @user.user_type.name if @user.user_type
-
-      %dt= t(:phonenumber).capitalize
-      %dd= @user.phonenumber
-
-      %dt= t(:address).capitalize 
-      %dd= @user.address
-
-      %dt= t(:postalcode).capitalize
-      %dd= @user.postalcode
-
-      %dt= t(:city).capitalize
-      %dd= @user.city
-
-      %dt= t(:studie).capitalize
-      %dd= @user.studie
-
-      %dt= t(:instelling).capitalize
-      %dd= @user.instelling
-
-      %dt= t(:aanvang).capitalize
-      %dd= @user.aanvang
-
-      %dt= t(:sex).capitalize
-      %dd= @user.sex
-
-      %dt= t(:licensenumber).capitalize
-      %dd= @user.licensenumber
-
-      %dt= t(:xtracardnumber).capitalize
-      %dd= @user.xtracard
-
-      %dt= t(:papieren_kronometer).capitalize 
-      %dd= @user.papieren_kronometer.to_s
-      -if current_user.admin?
-        %dt= t(:bankaccountnumber).capitalize
-        %dd= @user.bank_account_number
-        %dt= t(:iban).capitalize
-        %dd= @user.iban
-        %dt= t(:created_at).capitalize
-        %dd= l @user.created_at.to_date, :format => :default
-
-      %dt= t(:commissions).capitalize
-      %dd= @commissions.collect{|appelflap| appelflap.name}.join(', ')
-  .col-lg-6
+  .col-md-6
+    %table.table.table-striped
+      %tbody
+        %tr
+          %td
+            %b= t(:initials).capitalize 
+          %td
+            = @user.initials
+        %tr
+          %td
+            %b= t(:birthdate).capitalize
+          %td
+            = l @user.birthdate, :format => :default
+        %tr
+          %td
+            %b= t(:email).capitalize
+          %td
+            = @user.email
+        %tr
+          %td
+            %b= t(:usertype).capitalize
+          %td
+            = @user.user_type.name if @user.user_type
+        %tr
+          %td
+            %b= t(:phonenumber).capitalize
+          %td
+            = @user.phonenumber
+        %tr
+          %td
+            %b= t(:address).capitalize 
+          %td
+            = @user.address
+        %tr
+          %td
+            %b= t(:postalcode).capitalize
+          %td
+            = @user.postalcode
+        %tr
+          %td
+            %b= t(:city).capitalize
+          %td
+            = @user.city
+        %tr
+          %td
+            %b= t(:studie).capitalize
+          %td
+            = @user.studie
+        %tr
+          %td
+            %b= t(:instelling).capitalize
+          %td
+            = @user.instelling
+        %tr
+          %td
+            %b= t(:aanvang).capitalize
+          %td
+            = @user.aanvang
+        %tr
+          %td
+            %b= t(:sex).capitalize
+          %td
+            = @user.sex
+        %tr
+          %td
+            %b= t(:licensenumber).capitalize
+          %td
+            = @user.licensenumber
+        %tr
+          %td
+            %b= t(:xtracardnumber).capitalize
+          %td
+            = @user.xtracard
+        %tr
+          %td
+            %b= t(:papieren_kronometer).capitalize
+          %td
+            = @user.papieren_kronometer.to_s
+        -if current_user.admin?
+          %tr
+            %td
+              %b= t(:bankaccountnumber).capitalize
+            %td
+              = @user.bank_account_number
+          %tr
+            %td
+              %b= t(:iban)
+            %td
+              = @user.iban
+          %tr
+            %td
+              %b= t(:created_at).capitalize
+            %td
+              = l @user.created_at.to_date, :format => :default
+        %tr
+          %td
+            %b= t(:commissions).capitalize
+          %td
+            = @commissions.collect{|appelflap| appelflap.name}.join(', ')
+  .col-md-6
     %section.polaroid
       %figure
         = image_tag @user.avatar.url(:medium)

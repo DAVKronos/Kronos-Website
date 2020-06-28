@@ -31,3 +31,5 @@ unicorn.conf.rb
 *.pid.lock
 
 google-api-credentials.json
+/secure_files/
+/node_modules/

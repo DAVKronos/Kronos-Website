@@ -1,8 +1,10 @@
 = form_for @folder do |f|
   
-  = f.label t(:titnl).capitalize
+  = f.label :title
   = f.text_field(:name)
-  = f.label "Parent folder"
-  = f.collection_select(:folder_id, @folders, :id, :name, {:include_blank => "Main folder"}, {:class => "form-control"})
+  %br
+  = f.label :folder
+  = f.collection_select(:folder_id, @folders, :id, :name, {:include_blank => t('folder.main_folder')}, {:class => "form-control"})
+  %br
   .actions
     = f.submit :class => "btn"

@@ -1,8 +1,8 @@
 # Base image
-FROM ruby:2.3.8-jessie
+FROM phusion/passenger-ruby25
 
 #TODO See if Passenger docker images can be used
-RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
+#RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
 
 ENV HOME /home/rails/webapp
 ENV RAILS_ENV production
@@ -14,10 +14,10 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC
 RUN apt-get install -y apt-transport-https ca-certificates
 
 # Add our APT repository
-RUN sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main > /etc/apt/sources.list.d/passenger.list'
+#RUN sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main > /etc/apt/sources.list.d/passenger.list'
 
 # Install PGsql dependencies,js engine and passenger
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ghostscript nginx-extras passenger
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ghostscript nginx-extras tzdata imagemagick
 
 RUN useradd kronos
 

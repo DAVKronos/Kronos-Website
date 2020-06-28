@@ -80,6 +80,8 @@
           = link_to t(:remove).capitalize, @agendaitem, confirm: 'Weet je zeker dat je dit agendaitem wilt verwijderen?', method: :delete, class: 'btn btn-default'
         -if can? :create, Result
           = link_to t(:edres).capitalize, agendaitem_events_path(@agendaitem), class: 'btn btn-default'
+        -if can? :duplicate, @agendaitem
+          = link_to t('agendaitem.duplicate').capitalize, duplicate_agendaitem_path(@agendaitem), class: 'btn btn-default'
       %br
       %br
     .panel.panel-default
@@ -103,34 +105,35 @@
       - if current_user
         .panel{:class => inschrijvingen_panel_type(@agendaitem, @subscription)}
           .panel-heading 
-            Inschrijflijst
+            = t(:'agendaitem.subscriptions').capitalize
             .small
-              - unless @agendaitem.deadline_passed? || (@agendaitem.maxsubscription.present? && @agendaitem.subscriptions.count >= @agendaitem.maxsubscription)
-                nog
-                -@agendaitem.subscriptions.count
-                = h distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now)
-                open. 
+              - unless @agendaitem.deadline_passed?
+                = t('agendaitem.subscription_time_remaining', time: distance_of_time_in_words(@agendaitem.subscriptiondeadline, Time.now))
                 %br
                 -if @agendaitem.maxsubscription.present?
-                  nog
-                  = @agendaitem.maxsubscription-@agendaitem.subscriptions.count
-                  plekken.
+                  = t('agendaitem.subscription_subscriptions_remaining', subscriptions: @agendaitem.maxsubscription-@agendaitem.subscriptions.where(reserve: false).count)
           .list-group
             - if @agendaitem.subscriptions.empty?  
               .list-group-item
                 %p.text-info Geen inschrijvingen
-            - @agendaitem.subscriptions.each do |subscription|
+            - @agendaitem.subscriptions.order(created_at: :asc).each do |subscription|
               .list-group-item
                 =subscription.name
                 .small= subscription.comment
+                - if subscription.reserve
+                  .small
+                    %i
+                      = t('subscription.reserve').capitalize
                 - if can? :destroy, subscription
-                  = link_to 'Uitschrijven', [@agendaitem, subscription], confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
+                  = link_to t('agendaitem.unsubscribe').capitalize, [@agendaitem, subscription], confirm: 'Weet je het zeker dat je deze persoon wilt uitschrijven?', method: :delete
           .panel-footer
-            - unless @agendaitem.deadline_passed? || (@agendaitem.maxsubscription.present? && @agendaitem.subscriptions.count >= @agendaitem.maxsubscription)
+            - unless @agendaitem.deadline_passed?
               - if @subscription.new_record?
+                -if @agendaitem.maxsubscription.present? && @agendaitem.maxsubscription <= @agendaitem.subscriptions.where(reserve: false).count
+                  = t('agendaitem.subscriptions_full').capitalize
                 = render 'subscription_form', object: @subscription
               - else # al ingeschreven
-                = link_to 'Uitschrijven', [@agendaitem, @subscription] , confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete, class: 'btn btn-danger'
+                = link_to t('agendaitem.unsubscribe').capitalize, [@agendaitem, @subscription] , confirm: 'Weet je het zeker dat je je wilt uitschrijven?', method: :delete, class: 'btn btn-danger'
             - else # buiten inschrijfdeadline
               Gesloten
       - else # Niet ingelogd      

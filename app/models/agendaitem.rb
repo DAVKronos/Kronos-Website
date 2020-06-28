@@ -31,6 +31,7 @@ class Agendaitem < ApplicationRecord
   accepts_nested_attributes_for :subscriptions, :allow_destroy => true
   accepts_nested_attributes_for :comments, :reject_if => :all_blank
   validates_associated :events
+  before_update :change_reserve_status
 
   def count_results()
     counter = 0
@@ -82,6 +83,29 @@ class Agendaitem < ApplicationRecord
 
   def deadline_passed?()
     return ((self.subscriptiondeadline - Time.now) <= 0)
+  end
+
+  def change_reserve_status
+    if self.subscribe && self.maxsubscription.present? and self.maxsubscription != self.maxsubscription_was
+      previous_maxsub = self.maxsubscription_was.nil? ? self.subscriptions.count : self.maxsubscription_was
+
+      if self.maxsubscription > previous_maxsub
+        n = self.maxsubscription - previous_maxsub
+        puts 'prev', previous_maxsub, n
+        reserves = self.subscriptions.where(reserve: true).order(created_at: :asc).limit(n)
+        reserves.each do |subscription|
+          subscription.reserve= false
+          subscription.save
+        end
+      else
+        n = previous_maxsub - self.maxsubscription
+        reserves = self.subscriptions.where(reserve: false).order(created_at: :desc).limit(n)
+        reserves.each do |subscription|
+          subscription.reserve= true
+          subscription.save
+        end
+      end
+    end
   end
 
 end
