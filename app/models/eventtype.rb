@@ -1,3 +1,5 @@
+require 'math_engine'
+
 # == Schema Information
 #
 # Table name: eventtypes
@@ -19,25 +21,25 @@ class Eventtype < ApplicationRecord
   has_many :agendaitemtype_eventtypes
   has_many :agendaitemtypes, :through => :agendaitemtype_eventtypes
   has_many :results, :through => :events
-  
+
   accepts_nested_attributes_for :agendaitemtype_eventtypes, :allow_destroy => true
 
   def calculate_result(result, distance, gender)
-    engine = MathEngine::MathEngine.new
-	formula = self.formula
-	if gender != "Male" && self.female_formula
-		formula = self.female_formula
-	end
-	if formula
-        formula = formula.gsub(/\$distance/, distance.to_s ) if distance
-        retval = engine.evaluate(formula.gsub(/\$result/, result.to_s)) 	              # Evaluate the expression and output the result
-		return retval
-	else
-		return 0
-	end
-	rescue Exception
-		return 0
-    rescue MathEngine::MathEngine::ParseError
-        return 0
+    engine = MathEngine.new
+    formula = self.formula
+    if gender != "Male" && self.female_formula
+      formula = self.female_formula
+    end
+    if formula
+      formula = formula.gsub(/\$distance/, distance.to_s) if distance
+      retval = engine.evaluate(formula.gsub(/\$result/, result.to_s)) # Evaluate the expression and output the result
+      return retval
+    else
+      return 0
+    end
+  rescue Exception
+    return 0
+  rescue MathEngine::ParseError
+    return 0
   end
 end
