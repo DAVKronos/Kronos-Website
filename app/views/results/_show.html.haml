@@ -17,6 +17,8 @@
             = result.event.eventtype.calculated_unit
           %td
             = link_to "verwijder", result, :class => 'btn btn-danger btn-xs', confirm: 'Weet je het zeker?', method: :delete if can? :destroy, result
+            - if can? :update, result
+              = link_to "recalculate", recalculate_result_path(result), :class => 'btn btn-warning btn-xs', confirm: 'Weet je het zeker?'
   .panel-body
     = render :partial => "events/form", :locals => { :event => event }
   -if can? :destroy, event

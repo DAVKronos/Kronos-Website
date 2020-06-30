@@ -6,7 +6,7 @@ class AnnouncementsController < ApplicationController
     ids = [params[:id], *cookies.signed[:hidden_announcement_ids]]
     cookies.permanent.signed[:hidden_announcement_ids] = ids
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back(fallback_location: root_path) }
       format.js
   	end
 	end

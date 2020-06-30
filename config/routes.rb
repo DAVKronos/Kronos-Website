@@ -68,6 +68,9 @@ Rails.application.routes.draw do
     end
   end
   resources :results, only: [:index, :create, :destroy] do
+    member do
+      get 'recalculate'
+    end
     collection do
       get 'records'
     end

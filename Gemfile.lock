@@ -397,7 +397,7 @@ GEM
     websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.0.12)
+    will_paginate (3.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -461,7 +461,7 @@ DEPENDENCIES
   test-unit
   twitter-typeahead-rails (~> 0.10.2)
   uglifier
-  will_paginate (~> 3.0.3)
+  will_paginate (~> 3.0)
 
 BUNDLED WITH
    1.17.3
