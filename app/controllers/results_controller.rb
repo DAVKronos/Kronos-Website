@@ -15,6 +15,10 @@ class ResultsController < ApplicationController
                        .where("results.id IS NOT NULL")
                        .group('agendaitems.id')
                        .order("date ASC")
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @agendaitems.map{|agendaitem| agendaitem.as_json(include: {subscriptions: {only: :id}})} }
+    end
   end
 
   def records
