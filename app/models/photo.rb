@@ -26,6 +26,7 @@ class Photo < ApplicationRecord
   has_many :comments, :as => :commentable, :dependent => :destroy
   
   validates_attachment_presence :photo
+  validates_attachment_size :photo, less_than: 4.megabytes
   
   def to_jq_upload
       {
