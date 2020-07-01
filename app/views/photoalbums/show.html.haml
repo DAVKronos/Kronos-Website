@@ -47,10 +47,11 @@
   .col-lg-12
     %button{:class => "btn btn-primary fullscreenbutton", :data => {:toggle => "modal", :target => "#myModal", :index => @allphotos.index(@photos.first)}}
       Fullscreen
+    - if can? :edit, @photoalbum
+      = link_to "edit", edit_photoalbum_path(@photoalbum), class: "btn btn-primary"
 .row
   .col-lg-12
     = will_paginate @photos, :previous_label => '<', :next_label => '>'
-
 :javascript
     function loadSrc(target) {
         if(target.attr('src') == undefined) {
