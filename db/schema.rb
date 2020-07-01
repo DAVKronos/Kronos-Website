@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_091839) do
+ActiveRecord::Schema.define(version: 2020_07_01_145847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.integer "agendaitemtype_id"
     t.string "url"
     t.integer "user_id"
-    t.string "name_en", default: "Agenda item"
-    t.text "description_en", default: "English description not yet available"
+    t.string "name_en"
+    t.text "description_en"
     t.integer "maxsubscription"
   end
 
