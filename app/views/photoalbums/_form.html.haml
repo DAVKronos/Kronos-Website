@@ -13,12 +13,13 @@
   = f.select(:agendaitem_id, [[]])
 
   :javascript
+    var states = #{raw Agendaitem.all.to_json.html_safe};
     $('#photoalbum_agendaitem_id').selectize({
         valueField: 'id',
         labelField: 'name',
         searchField: 'name',
+        items: [#{@photoalbum.agendaitem_id}],
         create: false,
-        preload: true,
         render: {
             option: function(item, escape) {
                return '<div>' +                    
@@ -27,22 +28,7 @@
                 '</div>';
             }
         },
-        load: function(query, callback) {
-            if (!query.length) query = "";
-            $.ajax({
-                url: '#{agendaitems_path(:format => :json )}',
-                type: 'GET',                
-                data: {
-                    q: query
-                },
-                error: function() {
-                    callback();
-                },
-                success: function(res) {
-                    callback(res);
-                }
-            });
-        }
+        options: states
     });
 
   = f.label :Date
