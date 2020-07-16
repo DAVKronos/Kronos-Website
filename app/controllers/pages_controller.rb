@@ -27,7 +27,7 @@ class PagesController < ApplicationController
     end
 
   def index
-    @pages = Page.all
+    @pages = Page.order(pagetag: :asc)
 
     respond_to do |format|
       format.html # index.html.erb
