@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "agendaitems", id: :serial, force: :cascade do |t|
+  create_table "agendaitems", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "date"
@@ -35,14 +35,14 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.integer "maxsubscription"
   end
 
-  create_table "agendaitemtype_eventtypes", id: :serial, force: :cascade do |t|
+  create_table "agendaitemtype_eventtypes", force: :cascade do |t|
     t.integer "agendaitemtype_id"
     t.integer "eventtype_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "agendaitemtypes", id: :serial, force: :cascade do |t|
+  create_table "agendaitemtypes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.string "name_en"
   end
 
-  create_table "aliases", id: :serial, force: :cascade do |t|
+  create_table "aliases", force: :cascade do |t|
     t.text "name"
     t.text "emailaddress"
     t.text "description"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.index ["alias_id", "mailinglist_id"], name: "index_aliases_mailinglists_on_alias_id_and_mailinglist_id"
   end
 
-  create_table "announcements", id: :serial, force: :cascade do |t|
+  create_table "announcements", force: :cascade do |t|
     t.text "message"
     t.datetime "starts_at"
     t.datetime "ends_at"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.text "url"
   end
 
-  create_table "apps_exceptions", id: :serial, force: :cascade do |t|
+  create_table "apps_exceptions", force: :cascade do |t|
     t.string "email"
     t.boolean "way"
     t.datetime "created_at", null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.string "group_email"
   end
 
-  create_table "chatmessages", id: :serial, force: :cascade do |t|
+  create_table "chatmessages", force: :cascade do |t|
     t.string "by"
     t.text "message"
     t.datetime "created_at"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.string "referrer"
   end
 
-  create_table "comments", id: :serial, force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.string "commentable_type"
   end
 
-  create_table "commission_memberships", id: :serial, force: :cascade do |t|
+  create_table "commission_memberships", force: :cascade do |t|
     t.string "function"
     t.boolean "installed", default: false
     t.integer "user_id", null: false
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.datetime "updated_at"
   end
 
-  create_table "commissions", id: :serial, force: :cascade do |t|
+  create_table "commissions", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "email"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.text "description_en"
   end
 
-  create_table "delayed_jobs", id: :serial, force: :cascade do |t|
+  create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0
     t.integer "attempts", default: 0
     t.text "handler"
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "events", id: :serial, force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.time "date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.float "distance"
   end
 
-  create_table "eventtypes", id: :serial, force: :cascade do |t|
+  create_table "eventtypes", force: :cascade do |t|
     t.string "name"
     t.string "formula"
     t.string "shortname"
@@ -168,12 +168,12 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.boolean "important"
   end
 
-  create_table "folders", id: :serial, force: :cascade do |t|
+  create_table "folders", force: :cascade do |t|
     t.string "name"
     t.integer "folder_id"
   end
 
-  create_table "kronometers", id: :serial, force: :cascade do |t|
+  create_table "kronometers", force: :cascade do |t|
     t.string "name"
     t.date "date"
     t.string "file_file_name"
@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.boolean "public", default: false
   end
 
-  create_table "mailinglist_memberships", id: :serial, force: :cascade do |t|
+  create_table "mailinglist_memberships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "mailinglist_id"
     t.datetime "created_at", null: false
@@ -195,7 +195,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.index ["user_id"], name: "index_mailinglist_memberships_on_user_id"
   end
 
-  create_table "mailinglists", id: :serial, force: :cascade do |t|
+  create_table "mailinglists", force: :cascade do |t|
     t.text "name"
     t.text "description"
     t.datetime "created_at", null: false
@@ -205,7 +205,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.integer "mailinglist_id"
   end
 
-  create_table "newsitems", id: :serial, force: :cascade do |t|
+  create_table "newsitems", force: :cascade do |t|
     t.string "title"
     t.text "news"
     t.boolean "agreed"
@@ -265,7 +265,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.integer "KMeterPapier"
   end
 
-  create_table "pages", id: :serial, force: :cascade do |t|
+  create_table "pages", force: :cascade do |t|
     t.text "information"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -277,7 +277,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.boolean "public", default: true
   end
 
-  create_table "photoalbums", id: :serial, force: :cascade do |t|
+  create_table "photoalbums", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -286,7 +286,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.datetime "eventdate"
   end
 
-  create_table "photos", id: :serial, force: :cascade do |t|
+  create_table "photos", force: :cascade do |t|
     t.string "caption"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -300,7 +300,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.datetime "exif_date"
   end
 
-  create_table "results", id: :serial, force: :cascade do |t|
+  create_table "results", force: :cascade do |t|
     t.string "username"
     t.string "result"
     t.datetime "created_at"
@@ -312,7 +312,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.decimal "calculated"
   end
 
-  create_table "subscriptions", id: :serial, force: :cascade do |t|
+  create_table "subscriptions", force: :cascade do |t|
     t.text "comment"
     t.string "name"
     t.datetime "created_at"
@@ -322,7 +322,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.boolean "reserve", default: false
   end
 
-  create_table "tags", id: :serial, force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.integer "photo_id"
     t.integer "user_id"
     t.integer "xpos"
@@ -333,12 +333,12 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.datetime "updated_at"
   end
 
-  create_table "user_sessions", id: :serial, force: :cascade do |t|
+  create_table "user_sessions", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "user_types", id: :serial, force: :cascade do |t|
+  create_table "user_types", force: :cascade do |t|
     t.string "name"
     t.boolean "donor"
     t.boolean "competition"
@@ -347,7 +347,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.string "name_en"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "initials"
     t.string "email", default: "", null: false
@@ -385,7 +385,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_091839) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "versions", id: :serial, force: :cascade do |t|
+  create_table "versions", force: :cascade do |t|
     t.string "item_type", null: false
     t.integer "item_id", null: false
     t.string "event", null: false

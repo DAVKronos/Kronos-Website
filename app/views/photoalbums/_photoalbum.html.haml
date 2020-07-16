@@ -5,14 +5,15 @@
       .caption
         %h5
           = link_to photoalbum.name, photoalbum
-        - unless photoalbum.agendaitem.nil?
-          %p
-            %small
+        %p
+          %small
+            - if photoalbum.agendaitem.present?
               evenement op:
               = time_tag photoalbum.agendaitem.date
-        - else
-          %p
-            %small
+            - elsif photoalbum.eventdate.present?
+              evenement op:
+              = time_tag photoalbum.eventdate
+            - else
               aangemaakt op:
               = time_tag photoalbum.created_at
         .row.text-center
