@@ -303,6 +303,7 @@ nl:
       no_agendaitems_found: Geen agendaitems gevonden
     show:
       results: 
+      photos: Fotos
   agendaitems_agenda: 
   agendaitemtype_eventtype: Agendaitemtype eventtype
   all_mailinglists: Alle maillijsten

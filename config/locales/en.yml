@@ -310,6 +310,7 @@ en:
       no_agendaitems_found: No agendaitems found
     show:
       results: 
+      photos: Photos
   agendaitems_agenda: 
   agendaitemtype_eventtype: agenda item type event type
   all_mailinglists: all maillinglists
