@@ -54,6 +54,16 @@
       .row
         .col-xs-12
           = render partial: 'results/result_event', collection: @agendaitem.events, as: :event
+    - if Photoalbum.exists?(agendaitem_id: @agendaitem.id) && current_user
+      .row
+        .col-xs-12
+          %h3
+            =t('.photos')
+      .row
+        .col-xs-12
+          %h4
+            -Photoalbum.where(agendaitem_id: @agendaitem.id).each do |p|
+              =link_to p.name, photoalbum_path(p)
     -# - if current_user
     -#   .bs-callout
     -#     - @agendaitem.comments.each do |comment|
