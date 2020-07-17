@@ -7,14 +7,11 @@
           = link_to photoalbum.name, photoalbum
         %p
           %small
-            - if photoalbum.agendaitem.present?
-              evenement op:
-              = time_tag photoalbum.agendaitem.date
-            - elsif photoalbum.eventdate.present?
-              evenement op:
+            - if photoalbum.eventdate.present?
+              = t('photoalbum.eventdate_at').capitalize
               = time_tag photoalbum.eventdate
             - else
-              aangemaakt op:
+              = t('photoalbum.created_at').capitalize
               = time_tag photoalbum.created_at
         .row.text-center
           .btn-group.btn-group-sm

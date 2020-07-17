@@ -839,6 +839,8 @@ nl:
   photoalbum:
     agendaitem: agendaitem
     name: naam
+    eventdate_at: evenement op
+    created_at: aangemaakt op
   photos:
     title: Foto's
   postalcode: postcode

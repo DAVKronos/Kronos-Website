@@ -848,7 +848,9 @@ en:
   phonenumber: telephone number
   photoalbum:
     agendaitem: 
-    name: 
+    name:
+    eventdate_at: event at
+    created_at: created at
   photos:
     title: pictures
   postalcode: postal code
