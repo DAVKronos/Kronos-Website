@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_191828) do
+ActiveRecord::Schema.define(version: 2020_07_16_223947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,8 +217,8 @@ ActiveRecord::Schema.define(version: 2020_07_16_191828) do
     t.string "articlephoto_content_type"
     t.integer "articlephoto_file_size"
     t.datetime "articlephoto_updated_at"
-    t.string "title_en", default: "News item"
-    t.text "news_en", default: "English text not yet available"
+    t.string "title_en"
+    t.text "news_en"
   end
 
   create_table "old_photoalbums", id: false, force: :cascade do |t|
