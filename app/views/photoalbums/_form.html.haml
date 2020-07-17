@@ -13,7 +13,7 @@
   = f.select(:agendaitem_id, [[]])
 
   :javascript
-    var states = #{raw Agendaitem.all.to_json.html_safe};
+    var states = #{raw Agendaitem.order("date DESC").limit("50").to_json.html_safe};
     $('#photoalbum_agendaitem_id').selectize({
         valueField: 'id',
         labelField: 'name',

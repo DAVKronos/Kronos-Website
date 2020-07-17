@@ -3,7 +3,7 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums
   # GET /photoalbums.json
   def index
-    @photoalbums = Photoalbum.includes(:agendaitem).order('eventdate DESC NULLS LAST, created_at DESC ').paginate(:page => params[:page], :per_page => 12)
+    @photoalbums = Photoalbum.order('eventdate DESC NULLS LAST, created_at DESC ').paginate(:page => params[:page], :per_page => 12).includes(:agendaitem)
 
     if current_user.nil?
       @photoalbums = @photoalbums.where(public: true)
