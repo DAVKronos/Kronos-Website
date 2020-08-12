@@ -24,8 +24,8 @@
           .carousel-inner
             -@allphotos.each do |n|
               %div{:class=>(@allphotos.index(n) == 0) ? 'item active' : 'item'}
-                %a{:href => n.photo.url(:normal), :target => "_blank"}
-                  %img{:class => 'img-responsive', :data => {:src => n.photo.url(:normal), "slide-index" => @allphotos.index(n)+1 }}
+                %a{:href => n.photo.url(:original), :target => "_blank"}
+                  %img{:class => 'img-responsive', :data => {:src => n.photo.url(:original), "slide-index" => @allphotos.index(n)+1 }}
                 .carousel-caption
                   %h1
                     #{@allphotos.index(n)+1}/#{@allphotos.count}

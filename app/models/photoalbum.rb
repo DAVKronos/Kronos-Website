@@ -18,7 +18,7 @@ class Photoalbum < ApplicationRecord
   before_save :add_event_date
 
   def add_event_date
-    if not self.eventdate and self.agendaitem
+    if self.eventdate.nil? and self.agendaitem
         self.eventdate = self.agendaitem.date
     end
   end
