@@ -23,7 +23,7 @@ class Photo < ApplicationRecord
                     path: ":rails_root/public/system/:attachment/:hash.:extension",
                     url: "/system/:attachment/:hash.:extension",
                     hash_secret: "longSecretString",
-                    convert_options: {thumb: "-quality 75 -strip", original: "-strip -quality 95"}
+                    convert_options: {thumb: "-quality 75 -strip", original: "-strip"}
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   belongs_to :photoalbum
   has_many :tags, :dependent => :destroy
