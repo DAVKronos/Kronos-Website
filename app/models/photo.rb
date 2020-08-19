@@ -19,7 +19,7 @@
 class Photo < ApplicationRecord
   include Rails.application.routes.url_helpers
   has_attached_file :photo,
-                    styles: {thumb: "260x180#", original: "1920x1080>"},
+                    styles: {thumb: "260x180#", original: "2560x1440>"},
                     path: ":rails_root/public/system/:attachment/:hash.:extension",
                     url: "/system/:attachment/:hash.:extension",
                     hash_secret: "longSecretString",
