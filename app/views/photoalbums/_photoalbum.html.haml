@@ -3,8 +3,12 @@
     .thumbnail
       = link_to image_tag(photoalbum.photos.order('RANDOM()').first.photo.url :thumb, :class=>'img-responsive'), photoalbum unless photoalbum.photos.empty?
       .caption
-        %h5
-          = link_to photoalbum.name, photoalbum
+        -if I18n.locale == :nl
+          %h5
+            = link_to photoalbum.name, photoalbum
+        -if I18n.locale == :en
+          %h5
+            = link_to photoalbum.name_en, photoalbum
         %p
           %small
             - if photoalbum.eventdate.present?

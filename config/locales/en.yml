@@ -115,7 +115,8 @@ en:
         public: Public
       photoalbum:
         agendaitem: Calendar item
-        name: Name
+        name: Dutch name
+        name_en: English name
         public: 
       result:
         place: Place

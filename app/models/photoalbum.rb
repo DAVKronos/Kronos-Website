@@ -15,6 +15,8 @@ class Photoalbum < ApplicationRecord
   has_many :photos, :dependent => :destroy
   accepts_nested_attributes_for :photos
   validates_associated :photos
+  validates :name, :presence => true
+  validates :name_en, :presence => true
   before_save :add_event_date
 
   def add_event_date

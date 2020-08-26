@@ -3,6 +3,9 @@
     = f.label :name
     = f.text_field(:name, {:class => "form-control"})
   .input-group
+    = f.label :name_en
+    = f.text_field(:name_en, {:class => "form-control"})
+  .input-group
     = f.label :public
     - if can? :publish, @photoalbum
       = f.check_box(:public, {:class => "form-control"})
