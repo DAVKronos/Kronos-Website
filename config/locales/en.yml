@@ -852,6 +852,9 @@ en:
     name:
     eventdate_at: event at
     created_at: created at
+    edit: edit photoalbum
+    view: view
+    back: back
   photos:
     title: pictures
   postalcode: postal code

@@ -842,6 +842,9 @@ nl:
     name: naam
     eventdate_at: evenement op
     created_at: aangemaakt op
+    edit: Fotoalbum bewerken
+    view: bekijk
+    back: terug
   photos:
     title: Foto's
   postalcode: postcode

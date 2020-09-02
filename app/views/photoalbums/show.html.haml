@@ -1,16 +1,22 @@
 .row
   .col-lg-12
     %h1.push-down-for-logo
-      = @photoalbum.name
+      -if I18n.locale == :nl
+        = @photoalbum.name
+      -if I18n.locale == :en
+        = @photoalbum.name_en
     %p
       %small
         - unless @photoalbum.agendaitem.nil? 
-          evenement op:
+          = t('photoalbum.eventdate_at').capitalize
           = time_tag @photoalbum.agendaitem.date
           = raw("-")
-          = link_to @photoalbum.agendaitem.name, @photoalbum.agendaitem
+          -if I18n.locale == :nl
+            = link_to @photoalbum.agendaitem.name, @photoalbum.agendaitem
+          -if I18n.locale == :en
+            = link_to @photoalbum.agendaitem.name_en, @photoalbum.agendaitem
         - else
-          aangemaakt op:
+          = t('photoalbum.created_at').capitalize
           = time_tag @photoalbum.created_at
 
 .modal{:id => "myModal", "tabindex" => "-1", "role" => "dialog"}
@@ -18,7 +24,10 @@
     .modal-content
       .modal-header
         %h1
-          = @photoalbum.name
+          -if I18n.locale == :nl
+            = @photoalbum.name
+          -if I18n.locale == :en
+            = @photoalbum.name_en
       .modal-body
         %div{:class => "carousel slide", :id => "carousel-example-generic", "data-ride" => "carousel"}
           .carousel-inner
