@@ -28,9 +28,9 @@ class PagesController < ApplicationController
 
   def index
     if params[:agreed].present?
-      @pages = Page.where(:agreed => true)
+      @pages = Page.where(:agreed => true).order(pagetag: :asc)
     else
-      @pages = Page.all
+      @pages = Page.order(pagetag: :asc)
     end
 
     if params[:order_by].present?

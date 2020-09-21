@@ -61,7 +61,8 @@ kegel.save!
 
 com = Commission.create({:name => "Bestuur",
                    :email => "bestuur@kronos.nl",
-                   :description => "Het bestuur van Kronos"})
+                   :description => "Het bestuur van Kronos",
+                   :name_en => "Board"})
                    
 CommissionMembership.create({:commission => com,
                              :user => user, 

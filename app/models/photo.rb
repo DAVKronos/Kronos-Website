@@ -18,15 +18,19 @@
 
 class Photo < ApplicationRecord
   include Rails.application.routes.url_helpers
-  has_attached_file :photo, :styles => { :thumb => "260x180#", :normal => "1680x1050>"}, :path => ":rails_root/public/system/:attachment/:hash.:extension",
-  :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
+  has_attached_file :photo,
+                    styles: {thumb: "260x180#", original: "2560x1440>"},
+                    path: ":rails_root/public/system/:attachment/:hash.:extension",
+                    url: "/system/:attachment/:hash.:extension",
+                    hash_secret: "longSecretString",
+                    convert_options: {thumb: "-quality 75 -strip", original: "-strip"}
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   belongs_to :photoalbum
   has_many :tags, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   
   validates_attachment_presence :photo
-  
+
   def to_jq_upload
       {
         "name" => self.photo_file_name,

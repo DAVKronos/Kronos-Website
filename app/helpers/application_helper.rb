@@ -16,7 +16,7 @@ module ApplicationHelper
   end
   
   def getPages(menu_item)
-      Page.where('menu = ?', menu_item)
+      Page.where('menu = ?', menu_item).order(sort_order: :asc)
   end
 
   def getHighlight
@@ -24,6 +24,6 @@ module ApplicationHelper
   end
 
   def getHighlights
-    Page.where(highlight: true).all
+    Page.where(highlight: true).order(sort_order: :asc)
   end
 end

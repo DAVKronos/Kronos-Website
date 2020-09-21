@@ -115,7 +115,8 @@ en:
         public: Public
       photoalbum:
         agendaitem: Calendar item
-        name: Name
+        name: Dutch name
+        name_en: English name
         public: 
       result:
         place: Place
@@ -310,6 +311,7 @@ en:
       no_agendaitems_found: No agendaitems found
     show:
       results: 
+      photos: Photos
   agendaitems_agenda: 
   agendaitemtype_eventtype: agenda item type event type
   all_mailinglists: all maillinglists
@@ -847,7 +849,12 @@ en:
   phonenumber: telephone number
   photoalbum:
     agendaitem: 
-    name: 
+    name:
+    eventdate_at: event at
+    created_at: created at
+    edit: edit photoalbum
+    view: view
+    back: back
   photos:
     title: pictures
   postalcode: postal code

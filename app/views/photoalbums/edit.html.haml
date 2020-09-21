@@ -1,6 +1,7 @@
 .row
   .col-lg-12
-    %h1 Photoalbum bewerken
+    %h1
+      =t('photoalbum.edit').capitalize
 
 .row
   .col-lg-12
@@ -8,6 +9,6 @@
 
 .row
   .col-lg-12
-    = link_to 'Bekijk', @photoalbum
+    = link_to t('photoalbum.view').capitalize, @photoalbum
     |
-    = link_to 'Terug', photoalbums_path
+    = link_to t('photoalbum.back').capitalize, photoalbums_path

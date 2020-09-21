@@ -1,16 +1,22 @@
 .row
   .col-lg-12
     %h1.push-down-for-logo
-      = @photoalbum.name
+      -if I18n.locale == :nl
+        = @photoalbum.name
+      -if I18n.locale == :en
+        = @photoalbum.name_en
     %p
       %small
         - unless @photoalbum.agendaitem.nil? 
-          evenement op:
+          = t('photoalbum.eventdate_at').capitalize
           = time_tag @photoalbum.agendaitem.date
           = raw("-")
-          = link_to @photoalbum.agendaitem.name, @photoalbum.agendaitem
+          -if I18n.locale == :nl
+            = link_to @photoalbum.agendaitem.name, @photoalbum.agendaitem
+          -if I18n.locale == :en
+            = link_to @photoalbum.agendaitem.name_en, @photoalbum.agendaitem
         - else
-          aangemaakt op:
+          = t('photoalbum.created_at').capitalize
           = time_tag @photoalbum.created_at
 
 .modal{:id => "myModal", "tabindex" => "-1", "role" => "dialog"}
@@ -18,14 +24,17 @@
     .modal-content
       .modal-header
         %h1
-          = @photoalbum.name
+          -if I18n.locale == :nl
+            = @photoalbum.name
+          -if I18n.locale == :en
+            = @photoalbum.name_en
       .modal-body
         %div{:class => "carousel slide", :id => "carousel-example-generic", "data-ride" => "carousel"}
           .carousel-inner
             -@allphotos.each do |n|
               %div{:class=>(@allphotos.index(n) == 0) ? 'item active' : 'item'}
-                %a{:href => n.photo.url(:normal), :target => "_blank"}
-                  %img{:class => 'img-responsive', :data => {:src => n.photo.url(:normal), "slide-index" => @allphotos.index(n)+1 }}
+                %a{:href => n.photo.url(:original), :target => "_blank"}
+                  %img{:class => 'img-responsive', :data => {:src => n.photo.url(:original), "slide-index" => @allphotos.index(n)+1 }}
                 .carousel-caption
                   %h1
                     #{@allphotos.index(n)+1}/#{@allphotos.count}
@@ -47,10 +56,11 @@
   .col-lg-12
     %button{:class => "btn btn-primary fullscreenbutton", :data => {:toggle => "modal", :target => "#myModal", :index => @allphotos.index(@photos.first)}}
       Fullscreen
+    - if can? :edit, @photoalbum
+      = link_to "edit", edit_photoalbum_path(@photoalbum), class: "btn btn-primary"
 .row
   .col-lg-12
     = will_paginate @photos, :previous_label => '<', :next_label => '>'
-
 :javascript
     function loadSrc(target) {
         if(target.attr('src') == undefined) {

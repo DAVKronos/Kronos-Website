@@ -3,10 +3,10 @@ class PhotoalbumsController < ApplicationController
   # GET /photoalbums
   # GET /photoalbums.json
   def index
+    @photoalbums = Photoalbum.order('eventdate DESC NULLS LAST, created_at DESC ').paginate(:page => params[:page], :per_page => 12).includes(:agendaitem)
+
     if current_user.nil?
-      @photoalbums = Photoalbum.includes('agendaitem').where(public: true).order(created_at: :desc).paginate(:page => params[:page], :per_page => 12)
-    else
-      @photoalbums = Photoalbum.includes('agendaitem').order(created_at: :desc).paginate(:page => params[:page], :per_page => 12)
+      @photoalbums = @photoalbums.where(public: true)
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -116,9 +116,9 @@ class PhotoalbumsController < ApplicationController
 
   def photoalbum_params
     if current_user.admin?
-      params.require(:photoalbum).permit(:name, :agendaitem_id, :public)
+      params.require(:photoalbum).permit(:name, :name_en, :agendaitem_id, :public, :eventdate)
     else
-      params.require(:photoalbum).permit(:name, :agendaitem_id)
+      params.require(:photoalbum).permit(:name, :name_en, :agendaitem_id, :eventdate)
     end
 
   end

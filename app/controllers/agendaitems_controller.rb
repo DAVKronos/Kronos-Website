@@ -60,8 +60,17 @@ class AgendaitemsController < ApplicationController
   end
 
   def create
-    create_without_respond
-    respond_with(@agendaitem)
+    agendaitem = Agendaitem.new(agendaitem_params)
+	if agendaitem.save
+      agendaitem.user = current_user
+      flash[:notice] = 'Agendaitem was successfully created.'
+      redirect_to agendaitem
+    else
+      @agendaitem = agendaitem
+      @commissions = current_user.commissions
+      @commissions = Commission.all if current_user.admin?
+      render 'new'
+    end
   end
 
   def new_result
@@ -71,8 +80,18 @@ class AgendaitemsController < ApplicationController
   end
 
   def create_result
-    create_without_respond
-    respond_with(@agendaitem, :location => agendaitem_events_path(@agendaitem))
+    @agendaitem = Agendaitem.new(agendaitem_params)
+    @agendaitem.user = current_user
+    if @agendaitem.save
+      flash[:notice] = 'Agendaitem was successfully created.'
+      respond_with(@agendaitem, :location => agendaitem_events_path(@agendaitem))
+    else
+      @commissions = current_user.commissions
+      @commissions = Commission.all if current_user.admin?
+      @agendaitem.date = Time.now
+      @agendaitemtypes = Agendaitemtype.all
+      render 'new_result'
+    end
   end
 
   def destroy
@@ -95,8 +114,14 @@ class AgendaitemsController < ApplicationController
     @agendaitem.comments.each do |comment|
       comment.user = current_user if comment.new_record?
     end
-    flash[:notice] = 'Agendaitem was successfully updated.' if @agendaitem.save
-    respond_with(@agendaitem)
+    if @agendaitem.save
+      flash[:notice] = 'Agendaitem was successfully created.'
+      redirect_to @agendaitem
+    else
+      @commissions = current_user.commissions
+      @commissions = Commission.all if current_user.admin?
+      render 'new'
+    end
   end
 
   def duplicate

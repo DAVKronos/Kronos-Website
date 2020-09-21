@@ -32,6 +32,10 @@ class Agendaitem < ApplicationRecord
   accepts_nested_attributes_for :comments, :reject_if => :all_blank
   validates_associated :events
   before_update :change_reserve_status
+  validates :name, :presence => true
+  validates :name_en, :presence => true
+  validates :description, :presence => true, unless: ->{description_en.empty?}
+  validates :description_en, :presence => true, unless: ->{description.empty?}
 
   def count_results()
     counter = 0
