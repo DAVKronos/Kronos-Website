@@ -1,0 +1,10 @@
+$kronos-green: #369866;
+$kronos-green-dark: #226040;
+
+.result {
+  color: $kronos-green;
+
+  &:hover {
+    color: $kronos-green-dark;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@babel/preset-react": "^7.10.4",
+    "@rails/webpacker": "5.2.1",
+    "axios": "^0.19.2",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "bootstrap": "^4.4.1",
+    "date-fns": "2.12.0",
+    "node-sass": "^4.13.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.0-beta.17",
+    "react-dom": "^16.13.1",
+    "react-icons": "3.10.0",
+    "react-markdown": "4.3.1",
+    "react-router-dom": "^5.1.2",
+    "react_ujs": "^2.6.1"
+  },
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^3.9.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "webpack:analyze": "mkdir -p public/packs && node_modules/.bin/webpack --config config/webpack/production.js --profile --json > public/packs/stats.json && node_modules/.bin/webpack-bundle-analyzer public/packs/stats.json"
+  }
+}

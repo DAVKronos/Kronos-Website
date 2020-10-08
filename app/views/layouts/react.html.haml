@@ -1,0 +1,22 @@
+!!! 5
+%html
+  %head
+    %title Kronos
+
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    = favicon_link_tag 'favicon.ico'
+    -# stylesheets
+    <link href='//fonts.googleapis.com/css?family=Droid+Serif:400,700,700italic,400italic|Roboto' rel='stylesheet' type='text/css'>
+
+    -# javascript
+    <!--[if lt IE 9]>
+    <script src='//html5shiv.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    = stylesheet_pack_tag 'application'
+    = javascript_pack_tag 'application'
+    = csrf_meta_tag
+
+  %body
+    = yield

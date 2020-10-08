@@ -17,7 +17,13 @@ RUN apt-get install -y apt-transport-https ca-certificates
 #RUN sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main > /etc/apt/sources.list.d/passenger.list'
 
 # Install PGsql dependencies,js engine and passenger
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ghostscript nginx-extras tzdata imagemagick
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev ghostscript nginx-extras tzdata imagemagick
+
+RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash -
+RUN apt-get install -y nodejs
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get install -y yarn
 
 RUN useradd kronos
 
@@ -40,6 +46,7 @@ COPY database_assets_docker.yml /home/rails/webapp/config/database.yml
 
 #Precompile assets
 RUN bundle exec rake assets:precompile
+RUN bundle exec rails webpacker:compile
 
 #Copy docker database.yml
 COPY database_docker.yml /home/rails/webapp/config/database.yml

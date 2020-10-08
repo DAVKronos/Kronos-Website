@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :agendaitemtypes
 
   devise_for :users
+
   resources :users do
     member do
       get 'editpassword'
@@ -75,7 +76,7 @@ Rails.application.routes.draw do
       get 'records'
     end
   end
-  
+
   resources :folders
   resources :announcements
   get 'announcements/:id/hide', to: 'announcements#hide', as: 'hide_announcement'
@@ -86,7 +87,21 @@ Rails.application.routes.draw do
   get '/test', :to => 'pages#test'
   get '/admin', :to => 'pages#admin'
   get '/Game', :to => 'pages#game', as: 'game'
+  get '/app/*page', :to => 'react#index'
+  get '/app', :to => 'react#index'
   get '/:pt', :to => 'pages#titleshow'
-  
+
+
+
+
+  namespace :api do
+    namespace :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth'
+
+      resources :photoalbums
+
+    end
+  end
   root :to => 'pages#home'
+
 end

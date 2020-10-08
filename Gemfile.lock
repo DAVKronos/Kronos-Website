@@ -55,6 +55,10 @@ GEM
       rinku (~> 1.5.0)
     autoprefixer-rails (9.8.4)
       execjs
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bcrypt (3.1.13)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
@@ -94,6 +98,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
+    connection_pool (2.2.3)
     cookies_eu (1.7.6)
       js_cookie_rails (~> 2.2.0)
     crass (1.0.6)
@@ -104,6 +109,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise_token_auth (1.1.3)
+      bcrypt (~> 3.0)
+      devise (> 3.5.2, < 5)
+      rails (>= 4.2.0, < 6.1)
     diff-lcs (1.4.2)
     docile (1.1.5)
     erubi (1.9.0)
@@ -156,6 +165,7 @@ GEM
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
+    hashie (4.1.0)
     httpclient (2.8.3)
     hurley (0.2)
     i18n (1.8.3)
@@ -223,6 +233,9 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     numerizer (0.1.1)
+    omniauth (1.9.1)
+      hashie (>= 3.4.6)
+      rack (>= 1.6.2, < 3)
     open4 (1.3.4)
     orm_adapter (0.5.0)
     os (1.1.0)
@@ -263,6 +276,8 @@ GEM
     rack (2.2.3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
+    rack-proxy (0.6.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.4.3)
@@ -295,6 +310,12 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    react-rails (2.6.1)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     recaptcha (5.5.0)
       json
     redcarpet (2.3.0)
@@ -354,6 +375,7 @@ GEM
       sprockets-rails
       tilt
     selectize-rails (0.8.5)
+    semantic_range (2.3.0)
     shellany (0.0.1)
     signet (0.14.0)
       addressable (~> 2.3)
@@ -394,6 +416,11 @@ GEM
     unicode-display_width (1.7.0)
     warden (1.2.8)
       rack (>= 2.0.6)
+    webpacker (5.2.1)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -421,6 +448,7 @@ DEPENDENCIES
   cookies_eu
   daemons (~> 1.1.9)
   devise (~> 4.4)
+  devise_token_auth
   execjs (~> 2.0.2)
   exifr (~> 1.1.3)
   factory_bot_rails (~> 4.0)
@@ -440,6 +468,7 @@ DEPENDENCIES
   momentjs-rails (>= 2.9.0)
   nested_form (~> 0.3.2)
   newrelic_rpm
+  omniauth
   paper_trail (~> 4.0)
   paperclip (~> 5)
   passenger
@@ -451,6 +480,7 @@ DEPENDENCIES
   rake
   rakismet (~> 1.4.0)
   rb-fsevent
+  react-rails
   recaptcha
   redcarpet (~> 2.3.0)
   rspec-rails
@@ -461,6 +491,7 @@ DEPENDENCIES
   test-unit
   twitter-typeahead-rails (~> 0.10.2)
   uglifier
+  webpacker
   will_paginate (~> 3.0)
 
 BUNDLED WITH

@@ -8,6 +8,7 @@ services:
       dockerfile: Dockerfile-development
     ports:
       - "3000:3000"
+      - "8888:8888"
     depends_on:
       - db
     env_file: .env
@@ -17,6 +18,17 @@ services:
       - ./:/home/rails/webapp/
     volumes_from:
       - bundler-box
+#  webpacker:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile-development
+#    command: [ "./scripts/start_webpack_dev.sh" ]
+#    links:
+#      - app
+#    volumes:
+#      - .:/home/rails/webapp/
+#    ports:
+#      - 3035:3035
   owncloud:
     image: owncloud:9-apache
     depends_on:

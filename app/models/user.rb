@@ -39,6 +39,9 @@
 #
 
 class User < ApplicationRecord
+            # Include default devise modules.
+            include DeviseTokenAuth::Concerns::User
+            before_create :skip_confirmation!
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -147,6 +150,14 @@ class User < ApplicationRecord
     else 
       return User.where(:user_type_id => allowed_ids)
     end
+  end
+
+  def avatar_url_normal
+    self.avatar.url(:normal)
+  end
+
+  def avatar_url_thumb
+    self.avatar.url(:thumb)
   end
 
 end

@@ -1,0 +1,36 @@
+$kronos-green: #369866;
+$kronos-green-light: #3dab73;
+
+.logo {
+  background-color: $kronos-green;
+  display: flex;
+  justify-content: center;
+}
+
+#navbar-kronos {
+  background-color: $kronos-green;
+
+  .navbar-nav .nav-link {
+    color: #ffffff;
+    padding: 1rem;
+
+    &:hover,  &.active {
+      background-color: $kronos-green-light;
+    }
+
+  }
+
+  .nav-item.show .nav-link {
+    color: #d9d9d9;
+  }
+
+  .nav-item.dropdown .dropdown-menu {
+    border-radius: 0;
+    //font-size: 14px;
+  }
+
+  .nav-link.highlight {
+    background-color: #76C8A6;
+  }
+}
+

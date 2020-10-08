@@ -38,6 +38,10 @@ gem "recaptcha"
 gem 'icalendar', '~> 2.0'
 gem 'passenger'
 gem 'rack-cors'
+gem 'webpacker'
+gem 'react-rails'
+gem 'devise_token_auth'
+gem 'omniauth'
 
 # Gems used only for assets
 gem 'sass-rails'
