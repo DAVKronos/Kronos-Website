@@ -3,11 +3,16 @@ import {Col, Row} from 'react-bootstrap';
 import {getAPIHostUrl, NewsItemsCollection} from "../../utils/rest-helper";
 import format from '../../utils/date-format';
 import withData from "../../utils/withData";
+import {useQuery} from "react-query";
+import {getNewsItem} from "./queries";
 
 
 function NewsItem(props) {
-    let item = props.data;
-    if (!item) {
+    const id = props.match.params.id
+    const { isLoading, isError, data, error } = useQuery(['newsitems',id], getNewsItem);
+
+    let item = data;
+    if (!data) {
         return null;
     }
     return  <React.Fragment>

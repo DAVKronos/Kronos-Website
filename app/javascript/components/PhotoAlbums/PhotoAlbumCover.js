@@ -5,13 +5,20 @@ import {getAPIHostUrl, PhotoAlbumsCollection} from "../../utils/rest-helper";
 import format from '../../utils/date-format';
 import withData from "../../utils/withData";
 import DefaultSpinner from "../Spinner";
+import {useQuery} from "react-query";
+import {getPhotoAlbum} from "./queries";
 
 const PhotoAlbumCover = (props) => {
-    let {photoAlbum, data: photoAlbumData, loading} = props;
+    const id = props.photoAlbum.id;
+    const { isLoading, isError, data, error } = useQuery(['photoalbums', id], getPhotoAlbum)
+
+
+    let {photoAlbum} = props;
+    const photoAlbumData = data;
     let photoThumb = photoAlbumData && photoAlbumData.photos && photoAlbumData.photos[0] && photoAlbumData.photos[0].photo_url_thumb;
 
     return <Card style={{marginBottom: 10}}>
-        {loading && <DefaultSpinner />}
+        {isLoading && <DefaultSpinner />}
         {photoAlbumData && <Card.Img variant="top" src={getAPIHostUrl(photoThumb)} />}
         <Card.Body>
             <Card.Title><Link to={`/photoalbums/${photoAlbum.id}`}>{photoAlbum.name}</Link></Card.Title>
@@ -26,4 +33,4 @@ function dataFunction(photoAlbumId) {
     return PhotoAlbumsCollection.get(photoAlbumId)
 }
 
-export default withData(PhotoAlbumCover, (props) => dataFunction(props.photoAlbum.id));
+export default PhotoAlbumCover

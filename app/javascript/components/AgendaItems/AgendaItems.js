@@ -1,19 +1,21 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import {Row, Col, Nav, Card} from 'react-bootstrap';
-import {AgendaItemsCollection, AgendaItemTypesCollection} from "../../utils/rest-helper";
+import {AgendaItemsCollection} from "../../utils/rest-helper";
 import format from '../../utils/date-format';
-import withData from "../../utils/withData";
 import {AgendaItemTypeName} from "./AgendaItemType";
 import MonthSwitcher from "../Generic/MonthSwitcher";
+import {useQuery} from "react-query";
+import {getAgendaitemTypes} from "./queries";
 
 
-function AgendaItemsFilter({filter, data, onChangeFilter}){
+function AgendaItemsFilter({filter, onChangeFilter}){
+    const { isLoading, isError, data, error } = useQuery('agendaitemtypes', getAgendaitemTypes)
     return <Nav variant="pills">
         <Nav.Item><Nav.Link active={filter == null}
                             onClick={() => onChangeFilter(null)}>All</Nav.Link></Nav.Item>
         {data && data.map(agendaItemType => {
-            return <Nav.Item>
+            return <Nav.Item key={data.id}>
                 <Nav.Link
                     active={filter === agendaItemType.id}
                     onClick={() => onChangeFilter(agendaItemType.id)}>
@@ -24,7 +26,6 @@ function AgendaItemsFilter({filter, data, onChangeFilter}){
     </Nav>
 }
 
-const AgendaItemsFilterWithData = withData(AgendaItemsFilter, () =>  AgendaItemTypesCollection.getAll())
 
 
 
@@ -153,7 +154,7 @@ class AgendaItems extends React.Component {
             </Row>
             <Row style={{marginTop: 20}}>
                 <Col md={12}>
-                    <AgendaItemsFilterWithData filter={filter} onChangeFilter={this.onChangeFilter}/>
+                    <AgendaItemsFilter filter={filter} onChangeFilter={this.onChangeFilter}/>
                 </Col>
             </Row>
             <Row style={{marginTop: 20}}>

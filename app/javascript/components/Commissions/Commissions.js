@@ -1,11 +1,14 @@
 import React from 'react';
 import {Table} from "react-bootstrap";
-import {CommissionCollection} from "../../utils/rest-helper";
 import {Link} from 'react-router-dom';
-import withData from "../../utils/withData";
+import {useQuery} from "react-query";
+import {getCommissions} from "./queries";
 
 function Commissions(props) {
-    const commissions = props.data;
+
+    const { isLoading, isError, data, error } = useQuery('commissions', getCommissions)
+
+    const commissions = data;
 
     return <React.Fragment>
         <h1>Commissies van Kronos</h1>
@@ -29,4 +32,4 @@ function Commissions(props) {
     </React.Fragment>;
 }
 
-export default withData(Commissions, () => CommissionCollection.getAll())
+export default Commissions

@@ -36,10 +36,9 @@ function getConfig() {
     return cfg;
 }
 
-function restCall(url, params = {}) {
-    return axios.get(`${API_HOST}/${url}`, {...getConfig(),  params}).catch(() => {
-        return {data: null};
-    });
+
+function restCall(url, params = {}, method='get') {
+    return axios.request({...getConfig(), url:`${API_HOST}/${url}`, method,  ...params});
 }
 
 class ObjectCollection {
@@ -107,6 +106,7 @@ const EventsCollection = new ObjectCollection('events')
 const UsersCollection = new ObjectCollection('users')
 
 export {
+    restCall,
     API_HOST,
     NewsItemsCollection,
     AgendaItemsCollection,

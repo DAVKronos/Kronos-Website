@@ -1,10 +1,18 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
-import {CommissionCollection} from "../../utils/rest-helper";
-import withData from "../../utils/withData";
+import {useQuery} from "react-query";
+import {getCommission} from "./queries";
+import DefaultSpinner from "../Spinner";
 
 function Commission(props) {
-    const commission = props.data;
+    const id = props.match.params.id;
+    const { isLoading, isError, data, error } = useQuery(['commissions', id], getCommission)
+
+    if (isLoading) {
+        return <DefaultSpinner />;
+    }
+
+    const commission = data;
     if (!commission) {
         return <h1>Commission not found</h1>
     }
@@ -37,4 +45,4 @@ function Commission(props) {
     </React.Fragment>;
 }
 
-export default withData(Commission, (props) => CommissionCollection.get(props.match.params.id, {}))
+export default Commission

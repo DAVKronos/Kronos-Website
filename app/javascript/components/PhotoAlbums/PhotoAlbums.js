@@ -4,16 +4,19 @@ import PhotoAlbumCover from "./PhotoAlbumCover";
 import {PhotoAlbumsCollection} from "../../utils/rest-helper";
 import withData from "../../utils/withData";
 import DefaultSpinner from "../Spinner";
+import {useQuery} from "react-query";
+import {getPhotoAlbums} from "./queries";
 
 
 function PhotoAlbums(props) {
-    let {data: photoAlbums, loading} = props;
+    const { isLoading, isError, data, error } = useQuery('photoalbums', getPhotoAlbums)
+    const photoAlbums = data;
     return <React.Fragment>
         <Row>
             <Col><h1>Fotoalbum</h1></Col>
         </Row>
         <Row>
-            {loading && <DefaultSpinner/>}
+            {isLoading && <DefaultSpinner/>}
             {photoAlbums && photoAlbums.map(photoAlbum => {
                 return <Col key={photoAlbum.id} sm={6} md={4}>
                     <PhotoAlbumCover photoAlbum={photoAlbum}/>
@@ -27,10 +30,5 @@ function sortPhotoAlbums(a,b) {
     return b.created_at - a.created_at;
 }
 
-function dataFunction() {
-    return PhotoAlbumsCollection.getAll({}).then(photoAlbums => {
-        return  photoAlbums.sort(sortPhotoAlbums);
-    });
-}
 
-export default withData(PhotoAlbums, () =>  dataFunction());
+export default PhotoAlbums;

@@ -13,14 +13,12 @@
     "react-dom": "^16.13.1",
     "react-icons": "3.10.0",
     "react-markdown": "4.3.1",
+    "react-query": "^2.23.1",
     "react-router-dom": "^5.1.2",
     "react_ujs": "^2.6.1"
   },
   "devDependencies": {
     "webpack-bundle-analyzer": "^3.9.0",
     "webpack-dev-server": "^3.11.0"
-  },
-  "scripts": {
-    "webpack:analyze": "mkdir -p public/packs && node_modules/.bin/webpack --config config/webpack/production.js --profile --json > public/packs/stats.json && node_modules/.bin/webpack-bundle-analyzer public/packs/stats.json"
   }
 }

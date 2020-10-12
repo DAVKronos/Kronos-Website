@@ -1,16 +1,18 @@
 import React from "react";
 import AgendaItem from "./AgendaItem";
 import {Card, ListGroup} from 'react-bootstrap';
-import {AgendaItemsCollection} from "../../utils/rest-helper";
-import withData from "../../utils/withData";
-import Spinner from "../Spinner";
+import {useQuery} from "react-query";
+import {getAgendaItems} from "./queries";
+import DefaultSpinner from "../Spinner";
 
-function AgendaItemsSideBar({loading, data: agendaItems = []}) {
+function AgendaItemsSideBar() {
+    const { isLoading, isError, data, error } = useQuery('agendaitems', agendaItems)
+
     let content;
-    if (loading) {
-        content =  <Spinner />;
+    if (isLoading) {
+        content =  <DefaultSpinner />;
     } else {
-        content = agendaItems.map(item => (<ListGroup.Item key={item.id}><AgendaItem item={item}/></ListGroup.Item>));
+        content = data.map(item => (<ListGroup.Item key={item.id}><AgendaItem item={item}/></ListGroup.Item>));
     }
 
     return <Card className="side-panel">
@@ -31,7 +33,7 @@ function agendaItems() {
     let now = new Date();
     const nextMonth  = new Date(now.getFullYear(), now.getMonth() + 1);
     let params = {'date[year]': nextMonth.getFullYear(), 'date[month]': nextMonth.getMonth()+1}
-    return Promise.all([AgendaItemsCollection.getAll(), AgendaItemsCollection.getAll(params)])
+    return Promise.all([getAgendaItems(), getAgendaItems(params)])
         .then(([agendaItems1, agendaItems2]) => {
         return agendaItems1.concat(agendaItems2).filter(agendaItem => {
             const agendaDate = new Date(agendaItem.date);
@@ -41,4 +43,4 @@ function agendaItems() {
 }
 
 
-export default withData(AgendaItemsSideBar, () => agendaItems());
+export default AgendaItemsSideBar;

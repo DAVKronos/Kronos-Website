@@ -1,15 +1,21 @@
 import React from "react";
 import ShortNewsItem from "./ShortNewsItem";
 import NewsItemCarousel from "./NewsItemCarousel";
-import {NewsItemsCollection} from "../../utils/rest-helper";
-import withData from "../../utils/withData";
+import {getNewsItems} from "./queries";
+import DefaultSpinner from "../Spinner";
+import {useQuery} from "react-query";
 
 
-function NewsItems(props) {
-    const items = props.data || [];
+const NewsItems = (props) => {
+    const { isLoading, isError, data, error } = useQuery('newsitems', getNewsItems)
+
+    if (isLoading) {
+        return <DefaultSpinner />;
+    }
+    console.log(data);
     return <div>
-        <NewsItemCarousel items={items.slice(0, 2)}/>
-        {items.sort(sort_newsItems).map(item => {
+        <NewsItemCarousel items={data.slice(0, 2)}/>
+        {data.sort(sort_newsItems).map(item => {
             return <ShortNewsItem key={item.id} item={item}/>
         })}
     </div>
@@ -20,4 +26,4 @@ function sort_newsItems(a, b) {
 }
 
 
-export default withData(NewsItems, () => NewsItemsCollection.getAll() );
+export default NewsItems;
