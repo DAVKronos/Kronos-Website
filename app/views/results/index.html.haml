@@ -6,7 +6,7 @@
 .row
   .col-md-12
     %ul.nav.nav-tabs
-      - 1.downto(1).each.map{|m| @date + m.months}.each do |d|
+      - 2.downto(1).each.map{|m| @date - m.months}.each do |d|
         %li{role: 'presentation'}
           = link_to (l d, format: '%b %Y'), 
               controller: 'results', 
@@ -14,7 +14,7 @@
               date: {year: d.year, month: d.month}
       %li{:role => 'presentation',:class=>'active'}  
         = link_to (l @date, format: '%b %Y'),'#'
-      - (1..2).each.map{|m| @date- m.months}.each do |d|
+      - (1..2).each.map{|m| @date + m.months}.each do |d|
         %li{role: 'presentation'}
           = link_to (l d, format: '%b %Y'), 
               controller: 'results', 

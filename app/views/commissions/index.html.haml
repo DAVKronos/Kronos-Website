@@ -22,10 +22,10 @@
           %td
             = commission.role
           %td
-            = link_to "edit", edit_commission_path(commission)
+            = link_to t(:edit).capitalize, edit_commission_path(commission)
         - if can? :destroy, commission
           %td
-            = link_to "delete", commission, :method => :delete, :confirm => "Weet je zeker dat je #{commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{commission.name}"
+            = link_to t(:delete).capitalize, commission, :method => :delete, :confirm => "Weet je zeker dat je #{commission.name} uit de commissielijst wilt verwijderen?", :title => "Verwijder #{commission.name}"
 - if can? :create, Commission
   = link_to new_commission_path, :class => 'btn btn-small' do
     <i class="icon-file"></i>
