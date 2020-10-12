@@ -17,10 +17,27 @@ import CommissionsRouter from "./Commissions";
 import Contact from "./Contact/Contact";
 import ResultsRouter from "./Results";
 import AuthProvider from "../utils/AuthContext";
+import {QueryCache, ReactQueryCacheProvider} from "react-query";
+
+const queryCache = new QueryCache({
+  defaultConfig: {
+       queries: {
+           refetchOnWindowFocus: false,
+           },
+     },
+})
 
 
 const App = () => {
-  return <AuthProvider><Router basename={'/app'}><Container>
+  return <AuthProvider>
+    <ReactQueryCacheProvider queryCache={queryCache}>
+    <AppRouter/>
+    </ReactQueryCacheProvider>
+  </AuthProvider>;
+};
+
+const AppRouter = () => {
+  return <Router basename={'/app'}><Container>
     <Header />
     <div className='main'>
       <Switch>
@@ -55,8 +72,7 @@ const App = () => {
     </div>
     <Footer />
   </Container>
-  </Router>
-  </AuthProvider>
-};
+  </Router>;
+}
 
 export default App;

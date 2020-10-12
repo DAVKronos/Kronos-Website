@@ -3,34 +3,47 @@ import {PagesCollection} from "../../utils/rest-helper";
 import ReactMarkdown from 'react-markdown';
 import withData from "../../utils/withData";
 import Spinner from "../Spinner";
+import {useQuery} from "react-query";
+import {getPage, getPageByPageTag} from "./queries";
 
 
-function Page(props) {
-    if (props.loading) {
+const Page = (props) => {
+
+    let {id} = props.match.params;
+    const { isLoading, isError, data, error } = useQuery(['pages', id], getPage)
+
+    if (isLoading) {
         return <Spinner />;
     }
 
-    if (!props.data) {
+    if (!data) {
         return <h1>Page not found</h1>;
     }
 
-    let {pagetag, information} = props.data;
     return <div>
-        <h1>{pagetag}</h1>
-        <ReactMarkdown source={information}/>
+        <h1>{data.pagetag}</h1>
+        <ReactMarkdown source={data.information}/>
     </div>;
 }
 
-function dataFunction(props) {
-    let {id, pagetag} = props.match.params;
-    if (id != null) {
-        return PagesCollection.get(id);
+const PageWithTag = (props) => {
+
+    let {pagetag} = props.match.params;
+    const { isLoading, isError, data, error } = useQuery(['pages', pagetag], getPageByPageTag)
+
+    if (isLoading) {
+        return <Spinner />;
     }
-    return PagesCollection.getAll().then(pages => {
 
-        return pages.find(page => page.pagetag.indexOf(pagetag) > -1)
-    });
+    if (!data) {
+        return <h1>Page not found</h1>;
+    }
 
+    return <div>
+        <h1>{data.pagetag}</h1>
+        <ReactMarkdown source={data.information}/>
+    </div>;
 }
 
-export default withData(Page, (props) => dataFunction(props))
+
+export {Page, PageWithTag}
