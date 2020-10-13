@@ -1,8 +1,8 @@
 import React from 'react';
-import withData from "../../utils/withData";
-import {AgendaItemsCollection, EventTypesCollection} from "../../utils/rest-helper";
 import DefaultSpinner from "../Spinner";
 import {Table} from 'react-bootstrap';
+import {useQuery} from "react-query";
+import {getAgendaitemEvents} from "./queries";
 
 const EventResults = ({event}) => {
     return <Table striped size='sm' key={event.id}>
@@ -26,8 +26,10 @@ const EventResults = ({event}) => {
 }
 
 
-const EventsResults = ({loading, data: events}) => {
-    if (loading) {
+const EventsResults = ({agendaItemId}) => {
+    const { isLoading, isError, data, error } = useQuery(['agendaitemevents', agendaItemId], getAgendaitemEvents)
+    const events = data;
+    if (isLoading) {
         return <DefaultSpinner/>;
     }
 
@@ -37,13 +39,5 @@ const EventsResults = ({loading, data: events}) => {
     </div>;
 };
 
-function dataFunction(agendaItemId) {
-    return AgendaItemsCollection.getEvents(agendaItemId).then(events => {
-        return Promise.all(events.map(async event => {
-            const eventType= await EventTypesCollection.get(event.eventtype_id)
-            return {...event, measuringUnit: eventType.measuringunit, calculatedUnit: eventType.calculated_unit};
-        }));
-    });
-}
 
-export default withData(EventsResults, (props) => dataFunction(props.agendaItemId))
+export default EventsResults

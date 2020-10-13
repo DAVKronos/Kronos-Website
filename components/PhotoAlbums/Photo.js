@@ -1,12 +1,15 @@
 import React from 'react';
 import {Button, ButtonGroup, Col, Image, Row} from 'react-bootstrap';
 import {NavLink} from 'react-router-dom';
-import {getAPIHostUrl, PhotoAlbumsCollection} from "../../utils/rest-helper";
-import withData from "../../utils/withData";
+import {getAPIHostUrl} from "../../utils/rest-helper";
+import {useQuery} from "react-query";
+import {getPhotoAlbum} from "./queries";
 
 
 function Photo(props) {
-    let photoAlbum = props.data;
+    const id = props.match.params.album_id;
+    const { isLoading, isError, data, error } = useQuery(['photoalbums', id], getPhotoAlbum)
+    let photoAlbum = data;
     if (!photoAlbum) {
         return null;
     }
@@ -53,4 +56,4 @@ function Photo(props) {
     </React.Fragment>;
 }
 
-export default withData(Photo, (props) => PhotoAlbumsCollection.get(props.match.params.album_id));
+export default Photo

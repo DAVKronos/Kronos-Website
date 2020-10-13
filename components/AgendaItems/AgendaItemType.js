@@ -1,12 +1,11 @@
-import withData from "../../utils/withData";
-import {AgendaItemTypesCollection} from "../../utils/rest-helper";
+import {useQuery} from "react-query";
+import {getAgendaitemType} from "./queries";
 
-const AgendaItemTypeName = ({data}) => {
+const AgendaItemTypeName = ({id}) => {
+    const { isLoading, isError, data, error } = useQuery(['agendaitemtypes', id], getAgendaitemType)
     const agendaItemType = data || null;
     return agendaItemType && agendaItemType.name
 }
 
-const AgendaItemTypeNameData = withData(AgendaItemTypeName, (props) => AgendaItemTypesCollection.get(props.id));
 
-
-export {AgendaItemTypeNameData as AgendaItemTypeName}
+export {AgendaItemTypeName}

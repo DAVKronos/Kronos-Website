@@ -1,8 +1,7 @@
 import React from "react";
 import {Col, Row} from 'react-bootstrap';
-import {getAPIHostUrl, NewsItemsCollection} from "../../utils/rest-helper";
+import {getAPIHostUrl} from "../../utils/rest-helper";
 import format from '../../utils/date-format';
-import withData from "../../utils/withData";
 import {useQuery} from "react-query";
 import {getNewsItem} from "./queries";
 
@@ -31,4 +30,4 @@ function NewsItem(props) {
     </React.Fragment>
 }
 
-export default withData(NewsItem, (props) => NewsItemsCollection.get(props.match.params.id));
+export default NewsItem;

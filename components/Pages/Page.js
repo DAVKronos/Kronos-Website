@@ -1,7 +1,5 @@
 import React from "react";
-import {PagesCollection} from "../../utils/rest-helper";
 import ReactMarkdown from 'react-markdown';
-import withData from "../../utils/withData";
 import Spinner from "../Spinner";
 import {useQuery} from "react-query";
 import {getPage, getPageByPageTag} from "./queries";

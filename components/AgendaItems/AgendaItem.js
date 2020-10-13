@@ -1,18 +1,20 @@
 import React from 'react';
 import {Card, Col, ListGroup, Row} from 'react-bootstrap';
-import {AgendaItemsCollection} from "../../utils/rest-helper";
 import {AgendaItemTypeName} from './AgendaItemType';
 import {BsGeoAlt, BsClock, BsList, BsLink} from 'react-icons/bs';
 
 import format from '../../utils/date-format';
-import withData from ".../../utils/withData";
-import Spinner from "../Spinner";
 import EventsResults from "./EventsResults";
+import {useQuery} from "react-query";
+import {getAgendaitem, getAgendaitemEvents} from "./queries";
+import DefaultSpinner from "../Spinner";
 
 
-const AgendaItemEvents = ({data: events, loading}) => {
-    if (loading) {
-        return <Spinner />
+const AgendaItemEvents = ({agendaItemId}) => {
+    const { isLoading, isError, data, error } = useQuery(['agendaitemevents', agendaItemId], getAgendaitemEvents);
+    const events = data;
+    if (isLoading) {
+        return <DefaultSpinner />
     }
 
     if (!events || events.length === 0){
@@ -26,11 +28,11 @@ const AgendaItemEvents = ({data: events, loading}) => {
     </ListGroup>;
 
 }
-const AgendaItemEventsWithData = withData(AgendaItemEvents, (props) => AgendaItemsCollection.getEvents(props.agendaItemId))
-
 
 function AgendaItem(props) {
-    let agendaItem = props.data;
+    const id = props.match.params.id;
+    const { isLoading, isError, data, error } = useQuery(['agendaitems', id], getAgendaitem)
+    let agendaItem = data;
     if (!agendaItem) {
         return null;
     }
@@ -74,7 +76,7 @@ function AgendaItem(props) {
             <Col md={4}>
                 <Card>
                     <Card.Header>Programma</Card.Header>
-                    <AgendaItemEventsWithData agendaItemId={agendaItem.id}/>
+                    <AgendaItemEvents agendaItemId={agendaItem.id}/>
                 </Card>
                 <Card style={{marginTop: 20}}>
                     <Card.Header>Inschrijflijst</Card.Header>
@@ -85,4 +87,4 @@ function AgendaItem(props) {
     </React.Fragment>
 }
 
-export default withData(AgendaItem, (props) => AgendaItemsCollection.get(props.match.params.id));
+export default AgendaItem

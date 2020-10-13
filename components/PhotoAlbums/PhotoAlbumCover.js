@@ -3,7 +3,6 @@ import {Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {getAPIHostUrl, PhotoAlbumsCollection} from "../../utils/rest-helper";
 import format from '../../utils/date-format';
-import withData from "../../utils/withData";
 import DefaultSpinner from "../Spinner";
 import {useQuery} from "react-query";
 import {getPhotoAlbum} from "./queries";
