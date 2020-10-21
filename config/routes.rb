@@ -147,6 +147,8 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :users
+
     end
   end
   root :to => 'pages#home'

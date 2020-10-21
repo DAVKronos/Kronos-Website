@@ -16,6 +16,7 @@ import PagesRouter from './Pages';
 import CommissionsRouter from "./Commissions";
 import Contact from "./Contact/Contact";
 import ResultsRouter from "./Results";
+import UsersRouter from './Users';
 import AuthProvider from "../utils/AuthContext";
 import {QueryCache, ReactQueryCacheProvider} from "react-query";
 
@@ -64,6 +65,9 @@ const AppRouter = () => {
         </Route>
         <Route path="/pages">
           <PagesRouter />
+        </Route>
+        <Route path="/users">
+          <UsersRouter />
         </Route>
         <Route path="/:pagetag">
           <PagesRouter />
