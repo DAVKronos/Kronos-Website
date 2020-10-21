@@ -20,6 +20,8 @@ import UsersRouter from './Users';
 import AuthProvider from "../utils/AuthContext";
 import {QueryCache, ReactQueryCacheProvider} from "react-query";
 
+import '../utils/i18n.js';
+
 const queryCache = new QueryCache({
   defaultConfig: {
        queries: {

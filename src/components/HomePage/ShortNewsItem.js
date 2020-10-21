@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import {Row, Col, Image} from 'react-bootstrap';
 import {getAPIHostUrl} from "../../utils/rest-helper";
 import format from '../../utils/date-format.js'
+import {useTranslation} from "react-i18next";
 
 const ShortNewsItem = ({item}) => {
-
+    const { t } = useTranslation('homepage');
     return <Row>
         <Col md={3} style={{display: 'flex'}}>
             <Link to={`/newsitems/${item.id}`} className="align-self-center">
@@ -18,7 +19,7 @@ const ShortNewsItem = ({item}) => {
                 <p>{format(item.created_at, 'PPP p')} | {item.user.name}</p>
             </header>
             <p>{item.news.split('\n')[0]}</p>
-            <Link to={`/newsitems/${item.id}`}>Read more</Link>
+            <Link to={`/newsitems/${item.id}`}>{t('readMore')}</Link>
         </Col>
     </Row>
 };

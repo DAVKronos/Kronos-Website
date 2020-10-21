@@ -6,10 +6,12 @@ import DefaultSpinner from "../Spinner";
 import {getUserBirthdays} from "./queries";
 import {Link} from "react-router-dom";
 import {getAPIHostUrl} from "../../utils/rest-helper";
+import {useTranslation} from "react-i18next";
 
 
 
 const UserBirthdays = () => {
+    const { t } = useTranslation('homepage');
     const { isLoading, data} = useQuery('user_birthdays', getUserBirthdays);
     let content;
     if (isLoading) {
@@ -23,7 +25,7 @@ const UserBirthdays = () => {
     }
 
     return <Card className="side-panel">
-        <Card.Header>Verjaardagen</Card.Header>
+        <Card.Header>{t('birthdays')}</Card.Header>
         <ListGroup variant='flush'>
             {content}
         </ListGroup>

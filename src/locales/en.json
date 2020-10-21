@@ -1,0 +1,19 @@
+{
+  "homepage": {
+    "readMore": "Read more",
+    "birthdays": "Birthdays",
+    "news": "News"
+  },
+  "navigation": {
+    "association" : "Association",
+    "training": "Training",
+    "matches": "Matches",
+    "agenda": "Agenda",
+    "results": "Results",
+    "photos": "Photos",
+    "contact": "Contact"
+  },
+  "footer": {
+    "sponsors": "Sponsors"
+  }
+}

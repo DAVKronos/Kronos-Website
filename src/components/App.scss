@@ -1,11 +1,11 @@
 //TODO import all scss files inside component directory
-@import 'styles/_colors';
-@import 'components/Header/Header';
-@import 'components/Footer/Footer';
-@import 'components/AgendaItems/AgendaItems';
-@import 'components/HomePage/HomePage';
-@import 'components/Results/Result';
-@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import '../styles/_colors';
+@import './Header/Header';
+@import './Footer/Footer';
+@import './AgendaItems/AgendaItems';
+@import './HomePage/HomePage';
+@import './Results/Result';
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
 
 html {
   font-size: 14px;
