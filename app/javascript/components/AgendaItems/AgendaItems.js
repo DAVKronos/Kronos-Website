@@ -86,6 +86,7 @@ const AgendaItems = () => {
                 })}
             </Col>
         </Row>
+        <Link to='/agendaitems/new'>New Agenda item</Link>
     </React.Fragment>);
 }
 

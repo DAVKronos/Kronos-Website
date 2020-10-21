@@ -33,8 +33,6 @@ Rails.application.routes.draw do
   end
   get '/kronometers/:id/display/:style', to: "kronometers#display", as: "secure_kronometers_display"
 
-  resources :news_items
-
   resources :commissions
   resources :commission_memberships
   
@@ -99,6 +97,55 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth'
 
       resources :photoalbums
+
+      resources :commissions
+      resources :commission_memberships
+
+      resources :agendaitemtype_eventtypes
+
+      resources :agendaitemtypes
+
+      resources :pages
+
+      resources :agendaitems do
+        member do
+          get 'icalendar'
+          get 'duplicate'
+        end
+        resources :events
+        resources :comments
+        resources :subscriptions
+        collection do
+          get 'archief'
+          get 'wedstrijden'
+          get 'new_result'
+          post 'create_result'
+        end
+      end
+
+      resources :eventtypes do
+        member do
+          get 'copy'
+        end
+      end
+
+      resources :newsitems do
+        member do
+          get 'agreed'
+        end
+        collection do
+          get 'agree'
+        end
+      end
+
+      resources :results, only: [:index, :create, :destroy] do
+        member do
+          get 'recalculate'
+        end
+        collection do
+          get 'records'
+        end
+      end
 
     end
   end
