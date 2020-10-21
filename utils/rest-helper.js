@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {getCurrentUser} from './auth-helper';
 
-const API_HOST = '';
+const API_HOST = '/api/v1';
 
 const config = {
     headers: { 'Accept': 'application/json'},
