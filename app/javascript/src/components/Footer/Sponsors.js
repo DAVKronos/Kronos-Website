@@ -1,12 +1,14 @@
 import React from "react";
+import {useTranslation} from "react-i18next";
 
 //TODO Add sponsors either directly of from Rails url.
 const Sponsors = () => {
+	const { t } = useTranslation('footer');
     return <div>
 	<div className="row sponsor-white">
         <div className="col-xs-4">
 			<div className="sponsor-text">
-			Sponsoren
+				{t('sponsors')}
 			</div>
 		</div>
 		<div className="col-xs-4">

@@ -5,12 +5,14 @@ import AgendaItemsSidebar from "./AgendaItemsSidebar";
 import StravaSidebar from "./StravaSidebar";
 import UserBirthdays from "./UserBirthdays";
 import PrivateComponent from "../PrivateComponent";
+import {useTranslation} from "react-i18next";
 
 let HomePage = () => {
+    const { t } = useTranslation('homepage');
     return (
     <React.Fragment>
     <Row>
-        <Col><h1>Nieuws</h1></Col>
+        <Col><h1>{t('news')}</h1></Col>
     </Row>
     <Row>
         <Col md={8}>

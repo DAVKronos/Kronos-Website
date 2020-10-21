@@ -1,0 +1,20 @@
+{
+  "homepage": {
+    "readMore": "Lees meer",
+    "birthdays": "Verjaardagen",
+    "news": "Nieuws"
+  },
+  "navigation": {
+    "association" : "Vereniging",
+    "training": "Trainingen",
+    "matches": "Wedstrijden",
+    "agenda": "Agenda",
+    "results": "Uitslagen",
+    "photos": "Foto's",
+    "contact": "Contact"
+  },
+  "footer": {
+    "sponsors": "Sponsoren"
+  }
+
+}

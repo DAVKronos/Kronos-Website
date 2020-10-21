@@ -6,7 +6,6 @@ const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState({ loading: true, data: null });
 
     const setAuthData = (data) => {
-        console.log(data);
         setAuth({data: data});
     };
 
