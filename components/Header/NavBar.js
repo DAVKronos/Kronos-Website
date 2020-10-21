@@ -53,7 +53,7 @@ const NavBar =  () => {
             </Nav>
             <Nav className="justify-content-end">
                 <PrivateComponent>
-                    <Nav.Link as={NavLink} to="/leden">Leden</Nav.Link>
+                    <Nav.Link as={NavLink} to="/users">Leden</Nav.Link>
                 </PrivateComponent>
                 <UserMenu/>
             </Nav>

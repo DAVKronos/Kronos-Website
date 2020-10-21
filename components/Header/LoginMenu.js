@@ -4,6 +4,7 @@ import {login, logout} from '../../utils/auth-helper'
 import { authContext } from '../../utils/AuthContext';
 import {BsPersonFill} from 'react-icons/bs';
 import DefaultSpinner from "../Spinner";
+import {NavLink} from "react-router-dom";
 
 const LoginMenu = () => {
     const [email, setEmail] = useState();
@@ -58,7 +59,7 @@ const LoggedInMenu = ({user}) => {
             <h3 style={{textAlign: 'center'}}>{firstName}</h3>
         </div>
 
-        <NavDropdown.Item >{firstName}'s stek</NavDropdown.Item>
+        <NavDropdown.Item as={NavLink} to={`/users/${user.id}`}>{firstName}'s stek</NavDropdown.Item>
         <NavDropdown.Item >Kronos cloud</NavDropdown.Item>
         <NavDropdown.Item onClick={onClickLogout}>Logout</NavDropdown.Item>
     </React.Fragment>
@@ -70,7 +71,6 @@ const UserMenu = () => {
     const user = auth.data;
 
     if (user) {
-        console.log(user);
         let firstName = user.name.split(' ')[0];
         let dropdownTitle = <React.Fragment><BsPersonFill/>{firstName}</React.Fragment>
         return <NavDropdown title={dropdownTitle} id="basic-nav-dropdown" alignRight>
