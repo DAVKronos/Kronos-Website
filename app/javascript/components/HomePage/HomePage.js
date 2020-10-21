@@ -3,6 +3,8 @@ import {Row, Col} from 'react-bootstrap';
 import NewsItems from "./HomePageNewsItems";
 import AgendaItemsSidebar from "./AgendaItemsSidebar";
 import StravaSidebar from "./StravaSidebar";
+import UserBirthdays from "./UserBirthdays";
+import PrivateComponent from "../PrivateComponent";
 
 let HomePage = () => {
     return (
@@ -16,6 +18,9 @@ let HomePage = () => {
         <Col md={4}>
             <AgendaItemsSidebar />
             <StravaSidebar />
+            <PrivateComponent>
+                <UserBirthdays />
+            </PrivateComponent>
         </Col>
     </Row></React.Fragment>);
 };

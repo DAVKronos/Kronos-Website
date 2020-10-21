@@ -24,6 +24,7 @@ module Abilities
       end
       can [:update, :editpassword], user
 
+      can :birthdays, User
       cannot :create, User
 
       if user.active?

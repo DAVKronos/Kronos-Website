@@ -91,6 +91,28 @@ module Api
         @users = User.where(user_type_id: [1, 2])
       end
 
+      def birthdays
+        birthdays = {}
+        birthdays['current_month'] = User.where('(user_type_id not in (?)) AND
+                               (extract(month from birthdate) = ? AND extract(day from birthdate) >= ?)
+                              ',
+                                                 [9],
+                                                 Date.today.strftime("%m"), Date.today.strftime("%d"))
+                                          .order(Arel.sql('extract(month from birthdate) ASC, extract(day from birthdate) ASC'))
+
+        birthdays['next_month'] = User.where('(user_type_id not in (?)) AND
+                               (extract(month from birthdate) = ? AND extract(day from birthdate) <= ?)
+                              ',
+                                              [9],
+                                              Date.today.next_month.strftime("%m"), Date.today.next_month.strftime("%d"))
+                                       .order(Arel.sql('extract(month from birthdate) ASC, extract(day from birthdate) ASC'))
+        @all_birthdays = birthdays['current_month'] + birthdays['next_month']
+        respond_to do |format|
+          format.html
+          format.json {render json: @all_birthdays.map{|user| user.as_json(methods: [:avatar_url_thumb])}}
+        end
+      end
+
       private
 
       def user_current_user?
