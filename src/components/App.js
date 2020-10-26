@@ -8,7 +8,6 @@ import './App.scss';
 import Container from 'react-bootstrap/Container'
 import Header from "./Header/Header";
 import HomePage from "./HomePage/HomePage";
-import Footer from "./Footer/Footer";
 import AgendaItemsRouter from "./AgendaItems";
 import NewsItemsRouter from "./NewsItems";
 import PhotoAlbumsRouter from './PhotoAlbums'
@@ -76,7 +75,6 @@ const AppRouter = () => {
         </Route>
       </Switch>
     </div>
-    <Footer />
   </Container>
   </Router>;
 }
