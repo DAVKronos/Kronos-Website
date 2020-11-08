@@ -1,7 +1,8 @@
-import { format } from 'date-fns'
-import { enGB, nl } from 'date-fns/locale'
+import format from 'date-fns/format'
+import nl from 'date-fns/locale/nl'
+import en from 'date-fns/locale/en-GB'
 
-const locales = {enGB, nl}
+const locales = {en, nl}
 
 // by providing a default string of 'PP' or any of its variants for `formatStr`
 // it will format dates in whichever way is appropriate to the locale
