@@ -66,7 +66,7 @@ class User < ApplicationRecord
   validates :address, :presence => true
   # Dit vereenvoudigt de callback functies voor de maillijst
   validates :email, :presence => true
-  after_update :change_mailinglist_email!, :if => :saved_changes_to_email?
+  after_update :change_mailinglist_email, :if => :saved_change_to_email?
 
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
