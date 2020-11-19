@@ -52,6 +52,22 @@ class KronosGoogleAPIClient
     end
   end
 
+  def change_member_email_of_group(user,old_email,group_email)
+    begin
+      old_member  = @admin_api.get_member(group_email, old_email)
+      new_member = Google::Apis::AdminDirectoryV1::Member.new(:email => user.email, :name => user.name)
+      if old_member.present?
+        @admin_api.patch_member(group_email, old_member.id, new_member)
+      else
+        @admin_api.insert_member(group_email, new_member)
+      end
+
+    rescue Google::Apis::ClientError => e
+      puts "Google Client Error changing email member: " + old_email + " to " + user.email+ " from " + group_email
+      puts e.message
+    end
+  end
+
   def remove_member_from_group(user, group_email)
     begin
       @admin_api.delete_member(group_email, user.email)
