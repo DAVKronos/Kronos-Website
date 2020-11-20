@@ -57,6 +57,8 @@ class KronosGoogleAPIClient
       @admin_api.delete_member(group_email, old_email)
     rescue Google::Apis::ServerError
       # member email does not exists
+    rescue Google::Apis::ClientError
+      # member email does not exists
     end
     add_member_to_group(user, group_email)
   end
