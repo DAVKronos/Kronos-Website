@@ -117,7 +117,8 @@ en:
         agendaitem: Calendar item
         name: Dutch name
         name_en: English name
-        public: 
+        public:
+        url: External url
       result:
         place: Place
         result: Result
@@ -652,7 +653,8 @@ en:
       photoalbum:
         agendaitem: 
         name: 
-        public: 
+        public:
+        url: External url
       result:
         place: 
         result: 
@@ -855,6 +857,7 @@ en:
     edit: edit photoalbum
     view: view
     back: back
+    url: External link
   photos:
     title: pictures
   postalcode: postal code

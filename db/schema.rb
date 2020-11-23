@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_200001) do
+ActiveRecord::Schema.define(version: 2020_11_23_095817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -286,6 +286,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_200001) do
     t.boolean "public"
     t.datetime "eventdate"
     t.string "name_en"
+    t.string "url"
   end
 
   create_table "photos", force: :cascade do |t|

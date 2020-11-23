@@ -36,6 +36,9 @@
 
   = f.label :Date
   = f.text_field :eventdate, {:placeholder => "Datum", :class => "datumtijdprikker form-control"}
+
+  = f.label t('photoalbum.url').capitalize
+  = f.text_field :url, {:placeholder => "URL", :class => "form-control"}
   .actions
     = f.submit :class => "btn"
   

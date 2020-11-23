@@ -57,14 +57,14 @@ class Mailinglist < ApplicationRecord
     api_client.destroy_email_group(self.full_email)
   end
 
-  def subscribe_maillinglist_to_mailinglist(mailinglis)
+  def subscribe_maillinglist_to_mailinglist(mailinglist)
     api_client = KronosGoogleAPIClient.new
-    api_client.add_group_to_group(mailinglis, self.full_email)
+    api_client.add_group_to_group(mailinglist, self.full_email)
   end
 
-  def unsubscribe_mailinglist_from_mailinglist(mailinglis)
+  def unsubscribe_mailinglist_from_mailinglist(mailinglist)
     api_client = KronosGoogleAPIClient.new
-    api_client.remove_group_from_group(mailinglis, self.full_email)
+    api_client.remove_group_from_group(mailinglist, self.full_email)
   end
 
   def subscribe_alias_to_mailinglist(alia)

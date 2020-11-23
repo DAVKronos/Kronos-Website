@@ -69,6 +69,8 @@ class User < ApplicationRecord
   validates :address, :presence => true
   # Dit vereenvoudigt de callback functies voor de maillijst
   validates :email, :presence => true
+  after_update :change_mailinglist_email, :if => :saved_change_to_email?
+
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   
@@ -149,6 +151,18 @@ class User < ApplicationRecord
       return User.all
     else 
       return User.where(:user_type_id => allowed_ids)
+    end
+  end
+
+  def change_mailinglist_email
+    original_email  = self.email_before_last_save
+    mailinglists_memberships = MailinglistMembership.where(user:self)
+
+    if mailinglists_memberships.any?
+      api_client = KronosGoogleAPIClient.new
+      mailinglists_memberships.each do |membership|
+        api_client.change_member_email_of_group(self, original_email, membership.mailinglist.full_email)
+      end
     end
   end
 

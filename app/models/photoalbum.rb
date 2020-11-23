@@ -24,5 +24,33 @@ class Photoalbum < ApplicationRecord
         self.eventdate = self.agendaitem.date
     end
   end
+
+  def get_url_name
+    if self.url
+      if self.url.length > 40
+        return self.url[0..37] + "..."
+      else
+        return self.url
+      end
+    else
+      return ""
+    end
+  end
+
+  def get_url
+    if self.url
+      if self.url.index("/") == 0
+        return self.url
+      elsif self.url["http://"]
+        return self.url
+      elsif self.url["https://"]
+        return self.url
+      else
+        return "http://" + self.url
+      end
+    else
+      return "#"
+    end
+  end
 end
 

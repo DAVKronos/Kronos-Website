@@ -2,7 +2,8 @@ class PagesController < ApplicationController
   load_and_authorize_resource
   def home
     @newsitems = Newsitem.where(:agreed => true).order('created_at DESC').limit(6)
-    @agendaitems = Agendaitem.where("date >= ?", Time.now).order('date ASC').limit(10)
+    training_types = Agendaitemtype.where('name like ?', '%Training%')
+    @agendaitems = Agendaitem.where.not(agendaitemtype: training_types).where("date >= ?", Time.now).order('date ASC').limit(10)
     
     @birthdays = {}
     @birthdays['current_month'] = User.where( '(user_type_id not in (?)) AND

@@ -44,12 +44,23 @@ class KronosGoogleAPIClient
 
   def add_member_to_group(user, group_email)
     begin
-      member = Google::Apis::AdminDirectoryV1::Member.new(:email => user.email, :name => user.name)
+      member = Google::Apis::AdminDirectoryV1::Member.new(:email => user.email)
       @admin_api.insert_member(group_email, member)
     rescue Google::Apis::ClientError => e
       puts "Google Client Error adding member: " + user.email + " from " + group_email
       puts e.message
     end
+  end
+
+  def change_member_email_of_group(user,old_email,group_email)
+    begin
+      @admin_api.delete_member(group_email, old_email)
+    rescue Google::Apis::ServerError
+      # member email does not exists
+    rescue Google::Apis::ClientError
+      # member email does not exists
+    end
+    add_member_to_group(user, group_email)
   end
 
   def remove_member_from_group(user, group_email)
