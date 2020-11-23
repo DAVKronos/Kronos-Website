@@ -18,6 +18,11 @@
         - else
           = t('photoalbum.created_at').capitalize
           = time_tag @photoalbum.created_at
+    %p
+      %small
+        - unless @photoalbum.url.nil?
+          = t('photoalbum.url').capitalize + ": "
+          = link_to @photoalbum.get_url_name, @photoalbum.get_url
 
 .modal{:id => "myModal", "tabindex" => "-1", "role" => "dialog"}
   %div{:class => "modal-dialog"}

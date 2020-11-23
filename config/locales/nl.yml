@@ -116,7 +116,7 @@ nl:
       photoalbum:
         agendaitem: Agendaitem
         name: Nederlandse naam
-        name_en: Engels naam
+        name_en: Engelse naam
         public: Public
       result:
         place: Place
@@ -845,6 +845,7 @@ nl:
     edit: Fotoalbum bewerken
     view: bekijk
     back: terug
+    url: Externe link
   photos:
     title: Foto's
   postalcode: postcode

@@ -116,9 +116,9 @@ class PhotoalbumsController < ApplicationController
 
   def photoalbum_params
     if current_user.admin?
-      params.require(:photoalbum).permit(:name, :name_en, :agendaitem_id, :public, :eventdate)
+      params.require(:photoalbum).permit(:name, :name_en, :agendaitem_id, :public, :eventdate, :url)
     else
-      params.require(:photoalbum).permit(:name, :name_en, :agendaitem_id, :eventdate)
+      params.require(:photoalbum).permit(:name, :name_en, :agendaitem_id, :eventdate, :url)
     end
 
   end
