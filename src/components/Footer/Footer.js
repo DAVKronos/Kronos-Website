@@ -6,7 +6,7 @@ import Sponsors from "./Sponsors";
 const Footer = () => {
     return <footer className="app">
 		<div className="container">
-        <Sponsors />
+        {/*<Sponsors />*/}
         <Contact />
 		</div>
     </footer>

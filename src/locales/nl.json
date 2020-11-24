@@ -6,7 +6,7 @@
   },
   "navigation": {
     "association" : "Vereniging",
-    "training": "Trainingen",
+    "trainings": "Trainingen",
     "matches": "Wedstrijden",
     "agenda": "Agenda",
     "results": "Uitslagen",
@@ -15,6 +15,23 @@
   },
   "footer": {
     "sponsors": "Sponsoren"
+  },
+  "models": {
+    "agendaitem": {
+      "name": "Nederlandse naam",
+      "name_en": "Engelse naam",
+      "date": "Datum",
+      "agendaitemtype_id": "Agenda item type",
+      "intern": "Prive",
+      "description": "Nederlandse beschrijving",
+      "description_en": "Engelse beschrijving",
+      "location": "Locatie",
+      "url": "URL",
+      "commission_id": "Commissie",
+      "subscribe": "Inschrijven",
+      "subscriptiondeadline": "Inschrijfdeadline",
+      "maxsubscription": "Maximum inschrijvingen"
+    }
   }
 
 }

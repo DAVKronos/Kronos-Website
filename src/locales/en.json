@@ -6,7 +6,7 @@
   },
   "navigation": {
     "association" : "Association",
-    "training": "Training",
+    "trainings": "Training",
     "matches": "Matches",
     "agenda": "Agenda",
     "results": "Results",
@@ -15,5 +15,22 @@
   },
   "footer": {
     "sponsors": "Sponsors"
+  },
+  "models": {
+    "agendaitem": {
+      "name": "Dutch name",
+      "name_en": "English name",
+      "date": "Date",
+      "agendaitemtype_id": "Agenda item type",
+      "intern": "Private",
+      "description": "Dutch description",
+      "description_en": "English description",
+      "location": "Location",
+      "url": "URL",
+      "commission_id": "Commission",
+      "subscribe": "Subscription",
+      "subscriptiondeadline": "Subscription deadline",
+      "maxsubscription": "Maximum subscriptions"
+    }
   }
 }

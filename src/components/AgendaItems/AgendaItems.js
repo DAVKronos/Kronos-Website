@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Link, useLocation} from "react-router-dom";
-import {Row, Col, Nav, Card} from 'react-bootstrap';
+import {Row, Col, Nav, Card, Button} from 'react-bootstrap';
 import format from '../../utils/date-format';
 import {AgendaItemTypeName} from "./AgendaItemType";
 import MonthSwitcher from "../Generic/MonthSwitcher";
@@ -8,6 +8,7 @@ import {useQuery} from "react-query";
 import {getAgendaitems, getAgendaitemTypes} from "./queries";
 import {parseParams} from "../../utils/generic";
 import DefaultSpinner from "../Spinner";
+import PrivateComponent from "../PrivateComponent";
 
 
 function AgendaItemsFilter({filter, onChangeFilter}){
@@ -86,7 +87,9 @@ const AgendaItems = () => {
                 })}
             </Col>
         </Row>
-        <Link to='/agendaitems/new'>New Agenda item</Link>
+        <PrivateComponent>
+            <Button as={Link} to='/agendaitems/new'>New Agenda item</Button>
+        </PrivateComponent>
     </React.Fragment>);
 }
 

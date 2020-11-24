@@ -2,7 +2,7 @@ import React from "react";
 import AgendaItem from "./AgendaItem";
 import {Card, ListGroup} from 'react-bootstrap';
 import {useQuery} from "react-query";
-import {getAgendaItems} from "./queries";
+import {getAgendaitems} from "../AgendaItems/queries";
 import DefaultSpinner from "../Spinner";
 
 function AgendaItemsSideBar() {
@@ -29,11 +29,11 @@ function sortAgendaItems(a, b) {
     return new Date(a.date) - new Date(b.date);
 }
 
-function agendaItems() {
+function agendaItems(queryKey) {
     let now = new Date();
     const nextMonth  = new Date(now.getFullYear(), now.getMonth() + 1);
-    let params = {'date[year]': nextMonth.getFullYear(), 'date[month]': nextMonth.getMonth()+1}
-    return Promise.all([getAgendaItems(), getAgendaItems(params)])
+    let params = {year: nextMonth.getFullYear(), month: nextMonth.getMonth()}
+    return Promise.all([getAgendaitems(queryKey), getAgendaitems(queryKey,params)])
         .then(([agendaItems1, agendaItems2]) => {
         return agendaItems1.concat(agendaItems2).filter(agendaItem => {
             const agendaDate = new Date(agendaItem.date);
