@@ -148,6 +148,7 @@ Rails.application.routes.draw do
       end
 
       resources :users do
+        resources :commissions
         collection do
           get 'birthdays'
         end

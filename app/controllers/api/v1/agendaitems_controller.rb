@@ -63,15 +63,11 @@ module Api
 
       def create
         agendaitem = Agendaitem.new(agendaitem_params)
-      if agendaitem.save
-          agendaitem.user = current_user
-          flash[:notice] = 'Agendaitem was successfully created.'
-          redirect_to agendaitem
+        if agendaitem.save
+            agendaitem.user = current_user
+            redirect_to agendaitem
         else
-          @agendaitem = agendaitem
-          @commissions = current_user.commissions
-          @commissions = Commission.all if current_user.admin?
-          render 'new'
+          render json: {"success": false}
         end
       end
 
@@ -103,13 +99,6 @@ module Api
         respond_with(@agendaitem)
       end
 
-      def edit
-        @agendaitem = Agendaitem.find(params[:id])
-        @commissions = current_user.commissions
-        @commissions = Commission.all if current_user.admin?
-        @agendaitemtypes = Agendaitemtype.all
-      end
-
       def update
         @agendaitem = Agendaitem.find(params[:id])
         @agendaitem.attributes = agendaitem_params
@@ -117,12 +106,7 @@ module Api
           comment.user = current_user if comment.new_record?
         end
         if @agendaitem.save
-          flash[:notice] = 'Agendaitem was successfully created.'
-          redirect_to @agendaitem
-        else
-          @commissions = current_user.commissions
-          @commissions = Commission.all if current_user.admin?
-          render 'new'
+          render json: @agendaitem
         end
       end
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Col, ListGroup, Row} from 'react-bootstrap';
+import {Button, Card, Col, ListGroup, Row} from 'react-bootstrap';
 import {AgendaItemTypeName} from './AgendaItemType';
 import {BsGeoAlt, BsClock, BsList, BsLink} from 'react-icons/bs';
 
@@ -8,6 +8,8 @@ import EventsResults from "./EventsResults";
 import {useQuery} from "react-query";
 import {getAgendaitem, getAgendaitemEvents} from "./queries";
 import DefaultSpinner from "../Spinner";
+import PrivateComponent from "../PrivateComponent";
+import {Link} from "react-router-dom";
 
 
 const AgendaItemEvents = ({agendaItemId}) => {
@@ -31,8 +33,11 @@ const AgendaItemEvents = ({agendaItemId}) => {
 
 function AgendaItem(props) {
     const id = props.match.params.id;
-    const { isLoading, isError, data, error } = useQuery(['agendaitems', id], getAgendaitem)
-    let agendaItem = data;
+    const { isLoading, isError, data: agendaItem, error } = useQuery(['agendaitems', id], getAgendaitem)
+
+    if (isLoading) {
+        return <DefaultSpinner />;
+    }
     if (!agendaItem) {
         return null;
     }
@@ -40,8 +45,13 @@ function AgendaItem(props) {
     let date = new Date(agendaItem.date);
     return <React.Fragment>
         <Row>
-            <Col sm={12}>
+            <Col md={8}>
                 <h1>{agendaItem.name} <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id} /></small></h1>
+            </Col>
+            <Col md={4}>
+                <PrivateComponent>
+                    <Button className='align-self-end' as={Link} to={`/agendaitems/${id}/edit`}>Edit</Button>
+                </PrivateComponent>
             </Col>
         </Row>
         <Row>

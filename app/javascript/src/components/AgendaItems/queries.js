@@ -4,8 +4,20 @@ function getAgendaitem(queryKey, id) {
     return restCall(`agendaitems/${id}`).then(res => res.data)
 }
 
-function getAgendaitems(queryKey, {year, month}) {
-    return restCall('agendaitems', {params: {'date[year]': year, 'date[month]': month+1}}).then(res => res.data)
+function createAgendaitem(data) {
+    return restCall(`agendaitems`, {method: 'POST', data: {agendaitem: data}}).then(res => res.data)
+}
+
+function updateAgendaitem(id, data) {
+    return restCall(`agendaitems/${id}`, {method: 'PUT', data: {agendaitem: data}}).then(res => res.data)
+}
+
+function getAgendaitems(queryKey, params=null) {
+    if (params) {
+        const {year, month} = params;
+        return restCall('agendaitems', {method: 'GET', params: {'date[year]': year, 'date[month]': month+1}}).then(res => res.data)
+    }
+    return restCall('agendaitems', {method: 'GET'}).then(res => res.data)
 }
 
 function getAgendaitemType(queryKey, id) {
@@ -30,5 +42,9 @@ function getEventType(id) {
     return restCall(`eventtypes/${id}`).then(res => res.data)
 }
 
+function getCommissionForUser(queryKey, userId) {
+    return restCall(`users/${userId}/commissions`).then(res => res.data)
+}
 
-export {getAgendaitem, getAgendaitems, getAgendaitemType, getAgendaitemTypes, getAgendaitemEvents}
+
+export {getAgendaitem, getAgendaitems, getAgendaitemType, getAgendaitemTypes, getAgendaitemEvents, createAgendaitem, updateAgendaitem, getCommissionForUser}
