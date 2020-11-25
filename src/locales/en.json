@@ -1,4 +1,14 @@
 {
+  "generic": {
+    "add": "Add",
+    "edit": "Edit",
+    "remove": "Remove",
+    "save": "Save",
+    "cancel": "Cancel",
+    "empty": "Empty",
+    "create": "Create",
+    "new": "New"
+  },
   "homepage": {
     "readMore": "Read more",
     "birthdays": "Birthdays",

@@ -46,5 +46,9 @@ function getCommissionForUser(queryKey, userId) {
     return restCall(`users/${userId}/commissions`).then(res => res.data)
 }
 
+function removeAgendaitem(id) {
+    return restCall(`agendaitems/${id}`, {}, 'delete').then(res => res.data);
+}
 
-export {getAgendaitem, getAgendaitems, getAgendaitemType, getAgendaitemTypes, getAgendaitemEvents, createAgendaitem, updateAgendaitem, getCommissionForUser}
+
+export {getAgendaitem, getAgendaitems, getAgendaitemType, getAgendaitemTypes, getAgendaitemEvents, createAgendaitem, updateAgendaitem, getCommissionForUser, removeAgendaitem}

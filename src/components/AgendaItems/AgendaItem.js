@@ -6,10 +6,11 @@ import {BsGeoAlt, BsClock, BsList, BsLink} from 'react-icons/bs';
 import format from '../../utils/date-format';
 import EventsResults from "./EventsResults";
 import {useQuery} from "react-query";
-import {getAgendaitem, getAgendaitemEvents} from "./queries";
+import {getAgendaitem, getAgendaitemEvents, removeAgendaitem} from "./queries";
 import DefaultSpinner from "../Spinner";
 import PrivateComponent from "../PrivateComponent";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 
 const AgendaItemEvents = ({agendaItemId}) => {
@@ -20,7 +21,7 @@ const AgendaItemEvents = ({agendaItemId}) => {
     }
 
     if (!events || events.length === 0){
-        return "Geen Programma";
+        return <ListGroup variant="flush"><ListGroup.Item>Geen Programma</ListGroup.Item></ListGroup>;
     }
     return <ListGroup variant="flush">
         {events.map(event => {
@@ -32,6 +33,8 @@ const AgendaItemEvents = ({agendaItemId}) => {
 }
 
 function AgendaItem(props) {
+    const {t} = useTranslation('generic');
+    const history = useHistory();
     const id = props.match.params.id;
     const { isLoading, isError, data: agendaItem, error } = useQuery(['agendaitems', id], getAgendaitem)
 
@@ -42,15 +45,22 @@ function AgendaItem(props) {
         return null;
     }
 
+    const onClickRemove = () => {
+        removeAgendaitem(id).then(() => {
+            history.push('/agendaitems')
+        })
+    }
+
     let date = new Date(agendaItem.date);
     return <React.Fragment>
         <Row>
             <Col md={8}>
                 <h1>{agendaItem.name} <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id} /></small></h1>
             </Col>
-            <Col md={4}>
+            <Col md={4} className="d-flex">
                 <PrivateComponent>
-                    <Button className='align-self-end' as={Link} to={`/agendaitems/${id}/edit`}>Edit</Button>
+                    <Button variant='warning' className='align-self-center' as={Link} to={`/agendaitems/${id}/edit`}>{t('edit')}</Button>
+                    <Button variant='danger' className='align-self-center' onClick={onClickRemove}>{t('remove')}</Button>
                 </PrivateComponent>
             </Col>
         </Row>

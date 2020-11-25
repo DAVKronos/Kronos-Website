@@ -62,9 +62,6 @@ const AgendaItemForm = ({values, setValue, children }) => {
     return <Form>
         {agendaItemFields.map((field) => {
             let items = field.name === 'agendaitemtype_id' ? agendaItemTypes : field.name === 'commission_id' ? commissions : [];
-            if (items && items.length > 0 && !field.required) {
-                items = [{id: "", name: "Geen"}, ...items];
-            }
             if (!field.conditionField || values[field.conditionField])
             return <FormField
                 modelName={'agendaitem'}

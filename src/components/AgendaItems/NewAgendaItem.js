@@ -5,6 +5,7 @@ import { useQueryCache} from "react-query";
 import {Redirect, useHistory} from "react-router-dom";
 import DefaultSpinner from "../Spinner";
 import AgendaItemForm from "./AgendaItemForm";
+import {useTranslation} from "react-i18next";
 
 const NewAgendaItem = () => {
     const queryCache = useQueryCache();
@@ -32,15 +33,17 @@ const NewAgendaItem = () => {
         })
     }
 
+    const {t} = useTranslation('generic');
+
     return (<React.Fragment>
-    <h1>New Agendaitem</h1>
+    <h1>{t('new')} Agendaitem</h1>
     <Form>
         <AgendaItemForm values={values} setValue={setValue} />
         <Button onClick={() => create()}>
             {creating && <DefaultSpinner inline size={'sm'}/>}
-            {!creating && 'Create'}
+            {!creating && t('create')}
         </Button>
-        <Button variant='secondary' onClick={() => cancel()}>Cancel</Button>
+        <Button variant='secondary' onClick={() => cancel()}>{t('cancel')}</Button>
     </Form></React.Fragment>);
 }
 

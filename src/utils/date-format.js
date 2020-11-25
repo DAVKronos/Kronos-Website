@@ -1,7 +1,6 @@
 import format from 'date-fns/format'
 import nl from 'date-fns/locale/nl'
 import en from 'date-fns/locale/en-GB'
-
 const locales = {en, nl}
 
 // by providing a default string of 'PP' or any of its variants for `formatStr`
