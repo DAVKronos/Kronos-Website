@@ -1,4 +1,14 @@
 {
+  "generic": {
+    "add": "Toevoegen",
+    "edit": "Aanpassen",
+    "remove": "Verwijderen",
+    "save": "Opslaan",
+    "cancel": "Terug",
+    "empty": "Leeg",
+    "create": "Aanmaken",
+    "new": "Nieuw"
+  },
   "homepage": {
     "readMore": "Lees meer",
     "birthdays": "Verjaardagen",

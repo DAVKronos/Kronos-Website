@@ -5,6 +5,7 @@ import {useQuery, useQueryCache} from "react-query";
 import {useHistory} from "react-router-dom";
 import DefaultSpinner from "../Spinner";
 import AgendaItemForm from "./AgendaItemForm";
+import {useTranslation} from "react-i18next";
 
 const EditAgendaItemWithData = (props) => {
     const id = props.match.params.id;
@@ -43,18 +44,18 @@ const EditAgendaItem = ({agendaItem}) => {
             setSaved(false);
         })
     }
-
+    const {t} = useTranslation('generic');
 
     return (<React.Fragment>
         {message && <Alert variant='success' dismissible onClose={() => setMessage('')}>{message}</Alert>}
-        <h1>Edit Agendaitem</h1>
+        <h1>{t('edit')} Agendaitem</h1>
             <AgendaItemForm values={values}
                             setValue={setValue}>
                 <Button onClick={() => update()} disabled={saving}>
                     {saving && <DefaultSpinner inline size={'sm'}/>}
-                    {!saving && 'Save'}
+                    {!saving && t('save')}
                 </Button>
-                <Button variant='secondary' onClick={() => cancel()}>Cancel</Button>
+                <Button variant='secondary' onClick={() => cancel()}>{t('cancel')}</Button>
             </AgendaItemForm>
         </React.Fragment>);
 }
