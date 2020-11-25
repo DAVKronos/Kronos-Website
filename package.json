@@ -1,4 +1,5 @@
 {
+  "sideEffects": false,
   "dependencies": {
     "@babel/preset-react": "^7.10.4",
     "@rails/webpacker": "5.2.1",
@@ -24,5 +25,10 @@
   "devDependencies": {
     "webpack-bundle-analyzer": "^3.9.0",
     "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "webpack:analyze": "yarn webpack:build_json && yarn webpack:analyze_json",
+    "webpack:build_json": "RAILS_ENV=${RAILS_ENV:-production} NODE_ENV=${NODE_ENV:-production} bin/webpack --profile --json > tmp/webpack-stats.json",
+    "webpack:analyze_json": "npx webpack-bundle-analyzer tmp/webpack-stats.json public/packs"
   }
 }

@@ -21,7 +21,11 @@ const AgendaItemEvents = ({agendaItemId}) => {
     }
 
     if (!events || events.length === 0){
-        return <ListGroup variant="flush"><ListGroup.Item>Geen Programma</ListGroup.Item></ListGroup>;
+        return <ListGroup variant="flush">
+            <ListGroup.Item>
+                Geen Programma
+            </ListGroup.Item>
+        </ListGroup>;
     }
     return <ListGroup variant="flush">
         {events.map(event => {

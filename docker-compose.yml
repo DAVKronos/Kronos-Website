@@ -9,6 +9,7 @@ services:
     ports:
       - "3000:3000"
       - "3035:3035"
+      - "8888:8888"
     depends_on:
       - db
     env_file: .env
