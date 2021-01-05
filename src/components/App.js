@@ -20,6 +20,7 @@ import AuthProvider from "../utils/AuthContext";
 import {QueryCache, ReactQueryCacheProvider} from "react-query";
 
 import '../utils/i18n.js';
+import AgendaItemTypesRouter from "./AgendaItemTypes";
 
 const queryCache = new QueryCache({
   defaultConfig: {
@@ -69,6 +70,9 @@ const AppRouter = () => {
         </Route>
         <Route path="/users">
           <UsersRouter />
+        </Route>
+        <Route path="/agendaitemtypes">
+          <AgendaItemTypesRouter />
         </Route>
         <Route path="/:pagetag">
           <PagesRouter />

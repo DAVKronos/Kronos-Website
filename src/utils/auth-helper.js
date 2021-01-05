@@ -1,5 +1,27 @@
 import axios from "axios";
-import {getConfig} from './rest-helper'
+import {getConfig, restCall} from './rest-helper'
+import {Ability} from "@casl/ability";
+import {createCanBoundTo} from '@casl/react';
+
+function getAbilities() {
+    return restCall('abilities').then(res => res.data);
+}
+
+function updateAbilities(ability) {
+    getAbilities().then(rules => {
+        console.log('update rules');
+        ability.update(rules);
+    })
+}
+
+function initializeAbilities() {
+    const ability = new Ability()
+    updateAbilities(ability);
+    return ability
+}
+
+const ability = initializeAbilities();
+
 function login(email, password) {
     return axios.post(`/api/v1/auth/sign_in`, {email, password}, getConfig())
         .then((response) => {
@@ -7,6 +29,7 @@ function login(email, password) {
             user['access-token'] = response.headers['access-token'];
             user['client'] = response.headers['client'];
             sessionStorage.setItem('user', JSON.stringify(user));
+            updateAbilities(ability)
             return user;
         })
         .catch(() => {
@@ -18,6 +41,7 @@ function logout() {
     return axios.delete(`/api/v1/auth/sign_out`, {...getConfig()})
         .then(() => {
             sessionStorage.removeItem("user");
+            updateAbilities(ability);
         })
         .catch(() => {
             return undefined;
@@ -26,14 +50,13 @@ function logout() {
 }
 
 
-function getCurrentUser() {
-    return JSON.parse(sessionStorage.getItem('user'));
-}
 
+const Can = createCanBoundTo(ability);
 
 
 export {
     login,
     logout,
-    getCurrentUser
+    ability,
+    Can
 }

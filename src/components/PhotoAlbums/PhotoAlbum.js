@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Row, Col, Card, Pagination} from 'react-bootstrap';
 import {getAPIHostUrl, transformObject} from "../../utils/rest-helper";
-import format from '../../utils/date-format';
+import {format}  from '../../utils/date-format';
 import {useQuery} from "react-query";
 import {getPhotoAlbum} from "./queries";
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {Table} from 'react-bootstrap';
 import {useQuery} from "react-query";
 import {getCommission} from "./queries";
-import DefaultSpinner from "../Spinner";
+import DefaultSpinner from "../Generic/Spinner";
 
 function Commission(props) {
     const id = props.match.params.id;

@@ -2,11 +2,11 @@ import React from 'react';
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import {NavLink} from 'react-router-dom';
 import UserMenu from "./LoginMenu";
-import PrivateComponent from "../PrivateComponent";
 import {useQuery} from "react-query";
 import {getPages} from "./queries";
 import LanguageSwitch from "./LanguageSwitch";
 import {useTranslation} from "react-i18next";
+import {Can} from "../../utils/auth-helper";
 
 function getPagesForMenu(pages, title) {
     return pages.filter((page) => {
@@ -55,9 +55,9 @@ const NavBar =  () => {
             </Nav>
             <Nav className="justify-content-end">
                 <LanguageSwitch />
-                <PrivateComponent>
+                <Can I='read' an="User">
                     <Nav.Link as={NavLink} to="/users">Leden</Nav.Link>
-                </PrivateComponent>
+                </Can>
                 <UserMenu/>
             </Nav>
         </Navbar.Collapse>

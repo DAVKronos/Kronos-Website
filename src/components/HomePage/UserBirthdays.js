@@ -1,8 +1,8 @@
 import React from "react";
 import {Card, Col, ListGroup, Row, Image} from 'react-bootstrap';
-import format from '../../utils/date-format';
+import {format} from '../../utils/date-format';
 import {useQuery} from "react-query";
-import DefaultSpinner from "../Spinner";
+import DefaultSpinner from "../Generic/Spinner";
 import {getUserBirthdays} from "./queries";
 import {Link} from "react-router-dom";
 import {getAPIHostUrl} from "../../utils/rest-helper";

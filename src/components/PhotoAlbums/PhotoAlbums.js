@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Row} from 'react-bootstrap';
 import PhotoAlbumCover from "./PhotoAlbumCover";
-import DefaultSpinner from "../Spinner";
+import DefaultSpinner from "../Generic/Spinner";
 import {useQuery} from "react-query";
 import {getPhotoAlbums} from "./queries";
 

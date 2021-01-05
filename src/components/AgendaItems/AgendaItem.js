@@ -1,49 +1,31 @@
 import React from 'react';
-import {Button, Card, Col, ListGroup, Row} from 'react-bootstrap';
+import {Button, Card, Col, Row} from 'react-bootstrap';
 import {AgendaItemTypeName} from './AgendaItemType';
 import {BsGeoAlt, BsClock, BsList, BsLink} from 'react-icons/bs';
 
-import format from '../../utils/date-format';
+
+import {format} from '../../utils/date-format';
 import EventsResults from "./EventsResults";
 import {useQuery} from "react-query";
-import {getAgendaitem, getAgendaitemEvents, removeAgendaitem} from "./queries";
-import DefaultSpinner from "../Spinner";
-import PrivateComponent from "../PrivateComponent";
+import {getAgendaitem, removeAgendaitem} from "./queries";
+import DefaultSpinner from "../Generic/Spinner";
+import {Can} from '../../utils/auth-helper';
+
+
 import {Link, useHistory} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {subject} from "@casl/ability";
+import SubscriptionsCard from "./Components/SubscriptionsCard";
+import AgendaItemEventsCard from "./Components/AgendaItemEventsCard";
 
-
-const AgendaItemEvents = ({agendaItemId}) => {
-    const { isLoading, isError, data, error } = useQuery(['agendaitemevents', agendaItemId], getAgendaitemEvents);
-    const events = data;
-    if (isLoading) {
-        return <DefaultSpinner />
-    }
-
-    if (!events || events.length === 0){
-        return <ListGroup variant="flush">
-            <ListGroup.Item>
-                Geen Programma
-            </ListGroup.Item>
-        </ListGroup>;
-    }
-    return <ListGroup variant="flush">
-        {events.map(event => {
-            let date = new Date(event.date);
-            return <ListGroup.Item key={event.id}>{format(date, 'p')} {event.name}</ListGroup.Item>;
-        })}
-    </ListGroup>;
-
-}
 
 function AgendaItem(props) {
     const {t} = useTranslation('generic');
     const history = useHistory();
     const id = props.match.params.id;
-    const { isLoading, isError, data: agendaItem, error } = useQuery(['agendaitems', id], getAgendaitem)
-
+    const {isLoading, isError, data: agendaItem, error} = useQuery(['agendaitems', id], getAgendaitem)
     if (isLoading) {
-        return <DefaultSpinner />;
+        return <DefaultSpinner/>;
     }
     if (!agendaItem) {
         return null;
@@ -59,13 +41,18 @@ function AgendaItem(props) {
     return <React.Fragment>
         <Row>
             <Col md={8}>
-                <h1>{agendaItem.name} <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id} /></small></h1>
+                <h1>{agendaItem.name} <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id}/></small></h1>
             </Col>
+
             <Col md={4} className="d-flex">
-                <PrivateComponent>
-                    <Button variant='warning' className='align-self-center' as={Link} to={`/agendaitems/${id}/edit`}>{t('edit')}</Button>
-                    <Button variant='danger' className='align-self-center' onClick={onClickRemove}>{t('remove')}</Button>
-                </PrivateComponent>
+                <Can I='update' this={subject('Agendaitem', agendaItem)}>
+                    <Button variant='warning' className='align-self-center' as={Link}
+                            to={`/agendaitems/${id}/edit`}>{t('edit')}</Button>
+                </Can>
+                <Can I='delete' this={subject('Agendaitem', agendaItem)}>
+                    <Button variant='danger' className='align-self-center'
+                            onClick={onClickRemove}>{t('remove')}</Button>
+                </Can>
             </Col>
         </Row>
         <Row>
@@ -98,14 +85,10 @@ function AgendaItem(props) {
                 </Col></Row>
             </Col>
             <Col md={4}>
-                <Card>
-                    <Card.Header>Programma</Card.Header>
-                    <AgendaItemEvents agendaItemId={agendaItem.id}/>
-                </Card>
-                <Card style={{marginTop: 20}}>
-                    <Card.Header>Inschrijflijst</Card.Header>
-                    <Card.Body>Je moet inloggen om inschrijvingen te zien of aan te vullen.</Card.Body>
-                </Card>
+                <AgendaItemEventsCard agendaItemId={agendaItem.id}/>
+                <Can I="read" a="Subscription" passThrough>
+                    {allowed => <SubscriptionsCard agendaItem={agendaItem} allowed={allowed}/>}
+                </Can>
             </Col>
         </Row>
     </React.Fragment>

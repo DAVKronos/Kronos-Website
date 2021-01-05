@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Button, Form, FormControl, Nav} from "react-bootstrap";
-import format from "../../utils/date-format";
+import {format} from "../../utils/date-format";
 
 
 const MonthSwitcher = ({date}) => {

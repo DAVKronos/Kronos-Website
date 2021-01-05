@@ -2,14 +2,14 @@ import React from 'react';
 import MonthSwitcher from "../Generic/MonthSwitcher";
 import {Card, Col, Row, Accordion, Button} from "react-bootstrap";
 import {Link, useLocation} from "react-router-dom";
-import format from "../../utils/date-format";
+import {format} from "../../utils/date-format";
 import {AgendaItemTypeName} from "../AgendaItems/AgendaItemType";
 import EventsResults from "../AgendaItems/EventsResults";
 import {BsChevronDown} from 'react-icons/bs';
 import {useQuery} from "react-query";
 import {getResults} from "./queries";
 import {parseParams} from "../../utils/generic";
-import DefaultSpinner from "../Spinner";
+import DefaultSpinner from "../Generic/Spinner";
 
 
 const Results = () => {

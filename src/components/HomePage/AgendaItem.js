@@ -1,7 +1,7 @@
 import React from "react";
 import {Row, Col} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import format from '../../utils/date-format';
+import {format} from '../../utils/date-format';
 
 const AgendaItem = ({item}) => {
     const date = new Date(item.date);

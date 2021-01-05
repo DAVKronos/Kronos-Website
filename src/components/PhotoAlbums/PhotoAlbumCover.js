@@ -2,8 +2,8 @@ import React from 'react';
 import {Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {getAPIHostUrl, PhotoAlbumsCollection} from "../../utils/rest-helper";
-import format from '../../utils/date-format';
-import DefaultSpinner from "../Spinner";
+import {format} from '../../utils/date-format';
+import DefaultSpinner from "../Generic/Spinner";
 import {useQuery} from "react-query";
 import {getPhotoAlbum} from "./queries";
 
