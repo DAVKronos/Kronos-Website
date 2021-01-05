@@ -61,8 +61,9 @@ class AgendaitemsController < ApplicationController
 
   def create
     agendaitem = Agendaitem.new(agendaitem_params)
+    agendaitem.user = current_user
 	if agendaitem.save
-      agendaitem.user = current_user
+
       flash[:notice] = 'Agendaitem was successfully created.'
       redirect_to agendaitem
     else

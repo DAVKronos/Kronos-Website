@@ -7,7 +7,6 @@ module Api
       def index
         @agendaitem = Agendaitem.find(params[:agendaitem_id])
         @subscriptions = @agendaitem.subscriptions
-        @subscription = @subscriptions.build
 
         respond_to do |format|
           format.html # index.html.erb
@@ -55,7 +54,7 @@ module Api
             CommissionMailer.subscription_email(@agendaitem, @subscription.name, current_user).deliver
 
             format.html { redirect_to agendaitem_path(@agendaitem), notice: 'Subscription was successfully created.' }
-            format.json { render json: @subscription, status: :created, location: @subscription }
+            format.json { render json: @subscription, status: :created }
           else
             format.html { render action: "new" }
             format.json { render json: @subscription.errors, status: :unprocessable_entity }

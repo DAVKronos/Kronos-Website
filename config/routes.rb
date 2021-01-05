@@ -154,6 +154,7 @@ Rails.application.routes.draw do
         end
       end
 
+      get '/abilities', :to => 'abilities#index'
     end
   end
   root :to => 'pages#home'

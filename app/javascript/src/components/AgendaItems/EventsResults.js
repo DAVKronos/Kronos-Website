@@ -1,5 +1,5 @@
 import React from 'react';
-import DefaultSpinner from "../Spinner";
+import DefaultSpinner from "../Generic/Spinner";
 import {Table} from 'react-bootstrap';
 import {useQuery} from "react-query";
 import {getAgendaitemEvents} from "./queries";

@@ -2,7 +2,7 @@ import React from "react";
 import ShortNewsItem from "./ShortNewsItem";
 import NewsItemCarousel from "./NewsItemCarousel";
 import {getNewsItems} from "./queries";
-import DefaultSpinner from "../Spinner";
+import DefaultSpinner from "../Generic/Spinner";
 import {useQuery} from "react-query";
 
 

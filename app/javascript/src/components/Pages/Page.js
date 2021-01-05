@@ -1,6 +1,6 @@
 import React from "react";
 import ReactMarkdown from 'react-markdown';
-import Spinner from "../Spinner";
+import Spinner from "../Generic/Spinner";
 import {useQuery} from "react-query";
 import {getPage, getPageByPageTag} from "./queries";
 

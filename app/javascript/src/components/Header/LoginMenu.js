@@ -3,7 +3,7 @@ import {Button, Form, Nav, NavDropdown, Row, Col, Image} from 'react-bootstrap';
 import {login, logout} from '../../utils/auth-helper'
 import { authContext } from '../../utils/AuthContext';
 import {BsPersonFill} from 'react-icons/bs';
-import DefaultSpinner from "../Spinner";
+import DefaultSpinner from "../Generic/Spinner";
 import {NavLink} from "react-router-dom";
 
 const LoginMenu = () => {

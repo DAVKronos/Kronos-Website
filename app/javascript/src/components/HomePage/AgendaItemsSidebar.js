@@ -3,7 +3,7 @@ import AgendaItem from "./AgendaItem";
 import {Card, ListGroup} from 'react-bootstrap';
 import {useQuery} from "react-query";
 import {getAgendaitems} from "../AgendaItems/queries";
-import DefaultSpinner from "../Spinner";
+import DefaultSpinner from "../Generic/Spinner";
 
 function AgendaItemsSideBar() {
     const { isLoading, isError, data, error } = useQuery('agendaitems', agendaItems)

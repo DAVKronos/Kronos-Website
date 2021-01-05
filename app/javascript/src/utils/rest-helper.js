@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {getCurrentUser} from './auth-helper';
 
 const API_HOST = '/api/v1';
 
@@ -19,10 +18,13 @@ function getCSRFToken(){
     return document.querySelector("meta[name='csrf-token']").getAttribute("content");
 }
 
+function getCurrentUser() {
+    return JSON.parse(sessionStorage.getItem('user'));
+}
+
 function getAuthHeader() {
     const user = getCurrentUser();
-
-    if (user ) {
+    if (user) {
         return { uid: user.uid, 'access-token': user['access-token'], client: user.client };
     } else {
         return {};

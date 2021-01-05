@@ -4,8 +4,8 @@ import NewsItems from "./HomePageNewsItems";
 import AgendaItemsSidebar from "./AgendaItemsSidebar";
 import StravaSidebar from "./StravaSidebar";
 import UserBirthdays from "./UserBirthdays";
-import PrivateComponent from "../PrivateComponent";
 import {useTranslation} from "react-i18next";
+import {Can} from "../../utils/auth-helper";
 
 let HomePage = () => {
     const { t } = useTranslation('homepage');
@@ -20,9 +20,9 @@ let HomePage = () => {
         <Col md={4}>
             <AgendaItemsSidebar />
             <StravaSidebar />
-            <PrivateComponent>
+            <Can I='read' a="User">
                 <UserBirthdays />
-            </PrivateComponent>
+            </Can>
         </Col>
     </Row></React.Fragment>);
 };

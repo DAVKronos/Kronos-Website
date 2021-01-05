@@ -2,7 +2,7 @@ require 'icalendar'
 
 module Api
   module V1
-    class AgendaitemsController < ApplicationController
+    class AgendaitemsController < Api::V1::ApplicationController
       load_and_authorize_resource
       respond_to :html, :json
 
@@ -38,14 +38,6 @@ module Api
         render action: 'archief'
       end
 
-      def new
-        @agendaitem = Agendaitem.new
-        @agendaitem.date = Time.now
-        @agendaitem.subscriptiondeadline = Time.now
-        @commissions = current_user.commissions
-        @commissions = Commission.all if current_user.admin?
-      end
-
       def show
         @agendaitem = Agendaitem.find(params[:id])
         if current_user
@@ -63,11 +55,11 @@ module Api
 
       def create
         agendaitem = Agendaitem.new(agendaitem_params)
+        agendaitem.user = current_user
         if agendaitem.save
-            agendaitem.user = current_user
-            redirect_to agendaitem
+          redirect_to agendaitem
         else
-          render json: {"success": false}
+          render json: {message: agendaitem.errors.full_messages}, status: :bad_request
         end
       end
 

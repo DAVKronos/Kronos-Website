@@ -82,7 +82,7 @@
     -#             %p= comment.commenttext
     -#     = render 'comments_form'
   .col-lg-4
-    - if can?(:update, @agendaitem) || can?(:destroy, @agendaitem) || can?(:create, Result)
+    - if can?(:update, @agendaitem) || can?(:destroy, @agendaitem) || can?(:duplicate, @agendaitem) || can?(:create, Result)
       .btn-group.btn-group-sm
         -if can? :update, @agendaitem
           = link_to t(:edit).capitalize, edit_agendaitem_path(@agendaitem), class: 'btn btn-default'
