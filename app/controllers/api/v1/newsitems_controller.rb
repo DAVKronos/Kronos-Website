@@ -74,15 +74,13 @@ module Api
       # POST /newsitems
       # POST /newsitems.json
       def create
-        @newsitem = Newsitem.new(newsitem_params)
-
         @newsitem = current_user.newsitems.build(newsitem_params)
         @newsitem.agreed = false
 
         respond_to do |format|
           if @newsitem.save
             format.html { redirect_to @newsitem, notice: 'Newsitem was successfully created. Please wait for the moderators to agree on your item' }
-            format.json { render json: @newsitem, status: :created, location: @newsitem }
+            format.json { render json: @newsitem, status: :created}
           else
             format.html { render action: "new" }
             format.json { render json: @newsitem.errors, status: :unprocessable_entity }
@@ -98,7 +96,7 @@ module Api
         respond_to do |format|
           if @newsitem.update_attributes(newsitem_params)
             format.html { redirect_to @newsitem, notice: 'Newsitem was successfully updated.' }
-            format.json { head :ok }
+            format.json { render json: @newsitem }
           else
             format.html { render action: "edit" }
             format.json { render json: @newsitem.errors, status: :unprocessable_entity }

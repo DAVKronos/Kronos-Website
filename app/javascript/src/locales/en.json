@@ -28,19 +28,26 @@
   },
   "models": {
     "agendaitem": {
-      "name": "Dutch name",
-      "name_en": "English name",
+      "name": "Name (Dutch)",
+      "name_en": "Name (English)",
       "date": "Date",
       "agendaitemtype_id": "Agenda item type",
       "intern": "Private",
-      "description": "Dutch description",
-      "description_en": "English description",
+      "description": "Description (Dutch)",
+      "description_en": "Description (English)",
       "location": "Location",
       "url": "URL",
       "commission_id": "Commission",
       "subscribe": "Subscription",
       "subscriptiondeadline": "Subscription deadline",
       "maxsubscription": "Maximum subscriptions"
+    },
+    "newsitem": {
+      "title": "Title (Dutch)",
+      "title_en":"Title (English)",
+      "news": "News message (Dutch)",
+      "news_en": "News message (English)",
+      "articlephoto": "Photo"
     }
   }
 }

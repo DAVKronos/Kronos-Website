@@ -14,6 +14,14 @@ function transformObject(obj) {
     }
 }
 
+function convertToFormData(objectName, data){
+    const formData = new FormData();
+    Object.keys(data).forEach((field) => {
+        formData.append(`${objectName}[${field}]`, data[field]);
+    })
+    return formData
+}
+
 function getCSRFToken(){
     return document.querySelector("meta[name='csrf-token']").getAttribute("content");
 }
@@ -122,5 +130,6 @@ export {
     UsersCollection,
     getAPIHostUrl,
     transformObject,
-    getConfig
+    getConfig,
+    convertToFormData
 }
