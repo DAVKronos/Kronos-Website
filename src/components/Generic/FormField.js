@@ -56,8 +56,15 @@ const FieldControl = ({type, value, setValue, required, ...props}) => {
                            onChange={date => setValue(date)}/>
     } else if (type === 'boolean') {
         return <Form.Check type="checkbox" checked={value} onChange={() => setValue(!value)}/>
+    } else if (type === 'text') {
+        return <Form.Control type="text" value={value || ""} onChange={(e) => setValue(e.target.value)}/>
     } else if (type === 'textarea') {
         return <Form.Control as="textarea" value={value || ""} onChange={(e) => setValue(e.target.value)}/>
+    }  else if (type === 'file') {
+        const handleFileUpload = (e) => {
+            setValue(e.target.files[0]);
+        }
+        return <Form.File onChange={handleFileUpload} />
     }
     return <Form.Control type='text' value={value} onChange={(e) => setValue(e.target.value)}/>
 }

@@ -8,8 +8,7 @@ function getAbilities() {
 }
 
 function updateAbilities(ability) {
-    getAbilities().then(rules => {
-        console.log('update rules');
+    return getAbilities().then(rules => {
         ability.update(rules);
     })
 }
@@ -29,8 +28,9 @@ function login(email, password) {
             user['access-token'] = response.headers['access-token'];
             user['client'] = response.headers['client'];
             sessionStorage.setItem('user', JSON.stringify(user));
-            updateAbilities(ability)
-            return user;
+            return updateAbilities(ability).then(() => {
+                return user;
+            });
         })
         .catch(() => {
             return undefined;
@@ -41,7 +41,7 @@ function logout() {
     return axios.delete(`/api/v1/auth/sign_out`, {...getConfig()})
         .then(() => {
             sessionStorage.removeItem("user");
-            updateAbilities(ability);
+            return updateAbilities(ability);
         })
         .catch(() => {
             return undefined;

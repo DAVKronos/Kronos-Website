@@ -28,19 +28,26 @@
   },
   "models": {
     "agendaitem": {
-      "name": "Nederlandse naam",
-      "name_en": "Engelse naam",
+      "name": "Naam (Nederlands)",
+      "name_en": "Naam (Engels)",
       "date": "Datum",
       "agendaitemtype_id": "Agenda item type",
       "intern": "Prive",
-      "description": "Nederlandse beschrijving",
-      "description_en": "Engelse beschrijving",
+      "description": "Beschrijving (Nederlands)",
+      "description_en": "Beschrijving (Engels)",
       "location": "Locatie",
       "url": "URL",
       "commission_id": "Commissie",
       "subscribe": "Inschrijven",
       "subscriptiondeadline": "Inschrijfdeadline",
       "maxsubscription": "Maximum inschrijvingen"
+    },
+    "newsitem": {
+      "title": "Kop (Nederlands)",
+      "title_en":"Kop (Engels)",
+      "news": "Nieuws bericht (Nederlands)",
+      "news_en": "Nieuws bericht (Engels)",
+      "articlephoto": "Foto"
     }
   }
 
