@@ -22,8 +22,7 @@ const SubscriptionsCard = ({allowed, agendaItem}) => {
     } else {
         body = <Subscriptions agendaItem={agendaItem}/>;
     }
-    return <Card style={{marginTop: 20}}>
-
+    return <Card className='card-margin-top'>
         {body}
     </Card>
 

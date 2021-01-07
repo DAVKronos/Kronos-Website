@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Form} from 'react-bootstrap';
 
 export default function ContactForm() {
-    return <Form style={{padding: 7}}>
+    return <Form className="form-padding">
 		<h3>Stuur ons een bericht</h3>
         <Form.Group controlId="FormBasicName">
 			<Form.Label>Naam</Form.Label>

@@ -1,11 +1,13 @@
 //TODO import all scss files inside component directory
-@import '../styles/_colors';
-@import './Header/Header';
-@import './Footer/Footer';
-@import './AgendaItems/AgendaItems';
-@import './HomePage/HomePage';
-@import './Results/Result';
-@import "../../../../node_modules/bootstrap/scss/bootstrap";
+@import 'styles/colors.scss';
+@import 'components/Header/Header.scss';
+@import 'components/Footer/Footer';
+@import 'components/AgendaItems/AgendaItems.scss';
+@import 'components/HomePage/HomePage';
+@import 'components/Results/Result';
+@import 'components/Generic/MonthSwitcher';
+@import 'components/PhotoAlbums/PhotoAlbum';
+@import "~bootstrap/scss/bootstrap";
 
 html {
   font-size: 14px;
@@ -76,3 +78,10 @@ a {
   margin: 5px 0 0 5px;
 }
 
+.row-margin,.card-margin-top {
+  margin-top: 20px;
+}
+
+.form-padding {
+  padding: 7px;
+}

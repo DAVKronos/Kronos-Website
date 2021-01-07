@@ -62,28 +62,30 @@ const AgendaItems = () => {
                 <h1>Agenda</h1>
             </Col>
         </Row>
-        <Row style={{marginTop: 20}}>
+        <Row className="row-margin">
             <Col md={12}>
                 <MonthSwitcher date={date} />
             </Col>
         </Row>
-        <Row style={{marginTop: 20}}>
+        <Row className="row-margin">
             <Col md={12}>
                 <AgendaItemsFilter filter={filter} onChangeFilter={onChangeFilter}/>
             </Col>
         </Row>
-        <Row style={{marginTop: 20}}>
+        <Row className="row-margin">
             <Col md={12}>
                 {isLoading && <DefaultSpinner/>}
                 {agendaItems && agendaItems.map(item => {
                     let itemDate = new Date(item.date);
-                    return <Link key={item.id} to={`/agendaitems/${item.id}`} className='agenda-item'><Card body style={{marginBottom: 10}}>
-                        <Row>
-                            <Col sm={2}><h4>{format(itemDate, 'd')} <small>{format(itemDate, 'ccc')}</small></h4></Col>
-                            <Col sm={1}><h4>{format(itemDate, 'p')}</h4></Col>
-                            <Col sm={9}><h4>{item.name} <small><AgendaItemTypeName id={item.agendaitemtype_id}/></small></h4></Col>
-                        </Row>
-                    </Card></Link>
+                    return <Link key={item.id} to={`/agendaitems/${item.id}`} className='agenda-item'>
+                        <Card body className="agenda-item-card">
+                            <Row>
+                                <Col sm={2}><h4>{format(itemDate, 'd')} <small>{format(itemDate, 'ccc')}</small></h4></Col>
+                                <Col sm={1}><h4>{format(itemDate, 'p')}</h4></Col>
+                                <Col sm={9}><h4>{item.name} <small><AgendaItemTypeName id={item.agendaitemtype_id}/></small></h4></Col>
+                            </Row>
+                        </Card>
+                    </Link>
                 })}
             </Col>
         </Row>

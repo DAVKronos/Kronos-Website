@@ -8,9 +8,8 @@ const LanguageSwitch = () => {
     if (i18n.language.indexOf('en') >= 0) {
         nextLanguage = 'nl'
     }
-    console.log(nextLanguage);
-    return <Nav.Link  onClick={() => i18n.changeLanguage(nextLanguage)}>
-        <img style={{minWidth: 15}} src={`/assets/Site_${nextLanguage.toUpperCase()}.png`}/>
+    return <Nav.Link className='language-switch' onClick={() => i18n.changeLanguage(nextLanguage)}>
+        <img style={{minWidth: 12}} src={`/assets/Site_${nextLanguage.toUpperCase()}.png`}/>
     </Nav.Link>
 }
 

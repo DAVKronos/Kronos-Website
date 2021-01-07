@@ -30,18 +30,18 @@ function Photo(props) {
 
     let prevPhoto = photoIndex > 0 ? photos[photoIndex - 1] : photo;
     let nextPhoto = photoIndex < photos.length - 1 ? photos[photoIndex + 1] : photo;
-    return <React.Fragment>
+    return <div className="photo-container">
         <Row><Col>
             <h1>{photoAlbum.name}</h1>
             <p>{photoAlbum.date}</p>
         </Col></Row>
         <Row>
-            <Col style={{display: 'flex', justifyContent: 'center'}}>
-                <Image style={{maxWidth: '100%', maxHeight: 400}} src={getAPIHostUrl(photo.photo_url_normal)}/>
+            <Col className="photo" >
+                <Image src={getAPIHostUrl(photo.photo_url_normal)}/>
             </Col>
         </Row>
-        <Row style={{marginTop: 20}}>
-            <Col style={{display: 'flex', justifyContent: 'center'}}>
+        <Row className="row-margin" >
+            <Col className="photo-buttons">
                 <ButtonGroup>
                     <Button disabled={photoIndex === 0} as={NavLink}
                             to={`/photoalbums/${album_id}/${prevPhoto.id}`}>
@@ -55,7 +55,7 @@ function Photo(props) {
 
             </Col>
         </Row>
-    </React.Fragment>;
+    </div>;
 }
 
 export default Photo

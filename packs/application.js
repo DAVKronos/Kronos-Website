@@ -1,5 +1,5 @@
 // Support component names relative to this directory:
-var componentRequireContext = require.context("src/components", true);
+var componentRequireContext = require.context("src", true);
 var ReactRailsUJS = require("react_ujs");
-import '../src/components/App.scss';
+import '../src/App.scss';
 ReactRailsUJS.useContext(componentRequireContext);

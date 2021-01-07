@@ -32,12 +32,12 @@ const Results = () => {
                 <h1>Uitslagen</h1>
             </Col>
         </Row>
-        <Row style={{marginTop: 20}}>
+        <Row className="row-margin">
             <Col md={12}>
                 <MonthSwitcher date={date} />
             </Col>
         </Row>
-        <Row style={{marginTop: 20}}>
+        <Row className="row-margin">
             <Col md={12}>
                 {isLoading && <DefaultSpinner/>}
                 <Accordion defaultActiveKey="0">

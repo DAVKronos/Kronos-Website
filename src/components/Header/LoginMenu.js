@@ -24,7 +24,7 @@ const LoginMenu = () => {
         return <DefaultSpinner/>;
     }
 
-    return <Form style={{padding: 7}} onSubmit={onFormSubmit}>
+    return <Form className="form-padding" onSubmit={onFormSubmit}>
         <Form.Group controlId="formBasicEmail">
             <Form.Control type="email" placeholder="Emailadres" onChange={e => {
                 setEmail(e.target.value);
@@ -36,9 +36,9 @@ const LoginMenu = () => {
                 setPassword(e.target.value);
             }}/>
         </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Onthoud mij"/>
-        </Form.Group>
+        {/*<Form.Group controlId="formBasicCheckbox">*/}
+        {/*    <Form.Check type="checkbox" label="Onthoud mij"/>*/}
+        {/*</Form.Group>*/}
         <Button variant="primary" type='submit' >
             Inloggen
         </Button>
@@ -54,9 +54,9 @@ const LoggedInMenu = ({user}) => {
         });
     }
     return <React.Fragment>
-        <div style={{'display': 'flexbox', 'justifyContent': 'center'}}>
+        <div className="logged-in-menu">
             <Image src="" roundedCircle />
-            <h3 style={{textAlign: 'center'}}>{firstName}</h3>
+            <h3>{firstName}</h3>
         </div>
 
         <NavDropdown.Item as={NavLink} to={`/users/${user.id}`}>{firstName}'s stek</NavDropdown.Item>
