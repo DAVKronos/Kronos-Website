@@ -3,14 +3,14 @@ FROM phusion/passenger-ruby25
 
 #RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
 
-ENV HOME /home/rails/webapp
+ENV HOME /app/
 ENV RAILS_ENV development
 
 # Install our PGP key and add HTTPS support for APT
-RUN apt-get update -qq
-RUN apt-get install -y dirmngr gnupg
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
-RUN apt-get install -y apt-transport-https ca-certificates
+RUN apt-get update -qq && \
+    apt-get install -y dirmngr gnupg && \
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7 && \
+    apt-get install -y apt-transport-https ca-certificates
 
 # Add our APT repository
 #RUN sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main > /etc/apt/sources.list.d/passenger.list'
@@ -19,25 +19,18 @@ RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get update && \
-    apt-get install -qq -y build-essential nodejs yarn \
+    apt-get install -qq -y build-essential nodejs yarn libcurl4-openssl-dev \
     libpq-dev \
     ghostscript nginx-extras tzdata imagemagick
 
-RUN useradd kronos
-
 WORKDIR $HOME
 
-COPY Gemfile* $HOME/
-RUN bundle install
+ADD package.json yarn.lock $HOME
+RUN yarn install
+
+COPY Gemfile* $HOME
+RUN bundle install -j $(nproc)
 
 # Make the app user owner of the app folder
-RUN chown -R kronos $HOME
+RUN chown -R app $HOME
 
-USER kronos
-
-# Gems will be installed later
-ENV BUNDLE_PATH /bundler-cache
-
-#RUN gem install bundler
-
-USER root

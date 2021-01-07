@@ -96,7 +96,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth'
 
-      resources :photoalbums
+      resources :photoalbums do
+        resources :photos do
+          member do
+            get 'random'
+          end
+        end
+      end
 
       resources :commissions
       resources :commission_memberships

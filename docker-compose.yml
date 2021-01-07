@@ -1,25 +1,44 @@
 version: '2'
+volumes:
+  node_modules:
+  bundle:
+  packs:
+  rails_cache:
+  postgres:
 services:
   db:
     image: postgres:9.1.22
+    volumes:
+      - postgres:/var/lib/postgresql/data
   app:
+    image: ${DOCKER_IMAGE_NAME-kronoswebsite}
     build:
       context: .
       dockerfile: Dockerfile-development
     ports:
       - "3000:3000"
-      - "3035:3035"
       - "8888:8888"
     depends_on:
       - db
+    links:
+      - webpacker
     env_file: .env
     command: sh ./script/start_app_development.sh
     volumes:
       # Path on the host, relative to the Compose file
-      - ./:/home/rails/webapp/:delegated
-    volumes_from:
-      - bundler-box
-  bundler-box:
-    image: busybox
+      - .:/app:cached
+      - bundle:/usr/local/bundle
+#      - rails_cache:/home/rails/webapp/tmp/cache
+      - node_modules:/app/node_modules
+      - packs:/app/public/packs
+  webpacker:
+    image: ${DOCKER_IMAGE_NAME-kronoswebsite}
+    ports:
+      - "3035:3035"
+    command: sh ./script/start_webpack_dev.sh
     volumes:
-    - /bundler-cache
+      # Path on the host, relative to the Compose file
+      - .:/app:cached
+      - bundle:/usr/local/bundle
+      - node_modules:/app/node_modules
+      - packs:/app/public/packs
