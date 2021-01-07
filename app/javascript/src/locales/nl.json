@@ -7,7 +7,8 @@
     "cancel": "Terug",
     "empty": "Leeg",
     "create": "Aanmaken",
-    "new": "Nieuw"
+    "new": "Nieuw",
+    "not_found": "Not found"
   },
   "homepage": {
     "readMore": "Lees meer",
@@ -48,6 +49,13 @@
       "news": "Nieuws bericht (Nederlands)",
       "news_en": "Nieuws bericht (Engels)",
       "articlephoto": "Foto"
+    },
+    "photoalbum": {
+      "name": "Naam (Nederlands)",
+      "name_en":"Naam (Engels)",
+      "date": "Datum",
+      "public": "Publiek",
+      "external_url": "Externe URL"
     }
   }
 

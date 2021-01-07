@@ -7,7 +7,8 @@
     "cancel": "Cancel",
     "empty": "Empty",
     "create": "Create",
-    "new": "New"
+    "new": "New",
+    "not_found": "Not found"
   },
   "homepage": {
     "readMore": "Read more",
@@ -48,6 +49,13 @@
       "news": "News message (Dutch)",
       "news_en": "News message (English)",
       "articlephoto": "Photo"
+    },
+    "photoalbum": {
+      "name": "Name (Dutch)",
+      "name_en":"Name (English)",
+      "date": "Date",
+      "public": "Public",
+      "external_url": "External URL"
     }
   }
 }

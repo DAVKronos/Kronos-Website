@@ -31,6 +31,12 @@ module Api
         end
       end
 
+      def random
+        @photo = Photoalbum.find(params[:photoalbum_id]).photos.order(Arel.sql('RANDOM()')).first
+
+        render json: @photo.to_json(methods: [:photo_url_normal, :photo_url_thumb])
+      end
+
       def destroy
         @photo = Photo.find(params[:id])
         @photo.destroy
