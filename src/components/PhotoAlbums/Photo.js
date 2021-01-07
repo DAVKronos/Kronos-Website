@@ -1,13 +1,15 @@
 import React from 'react';
 import {Button, ButtonGroup, Col, Image, Row} from 'react-bootstrap';
-import {NavLink} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import {getAPIHostUrl} from "../../utils/rest-helper";
 import {useQuery} from "react-query";
 import {getPhotoAlbum} from "./queries";
+import {useTranslation} from "react-i18next";
 
 
 function Photo(props) {
     const id = props.match.params.album_id;
+    const {t} = useTranslation('generic');
     const { isLoading, isError, data, error } = useQuery(['photoalbums', id], getPhotoAlbum)
     let photoAlbum = data;
     if (!photoAlbum) {
@@ -21,7 +23,7 @@ function Photo(props) {
 
     let photoIndex = photos.findIndex(item => item.id === photo_id)
     if (photoIndex < 0) {
-        return <h3>Foto niet gevonden</h3>;
+        return <h3>{t('not_found')}</h3>;
     }
 
     let photo = photos[photoIndex];

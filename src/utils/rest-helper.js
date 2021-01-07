@@ -90,44 +90,10 @@ function getAPIHostUrl(url) {
     return 'http://localhost:3000' + url;
 }
 
-class AgendaItems extends ObjectCollection {
-
-    getEvents(id) {
-        return restCall(`${this.url}/${id}/events`).then(response => {
-            return Promise.all(response.data.map(async event  => {
-                let event_type = await EventTypesCollection.get(event.eventtype_id)
-                return {...event, ...event_type};
-
-            }));
-        });
-    }
-}
-
-
-const PhotoAlbumsCollection = new ObjectCollection('api/v1/photoalbums');
-const NewsItemsCollection = new ObjectCollection('newsitems');
-const AgendaItemsCollection = new AgendaItems('agendaitems');
-const PagesCollection = new ObjectCollection('pages');
-const AgendaItemTypesCollection = new ObjectCollection('agendaitemtypes');
-const CommissionCollection = new ObjectCollection('commissions');
-const EventTypesCollection = new ObjectCollection('eventtypes');
-const ResultsCollection = new ObjectCollection('results');
-const EventsCollection = new ObjectCollection('events')
-const UsersCollection = new ObjectCollection('users')
 
 export {
     restCall,
     API_HOST,
-    NewsItemsCollection,
-    AgendaItemsCollection,
-    PagesCollection,
-    PhotoAlbumsCollection,
-    AgendaItemTypesCollection,
-    CommissionCollection,
-    EventTypesCollection,
-    ResultsCollection,
-    EventsCollection,
-    UsersCollection,
     getAPIHostUrl,
     transformObject,
     getConfig,

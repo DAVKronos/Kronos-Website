@@ -39,10 +39,12 @@ const PhotoAlbum = (props) => {
     let photosPage = photos.slice((currentPage-1)*photosPerPage, currentPage * photosPerPage);
 
     return <React.Fragment>
-        <Row><Col>
-            <h1>{photoAlbum.name}</h1>
-            <p>aangemaakt: {format(photoAlbum.created_at, 'PPP p')}</p>
-        </Col></Row>
+        <Row>
+            <Col>
+                <h1>{photoAlbum.name}</h1>
+                <p>aangemaakt: {format(photoAlbum.created_at, 'PPP p')}</p>
+            </Col>
+        </Row>
         <Row>
             {photosPage && photosPage.map(photo => {
                 return <Col key={photo.id} md={4} sm={4}>
