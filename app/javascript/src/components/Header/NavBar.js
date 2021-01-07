@@ -4,9 +4,9 @@ import {NavLink} from 'react-router-dom';
 import UserMenu from "./LoginMenu";
 import {useQuery} from "react-query";
 import {getPages} from "./queries";
-import LanguageSwitch from "./LanguageSwitch";
 import {useTranslation} from "react-i18next";
 import {Can} from "../../utils/auth-helper";
+import LanguageSwitch from "./LanguageSwitch";
 
 function getPagesForMenu(pages, title) {
     return pages.filter((page) => {
@@ -54,11 +54,12 @@ const NavBar =  () => {
                 {getHighlightPages(pages)}
             </Nav>
             <Nav className="justify-content-end">
-                <LanguageSwitch />
+
                 <Can I='read' an="User">
-                    <Nav.Link as={NavLink} to="/users">Leden</Nav.Link>
+                    <Nav.Link as={NavLink} to="/users">{t('users')}</Nav.Link>
                 </Can>
                 <UserMenu/>
+                <LanguageSwitch />
             </Nav>
         </Navbar.Collapse>
     </Navbar>

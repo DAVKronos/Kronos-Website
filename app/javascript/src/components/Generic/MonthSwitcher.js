@@ -43,8 +43,8 @@ const MonthSwitcher = ({date}) => {
         </Nav.Item>
         <Nav.Item>
             <Form inline onSubmit={onClickSearch}>
-                <FormControl style={{width: 50}} type="text" placeholder="MM" value={searchMonth} onChange={(event) => setSearchMonth(event.target.value)} className="mr-sm-1" />
-                <FormControl style={{width: 100}} type="text" placeholder="YYYY" value={searchYear} onChange={(event) => setSearchYear(event.target.value)} className="mr-sm-1" />
+                <FormControl className="monthswitcher-month mr-sm-1" type="text" placeholder="MM" value={searchMonth} onChange={(event) => setSearchMonth(event.target.value)} />
+                <FormControl className="monthswitcher-year mr-sm-1" type="text" placeholder="YYYY" value={searchYear} onChange={(event) => setSearchYear(event.target.value)}  />
                 <Button variant="outline-success" type="submit">Search</Button>
             </Form>
         </Nav.Item>

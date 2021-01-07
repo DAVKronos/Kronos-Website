@@ -56,7 +56,7 @@ const PhotoAlbum = (props) => {
                 </Col>;
             })}
         </Row>
-        <Row style={{marginTop: 20}}>
+        <Row className="row-margin">
             <Col>
                 <Pagination>
                     <Pagination.Prev disabled={currentPage===1} onClick={() => setCurrentPage(currentPage - 1 )}/>
