@@ -4,7 +4,8 @@ import DefaultSpinner from "../Generic/Spinner";
 import {useHistory} from "react-router-dom";
 import EditObjectComponent from "../Generic/EditObjectComponent";
 import PhotoAlbumForm from "./PhotoAlbumForm";
-import {updatePhotoAlbum} from "./queries";
+import {getPhotoAlbum, updatePhotoAlbum} from "./queries";
+import EditPhotos from "./EditPhotos";
 
 const EditPhotoAlbumWithData = (props) => {
     const id = props.match.params.id;
@@ -12,7 +13,7 @@ const EditPhotoAlbumWithData = (props) => {
     if (isLoading) {
         return <DefaultSpinner />;
     }
-    return data && <EditPhotoAlbum photoAlbum={data} />
+    return data && <EditPhotoAlbum photoAlbum={data} />;
 }
 
 const EditPhotoAlbum = ({photoAlbum}) => {
@@ -26,7 +27,7 @@ const EditPhotoAlbum = ({photoAlbum}) => {
         history.push(`/photoalbums/${savedPhotoAlbum.id}`)
     }
 
-    return <EditObjectComponent
+    return <div><EditObjectComponent
         id={id}
         existingObject={editableFields}
         objectName='Photo album'
@@ -34,6 +35,8 @@ const EditPhotoAlbum = ({photoAlbum}) => {
         onSuccess={onSuccess}
         FormComponent={PhotoAlbumForm}
     />
+    <EditPhotos photoAlbumId={id}/>
+    </div>
 }
 
 export default EditPhotoAlbumWithData

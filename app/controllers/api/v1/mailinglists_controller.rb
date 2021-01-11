@@ -1,4 +1,4 @@
-class MailinglistsController < ApplicationController
+class MailinglistsController < Api::V1::ApplicationController
   load_and_authorize_resource
 
   def index

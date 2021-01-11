@@ -1,6 +1,6 @@
 module Api
   module V1
-    class UsersController < ApplicationController
+    class UsersController < Api::V1::ApplicationController
       load_and_authorize_resource
       skip_load_resource only: :create
 

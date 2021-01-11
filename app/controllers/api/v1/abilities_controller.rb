@@ -1,6 +1,6 @@
 module Api
   module V1
-    class AbilitiesController < ApplicationController
+    class AbilitiesController < Api::V1::ApplicationController
       load_and_authorize_resource
       respond_to :json
 

@@ -21,7 +21,7 @@ import {Container} from 'react-bootstrap';
 
 const AppRouter = () => {
     return <Router basename={'/app'}>
-        <Container>
+        <Container fluid="lg">
         <Header />
         <div className='main'>
             <Switch>

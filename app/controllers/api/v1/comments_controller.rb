@@ -1,6 +1,6 @@
 module Api
   module V1
-    class CommentsController < ApplicationController
+    class CommentsController < Api::V1::ApplicationController
       load_and_authorize_resource
       # GET /comments
       # GET /comments.json

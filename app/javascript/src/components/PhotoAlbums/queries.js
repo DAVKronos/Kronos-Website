@@ -1,4 +1,4 @@
-import {restCall} from "../../utils/rest-helper";
+import {convertToFormData, restCall} from "../../utils/rest-helper";
 
 
 function getPhotoAlbums() {
@@ -21,10 +21,33 @@ function removePhotoAlbum(id) {
     return restCall(`photoalbums/${id}`, {method: "DELETE"}).then(res => res.data);
 }
 
-function addPhotosToAlbums(photoAlbumId, data) {
+function getPhotos(queryKey, photoAlbumId) {
+    return restCall(`photoalbums/${photoAlbumId}/photos`).then(res => res.data);
+}
 
+async function addPhotosToAlbums(photoAlbumId, photos, progressCallBack) {
+    const total = photos.length;
+
+
+
+    for (const photo of [...photos]) {
+        let idx = [...photos].indexOf(photo);
+        const formData = convertToFormData('photo', {photo});
+        const onUploadProgress = (e) => {
+            if (e.lengthComputable) {
+                progressCallBack({loaded: idx + 0.9 * (e.loaded / e.total), total});
+            }
+        }
+        await restCall(`photoalbums/${photoAlbumId}/photos`, {method: "POST", data: formData, onUploadProgress}).then(() => {
+            progressCallBack({loaded: idx+1, total});
+        });
+    }
+    return Promise.resolve();
+}
+
+function deletePhoto(photoAlbumId, photoId) {
+    return restCall(`photoalbums/${photoAlbumId}/photos/${photoId}`, {method: "DELETE"}).then(res => res.data);
 }
 
 
-
-export {getPhotoAlbums, getPhotoAlbum, createPhotoAlbum, updatePhotoAlbum, removePhotoAlbum}
+export {getPhotoAlbums, getPhotoAlbum, createPhotoAlbum, updatePhotoAlbum, removePhotoAlbum, getPhotos, addPhotosToAlbums, deletePhoto}

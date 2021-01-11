@@ -5,21 +5,19 @@ import {getAPIHostUrl} from "../../utils/rest-helper";
 import {format} from '../../utils/date-format';
 import DefaultSpinner from "../Generic/Spinner";
 import {useQuery, useQueryCache} from "react-query";
-import {getPhotoAlbum, removePhotoAlbum} from "./queries";
+import {getPhotos, removePhotoAlbum} from "./queries";
 import {subject} from "@casl/ability";
 import {Can} from "../../utils/auth-helper";
 import {useTranslation} from "react-i18next";
 
-const PhotoAlbumCover = (props) => {
-    const id = props.photoAlbum.id;
+const PhotoAlbumCover = ({photoAlbum}) => {
+    const id = photoAlbum.id;
     const queryCache = useQueryCache();
     const {t} = useTranslation('generic');
-    const { isLoading, isError, data, error } = useQuery(['photoalbums', id], getPhotoAlbum)
+    const { isLoading, isError, data: photos, error } = useQuery(['photos', id], getPhotos)
 
 
-    let {photoAlbum} = props;
-    const photoAlbumData = data;
-    let photoThumb = photoAlbumData && photoAlbumData.photos && photoAlbumData.photos[0] && photoAlbumData.photos[0].photo_url_thumb;
+    let photoThumb = photos && photos[0] && photos[0].photo_url_thumb;
 
     const onClickRemove = () => {
         removePhotoAlbum(id).then(() => {
@@ -29,7 +27,7 @@ const PhotoAlbumCover = (props) => {
 
     return <Card style={{marginBottom: 10}}>
         {isLoading && <DefaultSpinner />}
-        {photoAlbumData && <Card.Img variant="top" src={getAPIHostUrl(photoThumb)} />}
+        {photoAlbum && <Card.Img variant="top" src={getAPIHostUrl(photoThumb)} />}
         <Card.Body>
             <Card.Title><Link to={`/photoalbums/${photoAlbum.id}`}>{photoAlbum.name}</Link></Card.Title>
             <Card.Text>

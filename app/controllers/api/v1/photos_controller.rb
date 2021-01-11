@@ -1,12 +1,11 @@
 module Api
   module V1
-    class PhotosController < ApplicationController
+    class PhotosController < Api::V1::ApplicationController
       load_and_authorize_resource
-      protect_from_forgery :except => [:create, :delete]
 
       def index
-        @photos = Photoalbum.find(params[:photoalbum_id]).photos
-        render :json => @photos.collect { |p| p.to_jq_upload }.to_json
+        @photos = Photoalbum.find(params[:photoalbum_id]).photos.order('exif_date ASC, photo_file_name ASC, created_at ASC')
+        render json: @photos.collect { |p| p.as_json(methods: [:photo_url_original, :photo_url_thumb]) }
       end
 
       def create
@@ -19,11 +18,8 @@ module Api
 
         if @photo.save
           respond_to do |format|
-            format.html {
-              render :json => [@photo.to_jq_upload].to_json
-            }
             format.json {
-              render :json => {files: [@photo.to_jq_upload]}.to_json
+              render json:  @photo.to_json_with_urls
             }
           end
         else
@@ -34,17 +30,14 @@ module Api
       def random
         @photo = Photoalbum.find(params[:photoalbum_id]).photos.order(Arel.sql('RANDOM()')).first
 
-        render json: @photo.to_json(methods: [:photo_url_normal, :photo_url_thumb])
+        render json: @photo.to_json_with_urls
       end
 
       def destroy
         @photo = Photo.find(params[:id])
         @photo.destroy
         respond_to do |format|
-          format.html { redirect_to @photo.photoalbum }
-          format.json {
-            render :json => {}.to_json
-          }
+          format.json { head :ok }
         end
       end
 

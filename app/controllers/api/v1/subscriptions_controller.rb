@@ -1,6 +1,6 @@
 module Api
   module V1
-    class SubscriptionsController < ApplicationController
+    class SubscriptionsController < Api::V1::ApplicationController
       load_and_authorize_resource
       # GET /subscriptions
       # GET /subscriptions.json

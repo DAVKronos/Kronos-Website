@@ -1,6 +1,6 @@
 module Api
   module V1
-    class ResultsController < ApplicationController
+    class ResultsController < Api::V1::ApplicationController
       load_and_authorize_resource
 
       def index

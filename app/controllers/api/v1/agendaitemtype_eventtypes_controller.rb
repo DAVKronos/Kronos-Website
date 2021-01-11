@@ -1,7 +1,7 @@
 module Api
   module V1
 
-    class AgendaitemtypeEventtypesController < ApplicationController
+    class AgendaitemtypeEventtypesController < Api::V1::ApplicationController
       load_and_authorize_resource
       # GET /agendaitemtype_eventtypes
       # GET /agendaitemtype_eventtypes.json

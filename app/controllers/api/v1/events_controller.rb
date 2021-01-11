@@ -1,6 +1,6 @@
 module Api
   module V1
-    class EventsController < ApplicationController
+    class EventsController < Api::V1::ApplicationController
       load_and_authorize_resource
       # GET /events
       # GET /events.json

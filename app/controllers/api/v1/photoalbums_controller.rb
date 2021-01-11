@@ -1,11 +1,11 @@
 module Api
   module V1
-    class PhotoalbumsController < ApplicationController
+    class PhotoalbumsController < Api::V1::ApplicationController
       load_and_authorize_resource
       # GET /photoalbums
       # GET /photoalbums.json
       def index
-        @photoalbums = Photoalbum.order('eventdate DESC NULLS LAST, created_at DESC ').includes(:agendaitem)
+        @photoalbums = Photoalbum.order(Arel.sql('eventdate DESC NULLS LAST, created_at DESC ')).includes(:agendaitem)
 
         if current_user.nil?
           @photoalbums = @photoalbums.where(public: true)
@@ -23,7 +23,7 @@ module Api
         @allphotos = @photoalbum.photos.all.order('exif_date ASC, photo_file_name ASC, created_at ASC')
 
         respond_to do |format|
-          format.json { render json: {photoalbum: @photoalbum.as_json, photos: @allphotos.map { |photo| photo.as_json(methods: [:photo_url_normal, :photo_url_thumb]) }} }
+          format.json { render json: @photoalbum.as_json }
         end
       end
 
@@ -50,7 +50,7 @@ module Api
         respond_to do |format|
           if @photoalbum.save
             format.html { redirect_to edit_photoalbum_path @photoalbum, notice: 'Photoalbum was successfully created.' }
-            format.json { render json: @photoalbum, status: :created, location: @photoalbum }
+            format.json { render json: @photoalbum, status: :created }
           else
             format.html { render 'new' }
             format.json { render json: @photoalbum.errors, status: :unprocessable_entity }
@@ -66,7 +66,7 @@ module Api
         respond_to do |format|
           if @photoalbum.update_attributes(photoalbum_params)
             format.html { redirect_to @photoalbum, notice: 'Photoalbum was successfully updated.' }
-            format.json { head :ok }
+            format.json { render json:@photoalbum }
           else
             format.html { render action: "edit" }
             format.json { render json: @photoalbum.errors, status: :unprocessable_entity }

@@ -42,8 +42,12 @@ class Photo < ApplicationRecord
       }
   end
 
-  def photo_url_normal
-    photo.url(:normal)
+  def to_json_with_urls
+    self.photo.as_json(methods: [:photo_url_original, :photo_url_thumb])
+  end
+
+  def photo_url_original
+    photo.url(:original)
   end
 
   def photo_url_thumb
