@@ -8,7 +8,10 @@
     "empty": "Empty",
     "create": "Create",
     "new": "New",
-    "not_found": "Not found"
+    "not_found": "Not found",
+    "previous": "Previous",
+    "next": "Next",
+    "back": "Back"
   },
   "homepage": {
     "readMore": "Read more",
@@ -27,7 +30,13 @@
   "footer": {
     "sponsors": "Sponsors"
   },
+  "photoAlbum": {
+    "no_photos": "No photos in this album"
+  },
   "models": {
+    "generic": {
+      "created_at": "Created at"
+    },
     "agendaitem": {
       "name": "Name (Dutch)",
       "name_en": "Name (English)",

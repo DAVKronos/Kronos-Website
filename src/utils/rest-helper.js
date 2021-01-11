@@ -41,7 +41,7 @@ function getAuthHeader() {
 
 function getConfig() {
     let cfg = {...config}
-    cfg.headers['X-CSRF-TOKEN'] = getCSRFToken();
+    // cfg.headers['X-CSRF-TOKEN'] = getCSRFToken();
     cfg.headers = {...cfg.headers, ...getAuthHeader()};
     return cfg;
 }

@@ -8,7 +8,10 @@
     "empty": "Leeg",
     "create": "Aanmaken",
     "new": "Nieuw",
-    "not_found": "Not found"
+    "not_found": "Not found",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "back": "Terug"
   },
   "homepage": {
     "readMore": "Lees meer",
@@ -27,7 +30,13 @@
   "footer": {
     "sponsors": "Sponsoren"
   },
+  "photoAlbum": {
+    "no_photos": "Geen foto's in dit album"
+  },
   "models": {
+    "generic": {
+      "created_at": "Aangemaakt op"
+    },
     "agendaitem": {
       "name": "Naam (Nederlands)",
       "name_en": "Naam (Engels)",
