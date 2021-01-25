@@ -15,7 +15,7 @@ const NewAgendaItem = () => {
 
 
     return <NewObjectComponent
-        objectName={'Agendaitem'}
+        objectName='agendaItem'
         FormComponent={AgendaItemForm}
         createFunction={createAgendaitem}
         onSuccess={onSuccess}

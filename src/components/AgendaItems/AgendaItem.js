@@ -50,8 +50,14 @@ function AgendaItem(props) {
                             to={`/agendaitems/${id}/edit`}>{t('edit')}</Button>
                 </Can>
                 <Can I='delete' this={subject('Agendaitem', agendaItem)}>
-                    <Button variant='danger' className='align-self-center'
-                            onClick={onClickRemove}>{t('remove')}</Button>
+                    <Button variant='danger' className='align-self-center' onClick={onClickRemove}>
+                        {t('remove')}
+                    </Button>
+                </Can>
+
+                <Can I='create' a='Result'>
+                    <Button variant='primary' className='align-self-center'
+                            as={Link} to={`/agendaitems/${id}/events`} >{t('models:modelNames.result_plural')}</Button>
                 </Can>
             </Col>
         </Row>
@@ -85,7 +91,7 @@ function AgendaItem(props) {
                 </Col></Row>
             </Col>
             <Col md={4}>
-                <AgendaItemEventsCard agendaItemId={agendaItem.id}/>
+                <AgendaItemEventsCard agendaItemId={agendaItem.id} agendaItemTypeId={agendaItem.agendaitemtype_id}/>
                 <Can I="read" a="Subscription" passThrough>
                     {allowed => <SubscriptionsCard agendaItem={agendaItem} allowed={allowed}/>}
                 </Can>

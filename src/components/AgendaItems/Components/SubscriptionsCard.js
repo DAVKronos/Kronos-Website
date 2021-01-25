@@ -5,8 +5,10 @@ import {useQuery, useQueryCache} from "react-query";
 import {createSubscription, getSubscriptions, removeSubscription} from "../queries";
 import DefaultSpinner from "../../Generic/Spinner";
 import {formatDistanceToNow} from "../../../utils/date-format";
+import {useTranslation} from "react-i18next";
 
 const SubscriptionsCard = ({allowed, agendaItem}) => {
+    const {t} = useTranslation('agendaItemPage');
     let body;
     if (!agendaItem.subscribe) {
         return null;
@@ -14,10 +16,8 @@ const SubscriptionsCard = ({allowed, agendaItem}) => {
 
     if (!allowed) {
         body = <React.Fragment>
-            <Card.Header>Inschrijflijst </Card.Header>
-            <Card.Body>
-                Je moet inloggen om inschrijvingen te zien of aan te vullen.
-            </Card.Body>
+            <Card.Header>{t('subscriptions.list')} </Card.Header>
+            <Card.Body>{t('subscription.loginNotice')}</Card.Body>
         </React.Fragment>;
     } else {
         body = <Subscriptions agendaItem={agendaItem}/>;
@@ -30,6 +30,7 @@ const SubscriptionsCard = ({allowed, agendaItem}) => {
 }
 
 const Subscriptions = ({agendaItem}) => {
+    const {t} = useTranslation('agendaItemPage');
     const {auth} = useContext(authContext);
     const queryCache = useQueryCache()
     const {isLoading, isError, data, error} = useQuery(['subscriptions', agendaItem.id], getSubscriptions);
@@ -42,24 +43,24 @@ const Subscriptions = ({agendaItem}) => {
 
     const onClickUnsubscribe = () => {
         removeSubscription(agendaItem.id, userSubscription.id).then(()=> {
-            queryCache.invalidateQueries(['subscriptions', agendaItemId]);
+            queryCache.invalidateQueries(['subscriptions', agendaItem.id]);
         });
     }
 
     const onClickSubscribe = () => {
         createSubscription(agendaItem.id, {name: user.name}).then(()=> {
-            queryCache.invalidateQueries(['subscriptions', agendaItemId]);
+            queryCache.invalidateQueries(['subscriptions', agendaItem.id]);
         });
     }
 
 
     const subscribeButton = userSubscription ?
-        <Button variant='danger' onClick={onClickUnsubscribe}>Uitschrijven</Button> :
-        <Button variant='success' onClick={onClickSubscribe}>Inschrijven</Button>
+        <Button variant='danger' onClick={onClickUnsubscribe}>{t('subscriptions.unsubscribe')}</Button> :
+        <Button variant='success' onClick={onClickSubscribe}>{t('subscriptions.subscribe')}</Button>
 
     return <React.Fragment>
         <Card.Header>
-            Inschrijflijst <br/>
+            {t('subscriptions.list')} <br/>
             <small>{formatDistanceToNow(new Date(agendaItem.subscriptiondeadline))}</small><br/>
             {agendaItem.maxsubscription && <small>{agendaItem.maxsubscription - subscriptions.length}</small>}
         </Card.Header>

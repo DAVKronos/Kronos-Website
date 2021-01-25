@@ -29,7 +29,7 @@ const EditAgendaItem = ({agendaItem}) => {
     return <EditObjectComponent
         id={id}
         existingObject={visibleFields}
-        objectName='Agendaitem'
+        objectName='agendaItem'
         updateFunction={updateAgendaitem}
         onSuccess={onSuccess}
         FormComponent={AgendaItemForm}

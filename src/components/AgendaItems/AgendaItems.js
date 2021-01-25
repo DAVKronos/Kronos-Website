@@ -9,14 +9,16 @@ import {getAgendaitems, getAgendaitemTypes} from "./queries";
 import {parseParams} from "../../utils/generic";
 import DefaultSpinner from "../Generic/Spinner";
 import {Can} from "../../utils/auth-helper";
+import {useTranslation} from "react-i18next";
 
 
 function AgendaItemsFilter({filter, onChangeFilter}){
+    const {t} = useTranslation('generic');
     const { isLoading, isError, data, error } = useQuery('agendaitemtypes', getAgendaitemTypes)
     return <Nav variant="pills">
         <Nav.Item key='all'>
             <Nav.Link active={filter == null} onClick={() => onChangeFilter(null)}>
-                All
+                {t('allItems')}
             </Nav.Link>
         </Nav.Item>
         {data && data.map(agendaItemType => {
@@ -34,6 +36,7 @@ function AgendaItemsFilter({filter, onChangeFilter}){
 
 const AgendaItems = () => {
     const {search} = useLocation();
+    const {t} = useTranslation('generic');
     const queryParams = parseParams(search);
     let date;
     if (queryParams.year && queryParams.month){
@@ -59,7 +62,7 @@ const AgendaItems = () => {
     return (<React.Fragment>
         <Row>
             <Col md={12}>
-                <h1>Agenda</h1>
+                <h1>{t('agendaItemPage:header')}</h1>
             </Col>
         </Row>
         <Row className="row-margin">
@@ -90,7 +93,7 @@ const AgendaItems = () => {
             </Col>
         </Row>
         <Can I='create' a={'Agendaitem'}>
-            <Button as={Link} to='/agendaitems/new'>New Agenda item</Button>
+            <Button as={Link} to='/agendaitems/new'>{t('addModel', {model: t('models:modelNames.agendaItem', {count: 0})})}</Button>
         </Can>
     </React.Fragment>);
 }

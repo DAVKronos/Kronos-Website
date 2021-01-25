@@ -66,6 +66,18 @@ function removeSubscription(agendaItemId, id) {
 }
 
 
+function getEventTypes(queryKey, agendaItemTypeId) {
+    return restCall(`agendaitemtypes/${agendaItemTypeId}/eventtypes`).then(res => res.data);
+}
+
+function createEvent(agendaItemId, data) {
+    return restCall(`agendaitems/${agendaItemId}/events/`, {method: 'POST', data: {event: data}}).then(res => res.data);
+}
+
+function deleteEvent(agendaItemId, id) {
+    return restCall(`agendaitems/${agendaItemId}/events/${id}`, {method: 'delete'})
+}
+
 export {
     getAgendaitem,
     getAgendaitems,
@@ -78,5 +90,8 @@ export {
     removeAgendaitem,
     getSubscriptions,
     removeSubscription,
-    createSubscription
+    createSubscription,
+    getEventTypes,
+    createEvent,
+    deleteEvent
 }

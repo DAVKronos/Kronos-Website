@@ -1,17 +1,20 @@
 {
   "generic": {
     "add": "Toevoegen",
+    "addModel": "{{model}} toevoegen",
     "edit": "Aanpassen",
+    "editModel": "{{model}} aanpassen",
     "remove": "Verwijderen",
     "save": "Opslaan",
-    "cancel": "Terug",
+    "cancel": "Annuleren",
     "empty": "Leeg",
     "create": "Aanmaken",
     "new": "Nieuw",
     "not_found": "Not found",
     "previous": "Vorige",
     "next": "Volgende",
-    "back": "Terug"
+    "back": "Terug",
+    "allItems": "Alles"
   },
   "homepage": {
     "readMore": "Lees meer",
@@ -33,9 +36,41 @@
   "photoAlbum": {
     "no_photos": "Geen foto's in dit album"
   },
+  "agendaItemPage": {
+    "header": "Agenda",
+    "subscriptions": {
+      "list": "Inschrijflijst",
+      "loginNotice": "Je moet inloggen om inschrijvingen te zien of aan te vullen.",
+      "subscribe": "Inschrijven",
+      "unsubscribe": "Uitschrijven"
+    }
+  },
+  "photoAlbumPage": {
+    "header": "Fotoalbums",
+    "editPhotos": "Foto's aanpassen",
+    "upload": "Uploaden"
+  },
+  "resultPage": {
+    "header": "Uitslagen",
+    "eventPage": "Evenementpagina"
+  },
   "models": {
     "generic": {
       "created_at": "Aangemaakt op"
+    },
+    "modelNames": {
+      "result": "Uitslag",
+      "result_plural": "Uitslagen",
+      "event": "Evenement",
+      "event_plural": "Evenementen",
+      "agendaItem": "Agenda item",
+      "agendaItem_plural": "Agenda items",
+      "agendaItemType": "Agenda item type",
+      "agendaItemType_plural": "Agenda item types",
+      "newsItem": "Nieuws item",
+      "newsItem_plural": "Nieuws items",
+      "photoAlbum": "Photoalbum",
+      "photoAlbum_plural": "Photoalbums"
     },
     "agendaitem": {
       "name": "Naam (Nederlands)",
@@ -67,5 +102,4 @@
       "external_url": "Externe URL"
     }
   }
-
 }

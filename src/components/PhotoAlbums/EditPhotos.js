@@ -4,10 +4,12 @@ import {addPhotosToAlbums, deletePhoto, getPhotos} from "./queries";
 import {Button, Card, Col, Form, ProgressBar, Row} from "react-bootstrap";
 import {getAPIHostUrl} from "../../utils/rest-helper";
 import DefaultSpinner from "../Generic/Spinner";
+import {useTranslation} from "react-i18next";
 
 
 
 const EditPhotos = ({photoAlbumId}) => {
+    const {t} = useTranslation('photoAlbumPage');
     const queryCache = useQueryCache();
     const { isLoading, isError, data: photos, error } = useQuery(['photos', photoAlbumId], getPhotos);
     const [files, setFiles] = useState(null);
@@ -38,13 +40,13 @@ const EditPhotos = ({photoAlbumId}) => {
     }
 
     return <div>
-        <h2>Foto's</h2>
+        <h2>{t('editPhotos')}</h2>
         <div>
-            <h3>Toevoegen</h3>
+            <h3>{t('generic:add')}</h3>
             <Form.File onChange={handleFileUpload} multiple />
             <ProgressBar style={{maxWidth: 400}} now={progress} variant={progress === 100 && 'success'} animated/>
             <Button onClick={onClickUpload}>
-                {uploading && <DefaultSpinner inline size={'sm'}/>} Uploaden
+                {uploading && <DefaultSpinner inline size={'sm'}/>} {t('upload')}
             </Button>
 
         </div>
@@ -54,7 +56,7 @@ const EditPhotos = ({photoAlbumId}) => {
                     <Card>
                         <Card.Img src={getAPIHostUrl(photo.photo_url_thumb)}/>
                         <Card.Body style={{padding: '0.2rem'}}>
-                            <Button size={'sm'} variant={'danger'} onClick={() => onClickRemove(photo.id)}>Delete</Button>
+                            <Button size={'sm'} variant={'danger'} onClick={() => onClickRemove(photo.id)}>{t('generic:remove')}</Button>
                         </Card.Body>
                     </Card>
                 </Col>;

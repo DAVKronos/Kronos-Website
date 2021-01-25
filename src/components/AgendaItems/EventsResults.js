@@ -41,3 +41,4 @@ const EventsResults = ({agendaItemId}) => {
 
 
 export default EventsResults
+export {EventResults}

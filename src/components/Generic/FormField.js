@@ -29,45 +29,68 @@ const FieldLabel = ({modelName, fieldName}) => {
 const FieldControl = ({type, value, setValue, required, ...props}) => {
     if (type === 'reference') {
         const {t} = useTranslation('generic');
-        const {items} = props;
-        return <Form.Control as="select" value={value} onChange={e => setValue(e.target.value)}>
-            <option value="" disabled={required} selected>{t('empty')}</option>
+        const {items, ...otherProps} = props;
+        return <Form.Control as="select" value={value || ""} onChange={e => setValue(e.target.value)} {...otherProps}>
+            <option value="" disabled={required}>{t('empty')}</option>
             {items && items.map(item => {
                 return <option key={item.id} value={item.id}>{item.name}</option>
             })}
         </Form.Control>
-    } else if (type === 'date' || type === 'datetime') {
+    } else if (type === 'date' || type === 'datetime' || type === "time") {
         const {i18n} = useTranslation();
         if (!value) {
             value = new Date();
         } else if (!(value instanceof Date)) {
             value = new Date(value);
         }
+
         if (type==='datetime') {
             return <DatePicker selected={value}
                                locale={i18n.language}
                                showTimeSelect
                                dateFormat="Pp"
                                onChange={date => setValue(date)}
+                               className="form-control form-control-sm"
+                               show
+
+            />;
+        } else if (type==='time') {
+            return <DatePicker selected={value}
+                               locale={i18n.language}
+                               showTimeSelect
+                               showTimeSelectOnly
+                               timeIntervals={5}
+                               timeCaption="Time"
+                               dateFormat="p"
+                               className="form-control form-control-sm"
+                               onChange={date => setValue(date)}
+                               show
+                               {...props}
             />;
         }
+
+
         return <DatePicker selected={value}
                            locale={i18n.locale}
+                           className="form-control form-control-sm"
                            onChange={date => setValue(date)}/>
     } else if (type === 'boolean') {
-        return <Form.Check type="checkbox" checked={value} onChange={() => setValue(!value)}/>
+        return <Form.Check type="checkbox" checked={value} onChange={() => setValue(!value)} {...props}/>
     } else if (type === 'text') {
-        return <Form.Control type="text" value={value || ""} onChange={(e) => setValue(e.target.value)}/>
+        return <Form.Control type="text" value={value || ""} onChange={(e) => setValue(e.target.value)} {...props}/>
     } else if (type === 'textarea') {
-        return <Form.Control as="textarea" value={value || ""} onChange={(e) => setValue(e.target.value)}/>
+        return <Form.Control as="textarea" value={value || ""} onChange={(e) => setValue(e.target.value)} {...props}/>
+    } else if (type === 'number') {
+        return <Form.Control type="number" value={value || ""} onChange={(e) => setValue(e.target.value)} {...props}/>
     }  else if (type === 'file') {
         const handleFileUpload = (e) => {
             setValue(e.target.files[0]);
         }
-        return <Form.File onChange={handleFileUpload} />
+        return <Form.File onChange={handleFileUpload} {...props}/>
     }
-    return <Form.Control type='text' value={value} onChange={(e) => setValue(e.target.value)}/>
+    return <Form.Control type='text' value={value} onChange={(e) => setValue(e.target.value)} {...props}/>
 }
 
 
 export default FormField
+export {FieldControl}

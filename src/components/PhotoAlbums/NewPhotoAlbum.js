@@ -16,7 +16,7 @@ const NewPhotoAlbum = () => {
 
 
     return <NewObjectComponent
-            objectName={'Photo album'}
+            objectName='photoAlbum'
             createFunction={createPhotoAlbum}
             onSuccess={onSuccess}
             FormComponent={PhotoAlbumForm}

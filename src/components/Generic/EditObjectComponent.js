@@ -33,7 +33,7 @@ const EditObjectComponent = ({objectName, id, existingObject, updateFunction, Fo
 
     return (<React.Fragment>
         {message && <Alert variant='success' dismissible onClose={() => setMessage('')}>{message}</Alert>}
-        <h1>{t('edit')} {objectName}</h1>
+        <h1>{t('editModel', {model: t(`models:modelNames.${objectName}`, {count: 1})})}</h1>
         <FormComponent values={values}
                         setValue={setValue}>
             <Button onClick={() => update()} disabled={saving}>

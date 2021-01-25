@@ -16,7 +16,7 @@ function PhotoAlbums(props) {
 
     return <React.Fragment>
         <Row>
-            <Col><h1>Fotoalbum</h1></Col>
+            <Col><h1>{t('photoAlbumPage:header')}</h1></Col>
         </Row>
         <Row>
             {isLoading && <DefaultSpinner/>}
@@ -27,7 +27,7 @@ function PhotoAlbums(props) {
             })}
         </Row>
         <Can I='create' a='Photoalbum'>
-            <Button as={Link} to='/photoalbums/new'>{t('add')} photo album</Button>
+            <Button as={Link} to='/photoalbums/new'>{t('addModel', {model: t('models:modelNames.photoAlbum')})}</Button>
         </Can>
     </React.Fragment>;
 }
