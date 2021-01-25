@@ -38,7 +38,7 @@ const NavBar =  () => {
             <Nav className="mr-auto">
                 <Nav.Link as={NavLink} to="/" exact>Home</Nav.Link>
                 <NavDropdown title={t('association')} id="basic-nav-dropdown">
-                    <NavDropdown.Item as={NavLink} to="/commissions">Commissies</NavDropdown.Item>
+                    <NavDropdown.Item as={NavLink} to="/commissions">{t('Committees')}</NavDropdown.Item>
                     {getPageLinksForMenu(pages,'Vereniging')}
                 </NavDropdown>
                 <NavDropdown title={t('trainings')} id="basic-nav-dropdown">

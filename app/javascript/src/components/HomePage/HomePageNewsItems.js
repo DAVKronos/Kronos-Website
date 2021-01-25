@@ -22,7 +22,7 @@ const NewsItems = (props) => {
             return <ShortNewsItem key={item.id} item={item}/>
         })}
         <Can I={'create'} a={'Newsitem'}>
-            <Button as={Link} to={'/newsitems/new'}>{t('add')} news item</Button>
+            <Button as={Link} to={'/newsitems/new'}>{t('add')}  {t('homepage:newsitem')}s</Button>
         </Can>
     </div>
 }

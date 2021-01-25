@@ -13,7 +13,8 @@
   "homepage": {
     "readMore": "Read more",
     "birthdays": "Birthdays",
-    "news": "News"
+    "news": "News",
+    "newsitem": "News item"
   },
   "navigation": {
     "association" : "Association",
@@ -22,10 +23,15 @@
     "agenda": "Agenda",
     "results": "Results",
     "photos": "Photos",
-    "contact": "Contact"
+    "contact": "Contact",
+    "users": "Users",
+    "Committees": "Committees"
   },
   "footer": {
     "sponsors": "Sponsors"
+  },
+  "commiteepage": {
+    "headerText": "Kronos committees"
   },
   "models": {
     "agendaitem": {
