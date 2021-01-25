@@ -42,20 +42,12 @@ module Api
       end
 
       def create
-        if (params[:result][:event_id].present?)
-          event = Event.find(params[:result][:event_id])
-          result = event.results.build(result_params)
-          result.save
-          if request.xhr?
-            render 'results/_show', :layout => false, :locals => {:event => result.event}
-          else
-            redirect_to agendaitem_events_path(event.agendaitem)
-          end
+        event = Event.find(params[:result][:event_id])
+        result = event.results.build(result_params)
+        if result.save
+           render json: result, status: :created
         else
-          require 'json'
-          agendaitem = Agendaitem.find_by(name: 'Pilscie Games')
-          event = Event.find_by(agendaitem_id: agendaitem.id)
-          Result.create(result: params[:result][:result], username: params[:result][:username], event_id: event.id)
+           render json: result.errors, status: :unprocessable_entity
         end
       end
 

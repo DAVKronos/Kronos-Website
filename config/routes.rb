@@ -109,7 +109,9 @@ Rails.application.routes.draw do
 
       resources :agendaitemtype_eventtypes
 
-      resources :agendaitemtypes
+      resources :agendaitemtypes do
+        resources :eventtypes
+      end
 
       resources :pages
 

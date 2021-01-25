@@ -7,6 +7,10 @@ module Api
       def index
         @eventtypes = Eventtype.order(:name)
 
+        if params[:agendaitemtype_id]
+          @eventtypes = @eventtypes.joins(:agendaitemtypes).where(agendaitemtypes: {id: params[:agendaitemtype_id]})
+        end
+
         respond_to do |format|
           format.html # index.html.erb
           format.json { render json: @eventtypes }

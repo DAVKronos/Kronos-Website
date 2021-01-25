@@ -29,7 +29,7 @@ const EditNewsItem = ({newsItem}) => {
     return <EditObjectComponent
         id={id}
         existingObject={editableFields}
-        objectName='Newsitem'
+        objectName='newsItem'
         updateFunction={updateNewsItem}
         onSuccess={onSuccess}
         FormComponent={NewsItemForm}

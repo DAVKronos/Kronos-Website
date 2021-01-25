@@ -30,7 +30,7 @@ const EditPhotoAlbum = ({photoAlbum}) => {
     return <div><EditObjectComponent
         id={id}
         existingObject={editableFields}
-        objectName='Photo album'
+        objectName='photoAlbum'
         updateFunction={updatePhotoAlbum}
         onSuccess={onSuccess}
         FormComponent={PhotoAlbumForm}

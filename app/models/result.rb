@@ -17,6 +17,8 @@ class Result < ApplicationRecord
   belongs_to :event
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
+  before_save :calculatedResult
+  before_save :set_username
 
   validates_presence_of :result
 
@@ -44,6 +46,16 @@ class Result < ApplicationRecord
       self.calculated = calculation
       self.save
       return calculation
+    end
+  end
+
+  def set_username
+    if not self.username.nil? and self.user_id.nil?
+      user = User.find_by_name(self.username)
+      self.user_id = user.id if user
+    elsif not self.user_id.nil? and self.username.nil?
+      user = User.find(self.user_id)
+      self.username = user.name if user
     end
   end
 

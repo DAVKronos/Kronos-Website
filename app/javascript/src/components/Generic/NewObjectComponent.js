@@ -36,7 +36,7 @@ const NewObjectComponent = ({FormComponent, createFunction, onSuccess, objectNam
     const {t} = useTranslation('generic');
 
     return (<React.Fragment>
-        <h1>{t('new')} {objectName}</h1>
+        <h1>{t('addModel', {model: t(`models:modelNames.${objectName}`)})}</h1>
         {error && <Alert variant='danger'>{<p>{error}</p>}</Alert>}
         <FormComponent values={values} setValue={setValue} />
         <Button onClick={() => create()}>

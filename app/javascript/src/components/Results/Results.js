@@ -10,9 +10,12 @@ import {useQuery} from "react-query";
 import {getResults} from "./queries";
 import {parseParams} from "../../utils/generic";
 import DefaultSpinner from "../Generic/Spinner";
+import {Can} from "../../utils/auth-helper";
+import {useTranslation} from "react-i18next";
 
 
 const Results = () => {
+    const {t} = useTranslation('resultPage');
     const {search} = useLocation();
     const queryParams = parseParams(search);
     let date;
@@ -29,7 +32,7 @@ const Results = () => {
     return (<React.Fragment>
         <Row>
             <Col md={12}>
-                <h1>Uitslagen</h1>
+                <h1>{t('header')}</h1>
             </Col>
         </Row>
         <Row className="row-margin">
@@ -59,9 +62,10 @@ const Results = () => {
                                 <Card.Body>
                                     <EventsResults agendaItemId={item.id} />
                                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                                        <Link key={item.id} to={`/agendaitems/${item.id}`} >
-                                            <Button>Evenementenpagina</Button>
-                                        </Link>
+                                        <Button as={Link} to={`/agendaitems/${item.id}`}>{t('eventPage')}</Button>
+                                        <Can I='create' a={"Result"}>
+                                            <Button as={Link} to={`/agendaitems/${item.id}/events`}>{t('generic:edit')}</Button>
+                                        </Can>
                                     </div>
                                 </Card.Body>
                             </Accordion.Collapse>

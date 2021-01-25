@@ -15,7 +15,7 @@ const NewNewsItem = () => {
 
 
     return <NewObjectComponent
-        objectName={'Newsitem'}
+        objectName='newsItem'
         FormComponent={NewsItemForm}
         createFunction={createNewsItem}
         onSuccess={onSuccess}

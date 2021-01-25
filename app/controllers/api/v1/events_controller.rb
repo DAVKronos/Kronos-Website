@@ -47,20 +47,13 @@ module Api
       # POST /events
       # POST /events.json
       def create
-        @event = Event.new(event_params)
+        agendaitem = Agendaitem.find(params[:agendaitem_id])
+        @event = agendaitem.events.build(event_params)
 
         respond_to do |format|
           if @event.save
-            format.html do
-              if request.xhr?
-                render :partial => "results/show", :locals => {:event => @event}, :layout => false, :status => :created
-              else
-                redirect_to agendaitem_events_path(@event.agendaitem), notice: 'Event was successfully created.'
-              end
-            end
-            format.json { render json: @event, status: :created, location: @event }
+            format.json { render json: @event, status: :created }
           else
-            format.html { render action: "new" }
             format.json { render json: @event.errors, status: :unprocessable_entity }
           end
         end

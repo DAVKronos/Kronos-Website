@@ -4,7 +4,6 @@ import {ability} from "../../utils/auth-helper";
 
 const PrivateRoute = ({ component: Component, action, subject, field, ...rest }) => {
     const isAllowed = ability.can(action, subject, field);
-
     return (
         <Route
             {...rest}

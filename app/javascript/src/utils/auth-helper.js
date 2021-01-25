@@ -10,12 +10,24 @@ function getAbilities() {
 function updateAbilities(ability) {
     return getAbilities().then(rules => {
         ability.update(rules);
+        const user = JSON.parse(sessionStorage.getItem('user'))
+        if (user) {
+            user.abilities = rules;
+            sessionStorage.setItem('user', JSON.stringify(user));
+        }
+        return rules
     })
 }
 
 function initializeAbilities() {
     const ability = new Ability()
-    updateAbilities(ability);
+    const user = JSON.parse(sessionStorage.getItem('user'))
+    if (user && user.abilities) {
+        ability.update(user.abilities);
+    } else {
+        updateAbilities(ability);
+    }
+
     return ability
 }
 
