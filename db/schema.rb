@@ -387,7 +387,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_095817) do
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.text "tokens"
-    t.datetime "confirmed_at", default: "2020-10-06 13:52:08"
+    t.datetime "confirmed_at", default: "2021-01-25 19:44:55"
     t.boolean "allow_password_change", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

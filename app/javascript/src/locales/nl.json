@@ -19,7 +19,9 @@
   "homepage": {
     "readMore": "Lees meer",
     "birthdays": "Verjaardagen",
-    "news": "Nieuws"
+    "news": "Nieuws",
+    "newsitem": "Nieuwsitem",
+    "Committees": "Commissies"
   },
   "navigation": {
     "association" : "Vereniging",
@@ -28,7 +30,8 @@
     "agenda": "Agenda",
     "results": "Uitslagen",
     "photos": "Foto's",
-    "contact": "Contact"
+    "contact": "Contact",
+    "users": "Leden"
   },
   "footer": {
     "sponsors": "Sponsoren"
@@ -53,6 +56,9 @@
   "resultPage": {
     "header": "Uitslagen",
     "eventPage": "Evenementpagina"
+  },
+  "commiteepage": {
+    "headerText": "Commissies van Kronos"
   },
   "models": {
     "generic": {
