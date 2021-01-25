@@ -28,7 +28,9 @@
     "agenda": "Agenda",
     "results": "Results",
     "photos": "Photos",
-    "contact": "Contact"
+    "contact": "Contact",
+    "users": "Users",
+    "Committees": "Committees"
   },
   "footer": {
     "sponsors": "Sponsors"
@@ -53,6 +55,9 @@
   "resultPage": {
     "header": "Results",
     "eventPage": "Event page"
+  },
+  "commiteepage": {
+    "headerText": "Kronos committees"
   },
   "models": {
     "generic": {
