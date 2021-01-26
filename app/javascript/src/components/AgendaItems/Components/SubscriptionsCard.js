@@ -17,7 +17,7 @@ const SubscriptionsCard = ({allowed, agendaItem}) => {
     if (!allowed) {
         body = <React.Fragment>
             <Card.Header>{t('subscriptions.list')} </Card.Header>
-            <Card.Body>{t('subscription.loginNotice')}</Card.Body>
+            <Card.Body>{t('subscriptions.loginNotice')}</Card.Body>
         </React.Fragment>;
     } else {
         body = <Subscriptions agendaItem={agendaItem}/>;

@@ -15,9 +15,10 @@ import {useTranslation} from "react-i18next";
 
 
 const Results = () => {
-    const {t} = useTranslation('resultPage');
+    const {t, i18n} = useTranslation('resultPage');
+    const lang = i18n.language;
     const {search} = useLocation();
-    const queryParams = parseParams(search);
+    const queryParams = parseParams(search); 
     let date;
     if (queryParams.year && queryParams.month){
         // Fix for only year or month
@@ -49,8 +50,8 @@ const Results = () => {
                     return <Card key={item.id}>
                             <Accordion.Toggle as={Card.Header} eventKey={`${index}`} className='agenda-item result'>
                                 <Row>
-                                    <Col sm={2}><h4>{format(itemDate, 'd')} <small>{format(itemDate, 'ccc')}</small></h4></Col>
-                                    <Col sm={1}><h4>{format(itemDate, 'p')}</h4></Col>
+                                    <Col sm={2}><h4>{format(itemDate, 'd', lang)} <small>{format(itemDate, 'ccc', lang)}</small></h4></Col>
+                                    <Col sm={1}><h4>{format(itemDate, 'p', lang)}</h4></Col>
                                     <Col sm={9} style={{display: 'flex', justifyContent: 'space-between'}}>
                                         <h4>{item.name} <small><AgendaItemTypeName id={item.agendaitemtype_id}/></small></h4>
                                         <div style={{verticalAlign: 'middle'}}><BsChevronDown /></div>

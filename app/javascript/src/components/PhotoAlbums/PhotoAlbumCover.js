@@ -13,7 +13,8 @@ import {useTranslation} from "react-i18next";
 const PhotoAlbumCover = ({photoAlbum}) => {
     const id = photoAlbum.id;
     const queryCache = useQueryCache();
-    const {t} = useTranslation('generic');
+    const {t, i18n} = useTranslation('generic');
+    const lang = i18n.language;
     const { isLoading, isError, data: photos, error } = useQuery(['photos', id], getPhotos)
 
 
@@ -31,7 +32,7 @@ const PhotoAlbumCover = ({photoAlbum}) => {
         <Card.Body>
             <Card.Title><Link to={`/photoalbums/${photoAlbum.id}`}>{photoAlbum.name}</Link></Card.Title>
             <Card.Text>
-                {photoAlbum.created_at && format(photoAlbum.created_at, 'PPP p')}
+                {photoAlbum.created_at && format(photoAlbum.created_at, 'PPP p', lang)}
             </Card.Text>
             <Can I="update" this={subject('Photoalbum', photoAlbum)}>
                 <Button size='sm' variant='warning' as={Link} to={`/photoalbums/${id}/edit`}>

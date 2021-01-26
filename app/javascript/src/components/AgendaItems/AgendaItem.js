@@ -20,7 +20,8 @@ import AgendaItemEventsCard from "./Components/AgendaItemEventsCard";
 
 
 function AgendaItem(props) {
-    const {t} = useTranslation('generic');
+    const {t, i18n} = useTranslation('generic');
+    const lang = i18n.language;
     const history = useHistory();
     const id = props.match.params.id;
     const {isLoading, isError, data: agendaItem, error} = useQuery(['agendaitems', id], getAgendaitem)
@@ -65,7 +66,7 @@ function AgendaItem(props) {
             <Col md={8}>
                 <Row>
                     <Col xs={1}><BsClock/></Col>
-                    <Col xs={11}>{format(date, 'PPP p')}</Col>
+                    <Col xs={11}>{format(date, 'PPP p', lang)}</Col>
                 </Row>
                 {agendaItem.location && <Row>
                     <Col xs={1}><BsGeoAlt/></Col>
