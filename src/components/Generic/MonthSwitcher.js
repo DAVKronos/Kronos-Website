@@ -2,10 +2,13 @@ import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Button, Form, FormControl, Nav} from "react-bootstrap";
 import {format} from "../../utils/date-format";
+import {useTranslation} from "react-i18next";
 
 
 const MonthSwitcher = ({date}) => {
     let history = useHistory();
+    const {i18n} = useTranslation('generic');
+    const lang = i18n.language
     const [searchMonth, setSearchMonth] = useState("");
     const [searchYear, setSearchYear] = useState("");
     let month = date.getMonth();
@@ -32,14 +35,14 @@ const MonthSwitcher = ({date}) => {
     return <Nav variant="tabs">
         <Nav.Item>
             <Nav.Link
-                onClick={() => changeDate(prev)}>{format(prev, 'MMM yyyy')}</Nav.Link>
+                onClick={() => changeDate(prev)}>{format(prev, 'MMM yyyy', lang)}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link active>{format(date, 'MMM yyyy')}</Nav.Link>
+            <Nav.Link active>{format(date, 'MMM yyyy', lang)}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
             <Nav.Link
-                onClick={() => changeDate(next)}>{format(next, 'MMM yyyy')}</Nav.Link>
+                onClick={() => changeDate(next)}>{format(next, 'MMM yyyy', lang)}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
             <Form inline onSubmit={onClickSearch}>

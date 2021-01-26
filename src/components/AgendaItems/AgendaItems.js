@@ -36,7 +36,8 @@ function AgendaItemsFilter({filter, onChangeFilter}){
 
 const AgendaItems = () => {
     const {search} = useLocation();
-    const {t} = useTranslation('generic');
+    const {t, i18n} = useTranslation('generic');
+    const lang = i18n.language;
     const queryParams = parseParams(search);
     let date;
     if (queryParams.year && queryParams.month){
@@ -83,8 +84,8 @@ const AgendaItems = () => {
                     return <Link key={item.id} to={`/agendaitems/${item.id}`} className='agenda-item'>
                         <Card body className="agenda-item-card">
                             <Row>
-                                <Col sm={2}><h4>{format(itemDate, 'd')} <small>{format(itemDate, 'ccc')}</small></h4></Col>
-                                <Col sm={1}><h4>{format(itemDate, 'p')}</h4></Col>
+                                <Col sm={2}><h4>{format(itemDate, 'd', lang)} <small>{format(itemDate, 'ccc', lang)}</small></h4></Col>
+                                <Col sm={1}><h4>{format(itemDate, 'p', lang)}</h4></Col>
                                 <Col sm={9}><h4>{item.name} <small><AgendaItemTypeName id={item.agendaitemtype_id}/></small></h4></Col>
                             </Row>
                         </Card>
