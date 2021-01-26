@@ -2,11 +2,11 @@
   %table.table.table-condensed.table-striped
     %thead
       %tr
-        %th{:colspan=>'3'}
+        %th{:colspan=>'4'}
           = event.eventtype.name if event.eventtype
           = number_to_human event.distance, :units => :distance
     %tbody
-      - event.results.order('place ASC').each do |result|
+      - event.results.includes(:user).order('users.sex').order('place ASC, calculated DESC').each do |result|
         %tr
           %td.row.col-xs-3
             = result.result
