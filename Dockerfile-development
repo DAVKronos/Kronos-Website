@@ -1,9 +1,15 @@
 # Base image
 FROM phusion/passenger-ruby25
 
+# Set correct environment variables.
+ENV HOME /root
+
+# Use baseimage-docker's init process.
+CMD ["/sbin/my_init"]
+
+
 #RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
 
-ENV HOME /app/
 ENV RAILS_ENV development
 
 # Install our PGP key and add HTTPS support for APT
@@ -25,12 +31,12 @@ RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && \
 
 WORKDIR $HOME
 
-ADD package.json yarn.lock $HOME
+ADD package.json yarn.lock $HOME/
 RUN yarn install
 
-COPY Gemfile* $HOME
+COPY Gemfile* $HOME/
 RUN bundle install -j $(nproc)
 
 # Make the app user owner of the app folder
-RUN chown -R app $HOME
-
+ADD . $HOME/
+RUN chown -R app:app $HOME/
