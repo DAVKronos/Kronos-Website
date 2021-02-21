@@ -7,12 +7,6 @@ FROM phusion/passenger-ruby25
 ENV HOME /home/rails/webapp
 ENV RAILS_ENV production
 
-# Install our PGP key and add HTTPS support for APT
-RUN apt-get update -qq
-RUN apt-get install -y dirmngr gnupg
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
-RUN apt-get install -y apt-transport-https ca-certificates
-
 # Add our APT repository
 #RUN sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger jessie main > /etc/apt/sources.list.d/passenger.list'
 

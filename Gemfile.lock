@@ -244,7 +244,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pdf-core (0.7.0)
-    pg (0.21.0)
+    pg (1.2.3)
     populator (1.0.0)
     power_assert (1.2.0)
     prawn (2.2.2)
@@ -441,7 +441,7 @@ DEPENDENCIES
   paper_trail (~> 4.0)
   paperclip (~> 5)
   passenger
-  pg (~> 0.21)
+  pg (~> 1.2.3)
   populator
   prawn-rails
   rails (~> 5.2)

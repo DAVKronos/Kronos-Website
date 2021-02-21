@@ -1,7 +1,9 @@
 version: '2'
 services:
   db:
-    image: postgres:9.1.22
+    image: postgres:12.6
+    environment:
+      POSTGRES_PASSWORD: kronos
   app:
     build:
       context: .
@@ -14,25 +16,5 @@ services:
     command: sh ./script/start_app.sh
     volumes:
       # Path on the host, relative to the Compose file
-      - ./:/home/rails/webapp/
-    volumes_from:
-      - bundler-box
-  owncloud:
-    image: owncloud:9-apache
-    depends_on:
-      - db
-    ports:
-      - "1337:80"
-  db_backup:
-    image: protowouter/kronos-backup
-    depends_on:
-      - db
-  db_backupserver:
-    image: protowouter/kronos-backupserver
-    env_file: .backupserver.env
-    ports:
-      - "1022:22"
-  bundler-box:
-    image: busybox
-    volumes:
-    - /bundler-cache
+      - ./:/home/app:cached
+
