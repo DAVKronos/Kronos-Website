@@ -33,7 +33,7 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'cookies_eu'
 gem 'prawn-rails'
-gem 'pg', '~> 0.21'
+gem 'pg', '~> 1.2.3'
 gem "recaptcha"
 gem 'icalendar', '~> 2.0'
 gem 'passenger'

@@ -4,7 +4,7 @@ common: &common
   database: postgres
   pool: 5
   username: postgres
-  password:
+  password: kronos
   host: db
 
 development:

@@ -7,7 +7,9 @@ volumes:
   postgres:
 services:
   db:
-    image: postgres:9.1.22
+    image: postgres:12.6
+    environment:
+      POSTGRES_PASSWORD: kronos
     volumes:
       - postgres:/var/lib/postgresql/data
   app:
@@ -26,11 +28,11 @@ services:
     command: sh ./script/start_app_development.sh
     volumes:
       # Path on the host, relative to the Compose file
-      - .:/app:cached
+      - .:/home/app:cached
       - bundle:/usr/local/bundle
 #      - rails_cache:/home/rails/webapp/tmp/cache
-      - node_modules:/app/node_modules
-      - packs:/app/public/packs
+      - node_modules:/home/app/node_modules
+      - packs:/home/app/public/packs
   webpacker:
     image: ${DOCKER_IMAGE_NAME-kronoswebsite}
     ports:
@@ -38,7 +40,7 @@ services:
     command: sh ./script/start_webpack_dev.sh
     volumes:
       # Path on the host, relative to the Compose file
-      - .:/app:cached
+      - .:/home/app:cached
       - bundle:/usr/local/bundle
-      - node_modules:/app/node_modules
-      - packs:/app/public/packs
+      - node_modules:/home/app/node_modules
+      - packs:/home/app/public/packs
