@@ -25,7 +25,7 @@ COPY docker/ImageMagick-6/policy.xml /etc/ImageMagick-6/policy.xml
 WORKDIR /home/app
 
 # Copy the Gemfile and lockfile with the right owner
-COPY --chown=app:app package.json yarn.lock Gemfile*  $HOME/
+COPY --chown=app:app package.json yarn.lock Gemfile*  /home/app/
 RUN yarn install
 
 
