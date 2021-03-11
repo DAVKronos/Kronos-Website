@@ -118,12 +118,28 @@ function GameSelector() {
     PISprite = new Sprite(imgPI,0,0,100,100);
     display.drawSprite(PISprite,45,80);
     display.drawText("Black","12px Arial","Pilscie Invaders",48,200);
+
+    display.drawRect("White","Black",2,255,80,100,100);
+    display.drawText("Black","90px Arial","?",277,160);
+    display.drawText("Black","12px Arial","Under construction",255,200);
 }
 
 function UpdateSelector() {
     if (input.clickx-display.canvas.getBoundingClientRect().left>45 && input.clickx-display.canvas.getBoundingClientRect().left<145 && input.clicky-display.canvas.getBoundingClientRect().top>80 && input.clicky-display.canvas.getBoundingClientRect().top<180) {
         screen=1;
         input.clickx=9999;
+    }
+    if (input.clickx-display.canvas.getBoundingClientRect().left>255 && input.clickx-display.canvas.getBoundingClientRect().left<355 && input.clicky-display.canvas.getBoundingClientRect().top>80 && input.clicky-display.canvas.getBoundingClientRect().top<180) {
+      if("<%= current_user.id%>" == "2") {
+          alert("Op naar de game!");
+          input.clickx = 9999;
+      }
+      else{
+          window.location.href = 'https://www.youtube.com/watch?v=bZeemepTOks';
+          input.clickx = 9999;
+      }
+
+
     }
 }
 
