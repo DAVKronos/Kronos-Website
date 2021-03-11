@@ -24,6 +24,7 @@ var wortelTimer = 3000;
 var lives = 3;
 var points = 0;
 var enemyspeed = 1;
+var screen = 0;
 var startgame = false;
 var highscore = 0;
 var ind = 0;
@@ -82,17 +83,48 @@ function ScoreCarrousel() {
 }
 function startScreen() {
 	var loop = function() {
-		renderStart();
-		updateStart();
-		if (startgame == false) {
-			window.requestAnimationFrame(loop,display.canvas);
-		}
-		else {
-			init();
-			run();
-		}
+	    if (screen==0) {
+          GameSelector();
+          UpdateSelector();
+      }
+      if (screen==1) {
+          renderStart();
+          updateStart()
+      }
+		  if (startgame == false) {
+			  window.requestAnimationFrame(loop,display.canvas);
+		  }
+		  else {
+			  init();
+			  run();
+		  }
 	};
 	window.requestAnimationFrame(loop,display.canvas);
+}
+
+function GameSelector() {
+    display.canvas.height = 400;
+    display.canvas.width = 400;
+
+    let ctx = display.canvas.getContext('2d');
+
+    //Draw Canvas Fill mode
+    ctx.fillStyle = 'Aquamarine';
+    ctx.fillRect(0,0,display.canvas.width, display.canvas.height);
+    display.drawText("Black","40px Arial","Webcie Games :D",45,50);
+
+    var imgPI = new Image();
+    imgPI.src = '<%= asset_path 'Pilscie-Invaders.jpg' %>';
+    PISprite = new Sprite(imgPI,0,0,100,100);
+    display.drawSprite(PISprite,45,80);
+    display.drawText("Black","12px Arial","Pilscie Invaders",48,200);
+}
+
+function UpdateSelector() {
+    if (input.clickx-display.canvas.getBoundingClientRect().left>45 && input.clickx-display.canvas.getBoundingClientRect().left<145 && input.clicky-display.canvas.getBoundingClientRect().top>80 && input.clicky-display.canvas.getBoundingClientRect().top<180) {
+        screen=1;
+        input.clickx=9999;
+    }
 }
 
 function renderStart() {
@@ -104,14 +136,19 @@ function renderStart() {
 	display.drawRect("CadetBlue","Coral",2,65,160,275,45);
 	display.drawRect("CadetBlue","Coral",2,370,0,30,30);
 	display.drawRect("CadetBlue","Coral",2,65,220,275,60);
+	display.drawRect("CadetBlue","Coral",2,0,0,63,30);
 	display.drawText("Black","20px Arial","Normal Mode",140,130);
 	display.drawText("Black","20px Arial","Expert Mode",140,190);
 	display.drawText("Black","20px Arial","?",380,23);
 	display.drawText("Black","20px Arial",String(ind+1)+": "+holders[ind],70,240);
 	display.drawText("Black","20px Arial","Highscore: "+records[ind],70,265);
+	display.drawText("Black","20px Arial","Back",7,20);
 }
 
 function updateStart() {
+    if (input.clickx-display.canvas.getBoundingClientRect().left>0 && input.clickx-display.canvas.getBoundingClientRect().left<63 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top<30) {
+        screen=0;
+    }
 	if (input.clickx-display.canvas.getBoundingClientRect().left>65 && input.clickx-display.canvas.getBoundingClientRect().left<340 && input.clicky-display.canvas.getBoundingClientRect().top>100 && input.clicky-display.canvas.getBoundingClientRect().top<145) {
 	startgame = true;
 	}
@@ -336,6 +373,7 @@ function update() {
 		clearTimeout(createEnemies);
 		clearTimeout(createWortels);
 		startgame = false;
+		input.clickx = 9999;
 	}
 if (nEnemies>=maxEnemies) {
 	if (input.isDown(37)|| input.isDown(65)) {
