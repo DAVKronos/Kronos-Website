@@ -26,10 +26,10 @@
                 newsitem, class: "img-responsive img-thumbnail"
             .col-md-9
               -if I18n.locale == :nl
-                = markdown.render(newsitem.news.split( /\r?\n/ ).first)
+                = markdown newsitem.news.split( /\r?\n/ ).first
                 = link_to t(:leesverder).capitalize, newsitem
               -if I18n.locale == :en
-                = markdown.render(newsitem.news_en.split( /\r?\n/ ).first)
+                = markdown newsitem.news_en.split( /\r?\n/ ).first
                 = link_to t(:leesverder).capitalize, newsitem
     .span{:class=>'text-center'}
       .btn-group
