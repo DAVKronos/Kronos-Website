@@ -50,9 +50,6 @@ GEM
       rake (>= 10.4, < 14.0)
     arel (9.0.0)
     ast (2.4.2)
-    auto_html (1.6.4)
-      redcarpet (~> 3.1)
-      rinku (~> 1.5.0)
     autoprefixer-rails (10.2.4.0)
       execjs
     bcrypt (3.1.16)
@@ -312,7 +309,6 @@ GEM
       railties (>= 5.0)
     retriable (2.1.0)
     rexml (3.2.4)
-    rinku (1.5.1)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -415,7 +411,6 @@ PLATFORMS
 DEPENDENCIES
   alphabetical_paginate (~> 2.1.0)
   annotate
-  auto_html (~> 1.6.1)
   bootstrap-sass
   bootstrap-will_paginate (~> 0.0.6)
   bootstrap3-datetimepicker-rails (~> 4.7.14)
