@@ -91,9 +91,18 @@ function startScreen() {
           renderStart();
           updateStart()
       }
+
+      if (screen==2) {
+          renderDino();
+          updateDino();
+      }
+
 		  if (startgame == false) {
 			  window.requestAnimationFrame(loop,display.canvas);
 		  }
+		  else if (screen==3) {
+          startKegelRun();
+      }
 		  else {
 			  init();
 			  run();
@@ -131,15 +140,13 @@ function UpdateSelector() {
     }
     if (input.clickx-display.canvas.getBoundingClientRect().left>255 && input.clickx-display.canvas.getBoundingClientRect().left<355 && input.clicky-display.canvas.getBoundingClientRect().top>80 && input.clicky-display.canvas.getBoundingClientRect().top<180) {
       if("<%= current_user.id%>" == "2") {
-          alert("Op naar de game!");
+          screen = 2;
           input.clickx = 9999;
       }
       else{
           window.location.href = 'https://www.youtube.com/watch?v=bZeemepTOks';
           input.clickx = 9999;
       }
-
-
     }
 }
 
@@ -183,9 +190,279 @@ function updateStart() {
 	input.clickx = 0;
 	input.clicky = 0;
 	}
-	
 }
 
+function renderDino() {
+    display.canvas.height = 400;
+    display.canvas.width = 400;
+
+    display.drawText("Green","40px Arial","Run Kegel Run",75,50);
+    display.drawRect("CadetBlue","Coral",2,65,100,275,45);
+    display.drawRect("CadetBlue","Coral",2,370,0,30,30);
+    display.drawRect("CadetBlue","Coral",2,65,220,275,60);
+    display.drawRect("CadetBlue","Coral",2,0,0,63,30);
+
+    display.drawText("Black","20px Arial","Start Running",140,130);
+    display.drawText("Black","20px Arial","?",380,23);
+    display.drawText("Black","20px Arial","Back",7,20);
+}
+
+function updateDino(){
+    if (input.clickx-display.canvas.getBoundingClientRect().left>0 && input.clickx-display.canvas.getBoundingClientRect().left<63 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top<30) {
+        screen=0;
+    }
+
+    if (input.clickx-display.canvas.getBoundingClientRect().left>370 && input.clickx-display.canvas.getBoundingClientRect().left<400 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top<30) {
+        alert("Play as Kegel and try to run as far as possible. But watch out, tracks can be dangerous places!");
+        input.clickx = 9999;
+    }
+
+    if (input.clickx-display.canvas.getBoundingClientRect().left>65 && input.clickx-display.canvas.getBoundingClientRect().left<340 && input.clicky-display.canvas.getBoundingClientRect().top>100 && input.clicky-display.canvas.getBoundingClientRect().top<145) {
+        screen=3;
+        startgame=true;
+        input.clickx = 9999;
+    }
+}
+
+function startKegelRun(){
+
+    //initialize clouds
+    clouds = [];
+    hurdles = [];
+    javelins = [];
+    run=true;
+    duck=false;
+    jump=false;
+    kegelindex = 0;
+    kegeldindex = 0;
+    kegelx = 30;
+    kegely = 260;
+    kegelvely = 0;
+    updatetime=5;
+    gravity = 0.3;
+
+    //cloud sprites
+    var ImgCloud = new Image();
+    ImgCloud.src = '<%= asset_path 'cloud.png' %>';
+    ClSprite = new Sprite(ImgCloud,0,0,130,53);
+
+    var ImgCloud2 = new Image();
+    ImgCloud2.src = '<%= asset_path 'cloud2.png' %>';
+    Cl2Sprite = new Sprite(ImgCloud2,0,0,130,53);
+
+    //Background sprite
+    var ImgBg = new Image();
+    ImgBg.src = '<%= asset_path 'Track-Background.png' %>';
+    BgSprite = new Sprite(ImgBg,0,0,400,400);
+
+    //Kegel sprites
+    var ImgK1 = new Image();
+    ImgK1.src = '<%= asset_path 'kegel1.png' %>';
+    K1Sprite = new Sprite(ImgK1,0,0,64,92);
+
+    var ImgK2 = new Image();
+    ImgK2.src = '<%= asset_path 'kegel2.png' %>';
+    K2Sprite = new Sprite(ImgK2,0,0,64,92);
+
+    var ImgK3 = new Image();
+    ImgK3.src = '<%= asset_path 'kegel3.png' %>';
+    K3Sprite = new Sprite(ImgK3,0,0,64,92);
+
+    var ImgKD1 = new Image();
+    ImgKD1.src = '<%= asset_path 'kegel-duck1.png' %>';
+    KD1Sprite = new Sprite(ImgKD1,0,0,76,61);
+
+    var ImgKD2 = new Image();
+    ImgKD2.src = '<%= asset_path 'kegel-duck2.png' %>';
+    KD2Sprite = new Sprite(ImgKD2,0,0,76,61);
+
+    //hurdle sprite
+    var ImgH = new Image();
+    ImgH.src = '<%= asset_path 'hurdle.png' %>';
+    HSprite = new Sprite(ImgH,0,0,48,84);
+
+    //javelin sprite
+    var ImgJ = new Image();
+    ImgJ.src = '<%= asset_path 'javelin.png' %>';
+    JSprite = new Sprite(ImgJ,0,0,152,20);
+
+    //add first two clouds
+    clouds.push(new Cloud(260,10,-0.5,false));
+    clouds.push(new Cloud(100,30,-0.5,false));
+
+    //ad first hurdle (remove later)
+    setTimeout(createObstacles,500);
+    var loop = function() {
+
+        renderKegelRun()
+        updateKegelRun();
+
+        if (screen==3) {
+            window.requestAnimationFrame(loop,display.canvas);
+        }
+        else {
+            startScreen();
+        }
+
+    };
+    window.requestAnimationFrame(loop,display.canvas);
+}
+
+function createObstacles(){
+    if (Math.random()<0.25){
+        javelins.push(new Javelin(400,268,-3));
+    }
+    else {
+        hurdles.push(new Hurdle(400,268,-3));
+    }
+    setTimeout(createObstacles,2000);
+}
+function renderKegelRun(){
+
+    display.canvas.height = 400;
+    display.canvas.width = 400
+    //draw background
+    display.drawSprite(BgSprite,0,0);
+
+    //draw Kegel animation
+    if (run==true) {
+
+    if (kegelindex==0){
+        display.drawSprite(K1Sprite,kegelx,kegely);
+    }
+    else if (kegelindex==1){
+        display.drawSprite(K2Sprite,kegelx,kegely);
+    }
+    else if (kegelindex==2){
+        display.drawSprite(K3Sprite,kegelx,kegely);
+    }
+    }
+
+    if (duck==true){
+        if (kegeldindex==0){
+            display.drawSprite(KD1Sprite,kegelx,kegely+31);
+        }
+        else {
+            display.drawSprite(KD2Sprite,kegelx,kegely+31);
+        }
+
+    }
+    else if (jump==true){
+        display.drawSprite(K1Sprite,kegelx,kegely);
+    }
+
+
+    //draw cloud animation
+    for (var i=0, len=clouds.length; i<len; i++){
+        c= clouds[i];
+        if (c.cool==true){
+            display.drawSprite(Cl2Sprite,c.x,c.y);
+        }
+        else{
+            display.drawSprite(ClSprite,c.x,c.y);
+        }
+    }
+
+    //draw hurdles
+    for (var i=0, len=hurdles.length; i<len; i++){
+        h= hurdles[i];
+        display.drawSprite(HSprite,h.x,h.y);
+    }
+
+    //draw javelins
+    for (var i=0, len=javelins.length; i<len; i++){
+        j= javelins[i];
+        display.drawSprite(JSprite,j.x,j.y);
+    }
+}
+
+function updateKegelRun(){
+    //update Kegel movement
+    if (updatetime==0) {
+        kegeldindex = ((kegeldindex+1) %2);
+        kegelindex = ((kegelindex+1) % 3);
+        updatetime=5;
+    }
+    else {
+        updatetime-=1;
+    }
+
+    //update Cloud positions
+    for (var i=0, len=clouds.length; i<len; i++){
+        c= clouds[i];
+        c.x +=c.velx;
+
+        //remove clouds outside of the screen
+        if(c.x<-130) {
+            clouds.splice(i, 1);
+            i--;
+            if (Math.random() < 0.1) {
+              clouds.push(new Cloud(400, c.y, -0.5, true));
+            }
+            else {
+              clouds.push(new Cloud(400, c.y, -0.5, false));
+            }
+
+            continue;
+        }
+    }
+
+    //update hurdle positions
+    for (var i=0, len=hurdles.length; i<len; i++) {
+        h= hurdles[i];
+        h.x +=h.velx;
+        if(h.x<-48) {
+            hurdles.splice(i, 1);
+            i--;
+            len--;
+        }
+    }
+
+    //update javelin positions
+    for (var i=0, len=javelins.length; i<len; i++) {
+        j= javelins[i];
+        j.x +=j.velx;
+        if(j.x<-152) {
+            javelins.splice(i, 1);
+            i--;
+            len--;
+        }
+    }
+
+    //jump control
+    if ((input.isPressed(32) || input.isPressed(38)) && jump==false && duck==false){
+        jump = true;
+        run=false;
+        kegelvely=-9;
+    }
+
+    //adjust jump position
+    if (jump==true) {
+        kegely+=kegelvely;
+        kegelvely+=gravity;
+        if (kegely>260){
+            kegely=260;
+            jump=false;
+            run=true;
+            kegelvely=0;
+            gravity = 0.3;
+        }
+    }
+
+    //duck control
+    if (input.isDown(40) && jump==true){
+        gravity = 1;
+    }
+    if (input.isDown(40) && jump==false){
+        duck=true;
+        run=false;
+    }
+    else if (jump==false){
+        duck=false;
+        run=true;
+    }
+
+}
 function init() {
 	frames = 0;
 	//create the kegel
