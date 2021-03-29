@@ -105,7 +105,7 @@ function startScreen() {
       }
 		  else {
 			  init();
-			  run();
+			  runPils();
 		  }
 	};
 	window.requestAnimationFrame(loop,display.canvas);
@@ -230,6 +230,7 @@ function startKegelRun(){
     clouds = [];
     hurdles = [];
     javelins = [];
+    grass = [];
     run=true;
     duck=false;
     jump=false;
@@ -240,6 +241,10 @@ function startKegelRun(){
     kegelvely = 0;
     updatetime=5;
     gravity = 0.3;
+    points = 0;
+    obstacleV = -3;
+    obstacleT = 2000;
+    starttimer = 0;
 
     //cloud sprites
     var ImgCloud = new Image();
@@ -286,12 +291,38 @@ function startKegelRun(){
     ImgJ.src = '<%= asset_path 'javelin.png' %>';
     JSprite = new Sprite(ImgJ,0,0,152,20);
 
-    //add first two clouds
-    clouds.push(new Cloud(260,10,-0.5,false));
-    clouds.push(new Cloud(100,30,-0.5,false));
+    //grass sprite
+    var ImgG = new Image();
+    ImgG.src = '<%= asset_path 'grass.png' %>';
+    GSprite = new Sprite(ImgG,0,0,18,12);
 
-    //ad first hurdle (remove later)
-    setTimeout(createObstacles,500);
+    //add first two clouds
+    clouds.push(new Cloud(260,30,-0.5,false));
+    clouds.push(new Cloud(100,50,-0.5,false));
+
+    //add first grass plucks
+    grass.push(new Grass(380,250,obstacleV/2));
+    grass.push(new Grass(360,230,obstacleV/2));
+    grass.push(new Grass(320,250,obstacleV/2));
+    grass.push(new Grass(300,230,obstacleV/2));
+    grass.push(new Grass(260,250,obstacleV/2));
+    grass.push(new Grass(240,230,obstacleV/2));
+    grass.push(new Grass(200,250,obstacleV/2));
+    grass.push(new Grass(180,230,obstacleV/2));
+    grass.push(new Grass(140,250,obstacleV/2));
+    grass.push(new Grass(120,230,obstacleV/2));
+    grass.push(new Grass(80,250,obstacleV/2));
+    grass.push(new Grass(60,230,obstacleV/2));
+    grass.push(new Grass(20,250,obstacleV/2));
+    grass.push(new Grass(0,230,obstacleV/2));
+
+    //set start timers
+    setTimeout(setStartTimer,1000);
+    setTimeout(setStartTimer,2000);
+    setTimeout(setStartTimer,3000);
+    //add first obstacle
+    setTimeout(createObstacles,3500);
+    //main function loop
     var loop = function() {
 
         renderKegelRun()
@@ -308,15 +339,23 @@ function startKegelRun(){
     window.requestAnimationFrame(loop,display.canvas);
 }
 
-function createObstacles(){
-    if (Math.random()<0.25){
-        javelins.push(new Javelin(400,268,-3));
-    }
-    else {
-        hurdles.push(new Hurdle(400,268,-3));
-    }
-    setTimeout(createObstacles,2000);
+function setStartTimer(){
+    starttimer+=1;
 }
+
+function createObstacles(){
+    if (startgame==true) {
+        if (Math.random() < 0.25) {
+            javelins.push(new Javelin(400, 268, obstacleV));
+        } else {
+            hurdles.push(new Hurdle(400, 268, obstacleV));
+        }
+        setTimeout(createObstacles, obstacleT);
+        obstacleV*=1.008;
+        obstacleT/=1.006;
+    }
+}
+
 function renderKegelRun(){
 
     display.canvas.height = 400;
@@ -374,6 +413,29 @@ function renderKegelRun(){
         j= javelins[i];
         display.drawSprite(JSprite,j.x,j.y);
     }
+
+    //draw grass
+    for (var i=0, len=grass.length; i<len; i++){
+        g= grass[i];
+        display.drawSprite(GSprite,g.x,g.y);
+    }
+
+    //draw states and buttons
+    display.drawRect("AliceBlue","AliceBlue",0,0,0,400,30);
+    display.drawRect("AliceBlue","black",2,0,0,60,30);
+    display.drawText("red","20px Arial","Points: ",140,20);
+    display.drawText("red","20px Arial",String(points),205,20);
+    display.drawText("black","20px Arial","Quit",9,22);
+    if(starttimer<3){
+        display.drawText("White","35px Arial","1",185,300);
+    }
+    if (starttimer<2){
+        display.drawText("White","35px Arial","2",185,345);
+    }
+    if (starttimer<1){
+        display.drawText("White","35px Arial","3",185,390);
+    }
+
 }
 
 function updateKegelRun(){
@@ -382,6 +444,7 @@ function updateKegelRun(){
         kegeldindex = ((kegeldindex+1) %2);
         kegelindex = ((kegelindex+1) % 3);
         updatetime=5;
+        points+=1;
     }
     else {
         updatetime-=1;
@@ -403,6 +466,20 @@ function updateKegelRun(){
               clouds.push(new Cloud(400, c.y, -0.5, false));
             }
 
+            continue;
+        }
+    }
+
+    //update Grass positions
+    for (var i=0, len=grass.length; i<len; i++){
+        g= grass[i];
+        g.x +=g.velx;
+
+        //remove grass outside of the screen
+        if(g.x<-18) {
+            grass.splice(i, 1);
+            i--;
+            grass.push(new Grass(400, g.y, obstacleV/2));
             continue;
         }
     }
@@ -462,6 +539,27 @@ function updateKegelRun(){
         run=true;
     }
 
+    //collision mechanics
+    //check javelin collision
+    for (var i=0, len = javelins.length; i<len; i++){
+        j= javelins[i];
+        if(j.x<kegelx+64 && j.x>kegelx-152&&j.y<kegely+85 && duck==false){
+            javelins.splice(i,1);
+            i--;
+            len--;
+            continue;
+        }
+    }
+
+    //quit button control
+    if (input.clickx-display.canvas.getBoundingClientRect().left>0 && input.clickx-display.canvas.getBoundingClientRect().left<60 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top <30) {
+        clearTimeout(createObstacles);
+        screen=2;
+        startgame = false;
+        input.clickx = 9999;
+        javelins=[];
+        hurdles=[];
+    }
 }
 function init() {
 	frames = 0;
@@ -645,7 +743,7 @@ function drawStats() {
 	display.drawText("black","20px Arial","Quit",9,22);
 }
 
-function run () {
+function runPils () {
 	var loop = function() {
 		update();
 		render();

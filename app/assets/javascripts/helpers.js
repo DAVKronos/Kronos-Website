@@ -134,3 +134,9 @@ function Javelin(x,y,velx)  {
     this.y = y;
     this.velx = velx;
 }
+//Grass object
+function Grass(x,y,velx)  {
+    this.x = x;
+    this.y = y;
+    this.velx = velx;
+}
