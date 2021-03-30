@@ -30,6 +30,7 @@ var highscore = 0;
 var highscore2 = 0;
 var ind = 0;
 var ind2 = 0;
+var ad = false;
 
 var eventid1 ="<%= @events[0].try("id")%>"
 var scores = "<%= @results.find_by(user_id: current_user.try(:id)).try(:result)%>";
@@ -374,7 +375,7 @@ function createObstacles(){
             hurdles.push(new Hurdle(400, 268, obstacleV));
         }
         setTimeout(createObstacles, obstacleT);
-        obstacleV*=1.008;
+        obstacleV*=1.012;
         obstacleT/=1.006;
     }
 }
@@ -614,16 +615,16 @@ function updateKegelRun(){
 function endGame() {
     var proceed = confirm("Game Over! Watch a short video for an extra life? :D");
     if (proceed) {
+        ad = true;
         saveGame();
-        window.location.href = 'https://www.youtube.com/watch?v=bZeemepTOks';
     } else {
+        ad = false;
         saveGame();
     }
 }
 
 function saveGame() {
     clearTimeout(createObstacles);
-    points =highscore2+1;
     if(points > highscore2){
         SubmitScore2();
     }
@@ -689,7 +690,7 @@ function init() {
 	wortelTimer = 3000;
 	nEnemies = 0;
 	enemyspeed = 1;
-	lives = 1;
+	lives = 3;
 	points = 0;
 	createEnemies();
 };
@@ -808,7 +809,12 @@ function checkCollisions() {
 }
 
 function updateWindow(){
-    window.location.href = window.location.origin+"/Game";
+    if(ad==false){
+        window.location.href = window.location.origin+"/Game";
+    }
+    else {
+        window.location.href = 'https://www.youtube.com/watch?v=bZeemepTOks';
+    }
 }
 function SubmitScore(){
 	var ding = "<%= @results.find_by(user_id: current_user.try(:id)).try(:id)%>"
