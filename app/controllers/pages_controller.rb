@@ -45,8 +45,9 @@ class PagesController < ApplicationController
 
   def game
 	agendaitem = Agendaitem.find_by(name: 'Pilscie Games')
-	event = Event.find_by(agendaitem_id: agendaitem.id)
-	@results = Result.where(event_id: event.id)
+  @events = Event.where(agendaitem_id: agendaitem.try(:id))
+	@results = Result.where(event_id: @events.first.try(:id))
+  @results2 = Result.where(event_id: @events[1].try(:id))
     render 'game'
   end
 
