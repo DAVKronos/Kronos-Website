@@ -31,6 +31,8 @@ var highscore2 = 0;
 var ind = 0;
 var ind2 = 0;
 var ad = false;
+var duck = false;
+var run = false;
 
 var eventid1 ="<%= @events[0].try("id")%>"
 var scores = "<%= @results.find_by(user_id: current_user.try(:id)).try(:result)%>";
@@ -39,8 +41,8 @@ var holders2 = JSON.parse("<%= @results.sort_by(&:result).reverse.first(50).map(
 var scoreskegelrun = "<%= @results2.find_by(user_id: current_user.try(:id)).try(:result)%>";
 
 var eventid2 ="<%= @events[1].try("id")%>"
-var recordskegelrun = JSON.parse("<%= @results2.sort_by(&:result).reverse.first(50).map(&:result)%>".replace(/&quot;/g,'"'));
-var holderskegelrun = JSON.parse("<%= @results2.sort_by(&:result).reverse.first(50).map(&:username)%>".replace(/&quot;/g,'"'));
+var recordskegelrun2 = JSON.parse("<%= @results2.sort_by(&:result).reverse.first(50).map(&:result)%>".replace(/&quot;/g,'"'));
+var holderskegelrun2 = JSON.parse("<%= @results2.sort_by(&:result).reverse.first(50).map(&:username)%>".replace(/&quot;/g,'"'));
 function main () {
 	records = [];
 	holders = [];
@@ -55,6 +57,20 @@ function main () {
 	holders2.splice(records2.indexOf(records[i]),1);
 	records2.splice(records2.indexOf(records[i]),1);
 	}
+
+    recordskegelrun = [];
+    holderskegelrun = [];
+    for(i=0; i<recordskegelrun2.length; i++){
+        recordskegelrun[i] = parseInt(recordskegelrun2[i]);
+    }
+    recordskegelrun2 = recordskegelrun.slice(0);
+    recordskegelrun.sort(function(a, b){return a-b}).reverse();
+
+    for(i=0; i<recordskegelrun.length; i++) {
+        holderskegelrun[i] = holderskegelrun2[recordskegelrun2.indexOf(recordskegelrun[i])];
+        holderskegelrun2.splice(recordskegelrun2.indexOf(recordskegelrun[i]),1);
+        recordskegelrun2.splice(recordskegelrun2.indexOf(recordskegelrun[i]),1);
+    }
 	if (scores!== "") {
 		highscore=parseInt(scores);
 	}
@@ -149,9 +165,11 @@ function GameSelector() {
     display.drawSprite(PISprite,45,80);
     display.drawText("Black","12px Arial","Pilscie Invaders",48,200);
 
-    display.drawRect("White","Black",2,255,80,100,100);
-    display.drawText("Black","90px Arial","?",277,160);
-    display.drawText("Black","12px Arial","Under construction",255,200);
+    var imgRKR = new Image();
+    imgRKR.src = '<%= asset_path 'Kegel-Run.jpg' %>';
+    RKRSprite = new Sprite(imgRKR,0,0,100,100);
+    display.drawSprite(RKRSprite,255,80);
+    display.drawText("Black","12px Arial","Run Kegel Run",255,200);
 }
 
 function UpdateSelector() {
@@ -160,14 +178,8 @@ function UpdateSelector() {
         input.clickx=9999;
     }
     if (input.clickx-display.canvas.getBoundingClientRect().left>255 && input.clickx-display.canvas.getBoundingClientRect().left<355 && input.clicky-display.canvas.getBoundingClientRect().top>80 && input.clicky-display.canvas.getBoundingClientRect().top<180) {
-      if("<%= current_user.try(:admin?)%>" == "true") {
-          screen = 2;
-          input.clickx = 9999;
-      }
-      else{
-          window.location.href = 'https://www.youtube.com/watch?v=bZeemepTOks';
-          input.clickx = 9999;
-      }
+        screen = 2;
+        input.clickx = 9999;
     }
 }
 
@@ -232,6 +244,8 @@ function renderDino() {
 }
 
 function updateDino(){
+    duck = false;
+    jump = false;
     if (input.clickx-display.canvas.getBoundingClientRect().left>0 && input.clickx-display.canvas.getBoundingClientRect().left<63 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top<30) {
         screen=0;
     }
@@ -635,6 +649,9 @@ function saveGame() {
     grass = [];
     clouds = [];
     hurdles = [];
+    duck = false;
+    jump = false;
+    delete input.down[40];
 }
 
 function SubmitScore2(){
