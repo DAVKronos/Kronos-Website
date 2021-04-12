@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     member do
       get 'agreed'
     end
+    resources :comments
     collection do
       get 'agree'
     end
