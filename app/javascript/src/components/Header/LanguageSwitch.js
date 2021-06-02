@@ -9,7 +9,7 @@ const LanguageSwitch = () => {
         nextLanguage = 'nl'
     }
     return <Nav.Link className='language-switch' onClick={() => i18n.changeLanguage(nextLanguage)}>
-        <img style={{minWidth: 12}} src={`/assets/Site_${nextLanguage.toUpperCase()}.png`}/>
+        <img style={{minWidth: 12}} src={`../images/Site_${nextLanguage.toUpperCase()}.png`}/>
     </Nav.Link>
 }
 

@@ -1,5 +1,7 @@
 {
-  "sideEffects": false,
+  "sideEffects": [
+    "./src/utils/i18n.js"
+  ],
   "dependencies": {
     "@babel/preset-react": "^7.10.4",
     "@casl/ability": "^5.1.1",

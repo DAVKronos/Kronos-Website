@@ -1,6 +1,14 @@
 version: '2'
+volumes:
+  postgres-production:
 
-app:
+services:
+  db:
+    image: postgres:12.6
+    environment:
+      POSTGRES_PASSWORD: kronos
+    volumes:
+      - postgres-production:/var/lib/postgresql/data
   app:
     build:
       context: .
@@ -9,10 +17,9 @@ app:
       - "3000:3000"
     depends_on:
       - db
-    env_file: .env
+    environment:
+      - RAILS_ENV=production
+      - LOCALEAPP_API_KEY=2qpX88VnxzUXm6YFLoQ0XDyHubE8M6U7bzLNiYlGOSQQbWB9ch
+      - GMAIL_SMTP_PASSWORD=yqkjxzkcubxzfnfl
+      - RAILS_SERVE_STATIC_FILES=true
     command: sh ./script/start_app.sh
-    volumes:
-      # Path on the host, relative to the Compose file
-      - ./:/home/rails/webapp/:delegated
-    volumes_from:
-      - bundler-box

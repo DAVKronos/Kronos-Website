@@ -3,7 +3,7 @@ import './App.scss';
 import AuthProvider from "./utils/AuthContext";
 import {QueryCache, ReactQueryCacheProvider} from "react-query";
 
-import './utils/i18n.js';
+import i18n from './utils/i18n.js';
 import AppRouter from "./AppRouter";
 
 const queryCache = new QueryCache({
@@ -14,7 +14,7 @@ const queryCache = new QueryCache({
      },
 })
 
-
+console.log(i18n);
 const App = () => {
   return <AuthProvider>
     <ReactQueryCacheProvider queryCache={queryCache}>
