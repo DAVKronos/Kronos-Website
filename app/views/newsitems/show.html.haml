@@ -26,6 +26,8 @@
             = comment.commenttext
             = " - "
             = comment.user.name
+            - if can? :destroy, comment
+              = link_to t('delete').capitalize, [@newsitem, comment], method: :delete
       -else
         %hr
         %h3

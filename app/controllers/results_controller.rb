@@ -52,8 +52,9 @@ class ResultsController < ApplicationController
     else
       require 'json'
       agendaitem = Agendaitem.find_by(name: 'Pilscie Games')
-      event = Event.find_by(agendaitem_id: agendaitem.id)
-      Result.create(result: params[:result][:result], username: params[:result][:username], event_id: event.id)
+      event = Event.find_by(agendaitem_id: agendaitem.try(:id))
+      Result.create(result: params[:result][:result], username: params[:result][:username], event_id: params[:result][:event_id])
+      redirect_to game_path
     end
   end
 

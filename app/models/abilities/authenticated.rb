@@ -17,7 +17,10 @@ module Abilities
           end
       end
       if Agendaitem.find_by(name: 'Pilscie Games')
-        Result.all.where(event_id:  Event.find_by(agendaitem_id: Agendaitem.find_by(name: 'Pilscie Games').id).id).where(user_id: user.id).each do |res|
+        Result.all.where(event_id:  Event.find_by(agendaitem_id: Agendaitem.find_by(name: 'Pilscie Games').id).try(:id)).where(user_id: user.try(:id)).each do |res|
+          can :destroy, res
+        end
+        Result.all.where(event_id:  Event.where(agendaitem_id: Agendaitem.find_by(name: 'Pilscie Games').id)[1].try(:id)).where(user_id: user.try(:id)).each do |res|
           can :destroy, res
         end
       end

@@ -24,12 +24,25 @@ var wortelTimer = 3000;
 var lives = 3;
 var points = 0;
 var enemyspeed = 1;
+var screen = 0;
 var startgame = false;
 var highscore = 0;
+var highscore2 = 0;
 var ind = 0;
+var ind2 = 0;
+var ad = false;
+var duck = false;
+var run = false;
+
+var eventid1 ="<%= @events[0].try("id")%>"
 var scores = "<%= @results.find_by(user_id: current_user.try(:id)).try(:result)%>";
 var records2 = JSON.parse("<%= @results.sort_by(&:result).reverse.first(50).map(&:result)%>".replace(/&quot;/g,'"'));
 var holders2 = JSON.parse("<%= @results.sort_by(&:result).reverse.first(50).map(&:username)%>".replace(/&quot;/g,'"'));
+var scoreskegelrun = "<%= @results2.find_by(user_id: current_user.try(:id)).try(:result)%>";
+
+var eventid2 ="<%= @events[1].try("id")%>"
+var recordskegelrun2 = JSON.parse("<%= @results2.sort_by(&:result).reverse.first(50).map(&:result)%>".replace(/&quot;/g,'"'));
+var holderskegelrun2 = JSON.parse("<%= @results2.sort_by(&:result).reverse.first(50).map(&:username)%>".replace(/&quot;/g,'"'));
 function main () {
 	records = [];
 	holders = [];
@@ -44,10 +57,28 @@ function main () {
 	holders2.splice(records2.indexOf(records[i]),1);
 	records2.splice(records2.indexOf(records[i]),1);
 	}
+
+    recordskegelrun = [];
+    holderskegelrun = [];
+    for(i=0; i<recordskegelrun2.length; i++){
+        recordskegelrun[i] = parseInt(recordskegelrun2[i]);
+    }
+    recordskegelrun2 = recordskegelrun.slice(0);
+    recordskegelrun.sort(function(a, b){return a-b}).reverse();
+
+    for(i=0; i<recordskegelrun.length; i++) {
+        holderskegelrun[i] = holderskegelrun2[recordskegelrun2.indexOf(recordskegelrun[i])];
+        holderskegelrun2.splice(recordskegelrun2.indexOf(recordskegelrun[i]),1);
+        recordskegelrun2.splice(recordskegelrun2.indexOf(recordskegelrun[i]),1);
+    }
 	if (scores!== "") {
 		highscore=parseInt(scores);
 	}
+	if (scoreskegelrun!="") {
+	    highscore2=parseInt(scoreskegelrun);
+  }
 	ScoreCarrousel();
+	ScoreCarrousel2();
 	//Disable the page from scrolling
 	document.documentElement.style.overflow = "hidden";
 	
@@ -80,19 +111,76 @@ function ScoreCarrousel() {
 	ind = (ind+1)%indmax;
 	setTimeout(ScoreCarrousel,1000);
 }
+
+function ScoreCarrousel2() {
+  var indmax = holderskegelrun.length;
+  ind2 = (ind2+1)%indmax;
+  setTimeout(ScoreCarrousel2,1000);
+}
+
 function startScreen() {
 	var loop = function() {
-		renderStart();
-		updateStart();
-		if (startgame == false) {
-			window.requestAnimationFrame(loop,display.canvas);
-		}
-		else {
-			init();
-			run();
-		}
+	    if (screen==0) {
+          GameSelector();
+          UpdateSelector();
+      }
+      if (screen==1) {
+          renderStart();
+          updateStart()
+      }
+
+      if (screen==2) {
+          renderDino();
+          updateDino();
+      }
+
+		  if (startgame == false) {
+			  window.requestAnimationFrame(loop,display.canvas);
+		  }
+		  else if (screen==3) {
+          startKegelRun();
+      }
+		  else {
+			  init();
+			  runPils();
+		  }
 	};
 	window.requestAnimationFrame(loop,display.canvas);
+}
+
+function GameSelector() {
+    display.canvas.height = 400;
+    display.canvas.width = 400;
+
+    let ctx = display.canvas.getContext('2d');
+
+    //Draw Canvas Fill mode
+    ctx.fillStyle = 'Aquamarine';
+    ctx.fillRect(0,0,display.canvas.width, display.canvas.height);
+    display.drawText("Black","40px Arial","Webcie Games :D",45,50);
+
+    var imgPI = new Image();
+    imgPI.src = '<%= asset_path 'Pilscie-Invaders.jpg' %>';
+    PISprite = new Sprite(imgPI,0,0,100,100);
+    display.drawSprite(PISprite,45,80);
+    display.drawText("Black","12px Arial","Pilscie Invaders",48,200);
+
+    var imgRKR = new Image();
+    imgRKR.src = '<%= asset_path 'Kegel-Run.jpg' %>';
+    RKRSprite = new Sprite(imgRKR,0,0,100,100);
+    display.drawSprite(RKRSprite,255,80);
+    display.drawText("Black","12px Arial","Run Kegel Run",255,200);
+}
+
+function UpdateSelector() {
+    if (input.clickx-display.canvas.getBoundingClientRect().left>45 && input.clickx-display.canvas.getBoundingClientRect().left<145 && input.clicky-display.canvas.getBoundingClientRect().top>80 && input.clicky-display.canvas.getBoundingClientRect().top<180) {
+        screen=1;
+        input.clickx=9999;
+    }
+    if (input.clickx-display.canvas.getBoundingClientRect().left>255 && input.clickx-display.canvas.getBoundingClientRect().left<355 && input.clicky-display.canvas.getBoundingClientRect().top>80 && input.clicky-display.canvas.getBoundingClientRect().top<180) {
+        screen = 2;
+        input.clickx = 9999;
+    }
 }
 
 function renderStart() {
@@ -104,14 +192,19 @@ function renderStart() {
 	display.drawRect("CadetBlue","Coral",2,65,160,275,45);
 	display.drawRect("CadetBlue","Coral",2,370,0,30,30);
 	display.drawRect("CadetBlue","Coral",2,65,220,275,60);
+	display.drawRect("CadetBlue","Coral",2,0,0,63,30);
 	display.drawText("Black","20px Arial","Normal Mode",140,130);
 	display.drawText("Black","20px Arial","Expert Mode",140,190);
 	display.drawText("Black","20px Arial","?",380,23);
 	display.drawText("Black","20px Arial",String(ind+1)+": "+holders[ind],70,240);
 	display.drawText("Black","20px Arial","Highscore: "+records[ind],70,265);
+	display.drawText("Black","20px Arial","Back",7,20);
 }
 
 function updateStart() {
+    if (input.clickx-display.canvas.getBoundingClientRect().left>0 && input.clickx-display.canvas.getBoundingClientRect().left<63 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top<30) {
+        screen=0;
+    }
 	if (input.clickx-display.canvas.getBoundingClientRect().left>65 && input.clickx-display.canvas.getBoundingClientRect().left<340 && input.clicky-display.canvas.getBoundingClientRect().top>100 && input.clicky-display.canvas.getBoundingClientRect().top<145) {
 	startgame = true;
 	}
@@ -130,9 +223,471 @@ function updateStart() {
 	input.clickx = 0;
 	input.clicky = 0;
 	}
-	
 }
 
+function renderDino() {
+    display.canvas.height = 400;
+    display.canvas.width = 400;
+
+    display.drawText("Green","40px Arial","Run Kegel Run",75,50);
+    display.drawText("Green","25px Arial","Highscore: "+String(highscore2),120,80);
+    display.drawRect("CadetBlue","Coral",2,65,100,275,45);
+    display.drawRect("CadetBlue","Coral",2,370,0,30,30);
+    display.drawRect("CadetBlue","Coral",2,65,220,275,60);
+    display.drawRect("CadetBlue","Coral",2,0,0,63,30);
+
+    display.drawText("Black","20px Arial","Start Running",140,130);
+    display.drawText("Black","20px Arial","?",380,23);
+    display.drawText("Black","20px Arial",String(ind2+1)+": "+holderskegelrun[ind2],70,240);
+    display.drawText("Black","20px Arial","Highscore: "+recordskegelrun[ind2],70,265);
+    display.drawText("Black","20px Arial","Back",7,20);
+}
+
+function updateDino(){
+    duck = false;
+    jump = false;
+    if (input.clickx-display.canvas.getBoundingClientRect().left>0 && input.clickx-display.canvas.getBoundingClientRect().left<63 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top<30) {
+        screen=0;
+    }
+
+    if (input.clickx-display.canvas.getBoundingClientRect().left>370 && input.clickx-display.canvas.getBoundingClientRect().left<400 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top<30) {
+        alert("Play as Kegel and try to run as far as possible. But watch out, tracks can be dangerous places!");
+        input.clickx = 9999;
+    }
+
+    if (input.clickx-display.canvas.getBoundingClientRect().left>65 && input.clickx-display.canvas.getBoundingClientRect().left<340 && input.clicky-display.canvas.getBoundingClientRect().top>100 && input.clicky-display.canvas.getBoundingClientRect().top<145) {
+        screen=3;
+        startgame=true;
+        input.clickx = 9999;
+    }
+}
+
+function startKegelRun(){
+
+    //initialize clouds
+    clouds = [];
+    hurdles = [];
+    javelins = [];
+    grass = [];
+    run=true;
+    duck=false;
+    jump=false;
+    kegelindex = 0;
+    kegeldindex = 0;
+    kegelx = 30;
+    kegely = 260;
+    kegelvely = 0;
+    updatetime=5;
+    gravity = 0.3;
+    points = 0;
+    obstacleV = -3;
+    obstacleT = 2000;
+    starttimer = 0;
+
+    //cloud sprites
+    var ImgCloud = new Image();
+    ImgCloud.src = '<%= asset_path 'cloud.png' %>';
+    ClSprite = new Sprite(ImgCloud,0,0,130,53);
+
+    var ImgCloud2 = new Image();
+    ImgCloud2.src = '<%= asset_path 'cloud2.png' %>';
+    Cl2Sprite = new Sprite(ImgCloud2,0,0,130,53);
+
+    //Background sprite
+    var ImgBg = new Image();
+    ImgBg.src = '<%= asset_path 'Track-Background.png' %>';
+    BgSprite = new Sprite(ImgBg,0,0,400,400);
+
+    //Kegel sprites
+    var ImgK1 = new Image();
+    ImgK1.src = '<%= asset_path 'kegel1.png' %>';
+    K1Sprite = new Sprite(ImgK1,0,0,64,92);
+
+    var ImgK2 = new Image();
+    ImgK2.src = '<%= asset_path 'kegel2.png' %>';
+    K2Sprite = new Sprite(ImgK2,0,0,64,92);
+
+    var ImgK3 = new Image();
+    ImgK3.src = '<%= asset_path 'kegel3.png' %>';
+    K3Sprite = new Sprite(ImgK3,0,0,64,92);
+
+    var ImgKD1 = new Image();
+    ImgKD1.src = '<%= asset_path 'kegel-duck1.png' %>';
+    KD1Sprite = new Sprite(ImgKD1,0,0,76,61);
+
+    var ImgKD2 = new Image();
+    ImgKD2.src = '<%= asset_path 'kegel-duck2.png' %>';
+    KD2Sprite = new Sprite(ImgKD2,0,0,76,61);
+
+    //hurdle sprite
+    var ImgH = new Image();
+    ImgH.src = '<%= asset_path 'hurdle.png' %>';
+    HSprite = new Sprite(ImgH,0,0,48,84);
+
+    //javelin sprite
+    var ImgJ = new Image();
+    ImgJ.src = '<%= asset_path 'javelin.png' %>';
+    JSprite = new Sprite(ImgJ,0,0,152,20);
+
+    //grass sprite
+    var ImgG = new Image();
+    ImgG.src = '<%= asset_path 'grass.png' %>';
+    GSprite = new Sprite(ImgG,0,0,18,12);
+
+    //add first two clouds
+    clouds.push(new Cloud(260,30,-0.5,false));
+    clouds.push(new Cloud(100,50,-0.5,false));
+
+    //add first grass plucks
+    grass.push(new Grass(380,250,obstacleV/2));
+    grass.push(new Grass(360,230,obstacleV/2));
+    grass.push(new Grass(320,250,obstacleV/2));
+    grass.push(new Grass(300,230,obstacleV/2));
+    grass.push(new Grass(260,250,obstacleV/2));
+    grass.push(new Grass(240,230,obstacleV/2));
+    grass.push(new Grass(200,250,obstacleV/2));
+    grass.push(new Grass(180,230,obstacleV/2));
+    grass.push(new Grass(140,250,obstacleV/2));
+    grass.push(new Grass(120,230,obstacleV/2));
+    grass.push(new Grass(80,250,obstacleV/2));
+    grass.push(new Grass(60,230,obstacleV/2));
+    grass.push(new Grass(20,250,obstacleV/2));
+    grass.push(new Grass(0,230,obstacleV/2));
+
+    //set start timers
+    setTimeout(setStartTimer,1000);
+    setTimeout(setStartTimer,2000);
+    setTimeout(setStartTimer,3000);
+    //add first obstacle
+    setTimeout(createObstacles,3500);
+    //main function loop
+    var loop = function() {
+
+        renderKegelRun()
+        updateKegelRun();
+
+        if (screen==3) {
+            window.requestAnimationFrame(loop,display.canvas);
+        }
+        else {
+            startScreen();
+        }
+
+    };
+    window.requestAnimationFrame(loop,display.canvas);
+}
+
+function setStartTimer(){
+    starttimer+=1;
+}
+
+function createObstacles(){
+    if (startgame==true) {
+        if (Math.random() < 0.25) {
+            javelins.push(new Javelin(400, 268, obstacleV));
+        } else {
+            hurdles.push(new Hurdle(400, 268, obstacleV));
+        }
+        setTimeout(createObstacles, obstacleT);
+        obstacleV*=1.012;
+        obstacleT/=1.006;
+    }
+}
+
+function renderKegelRun(){
+
+    display.canvas.height = 400;
+    display.canvas.width = 400
+    //draw background
+    display.drawSprite(BgSprite,0,0);
+
+    //draw cloud animation
+    for (var i=0, len=clouds.length; i<len; i++){
+        c= clouds[i];
+        if (c.cool==true){
+            display.drawSprite(Cl2Sprite,c.x,c.y);
+        }
+        else{
+            display.drawSprite(ClSprite,c.x,c.y);
+        }
+    }
+
+    //draw hurdles
+    for (var i=0, len=hurdles.length; i<len; i++){
+        h= hurdles[i];
+        display.drawSprite(HSprite,h.x,h.y);
+    }
+
+    //draw javelins
+    for (var i=0, len=javelins.length; i<len; i++){
+        j= javelins[i];
+        display.drawSprite(JSprite,j.x,j.y);
+    }
+
+    //draw grass
+    for (var i=0, len=grass.length; i<len; i++){
+        g= grass[i];
+        display.drawSprite(GSprite,g.x,g.y);
+    }
+
+    //draw Kegel animation
+    if (run==true) {
+
+        if (kegelindex==0){
+            display.drawSprite(K1Sprite,kegelx,kegely);
+        }
+        else if (kegelindex==1){
+            display.drawSprite(K2Sprite,kegelx,kegely);
+        }
+        else if (kegelindex==2){
+            display.drawSprite(K3Sprite,kegelx,kegely);
+        }
+    }
+
+    if (duck==true){
+        if (kegeldindex==0){
+            display.drawSprite(KD1Sprite,kegelx,kegely+31);
+        }
+        else {
+            display.drawSprite(KD2Sprite,kegelx,kegely+31);
+        }
+
+    }
+    else if (jump==true){
+        display.drawSprite(K1Sprite,kegelx,kegely);
+    }
+
+    //draw states and buttons
+    display.drawRect("AliceBlue","AliceBlue",0,0,0,400,30);
+    display.drawRect("AliceBlue","black",2,0,0,60,30);
+    display.drawText("red","20px Arial","Points: ",140,20);
+    display.drawText("red","20px Arial",String(points),205,20);
+    display.drawText("black","20px Arial","Quit",9,22);
+    if(starttimer<3){
+        display.drawText("White","35px Arial","1",185,300);
+    }
+    if (starttimer<2){
+        display.drawText("White","35px Arial","2",185,345);
+    }
+    if (starttimer<1){
+        display.drawText("White","35px Arial","3",185,390);
+    }
+
+}
+
+function updateKegelRun(){
+    //update Kegel movement
+    if (updatetime<=0 && starttimer>2) {
+        kegeldindex = ((kegeldindex+1) %2);
+        kegelindex = ((kegelindex+1) % 3);
+        updatetime=5;
+        points+=1;
+    }
+    else {
+        updatetime-=1;
+    }
+
+    //update Cloud positions
+    for (var i=0, len=clouds.length; i<len; i++){
+        c= clouds[i];
+        if(starttimer>2){
+            c.x +=c.velx;
+        }
+
+
+        //remove clouds outside of the screen
+        if(c.x<-130) {
+            clouds.splice(i, 1);
+            i--;
+            if (Math.random() < 0.1) {
+              clouds.push(new Cloud(400, c.y, -0.5, true));
+            }
+            else {
+              clouds.push(new Cloud(400, c.y, -0.5, false));
+            }
+
+            continue;
+        }
+    }
+
+    //update Grass positions
+    for (var i=0, len=grass.length; i<len; i++){
+        g= grass[i];
+        if(starttimer>2){
+            g.x +=g.velx;
+        }
+
+        //remove grass outside of the screen
+        if(g.x<-18) {
+            grass.splice(i, 1);
+            i--;
+            grass.push(new Grass(400, g.y, obstacleV/2));
+            continue;
+        }
+    }
+
+    //update hurdle positions
+    for (var i=0, len=hurdles.length; i<len; i++) {
+        if (hurdles.length>i) {
+            h = hurdles[i];
+            h.x += h.velx;
+            if (h.x < -48) {
+                hurdles.splice(i, 1);
+                i--;
+                len--;
+            }
+        }
+    }
+
+    //update javelin positions
+    for (var i=0, len=javelins.length; i<len; i++) {
+        if (javelins.length>i) {
+            j = javelins[i];
+            j.x += j.velx;
+            if (j.x < -152) {
+                javelins.splice(i, 1);
+                i--;
+                len--;
+            }
+        }
+    }
+
+    //jump control
+    if ((input.isPressed(32) || input.isPressed(38)) && jump==false && duck==false){
+        jump = true;
+        run=false;
+        kegelvely=-9;
+    }
+
+    //adjust jump position
+    if (jump==true) {
+        kegely+=kegelvely;
+        kegelvely+=gravity;
+        if (kegely>260){
+            kegely=260;
+            jump=false;
+            run=true;
+            kegelvely=0;
+            gravity = 0.3;
+        }
+    }
+
+    //duck control
+    if (input.isDown(40) && jump==true){
+        gravity = 1;
+    }
+    if (input.isDown(40) && jump==false){
+        duck=true;
+        run=false;
+    }
+    else if (jump==false){
+        duck=false;
+        run=true;
+    }
+
+    //collision mechanics
+    //check javelin collision
+    for (var i=0, len = javelins.length; i<len; i++){
+        if (javelins.length>i) {
+            j = javelins[i];
+            if (j.x < kegelx + 64 && j.x > kegelx - 152 && j.y < kegely + 85 && duck == false) {
+                endGame();
+            }
+        }
+    }
+
+    //check hurdle collision
+    for (var i=0, len=hurdles.length; i<len; i++){
+        if (hurdles.length>i){
+            h = hurdles[i];
+            //if not duck
+            if ((h.x < kegelx + 64 && h.x + 48 > kegelx + 33 && h.y + 49 < kegely + 32 && h.y + 84 > kegely) || (h.x < kegelx + 44 && h.x + 48 > kegelx && h.y + 49 < kegely + 68 && h.y + 84 > kegely + 37) || (h.x < kegelx + 36 && h.x + 48 > kegelx + 5 && h.y + 49 < kegely + 92 && h.y + 84 > kegely + 73)) {
+                endGame();
+            }
+            if ((h.x + 13 < kegelx + 64 && h.x + 48 > kegelx + 33 && h.y + 29 < kegely + 32 && h.y + 48 > kegely) || (h.x + 13 < kegelx + 44 && h.x + 48 > kegelx && h.y + 29 < kegely + 68 && h.y + 48 > kegely + 37) || (h.x + 13 < kegelx + 36 && h.x + 48 > kegelx + 5 && h.y + 29 < kegely + 92 && h.y + 48 > kegely + 73)) {
+                endGame();
+            }
+            if ((h.x + 13 < kegelx + 64 && h.x + 32 > kegelx + 33 && h.y < kegely + 32 && h.y + 32 > kegely) || (h.x + 13 < kegelx + 44 && h.x + 32 > kegelx && h.y < kegely + 68 && h.y + 32 > kegely + 37) || (h.x + 13 < kegelx + 36 && h.x + 32 > kegelx + 5 && h.y < kegely + 92 && h.y + 32 > kegely + 73)) {
+                endGame();
+            }
+        }
+    }
+
+    //quit button control
+    if (input.clickx-display.canvas.getBoundingClientRect().left>0 && input.clickx-display.canvas.getBoundingClientRect().left<60 && input.clicky-display.canvas.getBoundingClientRect().top>0 && input.clicky-display.canvas.getBoundingClientRect().top <30) {
+        clearTimeout(createObstacles);
+        screen=2;
+        startgame = false;
+        input.clickx = 9999;
+        javelins=[];
+        hurdles=[];
+        grass = [];
+        clouds = [];
+    }
+}
+
+function endGame() {
+    var proceed = confirm("Game Over! Watch a short video for an extra life? :D");
+    if (proceed) {
+        ad = true;
+        saveGame();
+    } else {
+        ad = false;
+        saveGame();
+    }
+}
+
+function saveGame() {
+    clearTimeout(createObstacles);
+    if(points > highscore2){
+        SubmitScore2();
+    }
+    screen=2;
+    startgame = false;
+    input.clickx = 9999;
+    javelins = []
+    grass = [];
+    clouds = [];
+    hurdles = [];
+    duck = false;
+    jump = false;
+    delete input.down[40];
+}
+
+function SubmitScore2(){
+    var ding = "<%= @results2.find_by(user_id: current_user.try(:id)).try(:id)%>"
+    if (ding !== "") {
+        $.ajax({
+            url: window.location.origin+"/results/"+ding,
+            type: 'delete',
+            data: {
+                id: parseInt(ding),
+            },
+            dataType: "JSON",
+            success: function(data) {
+            }
+        });
+    }
+    if ("<%= current_user.try(:name)%>" !== ""){
+        $.ajax({
+            url: window.location.origin+"/results",
+            type: 'POST',
+            data: {
+                result: {
+                    username: "<%= current_user.try(:name)%>",
+                    result: String(points),
+                    user_id: "<%= current_user.try(:id)%>",
+                    event_id: parseInt(eventid2),
+                }
+            },
+            dataType: "JSON",
+            success: function(data) {
+            }
+        });
+        setTimeout(updateWindow,500);
+    }
+    highscore2 = points;
+}
 function init() {
 	frames = 0;
 	//create the kegel
@@ -231,14 +786,13 @@ function checkCollisions() {
 		if (lives==0 && startgame == true) {
 		alert("Game Over")
 		if(points > highscore){
-		SubmitScore();
+		    SubmitScore();
 		}
 		clearTimeout(createEnemies);
 		clearTimeout(createWortels);
-		input.clickx = 0;
-		input.clicky = 0;
+		input.clickx = 9999;
+		input.clicky = 9999;
 		startgame = false;
-		window.location.href = window.location.origin+"/Game";
 		break;
 		}
 	}
@@ -259,19 +813,26 @@ function checkCollisions() {
 		if (lives==0 && startgame == true) {
 		alert("Game Over")
 		if(points > highscore){
-		SubmitScore();
+		  SubmitScore();
 		}
 		clearTimeout(createEnemies);
 		clearTimeout(createWortels);
-		input.clickx = 0;
-		input.clicky = 0;
+		input.clickx = 9999;
+		input.clicky = 9999;
 		startgame = false;
-		window.location.href = window.location.origin+"/Game";
 		break;
 		}
 	}
 }
 
+function updateWindow(){
+    if(ad==false){
+        window.location.href = window.location.origin+"/Game";
+    }
+    else {
+        window.location.href = 'https://www.youtube.com/watch?v=bZeemepTOks';
+    }
+}
 function SubmitScore(){
 	var ding = "<%= @results.find_by(user_id: current_user.try(:id)).try(:id)%>"
 	if (ding !== "") {
@@ -295,14 +856,16 @@ function SubmitScore(){
 				username: "<%= current_user.try(:name)%>",
 				result: String(points),
 				user_id: "<%= current_user.try(:id)%>",
+          event_id: parseInt(eventid1),
 			}
 		},
 		dataType: "JSON",
 		success: function(data) {
         }
      });
-	 }
-	 highscore = points;
+	setTimeout(updateWindow,500);
+  }
+	highscore = points;
 }
 
 function drawStats() {
@@ -315,7 +878,7 @@ function drawStats() {
 	display.drawText("black","20px Arial","Quit",9,22);
 }
 
-function run () {
+function runPils () {
 	var loop = function() {
 		update();
 		render();
@@ -336,6 +899,7 @@ function update() {
 		clearTimeout(createEnemies);
 		clearTimeout(createWortels);
 		startgame = false;
+		input.clickx = 9999;
 	}
 if (nEnemies>=maxEnemies) {
 	if (input.isDown(37)|| input.isDown(65)) {

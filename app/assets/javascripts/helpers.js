@@ -112,3 +112,31 @@ InputHandler.prototype.isPressed = function(code) {
 	}
 	return false;
 };
+
+//Now for RunKegel Game
+function Cloud(x,y,velx,cool)  {
+    this.x = x;
+    this.y = y;
+    this.velx = velx;
+    this.cool = cool;
+}
+
+//Hurdle object
+function Hurdle(x,y,velx)  {
+    this.x = x;
+    this.y = y;
+    this.velx = velx;
+}
+
+//Javelin object
+function Javelin(x,y,velx)  {
+    this.x = x;
+    this.y = y;
+    this.velx = velx;
+}
+//Grass object
+function Grass(x,y,velx)  {
+    this.x = x;
+    this.y = y;
+    this.velx = velx;
+}
