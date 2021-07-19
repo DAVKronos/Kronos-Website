@@ -25,7 +25,7 @@ COPY docker/ImageMagick-6/policy.xml /etc/ImageMagick-6/policy.xml
 WORKDIR /home/app
 
 # Copy the Gemfile and lockfile with the right owner
-COPY package.json yarn.lock Gemfile*  /home/app/
+COPY --chown=app:app package.json yarn.lock Gemfile*  /home/app/
 
 # Install the gems with all available processors
 RUN yarn install --frozen-lockfile --production && \
@@ -36,7 +36,7 @@ RUN yarn install --frozen-lockfile --production && \
     gem install foreman
 
 # Add all files to the image and make the app user owner of the app folder
-ADD . /home/app/
+ADD --chown=app:app . /home/app/
 
 #Copy docker database.yml
 COPY database_docker.yml /home/app/config/database.yml
