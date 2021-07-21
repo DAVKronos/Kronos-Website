@@ -87,7 +87,7 @@ class ObjectCollection {
 
 
 function getAPIHostUrl(url) {
-    return 'http://localhost:3000' + url;
+    return url;
 }
 
 
