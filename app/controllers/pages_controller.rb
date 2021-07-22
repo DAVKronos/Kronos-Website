@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class PagesController < Admin::ApplicationController
   load_and_authorize_resource
   def home
     @newsitems = Newsitem.where(:agreed => true).order('created_at DESC').limit(6)

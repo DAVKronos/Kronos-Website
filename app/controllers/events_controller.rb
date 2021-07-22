@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class EventsController < Admin::ApplicationController
   load_and_authorize_resource
   # GET /events
   # GET /events.json

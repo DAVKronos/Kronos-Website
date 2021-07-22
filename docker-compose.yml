@@ -13,7 +13,7 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
   app:
-    image: ${DOCKER_IMAGE_NAME-kronoswebsite}
+    image: ${DOCKER_IMAGE_NAME-kronoswebsite}:development
     build:
       context: .
       dockerfile: Dockerfile-development
@@ -34,7 +34,7 @@ services:
       - node_modules:/home/app/node_modules
       - packs:/home/app/public/packs
   webpacker:
-    image: ${DOCKER_IMAGE_NAME-kronoswebsite}
+    image: ${DOCKER_IMAGE_NAME-kronoswebsite}:development
     ports:
       - "3035:3035"
     command: sh ./script/start_webpack_dev.sh

@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class CommentsController < Admin::ApplicationController
   load_and_authorize_resource
   # GET /comments
   # GET /comments.json

@@ -1,4 +1,4 @@
-class FoldersController < ApplicationController
+class FoldersController < Admin::ApplicationController
   load_and_authorize_resource
   def index
     @folders = Folder.where(folder_id: [nil, ""])

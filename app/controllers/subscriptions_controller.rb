@@ -1,4 +1,4 @@
-class SubscriptionsController < ApplicationController
+class SubscriptionsController < Admin::ApplicationController
   load_and_authorize_resource
   # GET /subscriptions
   # GET /subscriptions.json

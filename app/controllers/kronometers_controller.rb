@@ -1,4 +1,4 @@
-class KronometersController < ApplicationController
+class KronometersController < Admin::ApplicationController
   load_and_authorize_resource
   def index
     @kms = Kronometer.order('date DESC')

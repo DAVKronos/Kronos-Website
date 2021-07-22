@@ -1,4 +1,4 @@
-class AliasesController < ApplicationController
+class AliasesController < Admin::ApplicationController
   load_and_authorize_resource
 
   # GET /aliases

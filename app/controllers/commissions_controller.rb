@@ -1,4 +1,4 @@
-class CommissionsController < ApplicationController
+class CommissionsController < Admin::ApplicationController
   load_and_authorize_resource
   
   def new

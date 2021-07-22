@@ -1,4 +1,4 @@
-class PhotoalbumsController < ApplicationController
+class PhotoalbumsController < Admin::ApplicationController
   load_and_authorize_resource
   # GET /photoalbums
   # GET /photoalbums.json

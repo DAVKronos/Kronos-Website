@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class PhotosController < Admin::ApplicationController
   load_and_authorize_resource
   protect_from_forgery :except => [:create, :delete]
   

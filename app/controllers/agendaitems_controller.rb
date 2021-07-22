@@ -1,6 +1,6 @@
 require 'icalendar'
 
-class AgendaitemsController < ApplicationController
+class AgendaitemsController < Admin::ApplicationController
   load_and_authorize_resource
   respond_to :html, :json
 

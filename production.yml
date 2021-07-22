@@ -22,5 +22,3 @@ services:
       - LOCALEAPP_API_KEY=2qpX88VnxzUXm6YFLoQ0XDyHubE8M6U7bzLNiYlGOSQQbWB9ch
       - GMAIL_SMTP_PASSWORD=yqkjxzkcubxzfnfl
     command: sh ./script/start_app.sh
-    volumes:
-      -

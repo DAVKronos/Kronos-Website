@@ -1,4 +1,4 @@
-class NewsitemsController < ApplicationController
+class NewsitemsController < Admin::ApplicationController
   load_and_authorize_resource
   # GET /newsitems
   # GET /newsitems.json
