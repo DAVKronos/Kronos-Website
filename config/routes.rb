@@ -116,6 +116,12 @@ Rails.application.routes.draw do
 
       resources :pages
 
+      resources :folders do
+        resources :kronometers
+      end
+
+      resources :kronometers
+
       resources :agendaitems do
         member do
           get 'icalendar'

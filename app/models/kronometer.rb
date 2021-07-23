@@ -22,4 +22,12 @@ class Kronometer < ApplicationRecord
                     path: ":rails_root/secure_files/:class/:attachment/:id_partition/:style/:filename",
                     url: "/kronometers/:id/display/:style"
   do_not_validate_attachment_file_type :file
+
+  def url_original
+    file.url(:original)
+  end
+
+  def url_thumb
+    file.url(:thumb)
+  end
 end

@@ -4,8 +4,21 @@ module Api
       load_and_authorize_resource
 
       def index
-        @kms = Kronometer.order('date DESC')
-        @users = User.where(:papieren_kronometer => true)
+        kms = Kronometer.order('date DESC')
+
+        if current_user.nil?
+          kms = kms.where(public: true)
+        end
+
+        if params[:folder_id]
+          kms = kms.where(folder_id: params[:folder_id])
+        else
+          kms = kms.where(folder_id: [nil, ""])
+        end
+
+        respond_to do |format|
+          format.json { render json: kms.collect {|km| km.as_json(methods: [:url_original, :url_thumb])} }
+        end
       end
 
       def new

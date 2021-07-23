@@ -4,17 +4,17 @@ module Api
       load_and_authorize_resource
 
       def index
-        @folders = Folder.where(folder_id: [nil, ""])
-        @kms = Kronometer.where(folder_id: [nil, ""])
+        folders = Folder.where(folder_id: [nil, ""]).order(:name)
         respond_to do |format|
-          format.html # index.html.erb
+          format.json { render json: folders.as_json }
         end
       end
 
       def show
-        @folder = Folder.find(params[:id])
-        @folders = Folder.where(folder_id: params[:id])
-        @kms = Kronometer.where(folder_id: params[:id])
+        folder = Folder.find(params[:id])
+        respond_to do |format|
+          format.json { render json: folder.as_json(include: :folders) }
+        end
       end
 
       def new
