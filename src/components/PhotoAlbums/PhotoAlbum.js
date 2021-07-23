@@ -1,17 +1,26 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import {Row, Col, Card, Pagination} from 'react-bootstrap';
+import {Row, Col, Card} from 'react-bootstrap';
 import {getAPIHostUrl} from "../../utils/rest-helper";
 import {format}  from '../../utils/date-format';
 import {useQuery} from "react-query";
 import {getPhotoAlbum, getPhotos} from "./queries";
 import {useTranslation} from "react-i18next";
 import DefaultSpinner from "../Generic/Spinner";
+import Paginate from '../Generic/Paginate';
 
+
+const PhotoItem = ({item: photo}) => {
+    return <Link to={`/photoalbums/${photo.photoalbum_id}/${photo.id}`}>
+        <Card>
+            <Card.Img src={getAPIHostUrl(photo.photo_url_thumb)}/>
+        </Card>
+    </Link>
+}
 
 const PhotoAlbum = (props) => {
     const id = props.match.params.id;
-    const [currentPage, setCurrentPage] = useState(1);
+
     const {t, i18n} = useTranslation(['photoalbum', 'models']);
 
     const { isLoading:albumLoading, isError, data: photoAlbum, error } = useQuery(['photoalbums', id], getPhotoAlbum)
@@ -29,21 +38,6 @@ const PhotoAlbum = (props) => {
         return <h3>{t('no_photos')}</h3>
     }
 
-
-    let pageNumbers = [];
-    const photosPerPage = 12;
-    let pages = Math.ceil(photos.length / photosPerPage);
-    for (let number = 1; number <= pages; number++) {
-        pageNumbers.push(
-            <Pagination.Item key={number} onClick={() => setCurrentPage(number)}
-                             active={number === currentPage}>
-                {number}
-            </Pagination.Item>,
-        );
-    }
-
-    let photosPage = photos.slice((currentPage-1)*photosPerPage, currentPage * photosPerPage);
-
     return <React.Fragment>
         <Row>
             <Col>
@@ -51,26 +45,7 @@ const PhotoAlbum = (props) => {
                 <p>{t('models:generic.created_at')}: {format(photoAlbum.created_at, 'PPP p', i18n.language)}</p>
             </Col>
         </Row>
-        <Row>
-            {photosPage && photosPage.map(photo => {
-                return <Col key={photo.id} md={3} sm={4}>
-                    <Link to={`/photoalbums/${id}/${photo.id}`}>
-                        <Card>
-                            <Card.Img src={getAPIHostUrl(photo.photo_url_thumb)}/>
-                        </Card>
-                    </Link>
-                </Col>;
-            })}
-        </Row>
-        <Row className="row-margin">
-            <Col>
-                <Pagination>
-                    <Pagination.Prev disabled={currentPage===1} onClick={() => setCurrentPage(currentPage - 1 )}/>
-                    {pageNumbers}
-                    <Pagination.Next disabled={currentPage === pages} onClick={() => setCurrentPage(currentPage + 1 )}/>
-                </Pagination>
-            </Col>
-        </Row>
+        <Paginate data={photos} Item={PhotoItem} itemsPerPage={12}/>
     </React.Fragment>;
 }
 

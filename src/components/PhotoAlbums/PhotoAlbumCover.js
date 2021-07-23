@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Card} from 'react-bootstrap';
 import {Link, useHistory} from 'react-router-dom';
 import {getAPIHostUrl} from "../../utils/rest-helper";
@@ -9,6 +9,7 @@ import {getPhotos, removePhotoAlbum} from "./queries";
 import {subject} from "@casl/ability";
 import {Can} from "../../utils/auth-helper";
 import {useTranslation} from "react-i18next";
+import placeholder from "../../images/image-thumb-placeholder.png";
 
 const PhotoAlbumCover = ({photoAlbum}) => {
     const id = photoAlbum.id;
@@ -16,7 +17,7 @@ const PhotoAlbumCover = ({photoAlbum}) => {
     const {t, i18n} = useTranslation('generic');
     const lang = i18n.language;
     const { isLoading, isError, data: photos, error } = useQuery(['photos', id], getPhotos)
-
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
 
     let photoThumb = photos && photos[0] && photos[0].photo_url_thumb;
 
@@ -27,8 +28,12 @@ const PhotoAlbumCover = ({photoAlbum}) => {
     }
 
     return <Card style={{marginBottom: 10}}>
-        {isLoading && <DefaultSpinner />}
-        {photoAlbum && <Card.Img variant="top" src={getAPIHostUrl(photoThumb)} />}
+        {(!photoThumb || (isLoading && !isImageLoaded)) && <Card.Img variant="top" src={placeholder} />}
+        {(isLoading && !isImageLoaded) && <Card.ImgOverlay><DefaultSpinner/></Card.ImgOverlay>}
+        {photoThumb && <Card.Img variant="top"
+                                 className={isImageLoaded ? "d-block": 'd-none'}
+                                 src={getAPIHostUrl(photoThumb)}
+                                 onLoad={() => setIsImageLoaded(true)} />}
         <Card.Body>
             <Card.Title><Link to={`/photoalbums/${photoAlbum.id}`}>{photoAlbum.name}</Link></Card.Title>
             <Card.Text>
