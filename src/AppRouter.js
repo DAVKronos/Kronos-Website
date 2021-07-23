@@ -16,6 +16,7 @@ import ResultsRouter from "./components/Results";
 import PagesRouter from "./components/Pages";
 import UsersRouter from "./components/Users";
 import AgendaItemTypesRouter from "./components/AgendaItemTypes";
+import KronometerRouter from './components/Kronometers';
 import {Container} from 'react-bootstrap';
 
 
@@ -54,6 +55,9 @@ const AppRouter = () => {
                 </Route>
                 <Route path="/agendaitemtypes">
                     <AgendaItemTypesRouter />
+                </Route>
+                <Route path="/kronometers">
+                    <KronometerRouter/>
                 </Route>
                 <Route path="/:pagetag">
                     <PagesRouter />

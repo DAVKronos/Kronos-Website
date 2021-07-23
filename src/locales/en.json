@@ -30,7 +30,8 @@
     "photos": "Photos",
     "contact": "Contact",
     "users": "Users",
-    "Committees": "Committees"
+    "committees": "Committees",
+    "kronometers": "Kronometers"
   },
   "footer": {
     "sponsors": "Sponsors"
@@ -56,8 +57,13 @@
     "header": "Results",
     "eventPage": "Event page"
   },
-  "commiteepage": {
+  "committeePage": {
     "headerText": "Kronos committees"
+  },
+  "kronometerPage": {
+    "mainFolder": "Main folder",
+    "subfolders": "Subfolders",
+    "documents": "Documents"
   },
   "models": {
     "generic": {

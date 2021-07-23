@@ -38,8 +38,9 @@ const NavBar =  () => {
             <Nav className="mr-auto">
                 <Nav.Link as={NavLink} to="/" exact>Home</Nav.Link>
                 <NavDropdown title={t('association')} id="basic-nav-dropdown">
-                    <NavDropdown.Item as={NavLink} to="/commissions">{t('Committees')}</NavDropdown.Item>
+                    <NavDropdown.Item as={NavLink} to="/commissions">{t('committees')}</NavDropdown.Item>
                     {getPageLinksForMenu(pages,'Vereniging')}
+                    <NavDropdown.Item as={NavLink} to="/kronometers">{t('kronometers')}</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title={t('trainings')} id="basic-nav-dropdown">
                     {getPageLinksForMenu(pages,'Trainingen')}

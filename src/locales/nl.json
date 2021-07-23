@@ -20,8 +20,7 @@
     "readMore": "Lees meer",
     "birthdays": "Verjaardagen",
     "news": "Nieuws",
-    "newsitem": "Nieuwsitem",
-    "Committees": "Commissies"
+    "newsitem": "Nieuwsitem"
   },
   "navigation": {
     "association" : "Vereniging",
@@ -31,7 +30,9 @@
     "results": "Uitslagen",
     "photos": "Foto's",
     "contact": "Contact",
-    "users": "Leden"
+    "users": "Leden",
+    "committees": "Commissies",
+    "kronometers": "Kronometers"
   },
   "footer": {
     "sponsors": "Sponsoren"
@@ -57,8 +58,13 @@
     "header": "Uitslagen",
     "eventPage": "Evenementpagina"
   },
-  "commiteepage": {
+  "committeePage": {
     "headerText": "Commissies van Kronos"
+  },
+  "kronometerPage": {
+    "mainFolder": "Hoofdmap",
+    "subfolders": "Submappen",
+    "documents": "Documenten"
   },
   "models": {
     "generic": {
