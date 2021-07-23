@@ -10,7 +10,7 @@ function Commissions(props) {
     const { isLoading, isError, data, error } = useQuery('commissions', getCommissions)
 
     const commissions = data;
-    const { t } = useTranslation('commiteepage');
+    const { t } = useTranslation('committeePage');
     return <React.Fragment>
         <h1>{t('headerText')}</h1>
         <p className={"lead"}>Onderstaand treft u een overzicht aan van de huidige commissies van Kronos.</p>
