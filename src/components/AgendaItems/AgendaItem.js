@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import {Button, Card, Col, Row} from 'react-bootstrap';
 import {AgendaItemTypeName} from './AgendaItemType';
 import {BsGeoAlt, BsClock, BsList, BsLink} from 'react-icons/bs';
@@ -84,7 +85,7 @@ function AgendaItem(props) {
                 </Row>}
                 <Row>
                     <Col xs={1}><BsList/></Col>
-                    <Col xs={11}>{agendaItem.description}</Col>
+                    <Col xs={11}><ReactMarkdown source={agendaItem.description}/></Col>
                 </Row>
                 <Row><Col>
                     <h2>Results</h2>
