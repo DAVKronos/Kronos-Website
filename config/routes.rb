@@ -114,6 +114,8 @@ Rails.application.routes.draw do
         resources :eventtypes
       end
 
+      resources :user_types
+
       resources :pages
 
       resources :folders do

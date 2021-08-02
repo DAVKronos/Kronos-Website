@@ -1,8 +1,8 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
 import {Nav} from 'react-bootstrap';
-import flagNL from '../../images/Site_EN.png';
-import flagEN from '../../images/Site_NL.png';
+import flagNL from '../../images/Site_NL.png';
+import flagEN from '../../images/Site_EN.png';
 
 const LanguageSwitch = () => {
     const {i18n} = useTranslation();
