@@ -66,6 +66,9 @@
     "subfolders": "Submappen",
     "documents": "Documenten"
   },
+  "userpage": {
+    "kronauts": "Kronauten"
+  },
   "models": {
     "generic": {
       "created_at": "Aangemaakt op"

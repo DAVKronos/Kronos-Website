@@ -14,7 +14,7 @@
     "previous": "Previous",
     "next": "Next",
     "back": "Back",
-    "allItems": "Alles"
+    "allItems": "All"
   },
   "homepage": {
     "readMore": "Read more",
@@ -64,6 +64,9 @@
     "mainFolder": "Main folder",
     "subfolders": "Subfolders",
     "documents": "Documents"
+  },
+  "userpage": {
+    "kronauts": "Kronauts"
   },
   "models": {
     "generic": {

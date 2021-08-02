@@ -8,7 +8,14 @@ function getUsers(queryKey) {
 function getUser(queryKey, id) {
     return restCall(`users/${id}`).then(res => res.data)
 }
+function getUserTypes() {
+    return restCall('user_types').then(res => res.data)
+}
 
 
 
-export {getUser, getUsers}
+export {
+    getUser,
+    getUsers,
+    getUserTypes
+}
