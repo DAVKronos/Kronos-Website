@@ -14,7 +14,7 @@
     "previous": "Previous",
     "next": "Next",
     "back": "Back",
-    "allItems": "Alles",
+    "allItems": "All",
     "send": "Send"
   },
   "homepage": {
@@ -65,6 +65,9 @@
     "mainFolder": "Main folder",
     "subfolders": "Subfolders",
     "documents": "Documents"
+  },
+  "userpage": {
+    "kronauts": "Kronauts"
   },
   "contactPage": {
     "title": "Send us a message"
