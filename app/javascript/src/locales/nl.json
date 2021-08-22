@@ -14,7 +14,8 @@
     "previous": "Vorige",
     "next": "Volgende",
     "back": "Terug",
-    "allItems": "Alles"
+    "allItems": "Alles",
+    "send": "Verstuur"
   },
   "homepage": {
     "readMore": "Lees meer",
@@ -66,6 +67,9 @@
     "subfolders": "Submappen",
     "documents": "Documenten"
   },
+  "contactPage": {
+    "title": "Send us a message"
+  },
   "models": {
     "generic": {
       "created_at": "Aangemaakt op"
@@ -112,6 +116,11 @@
       "date": "Datum",
       "public": "Publiek",
       "external_url": "Externe URL"
+    },
+    "contact": {
+      "name": "Naam",
+      "email": "Email",
+      "message": "Bericht"
     }
   }
 }

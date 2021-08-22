@@ -14,14 +14,19 @@ const queryCache = new QueryCache({
      },
 })
 
+const EnvContext = React.createContext({});
+
 console.log(i18n);
-const App = () => {
-  return <AuthProvider>
+const App = (props) => {
+  return <EnvContext.Provider value={props}><AuthProvider>
     <ReactQueryCacheProvider queryCache={queryCache}>
     <AppRouter/>
     </ReactQueryCacheProvider>
-  </AuthProvider>;
+  </AuthProvider>
+  </EnvContext.Provider>;
 };
+
+export {EnvContext}
 
 
 
