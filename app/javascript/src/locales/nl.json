@@ -67,6 +67,9 @@
     "subfolders": "Submappen",
     "documents": "Documenten"
   },
+  "userpage": {
+    "kronauts": "Kronauten"
+  },
   "contactPage": {
     "title": "Send us a message"
   },
