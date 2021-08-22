@@ -1,23 +1,37 @@
-import React from 'react';
-import {Button, Form} from 'react-bootstrap';
+import React, {useContext} from 'react';
+import {Form} from 'react-bootstrap';
+import FormField from "../Generic/FormField";
+import ReCAPTCHA from "react-google-recaptcha";
+import {EnvContext} from "../../App";
 
-export default function ContactForm() {
+const ContactForm = ({values, setValue}) => {
+    const {RECAPTCHA_SITE_KEY} = useContext(EnvContext)
+
     return <Form className="form-padding">
-		<h3>Stuur ons een bericht</h3>
-        <Form.Group controlId="FormBasicName">
-			<Form.Label>Naam</Form.Label>
-            <Form.Control type="text"/>
-        </Form.Group>
-        <Form.Group controlId="formBasicEmail">
-			<Form.Label>E-mail</Form.Label>
-            <Form.Control type="text"/>
-        </Form.Group>
-        <Form.Group controlId="formBasicMessage">
-			<Form.Label>Bericht</Form.Label>
-            <Form.Control type="text"/>
-        </Form.Group>
-        <Button variant="primary">
-            Verstuur
-        </Button>
+
+        <FormField fieldName="name"
+                   modelName="contact"
+                   value={values.name}
+                   setValue={(v) => setValue('name', v)}
+                   type="text"
+        />
+        <FormField fieldName="email"
+                   modelName="contact"
+                   value={values.email}
+                   setValue={(v) => setValue('email', v)}
+                   type="text"
+        />
+        <FormField fieldName="message"
+                   modelName="contact"
+                   value={values.message}
+                   setValue={(v) => setValue('message', v)}
+                   type="textarea"
+        />
+        <ReCAPTCHA
+            sitekey={RECAPTCHA_SITE_KEY}
+            onChange={(v) => setValue('g-recaptcha', v)}
+        />
     </Form>
 }
+
+export default ContactForm
