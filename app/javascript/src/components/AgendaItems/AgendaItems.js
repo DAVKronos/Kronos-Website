@@ -48,7 +48,7 @@ const AgendaItems = () => {
     }
     const [filter, setFilter] = useState(null);
 
-    const { isLoading, isError, data, error } = useQuery(['agendaitems', {year: date.getFullYear(), month: date.getMonth()}], getAgendaitems)
+    let { isLoading, isError, data: agendaItems, error } = useQuery(['agendaitems', {year: date.getFullYear(), month: date.getMonth()}], getAgendaitems)
 
     const onChangeFilter = (newFilter) => {
         if (filter !== newFilter) {
@@ -56,8 +56,7 @@ const AgendaItems = () => {
         }
     }
 
-    let agendaItems = data;
-    if (filter) {
+    if (agendaItems && filter) {
         agendaItems = agendaItems.filter(agendaItem => agendaItem.agendaitemtype_id === filter)
     }
     return (<React.Fragment>
