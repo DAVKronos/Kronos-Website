@@ -34,6 +34,13 @@
     "committees": "Committees",
     "kronometers": "Kronometers"
   },
+  "loginMenu": {
+    "login": "Log in",
+    "logout": "Log out",
+    "rememberMe": "Remember me",
+    "email": "Email",
+    "password": "Password"
+  },
   "footer": {
     "sponsors": "Sponsors"
   },
