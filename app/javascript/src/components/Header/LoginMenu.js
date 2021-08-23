@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react';
-import {Button, Form, Nav, NavDropdown, Row, Col, Image} from 'react-bootstrap';
+import {Button, Form, NavDropdown, Image} from 'react-bootstrap';
+import {useTranslation} from "react-i18next";
 import {login, logout} from '../../utils/auth-helper'
 import { authContext } from '../../utils/AuthContext';
 import {BsPersonFill} from 'react-icons/bs';
@@ -7,16 +8,18 @@ import DefaultSpinner from "../Generic/Spinner";
 import {NavLink} from "react-router-dom";
 
 const LoginMenu = () => {
+    const {t} = useTranslation('loginMenu');
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [rememberMe, setRememberMe] = useState(true);
     const [loading, setLoading] = useState(false);
-    const { setAuthData } = useContext(authContext);
+    const { setUserData } = useContext(authContext);
     const onFormSubmit = e => {
         e.preventDefault();
         setLoading(true);
-        login(email, password).then((data) => {
+        login(email, password, rememberMe).then((user) => {
             setLoading(false);
-            setAuthData(data);
+            setUserData(user);
         });
     };
 
@@ -26,31 +29,34 @@ const LoginMenu = () => {
 
     return <Form className="form-padding" onSubmit={onFormSubmit}>
         <Form.Group controlId="formBasicEmail">
-            <Form.Control type="email" placeholder="Emailadres" onChange={e => {
+            <Form.Control type="email" placeholder={t('email')} onChange={e => {
                 setEmail(e.target.value);
             }}/>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-            <Form.Control type="password" placeholder="Wachtwoord" onChange={e => {
+            <Form.Control type="password" placeholder={t('password')} onChange={e => {
                 setPassword(e.target.value);
             }}/>
         </Form.Group>
-        {/*<Form.Group controlId="formBasicCheckbox">*/}
-        {/*    <Form.Check type="checkbox" label="Onthoud mij"/>*/}
-        {/*</Form.Group>*/}
+        <Form.Group controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label={t('rememberMe')} checked={rememberMe} onChange={() => {
+                setRememberMe(!rememberMe);
+            }}/>
+        </Form.Group>
         <Button variant="primary" type='submit' >
-            Inloggen
+            {t('login')}
         </Button>
     </Form>
 }
 
 const LoggedInMenu = ({user}) => {
     let firstName = user.name.split(' ')[0]
-    const { setAuthData } = useContext(authContext);
+    const {t} = useTranslation('loginMenu');
+    const { setUserData } = useContext(authContext);
     const onClickLogout = () => {
         logout().then(() => {
-            setAuthData(null);
+            setUserData(null);
         });
     }
     return <React.Fragment>
@@ -61,14 +67,14 @@ const LoggedInMenu = ({user}) => {
 
         <NavDropdown.Item as={NavLink} to={`/users/${user.id}`}>{firstName}'s stek</NavDropdown.Item>
         <NavDropdown.Item >Kronos cloud</NavDropdown.Item>
-        <NavDropdown.Item onClick={onClickLogout}>Logout</NavDropdown.Item>
+        <NavDropdown.Item onClick={onClickLogout}>{t('logout')}</NavDropdown.Item>
     </React.Fragment>
 
 }
 
 const UserMenu = () => {
-    const { auth } = useContext(authContext);
-    const user = auth.data;
+    const { user } = useContext(authContext);
+
 
     if (user) {
         let firstName = user.name.split(' ')[0];

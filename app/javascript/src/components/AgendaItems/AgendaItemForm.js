@@ -56,9 +56,9 @@ const agendaItemFields = [{
 
 // TODO: make required do something (with react-hook-form)
 const AgendaItemForm = ({values, setValue, children }) => {
-    const { auth } = useContext(authContext);
+    const { user } = useContext(authContext);
     const {data: agendaItemTypes} = useQuery(['agendaitemtypes'], getAgendaitemTypes)
-    const { data: commissions  } = useQuery(['commissions', auth.data.id], getCommissionForUser)
+    const { data: commissions  } = useQuery(['commissions', user.id], getCommissionForUser)
     return <Form>
         {agendaItemFields.map((field) => {
             let items = field.name === 'agendaitemtype_id' ? agendaItemTypes : field.name === 'commission_id' ? commissions : [];

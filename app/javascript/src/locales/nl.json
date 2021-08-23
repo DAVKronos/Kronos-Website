@@ -35,6 +35,13 @@
     "committees": "Commissies",
     "kronometers": "Kronometers"
   },
+  "loginMenu": {
+    "login": "Inloggen",
+    "logout": "Uitloggen",
+    "rememberMe": "Onthoud mij",
+    "email": "Email",
+    "password": "Wachtwoord"
+  },
   "footer": {
     "sponsors": "Sponsoren"
   },

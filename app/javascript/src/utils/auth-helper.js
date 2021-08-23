@@ -10,37 +10,64 @@ function getAbilities() {
 function updateAbilities(ability) {
     return getAbilities().then(rules => {
         ability.update(rules);
-        const user = JSON.parse(sessionStorage.getItem('user'))
-        if (user) {
-            user.abilities = rules;
-            sessionStorage.setItem('user', JSON.stringify(user));
-        }
         return rules
     })
 }
 
 function initializeAbilities() {
     const ability = new Ability()
-    const user = JSON.parse(sessionStorage.getItem('user'))
-    if (user && user.abilities) {
-        ability.update(user.abilities);
-    } else {
-        updateAbilities(ability);
-    }
-
+    updateAbilities(ability);
     return ability
 }
 
+function getAuthentication() {
+    if (!localStorage.getItem('kronos-auth')) {
+        return null;
+    }
+    return JSON.parse(localStorage.getItem('kronos-auth'));
+}
+
+async function validateToken() {
+    if (!localStorage.getItem('kronos-auth')) {
+        return null;
+    }
+    const {uid, client} = authDetails;
+    const access_token = authDetails['access-token']
+    return axios.get(`/api/v1/auth/validate_token?uid=${uid}&client=${client}&access-token=${access_token}`).then(response => {
+        const user = response.data.data;
+        return updateAbilities(ability).then(() => {
+            return user;
+        });
+    }, (error)=> {
+        return null;
+    })
+}
+
+let authDetails = getAuthentication();
 const ability = initializeAbilities();
 
-function login(email, password) {
+function getAuthDetails(){
+    return Object.freeze(authDetails);
+}
+
+function setAuthDetails(obj){
+    authDetails = obj;
+}
+
+function login(email, password, rememberMe) {
     return axios.post(`/api/v1/auth/sign_in`, {email, password}, getConfig())
         .then((response) => {
+            let auth_data = {};
             let user = response.data.data;
-            user['access-token'] = response.headers['access-token'];
-            user['client'] = response.headers['client'];
-            sessionStorage.setItem('user', JSON.stringify(user));
+            auth_data['access-token'] = response.headers['access-token'];
+            auth_data['client'] = response.headers['client'];
+            auth_data['uid'] = user.uid;
+            if (rememberMe) {
+                localStorage.setItem('kronos-auth', JSON.stringify(auth_data));
+            }
+            setAuthDetails(auth_data);
             return updateAbilities(ability).then(() => {
+
                 return user;
             });
         })
@@ -52,7 +79,7 @@ function login(email, password) {
 function logout() {
     return axios.delete(`/api/v1/auth/sign_out`, {...getConfig()})
         .then(() => {
-            sessionStorage.removeItem("user");
+            localStorage.removeItem('kronos-auth')
             return updateAbilities(ability);
         })
         .catch(() => {
@@ -70,5 +97,7 @@ export {
     login,
     logout,
     ability,
-    Can
+    Can,
+    validateToken,
+    getAuthDetails
 }

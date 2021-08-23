@@ -31,14 +31,13 @@ const SubscriptionsCard = ({allowed, agendaItem}) => {
 
 const Subscriptions = ({agendaItem}) => {
     const {t} = useTranslation('agendaItemPage');
-    const {auth} = useContext(authContext);
+    const {user} = useContext(authContext);
     const queryCache = useQueryCache()
     const {isLoading, isError, data, error} = useQuery(['subscriptions', agendaItem.id], getSubscriptions);
     if (isLoading) {
         return <DefaultSpinner/>
     }
     const subscriptions = data;
-    const user = auth.data;
     const userSubscription = subscriptions.find(sub => sub.user_id === user.id);
 
     const onClickUnsubscribe = () => {

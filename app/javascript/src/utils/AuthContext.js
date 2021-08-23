@@ -1,21 +1,25 @@
 import React, { createContext, useState, useEffect } from 'react';
+import {validateToken} from "./auth-helper";
 
 export const authContext = createContext({});
 
 const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useState({ loading: true, data: null });
+    const [user, setUser] = useState(null );
 
-    const setAuthData = (data) => {
-        setAuth({data: data});
+    const setUserData = (user) => {
+        setUser(user);
     };
 
     useEffect(() => {
-        setAuth({ loading: false, data: JSON.parse(sessionStorage.getItem('user'))});
+        validateToken().then((currentUser) => {
+            setUser( currentUser);
+        })
+
     }, []);
 
 
     return (
-        <authContext.Provider value={{ auth, setAuthData }}>
+        <authContext.Provider value={{ user, setUserData }}>
             {children}
         </authContext.Provider>
     );
