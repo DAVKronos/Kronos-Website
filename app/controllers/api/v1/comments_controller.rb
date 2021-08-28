@@ -7,6 +7,10 @@ module Api
       def index
         @comments = Comment.all
 
+        if params[:newsitem_id]
+          @comments = @comments.where(:commentable_type => "Newsitem", :commentable_id => params[:newsitem_id])
+        end
+
         respond_to do |format|
           format.html # index.html.erb
           format.json { render json: @comments }

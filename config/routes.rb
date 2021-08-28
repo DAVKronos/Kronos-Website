@@ -153,6 +153,7 @@ Rails.application.routes.draw do
         collection do
           get 'agree'
         end
+        resources :comments
       end
 
       resources :results, only: [:index, :create, :destroy] do
