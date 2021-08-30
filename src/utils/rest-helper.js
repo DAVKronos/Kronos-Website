@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {authDetails, getAuthDetails} from "./auth-helper";
+import {getAuthDetails} from "./auth-helper";
 
 const API_HOST = '/api/v1';
 
