@@ -61,7 +61,7 @@ const LoggedInMenu = ({user}) => {
     }
     return <React.Fragment>
         <div className="logged-in-menu">
-            <Image src="" roundedCircle />
+            <Image src={user.avatar_url_thumb} roundedCircle />
             <h3>{firstName}</h3>
         </div>
 
