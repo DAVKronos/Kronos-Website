@@ -46,7 +46,8 @@
 
 .logged-in-menu {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   h3 {
     text-align: center;

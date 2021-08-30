@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import {validateToken} from "./auth-helper";
+import {getUser} from "../components/Users/queries";
 
 export const authContext = createContext({});
 
@@ -12,7 +13,10 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         validateToken().then((currentUser) => {
-            setUser( currentUser);
+            getUser('users', currentUser.id).then((user) => {
+                setUser( user);
+            })
+
         })
 
     }, []);
