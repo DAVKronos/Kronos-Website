@@ -33,9 +33,10 @@ const NavBar =  () => {
     const { t } = useTranslation('navigation');
     const pages = data || [];
     return <Navbar id="navbar-kronos" expand="lg">
+        <Navbar.Brand className="d-md-none d-flex">Kronos</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-        <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
+        <Navbar.Collapse id="basic-navbar-nav" className="flex-wrap">
+            <Nav>
                 <Nav.Link as={NavLink} to="/" exact>Home</Nav.Link>
                 <NavDropdown title={t('association')} id="basic-nav-dropdown">
                     <NavDropdown.Item as={NavLink} to="/commissions">{t('committees')}</NavDropdown.Item>
@@ -52,9 +53,12 @@ const NavBar =  () => {
                 <Nav.Link as={NavLink} to="/results">{t('results')}</Nav.Link>
                 <Nav.Link as={NavLink} to="/photoalbums">{t('photos')}</Nav.Link>
                 <Nav.Link as={NavLink} to="/contact">{t('contact')}</Nav.Link>
+
+            </Nav>
+            <Nav>
                 {getHighlightPages(pages)}
             </Nav>
-            <Nav className="justify-content-end">
+            <Nav className="ml-auto">
 
                 <Can I='read' an="User">
                     <Nav.Link as={NavLink} to="/users">{t('users')}</Nav.Link>
