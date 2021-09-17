@@ -56,7 +56,7 @@ class User < ApplicationRecord
                     :path => ":rails_root/public/system/:attachment/:hash.:extension",
                     :url => "/system/:attachment/:hash.:extension", :hash_secret => "longSecretString"
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-
+  before_validation :set_uid
   validates :name, :presence => true
   validates :initials, :presence => true
   validates :birthdate, :presence => true
@@ -72,7 +72,10 @@ class User < ApplicationRecord
 
   
   has_paper_trail :ignore => [:created_at, :updated_at, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip]
-  
+
+  def set_uid
+    self[:uid] = self[:email] if self[:uid].blank? && self[:email].present?
+  end
   def admin?
     self.commissions.each do |com|
       if com.role == 'ADMIN'
