@@ -82,10 +82,19 @@ const AgendaItems = () => {
                     let itemDate = new Date(item.date);
                     return <Link key={item.id} to={`/agendaitems/${item.id}`} className='agenda-item'>
                         <Card body className="agenda-item-card">
-                            <Row>
-                                <Col sm={2}><h4>{format(itemDate, 'd', lang)} <small>{format(itemDate, 'ccc', lang)}</small></h4></Col>
-                                <Col sm={1}><h4>{format(itemDate, 'p', lang)}</h4></Col>
-                                <Col sm={9}><h4>{item.name} <small><AgendaItemTypeName id={item.agendaitemtype_id}/></small></h4></Col>
+                            <Row className="no-gutters">
+                                <Col xs={2}>
+                                    <h4>
+                                        {format(itemDate, 'd MMM', lang)} <br/>
+                                        <small>{format(itemDate, 'ccc', lang)}</small>
+                                    </h4>
+                                </Col>
+                                <Col xs={2} >
+                                    <h4><small>{format(itemDate, 'p', lang)}</small></h4>
+                                </Col>
+                                <Col xs={8}>
+                                    <h4>{item.name} <small><AgendaItemTypeName id={item.agendaitemtype_id}/></small></h4>
+                                </Col>
                             </Row>
                         </Card>
                     </Link>

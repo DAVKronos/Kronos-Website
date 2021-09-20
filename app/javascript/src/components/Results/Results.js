@@ -49,10 +49,10 @@ const Results = () => {
                     let itemDate = new Date(item.date);
                     return <Card key={item.id}>
                             <Accordion.Toggle as={Card.Header} eventKey={`${index}`} className='agenda-item result'>
-                                <Row>
-                                    <Col sm={2}><h4>{format(itemDate, 'd', lang)} <small>{format(itemDate, 'ccc', lang)}</small></h4></Col>
-                                    <Col sm={1}><h4>{format(itemDate, 'p', lang)}</h4></Col>
-                                    <Col sm={9} style={{display: 'flex', justifyContent: 'space-between'}}>
+                                <Row className="no-gutters">
+                                    <Col xs={2}><h4>{format(itemDate, 'd MMM', lang)} <br/><small>{format(itemDate, 'ccc', lang)}</small></h4></Col>
+                                    <Col xs={2}><h4><small>{format(itemDate, 'p', lang)}</small></h4></Col>
+                                    <Col xs={9} style={{display: 'flex', justifyContent: 'space-between'}}>
                                         <h4>{item.name} <small><AgendaItemTypeName id={item.agendaitemtype_id}/></small></h4>
                                         <div style={{verticalAlign: 'middle'}}><BsChevronDown /></div>
 

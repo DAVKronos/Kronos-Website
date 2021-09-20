@@ -13,10 +13,11 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         validateToken().then((currentUser) => {
-            getUser('users', currentUser.id).then((user) => {
-                setUser( user);
-            })
-
+            if (currentUser) {
+                getUser('users', currentUser.id).then((user) => {
+                    setUser(user);
+                })
+            }
         })
 
     }, []);

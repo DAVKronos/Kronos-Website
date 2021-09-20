@@ -39,6 +39,7 @@ async function validateToken() {
             return user;
         });
     }, (error)=> {
+        localStorage.removeItem('kronos-auth')
         return null;
     })
 }
