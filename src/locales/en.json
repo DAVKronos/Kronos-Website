@@ -15,7 +15,8 @@
     "next": "Next",
     "back": "Back",
     "allItems": "All",
-    "send": "Send"
+    "send": "Send",
+    "approve": "Approve"
   },
   "homepage": {
     "readMore": "Read more",
@@ -39,7 +40,9 @@
     "logout": "Log out",
     "rememberMe": "Remember me",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "kronosCloud": "Kronos cloud",
+    "admin": "Admin"
   },
   "footer": {
     "sponsors": "Sponsors"

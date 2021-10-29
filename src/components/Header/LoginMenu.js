@@ -3,7 +3,8 @@ import {Button, Form, NavDropdown, Image} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import {login, logout} from '../../utils/auth-helper'
 import { authContext } from '../../utils/AuthContext';
-import {BsPersonFill} from 'react-icons/bs';
+import {Can} from "../../utils/auth-helper";
+import {BsPersonFill, BsBoxArrowRight, BsFillCloudFill, BsFillGearFill} from 'react-icons/bs';
 import DefaultSpinner from "../Generic/Spinner";
 import {NavLink} from "react-router-dom";
 
@@ -65,9 +66,12 @@ const LoggedInMenu = ({user}) => {
             <h3>{firstName}</h3>
         </div>
 
-        <NavDropdown.Item as={NavLink} to={`/users/${user.id}`}>{firstName}'s stek</NavDropdown.Item>
-        <NavDropdown.Item >Kronos cloud</NavDropdown.Item>
-        <NavDropdown.Item onClick={onClickLogout}>{t('logout')}</NavDropdown.Item>
+        <NavDropdown.Item as={NavLink} to={`/users/${user.id}`}><BsPersonFill/> {firstName}'s stek</NavDropdown.Item>
+        <NavDropdown.Item ><BsFillCloudFill/> {t('kronosCloud')}</NavDropdown.Item>
+        <Can I={'manage'} this='all'>
+        <NavDropdown.Item as={NavLink} to='/admin'><BsFillGearFill/> {t('admin')}</NavDropdown.Item>
+        </Can>
+        <NavDropdown.Item onClick={onClickLogout}><BsBoxArrowRight/> {t('logout')}</NavDropdown.Item>
     </React.Fragment>
 
 }

@@ -18,7 +18,10 @@ import UsersRouter from "./components/Users";
 import AgendaItemTypesRouter from "./components/AgendaItemTypes";
 import KronometerRouter from './components/Kronometers';
 import UserTypesRouter from "./components/UserTypes";
+import AdminRouter from './components/Admin';
 import {Container} from 'react-bootstrap';
+import PrivateRoute from "./components/Generic/PrivateRoute";
+
 
 
 const AppRouter = () => {
@@ -63,9 +66,11 @@ const AppRouter = () => {
                 <Route path="/kronometers">
                     <KronometerRouter/>
                 </Route>
+                <PrivateRoute path="/admin" component={AdminRouter} action='manage' subject='all' />
                 <Route path="/:pagetag">
                     <PagesRouter />
                 </Route>
+                
             </Switch>
         </div>
     </Container>
