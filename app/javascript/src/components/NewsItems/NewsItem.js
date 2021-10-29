@@ -4,6 +4,7 @@ import {getAPIHostUrl} from "../../utils/rest-helper";
 import {format} from '../../utils/date-format';
 import {useQuery, useQueryCache} from "react-query";
 import {
+    approveNewsItem,
     createNewsItemComment,
     getNewsItem,
     getNewsItemComments,
@@ -117,6 +118,13 @@ function NewsItem(props) {
             history.back();
         });
     }
+
+    const onClickApprove = () => {
+        approveNewsItem(id).then(() => {
+            history.push('/admin/approve-news');
+        });
+    }
+
     const title = i18n.language === 'nl' ? item.title : item.title_en;
     const news = i18n.language === 'nl' ? item.news : item.news_en;
 
@@ -136,6 +144,9 @@ function NewsItem(props) {
                 </Can>
             </Col>
             <Col md={2}>
+                {!item.agreed && <Can I="manage" subject={"all"}>
+                    <Button variant='success' onClick={onClickApprove}>{t('approve')}</Button>
+                </Can>}
                 <Can I="update" a={"Newsitem"}>
                     <Button variant='warning' as={Link} to={`/newsitems/${id}/edit`}>{t('edit')}</Button>
                 </Can>

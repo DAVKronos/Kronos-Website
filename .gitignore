@@ -40,3 +40,4 @@ google-api-credentials.json
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+.bash_history

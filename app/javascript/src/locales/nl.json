@@ -15,7 +15,8 @@
     "next": "Volgende",
     "back": "Terug",
     "allItems": "Alles",
-    "send": "Verstuur"
+    "send": "Verstuur",
+    "approve": "Keur goed"
   },
   "homepage": {
     "readMore": "Lees meer",
@@ -40,7 +41,9 @@
     "logout": "Uitloggen",
     "rememberMe": "Onthoud mij",
     "email": "Email",
-    "password": "Wachtwoord"
+    "password": "Wachtwoord",
+    "kronosCloud": "Kronos cloud",
+    "admin": "Beheer"
   },
   "footer": {
     "sponsors": "Sponsoren"

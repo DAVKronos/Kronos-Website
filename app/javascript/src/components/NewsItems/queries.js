@@ -19,6 +19,10 @@ function removeNewsItem(id) {
     return restCall(`newsitems/${id}`, {method: 'DELETE'});
 }
 
+function approveNewsItem(id) {
+    return restCall(`newsitems/${id}/agreed`, {method: "GET"});
+}
+
 function getNewsItemComments(queryKey, newsItemId) {
     return restCall(`newsitems/${newsItemId}/comments`).then(res => res.data);
 }
@@ -31,4 +35,13 @@ function createNewsItemComment(newsItemId, data) {
     return restCall(`newsitems/${newsItemId}/comments`, {method: 'POST', data: {comment: data}}).then(res => res.data);
 }
 
-export {getNewsItem, getNewsItemComments, createNewsItem, updateNewsItem, removeNewsItem, removeNewsItemComment, createNewsItemComment}
+export {
+    getNewsItem, 
+    getNewsItemComments, 
+    createNewsItem, 
+    updateNewsItem, 
+    removeNewsItem, 
+    approveNewsItem,
+    removeNewsItemComment, 
+    createNewsItemComment
+}
