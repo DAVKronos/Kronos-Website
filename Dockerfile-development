@@ -1,5 +1,5 @@
 # Base image
-FROM phusion/passenger-ruby25
+FROM phusion/passenger-ruby26
 
 # Set correct environment variables.
 ENV HOME /root
