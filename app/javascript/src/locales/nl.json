@@ -98,6 +98,8 @@
       "agendaItemType_plural": "Agenda item types",
       "newsItem": "Nieuws item",
       "newsItem_plural": "Nieuws items",
+      "page": "Pagina",
+      "page_plural": "Pagina's",
       "photoAlbum": "Photoalbum",
       "photoAlbum_plural": "Photoalbums"
     },
@@ -122,6 +124,16 @@
       "news": "Nieuws bericht (Nederlands)",
       "news_en": "Nieuws bericht (Engels)",
       "articlephoto": "Foto"
+    },
+    "page": {
+      "pagetag": "Pagina tag",
+      "pagetag_en":"Pagina tag (Engels)",
+      "information": "Pagina inhoud (Nederlands)",
+      "information_en": "Pagina inhoud (Engels)",
+      "menu": "Menu",
+      "highlight": "Highlight",
+      "public": "Publiek",
+      "sort_order": "Volgorde"
     },
     "photoalbum": {
       "name": "Naam (Nederlands)",

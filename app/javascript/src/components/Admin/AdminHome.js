@@ -8,7 +8,7 @@ const AdminHome = () => {
         <ListGroup>
         <ListGroup.Item as={NavLink} to={'/admin/approve-news'} action>Nieuwsitems goedkeuren</ListGroup.Item>
         <ListGroup.Item action>Mailinglijsten beheren</ListGroup.Item>
-        <ListGroup.Item action>Informatie pagina's beheren</ListGroup.Item>
+        <ListGroup.Item as={NavLink} to={'/admin/pages'} action>Informatie pagina's beheren</ListGroup.Item>
         <ListGroup.Item action>Generiek objecten beheren</ListGroup.Item>
     </ListGroup>
     </Col>
