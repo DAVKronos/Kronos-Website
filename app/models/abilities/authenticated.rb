@@ -8,31 +8,31 @@ module Abilities
       can :create, [Photo, Newsitem, Agendaitem, Event, Result, Comment]
       can [:archief, :wedstrijden, :new_result, :create_result, :icalendar, :duplicate], Agendaitem
       can [:read, :create, :update], [Photoalbum]
-      can [:create, :update], [Subscription]
+      can [:create, :update], [Subscription], user_id: user.id
       can :display, Kronometer
-	    cannot :read, Subscription
-      can :update, user.agendaitems
-	  Subscription.all.where(user: user).each do |subs|
-        if !(Agendaitem.find(subs.agendaitem_id).deadline_passed?)
-          can :destroy, subs
-		end
-    end
+      can :update, Agendaitem, user_id: user.id
+      Subscription.all.where(user: user).each do |sub|
+          if !(Agendaitem.find(sub.agendaitem_id).deadline_passed?)
+            can :destroy, Subscription, id:sub.id
+          end
+      end
       if Agendaitem.find_by(name: 'Pilscie Games')
         Result.all.where(event_id:  Event.find_by(agendaitem_id: Agendaitem.find_by(name: 'Pilscie Games').id).try(:id)).where(user_id: user.try(:id)).each do |res|
-          can :destroy, res
+          can :destroy, Result, id:res.id
         end
         Result.all.where(event_id:  Event.where(agendaitem_id: Agendaitem.find_by(name: 'Pilscie Games').id)[1].try(:id)).where(user_id: user.try(:id)).each do |res|
-          can :destroy, res
+          can :destroy, Result, id:res.id
         end
       end
-      can [:update, :editpassword], user
+      can [:update, :editpassword], User, id: user.id
 
+      can :birthdays, User
       cannot :create, User
 
       if user.active?
-        can :manage, user.agendaitems
+        can :manage, Agendaitem, user_id: user.id
         user.commissions.each do |com|
-          can :update, com.agendaitems
+          can :update, Agendaitem, commission_id: com.id
         end
       end
 

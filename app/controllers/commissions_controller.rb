@@ -1,4 +1,4 @@
-class CommissionsController < ApplicationController
+class CommissionsController < Admin::ApplicationController
   load_and_authorize_resource
   
   def new
@@ -17,10 +17,19 @@ class CommissionsController < ApplicationController
   def show
     @commission = Commission.find_by_id(params[:id])
     @commission_memberships = Commission.find_by_id(params[:id]).commission_memberships
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @commission.as_json(include: {commission_memberships: {include: {user: {only: :name}}}})}
+    end
   end
   
   def index
     @commissions = Commission.order("name").all
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @commissions}
+    end
   end
   
   def edit

@@ -1,4 +1,4 @@
-class PhotoalbumsController < ApplicationController
+class PhotoalbumsController < Admin::ApplicationController
   load_and_authorize_resource
   # GET /photoalbums
   # GET /photoalbums.json
@@ -36,7 +36,7 @@ class PhotoalbumsController < ApplicationController
 	
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @photoalbum }
+      format.json { render json: {photoalbum: @photoalbum.as_json, photos: @allphotos.map {|photo| photo.as_json(methods: [:photo_url_normal, :photo_url_thumb])}}}
     end
   end
 

@@ -1,4 +1,4 @@
-class AgendaitemtypesController < ApplicationController
+class AgendaitemtypesController < Admin::ApplicationController
   load_and_authorize_resource
   # GET /agendaitemtypes
   # GET /agendaitemtypes.json

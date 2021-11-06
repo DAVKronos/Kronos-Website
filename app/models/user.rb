@@ -39,6 +39,9 @@
 #
 
 class User < ApplicationRecord
+            # Include default devise modules.
+            include DeviseTokenAuth::Concerns::User
+            before_create :skip_confirmation!
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -66,6 +69,7 @@ class User < ApplicationRecord
   validates :address, :presence => true
   # Dit vereenvoudigt de callback functies voor de maillijst
   validates :email, :presence => true
+  validates_uniqueness_of :email, scope: :provider, if: -> { provider == 'email' }
   after_update :change_mailinglist_email, :if => :saved_change_to_email?
 
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -164,6 +168,14 @@ class User < ApplicationRecord
         api_client.change_member_email_of_group(self, original_email, membership.mailinglist.full_email)
       end
     end
+  end
+
+  def avatar_url_normal
+    self.avatar.url(:normal)
+  end
+
+  def avatar_url_thumb
+    self.avatar.url(:thumb)
   end
 
 end

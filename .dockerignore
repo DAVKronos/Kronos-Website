@@ -8,3 +8,4 @@ log/
 public/system/
 tmp/
 secure_files/
+node_modules

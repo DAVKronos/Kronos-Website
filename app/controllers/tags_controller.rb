@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class TagsController < Admin::ApplicationController
   load_and_authorize_resource
   # GET /tags
   # GET /tags.json

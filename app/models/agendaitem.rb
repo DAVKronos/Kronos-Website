@@ -34,8 +34,9 @@ class Agendaitem < ApplicationRecord
   before_update :change_reserve_status
   validates :name, :presence => true
   validates :name_en, :presence => true
-  validates :description, :presence => true, unless: ->{description_en.empty?}
-  validates :description_en, :presence => true, unless: ->{description.empty?}
+  validates :agendaitemtype_id, :presence => true
+  validates :description, :presence => true, unless: ->{description_en.nil? or description_en.empty?}
+  validates :description_en, :presence => true, unless: ->{description.nil? or description.empty?}
 
   def count_results()
     counter = 0

@@ -1,0 +1,14 @@
+.photo {
+  display: flex;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 400px;
+  }
+}
+
+.photo-buttons {
+  display: flex;
+  justify-content: center;
+}

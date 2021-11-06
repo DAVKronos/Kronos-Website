@@ -1,0 +1,151 @@
+{
+  "generic": {
+    "add": "Toevoegen",
+    "addModel": "{{model}} toevoegen",
+    "edit": "Aanpassen",
+    "editModel": "{{model}} aanpassen",
+    "remove": "Verwijderen",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "empty": "Leeg",
+    "create": "Aanmaken",
+    "new": "Nieuw",
+    "not_found": "Not found",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "back": "Terug",
+    "allItems": "Alles",
+    "send": "Verstuur",
+    "approve": "Keur goed"
+  },
+  "homepage": {
+    "readMore": "Lees meer",
+    "birthdays": "Verjaardagen",
+    "news": "Nieuws",
+    "newsitem": "Nieuwsitem"
+  },
+  "navigation": {
+    "association" : "Vereniging",
+    "trainings": "Trainingen",
+    "matches": "Wedstrijden",
+    "agenda": "Agenda",
+    "results": "Uitslagen",
+    "photos": "Foto's",
+    "contact": "Contact",
+    "users": "Leden",
+    "committees": "Commissies",
+    "kronometers": "Kronometers"
+  },
+  "loginMenu": {
+    "login": "Inloggen",
+    "logout": "Uitloggen",
+    "rememberMe": "Onthoud mij",
+    "email": "Email",
+    "password": "Wachtwoord",
+    "kronosCloud": "Kronos cloud",
+    "admin": "Beheer"
+  },
+  "footer": {
+    "sponsors": "Sponsoren"
+  },
+  "photoAlbum": {
+    "no_photos": "Geen foto's in dit album"
+  },
+  "agendaItemPage": {
+    "header": "Agenda",
+    "subscriptions": {
+      "list": "Inschrijflijst",
+      "loginNotice": "Je moet inloggen om inschrijvingen te zien of aan te vullen.",
+      "subscribe": "Inschrijven",
+      "unsubscribe": "Uitschrijven"
+    }
+  },
+  "photoAlbumPage": {
+    "header": "Fotoalbums",
+    "editPhotos": "Foto's aanpassen",
+    "upload": "Uploaden"
+  },
+  "resultPage": {
+    "header": "Uitslagen",
+    "eventPage": "Evenementpagina"
+  },
+  "committeePage": {
+    "headerText": "Commissies van Kronos"
+  },
+  "kronometerPage": {
+    "mainFolder": "Hoofdmap",
+    "subfolders": "Submappen",
+    "documents": "Documenten"
+  },
+  "userpage": {
+    "kronauts": "Kronauten"
+  },
+  "contactPage": {
+    "title": "Send us a message"
+  },
+  "models": {
+    "generic": {
+      "created_at": "Aangemaakt op"
+    },
+    "modelNames": {
+      "result": "Uitslag",
+      "result_plural": "Uitslagen",
+      "event": "Evenement",
+      "event_plural": "Evenementen",
+      "agendaItem": "Agenda item",
+      "agendaItem_plural": "Agenda items",
+      "agendaItemType": "Agenda item type",
+      "agendaItemType_plural": "Agenda item types",
+      "newsItem": "Nieuws item",
+      "newsItem_plural": "Nieuws items",
+      "page": "Pagina",
+      "page_plural": "Pagina's",
+      "photoAlbum": "Photoalbum",
+      "photoAlbum_plural": "Photoalbums"
+    },
+    "agendaitem": {
+      "name": "Naam (Nederlands)",
+      "name_en": "Naam (Engels)",
+      "date": "Datum",
+      "agendaitemtype_id": "Agenda item type",
+      "intern": "Prive",
+      "description": "Beschrijving (Nederlands)",
+      "description_en": "Beschrijving (Engels)",
+      "location": "Locatie",
+      "url": "URL",
+      "commission_id": "Commissie",
+      "subscribe": "Inschrijven",
+      "subscriptiondeadline": "Inschrijfdeadline",
+      "maxsubscription": "Maximum inschrijvingen"
+    },
+    "newsitem": {
+      "title": "Kop (Nederlands)",
+      "title_en":"Kop (Engels)",
+      "news": "Nieuws bericht (Nederlands)",
+      "news_en": "Nieuws bericht (Engels)",
+      "articlephoto": "Foto"
+    },
+    "page": {
+      "pagetag": "Pagina tag",
+      "pagetag_en":"Pagina tag (Engels)",
+      "information": "Pagina inhoud (Nederlands)",
+      "information_en": "Pagina inhoud (Engels)",
+      "menu": "Menu",
+      "highlight": "Highlight",
+      "public": "Publiek",
+      "sort_order": "Volgorde"
+    },
+    "photoalbum": {
+      "name": "Naam (Nederlands)",
+      "name_en":"Naam (Engels)",
+      "date": "Datum",
+      "public": "Publiek",
+      "external_url": "Externe URL"
+    },
+    "contact": {
+      "name": "Naam",
+      "email": "Email",
+      "message": "Bericht"
+    }
+  }
+}

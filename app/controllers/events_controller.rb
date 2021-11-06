@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class EventsController < Admin::ApplicationController
   load_and_authorize_resource
   # GET /events
   # GET /events.json
@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @events }
+      format.json { render json: @events.map{|event| event.as_json(include: :results)} }
     end
   end
 
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @event }
+      format.json { render json: @event.as_json(include: :results) }
     end
   end
 

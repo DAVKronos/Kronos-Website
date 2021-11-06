@@ -36,8 +36,12 @@ gem 'pg', '~> 1.2.3'
 gem "recaptcha"
 gem 'icalendar', '~> 2.0'
 gem 'passenger'
+gem 'rack-cors'
+gem 'webpacker'
+gem 'react-rails'
+gem 'devise_token_auth'
+gem 'omniauth'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
-
 
 # Gems used only for assets
 gem 'sass-rails'

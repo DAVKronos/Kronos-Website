@@ -1,28 +1,28 @@
-class NewsitemsController < ApplicationController
+class NewsitemsController < Admin::ApplicationController
   load_and_authorize_resource
   # GET /newsitems
   # GET /newsitems.json
   def index
     @newsitems = Newsitem.where(:agreed => true).order('created_at desc').paginate(:page => params[:page], :per_page => 10)
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @newsitems }
+      format.json { render json: @newsitems.map { |newsitem| newsitem.as_json(include: {user: {only: :name}}, methods: [:articlephoto_url_normal, :articlephoto_url_carrousel]) } }
+
     end
   end
-  
+
   def agree
     @newsitems = Newsitem.where(:agreed => false)
-    
+
     respond_to do |format|
       format.html # agree.html.erb
-      format.json { render json: @newsitems }
+      format.json { render json: @newsitems.map { |newsitem| newsitem.as_json(include: {user: {only: :name}}, methods: [:articlephoto_url_normal, :articlephoto_url_carrousel]) } }
     end
   end
-  
+
   def agreed
     @newsitem = Newsitem.find(params[:id])
-    
+
     @newsitem.agreed = true
     @newsitem.agreed_by = current_user.id
 
@@ -38,16 +38,16 @@ class NewsitemsController < ApplicationController
   # GET /newsitems/1.json
   def show
     @newsitem = Newsitem.find(params[:id])
-    
+
     @comment = Comment.new(:commentable_id => params[:id], :commentable_type => Newsitem)
-    
+
     if current_user
       @comment.user = current_user
     end
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @newsitem }
+      format.json { render :json => @newsitem.as_json(include: {user: {only: :name}}, methods: [:articlephoto_url_normal, :articlephoto_url_carrousel]) }
     end
   end
 
@@ -55,7 +55,7 @@ class NewsitemsController < ApplicationController
   # GET /newsitems/new.json
   def new
     @newsitem = Newsitem.new
-    
+
     @newsitem = current_user.newsitems.build()
 
     respond_to do |format|
@@ -73,7 +73,7 @@ class NewsitemsController < ApplicationController
   # POST /newsitems.json
   def create
     @newsitem = Newsitem.new(newsitem_params)
-    
+
     @newsitem = current_user.newsitems.build(newsitem_params)
     @newsitem.agreed = false
 
@@ -117,8 +117,9 @@ class NewsitemsController < ApplicationController
   end
 
   private
-    def newsitem_params
-      # TODO controller now permits all models attributes, try to be more specific
-      params.require(:newsitem).permit!
-    end
+
+  def newsitem_params
+    # TODO controller now permits all models attributes, try to be more specific
+    params.require(:newsitem).permit!
+  end
 end

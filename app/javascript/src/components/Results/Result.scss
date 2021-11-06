@@ -1,0 +1,9 @@
+@import '../../styles/colors.scss';
+
+.result {
+  color: $kronos-green;
+
+  &:hover {
+    color: $kronos-green-dark;
+  }
+}

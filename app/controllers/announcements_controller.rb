@@ -1,4 +1,4 @@
-class AnnouncementsController < ApplicationController
+class AnnouncementsController < Admin::ApplicationController
 
   load_and_authorize_resource
 

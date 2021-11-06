@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < Admin::ApplicationController
   load_and_authorize_resource
   skip_load_resource only: :create
 
@@ -25,6 +25,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
     @commissions = @user.commissions.order("name").all
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json:  @user.as_json(methods: [:avatar_url_normal, :avatar_url_thumb])}
+    end
   end
 
   def index

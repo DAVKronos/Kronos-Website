@@ -1,0 +1,150 @@
+{
+  "generic": {
+    "add": "Add",
+    "addModel": "New {{model}}",
+    "edit": "Edit",
+    "editModel": "Edit {{model}}",
+    "remove": "Remove",
+    "save": "Save",
+    "cancel": "Cancel",
+    "empty": "Empty",
+    "create": "Create",
+    "new": "New",
+    "not_found": "Not found",
+    "previous": "Previous",
+    "next": "Next",
+    "back": "Back",
+    "allItems": "All",
+    "send": "Send",
+    "approve": "Approve"
+  },
+  "homepage": {
+    "readMore": "Read more",
+    "birthdays": "Birthdays",
+    "news": "News"
+  },
+  "navigation": {
+    "association" : "Association",
+    "trainings": "Training",
+    "matches": "Matches",
+    "agenda": "Agenda",
+    "results": "Results",
+    "photos": "Photos",
+    "contact": "Contact",
+    "users": "Users",
+    "committees": "Committees",
+    "kronometers": "Kronometers"
+  },
+  "loginMenu": {
+    "login": "Log in",
+    "logout": "Log out",
+    "rememberMe": "Remember me",
+    "email": "Email",
+    "password": "Password",
+    "kronosCloud": "Kronos cloud",
+    "admin": "Admin"
+  },
+  "footer": {
+    "sponsors": "Sponsors"
+  },
+  "photoAlbum": {
+    "no_photos": "No photos in this album"
+  },
+  "agendaItemPage": {
+    "header": "Agenda",
+    "subscriptions": {
+      "list": "Subscriptions",
+      "loginNotice": "You have to login to see subscriptions.",
+      "subscribe": "Subscribe",
+      "unsubscribe": "Unsubscribe"
+    }
+  },
+  "photoAlbumPage": {
+    "header": "Photo albums",
+    "editPhotos": "Edit Photos",
+    "upload": "Upload"
+  },
+  "resultPage": {
+    "header": "Results",
+    "eventPage": "Event page"
+  },
+  "committeePage": {
+    "headerText": "Kronos committees"
+  },
+  "kronometerPage": {
+    "mainFolder": "Main folder",
+    "subfolders": "Subfolders",
+    "documents": "Documents"
+  },
+  "userpage": {
+    "kronauts": "Kronauts"
+  },
+  "contactPage": {
+    "title": "Send us a message"
+  },
+  "models": {
+    "generic": {
+      "created_at": "Created at"
+    },
+    "modelNames": {
+      "result": "Result",
+      "result_plural": "Results",
+      "event": "Events",
+      "event_plural": "Events",
+      "agendaItem": "Agenda item",
+      "agendaItem_plural": "Agenda items",
+      "agendaItemType": "Agenda item type",
+      "agendaItemType_plural": "Agenda item types",
+      "newsItem": "News item",
+      "newsItem_plural": "News items",
+      "page": "Page",
+      "page_plural": "Pages",
+      "photoAlbum": "Photo album",
+      "photoAlbum_plural": "Photo albums"
+    },
+    "agendaitem": {
+      "name": "Name (Dutch)",
+      "name_en": "Name (English)",
+      "date": "Date",
+      "agendaitemtype_id": "Agenda item type",
+      "intern": "Private",
+      "description": "Description (Dutch)",
+      "description_en": "Description (English)",
+      "location": "Location",
+      "url": "URL",
+      "commission_id": "Commission",
+      "subscribe": "Subscription",
+      "subscriptiondeadline": "Subscription deadline",
+      "maxsubscription": "Maximum subscriptions"
+    },
+    "newsitem": {
+      "title": "Title (Dutch)",
+      "title_en":"Title (English)",
+      "news": "News message (Dutch)",
+      "news_en": "News message (English)",
+      "articlephoto": "Photo"
+    },
+    "page": {
+      "pagetag": "Page tag",
+      "pagetag_en":"Page tag (English)",
+      "information": "Page content (Dutch)",
+      "information_en": "Page content (English)",
+      "menu": "Menu",
+      "highlight": "Highlight",
+      "public": "Public",
+      "sort_order": "Sort order"
+    },
+    "photoalbum": {
+      "name": "Name (Dutch)",
+      "name_en":"Name (English)",
+      "date": "Date",
+      "public": "Public",
+      "external_url": "External URL"
+    },
+    "contact": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class PagesController < Admin::ApplicationController
   load_and_authorize_resource
   def home
     @newsitems = Newsitem.where(:agreed => true).order('created_at DESC').limit(6)
@@ -28,15 +28,33 @@ class PagesController < ApplicationController
     end
 
   def index
-    @pages = Page.order(pagetag: :asc)
+    if params[:agreed].present?
+      @pages = Page.where(:agreed => true).order(pagetag: :asc)
+    else
+      @pages = Page.order(pagetag: :asc)
+    end
+
+    if params[:order_by].present?
+      @pages = @pages.o
+    end
+
+    if params[:limit].present?
+      @pages = @pages.limit(params[:limit])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @pages}
     end
   end
   
   def show
     @page = Page.find(params[:id])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @page}
+    end
   end
     
   def test

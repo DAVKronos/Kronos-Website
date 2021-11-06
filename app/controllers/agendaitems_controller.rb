@@ -1,6 +1,6 @@
 require 'icalendar'
 
-class AgendaitemsController < ApplicationController
+class AgendaitemsController < Admin::ApplicationController
   load_and_authorize_resource
   respond_to :html, :json
 
@@ -24,7 +24,7 @@ class AgendaitemsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: Agendaitem.search(params[:q], 10) }
+      format.json { render json: @agendaitems.map{|agendaitem| agendaitem.as_json(include: {subscriptions: {only: :id}})} }
     end
   end
 
@@ -46,16 +46,24 @@ class AgendaitemsController < ApplicationController
 
   def show
     @agendaitem = Agendaitem.find(params[:id])
-    return unless current_user
-    @subscription = Subscription.where(agendaitem_id: @agendaitem.id, user_id: current_user.id).first
-    return if @subscription
-    @subscription = Subscription.new(user: current_user, agendaitem: @agendaitem, name: current_user.name)
+    if current_user
+      @subscription = Subscription.where(agendaitem_id: @agendaitem.id, user_id: current_user.id).first
+      unless @subscription
+        @subscription = Subscription.new(user: current_user, agendaitem: @agendaitem, name: current_user.name)
+      end
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @agendaitem }
+    end
   end
 
   def create
     agendaitem = Agendaitem.new(agendaitem_params)
+    agendaitem.user = current_user
 	if agendaitem.save
-      agendaitem.user = current_user
+
       flash[:notice] = 'Agendaitem was successfully created.'
       redirect_to agendaitem
     else

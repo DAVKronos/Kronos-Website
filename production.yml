@@ -1,0 +1,24 @@
+version: '2'
+volumes:
+  postgres-production:
+
+services:
+  db:
+    image: postgres:12.6
+    environment:
+      POSTGRES_PASSWORD: kronos
+    volumes:
+      - postgres-production:/var/lib/postgresql/data
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - RAILS_ENV=production
+      - LOCALEAPP_API_KEY=2qpX88VnxzUXm6YFLoQ0XDyHubE8M6U7bzLNiYlGOSQQbWB9ch
+      - GMAIL_SMTP_PASSWORD=yqkjxzkcubxzfnfl
+    command: sh ./script/start_app.sh

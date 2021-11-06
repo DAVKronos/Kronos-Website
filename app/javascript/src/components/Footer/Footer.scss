@@ -1,0 +1,69 @@
+@import '../../styles/colors.scss';
+
+/* Sticky Footer
+ * see example used:
+ * http://getbootstrap.com/examples/sticky-footer-navbar/ 
+ * */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body{
+  margin-bottom: 120px;
+}
+
+/* added bottom padding of all immidiate container childs of body */
+
+body > .container {
+  padding-bottom: 120px;
+}
+
+footer.app{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  margin: 0;
+  padding: 0;
+}
+
+footer.app .container{
+  background-color:$kronos-green;
+  color: #fff;
+}
+
+footer.app .container a{
+  color: #fff;
+}
+
+.sponsor-white{
+  background-color: white;
+  padding-bottom: 15px;
+}
+.col-xs-4 {
+	width: 33.333333333333%;
+}
+
+.sponsor-text {
+  color : $kronos-green;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+
+}
+
+img {
+  max-width: 100%;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+// end sticky footer

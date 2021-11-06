@@ -40,5 +40,17 @@ class Photo < ApplicationRecord
         "delete_url" => photo_path(:id => id),
         "delete_type" => "DELETE" 
       }
-    end
+  end
+
+  def to_json_with_urls
+    self.photo.as_json(methods: [:photo_url_original, :photo_url_thumb])
+  end
+
+  def photo_url_original
+    photo.url(:original)
+  end
+
+  def photo_url_thumb
+    photo.url(:thumb)
+  end
 end

@@ -11,11 +11,11 @@ CMD ["/sbin/my_init"]
 ENV RAILS_ENV development
 
 # Install dependencies like nodejs and yarn
-RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get update && \
-    apt-get install -qq -y build-essential nodejs yarn libcurl4-openssl-dev \
+    apt-get install -qq -y python build-essential nodejs yarn libcurl4-openssl-dev \
     libpq-dev \
     ghostscript nginx-extras tzdata imagemagick
 
@@ -25,7 +25,9 @@ COPY docker/ImageMagick-6/policy.xml /etc/ImageMagick-6/policy.xml
 WORKDIR /home/app
 
 # Copy the Gemfile and lockfile with the right owner
-COPY --chown=app:app Gemfile* /home/app/
+COPY --chown=app:app package.json yarn.lock Gemfile*  /home/app/
+RUN yarn install
+
 
 # Install the gems with all available processors
 RUN bundle install -j $(nproc)

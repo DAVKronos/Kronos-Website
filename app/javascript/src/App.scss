@@ -1,0 +1,87 @@
+//TODO import all scss files inside component directory
+@import 'styles/colors.scss';
+@import 'components/Header/Header.scss';
+@import 'components/Footer/Footer';
+@import 'components/AgendaItems/AgendaItems.scss';
+@import 'components/HomePage/HomePage';
+@import 'components/Results/Result';
+@import 'components/Generic/MonthSwitcher';
+@import 'components/PhotoAlbums/PhotoAlbum';
+@import "~bootstrap/scss/bootstrap";
+
+html {
+  font-size: 14px;
+}
+
+body{
+  background-color: #f5f5f5;
+}
+
+.main {
+  padding-bottom: 140px;
+}
+
+h1 {
+  margin-top: 30px;
+  color: $kronos-green;
+}
+
+h1, h2, h3, h4, h5 {
+  small {
+    color: #777777;
+  }
+}
+
+h2 {
+  margin-top: 20px;
+  color: $kronos-green;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+a {
+  color: $kronos-green;
+  text-decoration: none;
+
+  &:hover {
+    color: $kronos-green-dark;
+  }
+}
+
+.card.side-panel {
+  margin-bottom: 30px;
+  border-radius: 0;
+
+  .card-header {
+    background-color: $kronos-green;
+    color: #ffffff;
+    border-radius: 0;
+  }
+
+
+  .list-group-item {
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+  }
+}
+
+.btn {
+  margin: 5px 0 0 5px;
+}
+
+.row-margin,.card-margin-top {
+  margin-top: 20px;
+}
+
+.form-padding {
+  padding: 7px;
+}
