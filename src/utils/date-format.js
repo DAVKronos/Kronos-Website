@@ -15,8 +15,8 @@ function format (date, formatStr = 'PP', currentLocale ='en') {
     })
 }
 
-function formatDistanceToNow(date, currentLocale='en') {
-    return fD(date, {locale: locales[currentLocale]})
+function formatDistanceToNow(date, currentLocale='en', addSuffix=false) {
+    return fD(date, {locale: locales[currentLocale], addSuffix})
 }
 
 export {format, formatDistanceToNow}

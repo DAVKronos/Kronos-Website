@@ -30,7 +30,8 @@ const SubscriptionsCard = ({allowed, agendaItem}) => {
 }
 
 const Subscriptions = ({agendaItem}) => {
-    const {t} = useTranslation('agendaItemPage');
+    const {t, i18n} = useTranslation('agendaItemPage');
+    const lang = i18n.language;
     const {user} = useContext(authContext);
     const queryCache = useQueryCache()
     const {isLoading, isError, data, error} = useQuery(['subscriptions', agendaItem.id], getSubscriptions);
@@ -38,7 +39,8 @@ const Subscriptions = ({agendaItem}) => {
         return <DefaultSpinner/>
     }
     const subscriptions = data;
-    const userSubscription = subscriptions.find(sub => sub.user_id === user.id);
+    const userId = user && user.id
+    const userSubscription = subscriptions.find(sub => sub.user_id === userId);
 
     const onClickUnsubscribe = () => {
         removeSubscription(agendaItem.id, userSubscription.id).then(()=> {
@@ -52,16 +54,17 @@ const Subscriptions = ({agendaItem}) => {
         });
     }
 
+    const subscriptionOpen = new Date(agendaItem.subscriptiondeadline) > new Date();
 
     const subscribeButton = userSubscription ?
         <Button variant='danger' onClick={onClickUnsubscribe}>{t('subscriptions.unsubscribe')}</Button> :
         <Button variant='success' onClick={onClickSubscribe}>{t('subscriptions.subscribe')}</Button>
 
-    return <React.Fragment>
+        return <React.Fragment>
         <Card.Header>
             {t('subscriptions.list')} <br/>
-            <small>{formatDistanceToNow(new Date(agendaItem.subscriptiondeadline))}</small><br/>
-            {agendaItem.maxsubscription && <small>{agendaItem.maxsubscription - subscriptions.length}</small>}
+            <small>{formatDistanceToNow(new Date(agendaItem.subscriptiondeadline), lang, true)}</small><br/>
+            {subscriptionOpen && agendaItem.maxsubscription && <small>{t('subscriptions.placesLeft',{places: agendaItem.maxsubscription - subscriptions.length})}</small>}
         </Card.Header>
         <ListGroup variant="flush">
             {subscriptions && subscriptions.map(subscription => {
@@ -69,7 +72,8 @@ const Subscriptions = ({agendaItem}) => {
             })}
         </ListGroup>
         <Card.Footer>
-            {subscribeButton}
+            {subscriptionOpen && subscribeButton}
+            {!subscriptionOpen && t('subscriptions.closed')}
         </Card.Footer>
     </React.Fragment>;
 }
