@@ -57,7 +57,9 @@
       "list": "Inschrijflijst",
       "loginNotice": "Je moet inloggen om inschrijvingen te zien of aan te vullen.",
       "subscribe": "Inschrijven",
-      "unsubscribe": "Uitschrijven"
+      "unsubscribe": "Uitschrijven",
+      "placesLeft": "Nog {{places}} plekken vrij",
+      "closed": "Inschrijving gesloten"
     }
   },
   "photoAlbumPage": {

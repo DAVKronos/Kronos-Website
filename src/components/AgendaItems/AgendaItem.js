@@ -43,7 +43,7 @@ function AgendaItem(props) {
     return <React.Fragment>
         <Row>
             <Col md={8}>
-                <h1>{agendaItem.name} <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id}/></small></h1>
+                <h1>{lang == 'en' ? agendaItem.name_en : agendaItem.name} <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id}/></small></h1>
             </Col>
 
             <Col md={4} className="d-flex">
@@ -85,7 +85,7 @@ function AgendaItem(props) {
                 </Row>}
                 <Row>
                     <Col xs={1}><BsList/></Col>
-                    <Col xs={11}><ReactMarkdown source={agendaItem.description}/></Col>
+                    <Col xs={11}><ReactMarkdown source={lang == 'en' ? agendaItem.description_en : agendaItem.description}/></Col>
                 </Row>
                 <Row><Col>
                     <h2>Results</h2>
