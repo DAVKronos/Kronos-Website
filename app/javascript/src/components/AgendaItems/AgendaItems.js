@@ -13,7 +13,8 @@ import {useTranslation} from "react-i18next";
 
 
 function AgendaItemsFilter({filter, onChangeFilter}){
-    const {t} = useTranslation('generic');
+    const {t, i18n} = useTranslation('generic');
+    const lang = i18n.language;
     const { isLoading, isError, data, error } = useQuery('agendaitemtypes', getAgendaitemTypes)
     return <Nav variant="pills">
         <Nav.Item key='all'>
@@ -26,7 +27,7 @@ function AgendaItemsFilter({filter, onChangeFilter}){
                 <Nav.Link
                     active={filter === agendaItemType.id}
                     onClick={() => onChangeFilter(agendaItemType.id)}>
-                    {agendaItemType.name}
+                    {lang == 'en' ? agendaItemType.name_en:  agendaItemType.name}
                 </Nav.Link>
             </Nav.Item>;
         })}

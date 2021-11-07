@@ -87,7 +87,7 @@ class Agendaitem < ApplicationRecord
   end
 
   def deadline_passed?()
-    return ((self.subscriptiondeadline - Time.now) <= 0)
+    return self.subscriptiondeadline.nil? ? false : ((self.subscriptiondeadline - Time.now) <= 0)
   end
 
   def change_reserve_status

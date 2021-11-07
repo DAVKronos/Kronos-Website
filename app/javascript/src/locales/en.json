@@ -56,7 +56,9 @@
       "list": "Subscriptions",
       "loginNotice": "You have to login to see subscriptions.",
       "subscribe": "Subscribe",
-      "unsubscribe": "Unsubscribe"
+      "unsubscribe": "Unsubscribe",
+      "placesLeft": "{{places}} places remaining",
+      "closed": "Subscription closed"
     }
   },
   "photoAlbumPage": {
