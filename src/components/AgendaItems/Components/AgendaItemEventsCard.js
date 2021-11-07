@@ -96,7 +96,7 @@ const AgendaItemEvents = ({agendaItemId, agendaItemTypeId}) => {
     if (!events || events.length === 0) {
         eventList =
             <ListGroup.Item>
-                No {t('models:modelNames.event', {count: 0})}
+                {t('models:modelNames.no_events', {count: 0})}
             </ListGroup.Item>
 
     } else {

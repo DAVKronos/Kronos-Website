@@ -40,10 +40,12 @@ function AgendaItem(props) {
     }
 
     let date = new Date(agendaItem.date);
+    const name = lang === 'nl' ? agendaItem.name : agendaItem.name_en;
+    const description = lang === 'nl' ? agendaItem.description : agendaItem.description_en;
     return <React.Fragment>
         <Row>
             <Col md={8}>
-                <h1>{agendaItem.name} <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id}/></small></h1>
+                <h1>{name} <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id}/></small></h1>
             </Col>
 
             <Col md={4} className="d-flex">
@@ -85,13 +87,14 @@ function AgendaItem(props) {
                 </Row>}
                 <Row>
                     <Col xs={1}><BsList/></Col>
-                    <Col xs={11}><ReactMarkdown source={agendaItem.description}/></Col>
+                    <Col xs={11}><ReactMarkdown source={description}/></Col>
                 </Row>
                 <Row><Col>
-                    <h2>Results</h2>
+                    <h2>{t('models:modelNames.result_plural')}</h2>
                     <EventsResults agendaItemId={agendaItem.id}/>
                 </Col></Row>
             </Col>
+
             <Col md={4}>
                 <AgendaItemEventsCard agendaItemId={agendaItem.id} agendaItemTypeId={agendaItem.agendaitemtype_id}/>
                 <Can I="read" a="Subscription" passThrough>

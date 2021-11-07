@@ -16,7 +16,9 @@
     "back": "Terug",
     "allItems": "Alles",
     "send": "Verstuur",
-    "approve": "Keur goed"
+    "approve": "Keur goed",
+    "search": "Zoek",
+    "comment": "Laat hier een reactie achter"
   },
   "homepage": {
     "readMore": "Lees meer",
@@ -70,7 +72,9 @@
     "eventPage": "Evenementpagina"
   },
   "committeePage": {
-    "headerText": "Commissies van Kronos"
+    "headerText": "Commissies van Kronos",
+    "pageDescription": "Onderstaand treft u een overzicht aan van de huidige commissies van Kronos.",
+    "name": "Naam"
   },
   "kronometerPage": {
     "mainFolder": "Hoofdmap",
@@ -81,7 +85,7 @@
     "kronauts": "Kronauten"
   },
   "contactPage": {
-    "title": "Send us a message"
+    "title": "Stuur ons een bericht"
   },
   "models": {
     "generic": {
@@ -92,6 +96,7 @@
       "result_plural": "Uitslagen",
       "event": "Evenement",
       "event_plural": "Evenementen",
+      "no_events": "Geen Evenementen",
       "agendaItem": "Agenda item",
       "agendaItem_plural": "Agenda items",
       "agendaItemType": "Agenda item type",
@@ -100,8 +105,8 @@
       "newsItem_plural": "Nieuws items",
       "page": "Pagina",
       "page_plural": "Pagina's",
-      "photoAlbum": "Photoalbum",
-      "photoAlbum_plural": "Photoalbums"
+      "photoAlbum": "Fotoalbum",
+      "photoAlbum_plural": "Fotoalbums"
     },
     "agendaitem": {
       "name": "Naam (Nederlands)",

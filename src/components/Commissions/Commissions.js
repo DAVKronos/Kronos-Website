@@ -10,22 +10,24 @@ function Commissions(props) {
     const { isLoading, isError, data, error } = useQuery('commissions', getCommissions)
 
     const commissions = data;
-    const { t } = useTranslation('committeePage');
+    const {t,i18n} = useTranslation('committeePage');
+    const lang = i18n.language;
     return <React.Fragment>
         <h1>{t('headerText')}</h1>
-        <p className={"lead"}>Onderstaand treft u een overzicht aan van de huidige commissies van Kronos.</p>
+        <p className={"lead"}>{t('pageDescription')}</p>
         <Table striped>
             <thead>
             <tr>
                 <th>
-                    Naam
+                    {t('name')}
                 </th>
             </tr>
             </thead>
             <tbody>
             {commissions && commissions.map(commission => {
+                name = lang === 'nl' ? commission.name : commission.name_en;
                 return <tr key={commission.id}>
-                    <td><Link to={`/commissions/${commission.id}`}>{commission.name}</Link></td>
+                    <td><Link to={`/commissions/${commission.id}`}>{name}</Link></td>
                 </tr>;
             })}
             </tbody>
