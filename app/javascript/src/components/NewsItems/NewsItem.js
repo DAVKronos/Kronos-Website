@@ -57,7 +57,7 @@ const NewComment = ({newsItemId}) => {
             {user && <h5>{user.name}</h5>}
         </Col>
         <Col md={8} style={{display: 'flex', alignItems: 'center'}}>
-            <Form.Control as="textarea" value={text} onChange={e => setText(e.target.value)} placeholder="Leave a comment here" />
+            <Form.Control as="textarea" value={text} onChange={e => setText(e.target.value)} placeholder={t('comment')} />
         </Col>
         <Col md={2}>
 

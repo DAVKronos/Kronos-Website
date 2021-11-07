@@ -16,12 +16,15 @@
     "back": "Back",
     "allItems": "All",
     "send": "Send",
-    "approve": "Approve"
+    "approve": "Approve",
+    "search": "Search",
+    "comment": "Leave a comment here"
   },
   "homepage": {
     "readMore": "Read more",
     "birthdays": "Birthdays",
-    "news": "News"
+    "news": "News",
+    "newsitem": "Newsitem"
   },
   "navigation": {
     "association" : "Association",
@@ -69,7 +72,9 @@
     "eventPage": "Event page"
   },
   "committeePage": {
-    "headerText": "Kronos committees"
+    "headerText": "Kronos committees",
+    "pageDescription": "Below you can find an overview af all the current committees of Kronos.",
+    "name": "Name"
   },
   "kronometerPage": {
     "mainFolder": "Main folder",
@@ -91,6 +96,7 @@
       "result_plural": "Results",
       "event": "Events",
       "event_plural": "Events",
+      "no_events": "No Events",
       "agendaItem": "Agenda item",
       "agendaItem_plural": "Agenda items",
       "agendaItemType": "Agenda item type",

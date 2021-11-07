@@ -26,7 +26,7 @@ const PhotoAlbumCover = ({photoAlbum}) => {
             return queryCache.invalidateQueries('photoalbums');
         });
     }
-
+    const name = lang === 'nl' ? photoAlbum.name : photoAlbum.name_en;
     return <Card style={{marginBottom: 10}}>
         {(!photoThumb || (isLoading && !isImageLoaded)) && <Card.Img variant="top" src={placeholder} />}
         {(isLoading && !isImageLoaded) && <Card.ImgOverlay><DefaultSpinner/></Card.ImgOverlay>}
@@ -35,7 +35,7 @@ const PhotoAlbumCover = ({photoAlbum}) => {
                                  src={getAPIHostUrl(photoThumb)}
                                  onLoad={() => setIsImageLoaded(true)} />}
         <Card.Body>
-            <Card.Title><Link to={`/photoalbums/${photoAlbum.id}`}>{photoAlbum.name}</Link></Card.Title>
+            <Card.Title><Link to={`/photoalbums/${photoAlbum.id}`}>{name}</Link></Card.Title>
             <Card.Text>
                 {photoAlbum.created_at && format(photoAlbum.created_at, 'PPP p', lang)}
             </Card.Text>

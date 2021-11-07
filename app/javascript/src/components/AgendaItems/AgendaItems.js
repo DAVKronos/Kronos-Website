@@ -13,7 +13,7 @@ import {useTranslation} from "react-i18next";
 
 
 function AgendaItemsFilter({filter, onChangeFilter}){
-    const {t} = useTranslation('generic');
+    const {t,i18n} = useTranslation('generic');
     const { isLoading, isError, data, error } = useQuery('agendaitemtypes', getAgendaitemTypes)
     return <Nav variant="pills">
         <Nav.Item key='all'>
@@ -22,11 +22,12 @@ function AgendaItemsFilter({filter, onChangeFilter}){
             </Nav.Link>
         </Nav.Item>
         {data && data.map(agendaItemType => {
+            const name = i18n.language === 'nl' ? agendaItemType.name : agendaItemType.name_en;
             return <Nav.Item key={agendaItemType.id}>
                 <Nav.Link
                     active={filter === agendaItemType.id}
                     onClick={() => onChangeFilter(agendaItemType.id)}>
-                    {agendaItemType.name}
+                    {name}
                 </Nav.Link>
             </Nav.Item>;
         })}
@@ -79,6 +80,7 @@ const AgendaItems = () => {
             <Col md={12}>
                 {isLoading && <DefaultSpinner/>}
                 {agendaItems && agendaItems.map(item => {
+                    const name = lang === 'nl' ? item.name : item.name_en;
                     let itemDate = new Date(item.date);
                     return <Link key={item.id} to={`/agendaitems/${item.id}`} className='agenda-item'>
                         <Card body className="agenda-item-card">
@@ -93,7 +95,7 @@ const AgendaItems = () => {
                                     <h4><small>{format(itemDate, 'p', lang)}</small></h4>
                                 </Col>
                                 <Col xs={8}>
-                                    <h4>{item.name} <small><AgendaItemTypeName id={item.agendaitemtype_id}/></small></h4>
+                                    <h4>{name} <small><AgendaItemTypeName id={item.agendaitemtype_id}/></small></h4>
                                 </Col>
                             </Row>
                         </Card>

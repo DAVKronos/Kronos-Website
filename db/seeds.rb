@@ -71,6 +71,6 @@ CommissionMembership.create({:commission => com,
 eventtype = Eventtype.create({:name => "1500m", :formula => "( 1500 / $result ) * 3.6",
                   :measuringunit => "sec", :calculated_unit => "km/h"})
                   
-agendaitemtype = Agendaitemtype.create({:name => "Baanwedstrijd", :is_match => true})
+agendaitemtype = Agendaitemtype.create({:name => "Baanwedstrijd", :is_match => true, :name_en=> "Track Meeting"})
 
 AgendaitemtypeEventtype.create({:eventtype => eventtype, :agendaitemtype => agendaitemtype})

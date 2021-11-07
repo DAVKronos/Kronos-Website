@@ -7,7 +7,7 @@ import {useTranslation} from "react-i18next";
 
 const MonthSwitcher = ({date}) => {
     let history = useHistory();
-    const {i18n} = useTranslation('generic');
+    const {t,i18n} = useTranslation('generic');
     const lang = i18n.language
     const [searchMonth, setSearchMonth] = useState("");
     const [searchYear, setSearchYear] = useState("");
@@ -48,7 +48,7 @@ const MonthSwitcher = ({date}) => {
             <Form inline onSubmit={onClickSearch}>
                 <FormControl className="monthswitcher-month mr-sm-1" type="text" placeholder="MM" value={searchMonth} onChange={(event) => setSearchMonth(event.target.value)} />
                 <FormControl className="monthswitcher-year mr-sm-1" type="text" placeholder="YYYY" value={searchYear} onChange={(event) => setSearchYear(event.target.value)}  />
-                <Button variant="outline-success" type="submit">Search</Button>
+                <Button variant="outline-success" type="submit">{t('search')}</Button>
             </Form>
         </Nav.Item>
     </Nav>
