@@ -24,7 +24,10 @@ const EditPage = ({page}) => {
     const editableFields = {pagetag, pagetag_en, menu, highlight, "public": page['public'], sort_order, information, information_en};
     const onSuccess = (savedPage) => {
         queryCache.setQueryData(['pages', savedPage.id], savedPage)
-        history.push(`/pages/${savedPage.id}`)
+        queryCache.invalidateQueries('pages');
+        
+        history.push(`/pages/${savedPage.id}`);
+        
     }
 
     return <EditObjectComponent
