@@ -1,12 +1,15 @@
 import React from 'react'
 import {useQuery, useQueryCache} from "react-query";
-import {Table} from 'react-bootstrap';
+import {Table, Button} from 'react-bootstrap';
 import {getPages} from '../Pages/queries';
 import {Link} from 'react-router-dom';
 import {BsFillXCircleFill, BsFillCheckCircleFill} from 'react-icons/bs';
+import {Can} from '../../utils/auth-helper';
+import {useTranslation} from "react-i18next";
 
 const Pages = () => {
     const { isLoading, isError, data: pages, error } = useQuery('pages', getPages);
+    const {t} = useTranslation('generic');
     const queryCache = useQueryCache();
     return <React.Fragment>
     <h1>Informatie pagina's</h1>
@@ -54,6 +57,9 @@ const Pages = () => {
         })}
         </tbody>
     </Table>
+    <Can I='create' a={'Page'}>
+        <Button as={Link} to='/pages/new'>{t('addModel', {model: t('models:modelNames.page', {count: 0})})}</Button>
+    </Can>
 </React.Fragment>;
 }
 

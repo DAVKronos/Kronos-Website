@@ -5,7 +5,6 @@ import {useQuery} from "react-query";
 import {useTranslation} from "react-i18next";
 import {getPage, getPageByPageTag} from "./queries";
 
-
 const Page = (props) => {
 
     let {id} = props.match.params;
@@ -24,7 +23,7 @@ const Page = (props) => {
     const information = i18n.language === 'nl' ? data.information : data.information_en;
     return <div>
         <h1>{tag}</h1>
-        <ReactMarkdown source={information}/>
+        <ReactMarkdown source={information} escapeHtml={false}/>
     </div>;
 }
 
