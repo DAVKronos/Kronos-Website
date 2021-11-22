@@ -3,7 +3,6 @@ import ReactMarkdown from 'react-markdown';
 import Spinner from "../Generic/Spinner";
 import {useQuery} from "react-query";
 import {getPage, getPageByPageTag} from "./queries";
-import remarkGfm from 'remark-gfm'
 
 const Page = (props) => {
 
