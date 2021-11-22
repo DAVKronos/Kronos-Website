@@ -32,7 +32,7 @@ const Contact = () => {
 
     return <Row>
         <Col md={8} sm={12}>
-            <h1>{t('title')}</h1>
+            <h1>{t('contactPage:title')}</h1>
             {error && <Alert variant='danger'>{<p>{error}</p>}</Alert>}
             <ContactForm  values={values} setValue={setValue} />
             <Button onClick={() => create()}>
