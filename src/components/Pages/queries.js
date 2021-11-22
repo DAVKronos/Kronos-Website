@@ -17,6 +17,7 @@ function getPageByPageTag(queryKey, pagetag) {
 }
 
 function createPage(data) {
+    console.log(data);
     const formData = convertToFormData('page', data);
     return restCall(`pages/`, {method: 'POST', data: formData}).then(res => res.data);
 }

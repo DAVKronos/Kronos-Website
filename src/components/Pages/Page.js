@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import Spinner from "../Generic/Spinner";
 import {useQuery} from "react-query";
 import {getPage, getPageByPageTag} from "./queries";
-
+import remarkGfm from 'remark-gfm'
 
 const Page = (props) => {
 
@@ -20,7 +20,7 @@ const Page = (props) => {
 
     return <div>
         <h1>{data.pagetag}</h1>
-        <ReactMarkdown source={data.information}/>
+        <ReactMarkdown source={data.information} escapeHtml={false}/>
     </div>;
 }
 
