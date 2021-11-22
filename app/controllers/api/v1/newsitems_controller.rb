@@ -8,7 +8,7 @@ module Api
         @newsitems = Newsitem.where(:agreed => true).order('created_at desc').paginate(:page => params[:page], :per_page => 10)
         respond_to do |format|
           format.html # index.html.erb
-          format.json { render json: @newsitems.map { |newsitem| newsitem.as_json(include: {user: {only: :name}}, methods: [:articlephoto_url_normal, :articlephoto_url_carrousel]) } }
+          format.json { render json: @newsitems.map { |newsitem| newsitem.as_json(include: {user: {only: :name}}, methods: [:articlephoto_url_normal, :articlephoto_url_carrousel, :comment_count]) } }
 
         end
       end

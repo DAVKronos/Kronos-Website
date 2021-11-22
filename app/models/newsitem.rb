@@ -30,4 +30,8 @@ class Newsitem < ApplicationRecord
   def articlephoto_url_carrousel
     articlephoto.url(:carrousel)
   end
+
+  def comment_count
+    comments.count
+  end
 end
