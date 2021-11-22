@@ -6,7 +6,7 @@ import { authContext } from '../../utils/AuthContext';
 import {Can} from "../../utils/auth-helper";
 import {BsPersonFill, BsBoxArrowRight, BsFillCloudFill, BsFillGearFill} from 'react-icons/bs';
 import DefaultSpinner from "../Generic/Spinner";
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 
 const LoginMenu = () => {
     const {t} = useTranslation('loginMenu');
@@ -67,7 +67,7 @@ const LoggedInMenu = ({user}) => {
         </div>
 
         <NavDropdown.Item as={NavLink} to={`/users/${user.id}`}><BsPersonFill/> {firstName}'s stek</NavDropdown.Item>
-        <NavDropdown.Item ><BsFillCloudFill/> {t('kronosCloud')}</NavDropdown.Item>
+        <NavDropdown.Item active={false} target={'_blank'} href={'https://cloud.kronos.nl'}><BsFillCloudFill/> {t('kronosCloud')}</NavDropdown.Item>
         <Can I={'manage'} this='all'>
         <NavDropdown.Item as={NavLink} to='/admin'><BsFillGearFill/> {t('admin')}</NavDropdown.Item>
         </Can>
