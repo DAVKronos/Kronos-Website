@@ -28,7 +28,7 @@ module Api
         @user = User.find_by_id(params[:id])
         @commissions = @user.commissions.order("name").all
         respond_to do |format|
-          format.json { render json: @user.as_json(methods: [:avatar_url_normal, :avatar_url_thumb]) }
+          format.json { render json: @user.as_json(methods: [:avatar_url_medium, :avatar_url_thumb]) }
         end
       end
 
@@ -49,7 +49,7 @@ module Api
           format.pdf do
             render pdf: "ledenlijst #{Time.now}"
           end
-          format.json { render json: @users.map { |user| user.as_json(methods: [:avatar_url_normal, :avatar_url_thumb]) } }
+          format.json { render json: @users.map { |user| user.as_json(methods: [:avatar_url_medium, :avatar_url_thumb]) } }
         end
       end
 

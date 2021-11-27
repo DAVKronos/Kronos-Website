@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./User.scss"
 import {Col, Row, Table, Image} from 'react-bootstrap';
 import {getAPIHostUrl} from "../../utils/rest-helper";
 import {format} from '../../utils/date-format';
@@ -178,7 +179,7 @@ const User = (props) => {
                     </Table>
                 </Col>
                 <Col>
-                    <section className="polaroid">
+                    <section className={styles.polaroid}>
                         <figure>
                             <Image src={user.avatar_url_medium} />
                             <figcaption>{user.name}</figcaption>
