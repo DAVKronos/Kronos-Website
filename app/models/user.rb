@@ -174,6 +174,10 @@ class User < ApplicationRecord
     self.avatar.url(:normal)
   end
 
+  def avatar_url_medium
+    self.avatar.url(:medium)
+  end
+
   def avatar_url_thumb
     self.avatar.url(:thumb)
   end

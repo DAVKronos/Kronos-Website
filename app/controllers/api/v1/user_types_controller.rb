@@ -12,6 +12,16 @@ module Api
           format.json { render json: @usertypes }
         end
       end
+
+      def show
+        @usertype = UserType.find(params[:id])
+
+        respond_to do |format|
+          format.html # show.html.erb
+          format.json { render json: @usertype }
+        end
+      end
+
     end
   end
 end
