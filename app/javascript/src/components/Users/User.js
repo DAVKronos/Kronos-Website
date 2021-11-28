@@ -179,7 +179,7 @@ const User = (props) => {
                     </Table>
                 </Col>
                 <Col>
-                    <section className={styles.polaroid}>
+                    <section className="polaroid">
                         <figure>
                             <Image src={user.avatar_url_medium} />
                             <figcaption>{user.name}</figcaption>

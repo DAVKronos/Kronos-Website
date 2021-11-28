@@ -182,4 +182,8 @@ class User < ApplicationRecord
     self.avatar.url(:thumb)
   end
 
+  def avatar_url_pass
+    self.avatar.url(:pass)
+  end
+
 end

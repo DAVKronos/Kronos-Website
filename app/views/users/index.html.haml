@@ -33,7 +33,7 @@
               %li
                 = link_to usertype.name_en, users_path(user_type_id: usertype.id)
 .row	
-  .col-lg-12	
+  .col-lg-12
     = alphabetical_paginate @alpha_params
     = form_tag users_path, method: :get, class: 'form-inline' do
       .form-group

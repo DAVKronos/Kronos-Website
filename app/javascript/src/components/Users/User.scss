@@ -3,16 +3,15 @@
   overflow: hidden; /*clears the floats used below*/
   width: 100%; /*set any width you choose, but a width is needed to clear the floats in Internet Explorer*/
 }
-
 /***NOW POSITION THE IMAGES***/
-figure {
+.polaroid figure {
   /*as the images are held within figure its that we style*/
   float: left; /*places the images in a line*/
-  margin: 10px 20px; /*space between the images*/
+  margin: 20px 20px; /*space between the images*/
 }
 
 /**NEXT STYLE THE FRAME AROUND THE IMAGES***/
-figure {
+.polaroid figure {
   padding: 6px 8px 10px 8px; /*size the the frame*/
   /*give the frame background a gradient - see cssdemos.tupence.co.uk/gradients.htm*/
   background: #eee6d8; /*fallback for browsers that don't support gradient*/
@@ -35,7 +34,7 @@ figure {
 }
 
 /**ROTATE ALTERNATE IMAGES THE OPPOSITE WAY USING NTH-CHILD - see http://cssdemos.tupence.co.uk/nth-child.htm**/
-figure:nth-child(even) {
+.polaroid figure:nth-child(even) {
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
   -o-transform: rotate(2deg);
@@ -49,7 +48,7 @@ figure:nth-child(even) {
 }
 
 /***NEXT WE STYLE THE CAPTIONS TO THE IMAGES USING figcaption***/
-figcaption {
+.polaroid figcaption {
   text-align: center;
   font-family: 'Reenie Beanie', cursive; /*Reenie Beanie is available through Google Webfonts http://code.google.com/webfonts/specimen/Reenie+Beanie*/
   font-size: 2em;
@@ -58,7 +57,7 @@ figcaption {
 }
 
 /***FINALLY WE ADD THE STICKY TAPE TO THE IMAGES USING :before PSEUDO ELEMENT - see http://cssdemos.tupence.co.uk/before.htm***/
-figure:before {
+.polaroid figure:before {
   content: ''; /*whatever is place between '' will appear (for example 'xx' will show two xs), leaving this blank results in an empty block*/
   display: block;
   position: absolute; /*lets us place the tape exactly where we want, relative to the figure*/
@@ -74,7 +73,7 @@ figure:before {
 }
 
 /*style alternate tapes differently to fit with the different rotation of the images*/
-figure:nth-child(even):before {
+.polaroid figure:nth-child(even):before {
   content: '';
   left: 150px;
   top: -15px;
@@ -84,4 +83,28 @@ figure:nth-child(even):before {
   -moz-transform: rotate(12deg);
   -o-transform: rotate(12deg);
   -ms-transform: rotate(12deg);
+}
+
+.thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.428571429;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+
+.thumbnail img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.thumbnail figcaption {
+  padding: 9px;
+  text-align: center;
+  font-size: 18px;
 }

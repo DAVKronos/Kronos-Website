@@ -49,7 +49,7 @@ module Api
           format.pdf do
             render pdf: "ledenlijst #{Time.now}"
           end
-          format.json { render json: @users.map { |user| user.as_json(methods: [:avatar_url_medium, :avatar_url_thumb]) } }
+          format.json { render json: @users.map { |user| user.as_json(methods: [:avatar_url_medium, :avatar_url_thumb, :avatar_url_pass]) } }
         end
       end
 
