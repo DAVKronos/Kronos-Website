@@ -1,32 +1,31 @@
 = f.label :email
-= f.email_field :email
+= f.email_field :email, {:class => "form-control"}
 
 = f.label :phonenumber
-= f.text_field :phonenumber
+= f.text_field :phonenumber, {:class => "form-control"}
 
 = f.label :address
-= f.text_field :address
+= f.text_field :address, {:class => "form-control"}
     
 = f.label :postalcode
-= f.text_field :postalcode
+= f.text_field :postalcode, {:class => "form-control"}
     
 = f.label :city
-= f.text_field :city
+= f.text_field :city, {:class => "form-control"}
 
-<label class ="checkbox">
-papieren kronometer
-= f.check_box :papieren_kronometer
-</label>
+= f.label :papieren_kronometer
+
+= f.check_box :papieren_kronometer, {:class => "form-control"}
     
 = f.label :profielfoto
-= f.file_field :avatar
+= f.file_field :avatar, {:class => "form-control"}
 
 = f.label :studie
-= f.text_field :studie
+= f.text_field :studie, {:class => "form-control"}
 
 = f.label :instelling
-= f.text_field :instelling
+= f.text_field :instelling, {:class => "form-control"}
 
 = f.label :aanvang
 van de studie
-= f.text_field :aanvang
+= f.text_field(:aanvang, {:class => "form-control"})

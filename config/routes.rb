@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :agendaitemtypes
 
-  devise_for :users
+  devise_for :users, :path_prefix => 'site'
 
   resources :users do
     member do
