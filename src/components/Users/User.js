@@ -1,18 +1,16 @@
 import React from "react";
-import styles from "./User.scss"
 import {Col, Row, Table, Image} from 'react-bootstrap';
-import {getAPIHostUrl} from "../../utils/rest-helper";
-import {format} from '../../utils/date-format';
+import {useTranslation} from "react-i18next";
 import {UserTypeName} from "./UserType";
 import {useQuery} from "react-query";
 import {Can} from "../../utils/auth-helper";
 import {getUser} from "./queries";
-import {MembershipList} from "./Commission";
 
 const User = (props) => {
     const id = props.match.params.id
     const { isLoading, data:user} = useQuery(['users',id], getUser);
-    console.log(user)
+    const {t,i18n} = useTranslation('userpage');
+    const lang = i18n.language;
     if (user){
         var date = new Date(user.birthdate);
         var created_at = new Date(user.created_at);
@@ -24,7 +22,7 @@ const User = (props) => {
                         <tbody>
                             <tr>
                                 <td>
-                                    <b>Initialen</b>
+                                    <b>{t('initials')}</b>
                                 </td>
                                 <td>
                                     {user.initials}
@@ -32,7 +30,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Geboortedatum</b>
+                                    <b>{t('birthdate')}</b>
                                 </td>
                                 <td>
                                     {date.toLocaleDateString()}
@@ -40,7 +38,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Email</b>
+                                    <b>E-mail</b>
                                 </td>
                                 <td>
                                     {user.email}
@@ -48,7 +46,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Lidtype</b>
+                                    <b>{t('membertype')}</b>
                                 </td>
                                 <td>
                                     <UserTypeName id={user.user_type_id}/>
@@ -56,7 +54,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Telefoonnummer</b>
+                                    <b>{t('phonenumber')}</b>
                                 </td>
                                 <td>
                                     {user.phonenumber}
@@ -64,7 +62,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Adres</b>
+                                    <b>{t('address')}</b>
                                 </td>
                                 <td>
                                     {user.address}
@@ -72,7 +70,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Postcode</b>
+                                    <b>{t('postalcode')}</b>
                                 </td>
                                 <td>
                                     {user.postalcode}
@@ -80,7 +78,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Stad</b>
+                                    <b>{t('city')}</b>
                                 </td>
                                 <td>
                                     {user.city}
@@ -88,7 +86,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Studie</b>
+                                    <b>{t('study')}</b>
                                 </td>
                                 <td>
                                     {user.studie}
@@ -96,7 +94,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Instelling</b>
+                                    <b>{t('institution')}</b>
                                 </td>
                                 <td>
                                     {user.instelling}
@@ -104,7 +102,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Aanvang</b>
+                                    <b>Start</b>
                                 </td>
                                 <td>
                                     {user.aanvang}
@@ -112,7 +110,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Geslacht</b>
+                                    <b>{t('sex')}</b>
                                 </td>
                                 <td>
                                     {user.sex}
@@ -120,7 +118,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Licentienummber</b>
+                                    <b>{t('licensenumber')}</b>
                                 </td>
                                 <td>
                                     {user.licensenumber}
@@ -128,7 +126,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>UnionCardnummer</b>
+                                    <b>{t('unioncardnumber')}</b>
                                 </td>
                                 <td>
                                     {user.xtracard}
@@ -136,7 +134,7 @@ const User = (props) => {
                             </tr>
                             <tr>
                                 <td>
-                                    <b>Papieren Kronometer</b>
+                                    <b>{t('paperkronometer')}</b>
                                 </td>
                                 <td>
                                     {user.papieren_kronometer.toString()}
@@ -145,7 +143,7 @@ const User = (props) => {
                             <Can I={'manage'} this='all'>
                                 <tr>
                                     <td>
-                                        <b>Bankrekeningnummer</b>
+                                        <b>{t('banknumber')}</b>
                                     </td>
                                     <td>
                                         {user.bank_account_number}
@@ -161,7 +159,7 @@ const User = (props) => {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b>Toegevoegd op</b>
+                                        <b>{t('createdat')}</b>
                                     </td>
                                     <td>
                                         {created_at.toLocaleDateString()}
@@ -170,10 +168,10 @@ const User = (props) => {
                             </Can>
                             <tr>
                                 <td>
-                                    <b>Commissies</b>
+                                    <b>{t('commissions')}</b>
                                 </td>
                                 <td>
-                                    {user.commissions.map(c =>c.name).toString()}
+                                    {user.commissions.map(c =>lang === 'nl' ? c.name : c.name_en).toString()}
                                 </td>
                             </tr>
                         </tbody>

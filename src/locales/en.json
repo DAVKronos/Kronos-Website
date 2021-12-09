@@ -84,7 +84,23 @@
     "documents": "Documents"
   },
   "userpage": {
-    "kronauts": "Kronauts"
+    "kronauts": "Kronauts",
+    "initials": "Initials",
+    "birthdate": "Date of birth",
+    "membertype": "Membertype",
+    "phonenumber": "Telephone number",
+    "address": "Address",
+    "postalcode": "Postal code",
+    "city": "City",
+    "study": "Study",
+    "institution": "Institution",
+    "sex": "Sex",
+    "licensenumber": "License number",
+    "unioncardnumber": "Unioncard number",
+    "paperkronometer": "Paper Kronometer",
+    "banknumber": "Bank-account number",
+    "createdat": "Created at",
+    "commissions": "Commissions"
   },
   "contactPage": {
     "title": "Send us a message"
