@@ -84,7 +84,23 @@
     "documents": "Documenten"
   },
   "userpage": {
-    "kronauts": "Kronauten"
+    "kronauts": "Kronauten",
+    "initials": "Initialen",
+    "birthdate": "Geboortedatum",
+    "membertype": "Lidtype",
+    "phonenumber": "Telefoonnummer",
+    "address": "Adres",
+    "postalcode": "Postcode",
+    "city": "Stad",
+    "study": "Studie",
+    "institution": "Instelling",
+    "sex": "Geslacht",
+    "licensenumber": "Licentienummer",
+    "unioncardnumber": "Unioncardnummer",
+    "paperkronometer": "Papieren Kronometer",
+    "banknumber": "Bankrekeningnummer",
+    "createdat": "Toegevoegd op",
+    "commissions": "Commissies"
   },
   "contactPage": {
     "title": "Stuur ons een bericht"

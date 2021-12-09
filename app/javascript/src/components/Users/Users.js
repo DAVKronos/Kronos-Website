@@ -9,8 +9,9 @@ import {useTranslation} from "react-i18next";
 import DefaultSpinner from "../Generic/Spinner";
 
 function UserTypesFilter({filter, onChangeFilter}){
-    const {t} = useTranslation('generic');
+    const {t,i18n} = useTranslation('generic');
     const { isLoading, isError, data, error } = useQuery('usertypes', getUserTypes)
+    const lang = i18n.language;
     return <Nav variant="pills">
         <Nav.Item key='all'>
             <Nav.Link active={filter == null} onClick={() => onChangeFilter(null)}>
@@ -22,7 +23,7 @@ function UserTypesFilter({filter, onChangeFilter}){
                 <Nav.Link
                     active={filter === userType.id}
                     onClick={() => onChangeFilter(userType.id)}>
-                    {userType.name}
+                    {i18n.language === 'nl'? userType && userType.name : userType && userType.name_en}
                 </Nav.Link>
             </Nav.Item>;
         })}
