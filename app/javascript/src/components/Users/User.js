@@ -12,6 +12,7 @@ import {MembershipList} from "./Commission";
 const User = (props) => {
     const id = props.match.params.id
     const { isLoading, data:user} = useQuery(['users',id], getUser);
+    console.log(user)
     if (user){
         var date = new Date(user.birthdate);
         var created_at = new Date(user.created_at);
@@ -172,7 +173,7 @@ const User = (props) => {
                                     <b>Commissies</b>
                                 </td>
                                 <td>
-                                    <MembershipList user={user}/>
+                                    {user.commissions.map(c =>c.name).toString()}
                                 </td>
                             </tr>
                         </tbody>
