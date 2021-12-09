@@ -91,19 +91,21 @@ const Users = () => {
         </Row>
         <Row className="row-margin">
             <Col md={12}>
-                {isLoading && <DefaultSpinner/>}
-                {users && users.map(user => {
-                    return <Link key={user.id} to={`/users/${user.id}`} className='user'>
-                        <Col sm={6} md={3}>
-                            <div className='thumbnail'>
-                                <figure>
-                                    <Image src={user.avatar_url_pass} />
-                                    <figcaption>{user.name}</figcaption>
-                                </figure>
-                            </div>
+                <Row>
+                    {isLoading && <DefaultSpinner/>}
+                    {users && users.map(user => {
+                        return <Col key={user.id} sm={6} md={3}>
+                            <Link  to={`/users/${user.id}`} className='user'>
+                                <div className='thumbnail'>
+                                    <figure>
+                                        <Image src={user.avatar_url_pass} />
+                                        <figcaption>{user.name}</figcaption>
+                                    </figure>
+                                </div>
+                            </Link>
                         </Col>
-                    </Link>
-                })}
+                    })}
+                </Row>
             </Col>
         </Row>
     </React.Fragment>);
