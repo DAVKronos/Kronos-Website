@@ -26,7 +26,7 @@ module Api
 
         respond_to do |format|
           format.html # index.html.erb
-          format.json { render json: @agendaitems.map{|agendaitem| agendaitem.as_json(include: {subscriptions: {only: :id}})} }
+          format.json { render json: @agendaitems.map{|agendaitem| agendaitem.as_json(include: {subscriptions: {only: :id}, agendaitemtype: {only: :name}})} }
         end
       end
 

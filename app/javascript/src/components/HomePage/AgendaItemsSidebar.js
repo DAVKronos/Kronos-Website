@@ -7,12 +7,12 @@ import DefaultSpinner from "../Generic/Spinner";
 
 function AgendaItemsSideBar() {
     const { isLoading, isError, data, error } = useQuery('agendaitems', agendaItems)
-
+    const agendaitems = data && data.filter(agendaitem =>!agendaitem.agendaitemtype.name.match('Training'))
     let content;
     if (isLoading) {
         content =  <DefaultSpinner />;
     } else {
-        content = data.map(item => (<ListGroup.Item key={item.id}><AgendaItem item={item}/></ListGroup.Item>));
+        content = agendaitems.map(item => (<ListGroup.Item key={item.id}><AgendaItem item={item}/></ListGroup.Item>));
     }
 
     return <Card className="side-panel">
