@@ -124,7 +124,9 @@
       "page": "Page",
       "page_plural": "Pages",
       "photoAlbum": "Photo album",
-      "photoAlbum_plural": "Photo albums"
+      "photoAlbum_plural": "Photo albums",
+      "mailingList": "Mailing list",
+      "mailingList_plural": "Mailing lists"
     },
     "agendaitem": {
       "name": "Name (Dutch)",
@@ -169,6 +171,12 @@
       "name": "Name",
       "email": "Email",
       "message": "Message"
+    },
+    "mailingList": {
+      "name": "Name",
+      "description": "Description",
+      "local_part": "Local part",
+      "commission_id": "Commission"
     }
   }
 }

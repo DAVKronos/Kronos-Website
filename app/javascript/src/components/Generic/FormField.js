@@ -5,6 +5,9 @@ import DatePicker, {registerLocale} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import nl from "date-fns/locale/nl";
 import en from "date-fns/locale/en-GB";
+import DefaultSpinner from './Spinner';
+
+import {useQuery} from "react-query";
 
 registerLocale('nl', nl)
 registerLocale('en', en)
@@ -26,13 +29,23 @@ const FieldLabel = ({modelName, fieldName}) => {
 }
 
 
-const FieldControl = ({type, value, setValue, required, ...props}) => {
+const FieldControl = ({type, value, setValue, required, itemQuery, ...props}) => {
     if (type === 'reference') {
         const {t} = useTranslation('generic');
-        const {items, ...otherProps} = props;
-        return <Form.Control as="select" value={value || ""} onChange={e => setValue(e.target.value)} {...otherProps}>
-            <option value="" disabled={required}>{t('empty')}</option>
-            {items && items.map(item => {
+        const {multiple, ...otherProps} = props;
+        const {isLoading, data} = useQuery(...itemQuery);
+        if (isLoading || (itemQuery[2] && !itemQuery[2].enabled)){
+            return <DefaultSpinner size='sm'/>;
+        }
+
+        const selectValue = value ? value : multiple ? [] : "";
+        let onChange = e => setValue(e.target.value)
+        if (multiple) {
+            onChange = e => setValue([...e.target.selectedOptions].map(o => o.value));
+        }
+        return <Form.Control as="select" value={selectValue} onChange={onChange} multiple={multiple} {...otherProps}>
+            {!multiple && <option value="" disabled={required}>{t('empty')}</option>}
+            {data && data.map(item => {
                 return <option key={item.id} value={item.id}>{item.name}</option>
             })}
         </Form.Control>

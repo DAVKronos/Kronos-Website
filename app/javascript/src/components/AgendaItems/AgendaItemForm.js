@@ -18,7 +18,8 @@ const agendaItemFields = [{
 
     name: "agendaitemtype_id",
     type: 'reference',
-    required: true
+    required: true,
+    itemQuery: [['agendaitemtypes'], getAgendaitemTypes]
 }, {
     name: "date",
     type: 'datetime',
@@ -40,7 +41,8 @@ const agendaItemFields = [{
     type: 'text'
 }, {
     name: "commission_id",
-    type: "reference"
+    type: "reference",
+    itemQuery: userId => [['users',userId, 'commissions'], getCommissionForUser, {enabled: !!userId}]
 }, {
     name: "subscribe",
     type: 'boolean'
@@ -57,20 +59,21 @@ const agendaItemFields = [{
 // TODO: make required do something (with react-hook-form)
 const AgendaItemForm = ({values, setValue, children }) => {
     const { user } = useContext(authContext);
-    const {data: agendaItemTypes} = useQuery(['agendaitemtypes'], getAgendaitemTypes)
-    const { data: commissions  } = useQuery(['commissions', user.id], getCommissionForUser)
+    const userId = user && user.id;
     return <Form>
-        {agendaItemFields.map((field) => {
-            let items = field.name === 'agendaitemtype_id' ? agendaItemTypes : field.name === 'commission_id' ? commissions : [];
-            if (!field.conditionField || values[field.conditionField])
+        {agendaItemFields.map(({name, type, required, itemQuery, conditionField, ...otherProps}) => {
+            let newItemQuery = name === 'commission_id' ? itemQuery(userId) : itemQuery;
+            if (!conditionField || values[conditionField])
             return <FormField
+                {...otherProps}
+                key={name}
                 modelName={'agendaitem'}
-                fieldName={field.name}
-                value={values[field.name]}
-                setValue={(v) => setValue(field.name, v)}
-                type={field.type}
-                items={items}
-                required={field.required}
+                fieldName={name}
+                value={values[name]}
+                setValue={(v) => setValue(name, v)}
+                type={type}
+                required={required}
+                itemQuery={newItemQuery}
             />
         })}
         {children}

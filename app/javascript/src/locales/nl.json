@@ -124,7 +124,9 @@
       "page": "Pagina",
       "page_plural": "Pagina's",
       "photoAlbum": "Fotoalbum",
-      "photoAlbum_plural": "Fotoalbums"
+      "photoAlbum_plural": "Fotoalbums",
+      "mailingList": "Mailing lijst",
+      "mailingList_plural": "Mailing lijsten"
     },
     "agendaitem": {
       "name": "Naam (Nederlands)",
@@ -169,6 +171,12 @@
       "name": "Naam",
       "email": "Email",
       "message": "Bericht"
+    },
+    "mailingList": {
+      "name": "Naam",
+      "description": "Omschrijving",
+      "local_part": "Lokaal deel (voor de @)",
+      "commission_id": "Commissie"
     }
   }
 }

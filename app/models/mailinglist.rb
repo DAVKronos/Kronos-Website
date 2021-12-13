@@ -48,37 +48,51 @@ class Mailinglist < ApplicationRecord
   private
 
   def add_mailinglist
-    api_client = KronosGoogleAPIClient.new
-    api_client.create_email_group(self.full_email, self.name, self.description)
+    if Rails.env.production?
+      api_client = KronosGoogleAPIClient.new
+      api_client.create_email_group(self.full_email, self.name, self.description)
+    end
   end
 
   def delete_mailinglist
-    api_client = KronosGoogleAPIClient.new
-    api_client.destroy_email_group(self.full_email)
+    if Rails.env.production?
+      api_client = KronosGoogleAPIClient.new
+      api_client.destroy_email_group(self.full_email)
+    end
   end
 
   def subscribe_maillinglist_to_mailinglist(mailinglist)
-    api_client = KronosGoogleAPIClient.new
-    api_client.add_group_to_group(mailinglist, self.full_email)
+    if Rails.env.production?
+      api_client = KronosGoogleAPIClient.new
+      api_client.add_group_to_group(mailinglist, self.full_email)
+    end
   end
 
   def unsubscribe_mailinglist_from_mailinglist(mailinglist)
-    api_client = KronosGoogleAPIClient.new
-    api_client.remove_group_from_group(mailinglist, self.full_email)
+    if Rails.env.production?
+      api_client = KronosGoogleAPIClient.new
+      api_client.remove_group_from_group(mailinglist, self.full_email)
+    end
   end
 
   def subscribe_alias_to_mailinglist(alia)
-    api_client = KronosGoogleAPIClient.new
-    api_client.add_alias_to_group(alia, self.full_email)
+    if Rails.env.production?
+      api_client = KronosGoogleAPIClient.new
+      api_client.add_alias_to_group(alia, self.full_email)
+    end
   end
 
   def unsubscribe_alias_from_mailinglist(alia)
-    api_client = KronosGoogleAPIClient.new
-    api_client.remove_alias_from_group(alia, self.full_email)
+    if Rails.env.production?
+      api_client = KronosGoogleAPIClient.new
+      api_client.remove_alias_from_group(alia, self.full_email)
+    end
   end
 
   def unsubscribe_from_mailinglist(user)
-    api_client = KronosGoogleAPIClient.new
-    api_client.remove_member_from_group(user, self.full_email)
+    if Rails.env.production?
+      api_client = KronosGoogleAPIClient.new
+      api_client.remove_member_from_group(user, self.full_email)
+    end
   end
 end
