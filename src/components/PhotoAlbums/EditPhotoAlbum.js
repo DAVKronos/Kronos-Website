@@ -8,7 +8,7 @@ import {getPhotoAlbum, updatePhotoAlbum} from "./queries";
 import EditPhotos from "./EditPhotos";
 
 const EditPhotoAlbumWithData = (props) => {
-    const id = props.match.params.id;
+    const id = parseInt(props.match.params.id);;
     const { isLoading, isError, data, error } = useQuery(['photoalbums', id], getPhotoAlbum);
     if (isLoading) {
         return <DefaultSpinner />;
