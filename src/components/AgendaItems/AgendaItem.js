@@ -90,7 +90,6 @@ function AgendaItem(props) {
                     <Col xs={11}><ReactMarkdown source={description}/></Col>
                 </Row>
                 <Row><Col>
-                    <h2>{t('models:modelNames.result_plural')}</h2>
                     <EventsResults agendaItemId={agendaItem.id}/>
                 </Col></Row>
             </Col>
