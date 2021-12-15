@@ -2,6 +2,7 @@ import React from 'react';
 import DefaultSpinner from "../Generic/Spinner";
 import {Table} from 'react-bootstrap';
 import {useQuery} from "react-query";
+import {useTranslation} from "react-i18next";
 import {getAgendaitemEvents} from "./queries";
 
 const EventResults = ({event}) => {
@@ -29,14 +30,19 @@ const EventResults = ({event}) => {
 const EventsResults = ({agendaItemId}) => {
     const { isLoading, isError, data, error } = useQuery(['agendaitemevents', agendaItemId], getAgendaitemEvents)
     const events = data;
+    const {t} = useTranslation('generic');
     if (isLoading) {
         return <DefaultSpinner/>;
     }
-
-    return <div>
-
-        {events && events.map(event => <EventResults key={event.id} event={event}/>)}
-    </div>;
+    if (events.length>0) {
+        return <React.Fragment>
+            <h2>{t('models:modelNames.result_plural')}</h2>
+            <div>
+                {events && events.map(event => <EventResults key={event.id} event={event}/>)}
+            </div>
+        </React.Fragment>
+    }
+    return null;
 };
 
 
