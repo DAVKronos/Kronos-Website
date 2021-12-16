@@ -126,7 +126,9 @@
       "photoAlbum": "Fotoalbum",
       "photoAlbum_plural": "Fotoalbums",
       "mailingList": "Mailing lijst",
-      "mailingList_plural": "Mailing lijsten"
+      "mailingList_plural": "Mailing lijsten",
+      "alias": "Alias",
+      "alias_plural": "Aliassen"
     },
     "agendaitem": {
       "name": "Naam (Nederlands)",
@@ -177,6 +179,11 @@
       "description": "Omschrijving",
       "local_part": "Lokaal deel (voor de @)",
       "commission_id": "Commissie"
+    },
+    "alias": {
+      "name": "Naam",
+      "description": "Omschrijving",
+      "emailaddress": "Email adres"
     }
   }
 }

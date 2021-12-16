@@ -115,7 +115,7 @@ function NewsItem(props) {
 
     const onClickRemove = () => {
         removeNewsItem(id).then(() => {
-            history.back();
+            history.goBack();
         });
     }
 

@@ -7,8 +7,9 @@ const AdminHome = () => {
         <Col md={6}>
         <ListGroup>
         <ListGroup.Item as={NavLink} to={'/admin/approve-news'} action>Nieuwsitems goedkeuren</ListGroup.Item>
-        <ListGroup.Item as={NavLink} to={'/admin/mailinglists'} action>Mailinglijsten beheren</ListGroup.Item>
-        <ListGroup.Item as={NavLink} to={'/admin/pages'} action>Informatie pagina's beheren</ListGroup.Item>
+        <ListGroup.Item as={NavLink} to={'/admin/mailinglists'} action>Mailinglijsten</ListGroup.Item>
+        <ListGroup.Item as={NavLink} to={'/admin/aliases'} action>Aliassen</ListGroup.Item>
+        <ListGroup.Item as={NavLink} to={'/admin/pages'} action>Informatie pagina's</ListGroup.Item>
         <ListGroup.Item action>Generiek objecten beheren</ListGroup.Item>
     </ListGroup>
     </Col>
