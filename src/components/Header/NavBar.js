@@ -33,7 +33,7 @@ const NavBar =  () => {
     const { t } = useTranslation('navigation');
     const pages = data || [];
     return <Navbar id="navbar-kronos" expand="lg" variant="dark" collapseOnSelect>
-        <Navbar.Brand className="d-md-none d-flex">Kronos</Navbar.Brand>
+        <Navbar.Brand className="d-md-none d-flex" as={NavLink} to="/" href={'/'} exact>Kronos</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav" className="flex-wrap">
             <Nav >
