@@ -47,6 +47,8 @@ const NavBar =  () => {
                     {getPageLinksForMenu(pages,'Trainingen')}
                 </NavDropdown>
                 <NavDropdown title={t('matches')} id="basic-nav-dropdown">
+                    <NavDropdown.Item target={'_blank'} href="http://www.campusloop.nl">Campusloop</NavDropdown.Item>
+                    <NavDropdown.Item target={'_blank'} href="http://jkg.kronos.nl">Johan Knaap Games</NavDropdown.Item>
                     {getPageLinksForMenu(pages, 'Wedstrijden')}
                 </NavDropdown>
                 <Nav.Link as={NavLink} to="/agendaitems" href="/agendaitems">{t('agenda')}</Nav.Link>
