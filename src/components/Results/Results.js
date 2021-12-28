@@ -1,5 +1,5 @@
 import React from 'react';
-import MonthSwitcher from "../Generic/MonthSwitcher";
+import MonthSwitcher from "./MonthSwitcher";
 import {Card, Col, Row, Accordion, Button} from "react-bootstrap";
 import {Link, useLocation} from "react-router-dom";
 import {format} from "../../utils/date-format";
