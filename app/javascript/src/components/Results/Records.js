@@ -17,6 +17,7 @@ const parseQueryString = function (objName) {
 };
 
 const CategorySwitcher = () => {
+    const {t} = useTranslation('recordPage');
     let history = useHistory();
 
     const changeCategory = (loc,sex) => {
@@ -30,29 +31,27 @@ const CategorySwitcher = () => {
 
     return <Nav variant="tabs">
         <Nav.Item>
-            <Nav.Link active = {parseQueryString('loc') === 'out' && parseQueryString('sex') === 'male'} onClick={() => changeCategory('out','male')}>Men Outdoor</Nav.Link>
+            <Nav.Link active = {parseQueryString('loc') === 'out' && parseQueryString('sex') === 'male'} onClick={() => changeCategory('out','male')}>{t('men').concat(' Outdoor')}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link active = {parseQueryString('loc') === 'out' && parseQueryString('sex') === 'female'}onClick={() => changeCategory('out','female')}>Women Outdoor</Nav.Link>
+            <Nav.Link active = {parseQueryString('loc') === 'out' && parseQueryString('sex') === 'female'}onClick={() => changeCategory('out','female')}>{t('women').concat(' Outdoor')}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link active = {parseQueryString('loc') === 'in' && parseQueryString('sex') === 'male'}onClick={() => changeCategory('in','male')}>Men Indoor</Nav.Link>
+            <Nav.Link active = {parseQueryString('loc') === 'in' && parseQueryString('sex') === 'male'}onClick={() => changeCategory('in','male')}>{t('men').concat(' Indoor')}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-            <Nav.Link active = {parseQueryString('loc') === 'in' && parseQueryString('sex') === 'female'}onClick={() => changeCategory('in','female')}>Women Indoor</Nav.Link>
+            <Nav.Link active = {parseQueryString('loc') === 'in' && parseQueryString('sex') === 'female'}onClick={() => changeCategory('in','female')}>{t('women').concat(' Indoor')}</Nav.Link>
         </Nav.Item>
     </Nav>
 }
 
 const Records = () => {
-    const {t, i18n} = useTranslation('resultPage');
-    const lang = i18n.language;
     let date = new Date();
 
     return (<React.Fragment>
         <Row>
             <Col md={12}>
-                <h1>{t('header')}</h1>
+                <h1>Clubrecords</h1>
             </Col>
         </Row>
         <Row className="row-margin">
@@ -74,21 +73,22 @@ const Records = () => {
 }
 
 const RecordTable = (data) => {
+    const {t} = useTranslation('recordPage');
     const loc = data.loc;
     const sex = data.sex;
     if (loc==='out' && sex==='male') {
         return <Table>
             <thead>
             <tr>
-                <th>Onderdeel</th>
-                <th>Prestatie</th>
-                <th>Recordhouder</th>
-                <th>Datum</th>
+                <th>{t('event')}</th>
+                <th>{t('result')}</th>
+                <th>{t('recordholder')}</th>
+                <th>{t('date')}</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td><b>Looponderdelen</b></td>
+                <td><b>{t('runningevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
@@ -142,19 +142,19 @@ const RecordTable = (data) => {
                 <td>05-09-1986</td>
             </tr>
             <tr>
-                <td><b>Speciale looponderdelen</b></td>
+                <td><b>{t('specialrunningevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
             </tr>
             <tr>
-                <td>110m Horden</td>
+                <td>{'110m '.concat(t('hurdles'))}</td>
                 <td>15,1</td>
                 <td>Ruud Smit</td>
                 <td>30-06-1973</td>
             </tr>
             <tr>
-                <td>400m Horden</td>
+                <td>{'400m '.concat(t('hurdles'))}</td>
                 <td>54,77</td>
                 <td>Arend-Jan Spierenburg</td>
                 <td>26-07-2014</td>
@@ -166,79 +166,79 @@ const RecordTable = (data) => {
                 <td>03-09-1988</td>
             </tr>
             <tr>
-                <td>1000m Snelwandelen</td>
+                <td>{'1000m '.concat(t('racewalking'))}</td>
                 <td>6:52,17</td>
                 <td>Thijs van Aalten</td>
                 <td>24-10-2021</td>
             </tr>
             <tr>
-                <td>Uurloop</td>
+                <td>{t('hourrun')}</td>
                 <td>11881,00</td>
                 <td>Fabian Pelgröm</td>
                 <td>24-10-2021</td>
             </tr>
             <tr>
-                <td><b>Technische onderdelen</b></td>
+                <td><b>{t('technicalevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
             </tr>
             <tr>
-                <td>Hoogspringen</td>
+                <td>{t('highjump')}</td>
                 <td>2,01</td>
                 <td>Ruud Smit</td>
                 <td>03-06-1971</td>
             </tr>
             <tr>
-                <td>Polsstokhoogspringen</td>
+                <td>{t('polevault')}</td>
                 <td>4,20</td>
                 <td>Koen Joosse</td>
                 <td>16-05-1990</td>
             </tr>
             <tr>
-                <td>Verspringen</td>
+                <td>{t('longjump')}</td>
                 <td>6,75</td>
                 <td>Roy van Zijl</td>
                 <td>09-08-2020</td>
             </tr>
             <tr>
-                <td>Hinkstapspringen</td>
+                <td>{t('triplejump')}</td>
                 <td>14,41</td>
                 <td>Roy van Zijl</td>
                 <td>13-06-2021</td>
             </tr>
             <tr>
-                <td>Kogelstoten</td>
+                <td>{t('shotput')}</td>
                 <td>13,22</td>
                 <td>Oscar Noordman</td>
                 <td>03-09-1995</td>
             </tr>
             <tr>
-                <td>Discuswerpen</td>
+                <td>{t('discusthrow')}</td>
                 <td>45,00</td>
                 <td>Oscar Noordman</td>
                 <td>10-07-1996</td>
             </tr>
             <tr>
-                <td>Kogelslingeren</td>
+                <td>{t('hammerthrow')}</td>
                 <td>37,17</td>
                 <td>Thijs Roskamp</td>
                 <td>04-07-2021</td>
             </tr>
             <tr>
-                <td>Speerwerpen</td>
+                <td>{t('javelinthrow')}</td>
                 <td>60,01</td>
                 <td>Hille Groendijk</td>
                 <td>29-06-2013</td>
             </tr>
             <tr>
-                <td>Tienkamp</td>
+                <td>{t('decathlon')}</td>
                 <td>5969</td>
                 <td>Koen Joosse</td>
                 <td>30-05-1993</td>
             </tr>
             <tr>
-                <td><b>Estafettes</b></td>
+                <td><b>{t('relays')}</b></td>
                 <td/>
                 <td/>
                 <td/>
@@ -262,7 +262,7 @@ const RecordTable = (data) => {
                 <td>19-06-1998</td>
             </tr>
             <tr>
-                <td>Zweedse estafette</td>
+                <td>{t('swedishrelay')}</td>
                 <td>2:02,5</td>
                 <td>Daniël Hofman <br/>
                     Gertjan Rijk <br/>
@@ -271,7 +271,7 @@ const RecordTable = (data) => {
                 <td>03-10-1998</td>
             </tr>
             <tr>
-                <td>Olympische estafette</td>
+                <td>{t("sprintmedleyrelay")}</td>
                 <td>3:40,4</td>
                 <td>Arjan Eggink<br/>
                     Ruben van Moppes <br/>
@@ -286,15 +286,15 @@ const RecordTable = (data) => {
         return <Table>
             <thead>
             <tr>
-                <th>Onderdeel</th>
-                <th>Prestatie</th>
-                <th>Recordhouder</th>
-                <th>Datum</th>
+                <th>{t('event')}</th>
+                <th>{t('result')}</th>
+                <th>{t('recordholder')}</th>
+                <th>{t('date')}</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td><b>Looponderdelen</b></td>
+                <td><b>{t('runningevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
@@ -348,19 +348,19 @@ const RecordTable = (data) => {
                 <td>17-06-1995</td>
             </tr>
             <tr>
-                <td><b>Speciale looponderdelen</b></td>
+                <td><b>{t('specialrunningevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
             </tr>
             <tr>
-                <td>100m Horden</td>
+                <td>{'100m '.concat(t('hurdles'))}</td>
                 <td>14,59</td>
                 <td>Marjolein Bolten</td>
                 <td>07-07-2018</td>
             </tr>
             <tr>
-                <td>400m Horden</td>
+                <td>{'400m '.concat(t('hurdles'))}</td>
                 <td>1:02,43</td>
                 <td>Merel Wevers</td>
                 <td>18-05-2019</td>
@@ -372,73 +372,73 @@ const RecordTable = (data) => {
                 <td>05-07-2003</td>
             </tr>
             <tr>
-                <td>1000m Snelwandelen</td>
+                <td>{'1000m '.concat(t('racewalking'))}</td>
                 <td>8:38,32</td>
                 <td>Dunya van Zanten</td>
                 <td>24-10-2021</td>
             </tr>
             <tr>
-                <td><b>Technische onderdelen</b></td>
+                <td><b>{t('technicalevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
             </tr>
             <tr>
-                <td>Hoogspringen</td>
+                <td>{t('highjump')}</td>
                 <td>1,70</td>
                 <td>Marjolein Bolten</td>
                 <td>27-05-2018</td>
             </tr>
             <tr>
-                <td>Polsstokhoogspringen</td>
+                <td>{t('polevault')}</td>
                 <td>2.90</td>
                 <td>Marjolein Bolten</td>
                 <td>08-09-2021</td>
             </tr>
             <tr>
-                <td>Verspringen</td>
+                <td>{t('longjump')}</td>
                 <td>5,67</td>
                 <td>Marjolein Bolten</td>
                 <td>16-06-2018</td>
             </tr>
             <tr>
-                <td>Hinkstapspringen</td>
+                <td>{t('triplejump')}</td>
                 <td>11,21</td>
                 <td>Marjolein Bolten</td>
                 <td>27-05-2018</td>
             </tr>
             <tr>
-                <td>Kogelstoten</td>
+                <td>{t('shotput')}</td>
                 <td>12,86</td>
                 <td>Brenda Pouw</td>
                 <td>20-05-2007</td>
             </tr>
             <tr>
-                <td>Discuswerpen</td>
+                <td>{t('discusthrow')}</td>
                 <td>37,54</td>
                 <td>Brenda Pouw</td>
                 <td>24-06-2003</td>
             </tr>
             <tr>
-                <td>Kogelslingeren</td>
+                <td>{t('hammerthrow')}</td>
                 <td>30,64</td>
                 <td>Nadia Lachkar</td>
                 <td>13-06-2007</td>
             </tr>
             <tr>
-                <td>Speerwerpen</td>
+                <td>{t('javelinthrow')}</td>
                 <td>41,84</td>
                 <td>Brenda Pouw</td>
                 <td>15-09-2002</td>
             </tr>
             <tr>
-                <td>Zevenkamp</td>
+                <td>{t('heptathlon')}</td>
                 <td>5115</td>
                 <td>Marjolein Bolten</td>
                 <td>07-07-2018</td>
             </tr>
             <tr>
-                <td><b>Estafettes</b></td>
+                <td><b>{t('relays')}</b></td>
                 <td/>
                 <td/>
                 <td/>
@@ -462,7 +462,7 @@ const RecordTable = (data) => {
                 <td>16-06-2019</td>
             </tr>
             <tr>
-                <td>Zweedse estafette</td>
+                <td>{t('swedishrelay')}</td>
                 <td>2:29,8</td>
                 <td>Agens Mewe <br/>
                     Maaike Konter <br/>
@@ -471,7 +471,7 @@ const RecordTable = (data) => {
                 <td>15-09-2002</td>
             </tr>
             <tr>
-                <td>Olympische estafette</td>
+                <td>{t('sprintmedleyrelay')}</td>
                 <td>4:30,04</td>
                 <td>Merel Wevers<br/>
                     Marjolein Bolten <br/>
@@ -486,15 +486,15 @@ const RecordTable = (data) => {
         return <Table>
             <thead>
             <tr>
-                <th>Onderdeel</th>
-                <th>Prestatie</th>
-                <th>Recordhouder</th>
-                <th>Datum</th>
+                <th>{t('event')}</th>
+                <th>{t('result')}</th>
+                <th>{t('recordholder')}</th>
+                <th>{t('date')}</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td><b>Looponderdelen</b></td>
+                <td><b>{t('runningevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
@@ -536,61 +536,61 @@ const RecordTable = (data) => {
                 <td>25-01-1998</td>
             </tr>
             <tr>
-                <td><b>Speciale looponderdelen</b></td>
+                <td><b>{t('specialrunningevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
             </tr>
             <tr>
-                <td>60m Horden</td>
+                <td>{'60m '.concat(t('hurdles'))}</td>
                 <td>8,4</td>
                 <td>Ton van den Boogaard</td>
                 <td>20-01-1985</td>
             </tr>
             <tr>
-                <td><b>Technische onderdelen</b></td>
+                <td><b>{t('technicalevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
             </tr>
             <tr>
-                <td>Hoogspringen</td>
+                <td>{t('highjump')}</td>
                 <td>2,00</td>
                 <td>Ruud Smit</td>
                 <td>19-12-1971</td>
             </tr>
             <tr>
-                <td>Polsstokhoogspringen</td>
+                <td>{t('polevault')}</td>
                 <td>4,10</td>
                 <td>Ton van den Boogaard</td>
                 <td>27-01-1985</td>
             </tr>
             <tr>
-                <td>Verspringen</td>
+                <td>{t('longjump')}</td>
                 <td>6,65</td>
                 <td>Roy van Zijl</td>
                 <td>29-02-2020</td>
             </tr>
             <tr>
-                <td>Hinkstapspringen</td>
+                <td>{t('triplejump')}</td>
                 <td>14,29</td>
                 <td>Roy van Zijl</td>
                 <td>29-02-2020</td>
             </tr>
             <tr>
-                <td>Kogelstoten</td>
+                <td>{t('shotput')}</td>
                 <td>13,64</td>
                 <td>Oscar Noordman</td>
                 <td>21-01-1996</td>
             </tr>
             <tr>
-                <td>Zevenkamp</td>
+                <td>{t('heptathlon')}</td>
                 <td>3653</td>
                 <td>Frans Vercraeye</td>
                 <td>26-01-1974</td>
             </tr>
             <tr>
-                <td><b>Estafettes</b></td>
+                <td><b>{t('relays')}</b></td>
                 <td/>
                 <td/>
                 <td/>
@@ -623,7 +623,7 @@ const RecordTable = (data) => {
                 <td>22-01-2000</td>
             </tr>
             <tr>
-                <td>Zweedse estafette</td>
+                <td>{t('swedishrelay')}</td>
                 <td>Vacant</td>
                 <td/>
                 <td/>
@@ -635,15 +635,15 @@ const RecordTable = (data) => {
         return <Table>
             <thead>
             <tr>
-                <th>Onderdeel</th>
-                <th>Prestatie</th>
-                <th>Recordhouder</th>
-                <th>Datum</th>
+                <th>{t('event')}</th>
+                <th>{t('result')}</th>
+                <th>{t('recordholder')}</th>
+                <th>{t('date')}</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td><b>Looponderdelen</b></td>
+                <td><b>{t('runningevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
@@ -685,61 +685,61 @@ const RecordTable = (data) => {
                 <td>24-01-2004</td>
             </tr>
             <tr>
-                <td><b>Speciale looponderdelen</b></td>
+                <td><b>{t('specialrunningevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
             </tr>
             <tr>
-                <td>60m Horden</td>
+                <td>{'60m '.concat(t('hurdles'))}</td>
                 <td>9,13</td>
                 <td>Marjolein Bolten</td>
                 <td>03-02-2019</td>
             </tr>
             <tr>
-                <td><b>Technische onderdelen</b></td>
+                <td><b>{t('technicalevents')}</b></td>
                 <td/>
                 <td/>
                 <td/>
             </tr>
             <tr>
-                <td>Hoogspringen</td>
+                <td>{t('highjump')}</td>
                 <td>1,68</td>
                 <td>Marjolein Bolten</td>
                 <td>11-02-2018</td>
             </tr>
             <tr>
-                <td>Polsstokhoogspringen</td>
+                <td>{t('polevault')}</td>
                 <td>2,20</td>
                 <td>Karin Gorter</td>
                 <td>08-03-2003</td>
             </tr>
             <tr>
-                <td>Verspringen</td>
+                <td>{t('longjump')}</td>
                 <td>5,52</td>
                 <td>Marjolein Bolten</td>
                 <td>02-03-2019</td>
             </tr>
             <tr>
-                <td>Hinkstapspringen</td>
+                <td>{t('triplejump')}</td>
                 <td>9,85</td>
                 <td>Agnes Mewe</td>
                 <td>06-02-2000</td>
             </tr>
             <tr>
-                <td>Kogelstoten</td>
+                <td>{t('shotput')}</td>
                 <td>12,62</td>
                 <td>Brenda Pouw</td>
                 <td>27-01-2008</td>
             </tr>
             <tr>
-                <td>Vijfkamp</td>
+                <td>{t('pentathlon')}</td>
                 <td>3630</td>
                 <td>Merel Wevers</td>
                 <td>03-02-2019</td>
             </tr>
             <tr>
-                <td><b>Estafettes</b></td>
+                <td><b>{t('relays')}</b></td>
                 <td/>
                 <td/>
                 <td/>
@@ -766,7 +766,7 @@ const RecordTable = (data) => {
                 <td/>
             </tr>
             <tr>
-                <td>Zweedse estafette</td>
+                <td>{t('swedishrelay')}</td>
                 <td>Vacant</td>
                 <td/>
                 <td/>
