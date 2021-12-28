@@ -105,6 +105,34 @@
   "contactPage": {
     "title": "Send us a message"
   },
+  "recordPage": {
+    "event": "Event",
+    "result": "Result",
+    "recordholder": "Recordholder",
+    "date": "Date",
+    "runningevents": "Running events",
+    "specialrunningevents": "Special running events",
+    "hurdles": "Hurdles",
+    "racewalking": "Race walking",
+    "hourrun": "One hour run",
+    "technicalevents": "Technical events",
+    "highjump": "High jump",
+    "polevault": "Pole vault",
+    "longjump": "Long jump",
+    "triplejump": "Triple jump",
+    "shotput": "Shot put",
+    "discusthrow": "Discus throw",
+    "hammerthrow": "Hammer throw",
+    "javelinthrow": "Javelin throw",
+    "decathlon": "Decathlon",
+    "relays": "Relays",
+    "swedishrelay": "Swedish relay",
+    "sprintmedleyrelay": "Sprint medley relay",
+    "heptathlon": "Heptathlon",
+    "pentathlon": "Pentathlon",
+    "men": "Men",
+    "women": "Women"
+  },
   "models": {
     "generic": {
       "created_at": "Created at"

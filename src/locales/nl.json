@@ -105,6 +105,34 @@
   "contactPage": {
     "title": "Stuur ons een bericht"
   },
+  "recordPage": {
+    "event": "Onderdeel",
+    "result": "Prestatie",
+    "recordholder": "Recordhouder",
+    "date": "Datum",
+    "runningevents": "Looponderdelen",
+    "specialrunningevents": "Speciale looponderdelen",
+    "hurdles": "Horden",
+    "racewalking": "Snelwandelen",
+    "hourrun": "Uurloop",
+    "technicalevents": "Technische onderdelen",
+    "highjump": "Hoogspringen",
+    "polevault": "Polsstokhoogspringen",
+    "longjump": "Verspringen",
+    "triplejump": "Hinkstapspringen",
+    "shotput": "Kogelstoten",
+    "discusthrow": "Discuswerpen",
+    "hammerthrow": "Kogelslingeren",
+    "javelinthrow": "Speerwerpen",
+    "decathlon": "Tienkamp",
+    "relays": "Estafettes",
+    "swedishrelay": "Zweedse estafette",
+    "sprintmedleyrelay": "Olympische estafette",
+    "heptathlon": "Zevenkamp",
+    "pentathlon": "Vijfkamp",
+    "men": "Mannen",
+    "women": "Vrouwen"
+  },
   "models": {
     "generic": {
       "created_at": "Aangemaakt op"
