@@ -101,7 +101,7 @@ const Comment = ({comment}) => {
 function NewsItem(props) {
     const {t, i18n} = useTranslation('generic');
     const history = useHistory();
-    const id = props.match.params.id;
+    const id = parseInt(props.match.params.id);;
     const { isLoading, isError, data, error } = useQuery(['newsitems',id], getNewsItem);
 
     if (isLoading) {
@@ -115,7 +115,7 @@ function NewsItem(props) {
 
     const onClickRemove = () => {
         removeNewsItem(id).then(() => {
-            history.back();
+            history.goBack();
         });
     }
 

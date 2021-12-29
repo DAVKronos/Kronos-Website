@@ -7,7 +7,7 @@ import {Can} from "../../utils/auth-helper";
 import {getUser} from "./queries";
 
 const User = (props) => {
-    const id = props.match.params.id
+    const id = parseInt(props.match.params.id);
     const { isLoading, data:user} = useQuery(['users',id], getUser);
     const {t,i18n} = useTranslation('userpage');
     const lang = i18n.language;

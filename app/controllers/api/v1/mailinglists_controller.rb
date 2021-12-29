@@ -5,10 +5,12 @@ module Api
 
       def index
         @mailinglists = Mailinglist.all
+        render json: @mailinglists
       end
 
       def show
         @mailinglist = Mailinglist.find(params[:id])
+        render json: @mailinglist.to_json(:include => {:aliases => {:only => :id}, :users => {:only => :id}, :mailinglists => {:only => :id}})
       end
 
       def new
@@ -28,7 +30,7 @@ module Api
       def create
         mailinglist = Mailinglist.new(mailinglist_params)
         if mailinglist.save
-          redirect_to mailinglist
+           render json: mailinglist.to_json(:include => {:aliases => {:only => :id}, :users => {:only => :id}, :mailinglists => {:only => :id}})
         else
           @mailinglist = mailinglist
           @users = User.order(:name)
@@ -41,21 +43,20 @@ module Api
       def destroy
         mailinglist = Mailinglist.find(params[:id])
         if mailinglist.destroy
-          flash[:success] = t(:mailinglist_destroy_success)
+          respond_to do |format|
+            format.json { head :ok }
+          end
         else
-          flash[:error] = t(:mailinglist_destroy_failure)
+          render json: {message: mailinglist.errors.full_messages}, status: :bad_request
         end
-        redirect_to Mailinglist
       end
 
       def update
         @mailinglist = Mailinglist.find(params[:id])
         if @mailinglist.update_attributes(mailinglist_params)
-          flash[:success] = t(:mailinglist_update_success)
-          redirect_to Mailinglist
+          render json: @mailinglist.to_json(:include => {:aliases => {:only => :id}, :users => {:only => :id}, :mailinglists => {:only => :id}})
         else
-          @users = User.order(:name)
-          render 'edit'
+          render json: {message: @mailinglist.errors.full_messages}, status: :bad_request
         end
       end
 

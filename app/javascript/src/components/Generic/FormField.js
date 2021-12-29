@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Col, Form, Row} from "react-bootstrap";
 import {useTranslation} from "react-i18next";
 import DatePicker, {registerLocale} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import nl from "date-fns/locale/nl";
 import en from "date-fns/locale/en-GB";
+import DefaultSpinner from './Spinner';
+import Select from 'react-select'
+
+import {useQuery} from "react-query";
 
 registerLocale('nl', nl)
 registerLocale('en', en)
@@ -25,17 +29,41 @@ const FieldLabel = ({modelName, fieldName}) => {
     return t(`${modelName}.${fieldName}`)
 }
 
+const ReferenceControl = ({value, setValue, required, itemQuery, multiple, ...props}) => {
+    const {isLoading, data = []}= useQuery(...itemQuery);
+    const options = data.map(item => ({label: item.name, value: item.id}));
+    
+    let  selectValue;
+    if (multiple) {
+        selectValue = value ? value.map(v => options.find(option => option.value == v)) : null;
+    } else {
+        selectValue = value ? options.find(option => option.value == value) : null;
+    }
+    
+    let onChange = newValue => {
+        let transformedValue;
+        if (multiple){
+            transformedValue = newValue.map(v => v.value);
+        } else {
+            transformedValue = newValue ? newValue.value : null;
+        }
+        setValue(transformedValue)
+    }
 
-const FieldControl = ({type, value, setValue, required, ...props}) => {
+    return <Select  options={options}
+                    value={selectValue} 
+                    onChange={onChange} 
+                        isLoading={isLoading}
+                        isDisabled={isLoading}
+                        isMulti={multiple} 
+                        isClearable={!required}/>
+}
+
+
+const FieldControl = ({type, value, setValue, required, itemQuery, ...props}) => {
     if (type === 'reference') {
-        const {t} = useTranslation('generic');
-        const {items, ...otherProps} = props;
-        return <Form.Control as="select" value={value || ""} onChange={e => setValue(e.target.value)} {...otherProps}>
-            <option value="" disabled={required}>{t('empty')}</option>
-            {items && items.map(item => {
-                return <option key={item.id} value={item.id}>{item.name}</option>
-            })}
-        </Form.Control>
+        const allProps = {type, value, setValue, required, itemQuery, ...props};
+        return <ReferenceControl {...allProps} />
     } else if (type === 'date' || type === 'datetime' || type === "time") {
         const {i18n} = useTranslation();
         if (!value) {

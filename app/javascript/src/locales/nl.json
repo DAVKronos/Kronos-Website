@@ -156,7 +156,11 @@
       "page": "Pagina",
       "page_plural": "Pagina's",
       "photoAlbum": "Fotoalbum",
-      "photoAlbum_plural": "Fotoalbums"
+      "photoAlbum_plural": "Fotoalbums",
+      "mailingList": "Mailing lijst",
+      "mailingList_plural": "Mailing lijsten",
+      "alias": "Alias",
+      "alias_plural": "Aliassen"
     },
     "agendaitem": {
       "name": "Naam (Nederlands)",
@@ -201,6 +205,20 @@
       "name": "Naam",
       "email": "Email",
       "message": "Bericht"
+    },
+    "mailingList": {
+      "name": "Naam",
+      "description": "Omschrijving",
+      "local_part": "Lokaal deel (voor de @)",
+      "commission_id": "Commissie",
+      "alias_ids": "Aliassen",
+      "user_ids": "Leden",
+      "mailinglist_ids": "Mailinglijsten"
+    },
+    "alias": {
+      "name": "Naam",
+      "description": "Omschrijving",
+      "emailaddress": "Email adres"
     }
   }
 }

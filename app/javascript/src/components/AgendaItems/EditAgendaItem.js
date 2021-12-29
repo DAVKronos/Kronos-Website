@@ -7,7 +7,7 @@ import AgendaItemForm from "./AgendaItemForm";
 import EditObjectComponent from "../Generic/EditObjectComponent";
 
 const EditAgendaItemWithData = (props) => {
-    const id = props.match.params.id;
+    const id = parseInt(props.match.params.id);
     const { isLoading, isError, data, error } = useQuery(['agendaitems', id], getAgendaitem)
     if (isLoading) {
         return <DefaultSpinner />;
