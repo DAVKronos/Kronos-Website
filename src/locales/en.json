@@ -133,6 +133,10 @@
     "men": "Men",
     "women": "Women"
   },
+  "newsItemPage": {
+    "news": "News",
+    "morenews": "More Newsitems"
+  },
   "models": {
     "generic": {
       "created_at": "Created at"

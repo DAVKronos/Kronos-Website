@@ -1,6 +1,6 @@
 import React from "react";
 import {Switch, Route} from 'react-router-dom';
-import NewsItems from "../HomePage/HomePageNewsItems";
+import NewsItems from "./NewsItems";
 import NewsItem from "./NewsItem";
 import PrivateRoute from "../Generic/PrivateRoute";
 import EditNewsItem from './EditNewsItem';

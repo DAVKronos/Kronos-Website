@@ -133,6 +133,10 @@
     "men": "Mannen",
     "women": "Vrouwen"
   },
+  "newsItemPage": {
+    "news": "Nieuws",
+    "morenews": "Meer Nieuwsitems"
+  },
   "models": {
     "generic": {
       "created_at": "Aangemaakt op"
