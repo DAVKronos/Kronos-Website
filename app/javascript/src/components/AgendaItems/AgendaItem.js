@@ -24,7 +24,7 @@ function AgendaItem(props) {
     const {t, i18n} = useTranslation('generic');
     const lang = i18n.language;
     const history = useHistory();
-    const id = props.match.params.id;
+    const id = parseInt(props.match.params.id);
     const {isLoading, isError, data: agendaItem, error} = useQuery(['agendaitems', id], getAgendaitem)
     if (isLoading) {
         return <DefaultSpinner/>;

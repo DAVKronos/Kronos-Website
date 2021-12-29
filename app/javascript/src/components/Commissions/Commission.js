@@ -5,7 +5,7 @@ import {getCommission} from "./queries";
 import DefaultSpinner from "../Generic/Spinner";
 
 function Commission(props) {
-    const id = props.match.params.id;
+    const id = parseInt(props.match.params.id);
     const { isLoading, isError, data, error } = useQuery(['commissions', id], getCommission)
 
     if (isLoading) {
