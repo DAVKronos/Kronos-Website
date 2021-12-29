@@ -5,6 +5,10 @@ function getNewsItem(queryKey, id) {
     return restCall(`newsitems/${id}`).then(res => res.data)
 }
 
+function getNewsItems() {
+    return restCall(`newsitems`).then(res => res.data)
+}
+
 function createNewsItem(data) {
     const formData = convertToFormData('newsitem', data);
     return restCall(`newsitems/`, {method: 'POST', data: formData}).then(res => res.data);
@@ -36,7 +40,8 @@ function createNewsItemComment(newsItemId, data) {
 }
 
 export {
-    getNewsItem, 
+    getNewsItem,
+    getNewsItems,
     getNewsItemComments, 
     createNewsItem, 
     updateNewsItem, 

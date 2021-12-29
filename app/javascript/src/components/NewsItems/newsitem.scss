@@ -1,0 +1,23 @@
+.newsitem {
+    margin-bottom: 2em;
+    background-color: #eff7ea;
+    padding: 1em;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+}
+
+.newslink {
+    text-decoration: none;
+    color: #000000;
+}
+
+.thumbnail {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.428571429;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}

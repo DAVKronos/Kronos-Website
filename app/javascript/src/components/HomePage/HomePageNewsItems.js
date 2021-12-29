@@ -21,6 +21,7 @@ const NewsItems = (props) => {
         {data.sort(sort_newsItems).map(item => {
             return <ShortNewsItem key={item.id} item={item}/>
         })}
+        <Button as={Link} to={'/newsitems'}>{t('newsItemPage:morenews')}</Button>
         <Can I={'create'} a={'Newsitem'}>
             <Button as={Link} to={'/newsitems/new'}>{t('add')}  {t('homepage:newsitem')}s</Button>
         </Can>
