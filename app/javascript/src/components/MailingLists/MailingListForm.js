@@ -1,7 +1,6 @@
 import React from "react";
 import FormField from "../Generic/FormField";
 import { Form } from "react-bootstrap";
-import { useQuery } from "react-query";
 import { getCommissions, getUsersForCommission } from "../Commissions/queries";
 import { getAliases } from "../Aliases/queries";
 import { getUsers } from "../Users/queries";

@@ -178,7 +178,10 @@
       "name": "Name",
       "description": "Description",
       "local_part": "Local part",
-      "commission_id": "Commission"
+      "commission_id": "Commission",
+      "alias_ids": "Aliases",
+      "user_ids": "Members",
+      "mailinglist_ids": "Mailinglists"
     },
     "alias": {
       "name": "Name",

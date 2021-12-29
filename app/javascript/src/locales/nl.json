@@ -178,7 +178,10 @@
       "name": "Naam",
       "description": "Omschrijving",
       "local_part": "Lokaal deel (voor de @)",
-      "commission_id": "Commissie"
+      "commission_id": "Commissie",
+      "alias_ids": "Aliassen",
+      "user_ids": "Leden",
+      "mailinglist_ids": "Mailinglijsten"
     },
     "alias": {
       "name": "Naam",
