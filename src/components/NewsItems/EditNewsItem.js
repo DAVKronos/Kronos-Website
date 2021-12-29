@@ -7,7 +7,7 @@ import {getNewsItem, updateNewsItem} from "./queries";
 import NewsItemForm from "./NewsItemForm";
 
 const EditNewsItemWithData = (props) => {
-    const id = props.match.params.id;
+    const id = parseInt(props.match.params.id);;
     const { isLoading, isError, data, error } = useQuery(['newsitems', id], getNewsItem);
     if (isLoading) {
         return <DefaultSpinner />;
