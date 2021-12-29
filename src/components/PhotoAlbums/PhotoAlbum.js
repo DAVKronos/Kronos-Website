@@ -19,7 +19,7 @@ const PhotoItem = ({item: photo}) => {
 }
 
 const PhotoAlbum = (props) => {
-    const id = props.match.params.id;
+    const id = parseInt(props.match.params.id);;
 
     const {t, i18n} = useTranslation(['photoalbum', 'models']);
 

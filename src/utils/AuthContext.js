@@ -6,6 +6,7 @@ export const authContext = createContext({});
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null );
+    const [loading, setLoading] = useState(true);
 
     const setUserData = (user) => {
         setUser(user);
@@ -13,6 +14,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         validateToken().then((currentUser) => {
+            setLoading(false);
             if (currentUser) {
                 getUser('users', currentUser.id).then((user) => {
                     setUser(user);
@@ -25,7 +27,7 @@ const AuthProvider = ({ children }) => {
 
     return (
         <authContext.Provider value={{ user, setUserData }}>
-            {children}
+            {!loading && children}
         </authContext.Provider>
     );
 };
