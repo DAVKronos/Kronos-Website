@@ -2,51 +2,41 @@ import React from "react";
 import ReactMarkdown from 'react-markdown';
 import Spinner from "../Generic/Spinner";
 import {useQuery} from "react-query";
-import {useTranslation} from "react-i18next";
 import {getPage, getPageByPageTag} from "./queries";
+import MultiLanguageText from "../Generic/MultiLanguageText";
 
-const Page = (props) => {
-
-    let {id} = props.match.params;
-    const {t, i18n} = useTranslation('generic');
-    const { isLoading, isError, data, error } = useQuery(['pages', id], getPage)
-
+const PageComponent = ({page, isLoading}) => {
     if (isLoading) {
         return <Spinner />;
     }
 
-    if (!data) {
+    if (!page) {
         return <h1>Page not found</h1>;
     }
 
-    const tag = i18n.language === 'nl' ? data.pagetag : data.pagetag_en;
-    const information = i18n.language === 'nl' ? data.information : data.information_en;
+    const renderMarkdown = (text) => {
+        return <ReactMarkdown source={text} escapeHtml={false}/>;
+    }
+
     return <div>
-        <h1>{tag}</h1>
-        <ReactMarkdown source={information} escapeHtml={false}/>
+        <h1><MultiLanguageText nl={page.pagetag} en={page.pagetag_en}/></h1>
+        <MultiLanguageText nl={page.information} en={page.information_en} renderFunction={renderMarkdown} />
     </div>;
 }
 
-const PageWithTag = (props) => {
 
+const Page = (props) => {
+    let {id} = props.match.params;
+    const { isLoading, isError, data, error } = useQuery(['pages', id], getPage)
+
+    return <PageComponent page={data} isLoading={isLoading}/>;
+}
+
+const PageWithTag = (props) => {
     let {pagetag} = props.match.params;
-    const {t, i18n} = useTranslation('generic');
     const { isLoading, isError, data, error } = useQuery(['pages', pagetag], getPageByPageTag)
 
-    if (isLoading) {
-        return <Spinner />;
-    }
-
-    if (!data) {
-        return <h1>Page not found</h1>;
-    }
-
-    const tag = i18n.language === 'nl' ? data.pagetag : data.pagetag_en;
-    const information = i18n.language === 'nl' ? data.information : data.information_en;
-    return <div>
-        <h1>{tag}</h1>
-        <ReactMarkdown source={information}/>
-    </div>;
+    return <PageComponent page={data} isLoading={isLoading}/>;
 }
 
 

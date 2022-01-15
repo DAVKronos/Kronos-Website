@@ -10,6 +10,7 @@ import EventsResults from "./EventsResults";
 import {useQuery} from "react-query";
 import {getAgendaitem, removeAgendaitem} from "./queries";
 import DefaultSpinner from "../Generic/Spinner";
+import MultiLanguageText from "../Generic/MultiLanguageText";
 import {Can} from '../../utils/auth-helper';
 
 
@@ -40,12 +41,14 @@ function AgendaItem(props) {
     }
 
     let date = new Date(agendaItem.date);
-    const name = lang === 'nl' ? agendaItem.name : agendaItem.name_en;
-    const description = lang === 'nl' ? agendaItem.description : agendaItem.description_en;
+    
+    const renderDescription = (text) => {   
+        return <ReactMarkdown source={text}/>;
+    }
     return <React.Fragment>
         <Row>
             <Col md={8}>
-                <h1>{name} <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id}/></small></h1>
+                <h1><MultiLanguageText nl={agendaItem.name} en={agendaItem.name_en}/> <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id}/></small></h1>
             </Col>
 
             <Col md={4} className="d-flex">
@@ -87,7 +90,7 @@ function AgendaItem(props) {
                 </Row>}
                 <Row>
                     <Col xs={1}><BsList/></Col>
-                    <Col xs={11}><ReactMarkdown source={description}/></Col>
+                    <Col xs={11}><MultiLanguageText nl={agendaItem.description} en={agendaItem.description_en} renderFunction={renderDescription}/></Col>
                 </Row>
                 <Row><Col>
                     <EventsResults agendaItemId={agendaItem.id}/>
