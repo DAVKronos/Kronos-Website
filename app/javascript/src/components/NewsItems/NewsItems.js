@@ -43,7 +43,7 @@ const NewsItemCover = ({newsItem}) => {
                         {t('edit')}
                     </Button>
                 </Can>
-                <Can I="delete" this={subject('Newsitem', newsItem)}>
+                <Can I="destroy" this={subject('Newsitem', newsItem)}>
                     <Button size='sm' variant='danger' onClick={() => onClickRemove(newsItem.id)}>
                         {t('remove')}
                     </Button>

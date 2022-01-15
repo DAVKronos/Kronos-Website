@@ -38,7 +38,7 @@ const AgendaItemTypes = () => {
                         </Can>
                     </td>
                     <td>
-                        <Can I={'delete'} an={'Agendaitemtype'}>
+                        <Can I={'destroy'} an={'Agendaitemtype'}>
                             <Button variant={'danger'} onClick={() => onClickRemove(id)}>{t('remove')}</Button>
                         </Can>
                     </td>

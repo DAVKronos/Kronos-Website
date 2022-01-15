@@ -7,6 +7,9 @@ import DefaultSpinner from "../../Generic/Spinner";
 import {formatDistanceToNow} from "../../../utils/date-format";
 import {useTranslation} from "react-i18next";
 
+import {Can} from '../../../utils/auth-helper';
+import {subject} from "@casl/ability";
+
 const SubscriptionsCard = ({allowed, agendaItem}) => {
     const {t} = useTranslation('agendaItemPage');
     let body;
@@ -34,7 +37,7 @@ const Subscriptions = ({agendaItem}) => {
     const lang = i18n.language;
     const {user} = useContext(authContext);
     const queryCache = useQueryCache()
-    const {isLoading, isError, data, error} = useQuery(['subscriptions', agendaItem.id], getSubscriptions);
+    const {isLoading, isError, data, error} = useQuery(['agendaitems', agendaItem.id, 'subscriptions'], getSubscriptions);
     if (isLoading) {
         return <DefaultSpinner/>
     }
@@ -42,22 +45,22 @@ const Subscriptions = ({agendaItem}) => {
     const userId = user && user.id
     const userSubscription = subscriptions.find(sub => sub.user_id === userId);
 
-    const onClickUnsubscribe = () => {
-        removeSubscription(agendaItem.id, userSubscription.id).then(()=> {
-            queryCache.invalidateQueries(['subscriptions', agendaItem.id]);
+    const onClickUnsubscribe = (subcriptionId) => {
+        removeSubscription(agendaItem.id, subcriptionId).then(()=> {
+            queryCache.invalidateQueries(['agendaitems', agendaItem.id, 'subscriptions']);
         });
     }
 
     const onClickSubscribe = () => {
         createSubscription(agendaItem.id, {name: user.name}).then(()=> {
-            queryCache.invalidateQueries(['subscriptions', agendaItem.id]);
+            queryCache.invalidateQueries(['agendaitems', agendaItem.id, 'subscriptions']);
         });
     }
 
     const subscriptionOpen = new Date(agendaItem.subscriptiondeadline) > new Date();
 
     const subscribeButton = userSubscription ?
-        <Button variant='danger' onClick={onClickUnsubscribe}>{t('subscriptions.unsubscribe')}</Button> :
+        <Button variant='danger' onClick={() => onClickUnsubscribe(userSubscription.id)}>{t('subscriptions.unsubscribe')}</Button> :
         <Button variant='success' onClick={onClickSubscribe}>{t('subscriptions.subscribe')}</Button>
 
         return <React.Fragment>
@@ -68,7 +71,12 @@ const Subscriptions = ({agendaItem}) => {
         </Card.Header>
         <ListGroup variant="flush">
             {subscriptions && subscriptions.map(subscription => {
-                return <ListGroup.Item key={subscription.id}>{subscription.name}</ListGroup.Item>;
+                return <ListGroup.Item key={subscription.id} style={{display: 'flex', alignItems: "center"}}>
+                    <div style={{flex: '1 1 auto'}}>{subscription.name}</div>
+                    <Can I='destroy' this={subject('Subscription', subscription)}>
+                        <Button  size='sm' variant='danger' onClick={() => onClickUnsubscribe(subscription.id)}>{t('subscriptions.unsubscribe')}</Button>
+                    </Can>
+                    </ListGroup.Item>;
             })}
         </ListGroup>
         <Card.Footer>
