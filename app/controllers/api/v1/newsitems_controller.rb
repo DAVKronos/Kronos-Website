@@ -80,7 +80,7 @@ module Api
         respond_to do |format|
           if @newsitem.save
             format.html { redirect_to @newsitem, notice: 'Newsitem was successfully created. Please wait for the moderators to agree on your item' }
-            format.json { render json: @newsitem, status: :created}
+            format.json { render :json => @newsitem.as_json(include: {user: {only: :name}}, methods: [:articlephoto_url_normal, :articlephoto_url_carrousel]), status: :created}
           else
             format.html { render action: "new" }
             format.json { render json: @newsitem.errors, status: :unprocessable_entity }
