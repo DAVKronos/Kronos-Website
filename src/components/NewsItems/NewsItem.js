@@ -89,7 +89,7 @@ const Comment = ({comment}) => {
             {comment.commenttext}
         </Col>
         <Col md={2}>
-            <Can I={'delete'} this={subject('Comment', comment)}>
+            <Can I={'destroy'} this={subject('Comment', comment)}>
                 <Button variant='danger' onClick={onClickRemove}>{t('remove')}</Button>
             </Can>
         </Col>
@@ -150,7 +150,7 @@ function NewsItem(props) {
                 <Can I="update" a={"Newsitem"}>
                     <Button variant='warning' as={Link} to={`/newsitems/${id}/edit`}>{t('edit')}</Button>
                 </Can>
-                <Can I="delete" a={"Newsitem"}>
+                <Can I="destroy" a={"Newsitem"}>
                     <Button variant='danger' onClick={onClickRemove}>{t('remove')}</Button>
                 </Can>
             </Col>

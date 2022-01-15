@@ -44,7 +44,7 @@ const PhotoAlbumCover = ({photoAlbum}) => {
                     {t('edit')}
                 </Button>
             </Can>
-            <Can I="delete" this={subject('Photoalbum', photoAlbum)}>
+            <Can I="destroy" this={subject('Photoalbum', photoAlbum)}>
                 <Button size='sm' variant='danger' onClick={() => onClickRemove(photoAlbum.id)}>
                     {t('remove')}
                 </Button>
