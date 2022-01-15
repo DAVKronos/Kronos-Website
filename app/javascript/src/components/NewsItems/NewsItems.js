@@ -9,10 +9,10 @@ import {getNewsItems} from "./queries";
 import {Can} from "../../utils/auth-helper";
 import {subject} from "@casl/ability";
 import {removeNewsItem} from "./queries";
+import MultiLanguageText from '../Generic/MultiLanguageText';
 
 const NewsItemCover = ({newsItem}) => {
-    const {t,i18n} = useTranslation('generic');
-    const lang = i18n.language;
+    const {t} = useTranslation('generic');
     const queryCache = useQueryCache();
     const created_at = new Date(newsItem.created_at);
 
@@ -22,22 +22,21 @@ const NewsItemCover = ({newsItem}) => {
         });
     }
 
-
-    const title = lang ==='nl'? newsItem.title : newsItem.title_en;
-    const news = lang ==='nl'? newsItem.news : newsItem.news_en;
     return <div className='newsitem'>
         <Row className='newscontent'>
             <Col lg={12}>
                 <Image src={newsItem.articlephoto_url_normal} className='thumbnail'/>
                 <h2>
                     <Link  to={`/newsitems/${newsItem.id}`} className='newslink'>
-                        {title}
+                        <MultiLanguageText nl={newsItem.title} en={newsItem.title_en}/>
                     </Link>
                 </h2>
                 <p>
                     {created_at.toLocaleDateString().concat(' | ').concat(newsItem.user.name)}
                 </p>
-                <p>{news}</p>
+                <p>
+                    <MultiLanguageText nl={newsItem.news} en={newsItem.news_en}/>
+                </p>
                 <Can I="update" this={subject('Newsitem', newsItem)}>
                     <Button size='sm' variant='warning' as={Link} to={`/newsitems/${newsItem.id}/edit`}>
                         {t('edit')}

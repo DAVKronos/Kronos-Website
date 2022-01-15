@@ -96,7 +96,7 @@ module Api
         respond_to do |format|
           if @newsitem.update_attributes(newsitem_params)
             format.html { redirect_to @newsitem, notice: 'Newsitem was successfully updated.' }
-            format.json { render json: @newsitem }
+            format.json { render json:  @newsitem.as_json(include: {user: {only: :name}}, methods: [:articlephoto_url_normal, :articlephoto_url_carrousel]) }
           else
             format.html { render action: "edit" }
             format.json { render json: @newsitem.errors, status: :unprocessable_entity }
