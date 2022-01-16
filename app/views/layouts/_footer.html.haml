@@ -1,11 +1,15 @@
 %footer.app
   .container
     .row.sponsor-white
-      .col-xs-4
-        .sponsor-text
-          Sponsoren:
-      .col-xs-4
+      .col-xs-6
         = link_to image_tag('sponsors/sponsor-rdd.PNG', :alt => 'Red Drop Design'), 'https://www.reddropdesign.nl/'
+      .col-xs-6
+        = link_to image_tag('sponsors/sponsor-opzeggen24.png', :alt => 'basic fit opzeggen', :class => 'center-block'), 'https://www.opzeggen24.nl/abonnement-opzeggen/basic-fit-opzeggen.html'
+    .row.sponsor-white
+      .col-xs-6
+        = link_to image_tag('sponsors/sponsor-huurzone.png', :alt => 'huurwoningen enschede', :class => 'center-block'), 'https://www.huurzone.nl/huren/enschede.html'
+      .col-xs-6
+        = link_to image_tag('sponsors/sponsor-simonly.png', :alt => 'vergelijk alle sim only providers op SimOnlyDiscount!', :class => 'center-block'), 'https://www.simonlydiscount.nl/sim-only-providers.html'
     .row
       .col-md-3.adresgegevens
         %address
