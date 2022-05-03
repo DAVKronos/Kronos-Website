@@ -41,7 +41,7 @@ gem 'webpacker'
 gem 'react-rails'
 gem 'devise_token_auth'
 gem 'omniauth'
-gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+gem 'mimemagic', git: 'https://github.com/mimemagicrb/mimemagic.git', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
 # Gems used only for assets
 gem 'sass-rails'
