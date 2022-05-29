@@ -3,7 +3,6 @@ volumes:
   node_modules:
   bundle:
   packs:
-  rails_cache:
   postgres:
 services:
   db:
@@ -26,11 +25,11 @@ services:
       - webpacker
     env_file: .env
     command: sh ./script/start_app_development.sh
+    tmpfs: /home/app/tmp
     volumes:
       # Path on the host, relative to the Compose file
       - .:/home/app:cached
       - bundle:/usr/local/bundle
-#      - rails_cache:/home/rails/webapp/tmp/cache
       - node_modules:/home/app/node_modules
       - packs:/home/app/public/packs
   webpacker:
