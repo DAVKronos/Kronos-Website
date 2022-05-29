@@ -3,8 +3,8 @@ common: &common
   encoding: unicode
   database: postgres
   pool: 5
-  username: postgres
-  password: kronos
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   host: db
 
 development:

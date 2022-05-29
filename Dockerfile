@@ -38,9 +38,6 @@ RUN yarn install --frozen-lockfile --production && \
 # Add all files to the image and make the app user owner of the app folder
 ADD --chown=app:app . /home/app/
 
-#Copy docker database.yml
-COPY database_docker.yml /home/app/config/database.yml
-
 #Precompile assets
 RUN bundle exec rake assets:precompile
 RUN bundle exec rails webpacker:compile
