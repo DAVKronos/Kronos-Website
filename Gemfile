@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 6.0.5'
-gem 'haml', '~> 5.0.4'
+gem 'rails', '~> 6.1.6'
+gem 'haml', '~> 5.2'
 gem 'devise', '~> 4.4'
 gem 'cancancan', '~> 3.0'
 gem 'will_paginate', '~> 3.0'
@@ -11,7 +11,7 @@ gem 'exifr', '~> 1.1.3'
 gem 'mail_form'
 gem 'chronic_duration', '~> 0.9.6'
 gem 'math_engine', '~> 0.6.4'
-gem 'client_side_validations', '~> 14.0'
+gem 'client_side_validations', '~> 17.0'
 gem 'redcarpet', '~> 3.5.1'
 gem 'rakismet', '~> 1.4.0'
 gem 'memcache-client', '~> 1.8.5'
@@ -21,7 +21,7 @@ gem 'selectize-rails', '~> 0.8.5'
 gem 'twitter-typeahead-rails', '~> 0.10.2'
 gem 'bootstrap-sass'
 gem 'execjs', '~> 2.0.2'
-gem 'paper_trail', '~> 10.0'
+gem 'paper_trail', '~> 11.0'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'cookies_eu'
@@ -38,7 +38,8 @@ gem 'omniauth'
 gem 'mimemagic'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
-
+# High-level image processing helpers using libvips (faster than ImageMagick).
+gem "image_processing", "~> 1.0"
 
 # Gems used only for assets
 
