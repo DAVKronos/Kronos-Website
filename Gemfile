@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+ruby "3.0.5"
 
 gem 'rails', '~> 6.1.6'
 gem 'haml', '~> 5.2'
@@ -16,7 +17,7 @@ gem 'redcarpet', '~> 3.5.1'
 gem 'rakismet', '~> 1.4.0'
 gem 'memcache-client', '~> 1.8.5'
 gem 'calendar_helper', '~> 0.2.6'
-gem 'google-api-client', '~> 0.9.28'
+gem 'google-api-client', '~> 0.53.0'
 gem 'selectize-rails', '~> 0.8.5'
 gem 'twitter-typeahead-rails', '~> 0.10.2'
 gem 'bootstrap-sass'
