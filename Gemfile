@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby "3.0.5"
+ruby "3.1.3"
 
 gem 'rails', '~> 6.1.6'
 gem 'haml', '~> 5.2'
@@ -12,7 +12,7 @@ gem 'exifr', '~> 1.1.3'
 gem 'mail_form'
 gem 'chronic_duration', '~> 0.9.6'
 gem 'math_engine', '~> 0.6.4'
-gem 'client_side_validations', '~> 17.0'
+gem 'client_side_validations', '~> 20.0'
 gem 'redcarpet', '~> 3.5.1'
 gem 'rakismet', '~> 1.4.0'
 gem 'memcache-client', '~> 1.8.5'
