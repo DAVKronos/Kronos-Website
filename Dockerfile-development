@@ -34,3 +34,4 @@ RUN bundle install -j $(nproc)
 
 # Add all files to the image and make the app user owner of the app folder
 ADD --chown=app:app . /home/app/
+RUN mkdir tmp && chown app:app ./tmp

@@ -1,10 +1,10 @@
 version: '2.1'
-name: kronoswebsite
 volumes:
   node_modules:
   bundle:
   packs:
   postgres:
+  tmp:
 services:
   db:
     image: postgres:12.6
@@ -30,6 +30,7 @@ services:
     volumes:
       # Path on the host, relative to the Compose file
       - .:/home/app:cached
+      - tmp:/home/app/tmp
       - bundle:/usr/local/bundle
       - node_modules:/home/app/node_modules
       - packs:/home/app/public/packs
