@@ -35,7 +35,7 @@ gem 'prawn-rails'
 gem 'pg', '~> 1.2.3'
 gem "recaptcha"
 gem 'icalendar', '~> 2.0'
-gem 'passenger'
+gem 'passenger', '~> 6.0'
 gem 'rack-cors'
 gem 'webpacker'
 gem 'react-rails'
