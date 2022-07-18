@@ -45,7 +45,7 @@ const PhotoAlbum = (props) => {
                 <p>{t('models:generic.created_at')}: {format(photoAlbum.created_at, 'PPP p', i18n.language)}</p>
             </Col>
         </Row>
-        <Paginate data={photos} Item={PhotoItem} itemsPerPage={12}/>
+        <Paginate data={photos} colSize={{sm: 6, md:3}} Item={PhotoItem} itemsPerPage={12}/>
     </React.Fragment>;
 }
 
