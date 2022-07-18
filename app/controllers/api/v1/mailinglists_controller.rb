@@ -13,13 +13,6 @@ module Api
         render json: @mailinglist.to_json(:include => {:aliases => {:only => :id}, :users => {:only => :id}, :mailinglists => {:only => :id}})
       end
 
-      def new
-        @mailinglist = Mailinglist.new
-        @users = User.order(:name)
-        @aliases = Alias.order(:name)
-        @mailinglists = Mailinglist.all
-      end
-
       def edit
         @mailinglist = Mailinglist.find(params[:id])
         @users = @mailinglist.get_possible_users
@@ -32,11 +25,7 @@ module Api
         if mailinglist.save
            render json: mailinglist.to_json(:include => {:aliases => {:only => :id}, :users => {:only => :id}, :mailinglists => {:only => :id}})
         else
-          @mailinglist = mailinglist
-          @users = User.order(:name)
-          @aliases = Alias.order(:name)
-          @mailinglists = Mailinglist.all
-          render 'new'
+          ender json: {message: @mailinglist.errors.full_messages}, status: :bad_request
         end
       end
 

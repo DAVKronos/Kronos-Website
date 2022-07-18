@@ -3,26 +3,21 @@ module Api
     class CommissionsController < Api::V1::ApplicationController
       load_and_authorize_resource
 
-      def new
-        @commission = Commission.new
-      end
-
       def create
-        @commission = Commission.new(commission_params)
-        if @commission.save
-          redirect_to @commission
+        commission = Commission.new(commission_params)
+        if commission.save
+          render json: commission
         else
-          render 'new'
+          render json: {message: commission.errors.full_messages}, status: :bad_request
         end
       end
 
       def show
         @commission = Commission.find_by_id(params[:id])
-        @commission_memberships = Commission.find_by_id(params[:id]).commission_memberships
 
         respond_to do |format|
           format.html # new.html.erb
-          format.json { render json: @commission.as_json(include: {commission_memberships: {include: {user: {only: :name}}}}) }
+          format.json { render json: @commission }
         end
       end
 
@@ -34,25 +29,25 @@ module Api
         end
       end
 
-      def edit
-        @commission = Commission.find_by_id(params[:id])
-      end
-
       def update
-        @commission = Commission.find_by_id(params[:id])
-        if @commission.update_attributes(commission_params)
-          flash[:success] = "Commission updated."
-          redirect_to @commission
+        commission = Commission.find_by_id(params[:id])
+        if commission.update_attributes(commission_params)
+          render json: commission
         else
-          render 'edit'
+          render json: {message: commission.errors.full_messages}, status: :bad_request
         end
       end
 
       def destroy
         commission = Commission.find(params[:id])
         commission.destroy
-        flash[:success] = "Commissie Verwijderd"
-        redirect_to commissions_path
+        if commission.destroy
+          respond_to do |format|
+            format.json { head :ok }
+          end
+        else
+          render json: {message: commission.errors.full_messages}, status: :bad_request
+        end
       end
 
       private

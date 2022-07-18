@@ -108,8 +108,10 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :commissions
-      resources :commission_memberships
+      resources :commissions do
+        resources :commission_memberships
+      end
+      
 
       resources :agendaitemtype_eventtypes
 

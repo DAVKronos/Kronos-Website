@@ -160,7 +160,9 @@
       "mailingList": "Mailing list",
       "mailingList_plural": "Mailing lists",
       "alias": "Alias",
-      "alias_plural": "Aliases"
+      "alias_plural": "Aliases",
+      "commission": "Commission",
+      "commission_plural": "Commissions"
     },
     "agendaitem": {
       "name": "Name (Dutch)",
@@ -219,6 +221,12 @@
       "name": "Name",
       "description": "Description",
       "emailaddress": "Email Address"
+    },
+    "commission": {
+      "name": "Name (Dutch)",
+      "name_en":"Name (English)",
+      "description": "Description (Dutch)",
+      "description_en": "Description (English)"
     }
   }
 }
