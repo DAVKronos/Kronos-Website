@@ -1,42 +1,33 @@
 import React from "react";
-import FormField from "../Generic/FormField";
+import FormField from "../../Generic/FormField";
 import { Form } from "react-bootstrap";
-import { getUsers } from "../Users/queries";
+import { getFolders } from "../queries";
 
-const commissionFields = [
+const folderFields = [
   {
     name: "name",
     type: "text",
     required: true,
   },
   {
-    name: "name_en",
-    type: "text",
-    required: true,
-  },
-  {
-    name: "description",
-    type: "textarea",
-    required: true,
-  },{
-    name: "description_en",
-    type: "textarea",
-    required: true,
+    name: "folder_id",
+    type: "reference",
+    itemQuery: [['folders'], getFolders]
   }
 ];
 
 // TODO: make required do something (with react-hook-form)
-const CommissionForm = ({ values, setValue, children }) => {
+const FolderForm = ({ values, setValue, children }) => {
   return (
     <Form>
-      {commissionFields.map(
+      {folderFields.map(
         ({ name, type, required, itemQuery, ...otherProps }) => {
           
           return (
             <FormField
               {...otherProps}
               key={name}
-              modelName={"commission"}
+              modelName={"folder"}
               fieldName={name}
               value={values[name]}
               setValue={(v) => setValue(name, v)}
@@ -52,4 +43,4 @@ const CommissionForm = ({ values, setValue, children }) => {
   );
 };
 
-export default CommissionForm;
+export default FolderForm;

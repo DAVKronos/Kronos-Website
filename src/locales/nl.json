@@ -162,7 +162,11 @@
       "alias": "Alias",
       "alias_plural": "Aliassen",
       "commission": "Commissie",
-      "commission_plural": "Commissies"
+      "commission_plural": "Commissies",
+      "folder": "Map",
+      "folder_plural": "Mappen",
+      "kronometer": "Kronometer",
+      "kronometer_plural": "Kronometers"
     },
     "agendaitem": {
       "name": "Naam (Nederlands)",
@@ -227,6 +231,10 @@
       "name_en":"Naam (Engels)",
       "description": "Beschrijving (Nederlands)",
       "description_en": "Beschrijving (Engels)"
+    },
+    "folder": {
+      "name": "Naam",
+      "folder_id": "Bovenliggende map"
     }
   }
 }
