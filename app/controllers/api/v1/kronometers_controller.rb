@@ -21,42 +21,40 @@ module Api
         end
       end
 
-      def new
-        @km = Kronometer.new
-        @folders = Folder.all
+      def show
+        kronometer = Kronometer.find(params[:id])
+        respond_to do |format|
+          format.json { render json: kronometer }
+        end
       end
 
       def create
-        km = Kronometer.new(kronometer_params)
-        if km.save
-          redirect_to kronometers_path
-          flash[:success] = "Kronometer succesvol geupload."
+        kronometer = Kronometer.new(kronometer_params)
+        if kronometer.save
+          render json: kronometer
         else
-          render 'new'
+          render json: {message: kronometer.errors.full_messages}, status: :bad_request
         end
       end
-
-      def edit
-        @km = Kronometer.find(params[:id])
-        @folders = Folder.all
-      end
-
+    
       def update
-        km = Kronometer.find(params[:id])
-        km.update_attributes(kronometer_params)
-        if km.save
-          redirect_to kronometers_path
-          flash[:success] = "Kronometer succesvol aangepast"
+        kronometer = Kronometer.find(params[:id])
+        if kronometer.update_attributes(kronometer_params)
+          render json: kronometer
         else
-          render 'edit'
+          render json: {message: kronometer.errors.full_messages}, status: :bad_request
         end
       end
-
+    
       def destroy
-        km = Kronometer.find(params[:id])
-        km.destroy
-        redirect_to kronometers_path
-        flash[:success] = "Kronometer succesvol verwijderd"
+        kronometer = Kronometer.find(params[:id])
+        if kronometer.destroy
+          respond_to do |format|
+            format.json { head :ok }
+          end
+        else
+          render json: {message: kronometer.errors.full_messages}, status: :bad_request
+        end
       end
 
       def labels

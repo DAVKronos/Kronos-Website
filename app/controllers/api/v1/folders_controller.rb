@@ -17,45 +17,35 @@ module Api
         end
       end
 
-      def new
-        @folder = Folder.new
-        @folders = Folder.all
-      end
-
       def create
-        @folder = Folder.new(folder_params)
-        if @folder.save
-          redirect_to @folder
+        folder = Folder.new(folder_params)
+        if folder.save
+          render json: folder
         else
-          render 'new'
+          render json: {message: folder.errors.full_messages}, status: :bad_request
         end
       end
-
-      def edit
-        @folder = Folder.find(params[:id])
-        @folders = Folder.all
+    
+      def update
+        folder = Folder.find(params[:id])
+        if folder.update_attributes(folder_params)
+          render json: folder
+        else
+          render json: {message: folder.errors.full_messages}, status: :bad_request
+        end
       end
-
+    
       def destroy
         folder = Folder.find(params[:id])
-        folder.destroy
-        flash[:success] = "Pagina verwijderd"
-        redirect_to :root
-      end
-
-      def update
-        @folder = Folder.find(params[:id])
-
-        respond_to do |format|
-          if @folder.update_attributes(folder_params)
-            format.html { redirect_to '/folders/' + @folder.id.to_s, notice: 'Page was successfully updated.' }
+        if folder.destroy
+          respond_to do |format|
             format.json { head :ok }
-          else
-            format.html { render action: "edit" }
-            format.json { render json: @folder.errors, status: :unprocessable_entity }
           end
+        else
+          render json: {message: folder.errors.full_messages}, status: :bad_request
         end
       end
+
 
       def folder_params
         # TODO controller now permits all models attributes, try to be more specific

@@ -1,42 +1,47 @@
 import React from "react";
 import FormField from "../Generic/FormField";
 import { Form } from "react-bootstrap";
-import { getUsers } from "../Users/queries";
+import {getFolders} from "./queries";
 
-const commissionFields = [
+const kronometerFields = [
   {
     name: "name",
     type: "text",
     required: true,
   },
   {
-    name: "name_en",
-    type: "text",
+    name: "date",
+    type: "date",
     required: true,
   },
   {
-    name: "description",
-    type: "textarea",
+    name: "public",
+    type: "boolean",
     required: true,
-  },{
-    name: "description_en",
-    type: "textarea",
-    required: true,
-  }
+  },
+  {
+    name: "folder_id",
+    type: "reference",
+    itemQuery: [['folders'], getFolders]
+  },
+  {
+    name: "file",
+    type: "file"
+  },
 ];
 
 // TODO: make required do something (with react-hook-form)
-const CommissionForm = ({ values, setValue, children }) => {
+const KronometerForm = ({ values, setValue, children }) => {
   return (
     <Form>
-      {commissionFields.map(
+      {kronometerFields.map(
         ({ name, type, required, itemQuery, ...otherProps }) => {
           
           return (
             <FormField
               {...otherProps}
               key={name}
-              modelName={"commission"}
+              modelName={"kronometer"}
               fieldName={name}
               value={values[name]}
               setValue={(v) => setValue(name, v)}
@@ -52,4 +57,4 @@ const CommissionForm = ({ values, setValue, children }) => {
   );
 };
 
-export default CommissionForm;
+export default KronometerForm;

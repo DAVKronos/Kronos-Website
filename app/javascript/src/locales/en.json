@@ -162,7 +162,11 @@
       "alias": "Alias",
       "alias_plural": "Aliases",
       "commission": "Commission",
-      "commission_plural": "Commissions"
+      "commission_plural": "Commissions",
+      "folder": "Folder",
+      "folder_plural": "Folders",
+      "kronometer": "Kronometer",
+      "kronometer_plural": "Kronometers"
     },
     "agendaitem": {
       "name": "Name (Dutch)",
@@ -227,6 +231,10 @@
       "name_en":"Name (English)",
       "description": "Description (Dutch)",
       "description_en": "Description (English)"
+    },
+    "folder": {
+      "name": "Name",
+      "folder_id": "Parent folder"
     }
   }
 }

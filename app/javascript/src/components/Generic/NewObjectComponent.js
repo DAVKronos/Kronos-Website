@@ -26,6 +26,7 @@ const NewObjectComponent = ({FormComponent, createFunction, onSuccess, objectNam
             onSuccess(result);
         }).catch((error) => {
             setCreating(false);
+            console.log(error);
             if (error.response.status === 400){
                 setError('Sommige velden missen');
             }

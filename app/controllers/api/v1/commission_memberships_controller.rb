@@ -31,7 +31,6 @@ module Api
     
       def destroy
         commission_membership = CommissionMembership.find(params[:id])
-        commission_membership.destroy
         if commission_membership.destroy
           respond_to do |format|
             format.json { head :ok }
