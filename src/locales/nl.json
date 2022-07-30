@@ -166,7 +166,9 @@
       "folder": "Map",
       "folder_plural": "Mappen",
       "kronometer": "Kronometer",
-      "kronometer_plural": "Kronometers"
+      "kronometer_plural": "Kronometers",
+      "user": "Lid",
+      "user_plural": "Leden"
     },
     "agendaitem": {
       "name": "Naam (Nederlands)",
@@ -235,6 +237,27 @@
     "folder": {
       "name": "Naam",
       "folder_id": "Bovenliggende map"
+    },
+    "user": {
+      "name": "Naam",
+      "email": "Email",
+      "avatar": "Profielfoto",
+      "initials": "Initialen",
+      "birthdate": "Geboortedatum",
+      "user_type_id": "Lidtype",
+      "phonenumber": "Telefoonnummer",
+      "address": "Adres",
+      "postalcode": "Postcode",
+      "city": "Stad",
+      "studie": "Studie",
+      "instelling": "Instelling",
+      "sex": "Geslacht",
+      "licensenumber": "Licentienummer",
+      "xtracard": "Unioncard nummer",
+      "papieren_kronometer": "Papieren Kronometer",
+      "bank_account_number": "Bankrekeningnummer",
+      "iban": "IBAN Bankrekeningnummer",
+      "aanvang": "Studie aanvang"
     }
   }
 }

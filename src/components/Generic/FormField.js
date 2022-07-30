@@ -59,6 +59,21 @@ const ReferenceControl = ({value, setValue, required, itemQuery, multiple, ...pr
                         isClearable={!required}/>
 }
 
+const OptionControl = ({value, setValue, required, options, ...props}) => {
+    const selectOptions = options.map(option => ({label: option, value: option}));
+    
+    let  selectValue = value ? selectOptions.find(option => option.value == value) : null;
+    
+    let onChange = newValue => {
+        let transformedValue = newValue ? newValue.value : null;
+        setValue(transformedValue)
+    }
+
+    return <Select  options={selectOptions}
+                    value={selectValue} 
+                    onChange={onChange}
+                        isClearable={!required}/>
+}
 
 const FieldControl = ({type, value, setValue, required, itemQuery, ...props}) => {
     if (type === 'reference') {
@@ -105,6 +120,9 @@ const FieldControl = ({type, value, setValue, required, itemQuery, ...props}) =>
     } else if (type === 'boolean') {
         return <Form.Check type="checkbox" checked={value} onChange={() => setValue(!value)} {...props}/>
     } else if (type === 'text') {
+        if (props.options) {
+            return <OptionControl value={value} setValue={setValue} {...props}/>
+        }
         return <Form.Control type="text" value={value || ""} onChange={(e) => setValue(e.target.value)} {...props}/>
     } else if (type === 'textarea') {
         return <Form.Control as="textarea" value={value || ""} onChange={(e) => setValue(e.target.value)} {...props}/>

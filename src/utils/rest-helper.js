@@ -11,7 +11,9 @@ const config = {
 function convertToFormData(objectName, data){
     const formData = new FormData();
     Object.keys(data).forEach((field) => {
-        formData.append(`${objectName}[${field}]`, data[field]);
+        if (data[field] != undefined || data[field] != null) {
+            formData.append(`${objectName}[${field}]`, data[field]);
+        }
     })
     return formData
 }
