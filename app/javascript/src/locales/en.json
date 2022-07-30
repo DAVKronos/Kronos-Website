@@ -166,7 +166,9 @@
       "folder": "Folder",
       "folder_plural": "Folders",
       "kronometer": "Kronometer",
-      "kronometer_plural": "Kronometers"
+      "kronometer_plural": "Kronometers",
+      "user": "Member",
+      "user_plural": "Members"
     },
     "agendaitem": {
       "name": "Name (Dutch)",
@@ -235,6 +237,27 @@
     "folder": {
       "name": "Name",
       "folder_id": "Parent folder"
+    },
+    "user": {
+      "name": "Name",
+      "avatar": "Avatar",
+      "email": "Email",
+      "initials": "Initials",
+      "birthdate": "Date of birth",
+      "user_type_id": "Membertype",
+      "phonenumber": "Telephone number",
+      "address": "Address",
+      "postalcode": "Postal code",
+      "city": "City",
+      "studie": "Study",
+      "instelling": "Institution",
+      "sex": "Sex",
+      "licensenumber": "License number",
+      "xtracard": "Unioncard number",
+      "papieren_kronometer": "Paper Kronometer",
+      "bank_account_number": "Bank-account number",
+      "iban": "IBAN bank account number",
+      "aanvang": "Study start"
     }
   }
 }

@@ -1,12 +1,14 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom";
-import {Nav, Col, Row, Image} from 'react-bootstrap';
+import {Nav, Col, Row, Image, FormControl, Button} from 'react-bootstrap';
 import {getAPIHostUrl} from "../../utils/rest-helper";
 import {format} from '../../utils/date-format';
 import {useQuery} from "react-query";
 import {getUsers,getUserTypes} from "./queries";
 import {useTranslation} from "react-i18next";
 import DefaultSpinner from "../Generic/Spinner";
+import { Can } from "../../utils/auth-helper";
+
 
 function UserTypesFilter({filter, onChangeFilter}){
     const {t,i18n} = useTranslation('generic');
@@ -49,7 +51,8 @@ const Users = () => {
     const {t,i18n} = useTranslation('userpage');
     const lang = i18n.language;
     const [filter, setFilter] = useState(null);
-    const [lfilter, setlFilter] = useState('a');
+    const [lfilter, setlFilter] = useState(null);
+    const [nameFilter, setNameFilter] = useState("");
 
     let { isLoading, isError, data:users} = useQuery('users', getUsers);
     if (isLoading) {
@@ -68,6 +71,8 @@ const Users = () => {
     const onChangeLfilter = (newFilter) => {
         if (lfilter !== newFilter) {
             setlFilter(newFilter);
+        } else {
+            setlFilter(null);
         }
     }
 
@@ -76,6 +81,9 @@ const Users = () => {
     }
     if (users && lfilter) {
         users = users.filter((user) => user.name.startsWith(lfilter))
+    }
+    if (users && nameFilter) {
+        users = users.filter(user => user.name.toLowerCase().indexOf(nameFilter.toLowerCase()) >= 0)
     }
 
     return (<React.Fragment>
@@ -86,8 +94,12 @@ const Users = () => {
             </Col>
         </Row>
         <Row className="row-margin">
-            <Col md={12}>
+            <Col md={9}>
                 <LetterFilter filter={lfilter} onChangeFilter={onChangeLfilter} alpha_params ={alpha_params}/>
+            </Col>
+            <Col md={3}>
+            <FormControl className="mr-sm-1" type="text" placeholder="Name" value={nameFilter} onChange={(event) => setNameFilter(event.target.value)} />
+                
             </Col>
         </Row>
         <Row className="row-margin">
@@ -107,6 +119,15 @@ const Users = () => {
                         </Col>
                     })}
                 </Row>
+            </Col>
+            <Col>
+            <Can I="create" a="User">
+              <Button as={Link} to={`/users/new`}>
+              {t("generic:addModel", {
+                model: t("models:modelNames.user", { count: 0 }),
+              })}
+              </Button>
+            </Can>
             </Col>
         </Row>
     </React.Fragment>);

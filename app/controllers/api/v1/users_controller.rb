@@ -4,10 +4,6 @@ module Api
       load_and_authorize_resource
       skip_load_resource only: :create
 
-      def new
-        @user = User.new
-      end
-
       def create
         user = User.new(user_params)
         password = Devise.friendly_token.first(10)
@@ -16,19 +12,16 @@ module Api
         user.user_type = UserType.find_by_name('Proeflid') unless current_user
         if user.save
           UserMailer.welcome_email(user, password).deliver
-          sign_in user, bypass: true unless current_user
-          redirect_to user
+          render json: user.as_json(include: {commissions: {only: [:name, :name_en]}}, methods: [:avatar_url_medium, :avatar_url_thumb])
         else
-          @user = user
-          render 'new'
+          render json: {message: user.errors.full_messages}, status: :bad_request
         end
       end
 
       def show
-        @user = User.find_by_id(params[:id])
-        @commissions = @user.commissions.order("name").all
+        user = User.find_by_id(params[:id])
         respond_to do |format|
-          format.json { render json: @user.as_json(include: {commissions: {only: [:name, :name_en]}}, methods: [:avatar_url_medium, :avatar_url_thumb]) }
+          format.json { render json: user.as_json(include: {commissions: {only: [:name, :name_en]}}, methods: [:avatar_url_medium, :avatar_url_thumb]) }
         end
       end
 
@@ -64,27 +57,22 @@ module Api
         end
       end
 
-      def edit
-        @user = User.find_by_id(params[:id])
-      end
-
       def update
         user = User.find_by_id(params[:id])
         if user.update_attributes(user_params)
-          flash[:success] = 'Profile updated.'
-          sign_in user, bypass: true unless current_user.admin?
-          redirect_to user
+          render json: user.as_json(include: {commissions: {only: [:name, :name_en]}}, methods: [:avatar_url_medium, :avatar_url_thumb])
         else
-          flash[:danger] = 'Update failed.'
-          render 'edit'
+          render json: {message: user.errors.full_messages}, status: :bad_request
         end
       end
 
       def destroy
         user = User.find(params[:id])
-        user.destroy
-        flash[:success] = 'Gebruiker verwijderd'
-        redirect_to users_path
+        if user.destroy
+          render json: user
+        else
+          render json: {message: user.errors.full_messages}, status: :bad_request
+        end
       end
 
       def xtracard

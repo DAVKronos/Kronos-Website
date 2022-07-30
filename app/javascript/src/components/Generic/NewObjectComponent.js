@@ -28,7 +28,12 @@ const NewObjectComponent = ({FormComponent, createFunction, onSuccess, objectNam
             setCreating(false);
             console.log(error);
             if (error.response.status === 400){
-                setError('Sommige velden missen');
+                if (error.response.data && error.response.data.message){
+                    setError(error.response.data.message.join(','))
+                } else {
+                    setError('Sommige velden missen');
+                }
+                
             }
 
         })
