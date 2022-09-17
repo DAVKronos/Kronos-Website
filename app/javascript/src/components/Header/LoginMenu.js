@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {Button, Form, NavDropdown, Image} from 'react-bootstrap';
+import {Button, Form, NavDropdown, Image, Col} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import {login, logout} from '../../utils/auth-helper'
 import { authContext } from '../../utils/AuthContext';
@@ -28,7 +28,7 @@ const LoginMenu = () => {
         return <DefaultSpinner/>;
     }
 
-    return <React.Fragment><Form className="form-padding login-menu" onSubmit={onFormSubmit}>
+    return <Form className="form-padding login-menu" onSubmit={onFormSubmit}>
         <Form.Group controlId="formBasicEmail">
             <Form.Control type="email" placeholder={t('email')} onChange={e => {
                 setEmail(e.target.value);
@@ -45,13 +45,20 @@ const LoginMenu = () => {
                 setRememberMe(!rememberMe);
             }}/>
         </Form.Group>
-        <Button variant="primary" type='submit' >
-            {t('login')}
-        </Button>
-        
+             
+        <Form.Row>
+            <Col>
+                <Button variant="primary" type='submit' >
+                    {t('login')}
+                </Button>
+            </Col>
+        </Form.Row>
+        <Form.Row>
+            <Col>
+            <Link to="/users/forgot_password">{t('forgotPassword')}</Link>
+            </Col>
+        </Form.Row>
     </Form>
-    <Link to="/users/forgot_password">{t('forgotPassword')}</Link>
-    </React.Fragment>
 }
 
 const LoggedInMenu = ({user}) => {

@@ -28,7 +28,7 @@ module Api
       def index
         user_type_id = params[:user_type_id].to_f if params[:user_type_id].present?
 
-        @users = current_user.allowed_users(user_type_id)
+        @users = current_user.allowed_users(user_type_id).order(:name)
 
         respond_to do |format|
           format.html do

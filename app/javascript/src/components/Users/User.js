@@ -165,6 +165,11 @@ const User = (props) => {
                 {t("generic:edit")}
               </Button>
             </Can>
+            <Can I="editpassword" this={subject("User", user)}>
+              <Button as={Link} to={`/users/${user.id}/password/edit`}>
+                {t("changePassword")}
+              </Button>
+            </Can>
           </Col>
         </Row>
       </React.Fragment>
