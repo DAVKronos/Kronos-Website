@@ -27,7 +27,7 @@
     "newsitem": "Newsitem"
   },
   "navigation": {
-    "association" : "Association",
+    "association": "Association",
     "trainings": "Training",
     "matches": "Matches",
     "agenda": "Agenda",
@@ -45,7 +45,10 @@
     "email": "Email",
     "password": "Password",
     "kronosCloud": "Kronos cloud",
-    "admin": "Admin"
+    "admin": "Admin",
+    "forgotPassword": "Forgot password",
+    "resetPasswordSentMessage": "Password reset succesfull. An email is sent with instruction to proceed resetting your password.",
+    "resetPassword": "Reset password"
   },
   "footer": {
     "sponsors": "Sponsors"
@@ -100,7 +103,10 @@
     "paperkronometer": "Paper Kronometer",
     "banknumber": "Bank-account number",
     "createdat": "Created at",
-    "commissions": "Commissions"
+    "commissions": "Commissions",
+    "changePassword": "Change password",
+    "changePasswordSentMessage": "Password has been changed.",
+    "unEqualPassword": "Passwords not the same"
   },
   "contactPage": {
     "title": "Send us a message"
@@ -187,14 +193,14 @@
     },
     "newsitem": {
       "title": "Title (Dutch)",
-      "title_en":"Title (English)",
+      "title_en": "Title (English)",
       "news": "News message (Dutch)",
       "news_en": "News message (English)",
       "articlephoto": "Photo"
     },
     "page": {
       "pagetag": "Page tag",
-      "pagetag_en":"Page tag (English)",
+      "pagetag_en": "Page tag (English)",
       "information": "Page content (Dutch)",
       "information_en": "Page content (English)",
       "menu": "Menu",
@@ -204,7 +210,7 @@
     },
     "photoalbum": {
       "name": "Name (Dutch)",
-      "name_en":"Name (English)",
+      "name_en": "Name (English)",
       "date": "Date",
       "public": "Public",
       "external_url": "External URL"
@@ -230,7 +236,7 @@
     },
     "commission": {
       "name": "Name (Dutch)",
-      "name_en":"Name (English)",
+      "name_en": "Name (English)",
       "description": "Description (Dutch)",
       "description_en": "Description (English)"
     },

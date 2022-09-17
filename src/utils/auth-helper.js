@@ -89,7 +89,18 @@ function logout() {
 
 }
 
+function forgotPassword(email) {
+    return axios.post(`/api/v1/auth/password`, {email, redirect_url: '/users/reset_password'}, getConfig())
 
+} 
+
+function verifyUserByToken(token) {
+    return axios.get('/api/v1/auth/password/edit')
+}
+
+function changePassword(password, password_confirmation) {
+    return axios.put('/api/v1/auth/password', {password, password_confirmation}, getConfig())
+}
 
 const Can = createCanBoundTo(ability);
 
@@ -100,5 +111,8 @@ export {
     ability,
     Can,
     validateToken,
-    getAuthDetails
+    getAuthDetails,
+    forgotPassword,
+    verifyUserByToken,
+    changePassword
 }

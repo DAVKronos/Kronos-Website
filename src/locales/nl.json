@@ -45,7 +45,10 @@
     "email": "Email",
     "password": "Wachtwoord",
     "kronosCloud": "Kronos cloud",
-    "admin": "Beheer"
+    "admin": "Beheer",
+    "forgotPassword": "Wachtwoord vergeten",
+    "resetPasswordSentMessage": "Wachtwoord is gereset. Volg de instructies uit de email.",
+    "resetPassword": "Wachtwoord resetten"
   },
   "footer": {
     "sponsors": "Sponsoren"
@@ -100,7 +103,10 @@
     "paperkronometer": "Papieren Kronometer",
     "banknumber": "Bankrekeningnummer",
     "createdat": "Toegevoegd op",
-    "commissions": "Commissies"
+    "commissions": "Commissies",
+    "changePassword": "Wachtwoord veranderen",
+    "changePasswordSentMessage": "Wachtwoord is veranderd",
+    "unEqualPassword": "Wachtwoorden zijn niet hetzelfde"
   },
   "contactPage": {
     "title": "Stuur ons een bericht"

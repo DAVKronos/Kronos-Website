@@ -134,7 +134,7 @@ const FieldControl = ({type, value, setValue, required, itemQuery, ...props}) =>
         }
         return <Form.File onChange={handleFileUpload} {...props}/>
     }
-    return <Form.Control type='text' value={value} onChange={(e) => setValue(e.target.value)} {...props}/>
+    return <Form.Control type={type || 'text'} value={value} onChange={(e) => setValue(e.target.value)} {...props}/>
 }
 
 
