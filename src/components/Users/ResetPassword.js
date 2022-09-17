@@ -4,13 +4,13 @@ import { FieldControl } from "../Generic/FormField";
 import DefaultSpinner from "../Generic/Spinner";
 import { useTranslation } from "react-i18next";
 import { resetPassword } from "../../utils/auth-helper";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { parseParams } from "../../utils/generic";
 
 
 const ResetPasswordPage = () => {
   const {search} = useLocation();
-  const queryParams = parseParams(search);
+  const queryParams = parseParams(decodeURIComponent(search));
   const {uid, client} = queryParams;
   const access_token = queryParams['access-token']
   const { t } = useTranslation("userpage");
