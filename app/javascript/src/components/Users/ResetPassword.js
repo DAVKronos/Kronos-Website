@@ -3,9 +3,16 @@ import { Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { FieldControl } from "../Generic/FormField";
 import DefaultSpinner from "../Generic/Spinner";
 import { useTranslation } from "react-i18next";
-import { changePassword } from "../../utils/auth-helper";
+import { resetPassword } from "../../utils/auth-helper";
+import { useLocation } from "react-router-dom";
+import { parseParams } from "../../utils/generic";
 
-const ChangePasswordPage = () => {
+
+const ResetPasswordPage = () => {
+  const {search} = useLocation();
+  const queryParams = parseParams(search);
+  const {uid, client} = queryParams;
+  const access_token = queryParams['access-token']
   const { t } = useTranslation("userpage");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -24,7 +31,7 @@ const ChangePasswordPage = () => {
         setChangeSent({ loading: false, succesfull: false });
     } else {
         setMessage(null);
-        changePassword(password, passwordConfirmation).then(
+        resetPassword(password, passwordConfirmation, uid, client, access_token).then(
         () => {
             setChangeSent({ loading: false, succesfull: true });
             setPassword("");
@@ -91,4 +98,4 @@ const ChangePasswordPage = () => {
   );
 };
 
-export default ChangePasswordPage;
+export default ResetPasswordPage;
