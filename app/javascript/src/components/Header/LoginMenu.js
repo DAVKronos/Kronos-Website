@@ -28,7 +28,7 @@ const LoginMenu = () => {
         return <DefaultSpinner/>;
     }
 
-    return <Form className="form-padding" onSubmit={onFormSubmit}>
+    return <React.Fragment><Form className="form-padding login-menu" onSubmit={onFormSubmit}>
         <Form.Group controlId="formBasicEmail">
             <Form.Control type="email" placeholder={t('email')} onChange={e => {
                 setEmail(e.target.value);
@@ -48,7 +48,10 @@ const LoginMenu = () => {
         <Button variant="primary" type='submit' >
             {t('login')}
         </Button>
+        
     </Form>
+    <Link to="/users/forgot_password">{t('forgotPassword')}</Link>
+    </React.Fragment>
 }
 
 const LoggedInMenu = ({user}) => {
