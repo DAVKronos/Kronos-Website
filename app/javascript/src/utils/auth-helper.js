@@ -90,13 +90,13 @@ function logout() {
 
 }
 
-function forgotPassword(email) {
+function forgotPassword(email, ) {
     if (localStorage.getItem('kronos-auth')) {
         localStorage.removeItem('kronos-auth')
     }
     
-    
-    return axios.post(`/api/v1/auth/password`, {email, redirect_url: '/app/users/reset_password'}, getConfig())
+    const host = window && window.location && window.location.host //in case of server side rendering
+    return axios.post(`/api/v1/auth/password`, {email, redirect_url: `${host}/app/users/reset_password`}, getConfig())
 
 } 
 
