@@ -80,7 +80,8 @@ function login(email, password, rememberMe) {
 function logout() {
     return axios.delete(`/api/v1/auth/sign_out`, {...getConfig()})
         .then(() => {
-            localStorage.removeItem('kronos-auth')
+            localStorage.removeItem('kronos-auth');
+            setAuthDetails(null);
             return updateAbilities(ability);
         })
         .catch(() => {
@@ -90,16 +91,23 @@ function logout() {
 }
 
 function forgotPassword(email) {
-    return axios.post(`/api/v1/auth/password`, {email, redirect_url: '/users/reset_password'}, getConfig())
+    if (localStorage.getItem('kronos-auth')) {
+        localStorage.removeItem('kronos-auth')
+    }
+    
+    
+    return axios.post(`/api/v1/auth/password`, {email, redirect_url: '/app/users/reset_password'}, getConfig())
 
 } 
 
-function verifyUserByToken(token) {
-    return axios.get('/api/v1/auth/password/edit')
-}
-
 function changePassword(password, password_confirmation) {
     return axios.put('/api/v1/auth/password', {password, password_confirmation}, getConfig())
+}
+
+function resetPassword(password, password_confirmation, uid, client, access_token) {
+    const config = getConfig();
+    config.headers = {...config.headers, 'access-token': access_token, uid, client}
+    return axios.put('/api/v1/auth/password', {password, password_confirmation}, config)
 }
 
 const Can = createCanBoundTo(ability);
@@ -113,6 +121,6 @@ export {
     validateToken,
     getAuthDetails,
     forgotPassword,
-    verifyUserByToken,
+    resetPassword,
     changePassword
 }
