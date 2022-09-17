@@ -5,4 +5,8 @@ function getPages() {
     return restCall('pages').then(res => res.data)
 }
 
-export {getPages}
+function resetPassword(email) {
+    return restCall(`auth/password`, { method: "POST", data: { email, redirect_url: "users/password/edit" }});
+  }
+
+export {getPages, resetPassword}
