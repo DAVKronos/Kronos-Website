@@ -147,7 +147,7 @@ en:
         profielfoto: avatar
         remember_me: remember me
         reset_password_token: reset password token
-        sex: sex
+        sex: gender
         studie: study
         xtracardnumber: UnionCardnumber
       alias:
@@ -879,7 +879,7 @@ en:
     male:
       results: 
   save_mailinglist: Save mailinglist
-  sex: Sex
+  sex: Gender
   sign_in: Sign in
   sign_up: Sign up
   studie: study
@@ -967,7 +967,7 @@ en:
     profielfoto: avatar
     remember_me: remember me
     send_instructions: Instructions on resetting your email are sent.
-    sex: sex
+    sex: gender
     signed_in: you are successfully signed in
     signed_out: you are successfully signed out
     xtracardnumber: 
