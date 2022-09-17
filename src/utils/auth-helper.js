@@ -96,7 +96,7 @@ function forgotPassword(email) {
     }
     
     
-    return axios.post(`/api/v1/auth/password`, {email, redirect_url: '/app/users/reset_password'}, getConfig())
+    return axios.post(`/api/v1/auth/password`, {email, redirect_url: 'app/users/reset_password'}, getConfig())
 
 } 
 
