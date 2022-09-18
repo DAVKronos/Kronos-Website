@@ -174,7 +174,9 @@
       "kronometer": "Kronometer",
       "kronometer_plural": "Kronometers",
       "user": "Member",
-      "user_plural": "Members"
+      "user_plural": "Members",
+      "announcement": "Announcement",
+      "announcement_plural": "Announcements"
     },
     "agendaitem": {
       "name": "Name (Dutch)",
@@ -243,6 +245,14 @@
     "folder": {
       "name": "Name",
       "folder_id": "Parent folder"
+    },
+    "announcement": {
+      "title": "Title",
+      "message": "Message",
+      "background": "Background image",
+      "url": "Link",
+      "starts_at": "Starts at",
+      "ends_at": "Ends at"
     },
     "user": {
       "name": "Name",

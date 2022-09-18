@@ -6,12 +6,16 @@ import StravaSidebar from "./StravaSidebar";
 import UserBirthdays from "./UserBirthdays";
 import {useTranslation} from "react-i18next";
 import {Can} from "../../utils/auth-helper";
+import Announcement from './Announcement';
 
 let HomePage = () => {
     const { t } = useTranslation('homepage');
     return (
     <React.Fragment>
     <Row>
+        <Col md={12}>
+            <Announcement/>
+        </Col>
         <Col><h1>{t('news')}</h1></Col>
     </Row>
     <Row>

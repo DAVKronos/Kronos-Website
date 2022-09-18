@@ -5,6 +5,7 @@ import ApproveNews from "./ApproveNews";
 import Pages from "./Pages";
 import MailingListRouter from "../MailingLists";
 import AliasRouter from "../Aliases";
+import AnnouncementRouter from "../Announcements";
 
 const AdminRouter = () => {
     return <Switch>
@@ -16,6 +17,9 @@ const AdminRouter = () => {
         </Route>
         <Route path="/admin/aliases">
             <AliasRouter />
+        </Route>
+        <Route path="/admin/announcements">
+            <AnnouncementRouter />
         </Route>
         <Route exact path="/admin/objects" component={AdminHome} />
         

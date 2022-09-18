@@ -10,7 +10,7 @@ module Abilities
       can [:read], Page, :public => true
       can [:perdag, :month], Agendaitem
       can [:frontpage, :records], Result
-      can :hide, Announcement
+      can [:current, :hide], Announcement
       can :create, [Contact]
       cannot :read, Photoalbum
       can :read, Photoalbum, :public => true

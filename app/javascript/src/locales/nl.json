@@ -174,7 +174,9 @@
       "kronometer": "Kronometer",
       "kronometer_plural": "Kronometers",
       "user": "Lid",
-      "user_plural": "Leden"
+      "user_plural": "Leden",
+      "announcement": "Banner",
+      "announcement_plural": "Banners"
     },
     "agendaitem": {
       "name": "Naam (Nederlands)",
@@ -243,6 +245,14 @@
     "folder": {
       "name": "Naam",
       "folder_id": "Bovenliggende map"
+    },
+    "announcement": {
+      "title": "Titel",
+      "message": "Bericht",
+      "background": "Achtergrond",
+      "url": "Link",
+      "starts_at": "Begint op",
+      "ends_at": "Eindigt op"
     },
     "user": {
       "name": "Naam",

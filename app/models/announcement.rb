@@ -10,4 +10,8 @@ class Announcement < ApplicationRecord
     result = result.where("id not in (?)", hidden_ids) if hidden_ids.present?
     result
   end
+
+  def background_url
+    background.url(:back)
+  end
 end

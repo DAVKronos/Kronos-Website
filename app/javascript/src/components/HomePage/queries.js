@@ -11,4 +11,8 @@ function getUserBirthdays() {
     return restCall('users/birthdays').then(res => res.data)
 }
 
-export {getNewsItems, getUserBirthdays}
+function getCurrentAnnouncement() {
+    return restCall('announcements/current').then(res => res.data)
+}
+
+export {getNewsItems, getUserBirthdays, getCurrentAnnouncement}

@@ -129,6 +129,13 @@ Rails.application.routes.draw do
 
       resources :kronometers
 
+      resources :announcements do
+        collection do
+          get 'current'
+        end
+      end
+
+
       resources :agendaitems do
         member do
           get 'icalendar'
