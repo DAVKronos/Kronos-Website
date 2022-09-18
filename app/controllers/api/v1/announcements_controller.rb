@@ -16,8 +16,11 @@ class AnnouncementsController < Api::V1::ApplicationController
   end
 
   def current
-    announcements = Announcement.current
-
+    if params[:hidden_ids]
+      announcements = Announcement.current(params[:hidden_ids])
+    else
+      announcements = Announcement.current
+    end
     respond_to do |format|
       format.json { render json: announcements.as_json(methods: [:background_url]) }
     end

@@ -27,7 +27,7 @@
     "react-query": "^2.23.1",
     "react-router-dom": "^5.1.2",
     "react-select": "^5.2.1",
-    "react_ujs": "^2.6.1"
+    "react_ujs": "^2.6.2"
   },
   "devDependencies": {
     "webpack-bundle-analyzer": "^3.9.0",
