@@ -1,4 +1,5 @@
 import {restCall} from "../../utils/rest-helper";
+import {getLocalSettings} from '../../utils/local-settings';
 
 
 function getNewsItems() {
@@ -12,7 +13,9 @@ function getUserBirthdays() {
 }
 
 function getCurrentAnnouncement() {
-    return restCall('announcements/current').then(res => res.data)
+    const hidden_ids = getLocalSettings('hiddenAnnouncements') || []
+
+    return restCall('announcements/current', {params: {hidden_ids}}).then(res => res.data)
 }
 
 export {getNewsItems, getUserBirthdays, getCurrentAnnouncement}
