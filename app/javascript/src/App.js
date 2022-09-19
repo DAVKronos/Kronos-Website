@@ -5,6 +5,7 @@ import {QueryCache, ReactQueryCacheProvider} from "react-query";
 
 import i18n from './utils/i18n.js';
 import AppRouter from "./AppRouter";
+import CookiesWarning from './components/Generic/CookiesWarning';
 
 const queryCache = new QueryCache({
   defaultConfig: {
@@ -21,6 +22,7 @@ const App = (props) => {
   return <EnvContext.Provider value={props}><AuthProvider>
     <ReactQueryCacheProvider queryCache={queryCache}>
     <AppRouter/>
+    <CookiesWarning/>
     </ReactQueryCacheProvider>
   </AuthProvider>
   </EnvContext.Provider>;

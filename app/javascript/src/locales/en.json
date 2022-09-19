@@ -25,7 +25,8 @@
     "birthdays": "Birthdays",
     "news": "News",
     "newsitem": "Newsitem",
-    "hide": "Hide"
+    "hide": "Hide",
+    "cookiesMessage": "Cookies help us deliver our services. By using our services, you agree to our use of cookies."
   },
   "navigation": {
     "association": "Association",

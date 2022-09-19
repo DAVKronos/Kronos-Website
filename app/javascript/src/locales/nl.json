@@ -25,7 +25,8 @@
     "birthdays": "Verjaardagen",
     "news": "Nieuws",
     "newsitem": "Nieuwsitem",
-    "hide": "Verberg"
+    "hide": "Verberg",
+    "cookiesMessage": "Wij maken gebruik van cookies voor onze service. Bezoek je onze website dan ga je akkoord met de cookies."
   },
   "navigation": {
     "association" : "Vereniging",
