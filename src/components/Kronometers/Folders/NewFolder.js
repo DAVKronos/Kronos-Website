@@ -18,7 +18,7 @@ const NewFolder = () => {
     }
 
     return <NewObjectComponent
-        objectName='commission'
+        objectName='folder'
         createFunction={createFolder}
         onSuccess={onSuccess}
         FormComponent={FolderForm}

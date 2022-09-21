@@ -9,7 +9,7 @@ import {
   removeFolder,
   removeKronometer,
 } from "./queries";
-import { useQuery } from "react-query";
+import { useQuery, useQueryCache } from "react-query";
 import { useTranslation } from "react-i18next";
 import DefaultSpinner from "../Generic/Spinner";
 import { BsFolder, BsArrowUp } from "react-icons/bs";
@@ -60,18 +60,25 @@ const EditFolderButtons = ({ folderId }) => {
 };
 
 const Kronometers = (props) => {
+
+  const queryCache = useQueryCache();
   const folderId =
-    props.match && props.match.params && props.match.params.folder_id && parseInt(props.match.params.folder_id);
+    props.match &&
+    props.match.params &&
+    props.match.params.folder_id &&
+    parseInt(props.match.params.folder_id);
   let folderName,
     folders,
     isFolderLoading,
     kronometers,
     isKronometerLoading,
     parentId;
+  let queryParams;
   const { t } = useTranslation("kronometerPage");
   if (!folderId) {
     const folderQuery = useQuery("folders", getFolders);
-    const kronometerQuery = useQuery("kronometers", getKronometers);
+    queryParams = "kronometers";
+    const kronometerQuery = useQuery(queryParams, getKronometers);
     isFolderLoading = folderQuery.isLoading;
     folderName = t("mainFolder");
     folders = folderQuery.data;
@@ -79,10 +86,8 @@ const Kronometers = (props) => {
     isKronometerLoading = kronometerQuery.isLoading;
   } else {
     const folderQuery = useQuery(["folders", folderId], getFolderById);
-    const kronometerQuery = useQuery(
-      ["folders", folderId, "kronometers"],
-      getKronometersByFolder
-    );
+    queryParams = ["folders", folderId, "kronometers"];
+    const kronometerQuery = useQuery(queryParams, getKronometersByFolder);
     isFolderLoading = folderQuery.isLoading;
     if (folderQuery.data) {
       folderName = folderQuery.data.name;
@@ -95,8 +100,10 @@ const Kronometers = (props) => {
   }
 
   const onClickRemove = (kronometerId) => {
-    removeKronometer(kronometerId);
-  }
+    removeKronometer(kronometerId).then(() => {
+      queryCache.invalidateQueries(queryParams);
+    });
+  };
 
   const parentUrl = parentId ? `/kronometers/${parentId}` : "/kronometers";
   const parentButton = folderId && (
@@ -160,15 +167,24 @@ const Kronometers = (props) => {
                       {kronometer.date}
                     </Card.Subtitle>
                     <Can I="update" a={"Kronometer"}>
-                      <Button size='sm' variant='warning' as={Link} to={`/kronometers/${kronometer.id}/edit`}>
-                          {t('edit')}
+                      <Button
+                        size="sm"
+                        variant="warning"
+                        as={Link}
+                        to={`/kronometers/${kronometer.id}/edit`}
+                      >
+                        {t("edit")}
                       </Button>
-                  </Can>
-                  <Can I="delete" a="Kronometer">
-                      <Button size='sm' variant='danger' onClick={() => onClickRemove(kronometer.id)}>
-                          {t('remove')}
+                    </Can>
+                    <Can I="delete" a="Kronometer">
+                      <Button
+                        size="sm"
+                        variant="danger"
+                        onClick={() => onClickRemove(kronometer.id)}
+                      >
+                        {t("remove")}
                       </Button>
-                  </Can>
+                    </Can>
                   </Card.Body>
                 </Card>
               </Col>

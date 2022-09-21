@@ -276,6 +276,13 @@
       "bank_account_number": "Bankrekeningnummer",
       "iban": "IBAN Bankrekeningnummer",
       "aanvang": "Studie aanvang"
+    },
+    "kronometer": {
+      "name": "Naam",
+      "date": "Datum",
+      "public": "Publiek",
+      "folder_id": "Bovenliggende map",
+      "file": "Bestand"
     }
   }
 }
