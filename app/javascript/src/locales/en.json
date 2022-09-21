@@ -276,6 +276,13 @@
       "bank_account_number": "Bank-account number",
       "iban": "IBAN bank account number",
       "aanvang": "Study start"
+    },
+    "kronometer": {
+      "name": "Name",
+      "date": "Date",
+      "public": "Public",
+      "folder_id": "Parent folder",
+      "file": "File"
     }
   }
 }
