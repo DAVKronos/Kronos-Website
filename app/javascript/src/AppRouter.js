@@ -26,7 +26,7 @@ import PrivateRoute from "./components/Generic/PrivateRoute";
 
 
 const AppRouter = () => {
-    return <Router basename={'/app'}>
+    return <Router >
         <Container fluid="lg">
         <Header />
         <div className='main'>
