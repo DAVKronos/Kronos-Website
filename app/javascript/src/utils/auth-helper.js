@@ -71,9 +71,6 @@ function login(email, password, rememberMe) {
 
                 return user;
             });
-        })
-        .catch(() => {
-            return undefined;
         });
 }
 

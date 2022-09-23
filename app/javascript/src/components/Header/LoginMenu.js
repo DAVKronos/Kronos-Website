@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {Button, Form, NavDropdown, Image, Col} from 'react-bootstrap';
+import {Alert, Button, Form, NavDropdown, Image, Col} from 'react-bootstrap';
 import {useTranslation} from "react-i18next";
 import {login, logout} from '../../utils/auth-helper'
 import { authContext } from '../../utils/AuthContext';
@@ -8,20 +8,27 @@ import {BsPersonFill, BsBoxArrowRight, BsFillCloudFill, BsFillGearFill} from 're
 import DefaultSpinner from "../Generic/Spinner";
 import {NavLink, Link} from "react-router-dom";
 
+
 const LoginMenu = () => {
     const {t} = useTranslation('loginMenu');
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [rememberMe, setRememberMe] = useState(true);
     const [loading, setLoading] = useState(false);
+    const [incorrectPassword, setIncorrectPassword] = useState(false);
     const { setUserData } = useContext(authContext);
     const onFormSubmit = e => {
         e.preventDefault();
         setLoading(true);
         login(email, password, rememberMe).then((user) => {
             setLoading(false);
+	    setIncorrectPassword(false);
             setUserData(user);
-        });
+        })
+	.catch((err) => {
+	    setLoading(false);
+	    setIncorrectPassword(true);
+	});
     };
 
     if (loading) {
@@ -29,6 +36,8 @@ const LoginMenu = () => {
     }
 
     return <Form className="form-padding login-menu" onSubmit={onFormSubmit}>
+	       { incorrectPassword &&
+		   <Alert variant="danger">Username or password incorrect.</Alert>}
         <Form.Group controlId="formBasicEmail">
             <Form.Control type="email" placeholder={t('email')} onChange={e => {
                 setEmail(e.target.value);
