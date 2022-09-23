@@ -36,6 +36,6 @@
   "scripts": {
     "webpack:analyze": "yarn webpack:build_json && yarn webpack:analyze_json",
     "webpack:build_json": "RAILS_ENV=${RAILS_ENV:-production} NODE_ENV=${NODE_ENV:-production} bin/webpack --profile --json > tmp/webpack-stats.json",
-    "webpack:analyze_json": "npx webpack-bundle-analyzer tmp/webpack-stats.json public/packs"
+    "webpack:analyze_json": "npx webpack-bundle-analyzer tmp/webpack-stats.json public/packs --host 0.0.0.0"
   }
 }
