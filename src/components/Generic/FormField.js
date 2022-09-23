@@ -86,6 +86,8 @@ const FieldControl = ({type, value, setValue, required, itemQuery, ...props}) =>
         } else if (!(value instanceof Date)) {
             value = new Date(value);
         }
+        const {size} = props;
+        const className = size ? `form-control form-control-${size}` : "form-control"
 
         if (type==='datetime') {
             return <DatePicker selected={value}
@@ -93,7 +95,7 @@ const FieldControl = ({type, value, setValue, required, itemQuery, ...props}) =>
                                showTimeSelect
                                dateFormat="Pp"
                                onChange={date => setValue(date)}
-                               className="form-control form-control-sm"
+                               className={className}
                                show
 
             />;
@@ -105,7 +107,7 @@ const FieldControl = ({type, value, setValue, required, itemQuery, ...props}) =>
                                timeIntervals={5}
                                timeCaption="Time"
                                dateFormat="p"
-                               className="form-control form-control-sm"
+                               className={className}
                                onChange={date => setValue(date)}
                                show
                                {...props}
