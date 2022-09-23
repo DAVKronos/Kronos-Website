@@ -21,8 +21,7 @@ const AgendaItemEventsCard = ({agendaItemId, agendaItemTypeId}) => {
 const AddEventForm = ({agendaItemId, agendaItemTypeId}) => {
     const {data: eventTypes} = useQuery(['agendaitemtype_eventtypes', agendaItemTypeId], getEventTypes);
     const queryCache = useQueryCache();
-
-    const [values, setValues] = useState({});
+    const [values, setValues] = useState({});    
 
     const setEventTypeValue = (eventtype_id) => {
         setValues({...values, eventtype_id})
@@ -39,34 +38,32 @@ const AddEventForm = ({agendaItemId, agendaItemTypeId}) => {
         })
     }
 
-    const currentEventType = values.eventtype_id && eventTypes.find(event => event.id === values.eventtype_id)
-    const hasDistanceInFormula = currentEventType && currentEventType.formula.contains('$distance')
+    const currentEventType = values.eventtype_id && eventTypes.find(event => event.id === values.eventtype_id);
+    const hasDistanceInFormula = currentEventType && currentEventType.formula.includes('$distance')
 
     return <Form>
         <Form.Row>
-            <Col sm={3} style={{padding: '0 5px'}}>
+            <Col sm={9} style={{padding: '5px'}}>
                 <FieldControl type="time"
                               required
                               setValue={setDateValue}
                               value={values.date}
-                              size={'sm'}
                               placeholder="Time" />
             </Col>
-            <Col sm={4} style={{padding: '0 5px'}}>
+            <Col sm={9} style={{padding: '5px'}}>
                 <FieldControl type="reference"
-                              size={'sm'}
-                              items={eventTypes}
+                              itemQuery={[['agendaitemtype_eventtypes', agendaItemTypeId], getEventTypes]}
                               required
                               setValue={setEventTypeValue}
                               value={values.eventtype_id}
                 />
             </Col>
-            {hasDistanceInFormula && <Col sm={3} style={{padding: '0 5px'}}>
-                <Form.Control size={'sm'} placeholder="Distance" />
+            {hasDistanceInFormula && <Col sm={9} style={{padding: '5px'}}>
+                <Form.Control placeholder="Distance" />
             </Col>
             }
-            <Col style={{padding: '0 5px'}} className="align-self-end d-flex flex-row-reverse">
-                <Button size={'sm'} variant={'success'} style={{margin: 0}} onClick={onClickAddEvent}>
+            <Col style={{padding: '5px'}} className="align-self-end d-flex flex-row-reverse">
+                <Button  variant={'success'} style={{margin: 0}} onClick={onClickAddEvent}>
                     <BsPlus/>
                 </Button>
             </Col>
