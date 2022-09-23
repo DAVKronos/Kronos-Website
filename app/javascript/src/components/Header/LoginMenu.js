@@ -9,6 +9,7 @@ import DefaultSpinner from "../Generic/Spinner";
 import {NavLink, Link, useHistory} from "react-router-dom";
 
 
+
 const LoginMenu = () => {
     const {t} = useTranslation('loginMenu');
     const [email, setEmail] = useState();
