@@ -31,7 +31,8 @@
   },
   "devDependencies": {
     "webpack-bundle-analyzer": "^3.9.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-visualizer-plugin": "^0.1.11"
   },
   "scripts": {
     "webpack:analyze": "yarn webpack:build_json && yarn webpack:analyze_json",
