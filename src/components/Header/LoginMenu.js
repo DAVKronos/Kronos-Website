@@ -6,7 +6,7 @@ import { authContext } from '../../utils/AuthContext';
 import {Can} from "../../utils/auth-helper";
 import {BsPersonFill, BsBoxArrowRight, BsFillCloudFill, BsFillGearFill} from 'react-icons/bs';
 import DefaultSpinner from "../Generic/Spinner";
-import {NavLink, Link} from "react-router-dom";
+import {NavLink, Link, useHistory} from "react-router-dom";
 
 
 const LoginMenu = () => {
@@ -71,12 +71,14 @@ const LoginMenu = () => {
 }
 
 const LoggedInMenu = ({user}) => {
+    const history = useHistory();
     let firstName = user.name.split(' ')[0]
     const {t} = useTranslation('loginMenu');
     const { setUserData } = useContext(authContext);
     const onClickLogout = () => {
         logout().then(() => {
             setUserData(null);
+	    history.push("/");
         });
     }
     return <React.Fragment>
