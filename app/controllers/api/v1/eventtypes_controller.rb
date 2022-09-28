@@ -68,7 +68,7 @@ module Api
         respond_to do |format|
           if @eventtype.save
             format.html { redirect_to @eventtype, notice: 'Eventtype was successfully created.' }
-            format.json { render json: @eventtype, status: :created, location: @eventtype }
+            format.json { render json: @eventtype, status: :created }
           else
             format.html { render action: "new" }
             format.json { render json: @eventtype.errors, status: :unprocessable_entity }
