@@ -14,13 +14,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag davkronos/kronos-website
-    - name: Docker login
-      run: docker login -u davkronos -p ${{ secrets.docker_pswd }}
-    - name: Push to Docker hub
-      run: docker push davkronos/kronos-website
-
+    - name: Docker Login
+      uses: docker/login-action@v2.0.0
+      with:
+        # Server address of Docker registry. If not set then will default to Docker Hub
+        # Username used to log against the Docker registry
+        username: davkronos
+        # Password or personal access token used to log against the Docker registry
+        password: ${{ secrets.docker_pswd }}
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v3.1.1
+      with:
+        # List of tags
+        tags: davkronos/kronos-website
+        
 
 
 
