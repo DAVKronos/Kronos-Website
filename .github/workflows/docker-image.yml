@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag davkronos/kronos-website
     - name: Docker login
-      run: docker login -u davkronos -p test
+      run: docker login -u davkronos -p ${{ secrets.docker_pswd }}
     - name: Push to Docker hub
       run: docker push davkronos/kronos-website
 
