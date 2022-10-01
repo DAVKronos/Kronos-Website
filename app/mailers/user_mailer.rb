@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "webmaster@kronos.nl"
+  default from: "Kronos <webmaster@kronos.nl>"
   
   def welcome_email(user, password)
       @user = user
