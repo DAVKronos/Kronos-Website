@@ -1,5 +1,5 @@
-import React, {useContext} from "react";
-import {Button, Card, ListGroup} from "react-bootstrap";
+import React, {useState, useContext} from "react";
+import {Col, Button, Card, ListGroup, Form} from "react-bootstrap";
 import {authContext} from "../../../utils/AuthContext";
 import {useQuery, useQueryCache} from "react-query";
 import {createSubscription, getSubscriptions, removeSubscription} from "../queries";
@@ -36,6 +36,7 @@ const Subscriptions = ({agendaItem}) => {
     const {t, i18n} = useTranslation('agendaItemPage');
     const lang = i18n.language;
     const {user} = useContext(authContext);
+    const [text, setText] = useState('')
     const queryCache = useQueryCache()
     const {isLoading, isError, data, error} = useQuery(['agendaitems', agendaItem.id, 'subscriptions'], getSubscriptions);
     if (isLoading) {
@@ -52,7 +53,7 @@ const Subscriptions = ({agendaItem}) => {
     }
 
     const onClickSubscribe = () => {
-        createSubscription(agendaItem.id, {name: user.name}).then(()=> {
+        createSubscription(agendaItem.id, {name: user.name, comment: text}).then(()=> {
             queryCache.invalidateQueries(['agendaitems', agendaItem.id, 'subscriptions']);
         });
     }
@@ -60,10 +61,17 @@ const Subscriptions = ({agendaItem}) => {
     const subscriptionOpen = new Date(agendaItem.subscriptiondeadline) > new Date();
 
     const subscribeButton = userSubscription ?
-        <Button variant='danger' onClick={() => onClickUnsubscribe(userSubscription.id)}>{t('subscriptions.unsubscribe')}</Button> :
-        <Button variant='success' onClick={onClickSubscribe}>{t('subscriptions.subscribe')}</Button>
+        <React.Fragment>
+            <Button variant='danger' onClick={() => onClickUnsubscribe(userSubscription.id)}>{t('subscriptions.unsubscribe')}</Button>
+        </React.Fragment>:
+        <React.Fragment>
+            <Col md={8} style={{display: 'flex', alignItems: 'center'}}>
+                <Form.Control as="textarea" value={text} onChange={e => setText(e.target.value)} placeholder={t('comment')} />
+            </Col>
+            <Button variant='success' onClick={onClickSubscribe}>{t('subscriptions.subscribe')}</Button>
+        </React.Fragment>
 
-        return <React.Fragment>
+    return <React.Fragment>
         <Card.Header>
             {t('subscriptions.list')} <br/>
             <small>{formatDistanceToNow(new Date(agendaItem.subscriptiondeadline), lang, true)}</small><br/>
@@ -71,12 +79,15 @@ const Subscriptions = ({agendaItem}) => {
         </Card.Header>
         <ListGroup variant="flush">
             {subscriptions && subscriptions.map(subscription => {
-                return <ListGroup.Item key={subscription.id} style={{display: 'flex', alignItems: "center"}}>
-                    <div style={{flex: '1 1 auto'}}>{subscription.name}</div>
+                return <ListGroup.Item key={subscription.id} style={{alignItems: "center"}}>
+                    <div>{subscription.name}</div>
+                    <small>{subscription.comment}</small>
+                    <br/>
                     <Can I='destroy' this={subject('Subscription', subscription)}>
                         <Button  size='sm' variant='danger' onClick={() => onClickUnsubscribe(subscription.id)}>{t('subscriptions.unsubscribe')}</Button>
-                    </Can>
-                    </ListGroup.Item>;
+                    </Can><br/>
+
+                </ListGroup.Item>;
             })}
         </ListGroup>
         <Card.Footer>
