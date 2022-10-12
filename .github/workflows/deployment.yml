@@ -1,0 +1,53 @@
+name: Docker Image CI/CD
+
+on:
+  push:
+    branches: [ "master", "deployment-action" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Docker Login
+      uses: docker/login-action@v2.0.0
+      with:
+        # Server address of Docker registry. If not set then will default to Docker Hub
+        # Username used to log against the Docker registry
+        username: davkronos
+        # Password or personal access token used to log against the Docker registry
+        password: ${{ secrets.docker_pswd }}
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v3.1.1
+      with:
+        # List of tags
+        tags: davkronos/kronos-website
+
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: SSH Remote Commands
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        # ssh host
+        host: kronos.nl
+        # ssh port
+        username: ${{ secrets.SSH_USERNAME }}
+        # ssh password
+        password: ${{ secrets.SSH_PASSWORD }}
+        # synchronous execution if multiple hosts
+        
+        # execute commands
+        script: |
+          docker system prune -f
+          cd /blockstorage
+          docker-compose pull
+          docker-compose down && docker-compose up -d
+          
+        
