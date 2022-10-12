@@ -1,0 +1,32 @@
+name: Docker Image CD
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: SSH Remote Commands
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        # ssh host
+        host: kronos.nl
+        # ssh port
+        username: ${{ secrets.SSH_USERNAME }}
+        # ssh password
+        password: ${{ secrets.SSH_PASSWORD }}
+        # synchronous execution if multiple hosts
+        
+        # execute commands
+        script: |
+          docker system prune
+          cd /blockstorage1
+          docker-compose pull
+          docker-compose down && docker-compose up -d
+          
+        
