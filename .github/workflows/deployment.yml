@@ -1,9 +1,9 @@
 name: Docker Image CI/CD
 
 on:
-  workflow_dispatch:
   push:
     branches: [ "master", "deployment-action" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
 
 
   deploy:
-
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
