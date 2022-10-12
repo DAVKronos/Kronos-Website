@@ -24,7 +24,7 @@ jobs:
         
         # execute commands
         script: |
-          docker system prune
+          docker system prune -f
           cd /blockstorage
           docker-compose pull
           docker-compose down && docker-compose up -d
