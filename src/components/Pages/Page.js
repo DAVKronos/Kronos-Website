@@ -2,7 +2,7 @@ import React from "react";
 import ReactMarkdown from 'react-markdown';
 import Spinner from "../Generic/Spinner";
 import { useQuery } from "react-query";
-import { getPage, getPageByPageTag } from "./queries";
+import { getPage, getPageByPageTag, removePage } from "./queries";
 import MultiLanguageText from "../Generic/MultiLanguageText";
 import { Link } from "react-router-dom";
 
@@ -21,7 +21,8 @@ const PageComponent = ({ page, isLoading }) => {
   }
 
   return <div>
-    <Link to={`/pages/${page.id}/edit`}>Aanpassen</Link>
+    <Link to={`/pages/${page.id}/edit`}><MultiLanguageText nl="Aanpassen" en="Edit" /></Link>
+    <a onClick={onClickRemove(page)} href=""><MultiLanguageText nl="Verwijder" en="Delete" /></a>
     <h1><MultiLanguageText nl={page.pagetag} en={page.pagetag_en} /></h1>
     <MultiLanguageText nl={page.information} en={page.information_en} renderFunction={renderMarkdown} />
   </div>;
@@ -40,6 +41,12 @@ const PageWithTag = (props) => {
   const { isLoading, isError, data, error } = useQuery(['pages', pagetag], getPageByPageTag)
 
   return <PageComponent page={data} isLoading={isLoading} />;
+}
+
+const onClickRemove = (page) => {
+  removePage(page.id).then(() => {
+    queryCache.invalidateQueries(['pages']);
+  })
 }
 
 
