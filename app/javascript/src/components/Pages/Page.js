@@ -20,12 +20,18 @@ const PageComponent = ({ page, isLoading }) => {
     return <ReactMarkdown source={text} escapeHtml={false} />;
   }
 
+  const onClickRemove = () => {
+    return removePage(page.id).then(() => {
+      queryCache.invalidateQueries(["pages"], { exact: true });
+    })
+  }
+
   return <div>
     <Link to={`/pages/${page.id}/edit`}><MultiLanguageText nl="Aanpassen" en="Edit" /></Link>
-    <a onClick={onClickRemove(page)} href=""><MultiLanguageText nl="Verwijder" en="Delete" /></a>
+    <Link onClick={onClickRemove} to={'/admin/pages'} style={{ paddingLeft: "0.5em" }}><MultiLanguageText nl="Verwijder" en="Delete" /></Link>
     <h1><MultiLanguageText nl={page.pagetag} en={page.pagetag_en} /></h1>
     <MultiLanguageText nl={page.information} en={page.information_en} renderFunction={renderMarkdown} />
-  </div>;
+  </div >;
 }
 
 
@@ -43,11 +49,7 @@ const PageWithTag = (props) => {
   return <PageComponent page={data} isLoading={isLoading} />;
 }
 
-const onClickRemove = (page) => {
-  removePage(page.id).then(() => {
-    queryCache.invalidateQueries(['pages']);
-  })
-}
+
 
 
 export { Page, PageWithTag }
