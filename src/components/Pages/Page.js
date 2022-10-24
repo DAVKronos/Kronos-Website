@@ -1,12 +1,22 @@
 import React from "react";
 import ReactMarkdown from 'react-markdown';
+import {Button} from 'react-bootstrap';
 import Spinner from "../Generic/Spinner";
 import { useQuery } from "react-query";
 import { getPage, getPageByPageTag, removePage } from "./queries";
 import MultiLanguageText from "../Generic/MultiLanguageText";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import {Can} from '../../utils/auth-helper';
+import {subject} from "@casl/ability";
+import {useTranslation} from "react-i18next";
+
+
 
 const PageComponent = ({ page, isLoading }) => {
+  const {t, i18n} = useTranslation('generic');
+  const lang = i18n.language;
+  const history = useHistory();
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -21,14 +31,22 @@ const PageComponent = ({ page, isLoading }) => {
   }
 
   const onClickRemove = () => {
-    return removePage(page.id).then(() => {
-      queryCache.invalidateQueries(["pages"], { exact: true });
+      return removePage(page.id).then(() => {
+	  history.push('/admin/pages')
     })
   }
 
   return <div>
-    <Link to={`/pages/${page.id}/edit`}><MultiLanguageText nl="Aanpassen" en="Edit" /></Link>
-    <Link onClick={onClickRemove} to={'/admin/pages'} style={{ paddingLeft: "0.5em" }}><MultiLanguageText nl="Verwijder" en="Delete" /></Link>
+	     <Can I='update' this={subject('Page', page)}>
+                 <Button variant='warning' className='align-self-center' as={Link}
+                         to={`/pages/${page.id}/edit`}>{t('edit')}</Button>
+             </Can>
+             <Can I='delete' this={subject('Page', page)}>
+                 <Button variant='danger' className='align-self-center' onClick={onClickRemove}>
+                     {t('remove')}
+                 </Button>
+             </Can>
+
     <h1><MultiLanguageText nl={page.pagetag} en={page.pagetag_en} /></h1>
     <MultiLanguageText nl={page.information} en={page.information_en} renderFunction={renderMarkdown} />
   </div >;
