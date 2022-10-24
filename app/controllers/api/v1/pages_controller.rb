@@ -3,6 +3,7 @@ module Api
     class PagesController < Api::V1::ApplicationController
       load_and_authorize_resource
 
+      respond_to :html, :json
       def home
         @newsitems = Newsitem.where(:agreed => true).order('created_at DESC').limit(6)
         @agendaitems = Agendaitem.where("date >= ?", Time.now).order('date ASC').limit(10)
@@ -107,10 +108,10 @@ module Api
       end
 
       def destroy
-        page = Page.find(params[:id])
-        page.destroy
+        @page = Page.find(params[:id])
+        @page.destroy
         flash[:success] = "Pagina verwijderd"
-        redirect_to :root
+        respond_with @page
       end
 
       def nieuw
