@@ -81,7 +81,8 @@ module Api
       def create
         @page = Page.new(page_params)
         if @page.save
-          redirect_to @page
+          # redirect_to @page
+          render json: @page, status: :created
         else
           render 'new'
         end
