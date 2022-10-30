@@ -78,6 +78,10 @@ function deleteEvent(agendaItemId, id) {
     return restCall(`agendaitems/${agendaItemId}/events/${id}`, {method: 'delete'})
 }
 
+function getPhotoalbums() {
+    return restCall('photoalbums').then(res => res.data)
+}
+
 export {
     getAgendaitem,
     getAgendaitems,
@@ -93,5 +97,6 @@ export {
     createSubscription,
     getEventTypes,
     createEvent,
-    deleteEvent
+    deleteEvent,
+    getPhotoalbums
 }

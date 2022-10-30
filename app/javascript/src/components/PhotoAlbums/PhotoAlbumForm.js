@@ -1,7 +1,7 @@
 import React from "react";
 import FormField from "../Generic/FormField";
 import {Form} from "react-bootstrap";
-
+import {getAgendaitems} from "./queries";
 
 const photoAlbumFields = [{
     name: 'name',
@@ -16,11 +16,15 @@ const photoAlbumFields = [{
     type: 'boolean',
     required: true
 }, {
-    name: "date",
-    type: 'date',
+    name: "agendaitem_id",
+    type: "reference",
+    itemQuery: [['agendaitems'], getAgendaitems]
+}, {
+    name: "eventdate",
+    type: 'datetime',
     required: true
 }, {
-    name: "external_url",
+    name: 'url',
     type: 'text'
 }]
 
@@ -28,6 +32,7 @@ const photoAlbumFields = [{
 const PhotoAlbumForm = ({values, setValue, children }) => {
     return <Form>
         {photoAlbumFields.map((field) => {
+            let newItemQuery = field.itemQuery;
             return <FormField
                 key={field.name}
                 modelName={'photoalbum'}
@@ -36,6 +41,7 @@ const PhotoAlbumForm = ({values, setValue, children }) => {
                 setValue={(v) => setValue(field.name, v)}
                 type={field.type}
                 required={field.required}
+                itemQuery={newItemQuery}
             />
         })}
         {children}

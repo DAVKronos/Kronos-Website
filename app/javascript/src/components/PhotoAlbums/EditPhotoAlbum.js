@@ -8,7 +8,7 @@ import {getPhotoAlbum, updatePhotoAlbum} from "./queries";
 import EditPhotos from "./EditPhotos";
 
 const EditPhotoAlbumWithData = (props) => {
-    const id = parseInt(props.match.params.id);;
+    const id = parseInt(props.match.params.id);
     const { isLoading, isError, data, error } = useQuery(['photoalbums', id], getPhotoAlbum);
     if (isLoading) {
         return <DefaultSpinner />;
@@ -20,16 +20,18 @@ const EditPhotoAlbum = ({photoAlbum}) => {
 
     const queryCache = useQueryCache();
     const history = useHistory();
-    const {id, name, name_en, public:public_status, date, external_url} = photoAlbum;
-    const editableFields = {name, name_en, public:public_status, date, external_url};
+    console.log(photoAlbum)
+    const {id, created_at, updated_at, ...visibleFields} = photoAlbum;
+    console.log(visibleFields)
     const onSuccess = (savedPhotoAlbum) => {
         queryCache.setQueryData(['photoalbums', savedPhotoAlbum.id], savedPhotoAlbum)
+        console.log(savedPhotoAlbum)
         history.push(`/photoalbums/${savedPhotoAlbum.id}`)
     }
 
     return <div><EditObjectComponent
         id={id}
-        existingObject={editableFields}
+        existingObject={visibleFields}
         objectName='photoAlbum'
         updateFunction={updatePhotoAlbum}
         onSuccess={onSuccess}

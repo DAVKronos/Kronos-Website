@@ -15,7 +15,6 @@ const agendaItemFields = [{
     type: 'text',
     required: true
 }, {
-
     name: "agendaitemtype_id",
     type: 'reference',
     required: true,

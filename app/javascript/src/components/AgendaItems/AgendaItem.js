@@ -8,7 +8,7 @@ import {BsGeoAlt, BsClock, BsList, BsLink} from 'react-icons/bs';
 import {format} from '../../utils/date-format';
 import EventsResults from "./EventsResults";
 import {useQuery} from "react-query";
-import {getAgendaitem, removeAgendaitem} from "./queries";
+import {getAgendaitem, removeAgendaitem, getPhotoalbums} from "./queries";
 import DefaultSpinner from "../Generic/Spinner";
 import MultiLanguageText from "../Generic/MultiLanguageText";
 import {Can} from '../../utils/auth-helper';
@@ -27,13 +27,13 @@ function AgendaItem(props) {
     const history = useHistory();
     const id = parseInt(props.match.params.id);
     const {isLoading, isError, data: agendaItem, error} = useQuery(['agendaitems', id], getAgendaitem)
+    const {isLoading2, isError2, data: photoAlbums, error2} = useQuery('photoalbums',getPhotoalbums)
     if (isLoading) {
         return <DefaultSpinner/>;
     }
     if (!agendaItem) {
         return null;
     }
-
     const onClickRemove = () => {
         removeAgendaitem(id).then(() => {
             history.push('/agendaitems')
@@ -45,6 +45,8 @@ function AgendaItem(props) {
     const renderDescription = (text) => {   
         return <ReactMarkdown source={text}/>;
     }
+
+
     return <React.Fragment>
         <Row>
             <Col md={8}>
@@ -92,9 +94,26 @@ function AgendaItem(props) {
                     <Col xs={1}><BsList/></Col>
                     <Col xs={11}><MultiLanguageText nl={agendaItem.description} en={agendaItem.description_en} renderFunction={renderDescription}/></Col>
                 </Row>
-                <Row><Col>
+                {photoAlbums && photoAlbums.filter(p => p.id === agendaItem.id).length>0 &&
+                <Row>
+                    <Col>
+                        <h3><MultiLanguageText nl='Fotos' en='Photos'/></h3>
+                    </Col>
+                </Row>}
+                {photoAlbums && photoAlbums.filter(p => p.id === agendaItem.id).length>0 &&
+                photoAlbums.filter(p => p.agendaitem_id === agendaItem.id).map(photoalbum => {
+                return <Row key ={photoalbum.id}>
+                    <Col xs={12}>
+                        <Link  to={`/photoalbums/${photoalbum.id}`}><MultiLanguageText nl={photoalbum.name} en={photoalbum.name_en}/></Link>
+                    </Col>
+                </Row>
+                })
+                }
+                <Row>
+                    <Col>
                     <EventsResults agendaItemId={agendaItem.id}/>
-                </Col></Row>
+                    </Col>
+                </Row>
             </Col>
 
             <Col md={4}>

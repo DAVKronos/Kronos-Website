@@ -215,9 +215,10 @@
     "photoalbum": {
       "name": "Name (Dutch)",
       "name_en": "Name (English)",
-      "date": "Date",
+      "agendaitem_id": "Agendaitem",
+      "eventdate": "Date",
       "public": "Public",
-      "external_url": "External URL"
+      "url": "External URL"
     },
     "contact": {
       "name": "Name",

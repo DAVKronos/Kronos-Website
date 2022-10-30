@@ -5,6 +5,10 @@ function getPhotoAlbums() {
     return restCall(`photoalbums`).then(res => res.data)
 }
 
+function getAgendaitems() {
+    return restCall('agendaitems').then(res => res.data)
+}
+
 function getPhotoAlbum(queryKey, id) {
     return restCall(`photoalbums/${id}`).then(res => res.data)
 }
@@ -50,4 +54,4 @@ function deletePhoto(photoAlbumId, photoId) {
 }
 
 
-export {getPhotoAlbums, getPhotoAlbum, createPhotoAlbum, updatePhotoAlbum, removePhotoAlbum, getPhotos, addPhotosToAlbums, deletePhoto}
+export {getPhotoAlbums, getAgendaitems, getPhotoAlbum, createPhotoAlbum, updatePhotoAlbum, removePhotoAlbum, getPhotos, addPhotosToAlbums, deletePhoto}
