@@ -1,20 +1,20 @@
-import React from "react";
-import FormField from "../../Generic/FormField";
-import { Form } from "react-bootstrap";
-import { getFolders } from "../queries";
+import React from 'react'
+import FormField from '../../Generic/FormField'
+import { Form } from 'react-bootstrap'
+import { getFolders } from '../queries'
 
 const folderFields = [
   {
-    name: "name",
-    type: "text",
-    required: true,
+    name: 'name',
+    type: 'text',
+    required: true
   },
   {
-    name: "folder_id",
-    type: "reference",
+    name: 'folder_id',
+    type: 'reference',
     itemQuery: [['folders'], getFolders]
   }
-];
+]
 
 // TODO: make required do something (with react-hook-form)
 const FolderForm = ({ values, setValue, children }) => {
@@ -22,12 +22,11 @@ const FolderForm = ({ values, setValue, children }) => {
     <Form>
       {folderFields.map(
         ({ name, type, required, itemQuery, ...otherProps }) => {
-          
           return (
             <FormField
               {...otherProps}
               key={name}
-              modelName={"folder"}
+              modelName='folder'
               fieldName={name}
               value={values[name]}
               setValue={(v) => setValue(name, v)}
@@ -35,12 +34,12 @@ const FolderForm = ({ values, setValue, children }) => {
               required={required}
               itemQuery={itemQuery}
             />
-          );
+          )
         }
       )}
       {children}
     </Form>
-  );
-};
+  )
+}
 
-export default FolderForm;
+export default FolderForm
