@@ -15,19 +15,19 @@ const LoginMenu = () => {
     const [password, setPassword] = useState();
     const [rememberMe, setRememberMe] = useState(true);
     const [loading, setLoading] = useState(false);
-    const [incorrectPassword, setIncorrectPassword] = useState(false);
+    const [incorrectCredentials, setIncorrectCredentials] = useState(false);
     const { setUserData } = useContext(authContext);
     const onFormSubmit = e => {
         e.preventDefault();
         setLoading(true);
         login(email, password, rememberMe).then((user) => {
             setLoading(false);
-	    setIncorrectPassword(false);
+	    setIncorrectCredentials(false);
             setUserData(user);
         })
 	.catch((err) => {
 	    setLoading(false);
-	    setIncorrectPassword(true);
+	    setIncorrectCredentials(true);
 	});
     };
 
@@ -36,8 +36,8 @@ const LoginMenu = () => {
     }
 
     return <Form className="form-padding login-menu" onSubmit={onFormSubmit}>
-	       { incorrectPassword &&
-		   <Alert variant="danger">Username or password incorrect.</Alert>}
+	       { incorrectCredentials &&
+		 <Alert variant="danger">{t('incorrectCredentials')}</Alert>}
         <Form.Group controlId="formBasicEmail">
             <Form.Control type="email" placeholder={t('email')} onChange={e => {
                 setEmail(e.target.value);

@@ -50,7 +50,8 @@
     "admin": "Admin",
     "forgotPassword": "Forgot password",
     "resetPasswordSentMessage": "Password reset succesfull. An email is sent with instruction to proceed resetting your password.",
-    "resetPassword": "Reset password"
+    "resetPassword": "Reset password",
+    "incorrectCredentials": "Username or password incorrect."  
   },
   "footer": {
     "sponsors": "Sponsors"

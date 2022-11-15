@@ -50,7 +50,8 @@
     "admin": "Beheer",
     "forgotPassword": "Wachtwoord vergeten",
     "resetPasswordSentMessage": "Wachtwoord is gereset. Volg de instructies uit de email.",
-    "resetPassword": "Wachtwoord resetten"
+    "resetPassword": "Wachtwoord resetten",
+    "incorrectCredentials": "Gebruikersnaam of wachtwoord onjuist."  
   },
   "footer": {
     "sponsors": "Sponsoren"
