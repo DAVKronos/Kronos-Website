@@ -1,42 +1,44 @@
-import React from 'react';
-import {useQuery} from "react-query";
-import { getUnapprovedNewsItems } from './queries';
-import {Table} from 'react-bootstrap'
-import { Link } from "react-router-dom";
+import React from 'react'
+import { useQuery } from 'react-query'
+import { getUnapprovedNewsItems } from './queries'
+import { Table } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const ApproveNews = () => {
-    const { isLoading, isError, data: newsitems, error } = useQuery('unapproved-newsitems', getUnapprovedNewsItems)
-    return <React.Fragment>
-    <h1>Nieuwsitems goedkeuren</h1>
-    <Table striped>
+  const { isLoading, isError, data: newsitems, error } = useQuery('unapproved-newsitems', getUnapprovedNewsItems)
+  return (
+    <>
+      <h1>Nieuwsitems goedkeuren</h1>
+      <Table striped>
         <thead>
-        <tr>
+          <tr>
             <th>
-                Titel
+              Titel
             </th>
             <th>
-                Auteur
+              Auteur
             </th>
             <th>
-                Laatst gewijzigd op
+              Laatst gewijzigd op
             </th>
-            <th>
-                
-            </th>
-        </tr>
+            <th />
+          </tr>
         </thead>
         <tbody>
-        {newsitems && newsitems.map(newsitem => {
-            return <tr key={newsitem.id}>
+          {newsitems && newsitems.map(newsitem => {
+            return (
+              <tr key={newsitem.id}>
                 <td>{newsitem.title}</td>
                 <td>{newsitem.user.name}</td>
                 <td>{newsitem.updated_at}</td>
                 <td><Link to={`/newsitems/${newsitem.id}`}>Bekijken</Link></td>
-            </tr>;
-        })}
+              </tr>
+            )
+          })}
         </tbody>
-    </Table>
-</React.Fragment>;
+      </Table>
+    </>
+  )
 }
 
 export default ApproveNews

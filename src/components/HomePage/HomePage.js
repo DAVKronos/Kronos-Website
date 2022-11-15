@@ -1,34 +1,37 @@
 import React from 'react'
-import {Row, Col} from 'react-bootstrap';
-import NewsItems from "./HomePageNewsItems";
-import AgendaItemsSidebar from "./AgendaItemsSidebar";
-import StravaSidebar from "./StravaSidebar";
-import UserBirthdays from "./UserBirthdays";
-import {useTranslation} from "react-i18next";
-import {Can} from "../../utils/auth-helper";
-import Announcement from './Announcement';
+import { Row, Col } from 'react-bootstrap'
+import NewsItems from './HomePageNewsItems'
+import AgendaItemsSidebar from './AgendaItemsSidebar'
+import StravaSidebar from './StravaSidebar'
+import UserBirthdays from './UserBirthdays'
+import { useTranslation } from 'react-i18next'
+import { Can } from '../../utils/auth-helper'
+import Announcement from './Announcement'
 
-let HomePage = () => {
-    const { t } = useTranslation('homepage');
-    return (
-    <React.Fragment>
-    <Row>
+const HomePage = () => {
+  const { t } = useTranslation('homepage')
+  return (
+    <>
+      <Row>
         <Col md={12}>
-            <Announcement/>
+          <Announcement />
         </Col>
         <Col><h1>{t('news')}</h1></Col>
-    </Row>
-    <Row>
+      </Row>
+      <Row>
         <Col md={8}>
-            <NewsItems /></Col>
-        <Col md={4}>
-            <AgendaItemsSidebar />
-            <StravaSidebar />
-            <Can I='read' a="User">
-                <UserBirthdays />
-            </Can>
+          <NewsItems />
         </Col>
-    </Row></React.Fragment>);
-};
+        <Col md={4}>
+          <AgendaItemsSidebar />
+          <StravaSidebar />
+          <Can I='read' a='User'>
+            <UserBirthdays />
+          </Can>
+        </Col>
+      </Row>
+    </>
+  )
+}
 
-export default HomePage;
+export default HomePage

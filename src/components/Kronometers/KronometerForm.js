@@ -1,34 +1,34 @@
-import React from "react";
-import FormField from "../Generic/FormField";
-import { Form } from "react-bootstrap";
-import {getFolders} from "./queries";
+import React from 'react'
+import FormField from '../Generic/FormField'
+import { Form } from 'react-bootstrap'
+import { getFolders } from './queries'
 
 const kronometerFields = [
   {
-    name: "name",
-    type: "text",
-    required: true,
+    name: 'name',
+    type: 'text',
+    required: true
   },
   {
-    name: "date",
-    type: "date",
-    required: true,
+    name: 'date',
+    type: 'date',
+    required: true
   },
   {
-    name: "public",
-    type: "boolean",
-    required: true,
+    name: 'public',
+    type: 'boolean',
+    required: true
   },
   {
-    name: "folder_id",
-    type: "reference",
+    name: 'folder_id',
+    type: 'reference',
     itemQuery: [['folders'], getFolders]
   },
   {
-    name: "file",
-    type: "file"
-  },
-];
+    name: 'file',
+    type: 'file'
+  }
+]
 
 // TODO: make required do something (with react-hook-form)
 const KronometerForm = ({ values, setValue, children }) => {
@@ -36,12 +36,11 @@ const KronometerForm = ({ values, setValue, children }) => {
     <Form>
       {kronometerFields.map(
         ({ name, type, required, itemQuery, ...otherProps }) => {
-          
           return (
             <FormField
               {...otherProps}
               key={name}
-              modelName={"kronometer"}
+              modelName='kronometer'
               fieldName={name}
               value={values[name]}
               setValue={(v) => setValue(name, v)}
@@ -49,12 +48,12 @@ const KronometerForm = ({ values, setValue, children }) => {
               required={required}
               itemQuery={itemQuery}
             />
-          );
+          )
         }
       )}
       {children}
     </Form>
-  );
-};
+  )
+}
 
-export default KronometerForm;
+export default KronometerForm
