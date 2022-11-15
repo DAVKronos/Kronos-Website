@@ -1,7 +1,0 @@
-%h3 Inschrijvingen
-.events
-  -@subscriptions.each do |subscription|
-    .event
-      = subscription.name
-      = subscription.comment
-  = render :partial => "form", :locals => { :subscription => @subscription }

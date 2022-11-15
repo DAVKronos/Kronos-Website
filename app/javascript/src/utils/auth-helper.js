@@ -33,7 +33,7 @@ async function validateToken() {
     }
     const {uid, client} = authDetails;
     const access_token = authDetails['access-token']
-    return axios.get(`/api/v1/auth/validate_token?uid=${uid}&client=${client}&access-token=${access_token}`).then(response => {
+    return axios.get(`/auth/validate_token?uid=${uid}&client=${client}&access-token=${access_token}`).then(response => {
         const user = response.data.data;
         return updateAbilities(ability).then(() => {
             return user;
@@ -56,7 +56,7 @@ function setAuthDetails(obj){
 }
 
 function login(email, password, rememberMe) {
-    return axios.post(`/api/v1/auth/sign_in`, {email, password}, getConfig())
+    return axios.post(`/auth/sign_in`, {email, password}, getConfig())
         .then((response) => {
             let auth_data = {};
             let user = response.data.data;
@@ -75,7 +75,7 @@ function login(email, password, rememberMe) {
 }
 
 function logout() {
-    return axios.delete(`/api/v1/auth/sign_out`, {...getConfig()})
+    return axios.delete(`/auth/sign_out`, {...getConfig()})
         .then(() => {
             localStorage.removeItem('kronos-auth');
             setAuthDetails(null);
@@ -94,18 +94,18 @@ function forgotPassword(email, ) {
     
     const host = window && window.location && window.location.host //in case of server side rendering
     const protocol = window && window.location && window.location.protocol //in case of server side rendering
-    return axios.post(`/api/v1/auth/password`, {email, redirect_url: `${protocol}//${host}/app/users/reset_password`}, getConfig());
+    return axios.post(`/auth/password`, {email, redirect_url: `${protocol}//${host}/app/users/reset_password`}, getConfig());
 
 } 
 
 function changePassword(password, password_confirmation) {
-    return axios.put('/api/v1/auth/password', {password, password_confirmation}, getConfig())
+    return axios.put('/auth/password', {password, password_confirmation}, getConfig())
 }
 
 function resetPassword(password, password_confirmation, uid, client, access_token) {
     const config = getConfig();
     config.headers = {...config.headers, 'access-token': access_token, uid, client}
-    return axios.put('/api/v1/auth/password', {password, password_confirmation}, config)
+    return axios.put('/auth/password', {password, password_confirmation}, config)
 }
 
 const Can = createCanBoundTo(ability);

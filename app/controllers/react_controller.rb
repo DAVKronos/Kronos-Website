@@ -1,6 +1,6 @@
 class ReactController < Admin::ApplicationController
-  load_and_authorize_resource
-
+  skip_authorization_check
+  
   def index
     render :layout => 'react'
   end

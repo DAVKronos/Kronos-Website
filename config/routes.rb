@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get '/*page', :to => 'react#index'
+  mount_devise_token_auth_for 'User', at: 'auth'
   namespace :api do
     namespace :v1 do
-      mount_devise_token_auth_for 'User', at: 'auth'
 
       resources :mailinglists
       resources :aliases
@@ -94,7 +93,7 @@ Rails.application.routes.draw do
       get '/abilities', :to => 'abilities#index'
     end
   end
-  
+  get '/*page', :to => 'react#index'
   root :to => 'react#index'
 
 end

@@ -1,9 +1,0 @@
-%h1= t :all_mailinglists
-
-- @mailinglists.each do |mailinglist|
-
-  = render "mailinglist", :mailinglist => mailinglist
-
-%p
-  = link_to raw("<span class='glyphicon glyphicon-plus'></span> #{t(:add)}"), new_mailinglist_path,
-  :class => 'btn btn-primary'
