@@ -92,7 +92,7 @@ function forgotPassword (email) {
 
   const host = window && window.location && window.location.host // in case of server side rendering
   const protocol = window && window.location && window.location.protocol // in case of server side rendering
-  return axios.post('/auth/password', { email, redirect_url: `${protocol}//${host}/app/users/reset_password` }, getConfig())
+  return axios.post('/auth/password', { email, redirect_url: `${protocol}//${host}/users/reset_password` }, getConfig())
 }
 
 function changePassword (password, password_confirmation) {
