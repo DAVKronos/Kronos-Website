@@ -1,3 +1,2 @@
 #!/bin/bash
-
-bundle exec bin/webpack-dev-server
+bin/webpack --watch --colors --progress --host 0.0.0.0
