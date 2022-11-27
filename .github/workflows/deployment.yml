@@ -24,6 +24,7 @@ jobs:
       uses: docker/build-push-action@v3.1.1
       with:
         # List of tags
+        push: true
         tags: davkronos/kronos-website
 
 
