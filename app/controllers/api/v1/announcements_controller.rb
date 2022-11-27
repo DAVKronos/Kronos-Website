@@ -44,7 +44,7 @@ class AnnouncementsController < Api::V1::ApplicationController
 
     respond_to do |format|
       if @announcement.save
-        format.json { render json: @announcement, status: :created, location: @announcement }
+        format.json { render json: @announcement, status: :created }
       else
         format.json { render json: @announcement.errors, status: :unprocessable_entity }
       end

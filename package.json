@@ -30,12 +30,14 @@
     "react_ujs": "^2.6.2"
   },
   "devDependencies": {
+    "standard": "^17.0.0",
     "webpack-bundle-analyzer": "^3.9.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-visualizer-plugin": "^0.1.11"
   },
   "scripts": {
     "webpack:analyze": "yarn webpack:build_json && yarn webpack:analyze_json",
     "webpack:build_json": "RAILS_ENV=${RAILS_ENV:-production} NODE_ENV=${NODE_ENV:-production} bin/webpack --profile --json > tmp/webpack-stats.json",
-    "webpack:analyze_json": "npx webpack-bundle-analyzer tmp/webpack-stats.json public/packs"
+    "webpack:analyze_json": "npx webpack-bundle-analyzer tmp/webpack-stats.json public/packs --host 0.0.0.0"
   }
 }

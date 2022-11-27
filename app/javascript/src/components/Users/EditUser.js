@@ -1,47 +1,47 @@
-import React from "react";
-import { useQuery, useQueryCache } from "react-query";
-import DefaultSpinner from "../Generic/Spinner";
-import { useHistory } from "react-router-dom";
-import EditObjectComponent from "../Generic/EditObjectComponent";
-import { getUser, updateUser } from "./queries";
-import UserForm, { adminUserFields } from "./UserForm";
+import React from 'react'
+import { useQuery, useQueryCache } from 'react-query'
+import DefaultSpinner from '../Generic/Spinner'
+import { useHistory } from 'react-router-dom'
+import EditObjectComponent from '../Generic/EditObjectComponent'
+import { getUser, updateUser } from './queries'
+import UserForm, { adminUserFields } from './UserForm'
 
 const EditUserWithData = (props) => {
-  const id = parseInt(props.match.params.id);
-  const { isLoading, isError, data, error } = useQuery(["users", id], getUser);
+  const id = parseInt(props.match.params.id)
+  const { isLoading, isError, data, error } = useQuery(['users', id], getUser)
   if (isLoading) {
-    return <DefaultSpinner />;
+    return <DefaultSpinner />
   }
-  return data && <EditUser user={data} />;
-};
+  return data && <EditUser user={data} />
+}
 
 const EditUser = ({ user }) => {
-  const queryCache = useQueryCache();
-  const history = useHistory();
-  const { id, name } = user;
-  let editableFields = Object.fromEntries(
+  const queryCache = useQueryCache()
+  const history = useHistory()
+  const { id, name } = user
+  const editableFields = Object.fromEntries(
     adminUserFields
-      .filter((fieldObject) => fieldObject.type != "file")
-      .map((fieldObject) =>  [fieldObject.name, user[fieldObject.name]])
-  );
+      .filter((fieldObject) => fieldObject.type != 'file')
+      .map((fieldObject) => [fieldObject.name, user[fieldObject.name]])
+  )
 
-  console.log(editableFields);
+  console.log(editableFields)
 
   const onSuccess = (savedUser) => {
-    queryCache.setQueryData(["users", savedUser.id], savedUser);
-    history.push(`/users/${savedUser.id}`);
-  };
+    queryCache.setQueryData(['users', savedUser.id], savedUser)
+    history.push(`/users/${savedUser.id}`)
+  }
 
   return (
     <EditObjectComponent
       id={id}
       existingObject={editableFields}
-      objectName="user"
+      objectName='user'
       updateFunction={updateUser}
       onSuccess={onSuccess}
       FormComponent={UserForm}
     />
-  );
-};
+  )
+}
 
-export default EditUserWithData;
+export default EditUserWithData

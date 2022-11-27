@@ -48,7 +48,7 @@ module Api
         respond_to do |format|
           if @agendaitemtype.save
             format.html { redirect_to @agendaitemtype, notice: 'Agendaitemtype was successfully created.' }
-            format.json { render json: @agendaitemtype, status: :created, location: @agendaitemtype }
+            format.json { render json: @agendaitemtype, status: :created }
           else
             format.html { render action: "new" }
             format.json { render json: @agendaitemtype.errors, status: :unprocessable_entity }

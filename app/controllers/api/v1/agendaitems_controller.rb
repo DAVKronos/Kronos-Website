@@ -54,10 +54,10 @@ module Api
       end
 
       def create
-        agendaitem = Agendaitem.new(agendaitem_params)
-        agendaitem.user = current_user
-        if agendaitem.save
-          redirect_to agendaitem
+        @agendaitem = Agendaitem.new(agendaitem_params)
+        @agendaitem.user = current_user
+        if @agendaitem.save
+          render json: @agendaitem, status: :created
         else
           render json: {message: agendaitem.errors.full_messages}, status: :bad_request
         end

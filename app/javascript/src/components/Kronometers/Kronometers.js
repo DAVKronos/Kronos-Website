@@ -1,129 +1,128 @@
-import React, { useState } from "react";
-import { Row, Col, Card, Button } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState } from 'react'
+import { Row, Col, Card, Button } from 'react-bootstrap'
+import { Link, useHistory } from 'react-router-dom'
 import {
   getKronometersByFolder,
   getKronometers,
   getFolders,
   getFolderById,
   removeFolder,
-  removeKronometer,
-} from "./queries";
-import { useQuery, useQueryCache } from "react-query";
-import { useTranslation } from "react-i18next";
-import DefaultSpinner from "../Generic/Spinner";
-import { BsFolder, BsArrowUp } from "react-icons/bs";
-import { Can } from "../../utils/auth-helper";
+  removeKronometer
+} from './queries'
+import { useQuery, useQueryCache } from 'react-query'
+import { useTranslation } from 'react-i18next'
+import DefaultSpinner from '../Generic/Spinner'
+import { BsFolder, BsArrowUp } from 'react-icons/bs'
+import { Can } from '../../utils/auth-helper'
 
 const EditFolderButtons = ({ folderId }) => {
   if (!folderId) {
-    return null;
+    return null
   }
-  const [removing, setRemoving] = useState(false);
-  const history = useHistory();
+  const [removing, setRemoving] = useState(false)
+  const history = useHistory()
 
   const onClickRemove = () => {
-    setRemoving(true);
+    setRemoving(true)
     removeFolder(folderId).then(() => {
-      setRemoving(false);
-      history.push("/kronometers");
-    });
-  };
+      setRemoving(false)
+      history.push('/kronometers')
+    })
+  }
 
   return (
     <Col
-      style={{ display: "flex", alignItems: "flex-end", justifyContent: "end" }}
+      style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'end' }}
     >
-      <Can I="update" a={"Folder"}>
+      <Can I='update' a='Folder'>
         <Button
-          variant="warning"
+          variant='warning'
           disabled={removing}
-          size="sm"
+          size='sm'
           as={Link}
           to={`/folders/${folderId}/edit`}
         >
           Bewerk
         </Button>
       </Can>
-      <Can I="delete" a={"Folder"}>
+      <Can I='delete' a='Folder'>
         <Button
-          variant="danger"
+          variant='danger'
           disabled={removing}
-          size="sm"
+          size='sm'
           onClick={onClickRemove}
         >
-          {removing ? <DefaultSpinner inline size="sm" /> : "Verwijder"}
+          {removing ? <DefaultSpinner inline size='sm' /> : 'Verwijder'}
         </Button>
       </Can>
     </Col>
-  );
-};
+  )
+}
 
 const Kronometers = (props) => {
-
-  const queryCache = useQueryCache();
+  const queryCache = useQueryCache()
   const folderId =
     props.match &&
     props.match.params &&
     props.match.params.folder_id &&
-    parseInt(props.match.params.folder_id);
+    parseInt(props.match.params.folder_id)
   let folderName,
     folders,
     isFolderLoading,
     kronometers,
     isKronometerLoading,
-    parentId;
-  let queryParams;
-  const { t } = useTranslation("kronometerPage");
+    parentId
+  let queryParams
+  const { t } = useTranslation('kronometerPage')
   if (!folderId) {
-    const folderQuery = useQuery("folders", getFolders);
-    queryParams = "kronometers";
-    const kronometerQuery = useQuery(queryParams, getKronometers);
-    isFolderLoading = folderQuery.isLoading;
-    folderName = t("mainFolder");
-    folders = folderQuery.data;
-    kronometers = kronometerQuery.data;
-    isKronometerLoading = kronometerQuery.isLoading;
+    const folderQuery = useQuery('folders', getFolders)
+    queryParams = 'kronometers'
+    const kronometerQuery = useQuery(queryParams, getKronometers)
+    isFolderLoading = folderQuery.isLoading
+    folderName = t('mainFolder')
+    folders = folderQuery.data
+    kronometers = kronometerQuery.data
+    isKronometerLoading = kronometerQuery.isLoading
   } else {
-    const folderQuery = useQuery(["folders", folderId], getFolderById);
-    queryParams = ["folders", folderId, "kronometers"];
-    const kronometerQuery = useQuery(queryParams, getKronometersByFolder);
-    isFolderLoading = folderQuery.isLoading;
+    const folderQuery = useQuery(['folders', folderId], getFolderById)
+    queryParams = ['folders', folderId, 'kronometers']
+    const kronometerQuery = useQuery(queryParams, getKronometersByFolder)
+    isFolderLoading = folderQuery.isLoading
     if (folderQuery.data) {
-      folderName = folderQuery.data.name;
-      folders = folderQuery.data.folders;
-      parentId = folderQuery.data.folder_id;
+      folderName = folderQuery.data.name
+      folders = folderQuery.data.folders
+      parentId = folderQuery.data.folder_id
     }
 
-    kronometers = kronometerQuery.data;
-    isKronometerLoading = kronometerQuery.isLoading;
+    kronometers = kronometerQuery.data
+    isKronometerLoading = kronometerQuery.isLoading
   }
 
   const onClickRemove = (kronometerId) => {
     removeKronometer(kronometerId).then(() => {
-      queryCache.invalidateQueries(queryParams);
-    });
-  };
+      queryCache.invalidateQueries(queryParams)
+    })
+  }
 
-  const parentUrl = parentId ? `/kronometers/${parentId}` : "/kronometers";
+  const parentUrl = parentId ? `/kronometers/${parentId}` : '/kronometers'
   const parentButton = folderId && (
-    <Button as={Link} to={parentUrl} size="sm">
+    <Button as={Link} to={parentUrl} size='sm'>
       <BsArrowUp />
     </Button>
-  );
+  )
 
   return (
-    <React.Fragment>
+    <>
       <Row>
         <Col>
-          <h1>{isFolderLoading ? "Loading..." : folderName}</h1>
+          <h1>{isFolderLoading ? 'Loading...' : folderName}</h1>
         </Col>
         <EditFolderButtons folderId={folderId} />
       </Row>
       <Row>
         <Col>
           <h2>
-            {parentButton} {t("subfolders")}
+            {parentButton} {t('subfolders')}
           </h2>
         </Col>
       </Row>
@@ -143,12 +142,12 @@ const Kronometers = (props) => {
                   </Card.Body>
                 </Card>
               </Col>
-            );
+            )
           })}
       </Row>
       <Row>
         <Col>
-          <h2>{t("documents")}</h2>
+          <h2>{t('documents')}</h2>
         </Col>
       </Row>
       <Row>
@@ -158,59 +157,59 @@ const Kronometers = (props) => {
             return (
               <Col key={kronometer.id} md={3} sm={4}>
                 <Card>
-                  <a target="_blank" href={kronometer.url_original}>
+                  <a target='_blank' href={kronometer.url_original} rel='noreferrer'>
                     <Card.Img src={kronometer.url_thumb} />
                   </a>
                   <Card.Body>
                     <Card.Title>{kronometer.name}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">
+                    <Card.Subtitle className='mb-2 text-muted'>
                       {kronometer.date}
                     </Card.Subtitle>
-                    <Can I="update" a={"Kronometer"}>
+                    <Can I='update' a='Kronometer'>
                       <Button
-                        size="sm"
-                        variant="warning"
+                        size='sm'
+                        variant='warning'
                         as={Link}
                         to={`/kronometers/${kronometer.id}/edit`}
                       >
-                        {t("edit")}
+                        {t('edit')}
                       </Button>
                     </Can>
-                    <Can I="delete" a="Kronometer">
+                    <Can I='delete' a='Kronometer'>
                       <Button
-                        size="sm"
-                        variant="danger"
+                        size='sm'
+                        variant='danger'
                         onClick={() => onClickRemove(kronometer.id)}
                       >
-                        {t("remove")}
+                        {t('remove')}
                       </Button>
                     </Can>
                   </Card.Body>
                 </Card>
               </Col>
-            );
+            )
           })}
       </Row>
       <Row>
         <Col>
-          <Can I="create" a={"Folder"}>
-            <Button as={Link} to="/folders/new">
-              {t("generic:addModel", {
-                model: t("models:modelNames.folder", { count: 0 }),
+          <Can I='create' a='Folder'>
+            <Button as={Link} to='/folders/new'>
+              {t('generic:addModel', {
+                model: t('models:modelNames.folder', { count: 0 })
               })}
             </Button>
           </Can>
-          <Can I="create" a={"Kronometer"}>
-            <Button as={Link} to="/kronometers/new">
-              {t("generic:addModel", {
-                model: t("models:modelNames.kronometer", { count: 0 }),
+          <Can I='create' a='Kronometer'>
+            <Button as={Link} to='/kronometers/new'>
+              {t('generic:addModel', {
+                model: t('models:modelNames.kronometer', { count: 0 })
               })}
             </Button>
           </Can>
         </Col>
       </Row>
-    </React.Fragment>
-  );
-};
+    </>
+  )
+}
 
-export default Kronometers;
+export default Kronometers

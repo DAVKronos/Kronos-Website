@@ -43,7 +43,7 @@ module Api
         respond_to do |format|
           if @alias.save
             format.html { redirect_to @alias, notice: 'Alias was successfully created.' }
-            format.json { render json: @alias, status: :created, location: @alias }
+            format.json { render json: @alias, status: :created }
           else
             format.html { render action: "new" }
             format.json { render json: @alias.errors, status: :unprocessable_entity }

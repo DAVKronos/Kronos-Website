@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { authContext } from '../../utils/AuthContext';
+import React, { useContext } from 'react'
+import { authContext } from '../../utils/AuthContext'
 
 const PrivateComponent = ({ children }) => {
-    const { user } = useContext(authContext);
-    return user ? children : null;
-};
+  const { user } = useContext(authContext)
+  return user ? children : null
+}
 
-export default PrivateComponent;
+export default PrivateComponent
