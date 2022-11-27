@@ -9,6 +9,7 @@ import DefaultSpinner from './Spinner'
 import Select from 'react-select'
 
 import { useQuery } from 'react-query'
+import { langFromLocale } from '../../utils/date-format'
 
 registerLocale('nl', nl)
 registerLocale('en', en)
@@ -91,6 +92,7 @@ const FieldControl = ({ type, value, setValue, required, itemQuery, ...props }) 
     return <ReferenceControl {...allProps} />
   } else if (type === 'date' || type === 'datetime' || type === 'time') {
     const { i18n } = useTranslation()
+    const lang = langFromLocale(i18n.language)
     if (!value) {
       value = new Date()
     } else if (!(value instanceof Date)) {
@@ -103,7 +105,7 @@ const FieldControl = ({ type, value, setValue, required, itemQuery, ...props }) 
       return (
         <DatePicker
           selected={value}
-          locale={i18n.language}
+          locale={lang}
           showTimeSelect
           dateFormat='Pp'
           onChange={date => setValue(date)}
@@ -115,7 +117,7 @@ const FieldControl = ({ type, value, setValue, required, itemQuery, ...props }) 
       return (
         <DatePicker
           selected={value}
-          locale={i18n.language}
+          locale={lang}
           showTimeSelect
           showTimeSelectOnly
           timeIntervals={5}
