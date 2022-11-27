@@ -20,7 +20,7 @@ class Kronometer < ApplicationRecord
 
   has_attached_file :file, :styles => { :thumb => ["260", :png] },
                     path: ":rails_root/secure_files/:class/:attachment/:id_partition/:style/:filename",
-                    url: "/kronometers/:id/display/:style"
+                    url: "/api/v1/kronometers/:id/display/:style"
   do_not_validate_attachment_file_type :file
 
   def url_original

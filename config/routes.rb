@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         resources :kronometers
       end
 
+      get '/kronometers/:id/display/:style', to: "kronometers#display", as: "secure_kronometers_display"
       resources :kronometers
 
       resources :announcements do
@@ -93,6 +94,8 @@ Rails.application.routes.draw do
       get '/abilities', :to => 'abilities#index'
     end
   end
+  # for kronometer files
+  
   get '/*page', :to => 'react#index'
   root :to => 'react#index'
 
