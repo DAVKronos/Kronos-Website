@@ -24,7 +24,6 @@ const PageComponent = ({ page, isLoading }) => {
   }
 
   const renderMarkdown = (text) => {
-    text = text.replace('kronos.nl/', 'kronos.nl/app/')
     return <ReactMarkdown source={text} escapeHtml={false} />
   }
 
