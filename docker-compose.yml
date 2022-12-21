@@ -1,47 +1,32 @@
-version: '2.1'
+version: "3.0"
+name: kronoswebsite
 volumes:
   node_modules:
   bundle:
   packs:
   postgres:
-  tmp:
 services:
+  app:
+    build:
+      context: .
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file: .env
+    tmpfs: /app/tmp
+    volumes:
+      # Path on the host, relative to the Compose file
+      - .:/app
+      - node_modules:/app/node_modules
+      - bundle:/app/vendor/bundle
+      - packs:/app/public/packs
   db:
     image: postgres:12.6
     environment:
       POSTGRES_PASSWORD: kronos
     volumes:
       - postgres:/var/lib/postgresql/data
-  app:
-    image: ${DOCKER_IMAGE_NAME-kronoswebsite}:development
-    build:
-      context: .
-      dockerfile: Dockerfile-development
-    ports:
-      - "3000:3000"
-      - "8888:8888"
-    depends_on:
-      - db
-    links:
-      - webpacker
-    env_file: .env
-    command: sh ./script/start_app_development.sh
-    tmpfs: /home/app/tmp
-    volumes:
-      # Path on the host, relative to the Compose file
-      - .:/home/app:cached
-      - tmp:/home/app/tmp
-      - bundle:/usr/local/bundle
-      - node_modules:/home/app/node_modules
-      - packs:/home/app/public/packs
-  webpacker:
-    image: ${DOCKER_IMAGE_NAME-kronoswebsite}:development
-    ports:
-      - "3035:3035"
-    command: sh ./script/start_webpack_dev.sh
-    volumes:
-      # Path on the host, relative to the Compose file
-      - .:/home/app:cached
-      - bundle:/usr/local/bundle
-      - node_modules:/home/app/node_modules
-      - packs:/home/app/public/packs
+
