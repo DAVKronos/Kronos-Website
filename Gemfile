@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 5.2.8'
 gem 'haml', '~> 5.0.4'
 gem 'devise', '~> 4.4'
 gem 'cancancan', '~> 2.0'
@@ -29,7 +29,10 @@ gem 'webpacker'
 gem 'react-rails'
 gem 'devise_token_auth'
 gem 'omniauth'
-gem 'mimemagic', git: 'https://github.com/mimemagicrb/mimemagic.git', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+gem 'mimemagic'
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', require: false
+
 
 # Gems used only for assets
 
