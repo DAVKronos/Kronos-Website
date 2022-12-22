@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 ruby "3.1.3"
 
 gem 'rails', '~> 6.1.6'
+gem 'puma', '~> 6.0'
 gem 'haml', '~> 5.2'
 gem 'devise', '~> 4.4'
 gem 'cancancan', '~> 3.0'
@@ -30,7 +31,6 @@ gem 'prawn-rails'
 gem 'pg', '~> 1.2.3'
 gem "recaptcha"
 gem 'icalendar', '~> 2.0'
-gem 'passenger', '~> 6.0'
 gem 'rack-cors'
 gem 'webpacker'
 gem 'react-rails'
