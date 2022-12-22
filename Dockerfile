@@ -14,4 +14,4 @@ RUN yarn install --frozen-lockfile && yarn cache clean
 COPY Gemfile Gemfile.lock /app
 RUN bundle install
 
-CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+CMD ["bin/rails", "server", "-u", "puma", "-b", "0.0.0.0"]
