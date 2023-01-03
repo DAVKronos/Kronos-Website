@@ -5,7 +5,8 @@ module Api
       # GET /newsitems
       # GET /newsitems.json
       def index
-        @newsitems = Newsitem.where(:agreed => true).order('created_at desc').paginate(:page => params[:page], :per_page => 10)
+#         @newsitems = Newsitem.where(:agreed => true).order('created_at desc').paginate(:page => params[:page], :per_page => 10) # paginated which limits it to 10?
+        @newsitems = Newsitem.where(:agreed => true).order('created_at desc')
         respond_to do |format|
           format.html # index.html.erb
           format.json { render json: @newsitems.map { |newsitem| newsitem.as_json(include: {user: {only: :name}}, methods: [:articlephoto_url_normal, :articlephoto_url_carrousel, :comment_count]) } }
