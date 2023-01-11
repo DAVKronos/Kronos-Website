@@ -144,7 +144,10 @@
   },
   "newsItemPage": {
     "news": "Nieuws",
-    "morenews": "Meer Nieuwsitems"
+    "morenews": "Meer Nieuwsitems",
+    "readMore": "Lees meer",
+    "newsitem": "Nieuwsitem",
+    "new": "Nieuw Nieuwsitem"
   },
   "models": {
     "generic": {

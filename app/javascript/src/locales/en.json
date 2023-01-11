@@ -144,7 +144,10 @@
   },
   "newsItemPage": {
     "news": "News",
-    "morenews": "More Newsitems"
+    "morenews": "More Newsitems",
+    "newsitem": "Newsitem",
+    "readMore": "Read more",
+    "new": "New Newsitem"
   },
   "models": {
     "generic": {
