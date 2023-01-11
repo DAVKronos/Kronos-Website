@@ -18,7 +18,7 @@ const NewsItems = (props) => {
   return (
     <div>
       <NewsItemCarousel items={data.slice(0, 2)} />
-      {data.sort(sort_newsItems).map(item => {
+      {data.sort(sort_newsItems).slice(0, 8).map(item => {
         return <ShortNewsItem key={item.id} item={item} />
       })}
       <Button as={Link} to='/newsitems'>{t('newsItemPage:morenews')}</Button>
