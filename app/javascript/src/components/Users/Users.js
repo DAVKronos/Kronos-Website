@@ -40,6 +40,7 @@ function LetterFilter ({ filter, onChangeFilter, alpha_params }) {
   return (
     <Nav variant='tabs'>
       {alpha_params && alpha_params.map(letter => {
+        console.log(letter)
         return (
           <Nav.Item key={alpha_params.indexOf(letter)}>
             <Nav.Link
@@ -68,7 +69,8 @@ const Users = () => {
   }
 
   const names = users.map(item => item.name)
-  let alpha_params = names.map(name => name.charAt(0).toUpperCase())
+  let alpha_params = names.map(name => name.charAt(0).normalize('NFD').replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, '').toUpperCase())
+  console.log(alpha_params)
   alpha_params = [...new Set(alpha_params)].sort()
 
   const onChangeFilter = (newFilter) => {
