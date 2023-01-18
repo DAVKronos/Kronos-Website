@@ -7,6 +7,7 @@ import { getPages } from './queries'
 import { useTranslation } from 'react-i18next'
 import { Can } from '../../utils/auth-helper'
 import LanguageSwitch from './LanguageSwitch'
+import MultiLanguageText from "../Generic/MultiLanguageText";
 
 function getPagesForMenu (pages, title) {
   return pages.filter((page) => {
@@ -24,7 +25,7 @@ function getHighlightPages (pages) {
   return pages.filter((page) => {
     return page.highlight
   }).map(page => {
-    return <Nav.Link className='highlight' key={page.pagetag} as={NavLink} to={`/${page.pagetag}`} href={`/${page.pagetag}`}>{page.pagetag}</Nav.Link>
+    return <Nav.Link className='highlight' key={page.pagetag} as={NavLink} to={`/${page.pagetag}`} href={`/${page.pagetag}`}><MultiLanguageText nl={page.pagetag} en={page.pagetag_en} /></Nav.Link>
   })
 }
 

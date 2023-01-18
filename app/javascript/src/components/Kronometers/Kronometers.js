@@ -16,11 +16,13 @@ import { BsFolder, BsArrowUp } from 'react-icons/bs'
 import { Can } from '../../utils/auth-helper'
 
 const EditFolderButtons = ({ folderId }) => {
+  const [removing, setRemoving] = useState(false)
+  const history = useHistory()
+  const { t } = useTranslation('generic')
+
   if (!folderId) {
     return null
   }
-  const [removing, setRemoving] = useState(false)
-  const history = useHistory()
 
   const onClickRemove = () => {
     setRemoving(true)
@@ -42,7 +44,7 @@ const EditFolderButtons = ({ folderId }) => {
           as={Link}
           to={`/folders/${folderId}/edit`}
         >
-          Bewerk
+          {t('edit')}
         </Button>
       </Can>
       <Can I='delete' a='Folder'>
@@ -52,7 +54,7 @@ const EditFolderButtons = ({ folderId }) => {
           size='sm'
           onClick={onClickRemove}
         >
-          {removing ? <DefaultSpinner inline size='sm' /> : 'Verwijder'}
+          {removing ? <DefaultSpinner inline size='sm' /> : t('remove')}
         </Button>
       </Can>
     </Col>
