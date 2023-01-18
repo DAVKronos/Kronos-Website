@@ -87,7 +87,9 @@
   "kronometerPage": {
     "mainFolder": "Main folder",
     "subfolders": "Subfolders",
-    "documents": "Documents"
+    "documents": "Documents",
+    "edit": "Edit",
+    "delete": "Delete"
   },
   "userpage": {
     "kronauts": "Kronauts",
