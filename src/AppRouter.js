@@ -33,6 +33,9 @@ const AppRouter = () => {
             <Route exact path='/'>
               <HomePage key='home' />
             </Route>
+            <Route exact path='/home'>
+              <HomePage key='home'/>
+            </Route>
             <Route path='/newsitems'>
               <NewsItemsRouter />
             </Route>
