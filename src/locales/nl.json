@@ -87,7 +87,9 @@
   "kronometerPage": {
     "mainFolder": "Hoofdmap",
     "subfolders": "Submappen",
-    "documents": "Documenten"
+    "documents": "Documenten",
+    "edit": "Bewerken",
+    "delete": "Verwijderen"
   },
   "userpage": {
     "kronauts": "Kronauten",
