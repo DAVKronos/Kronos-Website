@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_01_111111) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_12_23_210350) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,7 +19,7 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -32,8 +31,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.text "metadata"
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.string "checksum"
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -46,13 +45,13 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
   create_table "agendaitems", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255
     t.text "description"
-    t.datetime "date"
+    t.datetime "date", precision: nil
     t.string "location", limit: 255
     t.boolean "subscribe"
-    t.datetime "subscriptiondeadline"
+    t.datetime "subscriptiondeadline", precision: nil
     t.integer "commission_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "category", limit: 255
     t.boolean "intern"
     t.integer "agendaitemtype_id"
@@ -66,14 +65,14 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
   create_table "agendaitemtype_eventtypes", id: :serial, force: :cascade do |t|
     t.integer "agendaitemtype_id"
     t.integer "eventtype_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "agendaitemtypes", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "is_match"
     t.string "name_en", limit: 255
   end
@@ -82,8 +81,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.text "name"
     t.text "emailaddress"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "aliases_mailinglists", id: false, force: :cascade do |t|
@@ -94,14 +93,14 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
 
   create_table "announcements", id: :serial, force: :cascade do |t|
     t.text "message"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "starts_at", precision: nil
+    t.datetime "ends_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "background_file_name", limit: 255
     t.string "background_content_type", limit: 255
     t.integer "background_file_size"
-    t.datetime "background_updated_at"
+    t.datetime "background_updated_at", precision: nil
     t.text "title"
     t.text "url"
   end
@@ -109,16 +108,16 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
   create_table "apps_exceptions", id: :serial, force: :cascade do |t|
     t.string "email", limit: 255
     t.boolean "way"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "group_email", limit: 255
   end
 
   create_table "chatmessages", id: :serial, force: :cascade do |t|
     t.string "by", limit: 255
     t.text "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "email", limit: 255
     t.integer "user_id"
     t.string "user_ip", limit: 255
@@ -127,8 +126,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
   end
 
   create_table "comments", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "user_id"
     t.integer "agendaitem_id"
     t.integer "result_id"
@@ -144,16 +143,16 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.boolean "installed", default: false
     t.integer "user_id", null: false
     t.integer "commission_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "commissions", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255
     t.text "description"
     t.string "email", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "role", limit: 255
     t.string "name_en", limit: 255
     t.text "description_en"
@@ -164,20 +163,20 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.integer "attempts", default: 0
     t.text "handler"
     t.text "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
+    t.datetime "run_at", precision: nil
+    t.datetime "locked_at", precision: nil
+    t.datetime "failed_at", precision: nil
     t.string "locked_by", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "queue", limit: 255
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
     t.time "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "eventtype_id"
     t.integer "agendaitem_id"
     t.float "distance"
@@ -188,8 +187,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.string "formula", limit: 255
     t.string "shortname", limit: 255
     t.string "measuringunit", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "calculated_unit", limit: 255
     t.boolean "show_wind", default: false
     t.string "female_formula", limit: 255
@@ -207,9 +206,9 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.string "file_file_name", limit: 255
     t.string "file_content_type", limit: 255
     t.integer "file_file_size"
-    t.datetime "file_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "file_updated_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "folder_id"
     t.boolean "public", default: false
   end
@@ -217,8 +216,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
   create_table "mailinglist_memberships", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.integer "mailinglist_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["mailinglist_id"], name: "index_mailinglist_memberships_on_mailinglist_id"
     t.index ["user_id"], name: "index_mailinglist_memberships_on_user_id"
   end
@@ -226,8 +225,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
   create_table "mailinglists", id: :serial, force: :cascade do |t|
     t.text "name"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "local_part", limit: 255
     t.integer "commission_id"
     t.integer "mailinglist_id"
@@ -237,14 +236,14 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.string "title", limit: 255
     t.text "news"
     t.boolean "agreed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "user_id"
     t.integer "agreed_by"
     t.string "articlephoto_file_name", limit: 255
     t.string "articlephoto_content_type", limit: 255
     t.integer "articlephoto_file_size"
-    t.datetime "articlephoto_updated_at"
+    t.datetime "articlephoto_updated_at", precision: nil
     t.string "title_en", limit: 255
     t.text "news_en"
   end
@@ -292,8 +291,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
 
   create_table "pages", id: :serial, force: :cascade do |t|
     t.text "information"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "pagetag", limit: 255
     t.string "menu", limit: 255
     t.boolean "highlight"
@@ -305,34 +304,34 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
 
   create_table "photoalbums", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "agendaitem_id"
     t.boolean "public"
-    t.datetime "eventdate"
+    t.datetime "eventdate", precision: nil
     t.string "name_en"
     t.string "url"
   end
 
   create_table "photos", id: :serial, force: :cascade do |t|
     t.string "caption", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "photo_file_name", limit: 255
     t.string "photo_content_type", limit: 255
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "photo_updated_at", precision: nil
     t.integer "photoalbum_id"
     t.string "youtube_id", limit: 255
     t.boolean "processing"
-    t.datetime "exif_date"
+    t.datetime "exif_date", precision: nil
   end
 
   create_table "results", id: :serial, force: :cascade do |t|
     t.string "username", limit: 255
     t.string "result", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "event_id"
     t.integer "user_id"
     t.decimal "wind"
@@ -343,8 +342,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
   create_table "subscriptions", id: :serial, force: :cascade do |t|
     t.text "comment"
     t.string "name", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "user_id"
     t.integer "agendaitem_id"
     t.boolean "reserve", default: false
@@ -357,21 +356,21 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.integer "ypos"
     t.integer "width"
     t.integer "heigth"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "user_sessions", id: :serial, force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "user_types", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255
     t.boolean "donor"
     t.boolean "competition"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "name_en"
   end
 
@@ -386,19 +385,19 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.string "sex", limit: 255
     t.string "licensenumber", limit: 255
     t.boolean "papieren_kronometer", default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "avatar_file_name", limit: 255
     t.string "avatar_content_type", limit: 255
     t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.datetime "avatar_updated_at", precision: nil
     t.string "encrypted_password", limit: 255, default: "", null: false
     t.string "reset_password_token", limit: 255
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.string "current_sign_in_ip", limit: 255
     t.string "last_sign_in_ip", limit: 255
     t.string "phonenumber", limit: 255
@@ -412,7 +411,7 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.text "tokens"
-    t.datetime "confirmed_at", default: "2021-07-21 17:41:51"
+    t.datetime "confirmed_at", precision: nil, default: "2021-07-21 17:41:51"
     t.boolean "allow_password_change", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -425,7 +424,7 @@ ActiveRecord::Schema.define(version: 2022_06_01_111111) do
     t.string "event", limit: 255, null: false
     t.string "whodunnit", limit: 255
     t.text "object"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
