@@ -7,7 +7,7 @@ volumes:
   postgres:
 services:
   app:
-    image: kronos-app:rails6.1.6
+    image: kronos-app:rails7.0
     build:
       context: .
     expose:
