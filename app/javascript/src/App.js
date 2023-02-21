@@ -31,5 +31,4 @@ const App = (props) => {
 }
 
 export { EnvContext }
-
 export default App

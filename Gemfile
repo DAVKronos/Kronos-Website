@@ -4,6 +4,7 @@ ruby "3.1.3"
 gem 'rails', '~> 7.0.4'
 gem "sprockets-rails"
 gem 'puma', '~> 6.0'
+gem 'jsbundling-rails', '~> 1.1'
 gem 'haml', '~> 6.1'
 gem 'devise', '~> 4.4'
 gem 'cancancan', '~> 3.0'
@@ -33,7 +34,6 @@ gem 'pg', '~> 1.2.3'
 gem "recaptcha"
 gem 'icalendar', '~> 2.0'
 gem 'rack-cors'
-gem 'webpacker'
 gem 'react-rails'
 gem 'devise_token_auth'
 gem 'omniauth'
