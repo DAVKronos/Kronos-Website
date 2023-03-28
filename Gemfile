@@ -2,9 +2,9 @@ source 'http://rubygems.org'
 ruby "3.1.3"
 
 gem 'rails', '~> 7.0.4'
-gem "sprockets-rails"
 gem 'puma', '~> 6.0'
 gem 'jsbundling-rails', '~> 1.1'
+gem 'propshaft', '~> 0.7.0'
 gem 'haml', '~> 6.1'
 gem 'devise', '~> 4.4'
 gem 'cancancan', '~> 3.0'
@@ -23,7 +23,6 @@ gem 'calendar_helper', '~> 0.2.6'
 gem 'google-api-client', '~> 0.53.0'
 gem 'selectize-rails', '~> 0.8.5'
 gem 'twitter-typeahead-rails', '~> 0.10.2'
-gem 'bootstrap-sass'
 gem 'execjs', '~> 2.8'
 gem 'paper_trail', '~> 12'
 gem 'momentjs-rails', '>= 2.9.0'
