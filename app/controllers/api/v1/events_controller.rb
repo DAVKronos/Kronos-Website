@@ -64,7 +64,7 @@ module Api
         @event = Event.find(params[:id])
 
         respond_to do |format|
-          if @event.update_attributes(params[:event])
+          if @event.update(params[:event])
             format.html do
               if request.xhr?
                 render :partial => "results/show", :locals => {:event => @event}, :layout => false, :status => :created

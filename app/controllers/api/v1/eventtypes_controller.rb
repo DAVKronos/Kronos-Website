@@ -82,7 +82,7 @@ module Api
         @eventtype = Eventtype.find(params[:id])
 
         respond_to do |format|
-          if @eventtype.update_attributes(eventtype_params)
+          if @eventtype.update(eventtype_params)
             format.html { redirect_to @eventtype, notice: 'Eventtype was successfully updated.' }
             format.json { head :ok }
           else

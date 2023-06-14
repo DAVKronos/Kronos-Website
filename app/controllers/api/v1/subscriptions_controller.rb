@@ -68,7 +68,7 @@ module Api
         @subscription = Subscription.find(params[:id])
 
         respond_to do |format|
-          if @subscription.update_attributes(subscription_params)
+          if @subscription.update(subscription_params)
             format.html { redirect_to @subscription, notice: 'Subscription was successfully updated.' }
             format.json { head :ok }
           else

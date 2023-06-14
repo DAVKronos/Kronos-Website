@@ -64,7 +64,7 @@ module Api
         @photoalbum = Photoalbum.find(params[:id])
 
         respond_to do |format|
-          if @photoalbum.update_attributes(photoalbum_params)
+          if @photoalbum.update(photoalbum_params)
             format.html { redirect_to @photoalbum, notice: 'Photoalbum was successfully updated.' }
             format.json { render json:@photoalbum }
           else

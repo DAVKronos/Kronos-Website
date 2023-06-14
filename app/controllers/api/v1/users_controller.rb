@@ -59,7 +59,7 @@ module Api
 
       def update
         user = User.find_by_id(params[:id])
-        if user.update_attributes(user_params)
+        if user.update(user_params)
           render json: user.as_json(include: {commissions: {only: [:name, :name_en]}}, methods: [:avatar_url_medium, :avatar_url_thumb])
         else
           render json: {message: user.errors.full_messages}, status: :bad_request

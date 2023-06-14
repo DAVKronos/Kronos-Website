@@ -42,7 +42,7 @@ module Api
 
       def update
         @mailinglist = Mailinglist.find(params[:id])
-        if @mailinglist.update_attributes(mailinglist_params)
+        if @mailinglist.update(mailinglist_params)
           render json: @mailinglist.to_json(:include => {:aliases => {:only => :id}, :users => {:only => :id}, :mailinglists => {:only => :id}})
         else
           render json: {message: @mailinglist.errors.full_messages}, status: :bad_request

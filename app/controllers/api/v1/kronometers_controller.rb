@@ -39,7 +39,7 @@ module Api
     
       def update
         kronometer = Kronometer.find(params[:id])
-        if kronometer.update_attributes(kronometer_params)
+        if kronometer.update(kronometer_params)
           render json: kronometer
         else
           render json: {message: kronometer.errors.full_messages}, status: :bad_request

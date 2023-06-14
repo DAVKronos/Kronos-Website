@@ -57,7 +57,7 @@ module Api
         @alias = Alias.find(params[:id])
 
         respond_to do |format|
-          if @alias.update_attributes(alias_params)
+          if @alias.update(alias_params)
             format.html { redirect_to @alias, notice: 'Alias was successfully updated.' }
             format.json { head :no_content }
           else
