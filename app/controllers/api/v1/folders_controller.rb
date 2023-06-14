@@ -28,7 +28,7 @@ module Api
     
       def update
         folder = Folder.find(params[:id])
-        if folder.update_attributes(folder_params)
+        if folder.update(folder_params)
           render json: folder
         else
           render json: {message: folder.errors.full_messages}, status: :bad_request

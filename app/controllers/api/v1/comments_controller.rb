@@ -67,7 +67,7 @@ module Api
         @comment = Comment.find(params[:id])
 
         respond_to do |format|
-          if @comment.update_attributes(comment_params)
+          if @comment.update(comment_params)
             format.html { redirect_to @comment, notice: 'comment was successfully updated.' }
             format.json { head :ok }
           else

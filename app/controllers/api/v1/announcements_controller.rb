@@ -57,7 +57,7 @@ class AnnouncementsController < Api::V1::ApplicationController
     @announcement = Announcement.find(params[:id])
 
     respond_to do |format|
-      if @announcement.update_attributes(announcement_params)
+      if @announcement.update(announcement_params)
         format.json { head :no_content }
       else
         format.json { render json: @announcement.errors, status: :unprocessable_entity }

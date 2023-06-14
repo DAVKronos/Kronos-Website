@@ -62,7 +62,7 @@ module Api
         @agendaitemtype = Agendaitemtype.find(params[:id])
 
         respond_to do |format|
-          if @agendaitemtype.update_attributes(agendaitemtype_params)
+          if @agendaitemtype.update(agendaitemtype_params)
             format.html { redirect_to @agendaitemtype, notice: 'Agendaitemtype was successfully updated.' }
             format.json { head :no_content }
           else

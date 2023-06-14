@@ -97,7 +97,7 @@ module Api
         @page = Page.find(params[:id])
 
         respond_to do |format|
-          if @page.update_attributes(page_params)
+          if @page.update(page_params)
             format.html { redirect_to '/' + @page.pagetag, notice: 'Page was successfully updated.' }
             format.json { render json: @page  }
           else

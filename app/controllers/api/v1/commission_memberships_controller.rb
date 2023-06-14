@@ -22,7 +22,7 @@ module Api
     
       def update
         commission_membership = CommissionMembership.find(params[:id])
-        if commission_membership.update_attributes(commission_membership_params)
+        if commission_membership.update(commission_membership_params)
           render json: commission_membership
         else
           render json: {message: commission_membership.errors.full_messages}, status: :bad_request

@@ -29,7 +29,7 @@ module Api
         @newsitem.agreed_by = current_user.id
 
         respond_to do |format|
-          if @newsitem.update_attributes(params.permit(:id))
+          if @newsitem.update(params.permit(:id))
             format.html { redirect_to :controller => "newsitems", :action => "agree", notice: 'Newsitem was successfully updated.' }
             format.json { head :ok }
           end
@@ -94,7 +94,7 @@ module Api
         @newsitem = Newsitem.find(params[:id])
 
         respond_to do |format|
-          if @newsitem.update_attributes(newsitem_params)
+          if @newsitem.update(newsitem_params)
             format.html { redirect_to @newsitem, notice: 'Newsitem was successfully updated.' }
             format.json { render json:  @newsitem.as_json(include: {user: {only: :name}}, methods: [:articlephoto_url_normal, :articlephoto_url_carrousel]) }
           else

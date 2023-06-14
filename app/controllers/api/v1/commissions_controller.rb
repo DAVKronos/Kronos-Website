@@ -31,7 +31,7 @@ module Api
 
       def update
         commission = Commission.find_by_id(params[:id])
-        if commission.update_attributes(commission_params)
+        if commission.update(commission_params)
           render json: commission
         else
           render json: {message: commission.errors.full_messages}, status: :bad_request
