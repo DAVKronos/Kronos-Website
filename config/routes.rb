@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
 
+      # get 'twannie', to: "folders#display"
+
       resources :mailinglists
       resources :aliases
 
@@ -31,7 +33,9 @@ Rails.application.routes.draw do
 
       resources :folders do
         resources :kronometers
+        resources :folders
       end
+      # get '/folders/unique/:fold_id', to: "folders#display"
 
       get '/kronometers/:id/display/:style', to: "kronometers#display", as: "secure_kronometers_display"
       resources :kronometers

@@ -3,9 +3,11 @@ import { useQueryCache } from 'react-query'
 import { useHistory } from 'react-router-dom'
 import NewObjectComponent from '../Generic/NewObjectComponent'
 import { createKronometer } from './queries'
-import KronometerForm from './KronometerForm'
+import { NewKronometerForm } from './KronometerForm'
 
-const NewFolder = () => {
+const NewKronometer = (props) => {
+  const parentId = props.match.params.parentid &&
+    parseInt(props.match.params.parentid);
   const queryCache = useQueryCache()
   const history = useHistory()
 
@@ -24,9 +26,9 @@ const NewFolder = () => {
       objectName='kronometer'
       createFunction={createKronometer}
       onSuccess={onSuccess}
-      FormComponent={KronometerForm}
+      FormComponent={NewKronometerForm.bind(this, parentId)}
     />
   )
 }
 
-export default NewFolder
+export default NewKronometer

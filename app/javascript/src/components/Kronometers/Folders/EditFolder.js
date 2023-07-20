@@ -4,7 +4,7 @@ import DefaultSpinner from '../../Generic/Spinner'
 import { useHistory } from 'react-router-dom'
 import EditObjectComponent from '../../Generic/EditObjectComponent'
 import { getFolderById, updateFolder } from '../queries'
-import FolderForm from './FolderForm'
+import {EditFolderForm} from './FolderForm'
 
 const EditFolderWithData = (props) => {
   const id = parseInt(props.match.params.id)
@@ -20,11 +20,13 @@ const EditFolder = ({ folder }) => {
   const history = useHistory()
   const { id, name, folder_id } = folder
   const editableFields = { name, folder_id }
+
+  
   const onSuccess = (savedFolder) => {
     queryCache.setQueryData(['folders', savedFolder.id], savedFolder)
     history.push(`/kronometers/${savedFolder.id}`)
   }
-
+  
   return (
     <EditObjectComponent
       id={id}
@@ -32,7 +34,7 @@ const EditFolder = ({ folder }) => {
       objectName='folder'
       updateFunction={updateFolder}
       onSuccess={onSuccess}
-      FormComponent={FolderForm}
+      FormComponent={EditFolderForm.bind(this, id)}
     />
   )
 }

@@ -18,6 +18,12 @@ const KronometerRouter = () => {
         subject='Kronometer'
       />
       <PrivateRoute
+        path='/kronometers/:parentid/new'
+        component={NewKronometer}
+        action='create'
+        subject='Kronometer'
+      />
+      <PrivateRoute
         path='/kronometers/:id/edit'
         component={EditKronometer}
         action='update'

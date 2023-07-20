@@ -14,6 +14,12 @@ const FolderRouter = () => {
         subject='Folder'
       />
       <PrivateRoute
+        path='/folders/:parentid/new'
+        component={NewFolder}
+        action='create'
+        subject='Folder'
+      />
+      <PrivateRoute
         path='/folders/:id/edit'
         component={EditFolder}
         action='update'

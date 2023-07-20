@@ -26,11 +26,14 @@ import PrivateRoute from './components/Generic/PrivateRoute'
 const AppRouter = () => {
   return (
     <Router>
+      <Header />
       <Container fluid='lg'>
-        <Header />
         <div className='main'>
           <Switch>
             <Route exact path='/'>
+              <HomePage key='home' />
+            </Route>
+            <Route exact path='/home'>
               <HomePage key='home' />
             </Route>
             <Route path='/newsitems'>

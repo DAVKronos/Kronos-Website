@@ -13,7 +13,7 @@ module Api
         if params[:folder_id]
           kms = kms.where(folder_id: params[:folder_id])
         else
-          kms = kms.where(folder_id: [nil, ""])
+          kms = kms.where(folder_id: [nil, "", 0])
         end
 
         respond_to do |format|

@@ -10,6 +10,7 @@ import Select from 'react-select'
 
 import { useQuery } from 'react-query'
 import { langFromLocale } from '../../utils/date-format'
+import { getFolderById, getFoldersWithoutId } from '../Kronometers/queries'
 
 registerLocale('nl', nl)
 registerLocale('en', en)
@@ -33,8 +34,29 @@ const FieldLabel = ({ modelName, fieldName }) => {
 }
 
 const ReferenceControl = ({ value, setValue, required, itemQuery, multiple, ...props }) => {
-  const { isLoading, data = [] } = useQuery(...itemQuery)
-  const options = data.map(item => ({ label: item.name, value: item.id }))
+
+  const { isLoading, data = [] } = useQuery(...itemQuery);
+
+  const options = data.map(item => {
+    if (item.folder_id) {
+      let itemLabel = `${item.name}`;
+      let parent = data.find(obj => obj.id === item.folder_id);
+      if (!parent) {
+        return null;
+      }
+      while (parent) {
+        itemLabel = `${parent.name}/${itemLabel}`;
+        if (parent.folder_id) {
+          parent = data.find(obj => obj.id === parent.folder_id);
+        } else {
+          break;
+        }
+      }
+      return { label: itemLabel, value: item.id }
+    }
+    return { label: item.name, value: item.id }
+  }).filter(Boolean)
+    .sort((a, b) => a.label.localeCompare(b.label));
 
   let selectValue
   if (multiple) {

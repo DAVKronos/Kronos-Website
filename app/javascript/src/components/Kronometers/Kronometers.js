@@ -61,18 +61,15 @@ const EditFolderButtons = ({ folderId }) => {
 
 const Kronometers = (props) => {
   const queryCache = useQueryCache()
-  const folderId =
-    props.match &&
-    props.match.params &&
-    props.match.params.folder_id &&
-    parseInt(props.match.params.folder_id)
+  const folderId = props.match.params.folder_id &&
+    parseInt(props.match.params.folder_id);
   let folderName,
     folders,
     isFolderLoading,
     kronometers,
     isKronometerLoading,
-    parentId
-  let queryParams
+    parentId,
+    queryParams
   const { t } = useTranslation('kronometerPage')
   if (!folderId) {
     const folderQuery = useQuery('folders', getFolders)
@@ -93,7 +90,6 @@ const Kronometers = (props) => {
       folders = folderQuery.data.folders
       parentId = folderQuery.data.folder_id
     }
-
     kronometers = kronometerQuery.data
     isKronometerLoading = kronometerQuery.isLoading
   }
@@ -193,14 +189,14 @@ const Kronometers = (props) => {
       <Row>
         <Col>
           <Can I='create' a='Folder'>
-            <Button as={Link} to='/folders/new'>
+            <Button as={Link} to={folderId ? `/folders/${folderId}/new` : `/folders/new`}>
               {t('generic:addModel', {
                 model: t('models:modelNames.folder', { count: 0 })
               })}
             </Button>
           </Can>
           <Can I='create' a='Kronometer'>
-            <Button as={Link} to='/kronometers/new'>
+            <Button as={Link} to={folderId ? `/kronometers/${folderId}/new` : `kronometers/new`}>
               {t('generic:addModel', {
                 model: t('models:modelNames.kronometer', { count: 0 })
               })}
