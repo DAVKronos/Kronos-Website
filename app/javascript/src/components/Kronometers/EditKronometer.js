@@ -4,7 +4,7 @@ import DefaultSpinner from '../Generic/Spinner'
 import { useHistory } from 'react-router-dom'
 import EditObjectComponent from '../Generic/EditObjectComponent'
 import { getKronometerById, updateKronometer } from './queries'
-import KronometerForm from './KronometerForm'
+import { EditKronometerForm } from './KronometerForm'
 
 const EditKronometerWithData = (props) => {
   const id = parseInt(props.match.params.id)
@@ -37,7 +37,7 @@ const EditKronometer = ({ kronometer }) => {
       objectName='kronometer'
       updateFunction={updateKronometer}
       onSuccess={onSuccess}
-      FormComponent={KronometerForm}
+      FormComponent={EditKronometerForm}
     />
   )
 }

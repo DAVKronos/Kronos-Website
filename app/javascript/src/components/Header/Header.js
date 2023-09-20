@@ -1,11 +1,11 @@
 import React from 'react'
 import Logo from './Logo'
 import NavBar from './NavBar'
+import './Header.scss'
 
 const Header = () => {
   return (
     <header>
-      <Logo />
       <NavBar />
     </header>
   )

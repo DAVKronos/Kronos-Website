@@ -6,7 +6,7 @@ import EditPage from './EditPage'
 import NewPage from './NewPage'
 
 // TODO PageId should be accesed by id or pagetag.
-const PhotoAlbumsRouter = () => {
+const PagesRouter = () => {
   return (
     <Switch>
       <PrivateRoute path='/pages/new' component={NewPage} action='create' subject='Page' />
@@ -22,4 +22,4 @@ const PhotoAlbumsRouter = () => {
   )
 }
 
-export default PhotoAlbumsRouter
+export default PagesRouter

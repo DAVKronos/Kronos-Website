@@ -20,12 +20,13 @@ const EnvContext = React.createContext({})
 console.log(i18n)
 const App = (props) => {
   return (
-    <EnvContext.Provider value={props}><AuthProvider>
-      <ReactQueryCacheProvider queryCache={queryCache}>
-        <AppRouter />
-        <CookiesWarning />
-      </ReactQueryCacheProvider>
-    </AuthProvider>
+    <EnvContext.Provider value={props}>
+      <AuthProvider>
+        <ReactQueryCacheProvider queryCache={queryCache}>
+          <AppRouter />
+          <CookiesWarning />
+        </ReactQueryCacheProvider>
+      </AuthProvider>
     </EnvContext.Provider>
   )
 }
