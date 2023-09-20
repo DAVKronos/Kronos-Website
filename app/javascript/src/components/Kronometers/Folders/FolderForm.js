@@ -52,7 +52,7 @@ const EditFolderForm = (folderId, { values, setValue, children }) => {
   return (
     <Form>
       {folderFields.map(
-        ({ name, type, required, itemQuery, ...otherProps }) => {
+        ({ name, type, required, ...otherProps }) => {
           return (
             <FormField
               {...otherProps}
@@ -63,7 +63,6 @@ const EditFolderForm = (folderId, { values, setValue, children }) => {
               setValue={(v) => setValue(name, v)}
               type={type}
               required={required}
-              itemQuery={itemQuery}
             />
           )
         }

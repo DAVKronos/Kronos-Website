@@ -14,7 +14,7 @@ const LanguageSwitch = () => {
   const image = nextLanguage === 'en' ? flagEN : flagNL
   return (
     <Nav.Link className='language-switch' onClick={() => i18n.changeLanguage(nextLanguage)}>
-      <img style={{ minWidth: 12 }} src={image} />
+      <img style={{ minWidth: 12}} src={image} />
     </Nav.Link>
   )
 }

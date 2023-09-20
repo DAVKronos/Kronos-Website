@@ -10,10 +10,13 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 COPY docker/ImageMagick-6/policy.xml /etc/ImageMagick-6/policy.xml
 
 WORKDIR /app
-COPY package.json yarn.lock /app
+RUN git clone "https://github.com/DAVKronos/Kronos-Website.git" . && \
+    git checkout development
+
+# COPY package.json yarn.lock /app
 RUN yarn install --frozen-lockfile && yarn cache clean
 
-COPY Gemfile Gemfile.lock /app
+# COPY Gemfile Gemfile.lock /app
 RUN bundle install
 
 CMD ["bin/rails", "server", "-u", "puma", "-b", "0.0.0.0"]

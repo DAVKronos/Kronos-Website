@@ -3,15 +3,14 @@ import { useQueryCache } from 'react-query'
 import { useHistory } from 'react-router-dom'
 import NewObjectComponent from '../../Generic/NewObjectComponent'
 import { createFolder } from '../queries'
-import {NewFolderForm} from './FolderForm'
+import FolderForm from './FolderForm'
 
 const NewFolder = (props) => {
-
   const parentId = props.match &&
-                   props.match.params &&
-                   props.match.params.parentid &&
-                   parseInt(props.match.params.parentid)
-                   
+    props.match.params &&
+    props.match.params.parentid &&
+    parseInt(props.match.params.parentid)
+
   const queryCache = useQueryCache()
   const history = useHistory()
 

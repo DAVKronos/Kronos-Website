@@ -8,13 +8,16 @@
 @import 'components/Generic/MonthSwitcher';
 @import 'components/PhotoAlbums/PhotoAlbum';
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 html {
   font-size: 14px;
 }
 
-body{
+body {
   background-color: #f5f5f5;
+  margin: 5rem;
 }
 
 .main {
@@ -26,7 +29,14 @@ h1 {
   color: $kronos-green;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+
   small {
     color: #777777;
   }
@@ -67,6 +77,7 @@ a {
     &:hover {
       background-color: #f5f5f5;
     }
+
     a {
       color: #333;
       text-decoration: none;
@@ -76,9 +87,12 @@ a {
 
 .btn {
   margin: 5px 0 0 5px;
+  padding: 5px 1.5rem;
+  border-radius: 150px;
 }
 
-.row-margin,.card-margin-top {
+.row-margin,
+.card-margin-top {
   margin-top: 20px;
 }
 

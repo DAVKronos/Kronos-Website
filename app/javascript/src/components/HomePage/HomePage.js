@@ -12,19 +12,15 @@ const HomePage = () => {
   const { t } = useTranslation('homepage')
   return (
     <>
-      <Row>
-        <Col md={12}>
-          <Announcement />
-        </Col>
-        <Col><h1>{t('news')}</h1></Col>
-      </Row>
+      <Announcement/>
+      <h1>{t('news')}</h1>
       <Row>
         <Col md={8}>
           <NewsItems />
         </Col>
         <Col md={4}>
           <AgendaItemsSidebar />
-          <StravaSidebar />
+          {/* <StravaSidebar /> */}
           <Can I='read' a='User'>
             <UserBirthdays />
           </Can>

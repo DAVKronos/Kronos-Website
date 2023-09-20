@@ -68,6 +68,7 @@ const EditKronometerForm = ({ values, setValue, children }) => {
   )
 }
 
+export default KronometerForm
 
 export {
   NewKronometerForm,

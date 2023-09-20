@@ -61,8 +61,11 @@ const EditFolderButtons = ({ folderId }) => {
 
 const Kronometers = (props) => {
   const queryCache = useQueryCache()
-  const folderId = props.match.params.folder_id &&
-    parseInt(props.match.params.folder_id);
+  const folderId =
+    props.match &&
+    props.match.params &&
+    props.match.params.folder_id &&
+    parseInt(props.match.params.folder_id)
   let folderName,
     folders,
     isFolderLoading,

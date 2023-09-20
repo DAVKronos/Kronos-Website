@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Alert, Button, Form, NavDropdown, Image, Col } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
-import { login, logout, Can } from '../../utils/auth-helper'
+import { login, logout, Can, logout } from '../../utils/auth-helper'
 import { authContext } from '../../utils/AuthContext'
 import { BsPersonFill, BsBoxArrowRight, BsFillCloudFill, BsFillGearFill } from 'react-icons/bs'
 import DefaultSpinner from '../Generic/Spinner'
@@ -15,18 +15,30 @@ const LoginMenu = () => {
   const [loading, setLoading] = useState(false)
   const [incorrectCredentials, setIncorrectCredentials] = useState(false)
   const { setUserData } = useContext(authContext)
-  const onFormSubmit = e => {
-    e.preventDefault()
-    setLoading(true)
-    login(email, password, rememberMe).then((user) => {
-      setLoading(false)
-	    setIncorrectCredentials(false)
-      setUserData(user)
-    })
-      .catch((err) => {
-	    setLoading(false)
-	    setIncorrectCredentials(true)
-      })
+
+  const onFormSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const user = await login(email, password, rememberMe);
+      setLoading(false);
+      setIncorrectCredentials(false);
+      setUserData(user);
+    } catch (e) {
+      setLoading(false);
+      setIncorrectCredentials(true);
+    }
+
+    // login(email, password, rememberMe).then((user) => {
+    //   setLoading(false)
+    //   setIncorrectCredentials(false)
+    //   setUserData(user)
+    // })
+    //   .catch((err) => {
+    //     setLoading(false)
+    //     setIncorrectCredentials(true)
+    //   })
   }
 
   if (loading) {
@@ -37,6 +49,7 @@ const LoginMenu = () => {
     <Form className='form-padding login-menu' onSubmit={onFormSubmit}>
       {incorrectCredentials &&
         <Alert variant='danger'>{t('incorrectCredentials')}</Alert>}
+
       <Form.Group controlId='formBasicEmail'>
         <Form.Control
           type='email' placeholder={t('email')} onChange={e => {
@@ -78,15 +91,25 @@ const LoginMenu = () => {
 
 const LoggedInMenu = ({ user }) => {
   const history = useHistory()
-  const firstName = user.name.split(' ')[0]
   const { t } = useTranslation('loginMenu')
   const { setUserData } = useContext(authContext)
-  const onClickLogout = () => {
-    logout().then(() => {
-      setUserData(null)
-	    history.push('/')
-    })
+  const firstName = user.name.split(' ')[0]
+
+  const onClickLogout = async () => {
+    const ability = await logout();
+    console.log("GHELLO")
+    console.table(ability);
+    setUserData(null);
+    history.push('/');
   }
+
+  // const onClickLogout = () => {
+  //   logout().then(() => {
+  //     setUserData(null)
+  //     history.push('/')
+  //   })
+  // }
+
   return (
     <>
       <div className='logged-in-menu'>
@@ -109,7 +132,7 @@ const UserMenu = () => {
 
   if (user) {
     const firstName = user.name.split(' ')[0]
-    const dropdownTitle = <><BsPersonFill />{firstName}</>
+    const dropdownTitle = <>{firstName}<Image style={{ maxWidth: 30 }} src={user.avatar_url_thumb} roundedCircle /></>
     return (
       <NavDropdown title={dropdownTitle} id='basic-nav-dropdown' alignRight>
         <LoggedInMenu user={user} />

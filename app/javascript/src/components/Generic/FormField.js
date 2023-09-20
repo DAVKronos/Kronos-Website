@@ -11,6 +11,7 @@ import Select from 'react-select'
 import { useQuery } from 'react-query'
 import { langFromLocale } from '../../utils/date-format'
 import { getFolderById, getFoldersWithoutId } from '../Kronometers/queries'
+import { getFolderById, getFoldersWithoutId } from '../Kronometers/queries'
 
 registerLocale('nl', nl)
 registerLocale('en', en)

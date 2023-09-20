@@ -1,30 +1,36 @@
-version: "3.0"
-name: kronoswebsite
 volumes:
-  node_modules:
-  bundle:
-  packs:
+  overlay_public:
+    driver: local
+    driver_opts:
+      type: overlay
+      device: overlay
+      o: lowerdir=/blockstorage/public-kronos-data,upperdir=${PWD}/overlay_public/upper,workdir=${PWD}/overlay_public/workdir
+  overlay_private:
+    driver: local
+    driver_opts:
+      type: overlay
+      o: lowerdir=/blockstorage/private-kronos-data,upperdir=${PWD}/overlay_private/upper,workdir=${PWD}/overlay_private/workdir
+      device: overlay
   postgres:
 services:
-  app:
-    image: kronos-app:a027b37
+  web:
+    image: kronos-web:development
     command: 'bin/dev'
     build:
       context: .
+    restart: unless-stopped
     expose:
-      - "3000"
+      - "3001"
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3001:3000"
     depends_on:
       - db
     env_file: .env
     tmpfs: /app/tmp
     volumes:
-      # Path on the host, relative to the Compose file
       - .:/app
-      - node_modules:/app/node_modules
-      - bundle:/app/vendor/bundle
-      - packs:/app/public/packs
+      - overlay_private:/app/secure_files
+      - overlay_public:/app/public/system
   db:
     image: postgres:12.6
     environment:
