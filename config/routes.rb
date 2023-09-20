@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
       resources :folders do
         resources :kronometers
+        resources :folders
       end
 
       get '/kronometers/:id/display/:style', to: "kronometers#display", as: "secure_kronometers_display"

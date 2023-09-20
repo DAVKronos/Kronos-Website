@@ -4,7 +4,14 @@ module Api
       load_and_authorize_resource
 
       def index
-        folders = Folder.where(folder_id: [nil, ""]).order(:name)
+        if params[:folder_id]
+          folders = Folder.order(:name)
+          folders = folders.where.not(id: params[:folder_id])
+          folders = folders.where.not(folder_id: params[:folder_id]).or(folders.where(folder_id: [nil, ""]))
+        else
+          folders = Folder.where(folder_id: [nil, ""]).order(:name)
+        end 
+
         respond_to do |format|
           format.json { render json: folders.as_json }
         end
@@ -48,8 +55,7 @@ module Api
 
 
       def folder_params
-        # TODO controller now permits all models attributes, try to be more specific
-        params.require(:folder).permit!
+        params.require(:folder).permit(:name, :folder_id)
       end
     end
   end

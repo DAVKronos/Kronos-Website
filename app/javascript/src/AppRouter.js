@@ -34,7 +34,7 @@ const AppRouter = () => {
               <HomePage key='home' />
             </Route>
             <Route exact path='/home'>
-              <HomePage key='home'/>
+              <HomePage key='home' />
             </Route>
             <Route path='/newsitems'>
               <NewsItemsRouter />
