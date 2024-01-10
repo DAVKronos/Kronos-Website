@@ -16,8 +16,11 @@ function getPagesForMenu(pages, title) {
 }
 
 function getPageLinksForMenu(pages, title) {
+  const { i18n } = useTranslation('navigation');
   return getPagesForMenu(pages, title).map(page => {
-    return <NavDropdown.Item key={page.pagetag} as={NavLink} to={`/${page.pagetag}`} href={`/${page.pagetag}`}>{page.pagetag}</NavDropdown.Item>
+    return <NavDropdown.Item key={page.pagetag} as={NavLink} to={`/${page.pagetag}`} href={`/${page.pagetag}`}>
+      {(i18n.language === 'en' && page.pagetag_en) ? page.pagetag_en : page.pagetag}
+    </NavDropdown.Item>
   })
 }
 
