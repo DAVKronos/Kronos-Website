@@ -9,7 +9,7 @@ module Api
       end
 
       def json
-        @photos = Photo.all
+        @photos = Photo.select(:id).all
         render json: @photos.collect { |p| p.as_json(methods: [:photo_url_original, :photo_url_thumb]) }
       end
 
