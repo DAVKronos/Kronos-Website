@@ -48,7 +48,7 @@ jobs:
         script: |
           docker system prune -f
           cd /blockstorage
-          docker-compose pull
-          docker-compose down && docker-compose up -d
+          docker compose pull
+          docker compose down && docker-compose up -d
           
         
