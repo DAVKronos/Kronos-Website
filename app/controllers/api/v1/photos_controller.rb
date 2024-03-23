@@ -8,6 +8,11 @@ module Api
         render json: @photos.collect { |p| p.as_json(methods: [:photo_url_original, :photo_url_thumb]) }
       end
 
+      def json
+        @photos = Photo.all
+        render json: @photos.collect { |p| p.as_json(methods: [:photo_url_original, :photo_url_thumb]) }
+      end
+
       def create
         @photo = Photoalbum.find(params[:photoalbum_id]).photos.build(photo_params)
 
