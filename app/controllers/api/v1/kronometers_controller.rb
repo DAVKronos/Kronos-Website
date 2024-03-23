@@ -2,7 +2,11 @@ module Api
   module V1
     class KronometersController < Api::V1::ApplicationController
       load_and_authorize_resource
-
+      def json
+        @kronometers = Kronometer.all
+        render json: @kronometers.collect { |km| km.as_json(methods: [:url_original, :url_thumb]) }
+      end
+      
       def index
         kms = Kronometer.order('date DESC')
 

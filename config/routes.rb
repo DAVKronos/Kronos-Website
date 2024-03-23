@@ -92,7 +92,9 @@ Rails.application.routes.draw do
       end
 
       get '/abilities', :to => 'abilities#index'
-      get '/photos.json', :to => 'photos#json'
+      get '/photosjson', :to => 'photos#json'
+      get '/documentsjson', :to => 'kronometers#json'
+
     end
   end
   # for kronometer files
