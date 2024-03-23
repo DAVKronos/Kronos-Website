@@ -9,8 +9,13 @@ module Api
       end
 
       def json
-        @photos = Photo.select(:id).all
-        render json: @photos.collect { |p| p.as_json(methods: [:photo_url_original, :photo_url_thumb]) }
+        @photos = Photo.all
+        response.headers['Content-Type'] = 'text/event-stream'
+        @photos.each do |p|
+          response.stream.write p.as_json(methods: [:photo_url_original, :photo_url_thumb])
+        end
+      ensure
+        response.stream.close
       end
 
       def create
