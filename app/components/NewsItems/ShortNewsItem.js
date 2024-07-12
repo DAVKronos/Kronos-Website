@@ -13,7 +13,7 @@ import {approveNewsItem, removeNewsItem} from "./queries";
 const ShortNewsItem = ({item}) => {
     const {t, i18n} = useTranslation('newsItemPage')
     const renderNews = (news) => {
-        return <ReactMarkdown source={news.split('\n')[0]}/>
+	return <ReactMarkdown children={news.split('\n')[0]}/>
     }
     let commentCount = null
     if (item.comment_count) {

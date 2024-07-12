@@ -142,7 +142,7 @@ function NewsItem (props) {
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
           <img src={getAPIHostUrl(item.articlephoto_url_carrousel)} alt={item.title} />
-          <ReactMarkdown source={news} />
+          <ReactMarkdown children={news} />
           <Can I='read' a='Comment'>
             {item && <NewsItemComments newsItemId={item.id} />}
           </Can>
