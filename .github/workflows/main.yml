@@ -22,6 +22,6 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh -v -o StrictHostKeyChecking=no docker-admin@$kronos.nl <<'ENDSSH'
+          ssh -v -o StrictHostKeyChecking=no docker-admin@kronos.nl <<'ENDSSH'
           echo foo >> gh_ssh.log
           ENDSSH
