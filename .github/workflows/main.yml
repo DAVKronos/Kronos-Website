@@ -1,0 +1,27 @@
+name: Deploy to server
+
+on:
+  push:
+    branches: [ "react" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up SSH key
+        run: |
+          env
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo ${{ secrets.SSH_KNOWN_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        run: |
+          ssh -v -o StrictHostKeyChecking=no docker-admin@$kronos.nl <<'ENDSSH'
+          echo foo >> gh_ssh.log
+          ENDSSH
