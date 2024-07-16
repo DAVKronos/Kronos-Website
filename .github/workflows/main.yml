@@ -23,5 +23,11 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -v -o StrictHostKeyChecking=no docker-admin@kronos.nl <<'ENDSSH'
-          echo foo >> gh_ssh.log
+          cd ${{ secrets.APP_PATH }}
+          git checkout react
+          git pull
+          docker stop kronos-esbuild-dev
+          docker system prune -f
+          make image
+          make build
           ENDSSH
