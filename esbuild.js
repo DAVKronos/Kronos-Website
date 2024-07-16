@@ -7,7 +7,7 @@ const is_prod = (env==="production");
 require("esbuild").build({
     entryPoints: ["app/entrypoint.js"],
     outdir: "build",
-    publicPath: "/static",
+    publicPath: "/static/react",
     assetNames: "[name]-[hash].digested",
     bundle: true,
     minify: is_prod,

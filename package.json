@@ -1,7 +1,7 @@
 {
   "sideEffects": [
-      "./src/utils/i18n.js",
-      "./app/javascript/src/App.js"
+    "./src/utils/i18n.js",
+    "./app/javascript/src/App.js"
   ],
   "dependencies": {
     "@babel/plugin-proposal-private-methods": "^7.16.0",
