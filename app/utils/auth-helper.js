@@ -4,7 +4,7 @@ import { Ability } from '@casl/ability'
 import { createCanBoundTo } from '@casl/react'
 
 function getAbilities () {
-  return restCall('abilities').then(res => res.data)
+  return axios.get(`/auth/permissions`).then(res => res.data)
 }
 
 function updateAbilities (ability) {
@@ -33,8 +33,8 @@ async function validateToken () {
   }
   const { uid, client } = authDetails
   const access_token = authDetails['access-token']
-  return axios.get(`/auth/validate_token?uid=${uid}&client=${client}&access-token=${access_token}`).then(response => {
-    const user = response.data.data
+  return axios.get(`/auth/validate_token?access-token=${access_token}`).then(response => {
+    const user = response.data
     return updateAbilities(ability).then(() => {
       return user
     })
@@ -56,21 +56,23 @@ function setAuthDetails (obj) {
 }
 
 function login (email, password, rememberMe) {
-  return axios.post('/auth/sign_in', { email, password }, getConfig())
-    .then((response) => {
-      const auth_data = {}
-      const user = response.data.data
-      auth_data['access-token'] = response.headers['access-token']
-      auth_data.client = response.headers.client
-      auth_data.uid = user.uid
-      if (rememberMe) {
-        localStorage.setItem('kronos-auth', JSON.stringify(auth_data))
-      }
-      setAuthDetails(auth_data)
-      return updateAbilities(ability).then(() => {
-        return user
-      })
+    const form = new FormData();
+    form.append("username", email)
+    form.append("password", password)
+    return axios({method:"post", url:'/auth/login', data: form, headers: {"Content-Type": "multipart/form-data" }})
+	.then((response) => {
+    const auth_data = {}
+    const user = response.data
+    auth_data['access-token'] = response.headers['access-token']
+    auth_data.uid = user.email
+    if (rememberMe) {
+      localStorage.setItem('kronos-auth', JSON.stringify(auth_data))
+    }
+    setAuthDetails(auth_data)
+    return updateAbilities(ability).then(() => {
+      return user
     })
+	})
 }
 
 function logout () {

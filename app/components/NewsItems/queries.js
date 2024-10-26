@@ -9,8 +9,8 @@ function getNewsItems () {
 }
 
 function createNewsItem (data) {
-  const formData = convertToFormData('newsitem', data)
-  return restCall('newsitems/', { method: 'POST', data: formData }).then(res => res.data)
+  //const formData = convertToFormData('newsitem', data)
+  return restCall('newsitems/', { method: 'POST', data: data }).then(res => res.data)
 }
 
 function updateNewsItem (id, data) {
