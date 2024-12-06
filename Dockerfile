@@ -1,9 +1,7 @@
-# Base image
-FROM node:current-alpine3.18
+FROM node:23.3-alpine3.19
 
 WORKDIR /app
-COPY package.json yarn.lock /app
-RUN yarn install --frozen-lockfile && yarn cache clean
-RUN npm install
+COPY package.json package-lock.json /app
+RUN npm ci
 
 CMD ["npm", "run", "build"]
