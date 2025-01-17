@@ -49,8 +49,15 @@ class Mailinglist < ApplicationRecord
 
   def add_mailinglist
     if Rails.env.production?
-      api_client = KronosGoogleAPIClient.new
-      api_client.create_email_group(self.full_email, self.name, self.description)
+        Rails.logger.info "Creating email group with email: #{self.full_email}, name: #{self.name}, description: #{self.description}"
+        begin
+        api_client = KronosGoogleAPIClient.new
+        result = api_client.create_email_group(self.full_email, self.name, self.description)
+        Rails.logger.info "Google API response: #{result}"
+        rescue => e
+          Rails.logger.error "Google API error: #{e.message}"
+          raise
+        end
     end
   end
 
