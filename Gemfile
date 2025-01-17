@@ -16,7 +16,7 @@ gem 'redcarpet', '~> 3.5.1'
 gem 'rakismet', '~> 1.4.0'
 gem 'memcache-client', '~> 1.8.5'
 gem 'calendar_helper', '~> 0.2.6'
-gem 'google-api-client', '~> 0.9.28'
+gem 'google-api-client', '~> 0.53'
 gem 'execjs', '~> 2.8.1'
 gem 'paper_trail', '~> 4.0'
 gem 'prawn-rails'
@@ -38,7 +38,6 @@ gem 'sqlite3', '~> 1.3.6'
 
 group :production do
   gem 'daemons', '~> 1.1.9'
-  gem 'newrelic_rpm'
 end
 
 group :development do
