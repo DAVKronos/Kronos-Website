@@ -37,7 +37,11 @@ RUN yarn install --frozen-lockfile --production && \
 
 # Add all files to the image and make the app user owner of the app folder
 ADD --chown=app:app . /home/app/
+RUN mkdir /home/app/log; touch /home/app/log/production.log
 
 #Precompile assets
 RUN bundle exec rake assets:precompile
 RUN bundle exec rails webpacker:compile
+
+RUN chown -R app:app /home/app
+
