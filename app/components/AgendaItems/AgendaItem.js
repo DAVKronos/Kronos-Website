@@ -46,7 +46,7 @@ function AgendaItem (props) {
     <>
       <Row>
         <Col md={8}>
-          <h1><MultiLanguageText nl={agendaItem.name} en={agendaItem.name_en} /> <small><AgendaItemTypeName id={agendaItem.agendaitemtype_id} /></small></h1>
+          <h1><MultiLanguageText nl={agendaItem.name} en={agendaItem.name_en} /> <small><AgendaItemTypeName agendaItemType={agendaItem.agendaitemtype} /></small></h1>
         </Col>
 
         <Col md={4} className='d-flex'>

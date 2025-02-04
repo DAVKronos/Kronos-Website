@@ -54,7 +54,7 @@ const Results = () => {
                       <Col xs={2}><h4>{format(itemDate, 'd MMM', lang)} <br /><small>{format(itemDate, 'ccc', lang)}</small></h4></Col>
                       <Col xs={2}><h4><small>{format(itemDate, 'p', lang)}</small></h4></Col>
                       <Col xs={9} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <h4>{item.name} <small><AgendaItemTypeName id={item.agendaitemtype_id} /></small></h4>
+                        <h4>{item.name} <small><AgendaItemTypeName agendaItemType={item.agendaitemtype} /></small></h4>
                         <div style={{ verticalAlign: 'middle' }}><BsChevronDown /></div>
 
                       </Col>
