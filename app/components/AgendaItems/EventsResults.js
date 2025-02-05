@@ -11,7 +11,7 @@ const EventResults = ({ event }) => {
       <thead>
         <tr>
           <th colSpan={3}>
-            {event.name}
+            {event.eventtype.name}
           </th>
         </tr>
       </thead>
@@ -19,9 +19,9 @@ const EventResults = ({ event }) => {
         {event.results && event.results.sort((a, b) => a.place - b.place).map(result => {
           return (
             <tr key={result.id} className='d-flex'>
-              <td className='col-4'>{result.result} {event.measuringUnit} {result.place && `(${result.place})`}</td>
+              <td className='col-4'>{result.result} {event.eventtype.measuringUnit} {result.place && `(${result.place})`}</td>
               <td className='col-4'>{result.username}</td>
-              <td className='col-4'>{Math.round(result.calculated * 100) / 100} {event.calculatedUnit}</td>
+              <td className='col-4'>{Math.round(result.calculated * 100) / 100} {event.eventtype.calculatedUnit}</td>
             </tr>
           )
         })}
