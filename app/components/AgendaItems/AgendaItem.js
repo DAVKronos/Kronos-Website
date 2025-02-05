@@ -40,7 +40,7 @@ function AgendaItem (props) {
   const date = new Date(agendaItem.date)
 
   const renderDescription = (text) => {
-    return <ReactMarkdown source={text} />
+    return <ReactMarkdown children={text} />
   }
   return (
     <>
