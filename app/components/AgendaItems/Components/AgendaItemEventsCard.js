@@ -9,6 +9,7 @@ import { Can } from '../../../utils/auth-helper'
 import { BsPlus, BsTrash } from 'react-icons/bs'
 import { FieldControl } from '../../Generic/FormField'
 import { useTranslation } from 'react-i18next'
+import { parse } from 'date-fns'
 
 const AgendaItemEventsCard = ({ agendaItemId, agendaItemTypeId }) => {
   const { t } = useTranslation('models')
@@ -42,7 +43,6 @@ const AddEventForm = ({ agendaItemId, agendaItemTypeId }) => {
 
   const currentEventType = values.eventtype_id && eventTypes.find(event => event.id === values.eventtype_id)
   const hasDistanceInFormula = currentEventType && currentEventType.formula.includes('$distance')
-
   return (
     <Form>
       <Form.Row>
@@ -103,7 +103,7 @@ const AgendaItemEvents = ({ agendaItemId, agendaItemTypeId }) => {
     )
   } else {
     eventList = events.map(event => {
-      const date = new Date(event.date)
+      const date = parse(event.date, 'HH:mm:ss', new Date())
       return (
         <ListGroup.Item key={event.id} className='d-flex align-items-center'>
           {format(date, 'p')} {event.name}
