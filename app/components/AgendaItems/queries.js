@@ -32,12 +32,7 @@ function getAgendaitemTypes () {
 }
 
 function getAgendaitemEvents (queryKey, id) {
-  return restCall(`agendaitems/${id}/events`).then(response => {
-    return Promise.all(response.data.map(async event => {
-      const { name, formula, measuringunit, shortname, calculated_unit } = await getEventType(event.eventtype_id)
-      return { ...event, name, formula, measuringunit, shortname, calculated_unit }
-    }))
-  })
+  return restCall(`agendaitems/${id}/events`).then(res => res.data)
 }
 
 function getEventType (id) {

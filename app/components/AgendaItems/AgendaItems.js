@@ -99,7 +99,7 @@ const AgendaItems = () => {
                       <h4><small>{format(itemDate, 'p', lang)}</small></h4>
                     </Col>
                     <Col xs={8}>
-                      <h4><MultiLanguageText nl={item.name} en={item.name_en} /> <small><AgendaItemTypeName id={item.agendaitemtype_id} /></small></h4>
+                      <h4><MultiLanguageText nl={item.name} en={item.name_en} /> <small><AgendaItemTypeName agendaItemType={item.agendaitemtype} /></small></h4>
                     </Col>
                   </Row>
                 </Card>

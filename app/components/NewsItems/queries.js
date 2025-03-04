@@ -35,7 +35,7 @@ function removeNewsItemComment (newsItemId, id) {
 }
 
 function createNewsItemComment (newsItemId, data) {
-  return restCall(`newsitems/${newsItemId}/comments`, { method: 'POST', data: { comment: data } }).then(res => res.data)
+  return restCall(`newsitems/${newsItemId}/comments`, { method: 'POST', data: data}).then(res => res.data)
 }
 
 export {
