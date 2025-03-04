@@ -9,6 +9,7 @@ import { Can } from '../../../utils/auth-helper'
 import { BsPlus, BsTrash } from 'react-icons/bs'
 import { FieldControl } from '../../Generic/FormField'
 import { useTranslation } from 'react-i18next'
+import { parse } from 'date-fns'
 
 const AgendaItemEventsCard = ({ agendaItemId, agendaItemTypeId }) => {
   const { t } = useTranslation('models')
@@ -50,7 +51,7 @@ const AddEventForm = ({ agendaItemId, agendaItemTypeId }) => {
             type='time'
             required
             setValue={setDateValue}
-            value={values.date.time}
+            value={values.date}
             placeholder='Time'
           />
         </Col>
