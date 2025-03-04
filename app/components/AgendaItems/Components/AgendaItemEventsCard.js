@@ -42,7 +42,6 @@ const AddEventForm = ({ agendaItemId, agendaItemTypeId }) => {
 
   const currentEventType = values.eventtype_id && eventTypes.find(event => event.id === values.eventtype_id)
   const hasDistanceInFormula = currentEventType && currentEventType.formula.includes('$distance')
-
   return (
     <Form>
       <Form.Row>
@@ -51,7 +50,7 @@ const AddEventForm = ({ agendaItemId, agendaItemTypeId }) => {
             type='time'
             required
             setValue={setDateValue}
-            value={values.date}
+            value={values.date.time}
             placeholder='Time'
           />
         </Col>
@@ -103,7 +102,7 @@ const AgendaItemEvents = ({ agendaItemId, agendaItemTypeId }) => {
     )
   } else {
     eventList = events.map(event => {
-      const date = new Date(event.date)
+      const date = parse(event.date, 'HH:mm:ss', new Date())
       return (
         <ListGroup.Item key={event.id} className='d-flex align-items-center'>
           {format(date, 'p')} {event.name}
