@@ -5,7 +5,7 @@ function getAgendaitem (queryKey, id) {
 }
 
 function createAgendaitem (data) {
-  return restCall('agendaitems', { method: 'POST', data: { agendaitem: data } }).then(res => res.data)
+  return restCall('agendaitems', { method: 'POST', data:data }).then(res => res.data)
 }
 
 function updateAgendaitem (id, data) {
