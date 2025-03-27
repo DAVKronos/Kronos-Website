@@ -36,14 +36,14 @@ function createCommission (data) {
 function createCommissionMembership (commissionId, data) {
   return restCall(`commissions/${commissionId}/commission_memberships`, {
     method: 'POST',
-    data: { commission_membership: data }
+    data: data
   }).then((res) => res.data)
 }
 
 function updateCommission (id, data) {
   return restCall(`commissions/${id}`, {
-    method: 'PUT',
-    data: { commission: data }
+    method: 'PATCH',
+    data: data
   }).then((res) => res.data)
 }
 
