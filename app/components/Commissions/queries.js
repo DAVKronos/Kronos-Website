@@ -29,7 +29,7 @@ function getCommissionMemberships (queryKey, commissionId, otherKey) {
 function createCommission (data) {
   return restCall('commissions', {
     method: 'POST',
-    data: { commission: data }
+    data: data
   }).then((res) => res.data)
 }
 
