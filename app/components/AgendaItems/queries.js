@@ -9,7 +9,7 @@ function createAgendaitem (data) {
 }
 
 function updateAgendaitem (id, data) {
-  return restCall(`agendaitems/${id}`, { method: 'PUT', data: { agendaitem: data } }).then(res => res.data)
+  return restCall(`agendaitems/${id}`, { method: 'PATCH', data: { agendaitem: data } }).then(res => res.data)
 }
 
 function getAgendaitems (queryKey, params = null) {
