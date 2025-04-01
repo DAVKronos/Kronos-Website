@@ -4,4 +4,4 @@ WORKDIR /app
 COPY package.json package-lock.json /app
 RUN npm ci
 
-CMD ["npm", "run", "build"]
+CMD node esbuild.js --watch
