@@ -5,11 +5,11 @@ function getAgendaitem (queryKey, id) {
 }
 
 function createAgendaitem (data) {
-  return restCall('agendaitems', { method: 'POST', data: { agendaitem: data } }).then(res => res.data)
+  return restCall('agendaitems', { method: 'POST', data }).then(res => res.data)
 }
 
 function updateAgendaitem (id, data) {
-  return restCall(`agendaitems/${id}`, { method: 'PATCH', data: { agendaitem: data } }).then(res => res.data)
+  return restCall(`agendaitems/${id}`, { method: 'PATCH', data }).then(res => res.data)
 }
 
 function getAgendaitems (queryKey, params = null) {
