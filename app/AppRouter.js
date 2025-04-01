@@ -26,8 +26,9 @@ import PrivateRoute from './components/Generic/PrivateRoute'
 const AppRouter = () => {
   return (
     <Router>
-      <Container fluid='lg'>
-        <Header />
+      <Header/>
+      <Container>
+        
         <div className='main'>
           <Switch>
             <Route exact path='/'>
