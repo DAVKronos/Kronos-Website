@@ -5,7 +5,9 @@ function getAgendaitem (queryKey, id) {
 }
 
 function createAgendaitem (data) {
-  return restCall('agendaitems', { method: 'POST', data }).then(res => res.data)
+  //A very very hacky fix
+  const modifiedData = { ...data, date: data.date.toISOString().split('Z')[0] };
+  return restCall('agendaitems', { method: 'POST', data: modifiedData }).then(res => res.data)
 }
 
 function updateAgendaitem (id, data) {
